@@ -59,3 +59,40 @@ Benchmark an **identical deterministic workload** (same inputs, source, verifier
 6. **Mathematics**: any claimed nonperturbative bound must have an independent analytic/interval certificate. Physical 4D mass gap and existence stay **OPEN**.
 
 Reference finite SU(2) work: [the four-dimensional continuum repository's issue #2](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/2), [#3](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/3), and [#4](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/4).
+
+
+## Executable v0 and first hosted comparison — November 3, 2026
+
+The source and workflow are now implemented on draft PR #9, not merged:
+
+- src/physics.rs: deterministic 64-slot balanced-trit candidate, exact rational SU(2) unit quaternions, 4D periodic lattice with 16 sites, 64 positive links and 96 plaquettes, exact Wilson-action sum, and local gauge-covariance checks including two negative controls.
+- src/receipts.rs: SHA-256, HBP/HBI, 16-hex SH locators, HASH chains, source-commit pinning, exact regeneration on verification, strict shard file counts, and an all-or-nothing four-shard fan-in.
+- src/sha256.rs: integer-only SHA-256 reused from the pinned HEB-C HTTP0 implementation, with known-answer tests.
+- src/main.rs: single-shard computation, four-shard verification and sequential baseline.
+- .github/workflows/ym4-gitram.yml: pinned Rust 1.81.0, Clippy -D warnings, formatting, unit and corruption tests, four independent GitRAM cells, sequential baseline, sealed fan-in and OS-level time/RSS measurements. The final seal requires the prerequisite jobs to succeed.
+
+Commands: run cargo +1.81.0 fmt --all -- --check; cargo +1.81.0 clippy --locked --all-targets -- -D warnings; cargo +1.81.0 test --locked --all-targets; cargo +1.81.0 build --release --locked. Then use target/release/ym4-gitram baseline SOURCE_SHA OUTPUT_ROOT or target/release/ym4-gitram shard ID SOURCE_SHA SHARD_DIR, followed by target/release/ym4-gitram fan-in SOURCE_SHA SHARDS_DIR SEAL_DIR. SOURCE_SHA must be the full lowercase 40-hex source commit. Keep baseline output separate from the four shard subdirectories named shard-0 through shard-3.
+
+### Hosted results and historical failed controls
+
+The first run, https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/41689538266 , passed baseline, all four shards and fan-in, but retained a FAIL on source formatting. A subsequent run, https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/41690101300 , passed all seven jobs (formatting, Clippy, tests, baseline, 4 shards, fan-in). The first PR merge checkout was 152b2c03572c25ebf697b495ae2b5974384eca5c; its exact finite-lattice Wilson-action sums at beta=1 were:
+
+| Shard | Wilson-action sum |
+|---|---:|
+| 0 | 45956/625 |
+| 1 | 7888/125 |
+| 2 | 44212/625 |
+| 3 | 40124/625 |
+| Four-shard sum | 169732/625 |
+
+Sequential and distributed fan-in agreed exactly, including a recorded anchor root SHA-256 of a375d0afa2c143d1146d4e351b262edc18289580773bf7c4ab11ceaf61d06f5a. The sequential process took 6 ms on that tiny four-shard test. The baseline artifact tree held 8,441 bytes and the four downloaded shard artifacts 7,403 bytes. This is not an end-to-end GitRAM speedup result: GitHub runner, toolchain, compilation and artifact overhead dominate such a small task, and the runner RESOURCE.txt artifacts retain those costs.
+
+### Explicit remaining gates
+
+- The candidate is SYNTHETIC_CONTROL from reproducible trits, NOT actual GGUF inference. No QNN weights are loaded or reconstructed from hashes. The pinned upstream source refs are references only.
+- This uses exact rational matrices belonging to continuous SU(2), but evaluates only finitely many link configurations. It does NOT integrate continuous SU(2) Haar measure or establish continuum existence.
+- The HEB-C integer-only SHA-256 algorithm is reused, but the native bridge defines its own ym4.qnn.gitram.v0 HBP/HBI schema. The live HTTP0 service and physical 300GB Host8 store are not used.
+- SHA/HBP/HBI validate checked data relative to the pinned source and deterministic expectations. An unsigned anchor is NOT an author signature.
+- There is NO new mass-gap lower bound. Exact SU(2) finite lattice covariance, a candidate generator and integrity verification cannot substitute for reflection positivity, RG estimates across all scales, Osterwalder-Schrader reconstruction or a positive physical continuum gap.
+
+Next scientific experiment: obtain pinned real QNN weights, a byte-validated model loader, a proof of output-to-link representation validity, and independent controls; then compare QNN candidates with a non-QNN baseline on a correctly defined 4D SU(2) variational problem. Any rigorous lower bound requires a separate mathematical certificate.
