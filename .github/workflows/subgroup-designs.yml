@@ -1,0 +1,37 @@
+# YM4-02b: finite subgroups of SU(2) against Haar, the 4D closed surfaces, and the plaquette series against the published table. Integers only, json=0.
+name: YM4-02b subgroup designs on the 4D lattice
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tests/test_subgroup_designs_4d.py'
+      - 'tests/SUBGROUP_DESIGNS_RECEIPT.txt'
+      - 'docs/LEMMA-0003-SUBGROUP-DESIGNS.md'
+      - 'docs/PREDICTION-YM4-02b.hbp'
+      - '.github/workflows/subgroup-designs.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  subgroup-designs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_subgroup_designs_4d.py > /tmp/designs.out
+          cmp /tmp/designs.out tests/SUBGROUP_DESIGNS_RECEIPT.txt
+          grep -q '^SUBGROUP_DESIGNS_DONE|failed=0|json=0$' /tmp/designs.out
+      - name: Each sabotage goes red
+        run: |
+          set -uo pipefail
+          for s in bad_group wrong_class wrong_table drop_direction q8_everywhere; do
+            rc=0
+            python3 -I -X utf8 tests/test_subgroup_designs_4d.py "sabotage=$s" > "/tmp/sab-$s.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            echo "sabotage=$s exit=$rc"
+          done

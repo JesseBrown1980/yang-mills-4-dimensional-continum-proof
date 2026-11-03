@@ -15,3 +15,9 @@ YM4_02B_EXPECT_SERIES_SPLIT|beta9=4451/8847360|single_plaquette=13/4423680|cube=
 YM4_02B_EXPECT_FIRST_DIFFERENCE|group=Q8|order=3|delta=1/48|group=2T|order=5|delta=1/7680|group=2O|order=7|delta=1/1290240|group=2I|order=11|delta=1/163499212800|definition=single_plaquette_half_trace_series_of_G_minus_SU2|json=0
 YM4_02B_EXPECT_TEETH|sabotage=bad_group,wrong_class,wrong_table,drop_direction,q8_everywhere|expect_exit=1_each|json=0
 YM4_02B_EXPECT_COST|local_wall_secs_under=600|below_normal=1|json=0
+YM4_02B_RESULT|prediction_met=1|local_wall_secs=25|rows=tests/SUBGROUP_DESIGNS_RECEIPT.txt|first_run_of_this_code=2026-11-03T20:33Z|host=acer_windows_python_3.13|json=0
+YM4_02B_TOOTH|sabotage=bad_group|exit=1|json=0
+YM4_02B_TOOTH|sabotage=wrong_class|exit=1|json=0
+YM4_02B_TOOTH|sabotage=wrong_table|exit=1|json=0
+YM4_02B_TOOTH|sabotage=drop_direction|exit=1|json=0
+YM4_02B_TOOTH|sabotage=q8_everywhere|exit=1|json=0
