@@ -1,0 +1,17 @@
+name: Exact 4D SU2 Haar-moment prerequisites
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  haar-moments:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Exact 4D SU2 Haar moments and negative controls
+        run: python3 -I tests/test_haar_moments_4d.py
