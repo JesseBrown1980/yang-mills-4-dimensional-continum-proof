@@ -1,0 +1,45 @@
+# An independent seat's Q8 checker of the YM4-02c Gram entry, kept verbatim, replayed on every change to it. It holds exact integer sums only. json=0.
+name: Independent Q8 Gram checker
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'reviews/gpt6-q8-0e9bcff/**'
+      - '.github/workflows/gpt6-q8-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  q8-gram:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: The files are the ones the seat delivered
+        working-directory: reviews/gpt6-q8-0e9bcff
+        run: sha256sum -c SHA256SUMS
+      - name: Build with every warning an error, run, and compare with its receipt
+        working-directory: reviews/gpt6-q8-0e9bcff
+        run: |
+          set -euo pipefail
+          g++ -O3 -std=c++17 -Wall -Wextra -Werror q8_gram_independent.cpp -o /tmp/q8check
+          /tmp/q8check > /tmp/q8.out
+          cat /tmp/q8.out
+          cmp /tmp/q8.out INDEPENDENT_GRAM.hbp
+      - name: Each mutation stops the checker
+        working-directory: reviews/gpt6-q8-0e9bcff
+        run: |
+          set -uo pipefail
+          sed 's/17+2\*sign/17+2/' q8_gram_independent.cpp > /tmp/m1.cpp
+          sed 's/return out\*2+(sign<0);/return out*2+(sign>0);/' q8_gram_independent.cpp > /tmp/m2.cpp
+          sed 's/trace2(a)\*trace2(b)/trace2(a)*trace2(a)/' q8_gram_independent.cpp > /tmp/m3.cpp
+          for m in m1 m2 m3; do
+            cmp -s "/tmp/$m.cpp" q8_gram_independent.cpp && { echo "$m changed nothing"; exit 1; }
+            g++ -O2 -std=c++17 "/tmp/$m.cpp" -o "/tmp/$m"
+            rc=0
+            "/tmp/$m" > /dev/null 2>&1 || rc=$?
+            test "$rc" = 2
+            echo "$m exit=$rc"
+          done
