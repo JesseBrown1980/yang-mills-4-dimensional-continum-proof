@@ -134,6 +134,8 @@ WILSON = {
 def known_answers():
     # The product order, and one plaquette by hand.
     assert multiply(A, B) == (15, 20, 36, 48, 65)
+    # The unit test answers both ways.
+    assert is_unit(A) and not is_unit((1, 1, 0, 0, 1))
     # One link A, every other link ONE: exactly its six plaquettes move, each with half trace 3/5.
     U = {(x, mu): ONE for x in SITES for mu in range(D)}
     origin = SITES[0]
@@ -156,14 +158,15 @@ def wrong_matrix_same_trace(v):
 
 
 def checker_controls(P, Pt, g):
-    # The covariance check must see one wrong plaquette anywhere, and a wrong matrix with the right trace.
-    seen = 0
+    # The covariance check must see one wrong plaquette anywhere. The wrong matrix keeps the trace, apart from an
+    # identity plaquette, the only SU(2) element with half trace 1. Both counts come from the checks themselves.
+    seen = kept = 0
     for k in P:
         wrong = dict(Pt)
         wrong[k] = wrong_matrix_same_trace(Pt[k])
-        assert not covariance_holds(P, wrong, g)
-        seen += 1
-    return seen
+        seen += 0 if covariance_holds(P, wrong, g) else 1
+        kept += 1 if half_trace(wrong[k]) == half_trace(Pt[k]) else 0
+    return seen, kept
 
 
 def check_seed(seed):
@@ -188,12 +191,12 @@ def check_seed(seed):
     corrupted = dict(transformed)
     first = next(iter(corrupted))
     corrupted[first] = multiply(corrupted[first], A)
-    assert not covariance_holds(P, all_plaquettes(corrupted), g)
-    CONTROLS.add("corrupted_link")
+    if not covariance_holds(P, all_plaquettes(corrupted), g):
+        CONTROLS.add("corrupted_link")
     # Fault #2: remove the endpoint inverse in the gauge law. The traces must move.
     wrong = all_plaquettes(gauge_transform(U, g, bad=True))
-    assert [half_trace(P[k]) for k in sorted(P)] != [half_trace(wrong[k]) for k in sorted(P)]
-    CONTROLS.add("endpoint_inverse")
+    if [half_trace(P[k]) for k in sorted(P)] != [half_trace(wrong[k]) for k in sorted(P)]:
+        CONTROLS.add("endpoint_inverse")
     return wilson_action(P), detected
 
 
@@ -205,6 +208,9 @@ def main():
     results = [check_seed(s) for s in seeds]
     actions = [r[0] for r in results]
     assert len(set(actions)) > 1
+    seen = sum(r[1][0] for r in results)
+    kept = sum(r[1][1] for r in results)
+    assert seen == 96 * len(seeds) and kept == 372 and len(CONTROLS) == 2
     print(
         "EXACT_SU2_4D|sites=16|links=64|plaquettes=96|seeds=4|"
         "gauge_covariance=PASS|wilson_action=PASS|fault_controls=%d/2|"
@@ -214,7 +220,7 @@ def main():
         print("EXACT_SU2_4D_VALUE|seed=%d|S_W=%d/%d|json=0" % (seed, action[0], action[1]))
     print(
         "EXACT_SU2_4D_CHECKER|one_link_fixture_S_W=18/5|"
-        "wrong_plaquettes_detected=%d/%d|json=0" % (sum(r[1] for r in results), 96 * len(seeds))
+        "wrong_plaquettes_detected=%d/%d|kept_the_trace=%d|json=0" % (seen, 96 * len(seeds), kept)
     )
     print(
         "SCOPE|finite_periodic_lattice_only=1|continuum_existence=OPEN|"

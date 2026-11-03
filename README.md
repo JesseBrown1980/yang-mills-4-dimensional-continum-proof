@@ -17,9 +17,9 @@
 | YM4-06, the physical mass gap | OPEN | [Issue #6](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/6) |
 | YM4-07, every compact simple group | OPEN | [The ledger](docs/PROOF_OBLIGATIONS.md) |
 | YM4-08, independent audit of the whole chain | OPEN | [The ledger](docs/PROOF_OBLIGATIONS.md) |
-| YM4-QNN-01, a harness for candidate generators | Draft, on hold by the operator's decision of November 3. Its next gate is a pinned QNN adapter. It holds exact SU(2) arithmetic, receipts and four-shard CI, with synthetic input | [PR #9](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/9), [issue #8](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/8) |
+| YM4-QNN-01, a harness for candidate generators | Draft, held on the seat's recommendation, which the operator agreed with on November 3. Its next gate is a pinned QNN adapter. It holds exact SU(2) arithmetic, receipts and four-shard CI, with synthetic input | [PR #9](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/9), [issue #8](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/8) |
 
-[The ledger](docs/PROOF_OBLIGATIONS.md) says what rows YM4-00 to YM4-08 need before they can move. All code here is integers only, and a [gate](scripts/no_float_gate.py) reports on every pull request.
+[The ledger](docs/PROOF_OBLIGATIONS.md) says what rows YM4-00 to YM4-08 need before they can move. The computations here use integers only. `main` requires a [gate](scripts/no_float_gate.py) to pass on every pull request, and its docstring states what it reads and what stays beyond it.
 
 ## The finite-lattice programs
 
@@ -43,7 +43,7 @@ EXACT_SU2_4D_VALUE|seed=20261103|S_W=449929987986/3508004825|json=0
 EXACT_SU2_4D_VALUE|seed=1729|S_W=193195378719/1349232625|json=0
 EXACT_SU2_4D_VALUE|seed=314159|S_W=185342826929127/1490902050625|json=0
 EXACT_SU2_4D_VALUE|seed=271828|S_W=2969866827969/22936954625|json=0
-EXACT_SU2_4D_CHECKER|one_link_fixture_S_W=18/5|wrong_plaquettes_detected=384/384|json=0
+EXACT_SU2_4D_CHECKER|one_link_fixture_S_W=18/5|wrong_plaquettes_detected=384/384|kept_the_trace=372|json=0
 SCOPE|finite_periodic_lattice_only=1|continuum_existence=OPEN|physical_mass_gap=OPEN|json=0
 ```
 
