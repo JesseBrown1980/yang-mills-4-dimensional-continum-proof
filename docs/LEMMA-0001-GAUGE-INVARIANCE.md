@@ -1,6 +1,6 @@
 # Lemma YM4-01 — SU(2) plaquette gauge covariance in four dimensions
 
-**Claim:** PROVED (elementary algebra); independent review OPEN. **Executable:** EXACT-TEST on a small periodic four-dimensional lattice. **Scope:** one finite periodic lattice.
+**Claim:** PROVED (elementary algebra); independent review OPEN. **Executable:** EXACT-TEST on a small periodic four-dimensional lattice. **Scope:** each finite periodic lattice. The executable runs the 2⁴ torus.
 
 Let Λ be a finite periodic four-dimensional hypercubic lattice, with positively oriented SU(2) link variables U_μ(x), and an arbitrary local SU(2) gauge transformation g(x). Under
 
@@ -24,11 +24,11 @@ U'_{μν}(x) = g(x) U_{μν}(x) g(x)^(-1).
 
 ## Finite executable test
 
-`tests/test_exact_su2_4d.py` uses exact rational quaternions held as integer tuples, and *genuinely noncommuting* SU(2) elements of infinite order. It chooses independent link values and independent gauge transformations at all 16 sites of (ℤ/2ℤ)^4; 64 positive links and all 96 μ<ν plaquettes are checked.
+`tests/test_exact_su2_4d.py` uses exact rational quaternions held as integer tuples, and noncommuting generators A, B, C of infinite order. The palette also holds the identity. It chooses independent link values and independent gauge transformations at all 16 sites of (ℤ/2ℤ)^4; 64 positive links and all 96 μ<ν plaquettes are checked.
 
-The nontrivial rational SU(2) generators include (3/5,4/5,0,0), (5/13,0,12/13,0) and (8/17,0,0,15/17); every value has unit quaternion norm, checked in exact integers.
+The nontrivial rational SU(2) generators include (3/5,4/5,0,0), (5/13,0,12/13,0) and (8/17,0,0,15/17); the link and gauge values have unit quaternion norm, checked in exact integers.
 
-The executable checks plaquette matrix covariance under conjugation, invariant plaquette traces and invariant Wilson action, for four reproducible pseudorandom seeds. It requires two intentional errors to fail: corrupting one link of the transformed field and dropping an endpoint inverse in the gauge law. The test fails closed if either deliberate error passes.
+The executable checks plaquette matrix covariance under conjugation, invariant plaquette traces and invariant Wilson action, for four reproducible pseudorandom seeds. It requires two intentional errors to fail: corrupting one link of the transformed field and dropping an endpoint inverse in the gauge law. The test fails closed if either deliberate error passes. It also pins the four values of the Wilson action, a one-link fixture with S_W = 18/5, and the product A·B, and it replaces each of the 96 plaquettes on each seed by a wrong matrix with the right trace, which the covariance check must detect. **Correction, November 3:** before this date the first control compared a value with itself plus 10⁻⁶, which passes on any arithmetic, and the receipt read `fault_controls=2/2` then as well. It now corrupts one link of the transformed field.
 
 ```bash
 python3 -I tests/test_exact_su2_4d.py

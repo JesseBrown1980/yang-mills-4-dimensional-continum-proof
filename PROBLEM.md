@@ -6,7 +6,7 @@
 
 For every compact simple gauge group G, construct a nontrivial quantum Yang–Mills theory in four spacetime dimensions, satisfying axiomatic quantum-field-theory requirements at least as strong as those in the Jaffe–Witten problem statement, and prove a strictly positive mass gap Δ > 0.
 
-**Initial case:** continuous SU(2), pure gauge (no matter fields). An SU(2) theorem would cover one group, and the Clay statement quantifies over all compact simple groups.
+**Initial case:** continuous SU(2), pure gauge. An SU(2) theorem would cover one group, and the Clay statement quantifies over all compact simple groups.
 
 ## Finite Euclidean starting point
 
@@ -25,12 +25,12 @@ The site gauge law is `U_μ(x) -> g(x) U_μ(x) g(x+μ)^(-1)`. Each plaquette tra
 ## Actual acceptance gates
 
 1. Define a consistent renormalized weak-coupling trajectory as the lattice spacing a→0 and physical volume→∞, with controlled order/compatibility of limits.
-2. Prove nonperturbative, volume- and scale-uniform estimates, with explicit control of large fields, localization, ultraviolet behavior and infrared behavior. Perturbative asymptotic freedom gives the trajectory its form, and these estimates have to hold beyond it.
+2. Prove nonperturbative, volume- and scale-uniform estimates, with explicit control of large fields, localization, ultraviolet behavior and infrared behavior. Perturbative asymptotic freedom is an input, and this gate requires these estimates in addition to it.
 3. Construct **nontrivial** continuum, gauge-invariant correlation functions and establish the required Osterwalder–Schrader axioms.
 4. Reconstruct a physical quantum theory with a Hilbert space, vacuum, locality, energy positivity and suitable Wightman properties.
 5. Prove that the **physical** excitation spectrum above the vacuum has `Δ > 0` in physical units. In transfer-matrix terms, a lattice-unit gap must be rescaled by 1/a and controlled uniformly through the limits.
 6. Explain and prove the extension to every compact simple group, or preserve an explicit SU(2)-only scope.
 
-The finite S₃ spectral bounds and the finite SU(2) subgroups Q8, 2T, 2O and 2I are separate finite models. Each result keeps its own scope, and anything carried to continuous SU(2) comes with its own argument.
+The finite S₃ spectral bounds and the results for Q8, 2T, 2O and 2I each hold for their finite model. Carrying any of them to continuous SU(2) needs its own proved argument.
 
 Official source: https://www.claymath.org/millennium/yang-mills-the-maths-gap/

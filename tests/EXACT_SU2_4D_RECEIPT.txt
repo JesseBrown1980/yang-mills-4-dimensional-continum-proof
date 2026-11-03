@@ -1,2 +1,7 @@
 EXACT_SU2_4D|sites=16|links=64|plaquettes=96|seeds=4|gauge_covariance=PASS|wilson_action=PASS|fault_controls=2/2|failures=0|json=0
+EXACT_SU2_4D_VALUE|seed=20261103|S_W=449929987986/3508004825|json=0
+EXACT_SU2_4D_VALUE|seed=1729|S_W=193195378719/1349232625|json=0
+EXACT_SU2_4D_VALUE|seed=314159|S_W=185342826929127/1490902050625|json=0
+EXACT_SU2_4D_VALUE|seed=271828|S_W=2969866827969/22936954625|json=0
+EXACT_SU2_4D_CHECKER|one_link_fixture_S_W=18/5|wrong_plaquettes_detected=384/384|json=0
 SCOPE|finite_periodic_lattice_only=1|continuum_existence=OPEN|physical_mass_gap=OPEN|json=0

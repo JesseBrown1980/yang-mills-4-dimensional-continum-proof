@@ -41,8 +41,8 @@ Equivalently `Z(β)=1−96β+4620β²+O(β³)` near zero. The finite measure is 
 
 ## Reproducible geometry and fault controls
 
-Run `python3 -I tests/test_haar_moments_4d.py`. The checker independently enumerates all 96 oriented plaquettes and all 4,560 unordered pairs on the four-dimensional periodic lattice. Distinct pairs share 0, 1 or 2 positive links in counts 3,696; 768; and 96. The 64 positive links each occur in six plaquettes. It uses the **proved** SU(2) Haar moment formula above as mathematical input and exact integer/rational arithmetic to obtain the derivatives. It deliberately duplicates a plaquette support or removes one link; both must be rejected.
+Run `python3 -I tests/test_haar_moments_4d.py`. The checker independently enumerates all 96 oriented plaquettes and all 4,560 unordered pairs on the four-dimensional periodic lattice. Distinct pairs share 0, 1 or 2 positive links in counts 3,696; 768; and 96. The 64 positive links each occur in six plaquettes. It uses the **proved** SU(2) Haar moment formula above as mathematical input and exact integer arithmetic to obtain the derivatives. It deliberately duplicates a plaquette support or removes one link; both must be rejected.
 
-**Scope:** the executable takes Haar orthogonality as input, and checks the combinatorial premises and the arithmetic consequences. Reflection positivity is a later row of the ledger. The next substantial task is to match the finite Wilson measure to a reflection-positive transfer kernel and its gauge projection, and then begin an explicit gauge-equivariant blocking construction.
+**Scope:** the executable takes Haar orthogonality as input, and checks the combinatorial premises and the arithmetic consequences. Reflection positivity is the rest of this row, YM4-02. The next substantial task is to match the finite Wilson measure to a reflection-positive transfer kernel and its gauge projection, and then begin an explicit gauge-equivariant blocking construction.
 
 References: Osterwalder–Seiler, *Gauge field theories on a lattice* (1978), DOI 10.1016/0003-4916(78)90039-8; Clay/Jaffe–Witten official problem statement.

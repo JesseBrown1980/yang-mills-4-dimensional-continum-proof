@@ -7,7 +7,7 @@ the standard continuum SU(2) Haar identities:
     E_Haar[((1/2)Tr(U))^2] = 1/4.
 It exhaustively checks the link-incidence hypotheses that eliminate all
 off-diagonal plaquette covariances. Haar orthogonality is its input. Reflection
-positivity and the continuum limit are later rows of the ledger.
+positivity is the rest of YM4-02, and the continuum limit is YM4-05.
 Python standard library, integers only.
 """
 from collections import Counter
@@ -66,7 +66,7 @@ def must_reject_bad_geometry(bad):
 
 
 def exact_haar_consequences():
-    # Non-numerical input from SU(2) Haar symmetry / character orthogonality:
+    # Input from SU(2) Haar symmetry / character orthogonality:
     # χ_{1/2}(U) = Tr(U) = 2a, where uniform q=(a,b,c,d) is on S^3.
     # E[a]=0 and E[a²]=1/4; the latter follows from rotational symmetry
     # and E[a²+b²+c²+d²]=1.

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Exact finite 4D SU(2) gauge-covariance controls using integer-pair quaternions.
+"""Exact finite 4D SU(2) gauge-covariance controls using integer-tuple quaternions.
 
 A quaternion is five ints (a, b, c, d, den), meaning (a, b, c, d) / den, reduced with den > 0.
-This proves and checks a finite-lattice algebraic lemma. Requires Python >= 3.10, stdlib only, integers only.
+This checks a finite-lattice algebraic lemma, proved in Lemma 0001, on one lattice.
+Requires Python >= 3.10, stdlib only, integers only.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from random import Random
 SIDE = 2
 D = 4
 SITES = list(product(range(SIDE), repeat=D))
+CONTROLS = set()
 
 
 def quat(a, b, c, d, den=1):
@@ -121,6 +123,49 @@ def covariance_holds(P, Pt, g):
     )
 
 
+WILSON = {
+    20261103: (449929987986, 3508004825),
+    1729: (193195378719, 1349232625),
+    314159: (185342826929127, 1490902050625),
+    271828: (2969866827969, 22936954625),
+}
+
+
+def known_answers():
+    # The product order, and one plaquette by hand.
+    assert multiply(A, B) == (15, 20, 36, 48, 65)
+    # One link A, every other link ONE: exactly its six plaquettes move, each with half trace 3/5.
+    U = {(x, mu): ONE for x in SITES for mu in range(D)}
+    origin = SITES[0]
+    U[(origin, 0)] = A
+    P = all_plaquettes(U)
+    six = {(origin, 0, nu) for nu in (1, 2, 3)} | {(shift(origin, nu), 0, nu) for nu in (1, 2, 3)}
+    assert {k for k, v in P.items() if v != ONE} == six
+    assert all(half_trace(P[k]) == (3, 5) for k in six)
+    # (3/2) * 6 * (1 - 3/5) = 18/5
+    assert wilson_action(P) == (18, 5)
+
+
+def wrong_matrix_same_trace(v):
+    # A change of the plaquette matrix that keeps the trace when v is not central.
+    for h in (A, B):
+        w = multiply(multiply(h, v), inverse(h))
+        if w != v:
+            return w
+    return multiply(v, A)
+
+
+def checker_controls(P, Pt, g):
+    # The covariance check must see one wrong plaquette anywhere, and a wrong matrix with the right trace.
+    seen = 0
+    for k in P:
+        wrong = dict(Pt)
+        wrong[k] = wrong_matrix_same_trace(Pt[k])
+        assert not covariance_holds(P, wrong, g)
+        seen += 1
+    return seen
+
+
 def check_seed(seed):
     U, g = links_and_gauge(seed)
     assert len(U) == 64 and len(g) == 16
@@ -133,29 +178,43 @@ def check_seed(seed):
     Pt = all_plaquettes(transformed)
     assert len(P) == 96 and len(Pt) == 96
     assert all(is_unit(v) for v in Pt.values())
-    assert any(half_trace(v) != (1, 1) for v in P.values())  # Non-pure-gauge sample
+    assert any(half_trace(v) != (1, 1) for v in P.values())  # A sample with curvature
     assert covariance_holds(P, Pt, g)
+    detected = checker_controls(P, Pt, g)
     assert all(half_trace(Pt[k]) == half_trace(P[k]) for k in P)
     assert wilson_action(P) == wilson_action(Pt)
+    assert wilson_action(P) == WILSON[seed]
     # Fault #1: corrupt one link of the transformed field. The covariance check must fail.
     corrupted = dict(transformed)
     first = next(iter(corrupted))
     corrupted[first] = multiply(corrupted[first], A)
     assert not covariance_holds(P, all_plaquettes(corrupted), g)
+    CONTROLS.add("corrupted_link")
     # Fault #2: remove the endpoint inverse in the gauge law. The traces must move.
     wrong = all_plaquettes(gauge_transform(U, g, bad=True))
     assert [half_trace(P[k]) for k in sorted(P)] != [half_trace(wrong[k]) for k in sorted(P)]
-    return wilson_action(P)
+    CONTROLS.add("endpoint_inverse")
+    return wilson_action(P), detected
 
 
 def main():
+    if not __debug__:
+        raise SystemExit("assertions are off: run without -O")
+    known_answers()
     seeds = (20261103, 1729, 314159, 271828)
     results = [check_seed(s) for s in seeds]
-    assert len(set(results)) > 1
+    actions = [r[0] for r in results]
+    assert len(set(actions)) > 1
     print(
         "EXACT_SU2_4D|sites=16|links=64|plaquettes=96|seeds=4|"
-        "gauge_covariance=PASS|wilson_action=PASS|fault_controls=2/2|"
-        "failures=0|json=0"
+        "gauge_covariance=PASS|wilson_action=PASS|fault_controls=%d/2|"
+        "failures=0|json=0" % len(CONTROLS)
+    )
+    for seed, action in zip(seeds, actions):
+        print("EXACT_SU2_4D_VALUE|seed=%d|S_W=%d/%d|json=0" % (seed, action[0], action[1]))
+    print(
+        "EXACT_SU2_4D_CHECKER|one_link_fixture_S_W=18/5|"
+        "wrong_plaquettes_detected=%d/%d|json=0" % (sum(r[1] for r in results), 96 * len(seeds))
     )
     print(
         "SCOPE|finite_periodic_lattice_only=1|continuum_existence=OPEN|"
