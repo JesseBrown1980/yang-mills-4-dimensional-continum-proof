@@ -1,0 +1,1 @@
+# What the no-float gate lets stand, each with its reason. A file row states how many findings the gate counts in that file, so one more float there fails as well. A path ending in / covers its folder. Anything not listed must hold no floating point.
