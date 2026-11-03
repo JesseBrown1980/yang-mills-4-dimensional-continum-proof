@@ -1,0 +1,159 @@
+name: YM4 QNN HEB-C GitRAM exact four-shard bridge
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'rust-toolchain.toml'
+      - '.github/workflows/ym4-gitram.yml'
+      - 'docs/QNN-HEBC-GITRAM-BRIDGE.md'
+  push:
+    branches:
+      - research/ym4-qnn-hebc-gitram-bridge-v0
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-gitram-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Rust 1.81 and Clippy
+        run: rustup toolchain install 1.81.0 --profile minimal --component clippy --component rustfmt
+      - name: Native source policy
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n -E '\b(f32|f64|serde_json|unsafe|node|v8)\b' src/; then
+            echo "Forbidden native-code token" >&2
+            exit 2
+          fi
+          test "$(find src -type f -name '*.rs' | wc -l)" -ge 3
+      - name: Exact formatting
+        run: cargo +1.81.0 fmt --all -- --check
+      - name: Strict lint
+        run: cargo +1.81.0 clippy --locked --all-targets -- -D warnings
+      - name: Unit and fault-control tests
+        run: cargo +1.81.0 test --locked --all-targets
+
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Rust 1.81
+        run: rustup toolchain install 1.81.0 --profile minimal --component clippy --component rustfmt
+      - name: Build single-runner control
+        run: cargo +1.81.0 build --release --locked
+      - name: Four identical workloads sequentially and verified
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p work/baseline
+          SOURCE_SHA="$(git rev-parse HEAD)"
+          /usr/bin/time -v -o work/baseline/RESOURCE.txt \
+            target/release/ym4-gitram baseline "$SOURCE_SHA" work/baseline/run \
+            | tee work/baseline/BASELINE.out
+          grep -q '^GITRAM_BASELINE_PASS|' work/baseline/BASELINE.out
+          grep -q '^GITRAM_FANIN_PASS|' work/baseline/BASELINE.out
+          (cd work/baseline/run/seal && sha256sum -c SHA256SUMS)
+          du -sb work/baseline/run | tee work/baseline/BYTES.out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ym4-single-runner-baseline
+          path: work/baseline/
+          retention-days: 30
+          if-no-files-found: error
+
+  shard:
+    name: GitRAM shard ${{ matrix.shard }}
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Rust 1.81
+        run: rustup toolchain install 1.81.0 --profile minimal --component clippy --component rustfmt
+      - name: Compile exact standalone shard
+        run: cargo +1.81.0 build --release --locked
+      - name: Compute, verify and measure one independent shard
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p work/shard-${{ matrix.shard }}
+          SOURCE_SHA="$(git rev-parse HEAD)"
+          /usr/bin/time -v -o work/shard-${{ matrix.shard }}.resource \
+            target/release/ym4-gitram shard "${{ matrix.shard }}" "$SOURCE_SHA" "work/shard-${{ matrix.shard }}" \
+            | tee work/shard-${{ matrix.shard }}.out
+          grep -q '^GITRAM_SHARD_PASS|' work/shard-${{ matrix.shard }}.out
+          (cd work/shard-${{ matrix.shard }} && sha256sum -c SHA256SUMS)
+          du -sb work/shard-${{ matrix.shard }} | tee work/shard-${{ matrix.shard }}.bytes
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}
+          path: work/shard-${{ matrix.shard }}/
+          retention-days: 30
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ym4-metrics-${{ matrix.shard }}
+          path: |
+            work/shard-${{ matrix.shard }}.resource
+            work/shard-${{ matrix.shard }}.out
+            work/shard-${{ matrix.shard }}.bytes
+          retention-days: 30
+          if-no-files-found: error
+
+  fan-in:
+    name: Require all four GitRAM shards and seal
+    needs: [quality, baseline, shard]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pinned Rust compiler
+        run: rustup toolchain install 1.81.0 --profile minimal --component clippy --component rustfmt
+      - name: Build fail-closed verifier from source
+        run: cargo +1.81.0 build --release --locked
+      - name: Download all four immutable artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: work/fan-in/shards
+          merge-multiple: false
+      - name: Recompute each shard and seal
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="$(git rev-parse HEAD)"
+          /usr/bin/time -v -o work/fan-in/RESOURCE.txt \
+            target/release/ym4-gitram fan-in "$SOURCE_SHA" work/fan-in/shards work/fan-in/seal \
+            | tee work/fan-in/FANIN.out
+          grep -q '^GITRAM_FANIN_PASS|shards=4|' work/fan-in/FANIN.out
+          (cd work/fan-in/seal && sha256sum -c SHA256SUMS)
+          du -sb work/fan-in/shards | tee work/fan-in/BYTES.out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-sealed-four-shards
+          path: |
+            work/fan-in/seal/
+            work/fan-in/FANIN.out
+            work/fan-in/RESOURCE.txt
+            work/fan-in/BYTES.out
+          retention-days: 30
+          if-no-files-found: error
