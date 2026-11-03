@@ -403,7 +403,8 @@ for dim in (4, 3):
     print("SURFACES|d=%d|per_site_F6=%d|F7=%d|F8=%d|F9=%d|F10=%d|F10_flat=%d|F10_bent=%d|smaller_than_6=%d|ok=%d|json=0" % (dim, per_site.get(6, 0), per_site.get(7, 0), per_site.get(8, 0), per_site.get(9, 0), per_site.get(10, 0), flat, bent, sum(v for k, v in per_site.items() if k < 6), 1 if ok else 0))
     for (size, spans, chi), value in sorted(values.items()):
         rule = red(1, 2 ** size * 2 ** (size - chi))
-        ok = value == rule and chi == 2 and VALUE_F.setdefault(size, value) == value
+        stored = VALUE_F.setdefault(size, value)
+        ok = value == rule and chi == 2 and stored == value
         check("surface value", ok)
         print("SURFACE_VALUE|d=%d|faces=%d|directions=%d|chi=%d|Q8=%s|rule=%s|ok=%d|json=0" % (dim, size, spans, chi, text(value), text(rule), 1 if ok else 0))
 
