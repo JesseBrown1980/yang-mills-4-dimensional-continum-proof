@@ -17,7 +17,11 @@ fn run() -> Result<(), String> {
             receipts::write_shard(source, id, Path::new(directory))
         }
         [_, command, source, shard_directory, seal_directory] if command == "fan-in" => {
-            receipts::verify_all(source, Path::new(shard_directory), Path::new(seal_directory))
+            receipts::verify_all(
+                source,
+                Path::new(shard_directory),
+                Path::new(seal_directory),
+            )
         }
         [_, command, source, output_directory] if command == "baseline" => {
             let root = Path::new(output_directory);
@@ -31,12 +35,8 @@ fn run() -> Result<(), String> {
             }
             receipts::verify_all(source, &root.join("shards"), &root.join("seal"))?;
             let elapsed = start.elapsed().as_millis();
-            println!(
-                "GITRAM_BASELINE_PASS|shards=4|elapsed_ms={elapsed}|"
-            );
-            println!(
-                "SCOPE|finite_4d_SU2=1|candidate=SYNTHETIC_CONTROL|"
-            );
+            println!("GITRAM_BASELINE_PASS|shards=4|elapsed_ms={elapsed}|");
+            println!("SCOPE|finite_4d_SU2=1|candidate=SYNTHETIC_CONTROL|");
             println!("CONTINUUM|existence=OPEN|physical_mass_gap=OPEN|json=0");
             Ok(())
         }
