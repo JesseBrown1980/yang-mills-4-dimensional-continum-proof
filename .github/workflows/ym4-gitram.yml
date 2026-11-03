@@ -11,7 +11,7 @@ on:
       - 'docs/QNN-HEBC-GITRAM-BRIDGE.md'
   push:
     branches:
-      - research/ym4-qnn-hebc-gitram-bridge-v0
+      - main
   workflow_dispatch:
 
 permissions:
@@ -125,6 +125,13 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+      - name: Require prerequisite quality, baseline and all shard jobs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test '${{ needs.quality.result }}' = success
+          test '${{ needs.baseline.result }}' = success
+          test '${{ needs.shard.result }}' = success
       - name: Pinned Rust compiler
         run: rustup toolchain install 1.81.0 --profile minimal --component clippy --component rustfmt
       - name: Build fail-closed verifier from source
