@@ -298,7 +298,7 @@ def expectation(lat, plaquettes, group):
     return red(walk(0), 2 ** len(plaquettes) * size ** len(free))
 
 
-# A side of length 1 repeats a link inside the plaquette, U V U^-1 V^-1, so a_p has degree 2 in each link and agreement runs through floor(t/2).
+# A plane with both sides of length 1 repeats each link inside the plaquette, U V U^-1 V^-1, so a_p has degree 2 in each link and agreement runs through floor(t/2).
 # These rows also pin the inverse in the plaquette word, which every other row here is blind to, since SU(2) is pseudo-real.
 SIDE = Lattice(2, 1)
 word = SIDE.plaquette((0, 0), 0, 1)

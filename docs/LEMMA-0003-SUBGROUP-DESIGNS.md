@@ -14,7 +14,9 @@ Let G be a finite subgroup of SU(2), and let t+1 be the first n ≥ 1 at which G
 
 **Carrying it to a lattice.** Take a finite lattice whose plaquettes each hold four distinct links, which on a periodic lattice means every side is at least 2. Let F be a function of the link variables that is a polynomial of degree at most t in each link, with all others fixed. For SU(2), U⁻¹ is linear in the entries of U, so inverted links count the same. Integrating one link at a time then replaces every Haar integral by the G-average with no error. Each power X^k of X = sum over plaquettes of a_p, with a_p = (1/2) Tr U_p, has degree at most k in each link, so on such a lattice the Taylor coefficients of Z(β) agree for SU(2) and for G through β^t.
 
-**A side of length 1.** There a plaquette is U V U⁻¹ V⁻¹ and a_p has degree 2 in each link, so agreement runs through floor(t/2) instead. The second seat measured this for all four groups: on d = 2, Q8 reads E[a²] = 1 against SU(2)'s 1/3.
+**A plane with both sides of length 1.** There a plaquette is U V U⁻¹ V⁻¹, degree 2 in each of its two links, and agreement runs through floor(t/2). The second seat measured this with side 1 in every direction (d = 2, all four groups; Q8 reads E[a²] = 1 against SU(2)'s 1/3) and on 1×1×2 and 1×1×2×2.
+
+**Exactly one side of length 1.** There a plaquette is A V B⁻¹ V⁻¹, degree 1 in A and B and 2 in V. Agreement was measured through β^t on 1×2 (Q8, 2T, 2O), on 1×3 (Q8, 2T), and for Q8 on 1×2×2 and 1×2×2×2. Four distinct links is the hypothesis this proof uses, and the sharp condition stays OPEN.
 
 **Where a group first departs, on a lattice with four distinct links per plaquette.** For N_p plaquettes,
 
@@ -22,7 +24,7 @@ Let G be a finite subgroup of SU(2), and let t+1 be the first n ≥ 1 at which G
 E_G[X^(t+1)] − E_Haar[X^(t+1)] = N_p · dim(V_{(t+1)/2}^G) / 2^(t+1),
 ```
 
-so the lattice plaquette series first differs from SU(2)'s at β^t, by the single-plaquette amount in the table below. **Proof.** Only a multiset of plaquettes with degree t+1 on some link can differ, and all its factors then pass through that link. If two or more distinct plaquettes occur, each holds a transverse link no other holds, so right-invariance makes them independent, and the product of their moments, each of order at most t, agrees. Only p^(t+1) differs. QED. This run measures it on (ℤ/2ℤ)⁴ for Q8, where the difference is 12 = 96·2/2⁴. The second seat measured it on the 2×2 torus for all four groups.
+so the lattice plaquette series first differs from SU(2)'s at β^t, by the single-plaquette amount in the table below. **Proof.** Only a multiset of plaquettes with degree t+1 on some link can differ, and all its factors then pass through that link. If two or more distinct plaquettes occur, each holds a transverse link no other holds, so right-invariance makes them independent, and the product of their moments, each of order at most t, agrees. Only p^(t+1) differs. (Tr U)^(t+1) holds V_{(t+1)/2} once and lower spins that agree, so p^(t+1) differs by dim(V^G)/2^(t+1), and it enters X^(t+1) with coefficient 1. QED. This run measures it on (ℤ/2ℤ)⁴ for Q8, where the difference is 12 = 96·2/2⁴. The second seat measured it on the 2×2 torus for all four groups.
 
 ## The four groups
 
@@ -52,7 +54,7 @@ E[X⁴] splits into 12 from single plaquettes, 1710 from pairs, and 9/4 from the
 | 3 | 1 | 3 | 3 | 0 |
 | 4 | 4 | 36 | 12 | 24 |
 
-The 24 bent surfaces, two cubes in different three-dimensional subspaces sharing a face, are the first terms that need all four dimensions. For a connected closed surface with every link covered exactly twice, E[∏a_p] = 2^(−F) · 2^(χ−F): 1/1024 for the cube and 1/262144 for both ten-face shapes. The second seat confirmed the counts by three other algorithms.
+The 24 bent surfaces, two cubes in different three-dimensional subspaces sharing a face, are the first terms that need all four dimensions. For a connected closed orientable surface with every link covered exactly twice, E[∏a_p] = 2^(−F) · 2^(χ−F): 1/1024 for the cube and 1/262144 for both ten-face shapes. The second seat confirmed the counts by three other algorithms.
 
 **The plaquette series.** On ℤ⁴, and on periodic lattices of side at least 4 through this order,
 
@@ -66,7 +68,7 @@ Through β¹⁰ in log Z only these surfaces enter, because a face with spin at 
 
 ## Prior work
 
-The statement is known. The values t = 3, 5, 7, 11 are the classical strengths of these groups as spherical designs: [the 600-cell is a spherical 11-design](https://errorcorrectionzoo.org/c/600cell), and [Goethals and Seidel](https://research.tue.nl/en/publications/cubature-formulae-polytopes-and-spherical-designs/) and [Sobolev](https://mathnet.ru/eng/dan26977) treat invariant cubature (these two read through summaries). [Bannai, Navarro, Rizo and Tiep, arXiv:1810.02507](https://arxiv.org/abs/1810.02507), Lemma 8, gives the same moment comparison for SL₂(5) = 2I, read through a summary. On the lattice side, [Petcher's 1981 thesis](https://www.osti.gov/biblio/6124817) compares the binary icosahedral group and SU(2) "to see at what order of inverse bare coupling constant squared their strong coupling expansions differ"; its body is CANNOT_SEE here, so the order it found is unread. The series comes from [Balian, Drouffe and Itzykson](https://ar5iv.arxiv.org/html/0807.0185), through the table above. A search found no paper stating the degree-per-link corollary itself, which is a limit of the search. The receipts here are this repository's own reproduction.
+The statement is known. The values t = 3, 5, 7, 11 are the classical strengths of these groups as spherical designs: [the 600-cell is a spherical 11-design](https://errorcorrectionzoo.org/c/600cell), and [Goethals and Seidel](https://research.tue.nl/en/publications/cubature-formulae-polytopes-and-spherical-designs/) and [Sobolev](https://mathnet.ru/eng/dan26977) treat invariant cubature (these two read through summaries). [Bannai, Navarro, Rizo and Tiep, arXiv:1810.02507](https://arxiv.org/abs/1810.02507), Lemma 8, gives the same moment comparison for SL₂(5) = 2I, read in the PDF: M6 = 5, M8 = 14, M10 = 42, agreeing for 1 ≤ t ≤ 5 and exceeding for t ≥ 6. On the lattice side, [Petcher's 1981 thesis](https://www.osti.gov/biblio/6124817) compares the binary icosahedral group and SU(2) "to see at what order of inverse bare coupling constant squared their strong coupling expansions differ"; its body is CANNOT_SEE here, so the order it found is unread. [Denbleyker et al.](https://ar5iv.arxiv.org/html/0807.0185) take the series from Balian, Drouffe and Itzykson, Phys. Rev. D 11, 2104 (1975) and D 19, 2514 (1979), and only that citation was read here. A search found no paper stating the degree-per-link corollary itself, which is a limit of the search. The receipts here are this repository's own reproduction.
 
 ## Scope
 
@@ -80,4 +82,4 @@ The statement is known. The values t = 3, 5, 7, 11 are the classical strengths o
 python3 -I -X utf8 tests/test_subgroup_designs_4d.py
 ```
 
-It takes about 20 seconds, uses integers only, and prints the rows in [`tests/SUBGROUP_DESIGNS_RECEIPT.txt`](../tests/SUBGROUP_DESIGNS_RECEIPT.txt). The prediction, [`PREDICTION-YM4-02b.hbp`](PREDICTION-YM4-02b.hbp), was pushed before the code. It records that a scratch run had already seen the design strengths, the 2⁴ moments, the torus and cube values and the series through β⁵, and that the closed-surface counts, the ten-face values, β⁷, β⁹, the first differences and the Q8 control were new to code. β⁷ and β⁹ were known from the published table beforehand, and the count 36 is what makes them a test. Each of `sabotage=bad_group`, `wrong_class`, `wrong_table`, `drop_direction`, `drop_bent` and `q8_everywhere` must fail on its named check, and the [workflow](../.github/workflows/subgroup-designs.yml) checks that each one does.
+It takes about 20 seconds, uses integers only, and prints the rows in [`tests/SUBGROUP_DESIGNS_RECEIPT.txt`](../tests/SUBGROUP_DESIGNS_RECEIPT.txt). The prediction, [`PREDICTION-YM4-02b.hbp`](PREDICTION-YM4-02b.hbp), was pushed before the code. It records that a scratch run had already seen the design strengths, the 2⁴ moments, the torus and cube values and the series through β⁵, and that the closed-surface counts, the ten-face values, β⁷, β⁹, the first differences and the Q8 control were new to code. β⁷ and β⁹ were known from the published table beforehand. β⁷ tests the count 4 and the rule at the next order, and the count 36 is what makes β⁹ a test. Each of `sabotage=bad_group`, `wrong_class`, `wrong_table`, `drop_direction`, `drop_bent` and `q8_everywhere` must fail on its named check, and the [workflow](../.github/workflows/subgroup-designs.yml) checks that each one does.

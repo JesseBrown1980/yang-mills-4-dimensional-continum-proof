@@ -29,8 +29,8 @@ jobs:
           grep -q '^SUBGROUP_DESIGNS_DONE|failed=0|json=0$' /tmp/designs.out
       - name: Each sabotage fails on its named check, with no crash
         run: |
-          set -uo pipefail
-          for pair in 'bad_group|group_table_of_Q8' 'wrong_class|first_difference_of_2I' 'wrong_table|plaquette_series_against_the_published_table' 'drop_direction|closed_surfaces_in_d=4' 'drop_bent|closed_surfaces_in_d=4' 'q8_everywhere|moments_on_Z2^4'; do
+          set -euo pipefail
+          for pair in 'bad_group|group_table_of_Q8' 'wrong_class|first_difference_of_2I' 'wrong_table|plaquette_series_against_the_published_table' 'drop_direction|closed_surfaces_in_d=4' 'drop_bent|plaquette_series_against_the_published_table' 'drop_bent|closed_surfaces_in_d=4' 'q8_everywhere|moments_on_Z2^4'; do
             s="${pair%%|*}"
             named="${pair##*|}"
             out="/tmp/sab-$s.out"
