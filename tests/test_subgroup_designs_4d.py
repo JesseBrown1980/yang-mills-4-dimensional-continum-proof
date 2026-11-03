@@ -3,16 +3,18 @@
 
 The average over a finite G in SU(2) equals the Haar integral for every polynomial of degree <= t on S^3, where t+1 is
 the first n >= 1 at which G has an invariant on the spin-n/2 representation. Integrating links one at a time carries this
-to any lattice observable of degree <= t in each link. This script measures t for Q8, 2T, 2O and 2I, then uses Q8 and 2T as
-exact integrators on the 4D Wilson lattice, and compares the plaquette series with the published table.
+to any lattice observable of degree <= t in each link, on a lattice whose plaquettes hold four distinct links. This script builds
+Q8, 2T, 2O and 2I, measures t, then uses Q8 and 2T as exact integrators on the 4D Wilson lattice, and compares the plaquette
+series with the published table.
 
 usage = test_subgroup_designs_4d.py [sabotage=NAME]
-NAME is one of bad_group wrong_class wrong_table drop_direction q8_everywhere, and each must exit 1.
+NAME is one of bad_group wrong_class wrong_table drop_direction drop_bent q8_everywhere, and each must exit 1.
 Python standard library, integers only, json=0.
 """
 import itertools
 import math
 import sys
+from random import Random
 
 SABOTAGE = ""
 for argument in sys.argv[1:]:
@@ -52,7 +54,7 @@ def text(a):
     return "%d" % a[0] if a[1] == 1 else "%d/%d" % a
 
 
-# ---- 1. Design strength, from characters over Z, Z[sqrt 2] and Z[phi]. An element (a, b) means a + b w with w^2 = p w + q.
+# ---- 1. The four groups, built from doubled unit quaternions over Z, Z[sqrt 2] and Z[phi]. A coordinate (a, b) means a + b w with w^2 = p w + q.
 def ring(p, q):
     def times(x, y):
         a, b = x
@@ -62,26 +64,120 @@ def ring(p, q):
 
 
 Z, ROOT2, PHI = ring(0, 0), ring(0, 2), ring(1, 1)
-# Each class is (number of elements, 2 cos theta), the trace of the element.
-CLASSES = {
-    "Q8": (Z, [(1, (2, 0)), (1, (-2, 0)), (6, (0, 0))]),
-    "2T": (Z, [(1, (2, 0)), (1, (-2, 0)), (6, (0, 0)), (8, (1, 0)), (8, (-1, 0))]),
-    "2O": (ROOT2, [(1, (2, 0)), (1, (-2, 0)), (18, (0, 0)), (8, (1, 0)), (8, (-1, 0)), (6, (0, 1)), (6, (0, -1))]),
-    "2I": (PHI, [(1, (2, 0)), (1, (-2, 0)), (30, (0, 0)), (20, (1, 0)), (20, (-1, 0)), (12, (0, 1)), (12, (1, -1)), (12, (-1, 1)), (12, (0, -1))]),
-}
+
+
+def rplus(x, y):
+    return x[0] + y[0], x[1] + y[1]
+
+
+def rminus(x, y):
+    return x[0] - y[0], x[1] - y[1]
+
+
+def product(times, p, q):
+    # (doubled p)(doubled q) = 4 p q, so the doubled product is half of it.
+    a, b, c, d = p
+    e, f, g, h = q
+    r = (rminus(rminus(rminus(times(a, e), times(b, f)), times(c, g)), times(d, h)),
+         rminus(rplus(rplus(times(a, f), times(b, e)), times(c, h)), times(d, g)),
+         rplus(rplus(rminus(times(a, g), times(b, h)), times(c, e)), times(d, f)),
+         rplus(rminus(rplus(times(a, h), times(b, g)), times(c, f)), times(d, e)))
+    assert all(v[0] % 2 == 0 and v[1] % 2 == 0 for v in r)
+    return tuple((v[0] // 2, v[1] // 2) for v in r)
+
+
+def ints(*values):
+    return tuple((v, 0) for v in values)
+
+
+def even_permutations(values):
+    for perm in itertools.permutations(range(4)):
+        if sum(1 for i in range(4) for j in range(i + 1, 4) if perm[i] > perm[j]) % 2 == 0:
+            yield tuple(values[perm[i]] for i in range(4))
+
+
+Q8_ELEMENTS = [ints(*(2 * s if i == j else 0 for i in range(4))) for j in range(4) for s in (1, -1)]
+T2_ELEMENTS = Q8_ELEMENTS + [ints(*signs) for signs in itertools.product((1, -1), repeat=4)]
+O2_ELEMENTS = list(T2_ELEMENTS)
+for i, j in itertools.combinations(range(4), 2):
+    for s, u in itertools.product((1, -1), repeat=2):
+        element = [(0, 0)] * 4
+        element[i], element[j] = (0, s), (0, u)
+        O2_ELEMENTS.append(tuple(element))
+I2_ELEMENTS = list(T2_ELEMENTS)
+for values in even_permutations(((0, 1), (1, 0), (-1, 1), (0, 0))):
+    places = [i for i in range(4) if values[i] != (0, 0)]
+    for signs in itertools.product((1, -1), repeat=3):
+        element = list(values)
+        for i, s in zip(places, signs):
+            element[i] = (s * values[i][0], s * values[i][1])
+        I2_ELEMENTS.append(tuple(element))
+
+
+def group_table(times, elements):
+    index = {e: i for i, e in enumerate(elements)}
+    assert len(index) == len(elements)
+    mult = [[index[product(times, x, y)] for y in elements] for x in elements]
+    inv = [index[(e[0], (-e[1][0], -e[1][1]), (-e[2][0], -e[2][1]), (-e[3][0], -e[3][1]))] for e in elements]
+    trace = [e[0] for e in elements]
+    one = index[ints(2, 0, 0, 0)]
+    return mult, inv, trace, one
+
+
+def group_is_valid(group):
+    mult, inv, trace, one = group
+    size = range(len(mult))
+    return (all(mult[one][g] == g == mult[g][one] and mult[g][inv[g]] == one for g in size)
+            and all(mult[mult[a][b]][c] == mult[a][mult[b][c]] for a in size for b in size for c in size))
+
+
+def conjugacy_classes(group):
+    mult, inv, trace, one = group
+    seen, out = set(), []
+    for g in range(len(mult)):
+        if g not in seen:
+            orbit = {mult[mult[h][g]][inv[h]] for h in range(len(mult))}
+            seen |= orbit
+            out.append((len(orbit), trace[g]))
+    return out
+
+
+RINGS = {"Q8": Z, "2T": Z, "2O": ROOT2, "2I": PHI}
+ELEMENTS = {"Q8": Q8_ELEMENTS, "2T": T2_ELEMENTS, "2O": O2_ELEMENTS, "2I": I2_ELEMENTS}
+GROUPS = {name: group_table(RINGS[name], ELEMENTS[name]) for name in ELEMENTS}
+if SABOTAGE == "bad_group":
+    row = GROUPS["Q8"][0][3]
+    row[1], row[2] = row[2], row[1]
+EXPECT_CLASS_SIZES = {"Q8": [1, 1, 2, 2, 2], "2T": [1, 1, 4, 4, 4, 4, 6], "2O": [1, 1, 6, 6, 6, 8, 8, 12], "2I": [1, 1, 12, 12, 12, 12, 20, 20, 30]}
+# Elements counted by trace. These levels are what the character sums below use, derived from the groups just built.
+LEVELS = {}
+for name in ELEMENTS:
+    times = RINGS[name]
+    valid = group_is_valid(GROUPS[name]) and all(rplus(rplus(rplus(times(c0, c0), times(c1, c1)), times(c2, c2)), times(c3, c3)) == (4, 0) for c0, c1, c2, c3 in ELEMENTS[name])
+    classes = conjugacy_classes(GROUPS[name])
+    sizes = sorted(size for size, _ in classes)
+    counts = {}
+    for size, trace_value in classes:
+        counts[trace_value] = counts.get(trace_value, 0) + size
+    LEVELS[name] = (times, sorted(counts.items(), key=lambda kv: kv[0]))
+    ok = valid and sizes == EXPECT_CLASS_SIZES[name]
+    check("group table of " + name, ok)
+    print("GROUP_TABLE|group=%s|order=%d|closed_associative_unit=%d|class_sizes=%s|ok=%d|json=0" % (name, len(ELEMENTS[name]), 1 if valid else 0, ",".join(map(str, sizes)), 1 if ok else 0))
 if SABOTAGE == "wrong_class":
-    CLASSES["2I"][1][-1] = (13, (0, -1))
+    trace_value, count = LEVELS["2I"][1][-1]
+    LEVELS["2I"][1][-1] = (trace_value, count + 1)
 CATALAN = [1, 1, 2, 5, 14, 42, 132]
 EXPECT_T = {"Q8": 3, "2T": 5, "2O": 7, "2I": 11}
 EXPECT_MOMENT = {"Q8": (4, 4, 2), "2T": (6, 6, 5), "2O": (8, 15, 14), "2I": (12, 133, 132)}
+INVARIANTS = {}
 
 
 def class_average(name, value_of):
     """The exact average over the group of value_of(trace), an element of the ring, as an integer pair."""
-    times, classes = CLASSES[name]
-    order = sum(m for m, _ in classes)
+    times, levels = LEVELS[name]
+    order = sum(m for _, m in levels)
     total = (0, 0)
-    for m, x in classes:
+    for x, m in levels:
         v = value_of(x, times)
         total = (total[0] + m * v[0], total[1] + m * v[1])
     check("irrational part vanishes in " + name, total[1] == 0)
@@ -107,12 +203,13 @@ def trace_power(k):
     return value
 
 
-for name in CLASSES:
+for name in ELEMENTS:
     invariants = []
     for n in range(0, 25):
         avg = class_average(name, character(n))
         check("invariant count is an integer in " + name, avg[1] == 1)
         invariants.append(avg[0])
+    INVARIANTS[name] = invariants
     first = next(n for n in range(1, 25) if invariants[n])
     strength = first - 1
     degree, want, haar = EXPECT_MOMENT[name]
@@ -123,42 +220,14 @@ for name in CLASSES:
     print("DESIGN|group=%s|first_invariant_degree=%d|strength=%d|E_trace_power_%d=%s|Haar_value=%d|lower_moments_equal_Haar=%d|ok=%d|json=0" % (name, first, strength, degree, text(have), haar, 1 if below else 0, 1 if ok else 0))
 
 
-# ---- 2. Group tables from doubled integer quaternions, for the two groups with rational coordinates.
-def doubled_product(p, q):
-    a, b, c, d = p
-    e, f, g, h = q
-    r = (a * e - b * f - c * g - d * h, a * f + b * e + c * h - d * g, a * g - b * h + c * e + d * f, a * h + b * g - c * f + d * e)
-    assert all(v % 2 == 0 for v in r)
-    return tuple(v // 2 for v in r)
+# ---- 2. The two groups with rational coordinates serve as integrators, their traces plain integers.
+def integrator(name):
+    mult, inv, trace, one = GROUPS[name]
+    return mult, inv, [value[0] for value in trace], one
 
 
-def group_table(elements):
-    index = {e: i for i, e in enumerate(elements)}
-    mult = [[index[doubled_product(x, y)] for y in elements] for x in elements]
-    inv = [index[(e[0], -e[1], -e[2], -e[3])] for e in elements]
-    trace = [e[0] for e in elements]
-    one = index[(2, 0, 0, 0)]
-    return mult, inv, trace, one
-
-
-def group_is_valid(group):
-    mult, inv, trace, one = group
-    size = range(len(mult))
-    return (all(mult[one][g] == g == mult[g][one] and mult[g][inv[g]] == one for g in size)
-            and all(mult[mult[a][b]][c] == mult[a][mult[b][c]] for a in size for b in size for c in size))
-
-
-Q8_ELEMENTS = [tuple(2 * s if i == j else 0 for i in range(4)) for j in range(4) for s in (1, -1)]
-T2_ELEMENTS = Q8_ELEMENTS + list(itertools.product((1, -1), repeat=4))
-Q8 = group_table(Q8_ELEMENTS)
-T2 = group_table(T2_ELEMENTS)
-if SABOTAGE == "bad_group":
-    row = Q8[0][3]
-    row[1], row[2] = row[2], row[1]
-for name, group in (("Q8", Q8), ("2T", T2)):
-    ok = group_is_valid(group) and all(sum(v * v for v in e) == 4 for e in (Q8_ELEMENTS if name == "Q8" else T2_ELEMENTS))
-    check("group table of " + name, ok)
-    print("GROUP_TABLE|group=%s|order=%d|closed_associative_unit=%d|json=0" % (name, len(group[0]), 1 if ok else 0))
+Q8 = integrator("Q8")
+T2 = integrator("2T")
 
 
 # ---- 3. The Wilson lattice. side=0 means unbounded Z^d.
@@ -229,6 +298,16 @@ def expectation(lat, plaquettes, group):
     return red(walk(0), 2 ** len(plaquettes) * size ** len(free))
 
 
+# A side of length 1 repeats a link inside the plaquette, U V U^-1 V^-1, so a_p has degree 2 in each link and agreement runs through floor(t/2).
+# These rows also pin the inverse in the plaquette word, which every other row here is blind to, since SU(2) is pseudo-real.
+SIDE = Lattice(2, 1)
+word = SIDE.plaquette((0, 0), 0, 1)
+values = (expectation(SIDE, [word], Q8), expectation(SIDE, [word, word], Q8), expectation(SIDE, [word, word], T2))
+ok = values == ((1, 4), (1, 1), (1, 3))
+check("side of length one", ok)
+print("SIDE_ONE|d=2|degree_per_link=2|E_Q8_a=%s|E_Q8_a2=%s|E_2T_a2=%s|SU2_a2=1/3|ok=%d|json=0" % (text(values[0]), text(values[1]), text(values[2]), 1 if ok else 0))
+
+
 # ---- 4. Moments of X = sum of a_p on (Z/2Z)^4, keeping every multiset with no singly covered link. A singly covered link integrates to zero.
 Z2 = Lattice(4, 2)
 SITES = list(itertools.product(range(2), repeat=4))
@@ -240,6 +319,24 @@ for k in NAMES:
         LINK_BIT.setdefault(l, 1 << len(LINK_BIT))
 MASKS = [sum(LINK_BIT[l] for l, _ in FACES[k]) for k in NAMES]
 check("sixty-four links and ninety-six plaquettes", len(LINK_BIT) == 64 and len(NAMES) == 96)
+# The plaquette word is gauge-covariant: its trace survives a random gauge transformation, on 200 random fields with 2T.
+rng = Random(27)
+mult, inv, trace, one = T2
+checks = 0
+for _ in range(200):
+    field = {l: rng.randrange(24) for l in LINK_BIT}
+    gauge = {x: rng.randrange(24) for x in SITES}
+    moved = {l: mult[mult[gauge[l[0]]][field[l]]][inv[gauge[Z2.shift(l[0], l[1])]]] for l in LINK_BIT}
+
+    def loop_trace(values, word):
+        h = one
+        for l, s in word:
+            h = mult[h][values[l] if s > 0 else inv[values[l]]]
+        return trace[h]
+    for k in NAMES:
+        check("plaquette trace is gauge invariant", loop_trace(field, FACES[k]) == loop_trace(moved, FACES[k]))
+        checks += 1
+print("GAUGE_INVARIANCE|group=2T|fields=200|traces_checked=%d|json=0" % checks)
 INDEX = {k: i for i, k in enumerate(NAMES)}
 # Translations and axis permutations map the product measure to itself and a_p to a_p'. One expectation per orbit.
 SYMMETRIES = []
@@ -306,9 +403,10 @@ ok = m2 == (24, 1) and m3 == (0, 1) and m4 == (6897, 4) and k4 == (-15, 4) and (
 check("moments on Z2^4", ok)
 print("Z2_4_MOMENTS|E_X2=%s|E_X3=%s|E_X4=%s|k4=%s|multisets_kept=%d,%d,%d|symmetry_classes=%d,%d,%d|kinds_at_order_4=%s|ok=%d|json=0" % (text(m2), text(m3), text(m4), text(k4), kept2, kept3, kept4, classes2, classes3, classes4, ";".join("%s=%d" % kv for kv in sorted(kinds4.items())), 1 if ok else 0))
 forced, _, _, _ = moment(4, lambda combo: Q8)
-ok = forced == (6945, 4) and psub(forced, (6897, 4)) == (12, 1)
+rule = red(96 * INVARIANTS["Q8"][4], 2 ** 4)
+ok = forced == (6945, 4) and psub(forced, (6897, 4)) == (12, 1) and rule == (12, 1)
 check("Q8 forced past its strength", ok)
-print("Q8_FORCED|E_X4=%s|difference_from_Haar=%s|ok=%d|json=0" % (text(forced), text(psub(forced, (6897, 4))), 1 if ok else 0))
+print("Q8_FORCED|E_X4=%s|difference_from_Haar=%s|rule_N_p_dim_inv_over_2^(t+1)=%s|ok=%d|json=0" % (text(forced), text(psub(forced, (6897, 4))), text(rule), 1 if ok else 0))
 torus = [Z2.plaquette((a, b, 0, 0), 0, 1) for a in (0, 1) for b in (0, 1)]
 values = [expectation(Z2, torus, g) for g in (Q8,)]
 ok = values == [(1, 256)]
@@ -396,6 +494,9 @@ VALUE_F = {}
 for dim in (4, 3):
     used = 3 if (SABOTAGE == "drop_direction" and dim == 4) else dim
     per_site, flat, bent, values = tally(used)
+    if SABOTAGE == "drop_bent" and dim == 4:
+        per_site[10] -= 24
+        bent -= 24
     TALLY[dim] = per_site
     want, want_flat, want_bent = EXPECT_SURFACES[dim]
     ok = per_site == want and flat == want_flat and bent == want_bent
@@ -491,7 +592,7 @@ check("d=3 and d=4 first differ at beta^5", s3[1] == series[1] and s3[3] == seri
 
 # ---- 7. Where each group first leaves SU(2), in the single-plaquette series.
 EXPECT_DIFFERENCE = {"Q8": (3, (1, 48)), "2T": (5, (1, 7680)), "2O": (7, (1, 1290240)), "2I": (11, (1, 163499212800))}
-for name in CLASSES:
+for name in ELEMENTS:
     z = single_plaquette(lambda k, name=name: class_average(name, trace_power(2 * k)))
     u = sdivide(sderivative(z), z)
     difference = [psub(x, y) for x, y in zip(u, U_SU2)]
@@ -501,7 +602,7 @@ for name in CLASSES:
     check("first difference of " + name, ok)
     print("FIRST_DIFFERENCE|group=%s|order=%s|delta=%s|expected_order=%d|expected_delta=%s|ok=%d|json=0" % (name, first, text(difference[first]) if first is not None else "none", order, text(delta), 1 if ok else 0))
 
-print("SCOPE|finite_lattice_series_near_strong_coupling=1|reflection_positivity=OPEN|continuum_existence=OPEN|physical_mass_gap=OPEN|json=0")
+print("SCOPE|moments_on_Z2^4=1|series_on_Z^4_and_periodic_side_at_least_4_through_beta^9=1|remainder_bound_at_beta_above_0=OPEN|reflection_positivity=OPEN|continuum_existence=OPEN|physical_mass_gap=OPEN|json=0")
 print("SUBGROUP_DESIGNS_DONE|failed=%d|json=0" % len(FAILS))
 for name in FAILS:
     print("FAILED|check=%s|json=0" % name.replace(" ", "_"))

@@ -9,6 +9,7 @@ on:
       - 'tests/SUBGROUP_DESIGNS_RECEIPT.txt'
       - 'docs/LEMMA-0003-SUBGROUP-DESIGNS.md'
       - 'docs/PREDICTION-YM4-02b.hbp'
+      - 'reviews/opus55-ym4-02b/**'
       - '.github/workflows/subgroup-designs.yml'
 
 permissions:
@@ -26,12 +27,21 @@ jobs:
           python3 -I -X utf8 tests/test_subgroup_designs_4d.py > /tmp/designs.out
           cmp /tmp/designs.out tests/SUBGROUP_DESIGNS_RECEIPT.txt
           grep -q '^SUBGROUP_DESIGNS_DONE|failed=0|json=0$' /tmp/designs.out
-      - name: Each sabotage goes red
+      - name: Each sabotage fails on its named check, with no crash
         run: |
           set -uo pipefail
-          for s in bad_group wrong_class wrong_table drop_direction q8_everywhere; do
+          for pair in 'bad_group|group_table_of_Q8' 'wrong_class|first_difference_of_2I' 'wrong_table|plaquette_series_against_the_published_table' 'drop_direction|closed_surfaces_in_d=4' 'drop_bent|closed_surfaces_in_d=4' 'q8_everywhere|moments_on_Z2^4'; do
+            s="${pair%%|*}"
+            named="${pair##*|}"
+            out="/tmp/sab-$s.out"
             rc=0
-            python3 -I -X utf8 tests/test_subgroup_designs_4d.py "sabotage=$s" > "/tmp/sab-$s.out" 2>&1 || rc=$?
+            python3 -I -X utf8 tests/test_subgroup_designs_4d.py "sabotage=$s" > "$out" 2>&1 || rc=$?
             test "$rc" = 1
-            echo "sabotage=$s exit=$rc"
+            if grep -q Traceback "$out"; then echo "sabotage=$s crashed"; exit 1; fi
+            grep -q '^SUBGROUP_DESIGNS_DONE|failed=[1-9]' "$out"
+            grep -qF "FAILED|check=$named|" "$out"
+            echo "sabotage=$s exit=$rc named=$named"
           done
+      - name: The second seat's files are the ones it delivered
+        working-directory: reviews/opus55-ym4-02b
+        run: sha256sum -c SHA256SUMS > /dev/null

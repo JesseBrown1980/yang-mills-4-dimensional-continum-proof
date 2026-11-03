@@ -1,6 +1,6 @@
 # Lemma YM4-02b: finite subgroups of SU(2) and the Haar integral
 
-**Status:** the statement is PROVED below, its strengths and consequences are MEASURED by an exact integer run, and independent review is OPEN. **Scope:** finite-lattice moments and the strong-coupling Taylor coefficients of the Wilson lattice. It is a subtask of [YM4-02](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/2).
+**Status:** the statement is a standard fact, written out here for this repository's use with its own reproduction. Its strengths and lattice consequences are MEASURED by an exact integer run, the [second seat's attack](../reviews/opus55-ym4-02b/README.md) is recorded, and review by a different model is OPEN. **Scope:** finite-lattice moments and the strong-coupling Taylor coefficients of the Wilson lattice. It is a subtask of [YM4-02](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/2).
 
 ## Statement
 
@@ -10,20 +10,30 @@ Let G be a finite subgroup of SU(2), and let t+1 be the first n ≥ 1 at which G
 (1/|G|) sum_{g in G} f(g) = integral f(U) dHaar(U).
 ```
 
-**Proof.** By Peter–Weyl, polynomials of degree at most t on S³ are spanned by the matrix coefficients of V_{n/2} with n ≤ t. For n = 0 both sides agree. For 1 ≤ n ≤ t the Haar integral of a matrix coefficient is 0, and the G-average of the representation is the projector onto its G-invariants, which is 0 by the choice of t. QED.
+**Proof.** A monomial of degree k in the entries of U is a matrix coefficient of (ℂ²)^{⊗k}, which Clebsch–Gordan splits into V_{m/2} with m ≤ k. So polynomials of degree at most t on S³ are spanned by the matrix coefficients of V_{n/2} with n ≤ t, and the dimension count Σ_{n≤t}(n+1)² confirms it. For n = 0 both sides agree. For 1 ≤ n ≤ t the Haar integral of a matrix coefficient is 0, and the G-average of the representation is the projector onto its G-invariants, which is 0 by the choice of t. QED.
 
-**Carrying it to a lattice.** Let F be a function of the link variables that is a polynomial of degree at most t in each link, with all others fixed. For SU(2), U⁻¹ is linear in the entries of U, so inverted links count the same. Integrating one link at a time then replaces every Haar integral by the G-average with no error. Since each power X^k of X = sum over plaquettes of a_p, with a_p = (1/2) Tr U_p, has degree at most k in each link, the Taylor coefficients of Z(β) on any finite lattice agree for SU(2) and for G through β^t.
+**Carrying it to a lattice.** Take a finite lattice whose plaquettes each hold four distinct links, which on a periodic lattice means every side is at least 2. Let F be a function of the link variables that is a polynomial of degree at most t in each link, with all others fixed. For SU(2), U⁻¹ is linear in the entries of U, so inverted links count the same. Integrating one link at a time then replaces every Haar integral by the G-average with no error. Each power X^k of X = sum over plaquettes of a_p, with a_p = (1/2) Tr U_p, has degree at most k in each link, so on such a lattice the Taylor coefficients of Z(β) agree for SU(2) and for G through β^t.
+
+**A side of length 1.** There a plaquette is U V U⁻¹ V⁻¹ and a_p has degree 2 in each link, so agreement runs through floor(t/2) instead. The second seat measured this for all four groups: on d = 2, Q8 reads E[a²] = 1 against SU(2)'s 1/3.
+
+**Where a group first departs, on a lattice with four distinct links per plaquette.** For N_p plaquettes,
+
+```text
+E_G[X^(t+1)] − E_Haar[X^(t+1)] = N_p · dim(V_{(t+1)/2}^G) / 2^(t+1),
+```
+
+so the lattice plaquette series first differs from SU(2)'s at β^t, by the single-plaquette amount in the table below. **Proof.** Only a multiset of plaquettes with degree t+1 on some link can differ, and all its factors then pass through that link. If two or more distinct plaquettes occur, each holds a transverse link no other holds, so right-invariance makes them independent, and the product of their moments, each of order at most t, agrees. Only p^(t+1) differs. QED. This run measures it on (ℤ/2ℤ)⁴ for Q8, where the difference is 12 = 96·2/2⁴. The second seat measured it on the 2×2 torus for all four groups.
 
 ## The four groups
 
-| Group | Elements | Exact through degree t | First moment that differs: E[(Tr U)^(t+1)] vs Haar | Single-plaquette ⟨a⟩ first differs at | By |
-|---|---:|---:|---|---|---|
-| Q8 | 8 | 3 | 4 vs 2 | β³ | +1/48 |
-| 2T | 24 | 5 | 6 vs 5 | β⁵ | +1/7680 |
-| 2O | 48 | 7 | 15 vs 14 | β⁷ | +1/1290240 |
-| 2I | 120 | 11 | 133 vs 132 | β¹¹ | +1/163499212800 |
+| Group | Elements | Conjugacy class sizes | Exact through degree t | E[(Tr U)^(t+1)] vs Haar | Single-plaquette ⟨a⟩ first differs at | By |
+|---|---:|---|---:|---|---|---|
+| Q8 | 8 | 1, 1, 2, 2, 2 | 3 | 4 vs 2 | β³ | +1/48 |
+| 2T | 24 | 1, 1, 4, 4, 4, 4, 6 | 5 | 6 vs 5 | β⁵ | +1/7680 |
+| 2O | 48 | 1, 1, 6, 6, 6, 8, 8, 12 | 7 | 15 vs 14 | β⁷ | +1/1290240 |
+| 2I | 120 | 1, 1, 12, 12, 12, 12, 20, 20, 30 | 11 | 133 vs 132 | β¹¹ | +1/163499212800 |
 
-The strengths come from exact character sums over ℤ, ℤ[√2] and ℤ[φ]. Haar moments of Tr U are the Catalan numbers. The value t = 11 for 2I agrees with the known fact that the 600-cell is a [spherical 11-design](https://errorcorrectionzoo.org/c/600cell).
+The script builds each group from doubled unit quaternions over ℤ, ℤ[√2] and ℤ[φ], checks closure, associativity and norms, derives the classes, and sums characters exactly. Haar moments of Tr U are the Catalan numbers.
 
 ## What it computes on the four-dimensional lattice
 
@@ -33,7 +43,7 @@ The strengths come from exact character sums over ℤ, ℤ[√2] and ℤ[φ]. Ha
 E[X²] = 24    E[X³] = 0    E[X⁴] = 6897/4    (log Z)''''(0) = E[X⁴] − 3 E[X²]² = −15/4
 ```
 
-E[X⁴] splits into 12 from single plaquettes, 1710 from pairs, and 9/4 from the 24 two-dimensional tori that wrap this side-2 lattice. As a control, using Q8 past its strength gives 6945/4, off by exactly 12 = 96 (1/4 − 1/8).
+E[X⁴] splits into 12 from single plaquettes, 1710 from pairs, and 9/4 from the 24 two-dimensional tori that wrap this side-2 lattice. As a control, using Q8 past its strength gives 6945/4, off by exactly 12. The second seat's group-free polynomial integration on S³ reproduces all three moments, and that is the form issue #2's acceptance test (2) names, since it reads "not substitution of a finite subgroup for Haar".
 
 **Closed surfaces on ℤᵈ through 10 faces,** enumerated as connected sets of distinct plaquettes with every link covered an even number of times:
 
@@ -42,21 +52,27 @@ E[X⁴] splits into 12 from single plaquettes, 1710 from pairs, and 9/4 from the
 | 3 | 1 | 3 | 3 | 0 |
 | 4 | 4 | 36 | 12 | 24 |
 
-The 24 bent surfaces, two cubes in different three-dimensional subspaces sharing a face, are the first terms that need all four dimensions. The exact value of each surface is E[∏a_p] = 2^(−F) · 2^(χ−F): 1/1024 for the cube and 1/262144 for both ten-face shapes.
+The 24 bent surfaces, two cubes in different three-dimensional subspaces sharing a face, are the first terms that need all four dimensions. For a connected closed surface with every link covered exactly twice, E[∏a_p] = 2^(−F) · 2^(χ−F): 1/1024 for the cube and 1/262144 for both ten-face shapes. The second seat confirmed the counts by three other algorithms.
 
-**The plaquette series.** In d = 4, through β⁹,
+**The plaquette series.** On ℤ⁴, and on periodic lattices of side at least 4 through this order,
 
 ```text
 ⟨(1/2) Tr U⟩ = β/4 − β³/96 + 7β⁵/1536 − 31β⁷/23040 + 4451β⁹/8847360 + ...
 ```
 
-This equals Table 1 of [Denbleyker, Du, Liu, Meurice and Velytsky, arXiv:0807.0185](https://ar5iv.arxiv.org/html/0807.0185), which lists P = 1 − ⟨(1/2) Tr U⟩ with the same β, so its signs are opposite. The β⁹ coefficient splits as 13/4423680 from one plaquette, 5/18432 from the cube and 15/65536 from the ten-face surfaces. Without the 24 bent surfaces the sum misses the table.
+This equals Table 1 of [Denbleyker, Du, Liu, Meurice and Velytsky, arXiv:0807.0185](https://ar5iv.arxiv.org/html/0807.0185), which lists P = 1 − ⟨(1/2) Tr U⟩ with the same β, so its signs are opposite. The β⁹ coefficient splits as 13/4423680 from one plaquette, 5/18432 from the cube and 15/65536 from the ten-face surfaces. Keeping only the 12 flat surfaces gives 3101/8847360, which misses the table, so the coefficient measures the 24 four-dimensional surfaces.
 
-Through β¹⁰ in log Z only these surfaces enter, because a face with spin at least 1, or two overlapping surfaces, first appears at β¹². That step is DERIVED, and the match with the table is its check.
+Through β¹⁰ in log Z only these surfaces enter, because a face with spin at least 1, or two overlapping surfaces, first appears at β¹². That step is DERIVED. **The second seat then tested it:** adding what first enters at β¹² reproduces the published β¹¹ coefficient −264883/1486356480 exactly, and adding the 14-face spheres reproduces β¹³, 403651/5945425920, with residual 0. Its [receipts](../reviews/opus55-ym4-02b/README.md) are in this repository.
+
+## Prior work
+
+The statement is known. The values t = 3, 5, 7, 11 are the classical strengths of these groups as spherical designs: [the 600-cell is a spherical 11-design](https://errorcorrectionzoo.org/c/600cell), and [Goethals and Seidel](https://research.tue.nl/en/publications/cubature-formulae-polytopes-and-spherical-designs/) and [Sobolev](https://mathnet.ru/eng/dan26977) treat invariant cubature (these two read through summaries). [Bannai, Navarro, Rizo and Tiep, arXiv:1810.02507](https://arxiv.org/abs/1810.02507), Lemma 8, gives the same moment comparison for SL₂(5) = 2I, read through a summary. On the lattice side, [Petcher's 1981 thesis](https://www.osti.gov/biblio/6124817) compares the binary icosahedral group and SU(2) "to see at what order of inverse bare coupling constant squared their strong coupling expansions differ"; its body is CANNOT_SEE here, so the order it found is unread. The series comes from [Balian, Drouffe and Itzykson](https://ar5iv.arxiv.org/html/0807.0185), through the table above. A search found no paper stating the degree-per-link corollary itself, which is a limit of the search. The receipts here are this repository's own reproduction.
 
 ## Scope
 
-The lemma is exact for its stated degree on any finite lattice, so it is a rigorous starting point for the bounded approximation that [YM4-03](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/3) asks of any use of Q8, 2T, 2O or 2I. It speaks to strong coupling. [Discrete subgroups of SU(2) have a freezing transition](https://www.arxiv.org/pdf/2201.09625) at larger β, which bounds how far a subgroup can follow SU(2), and the continuum limit needs β → ∞. Reflection positivity, the transfer matrix, the renormalization group, the continuum limit and the physical mass gap stay OPEN in the [ledger](PROOF_OBLIGATIONS.md).
+- The lemma gives zero error on the Taylor coefficients through β^t for these lattices. It starts the bounded approximation that [YM4-03](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/3) asks of any use of Q8, 2T, 2O or 2I, and the remainder bound at β > 0 stays OPEN. A crude bound from |X| ≤ N_p depends on the volume.
+- It concerns polynomial link averages and the Euclidean Wilson series at β = 0. The Hamiltonian series in the [SU(N) repository](https://github.com/JesseBrown1980/Finite-Universe-SU-N-solved) carry a group-specific electric term, and their relation to SU(2) stays OPEN. S₃ has three involutions and SU(2) has one, so S₃ sits outside this lemma.
+- It speaks to strong coupling. [Discrete subgroups of SU(2) have a freezing transition](https://www.arxiv.org/pdf/2201.09625) at larger β, which bounds how far a subgroup can follow SU(2), and the continuum limit needs β → ∞. Reflection positivity, the transfer matrix, the renormalization group, the continuum limit and the physical mass gap stay OPEN in the [ledger](PROOF_OBLIGATIONS.md).
 
 ## Reproduce
 
@@ -64,4 +80,4 @@ The lemma is exact for its stated degree on any finite lattice, so it is a rigor
 python3 -I -X utf8 tests/test_subgroup_designs_4d.py
 ```
 
-It takes about 20 seconds, uses integers only, and prints the rows in [`tests/SUBGROUP_DESIGNS_RECEIPT.txt`](../tests/SUBGROUP_DESIGNS_RECEIPT.txt). The prediction, [`PREDICTION-YM4-02b.hbp`](PREDICTION-YM4-02b.hbp), was pushed before the code. It records that a scratch run had already seen the design strengths, the 2⁴ moments and the series through β⁵, and that the closed-surface counts, the ten-face values, β⁷, β⁹ and the first differences were new. Each of `sabotage=bad_group`, `wrong_class`, `wrong_table`, `drop_direction` and `q8_everywhere` must exit 1, and the [workflow](../.github/workflows/subgroup-designs.yml) checks that they do.
+It takes about 20 seconds, uses integers only, and prints the rows in [`tests/SUBGROUP_DESIGNS_RECEIPT.txt`](../tests/SUBGROUP_DESIGNS_RECEIPT.txt). The prediction, [`PREDICTION-YM4-02b.hbp`](PREDICTION-YM4-02b.hbp), was pushed before the code. It records that a scratch run had already seen the design strengths, the 2⁴ moments, the torus and cube values and the series through β⁵, and that the closed-surface counts, the ten-face values, β⁷, β⁹, the first differences and the Q8 control were new to code. β⁷ and β⁹ were known from the published table beforehand, and the count 36 is what makes them a test. Each of `sabotage=bad_group`, `wrong_class`, `wrong_table`, `drop_direction`, `drop_bent` and `q8_everywhere` must fail on its named check, and the [workflow](../.github/workflows/subgroup-designs.yml) checks that each one does.

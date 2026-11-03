@@ -1,0 +1,16 @@
+GROWTH|d=3|limit=10|states_visited=6634|per_site={6: 1, 10: 3}|json=0
+GROWTH_SHAPE|d=3|F=6|spans=3|chi=2|maxcover=2|sites=8|links=12|per_site=1|json=0
+GROWTH_SHAPE|d=3|F=10|spans=3|chi=2|maxcover=2|sites=12|links=20|per_site=3|json=0
+CHAINS|d=3|K=6|animals=4120|distinct_boundaries_per_site={6: 1, 10: 3}|json=0
+TOUCHING_PAIRS|d=3|share_link_only_per_site=6|share_site_only_per_site=4|json=0
+COMPARE|d=3|F=6|growth=1|chains=1|link_pairs=0|only_growth=0|only_chains=0|json=0
+COMPARE|d=3|F=10|growth=3|chains=3|link_pairs=0|only_growth=0|only_chains=0|json=0
+GROWTH|d=4|limit=10|states_visited=227943|per_site={6: 4, 10: 36}|json=0
+GROWTH_SHAPE|d=4|F=6|spans=3|chi=2|maxcover=2|sites=8|links=12|per_site=4|json=0
+GROWTH_SHAPE|d=4|F=10|spans=3|chi=2|maxcover=2|sites=12|links=20|per_site=12|json=0
+GROWTH_SHAPE|d=4|F=10|spans=4|chi=2|maxcover=2|sites=12|links=20|per_site=24|json=0
+CHAINS|d=4|K=5|animals=164204|distinct_boundaries_per_site={6: 4, 10: 36, 12: 40}|json=0
+TOUCHING_PAIRS|d=4|share_link_only_per_site=120|share_site_only_per_site=112|json=0
+COMPARE|d=4|F=6|growth=4|chains=4|link_pairs=0|only_growth=0|only_chains=0|json=0
+COMPARE|d=4|F=10|growth=36|chains=36|link_pairs=0|only_growth=0|only_chains=0|json=0
+SURFACES_DONE|json=0
