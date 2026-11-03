@@ -268,12 +268,12 @@ pub fn evaluate(shard: usize, trits: &[i8; LINK_COUNT]) -> Result<Evaluation, St
         "Wilson action changed under gauge transform",
     )?;
     let mut checked = 0;
-    for site in 0..SITE_COUNT {
+    for (site, at_site) in gauge.iter().enumerate() {
         for mu in 0..4 {
             for nu in mu + 1..4 {
                 let p = plaquette(&links, site, mu, nu);
                 let pt = plaquette(&transformed, site, mu, nu);
-                let expected = gauge[site].mul(p).mul(gauge[site].inverse());
+                let expected = at_site.mul(p).mul(at_site.inverse());
                 require(pt == expected, "SU2 plaquette conjugation failed")?;
                 require(p.scalar() == pt.scalar(), "Wilson trace invariance failed")?;
                 checked += 1;
