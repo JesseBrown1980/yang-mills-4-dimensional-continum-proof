@@ -1,0 +1,58 @@
+# YM4-02c: reflection positivity and the transfer operator of the finite 4D SU(2) Wilson lattice. Exact integer rows against the receipt, and each sabotage must exit 1 on a named check. json=0.
+name: YM4-02c reflection positivity and transfer operator
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_reflection_transfer_4d.py'
+      - 'tests/REFLECTION_TRANSFER_RECEIPT.txt'
+      - 'docs/LEMMA-0004-REFLECTION-TRANSFER.md'
+      - 'docs/PREDICTION-YM4-02c.hbp'
+      - '.github/workflows/reflection-transfer.yml'
+  pull_request:
+    paths:
+      - 'tests/test_reflection_transfer_4d.py'
+      - 'tests/REFLECTION_TRANSFER_RECEIPT.txt'
+      - 'docs/LEMMA-0004-REFLECTION-TRANSFER.md'
+      - 'docs/PREDICTION-YM4-02c.hbp'
+      - '.github/workflows/reflection-transfer.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reflection-transfer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: The rows of the prediction as pushed stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 26 docs/PREDICTION-YM4-02c.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 2448d8e6824b4f5197ee4d30aeb3612a7d5a8c3282e3737ddf5aeb5b5e6422d3
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_reflection_transfer_4d.py > /tmp/reflection.out
+          cmp /tmp/reflection.out tests/REFLECTION_TRANSFER_RECEIPT.txt
+          grep -q '^REFLECTION_TRANSFER_DONE|failed=0|json=0$' /tmp/reflection.out
+          if grep -q '^FAILED' /tmp/reflection.out; then echo "a check failed"; exit 1; fi
+      - name: Each sabotage exits 1 on a named check, with no crash
+        run: |
+          set -euo pipefail
+          for s in no_inverse_on_time_links wrong_plane wrong_multiplicity negative_weight_called_positive signed_site_weight_called_positive bad_projector; do
+            rc=0
+            python3 -I -X utf8 tests/test_reflection_transfer_4d.py "sabotage=$s" > "/tmp/sab-$s.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -q '^FAILED|check=' "/tmp/sab-$s.out"
+            if grep -q 'Traceback' "/tmp/sab-$s.out"; then echo "sabotage=$s crashed"; exit 1; fi
+            echo "sabotage=$s exit=$rc $(grep -c '^FAILED' "/tmp/sab-$s.out") failed checks"
+          done
+      - name: An unknown sabotage name is refused, rather than passing as red
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_reflection_transfer_4d.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2
