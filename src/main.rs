@@ -35,8 +35,8 @@ fn run() -> Result<(), String> {
             }
             receipts::verify_all(source, &root.join("shards"), &root.join("seal"))?;
             let elapsed = start.elapsed().as_millis();
-            println!("GITRAM_BASELINE_PASS|shards=4|elapsed_ms={elapsed}|");
-            println!("SCOPE|finite_4d_SU2=1|candidate=SYNTHETIC_CONTROL|");
+            println!("GITRAM_BASELINE_PASS|shards=4|elapsed_ms={elapsed}|json=0");
+            println!("SCOPE|finite_4d_SU2=1|candidate=SYNTHETIC_CONTROL|json=0");
             println!("CONTINUUM|existence=OPEN|physical_mass_gap=OPEN|json=0");
             Ok(())
         }
