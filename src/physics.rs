@@ -47,10 +47,19 @@ impl Fraction {
     }
 
     pub fn plus(self, rhs: Self) -> Self {
-        let n1 = self.n.checked_mul(rhs.d).expect("fraction multiply overflow");
-        let n2 = rhs.n.checked_mul(self.d).expect("fraction multiply overflow");
+        let n1 = self
+            .n
+            .checked_mul(rhs.d)
+            .expect("fraction multiply overflow");
+        let n2 = rhs
+            .n
+            .checked_mul(self.d)
+            .expect("fraction multiply overflow");
         let n = n1.checked_add(n2).expect("fraction add overflow");
-        let d = self.d.checked_mul(rhs.d).expect("fraction denominator overflow");
+        let d = self
+            .d
+            .checked_mul(rhs.d)
+            .expect("fraction denominator overflow");
         Self::new(n, d)
     }
 }
@@ -75,7 +84,10 @@ impl Quat {
     }
 
     pub fn identity() -> Self {
-        Self { n: [1, 0, 0, 0], d: 1 }
+        Self {
+            n: [1, 0, 0, 0],
+            d: 1,
+        }
     }
 
     pub fn axis(axis: usize, trit: i8) -> Self {
@@ -89,24 +101,39 @@ impl Quat {
     }
 
     pub fn is_unit(self) -> bool {
-        let n2: i128 = self.n.iter().map(|x| x.checked_mul(*x).expect("norm overflow")).sum();
-        n2 == self.d.checked_mul(self.d).expect("norm denominator overflow")
+        let n2: i128 = self
+            .n
+            .iter()
+            .map(|x| x.checked_mul(*x).expect("norm overflow"))
+            .sum();
+        n2 == self
+            .d
+            .checked_mul(self.d)
+            .expect("norm denominator overflow")
     }
 
     pub fn inverse(self) -> Self {
-        Self { n: [self.n[0], -self.n[1], -self.n[2], -self.n[3]], d: self.d }
+        Self {
+            n: [self.n[0], -self.n[1], -self.n[2], -self.n[3]],
+            d: self.d,
+        }
     }
 
     pub fn mul(self, rhs: Self) -> Self {
         let [a, b, c, d] = self.n;
         let [e, f, g, h] = rhs.n;
         let x = [
-            a*e - b*f - c*g - d*h,
-            a*f + b*e + c*h - d*g,
-            a*g - b*h + c*e + d*f,
-            a*h + b*g - c*f + d*e,
+            a * e - b * f - c * g - d * h,
+            a * f + b * e + c * h - d * g,
+            a * g - b * h + c * e + d * f,
+            a * h + b * g - c * f + d * e,
         ];
-        Self::new(x, self.d.checked_mul(rhs.d).expect("quaternion denominator overflow"))
+        Self::new(
+            x,
+            self.d
+                .checked_mul(rhs.d)
+                .expect("quaternion denominator overflow"),
+        )
     }
 
     pub fn scalar(self) -> Fraction {
@@ -119,7 +146,9 @@ pub struct Rng {
 }
 impl Rng {
     fn new(seed: u64) -> Self {
-        Self { x: if seed == 0 { 1 } else { seed } }
+        Self {
+            x: if seed == 0 { 1 } else { seed },
+        }
     }
 
     fn next(&mut self) -> u64 {
@@ -147,12 +176,15 @@ pub fn candidate(shard: usize) -> [i8; LINK_COUNT] {
 }
 
 pub fn trit_word(trits: &[i8; LINK_COUNT]) -> String {
-    trits.iter().map(|t| match t {
-        -1 => '-',
-        0 => '0',
-        1 => '+',
-        _ => panic!("invalid trit"),
-    }).collect()
+    trits
+        .iter()
+        .map(|t| match t {
+            -1 => '-',
+            0 => '0',
+            1 => '+',
+            _ => panic!("invalid trit"),
+        })
+        .collect()
 }
 
 fn next_site(site: usize, direction: usize) -> usize {
@@ -200,9 +232,11 @@ fn gauge_transform(
         let x = link / 4;
         let mu = link % 4;
         let at_end = gauge[next_site(x, mu)];
-        gauge[x]
-            .mul(links[link])
-            .mul(if broken_endpoint { at_end } else { at_end.inverse() })
+        gauge[x].mul(links[link]).mul(if broken_endpoint {
+            at_end
+        } else {
+            at_end.inverse()
+        })
     })
 }
 
@@ -217,22 +251,26 @@ pub fn evaluate(shard: usize, trits: &[i8; LINK_COUNT]) -> Result<Evaluation, St
     require(shard < SHARD_COUNT, "invalid shard index")?;
     require(trits.iter().all(|t| (-1..=1).contains(t)), "invalid trit")?;
     require(
-        Quat::axis(0, 1).mul(Quat::axis(1, 1))
-            != Quat::axis(1, 1).mul(Quat::axis(0, 1)),
+        Quat::axis(0, 1).mul(Quat::axis(1, 1)) != Quat::axis(1, 1).mul(Quat::axis(0, 1)),
         "noncommutativity control failed",
     )?;
-    let links: [Quat; LINK_COUNT] =
-        array::from_fn(|i| Quat::axis((i % 4) % 3, trits[i]));
+    let links: [Quat; LINK_COUNT] = array::from_fn(|i| Quat::axis((i % 4) % 3, trits[i]));
     let gauge = gauge_field(shard);
     let transformed = gauge_transform(&links, &gauge, false);
     let (reference, count) = action(&links);
     let (altered, transformed_count) = action(&transformed);
-    require(count == PLAQUETTE_COUNT && transformed_count == count, "wrong plaquette count")?;
-    require(altered == reference, "Wilson action changed under gauge transform")?;
+    require(
+        count == PLAQUETTE_COUNT && transformed_count == count,
+        "wrong plaquette count",
+    )?;
+    require(
+        altered == reference,
+        "Wilson action changed under gauge transform",
+    )?;
     let mut checked = 0;
     for site in 0..SITE_COUNT {
         for mu in 0..4 {
-            for nu in mu+1..4 {
+            for nu in mu + 1..4 {
                 let p = plaquette(&links, site, mu, nu);
                 let pt = plaquette(&transformed, site, mu, nu);
                 let expected = gauge[site].mul(p).mul(gauge[site].inverse());
@@ -242,16 +280,29 @@ pub fn evaluate(shard: usize, trits: &[i8; LINK_COUNT]) -> Result<Evaluation, St
             }
         }
     }
-    require(checked == PLAQUETTE_COUNT, "not all four-dimensional plaquettes checked")?;
+    require(
+        checked == PLAQUETTE_COUNT,
+        "not all four-dimensional plaquettes checked",
+    )?;
     let (broken_action, broken_count) = action(&gauge_transform(&links, &gauge, true));
-    require(broken_count == PLAQUETTE_COUNT, "broken control did not cover all plaquettes")?;
-    require(broken_action != reference, "wrong-endpoint negative control undetected")?;
+    require(
+        broken_count == PLAQUETTE_COUNT,
+        "broken control did not cover all plaquettes",
+    )?;
+    require(
+        broken_action != reference,
+        "wrong-endpoint negative control undetected",
+    )?;
     let artificially_shifted = reference.plus(Fraction::new(1, 1_000_000));
     require(
         artificially_shifted != altered,
         "trace-corruption negative control undetected",
     )?;
-    Ok(Evaluation { action: reference, checked_plaquettes: checked, fault_controls: 2 })
+    Ok(Evaluation {
+        action: reference,
+        checked_plaquettes: checked,
+        fault_controls: 2,
+    })
 }
 
 #[cfg(test)]
@@ -267,8 +318,10 @@ mod tests {
                 assert_eq!(q.mul(q.inverse()), Quat::identity());
             }
         }
-        assert_ne!(Quat::axis(0, 1).mul(Quat::axis(1, 1)),
-                   Quat::axis(1, 1).mul(Quat::axis(0, 1)));
+        assert_ne!(
+            Quat::axis(0, 1).mul(Quat::axis(1, 1)),
+            Quat::axis(1, 1).mul(Quat::axis(0, 1))
+        );
     }
 
     #[test]
