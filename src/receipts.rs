@@ -10,7 +10,9 @@ const FILES: [&str; 4] = ["trace.hbp", "index.hbi", "anchor.hbp", "SHA256SUMS"];
 
 pub fn source_is_pinned(source: &str) -> bool {
     source.len() == 40
-        && source.bytes().all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase())
+        && source
+            .bytes()
+            .all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase())
 }
 
 fn digest(data: &[u8]) -> String {
@@ -23,7 +25,10 @@ struct ShardFiles {
 }
 
 fn expected_shard(source: &str, id: usize) -> Result<ShardFiles, String> {
-    physics::require(source_is_pinned(source), "source commit must be 40 lowercase hex digits")?;
+    physics::require(
+        source_is_pinned(source),
+        "source commit must be 40 lowercase hex digits",
+    )?;
     physics::require(id < SHARD_COUNT, "unregistered GitRAM shard")?;
     let seed = physics::seed_for_shard(id);
     let trits = physics::candidate(id);
@@ -46,13 +51,14 @@ fn expected_shard(source: &str, id: usize) -> Result<ShardFiles, String> {
     );
     let result_sha = digest(result_core.as_bytes());
     let hash2 = digest(format!("{hash1}|{result_sha}|result").as_bytes());
-    let result_line = format!(
-        "{result_core}|record_sha256={result_sha}|prev_hash={hash1}|hash={hash2}|json=0\n"
-    );
+    let result_line =
+        format!("{result_core}|record_sha256={result_sha}|prev_hash={hash1}|hash={hash2}|json=0\n");
 
-    let header = format!("YM4HBP|schema=ym4.qnn.gitram.v0|shard={id}|source_commit={source}|json=0\n");
+    let header =
+        format!("YM4HBP|schema=ym4.qnn.gitram.v0|shard={id}|source_commit={source}|json=0\n");
     let trace = format!("{header}{candidate_line}{result_line}");
-    let index_header = format!("HBIHDR|schema=ym4.qnn.gitram.v0|shard={id}|file=trace.hbp|json=0\n");
+    let index_header =
+        format!("HBIHDR|schema=ym4.qnn.gitram.v0|shard={id}|file=trace.hbp|json=0\n");
     let candidate_row_sha = digest(candidate_line.as_bytes());
     let result_row_sha = digest(result_line.as_bytes());
     let first_offset = header.len();
@@ -69,9 +75,8 @@ fn expected_shard(source: &str, id: usize) -> Result<ShardFiles, String> {
         &hash2[..16]
     );
     let anchor_sha = digest(anchor.as_bytes());
-    let manifest = format!(
-        "{trace_sha}  trace.hbp\n{index_sha}  index.hbi\n{anchor_sha}  anchor.hbp\n"
-    );
+    let manifest =
+        format!("{trace_sha}  trace.hbp\n{index_sha}  index.hbi\n{anchor_sha}  anchor.hbp\n");
     Ok(ShardFiles {
         files: vec![
             ("trace.hbp", trace.into_bytes()),
@@ -111,10 +116,12 @@ pub fn verify_shard(source: &str, id: usize, root: &Path) -> Result<Fraction, St
         })
         .collect::<Result<BTreeSet<String>, String>>()?;
     let required: BTreeSet<String> = FILES.iter().map(|s| (*s).to_owned()).collect();
-    physics::require(names == required, "shard files missing, duplicated or unexpected")?;
+    physics::require(
+        names == required,
+        "shard files missing, duplicated or unexpected",
+    )?;
     for (name, exact) in expected.files {
-        let bytes = fs::read(root.join(name))
-            .map_err(|e| format!("cannot read {name}: {e}"))?;
+        let bytes = fs::read(root.join(name)).map_err(|e| format!("cannot read {name}: {e}"))?;
         physics::require(
             bytes == exact,
             &format!("shard {id} {name}: exact content/hash/provenance mismatch"),
@@ -132,7 +139,8 @@ fn sealed_files(source: &str, root_sha: &str, action: Fraction) -> Vec<(&'static
     let trace_sha = digest(trace.as_bytes());
     let index = format!(
         "HBI|part=seal|offset=0|length={}|hbp_sha256={trace_sha}|sh={}|json=0\n",
-        trace.len(), &trace_sha[..16]
+        trace.len(),
+        &trace_sha[..16]
     );
     let index_sha = digest(index.as_bytes());
     let anchor = format!(
@@ -140,9 +148,8 @@ fn sealed_files(source: &str, root_sha: &str, action: Fraction) -> Vec<(&'static
         &seal_hash[..16]
     );
     let anchor_sha = digest(anchor.as_bytes());
-    let sums = format!(
-        "{trace_sha}  SEALED.hbp\n{index_sha}  SEALED.hbi\n{anchor_sha}  SEALED.anchor\n"
-    );
+    let sums =
+        format!("{trace_sha}  SEALED.hbp\n{index_sha}  SEALED.hbi\n{anchor_sha}  SEALED.anchor\n");
     vec![
         ("SEALED.hbp", trace.into_bytes()),
         ("SEALED.hbi", index.into_bytes()),
@@ -164,7 +171,10 @@ pub fn verify_all(source: &str, root: &Path, seal_dir: &Path) -> Result<(), Stri
     }
     let expected_names: BTreeSet<String> =
         (0..SHARD_COUNT).map(|id| format!("shard-{id}")).collect();
-    physics::require(found == expected_names, "fan-in missing, duplicate or extra shard")?;
+    physics::require(
+        found == expected_names,
+        "fan-in missing, duplicate or extra shard",
+    )?;
 
     let mut actions = Fraction::zero();
     let mut anchors = String::from("YM4-ANCHOR-ROOT-v0\n");
