@@ -6,7 +6,7 @@
 
 ## 1. Setting
 
-Let Λ = (ℤ/L₁) × … × (ℤ/L_s) × (ℤ/T), with T = 2m even and periodic in every direction. The four-dimensional lattice has s = 3 and every L_i = L. The theorems hold for any s and any sides, and the controls use s = 1 and s = 2 as well.
+Let Λ = (ℤ/L₁) × … × (ℤ/L_k) × (ℤ/T), with T = 2m even and periodic in every direction. The four-dimensional lattice has k = 3 and every L_i = L. The theorems hold for any k and any sides, and the controls use k = 1 and k = 2 as well.
 
 A positive link is a spatial U_i(x,t), from (x,t) to (x+i,t), or a time link V(x,t), from (x,t) to (x,t+1). A plaquette is written in the repository's convention:
 
@@ -35,7 +35,7 @@ Q8 and 2T with counting measure are instances of G in their own right. They stan
 
 **Theorem 1.** On every such lattice with G = SU(2), Z > 0 for every real β. For β ≥ 0, exp(−β N_p) ≤ Z ≤ 1, where N_p is the number of plaquettes.
 
-*Proof.* The integrand is continuous and strictly positive on a compact space, so Z > 0. For β ≥ 0, a_p ≤ 1 gives S ≥ 0, so exp(−S) ≤ 1 and Z ≤ 1. Jensen's inequality for the probability measure gives Z ≥ exp(−E[S]) = exp(−β Σ_p (1 − E[a_p])). It remains to see E[a_p] ≥ 0. If a plaquette holds a link that appears once in its word, integrating that link makes U_p Haar distributed and E[a_p] = 0. On a lattice with every side at least 2 all four links are distinct, which the test counts on all three lattices of part A. When two spatial sides equal 1, the plaquette in that plane is a commutator U V U⁻¹ V⁻¹. Integrating U gives Tr(U V U⁻¹ V⁻¹) → (Tr V)²/2, so E[a_p] = E[(Tr V)²]/4 = 1/4 > 0. These are all the cases, and the bound follows. ∎
+*Proof.* The integrand is continuous and strictly positive on a compact space, so Z > 0. For β ≥ 0, a_p ≤ 1 gives S ≥ 0, so exp(−S) ≤ 1 and Z ≤ 1. Jensen's inequality for the probability measure gives Z ≥ exp(−E[S]) = exp(−β Σ_p (1 − E[a_p])). It remains to see E[a_p] ≥ 0. If a plaquette holds a link that appears once in its word, integrating that link makes U_p Haar distributed and E[a_p] = 0. A plaquette in the plane (μ,ν) holds one as soon as one of its two sides is at least 2, since then U_μ(y) and U_μ(y+ν), or U_ν(y+μ) and U_ν(y), are distinct links. On a lattice with every side at least 2 all four links are distinct, which the test counts on all three lattices of part A. The remaining case has both sides equal to 1, with both directions spatial since T ≥ 2, and the plaquette is a commutator U V U⁻¹ V⁻¹. Integrating U gives Tr(U V U⁻¹ V⁻¹) → (Tr V)²/2, so E[a_p] = E[(Tr V)²]/4 = 1/4 > 0. So E[a_p] ≥ 0 in every case, and the bound follows. ∎
 
 The prediction's route used E[a_p] = 0, which holds for L ≥ 2. The form above also covers the side-1 lattices of parts F and G. The value 1/4 is measured as `COMMUTATOR`.
 
@@ -67,9 +67,9 @@ The inverse on time links is what makes this true. Dropping it is the sabotage `
 
 **Lemma 3.2 (the split).**
 
-*Site reflection.* The fixed slices are t = 0 and t = m. The fixed plaquettes are the spatial ones in those slices. The upper plaquettes are the spatial ones with 0 < t < m and the time-like ones with base 0 ≤ t ≤ m−1. The lower plaquettes are their mirror images. Each plaquette lies in exactly one of the three sets. The links of the upper and fixed plaquettes together, and the links of the lower and fixed plaquettes together, share exactly the spatial links of the two fixed slices. Call the first set the **closed half**.
+*Site reflection.* The fixed slices are t = 0 and t = m. The fixed plaquettes are the spatial ones in those slices. The upper plaquettes are the spatial ones with 0 < t < m and the time-like ones with base 0 ≤ t ≤ m−1. The lower plaquettes are their mirror images. Each plaquette lies in exactly one of the three sets. The links of the upper and fixed plaquettes together, and the links of the lower and fixed plaquettes together, share exactly the spatial links of the two fixed slices. The **closed half** is the set of spatial links with 0 ≤ t ≤ m and time links with base 0 ≤ t ≤ m−1.
 
-*Link reflection.* The crossing planes lie between t = −1 and t = 0 and between t = m−1 and t = m. The crossing links are V(x,−1) and V(x,m−1), and each maps to its own inverse. The crossing plaquettes are the time-like ones based at t = −1 and t = m−1, and each maps to itself reversed. The upper plaquettes are the spatial ones with 0 ≤ t ≤ m−1 and the time-like ones with 0 ≤ t ≤ m−2. Their links, the **open half**, are disjoint from their mirror images and from the crossing links.
+*Link reflection.* The crossing planes lie between t = −1 and t = 0 and between t = m−1 and t = m. The crossing links are V(x,−1) and V(x,m−1), and each maps to its own inverse. The crossing plaquettes are the time-like ones based at t = −1 and t = m−1, and each maps to itself reversed. The upper plaquettes are the spatial ones with 0 ≤ t ≤ m−1 and the time-like ones with 0 ≤ t ≤ m−2. The **open half** is the set of spatial links with 0 ≤ t ≤ m−1 and time links with base 0 ≤ t ≤ m−2. It is disjoint from its mirror image and from the crossing links.
 
 The counts on (ℤ/L)³ × (ℤ/T) are N_p = 6L³T, crossing or fixed 6L³, each half 3L³(T−1). Writing S₊ for the upper sum, with weight 1/2 on fixed plaquettes in the site case,
 
@@ -110,7 +110,7 @@ The hypotheses are exactly these. On plaquettes of the upper and lower sets w ma
 
 | fixed-slice weight w(+1), w(−1) | numerator N(F) | Z | Gram matrix |
 |---|---:|---:|---|
-| 1, −1 | −15/64 | 1/16 | negative pivot, so Z > 0 and positivity fails |
+| 1, −1 | −15/64 | 1/16 | negative pivot: positivity fails, with Z > 0 |
 | 3, 1 | 45/64 | 81/16 | PSD, rank 7 on 7 functions of the fixed-slice links |
 | 3, 1, with time-like values 3, −2, 1, −1, 2 on the classes | | | PSD, rank 9 on 10 functions of the closed half, some moved by gauge transformations |
 
@@ -145,7 +145,7 @@ For a compact group, K(U,U′) = w(U U′⁻¹), acting by (Kf)(U) = ∫dU′ K(
 Z_direct = sum_rho c_rho^F d_rho^(V-E) = sum_rho c_rho^F d_rho^(-F).
 ```
 
-For the Wilson weight on SU(2) this reads Z = Σ_n (exp(−β) l_n(β))^F. Part D checks the rule on Q8 and on 2T with a complex weight.
+For the Wilson weight on SU(2) this reads Z = Σ_n (exp(−β) l_n(β))^F. Part D checks the rule on Q8 and on 2T with a complex weight, since the rule needs only that each link appears once forward and once backward.
 
 ## 6. Link reflection
 
@@ -244,7 +244,7 @@ This controls the leading eigenvalue only. Certifying λ₁ and a quantitative g
 
 ## 8. Exact tests
 
-`python3 -I -X utf8 tests/test_reflection_transfer_4d.py`. Python standard library, integers only, with exact rationals as pairs of plain ints. [`integer_only_audit.py`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/scripts/integer_only_audit.py) reads 0 violations. Local run: 30 s wall at below-normal priority, Python 3.13.2, against the prediction's limit of 900 s. All values are MEASURED unless a row says otherwise.
+`python3 -I -X utf8 tests/test_reflection_transfer_4d.py`. Python standard library, integers only, with exact rationals as pairs of plain ints. [`integer_only_audit.py`](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/native/scripts/integer_only_audit.py) reads 0 violations. Local run: 30 s wall at below-normal priority, Python 3.13.2, against the prediction's limit of 900 s. The hosted run [41727758077](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/41727758077) on commit c31a033, on ubuntu-24.04, read the same bytes as the receipt, and each sabotage exited 1 there. All values are MEASURED unless a row says otherwise.
 
 | Part, prediction row | Measured | Met |
 |---|---|---|
