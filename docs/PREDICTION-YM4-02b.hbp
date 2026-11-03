@@ -1,0 +1,17 @@
+YM4_02B_PREDICTION|statement=finite_subgroups_of_SU2_average_exactly_as_Haar_through_a_fixed_degree_per_link_with_consequences_on_the_4D_Wilson_series|commit_is_the_timestamp=1|json=0
+YM4_02B_EARLIER|scratch_run=2026-11-03T20:01:50Z|machine=acer|already_seen=design_strengths,moments_on_Z2^4,torus_and_cube_values,plaquette_series_through_beta5|new_here=closed_surface_enumeration,ten_face_values,beta7,beta9,first_differences_per_group,Q8_forced_control|json=0
+YM4_02B_EXPECT_DESIGN|Q8=3|2T=5|2O=7|2I=11|meaning=first_nonzero_invariant_at_degree_t+1|json=0
+YM4_02B_EXPECT_MOMENT|group=Q8|degree=4|E_x^4=4|Haar=2|json=0
+YM4_02B_EXPECT_MOMENT|group=2T|degree=6|E_x^6=6|Haar=5|json=0
+YM4_02B_EXPECT_MOMENT|group=2O|degree=8|E_x^8=15|Haar=14|json=0
+YM4_02B_EXPECT_MOMENT|group=2I|degree=12|E_x^12=133|Haar=132|note=x_is_Tr_U_and_Haar_moments_are_Catalan|json=0
+YM4_02B_EXPECT_Z2_4|E_X2=24|E_X3=0|E_X4=6897/4|k4=-15/4|multisets_kept=96,96,4680|kinds_at_order_4=singles_96,pairs_4560,tori_24|json=0
+YM4_02B_EXPECT_Q8_FORCED|E_X4_with_Q8_beyond_its_strength=6945/4|difference_from_Haar=12|equals=96*(1/4-1/8)|json=0
+YM4_02B_EXPECT_SURFACES|d=4|closed_surfaces_per_site_F4=0|F6=4|F7=0|F8=0|F9=0|F10=36|F10_flat=12|F10_bent=24|json=0
+YM4_02B_EXPECT_SURFACES|d=3|closed_surfaces_per_site_F4=0|F6=1|F7=0|F8=0|F9=0|F10=3|F10_flat=3|F10_bent=0|json=0
+YM4_02B_EXPECT_VALUE|surface=torus_side2|E_product_a=1/256|surface=cube|E_product_a=1/1024|surface=ten_face_flat|E_product_a=1/262144|surface=ten_face_bent|E_product_a=1/262144|rule=2^(-F)*2^(chi-F)|json=0
+YM4_02B_EXPECT_SERIES|d=4|half_trace_plaquette_coefficients_beta1=1/4|beta3=-1/96|beta5=7/1536|beta7=-31/23040|beta9=4451/8847360|source=arXiv:0807.0185_Table_1_which_lists_P=1-half_trace_so_its_signs_are_opposite|json=0
+YM4_02B_EXPECT_SERIES_SPLIT|beta9=4451/8847360|single_plaquette=13/4423680|cube=5/18432|ten_face=15/65536|hand_check_sum_over_8847360=26+2400+2025|json=0
+YM4_02B_EXPECT_FIRST_DIFFERENCE|group=Q8|order=3|delta=1/48|group=2T|order=5|delta=1/7680|group=2O|order=7|delta=1/1290240|group=2I|order=11|delta=1/163499212800|definition=single_plaquette_half_trace_series_of_G_minus_SU2|json=0
+YM4_02B_EXPECT_TEETH|sabotage=bad_group,wrong_class,wrong_table,drop_direction,q8_everywhere|expect_exit=1_each|json=0
+YM4_02B_EXPECT_COST|local_wall_secs_under=600|below_normal=1|json=0
