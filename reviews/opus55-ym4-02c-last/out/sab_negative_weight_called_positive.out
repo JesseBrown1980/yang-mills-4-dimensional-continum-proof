@@ -1,0 +1,7 @@
+GRAM_LINK|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,-1|w_on_classes=15,19,5,5,5|pointwise_positive=1|assignments=2097152|F=chi_2dim(W)|G_FF=-593/4|expected=593/4|rule_2*t_2dim*(t_0+3*t_s)=-593/4|family=five_characters_of_W|PSD=0|rank=0|reason=negative_pivot|all_principal_minors_nonnegative=0|Z=16917185/64|ok=0|json=0
+GRAM_LINK_RED|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,-1|w_on_classes=15,19,5,5,5|pointwise_positive=1|assignments=2097152|F=chi_2dim(W)|G_FF=-593/4|expected=-593/4|rule_2*t_2dim*(t_0+3*t_s)=-593/4|family=five_characters_of_W|PSD=0|rank=0|reason=negative_pivot|all_principal_minors_nonnegative=0|Z=16917185/64|ok=1|json=0
+GRAM_SITE|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,1|family_size=15|PSD=1|rank=15|reason=none|ok=1|json=0
+GRAM_SITE|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,-1|family_size=15|PSD=1|rank=15|reason=none|ok=1|json=0
+GRAM_SITE|lattice=(Z/3)x(Z/2)|group=Q8|weight_values_on_classes=3,-2,1,-1,2|plaquettes_in_the_fixed_slices=0|family_size=15|PSD=1|rank=15|reason=none|ok=1|json=0
+REFLECTION_TRANSFER_DONE|failed=1|json=0
+FAILED|check=GRAM_LINK|json=0

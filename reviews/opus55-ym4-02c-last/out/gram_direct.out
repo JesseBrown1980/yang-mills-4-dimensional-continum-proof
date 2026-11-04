@@ -1,0 +1,7 @@
+GRAM_DIRECT|group=Q8|dims=1x4|w=0,1,0,0,0|assignments_with_nonzero_weight=20480|open_half_points=64|symmetric=1|positive=4|negative=1|rank=5|json=0
+GRAM_DIRECT|group=Q8|dims=1x1x4|w=0,1,0,0,0|assignments_with_nonzero_weight=24576|open_half_points=192|symmetric=1|positive=6|negative=0|rank=6|json=0
+GRAM_DIRECT|group=Q8|dims=1x1x4|w=0,-1,0,0,0|assignments_with_nonzero_weight=24576|open_half_points=192|symmetric=1|positive=6|negative=0|rank=6|json=0
+GRAM_DIRECT|group=Q8|dims=1x1x6|w=0,1,0,0,0|assignments_with_nonzero_weight=1572864|open_half_points=1536|symmetric=1|positive=6|negative=0|rank=6|json=0
+GRAM_DIRECT|group=Z6|dims=1x4|w=7,4,0,0,0,4|assignments_with_nonzero_weight=147744|open_half_points=108|symmetric=1|positive=18|negative=0|rank=18|json=0
+GRAM_DIRECT|group=Z6|dims=1x4|w=3,2,0,0,0,2|assignments_with_nonzero_weight=147744|open_half_points=108|symmetric=1|positive=15|negative=3|rank=18|json=0
+GRAM_DIRECT|group=Z5|dims=1x4|w=-7,0,4,4,0|assignments_with_nonzero_weight=59375|open_half_points=75|symmetric=1|positive=15|negative=0|rank=15|json=0

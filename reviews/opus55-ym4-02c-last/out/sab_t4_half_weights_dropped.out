@@ -1,0 +1,6 @@
+EVERY_FUNCTION_T4|lattice=(Z/1)x(Z/4)|group=Q8|c=8,3,3,3,1|family=all_64_point_functions_of_(U(0),U(1))|PSD=1|rank=25|reason=none|sum_of_all_entries=16777216|expected_8^links*Z=72797388800|entry_at_all_1=23104|expected=533794816|ok=0|json=0
+EVERY_FUNCTION_T4|lattice=(Z/1)x(Z/4)|group=Q8|c=8,3,3,3,-1|family=all_64_point_functions_of_(U(0),U(1))|PSD=0|rank=1|reason=negative_pivot|sum_of_all_entries=16777216|expected_8^links*Z=72797388800|entry_at_all_1=14400|expected=207360000|ok=0|json=0
+EVERY_FUNCTION_SITE|lattice=(Z/1)x(Z/2)|group=Q8|weight_values_on_classes=3,-2,1,-1,2|family=all_512_point_functions_of_(U(0),U(1),V(0))|blocks=64|every_block_PSD=1|largest_block_rank=1|ok=1|json=0
+REFLECTION_TRANSFER_DONE|failed=2|json=0
+FAILED|check=every_function_at_T=4_c=(8,_3,_3,_3,_1)|json=0
+FAILED|check=every_function_at_T=4_c=(8,_3,_3,_3,_-1)|json=0

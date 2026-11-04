@@ -1,0 +1,8 @@
+NOWHERE_ZERO|group=Z3|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=34|disagree=0|json=0
+NOWHERE_ZERO|group=Z4|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=202|disagree=0|json=0
+NOWHERE_ZERO|group=Z5|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=208|disagree=0|json=0
+NOWHERE_ZERO|group=Z6|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=1214|disagree=0|json=0
+NOWHERE_ZERO|group=S3|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=206|disagree=0|json=0
+NOWHERE_ZERO|group=D4|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=7378|disagree=0|json=0
+NOWHERE_ZERO|group=A4|lattice=(Z/1)x(Z/4)|values_on_inverse_closed_orbits=-3..3_nonzero|c_0_nonzero|PSD_iff_no_opposite_coefficient_agree=212|disagree=0|json=0
+Z6_T6|w=7,4,0,0,0,4|pairs=30|inertia=25,5,30|json=0
