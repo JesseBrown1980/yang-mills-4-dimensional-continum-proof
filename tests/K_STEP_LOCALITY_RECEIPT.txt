@@ -102,6 +102,9 @@ YM4_02E_WILSON|group=Q8|dims=2,1|weight=r=1/2|links=4|plaquettes=2|orbits=176|k=
 YM4_02E_ENGINE_AGREE|group=Z2|dims=2,1|weight=q=1/2|same_R=1|same_ratio=1|json=0
 YM4_02E_ENGINE_AGREE|group=Z2|dims=3,1|weight=q=4/5|same_R=1|same_ratio=1|json=0
 YM4_02E_ENGINE_AGREE|group=Z2|dims=2,2|weight=q=1/2|same_R=1|same_ratio=1|json=0
+YM4_02E_ENGINE_AGREE|group=Z2|dims=4,1|weight=q=1/2|same_R=1|same_ratio=1|json=0
+YM4_02E_ENGINE_AGREE|group=Z2|dims=5,1|weight=q=4/5|same_R=1|same_ratio=1|json=0
+YM4_02E_ENGINE_AGREE|group=Z2|dims=3,2|weight=q=4/5|same_R=1|same_ratio=1|json=0
 YM4_02E_SCALE|family=Lx1|weight=q=1/2|L=1|links=2|k=1|root_ppm=600000..600001|ratio_ppm=333333..333334|tau_range_ppm=600000|C_milli=1799..1801|sandwich=1|json=0
 YM4_02E_SCALE|family=Lx1|weight=q=1/2|L=1|links=2|k=2|root_ppm=468521..468522|ratio_ppm=333333..333334|tau_range_ppm=600000|C_milli=1975..1976|sandwich=1|json=0
 YM4_02E_SCALE|family=Lx1|weight=q=1/2|L=1|links=2|k=4|root_ppm=396387..396388|ratio_ppm=333333..333334|tau_range_ppm=600000|C_milli=1999..2000|sandwich=1|json=0
