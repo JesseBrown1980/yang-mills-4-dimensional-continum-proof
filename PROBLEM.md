@@ -33,7 +33,7 @@ These gates state target 3, the Clay problem. The primary scope is target 1, a f
 5. Prove that the **physical** excitation spectrum above the vacuum has `Δ > 0` in physical units. In transfer-matrix terms, a lattice-unit gap must be rescaled by 1/a and controlled uniformly through the limits.
 6. Explain and prove the extension to every compact simple group, or preserve an explicit SU(2)-only scope.
 
-**Scope set by the operator, November 4, 2026:** "We're not doing physical volume becoming infinite. We're a finite system." On this seat's reading of that scope, gate 1 reads as the limit a→0 at fixed finite physical size L_phys, and the uniformity of gate 2 is along L = L_phys/a with β following a, where the number of sites per side still grows. How gates 3 to 5 read in this scope is OPEN. Gates 1 and 2 as written above state the Clay problem on ℝ⁴, which stays named here as a separate target.
+**Scope set by the operator, November 4, 2026:** "We're not doing physical volume becoming infinite. We're a finite system." On FABLE5's reading of that scope, gate 1 reads as the limit a→0 at fixed finite physical size L_phys, and the uniformity of gate 2 is along L = L_phys/a with β following a, where the number of sites per side still grows. How gates 3 to 5 read in this scope is OPEN. Gates 1 and 2 as written above state the Clay problem on ℝ⁴, which stays named here as a separate target.
 
 The finite S₃ spectral bounds and the results for Q8, 2T, 2O and 2I each hold for their finite model. Carrying any of them to continuous SU(2) needs its own proved argument.
 

@@ -1,12 +1,14 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
-**Primary scope, set by the operator on November 4, 2026: Yang–Mills on a finite lattice.** "We're not doing physical volume becoming infinite. We're a finite system."
+**Primary scope: Yang–Mills on a finite lattice.** The operator, November 4, 2026: "We're not doing physical volume becoming infinite. We're a finite system." GPT-6's answer, which he relayed the same day, makes the finite lattice the primary scope.
 
 | Target | Where it stands |
 |---|---|
-| **1. A finite lattice at fixed spacing: the primary scope** | On `main`: Z exists and is positive, by compactness, and finite subgroups agree with SU(2) on plaquette monomials through their strength exactly when no plane has both sides 1, DERIVED and checked by GPT-6. On draft [PR #14](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14), under the operator's HOLD: reflection positivity, the transfer operator and a positive gap at each fixed lattice and β > 0 for SU(2), DERIVED. On [PR #22](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/22), with the second seat's attack OPEN: the explicit size λ₁/λ₀ ≤ tanh(βN_ℓ), DERIVED, with its proof verified by GPT-6 |
-| 2. A finite physical volume with the spacing going to zero | OPEN. On this seat's reading of the scope, the number of sites per side still grows, L = L_phys/a, with β following a, so any bound must hold along that family |
-| 3. The Clay problem on ℝ⁴ | OPEN, and a separate target, stated next as this repository first wrote it |
+| **1. A finite lattice at fixed spacing: the primary scope** | On `main`: Z exists and is positive, by compactness, and finite subgroups other than {1} agree with SU(2) on plaquette monomials through their strength, on periodic lattices, exactly when no plane has both sides 1, DERIVED and checked by GPT-6. On draft [PR #14](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14), under the operator's HOLD: reflection positivity, the transfer operator and a positive gap at each fixed lattice and β > 0 for SU(2), DERIVED. On [PR #22](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/22), with the second seat's attack OPEN: the explicit size λ₁/λ₀ ≤ tanh(βN_ℓ), DERIVED, with its proof verified by GPT-6 |
+| 2. A finite physical volume with the spacing going to zero | OPEN. On FABLE5's reading of the scope, the number of sites per side still grows, L = L_phys/a, with β following a, so any bound must hold along that family |
+| 3. The Clay problem on ℝ⁴ | OPEN, and a separate target, stated next in this repository's text of November 3, unchanged since commit 9d8e678 |
+
+**Data on Hugging Face:** [Jessedbrown/ym-3x4-room-store](https://huggingface.co/datasets/Jessedbrown/ym-3x4-room-store) holds the evidence archive shared with the companion repositories, with every pull request's SHAs and a status row per track, and the second seat's tools from its review of PR #14.
 
 ## The Clay problem, target 3
 
@@ -67,6 +69,6 @@ This exact check is a **standard finite-lattice algebraic fact**, and its scope 
 
 The required chain is **Euclidean Wilson lattice SU(2) → gauge-covariant multiscale renormalization → uniform nonperturbative scale estimates → infinite-volume and zero-spacing limits → nontrivial Schwinger functions with OS axioms → Hilbert-space reconstruction → strictly positive physical spectral gap**.
 
-In the operator's finite scope, the infinite-volume arrow is replaced by zero spacing at fixed finite physical volume. The chain as written is the Clay problem's. Each arrow requires its own proof and independently reproducible evidence. A gap in lattice units or at finite volume is a statement at that cutoff and volume. Carrying one to a physical gap is YM4-06, which is OPEN. The ledger marks PROVED, EXACT-TEST, DERIVED, DERIVED-CONDITIONAL, CONJECTURE, OPEN, FAILED, INCONCLUSIVE and RETRACTED claims, and failed tests stay visible with their receipts.
+At target 2, on FABLE5's reading of the operator's scope, the infinite-volume arrow is replaced by zero spacing at fixed finite physical volume. The chain as written is the Clay problem's. Each arrow requires its own proof and independently reproducible evidence. A gap in lattice units or at finite volume is a statement at that cutoff and volume. Carrying one to a physical gap is YM4-06, which is OPEN. The ledger marks PROVED, EXACT-TEST, DERIVED, DERIVED-CONDITIONAL, CONJECTURE, OPEN, FAILED, INCONCLUSIVE and RETRACTED claims, and failed tests stay visible with their receipts.
 
 Reference: Osterwalder and Seiler, *Gauge field theories on a lattice*, Annals of Physics 110 (1978), 440–471, [DOI:10.1016/0003-4916(78)90039-8](https://doi.org/10.1016/0003-4916(78)90039-8).
