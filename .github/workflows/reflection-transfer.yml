@@ -39,6 +39,11 @@ jobs:
           set -euo pipefail
           got=$(head -n 93 docs/PREDICTION-YM4-02c.hbp | sha256sum | cut -d' ' -f1)
           test "$got" = 08db7d8135ba1ff945c79aefaafdc6661fa47c541561431de0e2ed73dcbe8210
+      - name: The rows through the third prediction stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 136 docs/PREDICTION-YM4-02c.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 6d21f7196c88c564dd937ec8ec5106253d90f54b340696d7661b872c9fc709f3
       - name: Every row against the recorded receipt
         run: |
           set -euo pipefail
@@ -87,3 +92,22 @@ jobs:
             test "$got" = "$d"
           done
           echo "delivered hashes all reproduced"
+      - name: The second seat's recheck files are the ones filed, each delivered hash comes back, and each row of its list is filed or held
+        working-directory: reviews/opus55-ym4-02c/recheck
+        run: |
+          set -euo pipefail
+          test "$(sha256sum RECHECK_FILES.hbp | cut -d' ' -f1)" = "$(cat RECHECK_FILES.hbp.sha256)"
+          grep '^FILED|' FILED.hbp | while IFS='|' read -r _ p _ _ _ d _ e _; do
+            p=${p#path=}; d=${d#sha256_as_delivered=}; e=${e#cr_on=}
+            case "$e" in
+              none) got=$(sha256sum "$p" | cut -d' ' -f1) ;;
+              every_line) got=$(sed 's/$//' "$p" | sha256sum | cut -d' ' -f1) ;;
+              last_line) got=$(sed '$ s/$//' "$p" | sha256sum | cut -d' ' -f1) ;;
+              *) echo "unknown cr_on: $e"; exit 1 ;;
+            esac
+            test "$got" = "$d"
+          done
+          grep '^RECHECK_FILE|' RECHECK_FILES.hbp | while IFS='|' read -r _ p _ h _; do
+            grep -F "|$p|" FILED.hbp | grep -Fq "=${h#sha256=}|"
+          done
+          echo "delivered hashes all reproduced, and each row of its list is filed or held"
