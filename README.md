@@ -1,5 +1,7 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+> **Connected research index (2026-11-04):** [17-repository evidence map](https://github.com/JesseBrown1980/Hard-drive-and-USB-as-GPU/blob/main/ECOSYSTEM-RESEARCH-MAP-20261104.md) · [exact Google qsim QNN gate test](https://github.com/JesseBrown1980/GGUF-files-operating-as-trained-quantum-neural-network-models/blob/main/docs/GOOGLE-QSIM-LIKE-FOR-LIKE-20261104.md) · [physical HTTP-0 96³ timings](https://github.com/JesseBrown1980/qoled-internet-HEB-C-revisted-HTTP---free-0-hbi-hbp-sha-sh-hash/blob/main/engine96/MEASURED-20261104.hbp). These navigation links do not alter the finite-lattice results. YM4-02e draft #26 remains HOLD pending its own review.
+
 **Primary scope: Yang–Mills on a finite lattice.** The operator, November 4, 2026: "We're not doing physical volume becoming infinite. We're a finite system." GPT-6's answer, which he relayed the same day, makes the finite lattice the primary scope.
 
 | Target | Where it stands |
