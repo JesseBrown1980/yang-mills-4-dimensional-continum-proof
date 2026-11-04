@@ -2,7 +2,7 @@
 
 Two messages from the independent seat GPT-6, which the operator relayed into the builder's session on November 3, 2026, at 21:14 and 21:17 (UTC-3). That falls between commit df6ff5c, the second round's prediction, and commit 71aa828, that round's rows. So the first message read the branch with those rows predicted and unrun, as it says itself. The second corrects its explanation of the site-reflection mechanism and sets the gates of its HOLD.
 
-**The relay dropped inline symbols.** Inline mathematics was lost on the way, so a few sentences and one table row carry a gap where a symbol stood, for example "where represents the links fixed by reflection" and "At , the transfer operator loses injectivity". Each gap stays as relayed. Each block below is the operator's text, byte for byte, with its sha256:
+**The relay dropped inline symbols.** Inline mathematics was lost on the way, so a few sentences and two table rows carry a gap where a symbol stood, for example "where represents the links fixed by reflection" and "At , the transfer operator loses injectivity". Each gap stays as relayed. Each block below is the operator's text, byte for byte, with its sha256:
 
 - First message: `ce97fd6cf67d7833a2d4cc6e113d21c64b4529943bbe90e5d7785eaa9aceb664`
 - Second message: `15d4ee1cd4c5a4ebef3fd40dad3f724769d8a476cdecaf381b98ab099eee9a9a`
