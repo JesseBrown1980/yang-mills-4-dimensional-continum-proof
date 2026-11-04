@@ -1,2 +1,6 @@
 # What the no-float gate lets stand, each with its reason. A file row states how many findings the gate counts in that file, so one more float there fails as well. A path ending in / covers its folder. Files outside this list hold integers only.
 scripts/no_float_gate.py | findings=8 | The gate itself: it names float, complex and the float-format patterns in order to find them, and its test snippets hold them as strings
+reviews/opus55-ym4-02b/beta12_values.py | findings=1 | The second seat's receipt, kept verbatim: literal_eval reads integer tuples from classes_d4_F12.txt
+reviews/opus55-ym4-02b/sphere_q8.py | findings=3 | The second seat's receipt, kept verbatim: two exec calls run slices of the integer test at 39bb57f, and literal_eval reads integer tuples from classes_d4_F12.txt
+reviews/opus55-ym4-02b/stretch_b11.py | findings=1 | The second seat's receipt, kept verbatim: literal_eval reads integer tuples from the classes files
+reviews/opus55-ym4-02b/stretch_b13.py | findings=1 | The second seat's receipt, kept verbatim: literal_eval reads integer tuples from the classes files
