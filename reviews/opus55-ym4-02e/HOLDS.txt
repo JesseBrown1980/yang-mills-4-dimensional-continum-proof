@@ -1,0 +1,309 @@
+HOLDS at 09ff0f2cad50324968e0f758a7e94173434bba04, second seat, 2026-11-04. Every OLD occurs exactly once where stated: not_found_or_repeated=0.
+H1 to H9 and H16 to H20 are records. H10 to H15 are edits to the test that add checks with no say, so the receipt stays: FIXED_RUN in FINDINGS.txt says whether that was measured.
+====================================================================================================
+HOLD H1 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=155 | old_text_occurrences=1
+OLD<<<
+At fixed μ, C rises with falling steps, and τ at k = L, one unit of physical time, stays well below 1 up to L = 8.
+>>>
+NEW<<<
+At μ = 1, C rises by 142, 94, 63, 46, 34 and 23 thousandths per site. At μ = 2 it rises by 223, 152, 113, 84, 51 and 58, and q, rounded to three digits, gives (ε/q)^L of 137078 ppm at L = 7 and 134227 ppm at L = 8, against e⁻² = 135335 ppm, a CONJECTURE for why the last step is the larger. τ at k = L, one unit of physical time, rises at each L to 402412 ppm at μ = 1 and 227937 ppm at μ = 2, at L = 8.
+>>>
+REASON: MEASURED: the receipt's C_milli at mu=2, k=2L read 1356, 1579, 1731, 1844, 1928, 1979, 2037, so the last step, 58, is above the one before it, 51. The sentence holds at mu = 1 alone. rows/NOTE-VS-RECEIPT.hbp, rows/SMALL-COUNTS.hbp.
+FALSIFIER: A receipt row at mu=2, L=7 or 8 with other C_milli, so that the steps fall at every L.
+====================================================================================================
+HOLD H2 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=128 | old_text_occurrences=1
+OLD<<<
+No row in the receipt has |θ| above τ_k^{1/k}, and every composition row holds.
+>>>
+NEW<<<
+All 199 rows with a sandwich field read 1, so θ_low^k stays at or below τ_k on each. The receipt prints no composition row: the 142 composition checks report only when they fail, and they stand inside `failed=0`.
+>>>
+REASON: MEASURED: the word composition occurs in 0 of the receipt's 286 rows, and read_composition says nothing on a pass. DERIVED: 142 pairs (k, 2k) from the receipt's lists of k: KSTEP 15, A_ENTERS 3, PRODUCT 6, SEEN 4, WILSON 10, SCALE 90, RING 14. MEASURED: mutant C3 fires composition_Z2_dims_1x1_q=1/2_k=4, so the check can turn red.
+FALSIFIER: A composition row in the receipt, or a count of read_composition's checks other than 142.
+====================================================================================================
+HOLD H3 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=32 | old_text_occurrences=1
+OLD<<<
+So **the k-th root overshoots by C^{1/k}**, and the size of C says how much of the lattice the worst pair of configurations can read.
+>>>
+NEW<<<
+So **the k-th root overshoots by C^{1/k}**. On Z2 at L = 8, k = 8, C reads 6355 thousandths at q = 4/5, 2624 at q = 1/2 and 1000 at q = 1/5, so its size depends on the weight as well as on the lattice.
+>>>
+REASON: MEASURED: a general reading of C against the receipt: at q = 1/5, C_milli stays 1000..1001 at k=8 from L = 5 to L = 8 while the lattice grows, and on L×2 at q = 4/5 it reads 3936, 2951, 3935 at L = 2, 3, 4. Receipt rows 188, 192, 196, 200, 216, 220, 224.
+FALSIFIER: A receipt where C at q = 1/5 grows with L, or a proof that ties C to a count of links read, with its scope.
+====================================================================================================
+HOLD H4 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=22 | old_text_occurrences=1
+OLD<<<
+So τ_k^{1/k} falls along k = 1, 2, 4, 8.
+>>>
+NEW<<<
+So τ_k^{1/k} is non-increasing along k = 1, 2, 4, 8, and constant on Z2 with one link, 600000 ppm at each k.
+>>>
+REASON: MEASURED: receipt rows 1 to 4 read root_ppm=600000..600001 at k = 1, 2, 4, 8, and τ_k = (3/5)^k exactly there. The inequality in the sentence before it is ≤.
+FALSIFIER: A strict fall on that row, which (3/5)^k excludes.
+====================================================================================================
+HOLD H5 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=117 | old_text_occurrences=1
+OLD<<<
+and the run-time row reads 1, with the hosted run still to read.
+>>>
+NEW<<<
+and the run-time row reads 1, on the hosted runs as well: 403 s on the push and 597 s on the pull request, against 1,500 s.
+>>>
+REASON: MEASURED: gh run view 41895366817 (push, step 19:16:44Z to 19:23:27Z, SECTION blocks 402) and 41895559528 (pull_request, step 19:17:58Z to 19:27:55Z, SECTION blocks 596), both conclusion=success at 09ff0f2, cmp against the receipt included.
+FALSIFIER: A hosted run at 09ff0f2 whose step exceeds 1,500 s or whose cmp fails.
+====================================================================================================
+HOLD H6 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=88 | old_text_occurrences=1
+OLD<<<
+**What it is and is not sized for.**
+>>>
+NEW<<<
+**What it is sized for.**
+>>>
+REASON: NAMED: the operator's standing rule that text states what a result is, with scope and values. The paragraph's content already states the scope.
+FALSIFIER: The operator's word that this heading stays.
+====================================================================================================
+HOLD H7 | file=reviews/gpt6-ym4-02e/README.md | line=3 | old_text_occurrences=1
+OLD<<<
+Four messages of November 4, 2026, verbatim.
+>>>
+NEW<<<
+Six messages of November 4, 2026, verbatim, the last two appended below in the order they came.
+>>>
+REASON: MEASURED: docs/PREDICTION-YM4-02e.hbp line 141 reads by=GPT-6's_refinement, and the file holds no such text: 'characteristic' and 'polynomial' occur 0 times in it, and git grep 'Worked for 57s' at 09ff0f2 has 0 hits. The relay is in the session transcript, line 16120, 18:57:33Z, 89 s before f818bc5 was pushed. The filed four match their relays exactly after whitespace is squeezed, edit_ops=0 on each: rows/RELAY-CHECK.hbp. A sixth message, line 16286, 19:51:48Z, reviews this commit and came after it.
+FALSIFIER: A filed copy of the 18:57:33Z text elsewhere in the repository at 09ff0f2.
+====================================================================================================
+HOLD H8 | file=reviews/gpt6-ym4-02e/README.md | line=193 | old_text_occurrences=1
+OLD<<<
+The second run, independent attack, and separate model-family review are the remaining gates. The interacting-lattice growth conjecture and continuum-spacing question remain OPEN.
+>>>
+NEW<<<
+The second run, independent attack, and separate model-family review are the remaining gates. The interacting-lattice growth conjecture and continuum-spacing question remain OPEN.
+
+## The fourth review
+
+Worked for 57s
+
+The revised YM4-02e test plan addresses my three acceptance criteria. I would keep the theorem on HOLD until the final run and independent attack finish.
+
+I checked the GitHub branch `ym4-02e-kstep-and-locality`. As of this check, its latest commit is still `23cec81`, containing the frozen prediction and original note. The revised test code, stopped-run receipts, and updated proof have not yet been pushed, so I cannot independently verify the new run.
+
+There is one refinement I would make to the block-solver test.
+
+Comparing inertia at 14 thresholds does not, by itself, establish exact spectral equivalence. It can miss differences between thresholds. For the small matrices where direct elimination is affordable, require equality of the complete characteristic polynomial or exact eigenvalue multiplicities, including the unequal-orbit-size cases. For larger matrices, the threshold checks remain valuable consistency tests, but their scope should be explicit.
+
+The rest of the acceptance plan is sound:
+
+* Preserve the original 208 rows and both interrupted runs as permanent records.
+
+* Treat the Z3 interval-check correction separately from numerical disagreement.
+
+* Require the third run to finish within 1,500 seconds, then verify that the hosted run meets the same limit.
+
+* Include the periodic Green function with wrapped paths, taking before .
+
+* Keep the independent-copy theorem separate from the conjecture for interacting lattices.
+
+The locality proof remains promising, particularly its size-independent small- estimate. But a successful computational run will verify its registered finite examples—not replace the independent proof review.
+
+Current independent-seat verdict: YM4-02e — HOLD. No contradiction established; final numerical receipts and proof review still outstanding.
+
+## The fifth review, of `09ff0f2`
+
+Worked for 5m 16s
+
+### Independent review of YM4-02e at `09ff0f2`
+
+The receipt and test are now committed in [draft PR #26](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26?utm_source=chatgpt.com). I verified the actual files rather than relying only on the run summary.
+
+The receipt records:
+
+| Acceptance gate               | Recorded result                                                                   |
+| ----------------------------- | --------------------------------------------------------------------------------- |
+| First-run comparison          | 208 rows accounted for: 206 identical, 2 documented corrections, 0 unmatched      |
+| Exact block-solver comparison | 7 characteristic-polynomial checks and 4 exact known-spectrum multiplicity checks |
+| Larger block comparisons      | 10 cases checked at registered inertia thresholds                                 |
+| Local runtime                 | 571 seconds, within 1,500                                                         |
+| Mathematical test assertions  | 0 failures                                                                        |
+| Sabotage controls             | 7 named rejection tests configured in CI                                          |
+| Conjectures                   | 9/10 met, with the miss retained                                                  |
+
+The distinction between complete characteristic-polynomial comparisons on small matrices and threshold-only checks on larger matrices is correctly preserved.
+
+At the pinned commit, the hosted `k-step-locality` check was still running. The other completed checks had passed.
+
+I independently compared the first-run file against the new receipt as a multiset, rather than relying on the test's membership check. All 208 original rows are unique, all 286 new receipt rows are unique, and the comparison confirms exactly 206 unchanged + 2 documented corrections + 0 missing.
+
+I also independently recalculated both important SHA-256 values:
+
+* Final receipt: `a265e1883d20c7b031db5798a27b5dc919e72b40fa3ef3a95735fb588433dc86`
+
+* Frozen prediction, first 130 lines: `7931f9bf147e12cbb0ac346a240923136f6081036aa4fa730693ac6430f8cb77`
+
+Both match the registered hashes. The frozen prediction has not moved.
+
+### Mathematical verdict
+
+I found no contradiction between Theorem 5, the committed receipt, and the three acceptance gates.
+
+The proof now handles the key issues correctly: local conditional influences, periodic paths that wrap around time, the order followed by , and restriction from the full transfer operator to gauge-invariant states. The argument still relies on the established compactness and Perron-eigenfunction properties of YM4-02d.
+
+One minor test-hardening improvement remains: `section_first_run` uses set membership, which cannot detect duplicate rows. My independent comparison confirmed that this particular receipt has no duplicates or missing rows, so it does not affect the current result. A multiplicity-aware comparison would strengthen future runs.
+
+I filed the detailed independent-seat review directly on [PR #26](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26?utm_source=chatgpt.com#issuecomment-6639947611), including the exact hashes, proof assessment and outstanding gates.
+
+Final status for this review:
+
+* Local numerical verification: PASS
+
+* Frozen prediction integrity: PASS
+
+* Theorem 5: no contradiction identified
+
+* Hosted k-step-locality test: still running at last check
+
+* Second-seat adversarial review: OPEN
+
+* Formal YM4-02e certification: HOLD
+
+I recommend keeping PR #26 in draft until the hosted test and second-seat reports are complete.
+>>>
+REASON: The text of H7, verbatim from rows/RELAY-transcript-line-16120.txt and rows/RELAY-transcript-line-16286.txt.
+FALSIFIER: A byte difference between these sections and the operator's relay.
+====================================================================================================
+HOLD H9 | file=reviews/fable5-ym4-02e-first-run/README.md | line=3 | old_text_occurrences=1
+OLD<<<
+Python 3.13 on Windows, at the commit after `23cec81`, as it first ran.
+>>>
+NEW<<<
+Python 3.13 on Windows, on the test as it first ran, written at 17:48:51Z after `23cec81` and started at 17:49:08Z. That version stayed uncommitted: the first commit holding the test, `f818bc5`, already reads the interval as a containment. [The version as first written](TEST-AS-FIRST-WRITTEN.txt), recovered from the session transcript, has the check that asked for the same floor and ceil.
+>>>
+REASON: MEASURED: git log --all -- tests/test_k_step_locality.py lists f818bc5 and 09ff0f2 alone. f818bc5 has 'ppm_floor(low) >= int(wanted[0])' and section_charpoly, so it cannot print the as_pinned=0 of FIRST-RUN.hbp line 31. The transcript's Write at line 15901 has the exact-match line. File rows/TEST-AS-FIRST-WRITTEN-transcript-line-15901.txt as reviews/fable5-ym4-02e-first-run/TEST-AS-FIRST-WRITTEN.txt, sha256 fdfbc586cf28e8ec3a0de0bd793c1dba5cb56068af5074181853289a440f32ac. GPT-6 asked for a versioned correction, and this gives the correction a before. The gate must read that file as well.
+FALSIFIER: A commit on any ref holding the test with the exact-match check.
+====================================================================================================
+HOLD H10 | file=tests/test_k_step_locality.py | line=1020 | old_text_occurrences=1
+OLD<<<
+        return all(self.z[p[0] ^ p[i]] == self.z[i] for i in range(n))
+>>>
+NEW<<<
+        return all(self.z[p[i] ^ p[j]] == self.z[i ^ j] for i in range(n) for j in range(n))
+>>>
+REASON: MEASURED: Z2Conv.commutes tests one row, z[p[0]^p[i]] == z[i], with a[p[i]] == a[i]. A swap of indices 1 and 2 at L = 3, 4, 5 passes it and breaks z[p[1]^p[5]] == z[1^5] (rows/FILTER.hbp), and the file's header says each symmetry is checked on the matrices. The one row suffices for affine maps alone. MEASURED: all kept perms on all 54 Z2Conv builds of the run are affine and full symmetries (rows/INSTRUMENTED.hbp), so no row is wrong. Mutant B5, that swap fed in at L >= 4, survives at 286 of 286 rows.
+FALSIFIER: A permutation passing the new check that is not a symmetry of z, or a receipt byte moved by this edit.
+====================================================================================================
+HOLD H11 | file=tests/test_k_step_locality.py | line=965 | old_text_occurrences=1
+OLD<<<
+        check("negative_side_reads_it", fires)
+>>>
+NEW<<<
+        check("negative_side_reads_it", fires)
+        check("top_two_reads_the_negative_top", not top_two(blocks_of(pencil), pencil.top(), 20)[4])
+>>>
+REASON: MEASURED: free=1 on all 99 top_two calls, so mutant F5 (negative_free = True) changes no row, and the negative control goes through its own signs(), bypassing top_two. top_two on this pencil returns free=0 (rows/FIRES.hbp). With this line F5 dies in 8 s.
+FALSIFIER: top_two returning free=1 on w = 1/4, 1.
+====================================================================================================
+HOLD H12 | file=tests/test_k_step_locality.py | line=970 | old_text_occurrences=1
+OLD<<<
+show(frac(-bottom[0] * top[1], bottom[1] * top[0])), show(tau), fires, show(r1), show(r2)))
+>>>
+NEW<<<
+show(frac(-bottom[0] * top[1], bottom[1] * top[0])), show(tau), fires, show(r1), show(r2)))
+    # The odd ring with q above 1: the second eigenvalue has momentum, outside the small blocks, so the count and the search on all blocks run.
+    conv = ring(3, 5, 4)
+    c, d, top = conv.dense()
+    inv = [p for p in conv.perms if all(p[p[i]] == i for i in range(conv.n))]
+    bp = BlockPencil(c, d, inv, [p for p in conv.perms if p not in inv])
+
+    def direct(t):
+        return inertia([[t[1] * c[i][j] - (t[0] * d[i] if i == j else 0) for j in range(conv.n)] for i in range(conv.n)])[0]
+
+    for name, upper in (("certifying_count_fires", None), ("ceiling_too_low_falls_back", (1, 1000))):
+        lo0, hi0, lo1, hi1, _ = top_two(bp, top, 30, upper)
+        check(name, bp.above_small(lo1) == 1 and direct(lo1) >= 2 and direct(hi1) == 1 and direct(lo0) >= 1 and direct(hi0) == 0)
+>>>
+REASON: MEASURED: lines 658 to 665 of the file never run: first_above=1 on 99 of 99 top_two calls (rows/INSTRUMENTED.hbp), so the search on all blocks and the second fallback have no row. Mutants F1 and D6 live on that. ring(3, 5, 4) reads first_above=3. With this block F1 and D6 die on certifying_count_fires and F3 on ceiling_too_low_falls_back, each within 9 s (rows/MUTANTS.hbp, fixed_ rows). F2 (> 2) still lives with it, since this pencil counts 3: a pencil counting 2 is Z3 on 2×1 with weight 1/4,1,1.
+FALSIFIER: A pencil where these counts disagree with the direct elimination, or a receipt byte moved by this edit.
+====================================================================================================
+HOLD H13 | file=tests/test_k_step_locality.py | line=1357 | old_text_occurrences=1
+OLD<<<
+            check("local_r_%s" % name, str(r) == row["r_ppm_ceil"])
+>>>
+NEW<<<
+            check("local_r_%s" % name, str(r) == row["r_ppm_ceil"])
+            c_read = frac(2 * eps[0] * sigma[1] + sigma[0] * eps[1], eps[1] * sigma[1])
+            check("local_c_below_1_%s" % name, show(c_read) == row["c"] and c_read[0] < c_read[1])
+>>>
+REASON: MEASURED: the prediction's c and sigma fields are never read, and with 2ε + σ >= 1 r_ppm_ceil returns 1000000, which makes within_r vacuous. All 23 rows have c below 1 and equal to the registered value by separate code (rows/CLOSED-FORMS.hbp), so no row is wrong today.
+FALSIFIER: A registered c other than 2ε + σ, or a row with c at or above 1.
+====================================================================================================
+HOLD H14 | file=tests/test_k_step_locality.py | line=916 | old_text_occurrences=1
+OLD<<<
+        ok = root[0] - 1 <= value <= root[1] + 1 and 
+>>>
+NEW<<<
+        ok = root[0] <= value <= root[1] and 
+>>>
+REASON: MEASURED: all five second_seat values equal root[1], so the slack is unused, and the prediction registers none. By the check's shape a slack of any size changes no row.
+FALSIFIER: A second_seat value outside root_ppm.
+====================================================================================================
+HOLD H15 | file=tests/test_k_step_locality.py | line=1496 | old_text_occurrences=1
+OLD<<<
+    printed = set(PRINTED)
+>>>
+NEW<<<
+    printed = set(PRINTED)
+    check("first_run_rows_distinct", len(set(rows)) == len(rows) and len(printed) == len(PRINTED))
+>>>
+REASON: GPT-6's message at 19:51:48Z asks for it. MEASURED: 208 of 208 and 286 of 286 rows are distinct, so this reads 1 today.
+FALSIFIER: A duplicate row in either list.
+====================================================================================================
+HOLD H16 | file=docs/PREDICTION-YM4-02e.hbp | line=145 | old_text_occurrences=1
+OLD<<<
+YM4_02E_MISS|run=every_full_run|row=conjecture_ring_fixed_mu_C_bounded_mu=2|read=C_milli_1356_to_2038_at_L=2_to_8|registered=C_in_[1,18/10]|recorded_as_a_conjecture_not_met=1|json=0
+>>>
+NEW<<<
+YM4_02E_MISS|run=every_full_run|row=conjecture_ring_fixed_mu_C_bounded_mu=2|read=C_milli_1356_to_2038_at_L=2_to_8|registered=C_in_[1,18/10]|recorded_as_a_conjecture_not_met=1|json=0
+YM4_02E_ATTEMPT|run=hosted_push_41895366817|finished=1|failed_rows=0|seconds=403|beside_row=144|json=0
+YM4_02E_ATTEMPT|run=hosted_pull_request_41895559528|finished=1|failed_rows=0|seconds=597|beside_row=144|json=0
+YM4_02E_SOURCE|rows=YM4_02E_LOCAL|neighbours_and_r_ppm_ceil_by=the_same_plaquette_sum_and_the_same_bisection_as_the_test|read_by_separate_code=second_seat_23_of_23|control_ratio_from_YM4-02d=the_pencil_the_test_repeats|json=0
+>>>
+REASON: Row 144 reads hosted_run_still_to_read=1, and the hosted runs have now read. Beside it, leaving it as it stands. MEASURED: predict_02e.py, transcript lines 15836 and 15863, computes neighbours from the plaquette lists by the test's own definition and r by the same bisection on phi, so local_neighbours and local_r pin a repeat of the logic, while the closed forms by characters share nothing with the test. The test's read_rows ignores both tags, so the receipt stays.
+FALSIFIER: A hosted run at the final head that differs, or a LOCAL row whose source was a different route.
+====================================================================================================
+HOLD H20 | file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md | line=115 | old_text_occurrences=1
+OLD<<<
+whose first 130 rows were pushed at commit `23cec81` before that test existed.
+>>>
+NEW<<<
+whose first 130 rows were pushed at commit `23cec81`, at 17:43:11Z, before that test was first written, at 17:48:51Z. Its closed forms came by characters and by hand blocks, from [a script with no lattice and no cross-ratio search](../reviews/fable5-ym4-02e-first-run/predict_02e.py). Its neighbours and r came from the same plaquette sum and the same bisection the test uses, and separate code confirms them on all 23 rows.
+>>>
+REASON: MEASURED: GitHub activity API, branch_creation 17:43:11Z with 23cec81; transcript line 15901, the first Write of the test, 17:48:51Z; the file's NTFS birth 14:48:55-03:00 in C:/tmp/ym4-02e-wt; first push of the test 18:59:02Z. The script holding the frozen closed forms is in the seat's scratchpad and on no ref: git ls-files finds no predict_02e. Filing it follows the operator's word that nothing stays local. Second seat's copy from the transcript: rows/predict_02e.py.transcript-line-15836.txt, before its two Edits.
+FALSIFIER: A draft of the test older than 17:43:11Z, on any path, or a ref holding predict_02e.py.
+====================================================================================================
+HOLD H17 | file=PR #26 body, read at 2026-11-04 | line=n/a | old_text_occurrences=1
+OLD<<<
+Bounded on the 1D ring up to L = 8, MEASURED;
+>>>
+NEW<<<
+τ at k = L reads 288373 to 402412 ppm at μ = 1 and 147675 to 227937 ppm at μ = 2, rising at each L up to 8, MEASURED;
+>>>
+REASON: A finite list of rows is bounded by its largest entry, so the word adds no reading, and these rows rise at each L. The note's own sentence leaves it OPEN.
+FALSIFIER: A row that stops rising, which would be stated with its L.
+====================================================================================================
+HOLD H18 | file=PR #26 body, read at 2026-11-04 | line=n/a | old_text_occurrences=1
+OLD<<<
+The 1,500 s limit reads met locally, and the hosted run decides it.
+>>>
+NEW<<<
+The 1,500 s limit reads met: 571 s locally, 403 s on the hosted push and 597 s on the hosted pull request.
+>>>
+REASON: MEASURED as in H5.
+FALSIFIER: As in H5.
+====================================================================================================
+HOLD H19 | file=PR #26 body, read at 2026-11-04 | line=n/a | old_text_occurrences=1
+OLD<<<
+this PR waits for the hosted run, the second seat's attack, and its reading of the final head.
+>>>
+NEW<<<
+this PR waits for the second seat's attack and its reading of the final head. The hosted run has read: 403 s on the push and 597 s on the pull request, against 1,500 s.
+>>>
+REASON: MEASURED as in H5.
+FALSIFIER: As in H5.

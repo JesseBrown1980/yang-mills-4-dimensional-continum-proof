@@ -1,0 +1,30 @@
+HOLDS at a72a0c3, docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md
+
+H1 line 101. OLD: with 𝔅 = β Ω̃/sinh(kΩ̃) in lattice units.
+NEW: with 𝔅 = β sinh(Ω̃)/sinh(kΩ̃) in lattice units, cosh Ω̃ = 1 + κ/2, κ an eigenvalue of the spatial Laplacian.
+REASON: eliminating the interior slices gives the corner of a block tridiagonal inverse, 1/U_{k-1}(1+κ/2). At k = 1 it must read β, the kernel B; the old form reads βΩ̃/sinh Ω̃, 2.63/6.93 of β at the top mode of d = 3.
+FALSIFY: a lattice where the Schur complement of S differs from β/U_{k-1}. Check: work/gauss.py.
+
+H2 line 101. OLD: Its entries extend over t/a sites, and the maximum over the box is about β (L/a)^d (a/t) = β L^d/(t a^{d−1}).
+NEW: Its entries extend over t/a sites and are positive with row sum β/k at zero mass, so the maximum over the box sits at the constant mode and equals 4π²β (L/a)^d (a/t) = 4π²β L^d/(t a^{d−1}), with mass 4π²β (L/a)^d sinh(Ω̃₀)/sinh(kΩ̃₀).
+REASON: M-matrix inverse, entries >= 0, U_{k-1}·1 = k·1. Exact, and it names the maximizer. Scale of the old text stands.
+FALSIFY: a negative entry or a row sum other than N/k. MEASURED 9 lattices, 0 negative.
+
+H3 line 103. OLD: So **the supremum over all configurations looks like the obstruction in d ≥ 2.**
+NEW: So **for the Gaussian on the box the supremum over all configurations is the obstruction in d ≥ 2, and for the interacting theory that is a CONJECTURE.** The Ising model on L×L at q = 6419/10000, near its critical point, at k = L reads log(K₊₊/K₊₋) of 1.120, 1.397 and 1.600 at L = 3, 4 and 5, with falling increments, where Gaussian scaling holds them constant; three sizes.
+REASON: the bold line is untagged and rests on the Gaussian alone. Bounded spins saturate at a fixed boundary state in d = 1, proved by the closed form.
+FALSIFY: L = 6, 7 Ising rows with constant or rising increments; or a measured Delta growth on an interacting gauge family at fixed t.
+
+UPGRADES, true text stays true at the commit; the operator's seat decides.
+U1 line 100. OLD: and with fixed q on the interacting ring, where C growing linearly in L is a separate CONJECTURE, also registered.
+NEW: and with fixed q on the interacting ring, where C = c(q) L (1 + O(e^{−κL})) with c(q) = (q² + 2q − 1)(1 + q²)/(4q²), from Kaufman's sectors and the second seat's product formula, DERIVED; c(4/5) = 1271/1600.
+FALSIFY: C(L,q) rows off c(q)L. MEASURED C(8,4/5)=6.355000, C(64,1/2)=20.000000.
+U2 line 32. OLD: On interacting lattices it is a CONJECTURE, read in the rows below.
+NEW: On the interacting ring it is DERIVED, with slope c(q) in section 4; on other interacting lattices it is a CONJECTURE, read in the rows below.
+U3 line 155. OLD: That range is short, and whether either settles is OPEN.
+NEW: With q from the exact law, the closed form reads C = 1.822229 and 2.431210 and τ at k = L = 451699 and 274671 ppm at L = 512, with deficits halving per doubling, toward C = 1.825727 and 2.438510 from the product √2 ∏ₙ (1 − μ/Eₙ)/(1 − μ/Eₙ₋½), Eₙ² = μ² + (2πn)²; the limit formula is a CONJECTURE checked to 5 digits.
+U4 line 155. OLD: a CONJECTURE for why the last step is the larger.
+NEW: and with q exact the steps fall at every L, 61678 then 48568 millionths at L = 7 and 8, MEASURED, so the larger last step is the rounding of q.
+U5 line 157 add after "reaching 2.037 at L = 8.": The limit at μ = 1 also passes 1.8, between L = 64 and L = 128, and reaches 1.8257.
+U6 Theorem 5 line 58: SU(2) range β < 1/7 with ε' = β/2 (FINDINGS (f)), DERIVED by the second seat; awaits a different family's review.
+U7 line 88 add citation: Dobrushin's condition for lattice gauge correlation decay, Chatterjee arXiv:1811.09770 section 5.

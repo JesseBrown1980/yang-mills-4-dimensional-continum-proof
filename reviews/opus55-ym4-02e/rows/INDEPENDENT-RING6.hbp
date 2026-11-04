@@ -1,0 +1,3 @@
+INDEP_RATIO|case=ring_mu=2_L=6_q=485/1000|orbits=128|blocks=2|above_lower=2|above_upper=1|ratio_inside_693503..693504_ppm=1|json=0
+INDEP_R|case=ring_mu=2_L=6_q=485/1000|k=6|orbits=128|R_digits=451|root_floor_ppm=773590|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 127, 0, 127)|json=0
+INDEP_RING|L=6|k=6|tau_ppm=214321..214322|receipt_tau_ppm=214321..214322|json=0

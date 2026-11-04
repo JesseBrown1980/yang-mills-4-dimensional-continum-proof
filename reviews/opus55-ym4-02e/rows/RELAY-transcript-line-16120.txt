@@ -1,0 +1,25 @@
+Worked for 57s
+
+The revised YM4-02e test plan addresses my three acceptance criteria. I would keep the theorem on HOLD until the final run and independent attack finish.
+
+I checked the GitHub branch `ym4-02e-kstep-and-locality`. As of this check, its latest commit is still `23cec81`, containing the frozen prediction and original note. The revised test code, stopped-run receipts, and updated proof have not yet been pushed, so I cannot independently verify the new run.
+
+There is one refinement I would make to the block-solver test.
+
+Comparing inertia at 14 thresholds does not, by itself, establish exact spectral equivalence. It can miss differences between thresholds. For the small matrices where direct elimination is affordable, require equality of the complete characteristic polynomial or exact eigenvalue multiplicities, including the unequal-orbit-size cases. For larger matrices, the threshold checks remain valuable consistency tests, but their scope should be explicit.
+
+The rest of the acceptance plan is sound:
+
+* Preserve the original 208 rows and both interrupted runs as permanent records.
+
+* Treat the Z3 interval-check correction separately from numerical disagreement.
+
+* Require the third run to finish within 1,500 seconds, then verify that the hosted run meets the same limit.
+
+* Include the periodic Green function with wrapped paths, taking before .
+
+* Keep the independent-copy theorem separate from the conjecture for interacting lattices.
+
+The locality proof remains promising, particularly its size-independent small- estimate. But a successful computational run will verify its registered finite examples—not replace the independent proof review.
+
+Current independent-seat verdict: YM4-02e — HOLD. No contradiction established; final numerical receipts and proof review still outstanding.

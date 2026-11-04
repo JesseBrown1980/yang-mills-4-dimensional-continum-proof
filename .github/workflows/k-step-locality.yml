@@ -1,0 +1,77 @@
+# YM4-02e: exact integer rows against the receipt, and each sabotage must exit 1 on its named check.
+name: YM4-02e k-step and locality
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_k_step_locality.py'
+      - 'tests/K_STEP_LOCALITY_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md'
+      - 'docs/PREDICTION-YM4-02e.hbp'
+      - 'reviews/fable5-ym4-02e-first-run/FIRST-RUN.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/k-step-locality.yml'
+  pull_request:
+    paths:
+      - 'tests/test_k_step_locality.py'
+      - 'tests/K_STEP_LOCALITY_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md'
+      - 'docs/PREDICTION-YM4-02e.hbp'
+      - 'reviews/fable5-ym4-02e-first-run/FIRST-RUN.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/k-step-locality.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  k-step-locality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: The 130 rows of the prediction as pushed stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 130 docs/PREDICTION-YM4-02e.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 7931f9bf147e12cbb0ac346a240923136f6081036aa4fa730693ac6430f8cb77
+      - name: The gate reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_k_step_locality.py > /tmp/kstep.out 2> /tmp/kstep.err
+          cat /tmp/kstep.err
+          cmp /tmp/kstep.out tests/K_STEP_LOCALITY_RECEIPT.txt
+          grep -q '|failed=0|' /tmp/kstep.out
+          if grep -q '^FAILED' /tmp/kstep.out; then echo "a check failed"; exit 1; fi
+      - name: Each sabotage exits 1 on its named check, with no crash
+        run: |
+          set -euo pipefail
+          read_sabotage() {
+            rc=0
+            python3 -I -X utf8 tests/test_k_step_locality.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -qF "FAILED|check=$2|json=0" "/tmp/sab-$1.out"
+            if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi
+            echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"
+          }
+          read_sabotage A_inverted 'control_ratio_Z3_dims_2x1'
+          read_sabotage drop_spatial_weight 'a_enters_Z2_dims_2x1_k=2'
+          read_sabotage dropped_fourth_inverse 'control_ratio_Z3_dims_2x2'
+          read_sabotage drop_orbit_measure 'kstep_S3_dims_1_k=2'
+          read_sabotage no_kth_root 'sandwich_Z2_dims_2x1_q=1/2_k=2'
+          read_sabotage small_epsilon 'local_bound_Z2_dims_1_q=4/5'
+          read_sabotage bad_block_measure 'blocks_charpoly_Q8_dims_1x1'
+      - name: An unknown sabotage name exits 2
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_k_step_locality.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2

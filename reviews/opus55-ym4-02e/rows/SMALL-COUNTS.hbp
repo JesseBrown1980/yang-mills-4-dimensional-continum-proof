@@ -1,0 +1,15 @@
+COUNT|rows_with_sandwich=199|composition_checks_derived=142|YM4_02E_A_ENTERS=3|YM4_02E_KSTEP=15|YM4_02E_PRODUCT=6|YM4_02E_RING=14|YM4_02E_SCALE=90|YM4_02E_SEEN=4|YM4_02E_WILSON=10|json=0
+RING_NOMINAL|mu=1|L=2|q=520/1000|eps_over_q_ppm=607287|registered_x_ppm=606530|(eps/q)^L_ppm=368798|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=3|q=485/1000|eps_over_q_ppm=715054|registered_x_ppm=716531|(eps/q)^L_ppm=365609|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=4|q=467/1000|eps_over_q_ppm=778001|registered_x_ppm=778800|(eps/q)^L_ppm=366370|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=5|q=456/1000|eps_over_q_ppm=819356|registered_x_ppm=818730|(eps/q)^L_ppm=369286|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=6|q=449/1000|eps_over_q_ppm=846909|registered_x_ppm=846481|(eps/q)^L_ppm=368995|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=7|q=444/1000|eps_over_q_ppm=867210|registered_x_ppm=866877|(eps/q)^L_ppm=368869|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=1|L=8|q=440/1000|eps_over_q_ppm=883838|registered_x_ppm=882496|(eps/q)^L_ppm=372377|e^-mu_ppm=367879|json=0
+RING_NOMINAL|mu=2|L=2|q=626/1000|eps_over_q_ppm=367431|registered_x_ppm=367879|(eps/q)^L_ppm=135006|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=3|q=556/1000|eps_over_q_ppm=513214|registered_x_ppm=513417|(eps/q)^L_ppm=135174|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=4|q=520/1000|eps_over_q_ppm=607287|registered_x_ppm=606530|(eps/q)^L_ppm=136011|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=5|q=499/1000|eps_over_q_ppm=669785|registered_x_ppm=670320|(eps/q)^L_ppm=134796|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=6|q=485/1000|eps_over_q_ppm=715054|registered_x_ppm=716531|(eps/q)^L_ppm=133670|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=7|q=474/1000|eps_over_q_ppm=752852|registered_x_ppm=751477|(eps/q)^L_ppm=137078|e^-mu_ppm=135335|json=0
+RING_NOMINAL|mu=2|L=8|q=467/1000|eps_over_q_ppm=778001|registered_x_ppm=778800|(eps/q)^L_ppm=134227|e^-mu_ppm=135335|json=0

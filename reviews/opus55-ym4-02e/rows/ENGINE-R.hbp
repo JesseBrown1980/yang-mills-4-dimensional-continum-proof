@@ -1,0 +1,12 @@
+ENGINE_R|case=Q8_1x1|k=1|R=65536/1|json=0
+ENGINE_R|case=Q8_1x1|k=2|R=14125084801/112869376|json=0
+ENGINE_R|case=Q8_1x1|k=4|R=25741813561782766740889/7817610819577780170889|json=0
+ENGINE_R|case=Z2_2x2|k=1|R=124609/16384|json=0
+ENGINE_R|case=Z2_2x2|k=2|R=237988841281/176164878400|json=0
+ENGINE_R|case=Z2_2x2|k=4|R=4222372140461927097524478889/4195280329453359203097009025|json=0
+GEOMETRY|dims=(3, 3)|neighbours=6|six_times_d_minus_1=6|json=0
+GEOMETRY|dims=(3, 3, 3)|neighbours=12|six_times_d_minus_1=12|json=0
+GEOMETRY|dims=(4, 4, 4)|neighbours=12|six_times_d_minus_1=12|json=0
+GEOMETRY|dims=(2, 2, 2)|neighbours=12|six_times_d_minus_1=12|json=0
+GEOMETRY|dims=(2, 2)|neighbours=6|six_times_d_minus_1=6|json=0
+GEOMETRY|dims=(3, 3, 3, 3)|neighbours=18|six_times_d_minus_1=18|json=0
