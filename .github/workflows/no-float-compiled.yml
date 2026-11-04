@@ -1,0 +1,23 @@
+# The operator's rule: "The gate must reject operations capable of silently introducing floating-point values." The source scan in no-float.yml reads text; this job reads what g++ produced.
+# This repository's only compiled code is one C++ review file, so this is the small form, with its scope and limits in scripts/no_float_compiled.sh. A pass means these reads found nothing in what they read. Integer only, json=0.
+name: No floating point, compiled level
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main, compiled-check-20261104]
+
+permissions:
+  contents: read
+
+jobs:
+  no-float-compiled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every C and C++ file compiled -O0 -S and read
+        run: bash scripts/no_float_compiled.sh check
+      - name: Planted floats go red, controls stay green
+        run: bash scripts/no_float_compiled.sh plants
