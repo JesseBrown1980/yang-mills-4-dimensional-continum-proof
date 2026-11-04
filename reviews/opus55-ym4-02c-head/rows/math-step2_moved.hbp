@@ -1,0 +1,4 @@
+MOVED_RECOUNT|lattice=(Z/2)x(Z/2)|group=Q8|c=8,3,3,3,1|w=19,15,5,5,5|fixed_(A,B)=4096|mirror_equal_rank_one=4096|lose_symmetry_with_inverse_dropped=3648|json=0
+MOVED_RECOUNT_TWIN|family=17|symmetric=1|positive=17|negative=0|zero=0|Z=69425/16|G_FF=91/128|json=0
+MOVED_RECOUNT_RED|witness_(A,B)_in_the_test's_indices=0,0,2,3|lowest_on_two_coordinate_vectors=-6351452416|G_FF_inverse_dropped=-91/128|json=0
+MOVED_RECOUNT_FORM|on_vectors_e_i_plus_or_minus_e_j|negative_values=16|lowest=-18496|json=0

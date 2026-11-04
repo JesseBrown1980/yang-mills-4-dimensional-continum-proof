@@ -1,0 +1,7 @@
+MUTANT|index=19|name=tau_with_plaquettes_count|exit=1|failed=8|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=40|first=tau_row_Z2_dims_2x2_q=1/5,tau_row_Z2_dims_2x2_q=1/2,tau_row_Z2_dims_2x2_q=4/5,tau_row_Z3_dims_2x1_1,1/2,1/2|json=0
+MUTANT|index=20|name=top_two_not_checked|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=40|first=|json=0
+MUTANT|index=21|name=ratio_below_tau_not_checked|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=41|first=|json=0
+MUTANT|index=22|name=wilson_exponent_flipped|exit=1|failed=2|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=41|first=exact_spectrum_Q8_dims_1,exact_spectrum_2T_dims_1|json=0
+MUTANT|index=23|name=s3_classes_swapped|exit=1|failed=2|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=41|first=exact_spectrum_S3_dims_1,top_two_S3_dims_1|json=0
+MUTANT|index=24|name=gpt6_tolerance_wide|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=40|first=|json=0
+MUTANT|index=25|name=symmetric_check_on_any_rank|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=40|first=|json=0

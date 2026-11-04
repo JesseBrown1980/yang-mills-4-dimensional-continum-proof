@@ -1,0 +1,8 @@
+LITERAL|group=Q8|dims=1x4|w=19,15,5,5,5|c_times_8=64,24,24,24,8|point_functions_with_W_plus_nonzero=512|symmetric=1|positive=25|negative=0|rank=25|json=0
+LITERAL|group=Q8|dims=1x4|w=15,19,5,5,5|c_times_8=64,24,24,24,-8|point_functions_with_W_plus_nonzero=512|symmetric=1|positive=17|negative=8|rank=25|json=0
+LITERAL|group=Q8|dims=1x4|w=-3,-3,0,1,3|c_times_8=2,-14,-10,-2,0|point_functions_with_W_plus_nonzero=384|symmetric=1|positive=8|negative=4|rank=12|json=0
+LITERAL|group=Q8|dims=1x4|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|point_functions_with_W_plus_nonzero=64|symmetric=1|positive=4|negative=1|rank=5|json=0
+LITERAL|group=Q8|dims=1x4|w=1,0,0,0,0|c_times_8=1,1,1,1,2|point_functions_with_W_plus_nonzero=64|symmetric=1|positive=5|negative=0|rank=5|json=0
+LITERAL|group=Q8|dims=1x1x4|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|point_functions_with_W_plus_nonzero=192|symmetric=1|positive=6|negative=0|rank=6|json=0
+LITERAL|group=Q8|dims=1x1x4|w=0,3,0,0,0|c_times_8=3,3,3,3,-6|point_functions_with_W_plus_nonzero=192|symmetric=1|positive=6|negative=0|rank=6|json=0
+LITERAL|group=Q8|dims=1x1x4|w=0,-1,0,0,0|c_times_8=-1,-1,-1,-1,2|point_functions_with_W_plus_nonzero=192|symmetric=1|positive=6|negative=0|rank=6|json=0

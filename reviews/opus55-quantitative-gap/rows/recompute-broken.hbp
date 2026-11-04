@@ -1,0 +1,5 @@
+OWN_BROKEN|name=negative_weight|spectrum_met=1|rows=[[2, -1, -1], [-1, 2, -1], [-1, -1, 2]]|json=0
+OWN_BROKEN|name=zero_weight|spectrum_met=1|rows=[[1, 0, 0], [0, 1, 0], [0, 0, 1]]|json=0
+OWN_BROKEN|name=asymmetric_weight|ratio_squared=1/7|tau_squared=9/25|modulus_within_tau=1|json=0
+OWN_BROKEN|name=half_the_exponent|tau=1/3|exact_ratio=3/5|false_here=1|json=0
+OWN_DONE|section=broken|mismatches=0|seconds=0|json=0

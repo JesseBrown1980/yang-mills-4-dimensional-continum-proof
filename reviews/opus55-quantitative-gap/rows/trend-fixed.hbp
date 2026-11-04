@@ -1,0 +1,47 @@
+MAX_RHO|M_over_m=2|N=2|kind=any|group=Z2|dims=1,1|values=[2, 1]|rho_ppm=333334|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=333334|tau_N_ppm=600000|n_eff_permille=1000|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=2|kind=T_nonnegative|group=Z2|dims=1,1|values=[2, 1]|rho_ppm=333334|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=333334|tau_N_ppm=600000|n_eff_permille=1000|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=3|kind=any|group=S3|dims=1,1,1|values=[1, 2, 1]|rho_ppm=333334|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=777778|n_eff_permille=1000|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=3|kind=T_nonnegative|group=S3|dims=1,1,1|values=[2, 1, 2]|rho_ppm=333334|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=777778|n_eff_permille=1000|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=4|kind=any|group=S3|dims=2,1|values=[2, 1, 2]|rho_ppm=511382|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=882353|n_eff_permille=1629|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=4|kind=T_nonnegative|group=S3|dims=2,1|values=[2, 1, 2]|rho_ppm=511382|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=882353|n_eff_permille=1629|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=6|kind=any|group=Z2|dims=3,1|values=[2, 1]|rho_ppm=588810|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=777778|tau_N_ppm=969231|n_eff_permille=1950|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=6|kind=T_nonnegative|group=Z2|dims=3,1|values=[2, 1]|rho_ppm=588810|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=777778|tau_N_ppm=969231|n_eff_permille=1950|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=8|kind=any|group=Z2|dims=2,2|values=[2, 1]|rho_ppm=146219|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=424|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=2|N=8|kind=T_nonnegative|group=Z2|dims=2,2|values=[2, 1]|rho_ppm=146219|tau_1_ppm=333334|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=424|evals_at_this_x=1938|json=0
+MAX_RHO|M_over_m=4|N=2|kind=any|group=D5|dims=1,1|values=[2, 4, 1, 4]|rho_ppm=611209|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=882353|n_eff_permille=1025|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=2|kind=T_nonnegative|group=Z2|dims=1,1|values=[4, 1]|rho_ppm=600001|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=600000|tau_N_ppm=882353|n_eff_permille=1000|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=3|kind=any|group=S3|dims=1,1,1|values=[1, 4, 1]|rho_ppm=600001|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=969231|n_eff_permille=1000|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=3|kind=T_nonnegative|group=S3|dims=1,1,1|values=[4, 1, 4]|rho_ppm=600001|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=969231|n_eff_permille=1000|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=4|kind=any|group=S3|dims=2,1|values=[1, 4, 1]|rho_ppm=869710|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=1921|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=4|kind=T_nonnegative|group=S3|dims=2,1|values=[4, 1, 4]|rho_ppm=869710|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=1921|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=6|kind=any|group=Z2|dims=3,1|values=[4, 1]|rho_ppm=957532|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=969231|tau_N_ppm=999512|n_eff_permille=2763|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=6|kind=T_nonnegative|group=Z2|dims=3,1|values=[4, 1]|rho_ppm=957532|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=969231|tau_N_ppm=999512|n_eff_permille=2763|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=8|kind=any|group=Z2|dims=2,2|values=[4, 1]|rho_ppm=688536|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1219|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=4|N=8|kind=T_nonnegative|group=Z2|dims=2,2|values=[4, 1]|rho_ppm=688536|tau_1_ppm=600000|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1219|evals_at_this_x=1712|json=0
+MAX_RHO|M_over_m=16|N=2|kind=any|group=D5|dims=1,1|values=[3, 1, 16, 1]|rho_ppm=930802|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=1200|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=2|kind=T_nonnegative|group=Z2|dims=1,1|values=[16, 1]|rho_ppm=882353|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=882353|tau_N_ppm=992218|n_eff_permille=1000|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=3|kind=any|group=S3|dims=1,1,1|values=[4, 16, 1]|rho_ppm=934807|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999512|n_eff_permille=1222|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=3|kind=T_nonnegative|group=S3|dims=1,1,1|values=[16, 1, 16]|rho_ppm=882353|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999512|n_eff_permille=1000|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=4|kind=any|group=Z2|dims=2,1|values=[16, 1]|rho_ppm=992158|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1997|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=4|kind=T_nonnegative|group=Z2|dims=2,1|values=[16, 1]|rho_ppm=992158|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1997|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=6|kind=any|group=Z2|dims=3,1|values=[16, 1]|rho_ppm=999501|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=999512|tau_N_ppm=1000000|n_eff_permille=2991|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=6|kind=T_nonnegative|group=Z2|dims=3,1|values=[16, 1]|rho_ppm=999501|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=999512|tau_N_ppm=1000000|n_eff_permille=2991|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=8|kind=any|group=Z2|dims=2,2|values=[16, 1]|rho_ppm=984126|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=1741|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=16|N=8|kind=T_nonnegative|group=Z2|dims=2,2|values=[16, 1]|rho_ppm=984126|tau_1_ppm=882353|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=1741|evals_at_this_x=1549|json=0
+MAX_RHO|M_over_m=256|N=2|kind=any|group=D4|dims=1,1|values=[1, 1, 1, 256, 2]|rho_ppm=999783|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1645|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=2|kind=T_nonnegative|group=Z2|dims=1,1|values=[256, 1]|rho_ppm=992218|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=992218|tau_N_ppm=999970|n_eff_permille=1000|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=3|kind=any|group=S3|dims=1,1,1|values=[4, 256, 1]|rho_ppm=999980|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=2068|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=3|kind=T_nonnegative|group=S3|dims=1,1,1|values=[256, 1, 256]|rho_ppm=992218|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=1000|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=4|kind=any|group=S3|dims=2,1|values=[1, 256, 1]|rho_ppm=999970|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=2000|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=4|kind=T_nonnegative|group=S3|dims=2,1|values=[256, 1, 256]|rho_ppm=999970|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=2000|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=6|kind=any|group=Z2|dims=3,1|values=[256, 1]|rho_ppm=1000000|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=2999|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=6|kind=T_nonnegative|group=Z2|dims=3,1|values=[256, 1]|rho_ppm=1000000|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=2999|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=8|kind=any|group=Z2|dims=2,2|values=[256, 1]|rho_ppm=999939|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=1874|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=256|N=8|kind=T_nonnegative|group=Z2|dims=2,2|values=[256, 1]|rho_ppm=999939|tau_1_ppm=992218|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=1874|evals_at_this_x=1605|json=0
+MAX_RHO|M_over_m=65536|N=2|kind=any|group=D5|dims=1,1|values=[5, 1, 65536, 1]|rho_ppm=1000000|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=1761|evals_at_this_x=1432|json=0
+MAX_RHO|M_over_m=65536|N=2|kind=T_nonnegative|group=Z2|dims=1,1|values=[65536, 1]|rho_ppm=999970|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=999970|tau_N_ppm=1000000|n_eff_permille=1000|evals_at_this_x=1432|json=0
+MAX_RHO|M_over_m=65536|N=3|kind=any|group=S3|dims=1,1,1|values=[1, 1, 65536]|rho_ppm=1000000|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=1768|evals_at_this_x=1432|json=0
+MAX_RHO|M_over_m=65536|N=3|kind=T_nonnegative|group=S3|dims=1,1,1|values=[65536, 1, 65536]|rho_ppm=999970|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=1000|evals_at_this_x=1432|json=0
+MAX_RHO|M_over_m=65536|N=4|kind=any|group=Z2|dims=2,1|values=[65536, 1]|rho_ppm=1000000|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=2000|evals_at_this_x=1432|json=0
+MAX_RHO|M_over_m=65536|N=4|kind=T_nonnegative|group=Z2|dims=2,1|values=[65536, 1]|rho_ppm=1000000|tau_1_ppm=999970|tau_ceil_N_over_2_ppm=1000000|tau_N_ppm=1000000|n_eff_permille=2000|evals_at_this_x=1432|json=0
+TREND_DONE|mode=fixed|seconds=291|json=0

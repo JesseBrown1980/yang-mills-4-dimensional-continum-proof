@@ -1,0 +1,41 @@
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=1|kth_root_bound_ppm=467776|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=2|kth_root_bound_ppm=273970|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=3|kth_root_bound_ppm=222433|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=4|kth_root_bound_ppm=200288|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=6|kth_root_bound_ppm=180345|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=8|kth_root_bound_ppm=171131|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=12|kth_root_bound_ppm=162388|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[2, 1]|k=16|kth_root_bound_ppm=158185|exact_ratio_ppm=146218..146219|tau_ppm=992218|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=1|kth_root_bound_ppm=974961|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=2|kth_root_bound_ppm=955393|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=3|kth_root_bound_ppm=938648|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=4|kth_root_bound_ppm=924082|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=6|kth_root_bound_ppm=900581|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=8|kth_root_bound_ppm=883359|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=12|kth_root_bound_ppm=861611|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z2|dims=2,2|values=[5, 1]|k=16|kth_root_bound_ppm=849384|exact_ratio_ppm=812023..812024|tau_ppm=999995|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=1|kth_root_bound_ppm=655173|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=2|kth_root_bound_ppm=522520|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=3|kth_root_bound_ppm=478514|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=4|kth_root_bound_ppm=455585|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=6|kth_root_bound_ppm=431738|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=8|kth_root_bound_ppm=419764|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=12|kth_root_bound_ppm=408009|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z3|dims=2,1|values=[2, 1]|k=16|kth_root_bound_ppm=402248|exact_ratio_ppm=385446..385447|tau_ppm=882353|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=1|kth_root_bound_ppm=904762|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=2|kth_root_bound_ppm=757952|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=3|kth_root_bound_ppm=677569|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=4|kth_root_bound_ppm=633963|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=6|kth_root_bound_ppm=590661|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=8|kth_root_bound_ppm=569784|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=12|kth_root_bound_ppm=549612|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Z2|dims=2,1,1|values=[2, 1]|k=16|kth_root_bound_ppm=539795|exact_ratio_ppm=511381..511382|tau_ppm=969231|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=1|kth_root_bound_ppm=992218|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=2|kth_root_bound_ppm=914270|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=3|kth_root_bound_ppm=806814|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=4|kth_root_bound_ppm=733471|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=6|kth_root_bound_ppm=659158|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=8|kth_root_bound_ppm=624178|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=12|kth_root_bound_ppm=591021|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+ITERATE|group=Q8|dims=1,1|values=[16, 4, 4, 4, 1]|k=16|kth_root_bound_ppm=575109|exact_ratio_ppm=529896..529897|tau_ppm=992218|json=0
+DIAMETER_DONE|mode=iterate|seconds=1|json=0

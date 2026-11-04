@@ -1,0 +1,93 @@
+TRACKED|python=93|listed=28|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02b/confirm-last/overdegree_values.py|module=multiset_check|candidates=reviews/opus55-ym4-02b/recheck/multiset_check.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02b/read-pr13/haar_against_engine.py|module=haarpoly|candidates=reviews/opus55-ym4-02b/haarpoly.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02b/recheck/mixed_sides.py|module=grp|candidates=reviews/opus55-ym4-02b/grp.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02b/recheck/multiset_check.py|module=grp|candidates=reviews/opus55-ym4-02b/grp.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02b/recheck/multiset_check.py|module=haarpoly|candidates=reviews/opus55-ym4-02b/haarpoly.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/clause.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/conj.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/ring3.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/t4_2t.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+STEM_ELSEWHERE|importer=reviews/opus55-ym4-02c/recheck/src/zero_clause.py|module=exact|candidates=reviews/opus55-ym4-02c/src/exact.py|json=0
+LISTED_IMPORTERS|path=scripts/no_float_gate.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/astscan.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/cube_and_cycles.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/decode.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/mutants_auto.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/run_gates.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/side_one.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-site-sign/code/zeros_srp.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/beta12_values.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/designs_explicit.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/first_diff_t2.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/haarpoly.py|direct=4|json=0
+  IMPORTER|of=reviews/opus55-ym4-02b/haarpoly.py|by=reviews/opus55-ym4-02b/beta12_values.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02b/haarpoly.py|by=reviews/opus55-ym4-02b/moments_z2.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02b/haarpoly.py|by=reviews/opus55-ym4-02b/stretch_b11.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02b/haarpoly.py|by=reviews/opus55-ym4-02b/stretch_b13.py|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/sphere_q8.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/stretch_b11.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02b/stretch_b13.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c-last/src/exps.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c-last/src/recount.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/cyl.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/exact.py|direct=7|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/cyl.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/extra.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/geom.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/gram12.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/misc.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/rp4d.py|json=0
+  IMPORTER|of=reviews/opus55-ym4-02c/src/exact.py|by=reviews/opus55-ym4-02c/src/transfer.py|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/gram12.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/rp4d.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/su2num.py|direct=0|json=0
+LISTED_IMPORTERS|path=reviews/opus55-ym4-02c/src/transfer.py|direct=0|json=0
+LISTED_IMPORTERS|path=tests/test_one_by_l_2d.py|direct=0|json=0
+LISTED_IMPORTERS|path=tests/test_subgroup_designs_4d.py|direct=0|json=0
+---- exec-like calls
+DYNAMIC|path=reviews/opus55-site-sign/code/decode.py|calls=exec|listed=1|json=0
+DYNAMIC|path=reviews/opus55-site-sign/code/run_gates.py|calls=spec_from_file_location|listed=1|json=0
+DYNAMIC|path=reviews/opus55-ym4-02b/sphere_q8.py|calls=compile,exec|listed=1|json=0
+DYNAMIC|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|calls=compile,exec|listed=1|json=0
+DYNAMIC|path=scripts/no_float_gate.py|calls=compile|listed=1|json=0
+---- closure of importers per test
+TEST_IMPORTS|test=tests/test_exact_su2_4d.py|local_closure=none|std=__future__,itertools,math,random|listed_in_closure=0|self_listed=0|json=0
+TEST_IMPORTS|test=tests/test_haar_moments_4d.py|local_closure=none|std=collections,itertools|listed_in_closure=0|self_listed=0|json=0
+TEST_IMPORTS|test=tests/test_one_by_l_2d.py|local_closure=none|std=itertools,math,sys|listed_in_closure=0|self_listed=1|json=0
+TEST_IMPORTS|test=tests/test_reflection_transfer_4d.py|local_closure=none|std=collections,itertools,math,sys|listed_in_closure=0|self_listed=0|json=0
+TEST_IMPORTS|test=tests/test_site_sign_4d.py|local_closure=none|std=collections,itertools,math,os,sys,time,tokenize|listed_in_closure=0|self_listed=0|json=0
+TEST_IMPORTS|test=tests/test_subgroup_designs_4d.py|local_closure=none|std=itertools,math,random,sys|listed_in_closure=0|self_listed=1|json=0
+---- reverse closure of listed files (who transitively imports a listed file)
+LISTED_REACHED_BY|path=scripts/no_float_gate.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/astscan.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/cube_and_cycles.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/decode.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/mutants_auto.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/run_gates.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/side_one.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-site-sign/code/zeros_srp.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/beta12_values.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/designs_explicit.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/first_diff_t2.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/haarpoly.py|transitive=4|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/sphere_q8.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/stretch_b11.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02b/stretch_b13.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c-last/src/exps.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c-last/src/recount.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/cyl.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/exact.py|transitive=7|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/gram12.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/rp4d.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/su2num.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=reviews/opus55-ym4-02c/src/transfer.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=tests/test_one_by_l_2d.py|transitive=0|tests=none|json=0
+LISTED_REACHED_BY|path=tests/test_subgroup_designs_4d.py|transitive=0|tests=none|json=0

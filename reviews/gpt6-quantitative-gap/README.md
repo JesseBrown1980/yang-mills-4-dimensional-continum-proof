@@ -1,6 +1,6 @@
 # GPT-6's review of the explicit gap at a fixed lattice
 
-The independent GPT-6 seat's report, as the operator relayed it on November 4, 2026, in answer to four questions and to a request to attack the bound. Inline mathematics that dropped out in copying is left as it came. The first column of its numerical table was lost the same way. FABLE5 reads it as q = exp(−2β), since (1/q)⁸ then gives the bound column exactly: (5⁸ − 1)/(5⁸ + 1), 255/257 and 325089/456161.
+The independent GPT-6 seat's report, as the operator relayed it on November 4, 2026, in answer to four questions and to a request to attack the bound. Inline mathematics that dropped out in copying is left as it came. The heading of the first column of its numerical table was lost the same way, and its values 0.2, 0.5 and 0.8 came through. FABLE5 reads that column as q = exp(−2β), since (1/q)⁸ then gives the bound column to its six printed digits: (5⁸ − 1)/(5⁸ + 1), 255/257 and 325089/456161. The relay's first line, `Worked for 4m 19s`, is left out here, and the padding of its table cells is normalized.
 
 | Item | Its verdict | Scope it states |
 |---|---|---|

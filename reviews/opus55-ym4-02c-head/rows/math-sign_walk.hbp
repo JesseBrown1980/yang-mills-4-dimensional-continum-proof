@@ -1,0 +1,5 @@
+SIGN_WALK|lattice=(Z/2)x(Z/2)|table=Q8.txt|order=8|configurations_read=32768|distinct_parity_vectors=4|patterns=32|constant_patterns=8|plus_or_minus_homomorphisms=8|the_same_set=1|json=0
+SIGN_WALK|lattice=(Z/2)x(Z/2)|table=2T.txt|order=24|configurations_read=7962624|distinct_parity_vectors=14|patterns=32|constant_patterns=2|plus_or_minus_homomorphisms=2|the_same_set=1|json=0
+SIGN_WALK|lattice=(Z/2)x(Z/2)|table=S3.txt|order=6|configurations_read=7776|distinct_parity_vectors=2|patterns=8|constant_patterns=4|plus_or_minus_homomorphisms=4|the_same_set=1|json=0
+SIGN_WALK|lattice=(Z/2)x(Z/2)|table=2O.txt|order=48|configurations_read=254803968|distinct_parity_vectors=49|patterns=256|constant_patterns=4|plus_or_minus_homomorphisms=4|the_same_set=1|json=0
+SIGN_WALK|lattice=(Z/2)x(Z/2)|table=2I.txt|order=120|configurations_read=24883200000|distinct_parity_vectors=163|patterns=512|constant_patterns=2|plus_or_minus_homomorphisms=2|the_same_set=1|json=0

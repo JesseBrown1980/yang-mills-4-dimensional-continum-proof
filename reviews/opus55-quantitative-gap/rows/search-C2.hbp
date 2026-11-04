@@ -1,0 +1,51 @@
+STAGE_C|group=Z2|dims=5,1|links=10|plaquettes=5|orbits=64|cases=5|top_n_eff_permille=4999|top_over_N_permille=499|top_values=[536870912, 2]|verdict=HOLDS|seconds=58|json=0
+STAGE_C|group=Z3|dims=2|links=2|plaquettes=0|orbits=3|cases=161|top_n_eff_permille=950|top_over_N_permille=475|top_values=[274877906944, 64]|verdict=HOLDS|seconds=58|json=0
+STAGE_C|group=Z3|dims=3|links=3|plaquettes=0|orbits=3|cases=157|top_n_eff_permille=941|top_over_N_permille=313|top_values=[137438953472, 1]|verdict=HOLDS|seconds=58|json=0
+STAGE_C|group=Z3|dims=4|links=4|plaquettes=0|orbits=3|cases=164|top_n_eff_permille=928|top_over_N_permille=232|top_values=[137438953472, 2]|verdict=HOLDS|seconds=58|json=0
+STAGE_C|group=Z3|dims=1,1|links=2|plaquettes=1|orbits=9|cases=156|top_n_eff_permille=979|top_over_N_permille=489|top_values=[68719476736, 256]|verdict=HOLDS|seconds=58|json=0
+STAGE_C|group=Z3|dims=2,1|links=4|plaquettes=2|orbits=27|cases=25|top_n_eff_permille=1979|top_over_N_permille=494|top_values=[4294967296, 8]|verdict=HOLDS|seconds=61|json=0
+STAGE_C|group=Z3|dims=1,1,1|links=3|plaquettes=3|orbits=27|cases=27|top_n_eff_permille=955|top_over_N_permille=318|top_values=[32768, 4]|verdict=HOLDS|seconds=63|json=0
+STAGE_C|group=Z4|dims=2|links=2|plaquettes=0|orbits=4|cases=192|top_n_eff_permille=960|top_over_N_permille=480|top_values=[268435456, 8, 268435456]|verdict=HOLDS|seconds=64|json=0
+STAGE_C|group=Z4|dims=3|links=3|plaquettes=0|orbits=4|cases=189|top_n_eff_permille=933|top_over_N_permille=311|top_values=[549755813888, 1, 524288]|verdict=HOLDS|seconds=65|json=0
+STAGE_C|group=Z4|dims=1,1|links=2|plaquettes=1|orbits=16|cases=193|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[1, 2, 1]|verdict=HOLDS|seconds=67|json=0
+STAGE_C|group=Z4|dims=2,1|links=4|plaquettes=2|orbits=64|cases=6|top_n_eff_permille=1915|top_over_N_permille=478|top_values=[24, 1, 18]|verdict=HOLDS|seconds=79|json=0
+STAGE_C|group=Z4|dims=1,1,1|links=3|plaquettes=3|orbits=64|cases=6|top_n_eff_permille=1000|top_over_N_permille=333|top_values=[1, 3, 1]|verdict=HOLDS|seconds=86|json=0
+STAGE_C|group=Z5|dims=2|links=2|plaquettes=0|orbits=5|cases=180|top_n_eff_permille=904|top_over_N_permille=452|top_values=[34359738368, 128, 256]|verdict=HOLDS|seconds=86|json=0
+STAGE_C|group=Z5|dims=1,1|links=2|plaquettes=1|orbits=25|cases=30|top_n_eff_permille=685|top_over_N_permille=342|top_values=[1, 3, 1]|verdict=HOLDS|seconds=88|json=0
+STAGE_C|group=Z6|dims=2|links=2|plaquettes=0|orbits=6|cases=222|top_n_eff_permille=924|top_over_N_permille=462|top_values=[10000, 1, 10000, 1]|verdict=HOLDS|seconds=88|json=0
+STAGE_C|group=Z6|dims=1,1|links=2|plaquettes=1|orbits=36|cases=29|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[10000, 1, 10000, 1]|verdict=HOLDS|seconds=91|json=0
+STAGE_C|group=Z2xZ2|dims=2|links=2|plaquettes=0|orbits=4|cases=229|top_n_eff_permille=926|top_over_N_permille=463|top_values=[32, 16384, 16, 549755813888]|verdict=HOLDS|seconds=92|json=0
+STAGE_C|group=Z2xZ2|dims=1,1|links=2|plaquettes=1|orbits=16|cases=228|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[2, 2, 1, 1]|verdict=HOLDS|seconds=94|json=0
+STAGE_C|group=Z2xZ2|dims=2,1|links=4|plaquettes=2|orbits=64|cases=6|top_n_eff_permille=1889|top_over_N_permille=472|top_values=[4096, 256, 536870912, 512]|verdict=HOLDS|seconds=121|json=0
+STAGE_C|group=Z2xZ2|dims=1,1,1|links=3|plaquettes=3|orbits=64|cases=6|top_n_eff_permille=627|top_over_N_permille=209|top_values=[473, 1549, 2103, 960]|verdict=HOLDS|seconds=135|json=0
+STAGE_C|group=S3|dims=2|links=2|plaquettes=0|orbits=3|cases=193|top_n_eff_permille=957|top_over_N_permille=478|top_values=[65536, 4, 549755813888]|verdict=HOLDS|seconds=135|json=0
+STAGE_C|group=S3|dims=3|links=3|plaquettes=0|orbits=3|cases=196|top_n_eff_permille=919|top_over_N_permille=306|top_values=[16384, 512, 68719476736]|verdict=HOLDS|seconds=135|json=0
+STAGE_C|group=S3|dims=1,1|links=2|plaquettes=1|orbits=11|cases=193|top_n_eff_permille=1868|top_over_N_permille=934|top_values=[32, 549755813888, 64]|verdict=HOLDS|seconds=136|json=0
+STAGE_C|group=S3|dims=1,1,1|links=3|plaquettes=3|orbits=49|cases=5|top_n_eff_permille=787|top_over_N_permille=262|top_values=[607, 2882, 1122]|verdict=HOLDS|seconds=141|json=0
+STAGE_C|group=S3|dims=2,1|links=4|plaquettes=2|orbits=49|cases=6|top_n_eff_permille=1950|top_over_N_permille=487|top_values=[521, 52, 486]|verdict=HOLDS|seconds=150|json=0
+STAGE_C|group=D4|dims=2|links=2|plaquettes=0|orbits=5|cases=286|top_n_eff_permille=937|top_over_N_permille=468|top_values=[1048576, 34359738368, 8, 8, 262144]|verdict=HOLDS|seconds=150|json=0
+STAGE_C|group=D4|dims=1,1|links=2|plaquettes=1|orbits=28|cases=30|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[1, 2, 1, 2, 1]|verdict=HOLDS|seconds=152|json=0
+STAGE_C|group=Q8|dims=2|links=2|plaquettes=0|orbits=5|cases=302|top_n_eff_permille=937|top_over_N_permille=468|top_values=[1048576, 34359738368, 8, 8, 262144]|verdict=HOLDS|seconds=152|json=0
+STAGE_C|group=Q8|dims=3|links=3|plaquettes=0|orbits=5|cases=300|top_n_eff_permille=923|top_over_N_permille=307|top_values=[2, 34359738368, 4, 2, 2]|verdict=HOLDS|seconds=153|json=0
+STAGE_C|group=Q8|dims=1,1|links=2|plaquettes=1|orbits=28|cases=30|top_n_eff_permille=1496|top_over_N_permille=748|top_values=[32768, 2048, 16, 1073741824, 137438953472]|verdict=HOLDS|seconds=155|json=0
+STAGE_C|group=D5|dims=2|links=2|plaquettes=0|orbits=4|cases=219|top_n_eff_permille=944|top_over_N_permille=472|top_values=[4194304, 68719476736, 1, 549755813888]|verdict=HOLDS|seconds=155|json=0
+STAGE_C|group=D5|dims=1,1|links=2|plaquettes=1|orbits=22|cases=222|top_n_eff_permille=1576|top_over_N_permille=788|top_values=[67108864, 68719476736, 2097152, 8589934592]|verdict=HOLDS|seconds=164|json=0
+STAGE_C|group=D6|dims=2|links=2|plaquettes=0|orbits=6|cases=386|top_n_eff_permille=924|top_over_N_permille=462|top_values=[1, 1, 10000, 10000, 1, 1]|verdict=HOLDS|seconds=165|json=0
+STAGE_C|group=D6|dims=1,1|links=2|plaquettes=1|orbits=44|cases=30|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[2, 1, 2, 1, 2, 1]|verdict=HOLDS|seconds=171|json=0
+STAGE_C|group=Dic3|dims=2|links=2|plaquettes=0|orbits=6|cases=278|top_n_eff_permille=924|top_over_N_permille=462|top_values=[1, 1, 10000, 1, 1]|verdict=HOLDS|seconds=171|json=0
+STAGE_C|group=Dic3|dims=1,1|links=2|plaquettes=1|orbits=44|cases=30|top_n_eff_permille=1000|top_over_N_permille=500|top_values=[1, 1, 2, 1, 1]|verdict=HOLDS|seconds=180|json=0
+STAGE_C|group=A4|dims=2|links=2|plaquettes=0|orbits=4|cases=188|top_n_eff_permille=923|top_over_N_permille=461|top_values=[2097152, 2048, 137438953472]|verdict=HOLDS|seconds=180|json=0
+STAGE_C|group=A4|dims=1,1|links=2|plaquettes=1|orbits=22|cases=190|top_n_eff_permille=989|top_over_N_permille=494|top_values=[512, 8, 137438953472]|verdict=HOLDS|seconds=186|json=0
+STAGE_C|group=F21|dims=2|links=2|plaquettes=0|orbits=5|cases=185|top_n_eff_permille=943|top_over_N_permille=471|top_values=[1073741824, 68719476736, 16]|verdict=HOLDS|seconds=187|json=0
+STAGE_C|group=F21|dims=1,1|links=2|plaquettes=1|orbits=41|cases=30|top_n_eff_permille=992|top_over_N_permille=496|top_values=[2048, 274877906944, 1024]|verdict=HOLDS|seconds=192|json=0
+STAGE_C|group=2T|dims=2|links=2|plaquettes=0|orbits=7|cases=289|top_n_eff_permille=880|top_over_N_permille=440|top_values=[10000, 10000, 1, 1, 10000]|verdict=HOLDS|seconds=192|json=0
+STAGE_C|group=S4|dims=2|links=2|plaquettes=0|orbits=5|cases=278|top_n_eff_permille=924|top_over_N_permille=462|top_values=[1, 10000, 10000, 1, 1]|verdict=HOLDS|seconds=192|json=0
+STAGE_C|group=S4|dims=1,1|links=2|plaquettes=1|orbits=43|cases=30|top_n_eff_permille=1270|top_over_N_permille=635|top_values=[2, 256, 512, 2, 16]|verdict=HOLDS|seconds=204|json=0
+STAGE_C|group=2O|dims=2|links=2|plaquettes=0|orbits=8|cases=353|top_n_eff_permille=887|top_over_N_permille=443|top_values=[10000, 1, 10000, 1, 10000, 1, 1, 1]|verdict=HOLDS|seconds=204|json=0
+STAGE_C|group=A5|dims=2|links=2|plaquettes=0|orbits=5|cases=270|top_n_eff_permille=555|top_over_N_permille=277|top_values=[10000, 1, 1, 1, 1]|verdict=HOLDS|seconds=205|json=0
+CLOSEST|stage=C|N=2|group=S3|dims=1,1|sector=PH|values=[32, 549755813888, 64]|M_over_m=17179869184|rho_ppm=1000000|tau_ppm=1000000|verdict=HOLDS|negatives=4|n_eff_permille=1868|n_eff_over_N_permille=934|json=0
+CLOSEST|stage=C|N=3|group=Z4|dims=1,1,1|sector=PH|values=[1, 3, 1]|M_over_m=3|rho_ppm=500001|tau_ppm=928572|verdict=HOLDS|negatives=4|n_eff_permille=1000|n_eff_over_N_permille=333|json=0
+CLOSEST|stage=C|N=4|group=Z3|dims=2,1|sector=PH|values=[4294967296, 8]|M_over_m=536870912|rho_ppm=1000000|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=1979|n_eff_over_N_permille=494|json=0
+CLOSEST|stage=C|N=10|group=Z2|dims=5,1|sector=PH|values=[536870912, 2]|M_over_m=268435456|rho_ppm=1000000|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=4999|n_eff_over_N_permille=499|json=0
+TALLY|stage=C|cases=6730|holds=6730|equal=0|violated=0|undecided=0|cases_with_negative_eigenvalue=1649|seconds=205|json=0
+SEARCH_DONE|stage=C|seconds=205|json=0

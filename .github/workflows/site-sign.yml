@@ -1,0 +1,91 @@
+# YM4-02c: which weights keep their sign on a fixed slice. Exact integer rows against the receipt, and each sabotage must exit 1 on its named check. json=0.
+name: YM4-02c site sign
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_site_sign_4d.py'
+      - 'tests/SITE_SIGN_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02c-SITE-SIGN.md'
+      - 'docs/PREDICTION-YM4-02c-SITE-SIGN.hbp'
+      - 'docs/PREDICTION-YM4-02c.hbp'
+      - 'reviews/opus55-site-sign/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/site-sign.yml'
+  pull_request:
+    paths:
+      - 'tests/test_site_sign_4d.py'
+      - 'tests/SITE_SIGN_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02c-SITE-SIGN.md'
+      - 'docs/PREDICTION-YM4-02c-SITE-SIGN.hbp'
+      - 'docs/PREDICTION-YM4-02c.hbp'
+      - 'reviews/opus55-site-sign/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/site-sign.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  site-sign:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: The 15 rows of the prediction as pushed stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 15 docs/PREDICTION-YM4-02c-SITE-SIGN.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = f73ee43fb6164d2603679cbf01d9814b7fa7ae63574f050d37608be702176929
+      - name: The rows through line 41 as pushed stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 41 docs/PREDICTION-YM4-02c-SITE-SIGN.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 3059a22589f8bd36c0086189dddc5816f750ab06d2dae24922b16a5e23033720
+      - name: The gate named in row 15 reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_site_sign_4d.py > /tmp/site-sign.out
+          cmp /tmp/site-sign.out tests/SITE_SIGN_RECEIPT.txt
+          grep -q '^SITE_SIGN_DONE|failed=0|json=0$' /tmp/site-sign.out
+          if grep -q '^FAILED' /tmp/site-sign.out; then echo "a check failed"; exit 1; fi
+      - name: Each sabotage exits 1 on its named check, with no crash
+        run: |
+          set -euo pipefail
+          read_sabotage() {
+            rc=0
+            python3 -I -X utf8 tests/test_site_sign_4d.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -qF "FAILED|check=$2|json=0" "/tmp/sab-$1.out"
+            if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi
+            echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"
+          }
+          read_sabotage side_one_in_the_rule 'Q8_exhaustive_keeps_exactly_the_patterns_of_the_rule'
+          read_sabotage count_inverted_classes_apart '2T_patterns_row_equals_the_prediction'
+          read_sabotage drop_the_cycle 'every_cube_on_(Z/2)^3_holds_an_even_number_of_negative_faces'
+          read_sabotage time_like_weight_one 'W_plus_is_0_at_each_C_with_f_negative_on_Q8_at_T=2'
+      - name: An unknown sabotage name exits 2
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_site_sign_4d.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2
+      - name: The second seat's files are the ones filed, and each delivered hash comes back
+        working-directory: reviews/opus55-site-sign
+        run: |
+          set -euo pipefail
+          sha256sum -c --quiet SHA256SUMS
+          grep '^FILED|' FILED.hbp | while IFS='|' read -r _ p _ _ _ d c _; do
+            p=${p#path=}; d=${d#sha256_as_delivered=}; c=${c#cr_removed=}
+            if [ "$c" != 0 ]; then got=$(sed 's/$/\r/' "$p" | sha256sum | cut -d' ' -f1); else got=$(sha256sum "$p" | cut -d' ' -f1); fi
+            test "$got" = "$d"
+          done
+          echo "delivered hashes all reproduced"

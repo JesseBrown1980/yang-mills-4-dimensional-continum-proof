@@ -1,0 +1,16 @@
+S3_FAMILY_N3|w_e=189|w_3cycle=73|w_odd=2^16|verdict=HOLDS|negatives=19|n_eff_permille=2297|n_eff_over_N_permille=765|json=0
+S3_FAMILY_N3|w_e=189|w_3cycle=73|w_odd=2^32|verdict=HOLDS|negatives=19|n_eff_permille=2733|n_eff_over_N_permille=911|json=0
+S3_FAMILY_N3|w_e=189|w_3cycle=73|w_odd=2^64|verdict=HOLDS|negatives=19|n_eff_permille=2880|n_eff_over_N_permille=960|json=0
+S3_FAMILY_N3|w_e=189|w_3cycle=73|w_odd=2^128|verdict=HOLDS|negatives=19|n_eff_permille=2943|n_eff_over_N_permille=981|json=0
+S3_FAMILY_N3|w_e=2|w_3cycle=1|w_odd=2^16|verdict=HOLDS|negatives=19|n_eff_permille=2569|n_eff_over_N_permille=856|json=0
+S3_FAMILY_N3|w_e=2|w_3cycle=1|w_odd=2^32|verdict=HOLDS|negatives=19|n_eff_permille=2784|n_eff_over_N_permille=928|json=0
+S3_FAMILY_N3|w_e=2|w_3cycle=1|w_odd=2^64|verdict=HOLDS|negatives=19|n_eff_permille=2892|n_eff_over_N_permille=964|json=0
+S3_FAMILY_N3|w_e=2|w_3cycle=1|w_odd=2^128|verdict=HOLDS|negatives=19|n_eff_permille=2946|n_eff_over_N_permille=982|json=0
+S3_FAMILY_N3|w_e=3|w_3cycle=1|w_odd=2^16|verdict=HOLDS|negatives=19|n_eff_permille=2561|n_eff_over_N_permille=853|json=0
+S3_FAMILY_N3|w_e=3|w_3cycle=1|w_odd=2^32|verdict=HOLDS|negatives=19|n_eff_permille=2780|n_eff_over_N_permille=926|json=0
+S3_FAMILY_N3|w_e=3|w_3cycle=1|w_odd=2^64|verdict=HOLDS|negatives=19|n_eff_permille=2890|n_eff_over_N_permille=963|json=0
+S3_FAMILY_N3|w_e=3|w_3cycle=1|w_odd=2^128|verdict=HOLDS|negatives=19|n_eff_permille=2945|n_eff_over_N_permille=981|json=0
+S3_FAMILY_N3|w_e=8|w_3cycle=1|w_odd=2^16|verdict=HOLDS|negatives=19|n_eff_permille=2426|n_eff_over_N_permille=808|json=0
+S3_FAMILY_N3|w_e=8|w_3cycle=1|w_odd=2^32|verdict=HOLDS|negatives=19|n_eff_permille=2713|n_eff_over_N_permille=904|json=0
+S3_FAMILY_N3|w_e=8|w_3cycle=1|w_odd=2^64|verdict=HOLDS|negatives=19|n_eff_permille=2856|n_eff_over_N_permille=952|json=0
+S3_FAMILY_N3|w_e=8|w_3cycle=1|w_odd=2^128|verdict=HOLDS|negatives=19|n_eff_permille=2928|n_eff_over_N_permille=976|json=0

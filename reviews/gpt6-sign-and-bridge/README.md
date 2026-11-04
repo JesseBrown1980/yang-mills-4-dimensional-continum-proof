@@ -5,13 +5,13 @@ The independent GPT-6 seat's report as the operator relayed it on November 4, 20
 | Item | Its verdict | Scope it states |
 |---|---|---|
 | The sign theorem, [`docs/NOTE-YM4-02c-SITE-SIGN.md`](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ym4-02c-reflection-transfer/docs/NOTE-YM4-02c-SITE-SIGN.md) on PR #14's branch | INDEPENDENTLY VERIFIED | Its stated hypotheses, with spatial sides at least 2. The separate short-side conjecture at k ≥ 3 stays outside it |
-| The sharp condition of [Lemma 0003](../../docs/LEMMA-0003-SUBGROUP-DESIGNS.md): agreement through t exactly when no plane has both sides 1 | INDEPENDENTLY VERIFIED at the proof level. Promote from CONJECTURE to DERIVED | The stated finite subgroups and Wilson plaquette monomials. The counts of 55 million multisets and the 2I replay are the second seat's and FABLE5's, not rerun by GPT-6 |
+| The sharp condition of [Lemma 0003](../../docs/LEMMA-0003-SUBGROUP-DESIGNS.md): agreement through t exactly when no plane has both sides 1 | INDEPENDENTLY VERIFIED at the proof level. Promote from CONJECTURE to DERIVED | The stated finite subgroups and Wilson plaquette monomials. The counts of 55 million multisets are the second seat's and FABLE5's, which GPT-6 left unrun, and the 2I replay it names is outstanding |
 | [PR #14](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14) at `5a2ce17` | HOLD, with no flaw named in the finite-lattice construction | Three conditions: an adversarial review of the current head covering everything after `b302549`; reconciliation of the 28-row float list against files and hashes, with every exception accepted explicitly; the operator's approval of that fixed head |
 | The next spectral result | A Poincaré inequality for the ground-state-transformed transfer operator | Formulated on the objects of PR #14, which it holds does not prove it |
 
-Beside its section 3, from the operator's correction further down: the physical volume stays finite, so the uniformity needed is in the number of sites per side along L = L_phys/a as a → 0 at fixed L_phys.
+Beside its section 3, from the operator's correction further down: the physical volume stays finite. On FABLE5's reading, which neither quote states, the uniformity needed is in the number of sites per side along L = L_phys/a with β following a, as a → 0 at fixed L_phys.
 
-Beside "a rigorous finite-lattice Yang–Mills existence and positive-gap result": this is Theorem 5 of Lemma 0004 and the compactness bound before it, on draft PR #14 under the operator's HOLD, for SU(2) at each fixed lattice and β > 0. Its quantitative size is OPEN. The separate S₃ verdict on the 3×4 lattice, in the finite Yang–Mills repository, stays under its own HOLD.
+Beside "a rigorous finite-lattice Yang–Mills existence and positive-gap result": this is Theorem 5 of Lemma 0004 and the compactness bound before it, on draft PR #14 under the operator's HOLD at this filing, since merged on his approval, for SU(2) at each fixed lattice and β > 0. Its quantitative size, OPEN at this filing, is [YM4-02d](../../docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md), from PR #22, DERIVED. The separate S₃ verdict on the 3×4 lattice, in the finite Yang–Mills repository, stays under its own HOLD.
 
 ## The report, as relayed
 

@@ -1,0 +1,99 @@
+LIST|file_rows=28|folder_rows=0|bad_rows=0|json=0
+ROW|path=scripts/no_float_gate.py|listed_findings=93|gate_findings=93|count_ok=1|listed_sha=935bd77b893026a8|blob_sha=935bd77b893026a8|pin_ok=1|bytes=123061|crlf_lines=0|lf=1813|json=0
+ROW|path=reviews/opus55-site-sign/code/astscan.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=ae838036fe127cac|blob_sha=ae838036fe127cac|pin_ok=1|bytes=1105|crlf_lines=0|lf=16|json=0
+  FINDING|path=reviews/opus55-site-sign/code/astscan.py|[ast_parse] ast.parse at line 3
+ROW|path=reviews/opus55-site-sign/code/cube_and_cycles.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=5572c3605af4a5c3|blob_sha=5572c3605af4a5c3|pin_ok=1|bytes=8720|crlf_lines=0|lf=239|json=0
+  FINDING|path=reviews/opus55-site-sign/code/cube_and_cycles.py|power with an unproven exponent at line 198
+  FINDING|path=reviews/opus55-site-sign/code/cube_and_cycles.py|power with an unproven exponent at line 199
+ROW|path=reviews/opus55-site-sign/code/decode.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=19233b6477ae855a|blob_sha=19233b6477ae855a|pin_ok=1|bytes=376|crlf_lines=0|lf=4|json=0
+  FINDING|path=reviews/opus55-site-sign/code/decode.py|exec at line 4
+ROW|path=reviews/opus55-site-sign/code/mutants_auto.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=94b90c5143a88af7|blob_sha=94b90c5143a88af7|pin_ok=1|bytes=10206|crlf_lines=0|lf=208|json=0
+  FINDING|path=reviews/opus55-site-sign/code/mutants_auto.py|[ast_parse] ast.parse at line 138
+  FINDING|path=reviews/opus55-site-sign/code/mutants_auto.py|[ast_parse] ast.parse at line 181
+  FINDING|path=reviews/opus55-site-sign/code/mutants_auto.py|[ast_parse] ast.parse at line 166
+ROW|path=reviews/opus55-site-sign/code/run_gates.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=30334924502ed5de|blob_sha=30334924502ed5de|pin_ok=1|bytes=822|crlf_lines=0|lf=15|json=0
+  FINDING|path=reviews/opus55-site-sign/code/run_gates.py|import importlib.util at line 1
+  FINDING|path=reviews/opus55-site-sign/code/run_gates.py|[import_allow] import importlib.util, outside the allowed list at line 1
+  FINDING|path=reviews/opus55-site-sign/code/run_gates.py|[module_store] a store into the module sys at line 7
+ROW|path=reviews/opus55-site-sign/code/side_one.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=9581c8d895b50376|blob_sha=9581c8d895b50376|pin_ok=1|bytes=3307|crlf_lines=0|lf=61|json=0
+  FINDING|path=reviews/opus55-site-sign/code/side_one.py|power with an unproven exponent at line 51
+ROW|path=reviews/opus55-site-sign/code/zeros_srp.py|listed_findings=4|gate_findings=4|count_ok=1|listed_sha=b2975d68590fc2a2|blob_sha=b2975d68590fc2a2|pin_ok=1|bytes=9374|crlf_lines=0|lf=227|json=0
+  FINDING|path=reviews/opus55-site-sign/code/zeros_srp.py|power with an unproven exponent at line 48
+  FINDING|path=reviews/opus55-site-sign/code/zeros_srp.py|power with an unproven exponent at line 77
+  FINDING|path=reviews/opus55-site-sign/code/zeros_srp.py|power with an unproven exponent at line 97
+  FINDING|path=reviews/opus55-site-sign/code/zeros_srp.py|power with an unproven exponent at line 97
+ROW|path=reviews/opus55-ym4-02b/beta12_values.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=f5cf9b7eee0d7043|blob_sha=f5cf9b7eee0d7043|pin_ok=1|bytes=2372|crlf_lines=0|lf=62|json=0
+  FINDING|path=reviews/opus55-ym4-02b/beta12_values.py|literal_eval at line 20
+ROW|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=4b7312f05f90f286|blob_sha=4b7312f05f90f286|pin_ok=1|bytes=7122|crlf_lines=0|lf=177|json=0
+  FINDING|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|power with an unproven exponent at line 66
+  FINDING|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|power with an unproven exponent at line 170
+ROW|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=f9633a24b96ff006|blob_sha=f9633a24b96ff006|pin_ok=1|bytes=5484|crlf_lines=0|lf=143|json=0
+  FINDING|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|power with an unproven exponent at line 87
+  FINDING|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|power with an unproven exponent at line 86
+ROW|path=reviews/opus55-ym4-02b/designs_explicit.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=d2ce84c4e8a79bf7|blob_sha=d2ce84c4e8a79bf7|pin_ok=1|bytes=4765|crlf_lines=0|lf=122|json=0
+  FINDING|path=reviews/opus55-ym4-02b/designs_explicit.py|power with an unproven exponent at line 26
+  FINDING|path=reviews/opus55-ym4-02b/designs_explicit.py|power with an unproven exponent at line 46
+  FINDING|path=reviews/opus55-ym4-02b/designs_explicit.py|power with an unproven exponent at line 115
+ROW|path=reviews/opus55-ym4-02b/first_diff_t2.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=eb48b1bf1c4e7937|blob_sha=eb48b1bf1c4e7937|pin_ok=1|bytes=4370|crlf_lines=0|lf=125|json=0
+  FINDING|path=reviews/opus55-ym4-02b/first_diff_t2.py|power with an unproven exponent at line 120
+  FINDING|path=reviews/opus55-ym4-02b/first_diff_t2.py|power with an unproven exponent at line 64
+ROW|path=reviews/opus55-ym4-02b/haarpoly.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=0179ed29013fb041|blob_sha=0179ed29013fb041|pin_ok=1|bytes=5531|crlf_lines=0|lf=175|json=0
+  FINDING|path=reviews/opus55-ym4-02b/haarpoly.py|power with an unproven exponent at line 50
+ROW|path=reviews/opus55-ym4-02b/sphere_q8.py|listed_findings=8|gate_findings=8|count_ok=1|listed_sha=1baf95398dcdbed9|blob_sha=1baf95398dcdbed9|pin_ok=1|bytes=1358|crlf_lines=0|lf=22|json=0
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|exec at line 6
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|exec at line 9
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|compile at line 6
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|compile at line 9
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|literal_eval at line 12
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|[module_flow] the module itertools as a value at line 4
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|[module_flow] the module math as a value at line 4
+  FINDING|path=reviews/opus55-ym4-02b/sphere_q8.py|[module_flow] the module sys as a value at line 4
+ROW|path=reviews/opus55-ym4-02b/stretch_b11.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=8c6f6e0cbfa97bdf|blob_sha=8c6f6e0cbfa97bdf|pin_ok=1|bytes=12048|crlf_lines=0|lf=345|json=0
+  FINDING|path=reviews/opus55-ym4-02b/stretch_b11.py|literal_eval at line 241
+  FINDING|path=reviews/opus55-ym4-02b/stretch_b11.py|power with an unproven exponent at line 78
+ROW|path=reviews/opus55-ym4-02b/stretch_b13.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=2873d961a591d8a9|blob_sha=2873d961a591d8a9|pin_ok=1|bytes=14131|crlf_lines=0|lf=398|json=0
+  FINDING|path=reviews/opus55-ym4-02b/stretch_b13.py|literal_eval at line 241
+  FINDING|path=reviews/opus55-ym4-02b/stretch_b13.py|power with an unproven exponent at line 78
+ROW|path=reviews/opus55-ym4-02c-last/src/exps.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=f58126c6264f4fb0|blob_sha=f58126c6264f4fb0|pin_ok=1|bytes=443|crlf_lines=0|lf=12|json=0
+  FINDING|path=reviews/opus55-ym4-02c-last/src/exps.py|[ast_parse] ast.parse at line 3
+ROW|path=reviews/opus55-ym4-02c-last/src/recount.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=097bc2dfd7b83225|blob_sha=097bc2dfd7b83225|pin_ok=1|bytes=5088|crlf_lines=0|lf=106|json=0
+  FINDING|path=reviews/opus55-ym4-02c-last/src/recount.py|power with an unproven exponent at line 63
+  FINDING|path=reviews/opus55-ym4-02c-last/src/recount.py|power with an unproven exponent at line 65
+ROW|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=fef482aae1cc87e8|blob_sha=fef482aae1cc87e8|pin_ok=1|bytes=2776|crlf_lines=0|lf=62|json=0
+  FINDING|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|exec at line 12
+  FINDING|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|compile at line 12
+  FINDING|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|[ast_parse] ast.parse at line 9
+ROW|path=reviews/opus55-ym4-02c/src/cyl.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=8f7bc4cbbb34acb8|blob_sha=8f7bc4cbbb34acb8|pin_ok=1|bytes=3339|crlf_lines=0|lf=75|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/cyl.py|power with an unproven exponent at line 68
+  FINDING|path=reviews/opus55-ym4-02c/src/cyl.py|power with an unproven exponent at line 72
+  FINDING|path=reviews/opus55-ym4-02c/src/cyl.py|power with an unproven exponent at line 72
+ROW|path=reviews/opus55-ym4-02c/src/exact.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=1041b6a67f6f4e12|blob_sha=1041b6a67f6f4e12|pin_ok=1|bytes=5267|crlf_lines=0|lf=144|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/exact.py|power with an unproven exponent at line 54
+ROW|path=reviews/opus55-ym4-02c/src/gram12.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=5a23981717540466|blob_sha=5a23981717540466|pin_ok=1|bytes=5342|crlf_lines=0|lf=108|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/gram12.py|power with an unproven exponent at line 43
+  FINDING|path=reviews/opus55-ym4-02c/src/gram12.py|power with an unproven exponent at line 43
+ROW|path=reviews/opus55-ym4-02c/src/rp4d.py|listed_findings=1|gate_findings=1|count_ok=1|listed_sha=0f47723c938b694c|blob_sha=0f47723c938b694c|pin_ok=1|bytes=19545|crlf_lines=0|lf=379|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/rp4d.py|power with an unproven exponent at line 201
+ROW|path=reviews/opus55-ym4-02c/src/su2num.py|listed_findings=2|gate_findings=2|count_ok=1|listed_sha=8ce8342823c93143|blob_sha=8ce8342823c93143|pin_ok=1|bytes=3113|crlf_lines=0|lf=85|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/su2num.py|power with an unproven exponent at line 12
+  FINDING|path=reviews/opus55-ym4-02c/src/su2num.py|power with an unproven exponent at line 51
+ROW|path=reviews/opus55-ym4-02c/src/transfer.py|listed_findings=9|gate_findings=9|count_ok=1|listed_sha=727b5a03b9fd4eee|blob_sha=727b5a03b9fd4eee|pin_ok=1|bytes=10571|crlf_lines=0|lf=251|json=0
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 41
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 42
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 120
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 97
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 244
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 211
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 211
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 243
+  FINDING|path=reviews/opus55-ym4-02c/src/transfer.py|power with an unproven exponent at line 243
+ROW|path=tests/test_one_by_l_2d.py|listed_findings=3|gate_findings=3|count_ok=1|listed_sha=18a4bfae533864cf|blob_sha=18a4bfae533864cf|pin_ok=1|bytes=14650|crlf_lines=0|lf=376|json=0
+  FINDING|path=tests/test_one_by_l_2d.py|[more_attrs] times at line 188
+  FINDING|path=tests/test_one_by_l_2d.py|[more_attrs] times at line 221
+  FINDING|path=tests/test_one_by_l_2d.py|[more_attrs] times at line 221
+ROW|path=tests/test_subgroup_designs_4d.py|listed_findings=4|gate_findings=4|count_ok=1|listed_sha=b9fc7fc2d5fe57e5|blob_sha=b9fc7fc2d5fe57e5|pin_ok=1|bytes=24389|crlf_lines=0|lf=609|json=0
+  FINDING|path=tests/test_subgroup_designs_4d.py|power with an unproven exponent at line 506
+  FINDING|path=tests/test_subgroup_designs_4d.py|power with an unproven exponent at line 506
+  FINDING|path=tests/test_subgroup_designs_4d.py|power with an unproven exponent at line 554
+  FINDING|path=tests/test_subgroup_designs_4d.py|power with an unproven exponent at line 571
+TOTAL|findings=162|json=0

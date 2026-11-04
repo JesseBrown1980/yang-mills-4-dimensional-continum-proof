@@ -1,0 +1,6 @@
+MUTANT|index=3|name=plaq_wrong_order|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=51|first=|json=0
+MUTANT|index=4|name=A_inverted_in_D|exit=0|failed=0|rows_equal_receipt=0|class=SCRIPT_PASSES_ONLY_THE_RECEIPT_DIFFERS|seconds=44|first=|json=0
+MUTANT|index=5|name=A_squared|exit=1|failed=15|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=51|first=certificate_Z2_dims_2x2_q=1/5,ratio_below_tau_Z2_dims_2x2_q=1/5,GPT6_value_in_bracket_q=1/5,GPT6_value_in_bracket_q=1/2|json=0
+MUTANT|index=6|name=B_without_inverse|exit=1|failed=5|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=44|first=exact_spectrum_2T_dims_1,exact_spectrum_negative_weight,the_bound_is_false_on_negative_weight,exact_spectrum_zero_weight|json=0
+MUTANT|index=7|name=gauge_back_without_inverse|exit=1|failed=18|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=15|first=orbits_S3_dims_1,exact_spectrum_S3_dims_1,orbits_Q8_dims_1,exact_spectrum_Q8_dims_1|json=0
+MUTANT|index=8|name=gauge_out_on_the_right|exit=143|failed=0|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=368|first=|json=0

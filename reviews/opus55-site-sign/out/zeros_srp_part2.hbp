@@ -1,0 +1,13 @@
+IND_ZERO_SRP_DIRECT|lattice=1x1xT2|group=Q8|slices=64|slice_g_-1=24|slice_g_+1=40|C_with_f<0=1920|of_those_with_W_plus_not_identically_0=0|A_per_C=8|json=0
+IND_ZERO_SRP_REACHABLE|lattice=1x1xT2|group=Q8|C0_read=64|with_g_-1=24|with_g_+1=40|C1_read_with_every_time_like_plaquette_central=2048|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=3x1xT2|group=Q8|C0_read=400|with_g_-1=164|with_g_+1=236|C1_read_with_every_time_like_plaquette_central=204800|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=2x2xT2|group=Q8|C0_read=400|with_g_-1=152|with_g_+1=248|C1_read_with_every_time_like_plaquette_central=204800|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=3x3xT2|group=Q8|C0_read=200|with_g_-1=77|with_g_+1=123|C1_read_with_every_time_like_plaquette_central=102400|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=2x2x2xT2|group=Q8|C0_read=120|with_g_-1=0|with_g_+1=120|C1_read_with_every_time_like_plaquette_central=61440|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=2x2x3xT2|group=Q8|C0_read=120|with_g_-1=39|with_g_+1=81|C1_read_with_every_time_like_plaquette_central=61440|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=1x1x1xT2|group=Q8|C0_read=512|with_g_-1=192|with_g_+1=320|C1_read_with_every_time_like_plaquette_central=32768|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=3x3x3xT2|group=Q8|C0_read=40|with_g_-1=16|with_g_+1=24|C1_read_with_every_time_like_plaquette_central=10240|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_T4|lattice=1x1xT4|group=Q8|slices_with_g_nonzero=64|paths_C0_C1_C2_with_every_plaquette_central_and_g(C2)_opposite_g(C0)=0|json=0
+IND_LEMMA_CONTROL|lattice=1x1xT2|time_like_weight=1|fixed_weight=1,-1|N(F)=-960/4096|reduced_expected=-15/64|json=0
+IND_ONE_WEIGHT|lattice=1x1xT2|w=1,-1,0,0,0_on_every_plaquette|F=indicator(s0=-1,s1=+1)|N(F)_times_8^4_times_8^2=0|lowest_N(delta_C)_scaled=0|C_with_N(delta_C)<0=0_of_4096|json=0
+IND_ZERO_DONE|json=0

@@ -1,0 +1,147 @@
+HOLDS at commit f7a3dbcafdb30288fd161c9e1e09cb413f042295 of yang-mills-4-dimensional-continum-proof. Each old text was checked against the file at the stated line by opus/write_holds.py.
+
+======== H1a
+FILE: tests/test_quantitative_gap.py
+LINE: 556
+OLD:
+    modules = sorted(m for m in ("itertools", "math", "os", "sys", "time") if m in sys.modules)
+NEW:
+    with open(os.path.abspath(__file__), encoding="utf-8") as handle:
+        modules = sorted(line.split()[1] for line in handle if line.startswith("import "))
+SHOWN BY: MEASURED: scripts/no_float_gate.py at this commit, local and hosted run 41840421497: NO_FLOAT|file=tests/test_quantitative_gap.py|first=[sys_modules] .modules at line 556|count=1, NO_FLOAT_DONE|code_files=29|failed=1. Required checks no-float and no-float-base read failure at this commit. The new text is commit c64eed3, hosted run 41841734786 success.
+
+======== H1b
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 87
+OLD:
+Every predicted row was met on its first run, `failed=0`.
+NEW:
+Every row the test reads was met on its first run, `failed=0`, and the receipt is byte-equal to that run. The clause `integers_only_under_scripts/no_float_gate.py=1` of the limits row was missed at commit `f7a3dbc`: the gate refused `.modules` at line 556, `failed=1`, in hosted run 41840421497, which skipped the test's own steps, and an earlier local read held 28 code files, before the test was tracked. Commit `c64eed3` reads the imports from the source with the same row, and hosted run 41841734786 reads `failed=0`, the receipt byte-equal and each sabotage exit 1.
+SHOWN BY: MEASURED: prediction row 35 against the gate rows above; hosted steps at f7a3dbc: gate failure, receipt skipped, sabotages skipped; session transcript line 13952: NO_FLOAT_DONE|code_files=28|failed=0 before git add, hosted code_files=29.
+
+======== H1c
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 3
+OLD:
+are MEASURED below, with every predicted row met.
+NEW:
+are MEASURED below: every row the test reads was met, and the gate clause of the limits row was met at the next commit, as stated below.
+SHOWN BY: As H1b.
+
+======== H1d
+FILE: README.md
+LINE: 17
+OLD:
+Exact tests on Z2, Z3, S3, Q8 and 2T MEASURED against a prediction pushed first: every row met, with equality on Z2 on one link.
+NEW:
+Exact tests on Z2, Z3, S3, Q8 and 2T MEASURED against a prediction pushed first: every row the test reads met on its first run, the gate clause of the limits row met at `c64eed3`, with equality on Z2 on one link.
+SHOWN BY: As H1b.
+
+======== H2a
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 3
+OLD:
+GPT-6, a different model family, read the proof the same day, verified it, and added the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md).
+NEW:
+GPT-6, a different model family, read FABLE5's sketch of Steps 1 and 2 the same day, for the Wilson weight, tagged CONJECTURE, and returned a proof of its own for SU(2) at the proof level, with the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md). Its report came before this note was written, so the general weight and Step 3 as written here await a different model family.
+SHOWN BY: MEASURED, session transcript of 2026-11-04, session clock: line 13592, 12:17:33, the sketch, 'PLEASE ATTACK, CONJECTURE, unreviewed', holding no contraction-to-eigenvalue step and no weight in [m, M]; line 13702, 12:39:44, the relay; line 13779, 12:48:42, the first write of the note; no later relay of GPT-6 on this bound through line 15415. The report's words: 'Independent proof', 'For the finite SU(2) Wilson lattice'. What the operator pasted is CANNOT_SEE.
+
+======== H2b
+FILE: README.md
+LINE: 17
+OLD:
+DERIVED, with the proof verified by GPT-6, which added the full-space route.
+NEW:
+DERIVED. GPT-6 verified the SU(2) bound at the proof level from a sketch and added the full-space route. The general weight and Step 3 await a different model family.
+SHOWN BY: As H2a.
+
+======== H2c
+FILE: docs/PREDICTION-YM4-02d.hbp
+LINE: 37
+OLD:
+(new rows after the 36 pinned rows)
+NEW:
+YM4_02D_CORRECTION|beside_row=1|field=proof_read_and_verified_by=GPT-6|measured=GPT-6_read_FABLE5's_sketch_of_steps_1_and_2_for_the_Wilson_weight_and_returned_its_own_proof_for_SU(2)|report_relayed=12:39:44Z|note_first_written=12:48:42Z|session_clock=1|json=0
+YM4_02D_CORRECTION|beside_row=35|clause=integers_only_under_scripts/no_float_gate.py=1|measured=failed=1_at_f7a3dbc_hosted_run_41840421497|met_at=c64eed3_hosted_run_41841734786|json=0
+SHOWN BY: A correction travels beside the claim. The workflow pins head -n 36, and read_rows reads named tags only, so these rows leave the pin and the test unchanged (DERIVED from the workflow and the code).
+
+======== H3
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 71
+OLD:
+**Sharp in this generality.** Z2 on one link, with w = 1 at the identity and q at the other element, has N_ℓ = 1, M/m = 1/q and T = ½[[1, q], [q, 1]], with eigenvalues (1 ± q)/2. So λ₁/λ₀ = (1 − q)/(1 + q) = τ, and no smaller constant holds for all such weights.
+NEW:
+**Sharp at N_ℓ = 1.** Z2 on one link, with w = 1 at the identity and q at the other element, has N_ℓ = 1, M/m = 1/q and T = ½[[1, q], [q, 1]], with eigenvalues (1 ± q)/2. So λ₁/λ₀ = (1 − q)/(1 + q) = τ, the least constant at N_ℓ = 1. Equality holds exactly when N_ℓ = 1 and G has a closed subgroup of index 2, with w = M on it and m off it, where μ = τλ₀, or w = m on it and M off it, where μ = −τλ₀: DERIVED, and MEASURED on 25 finite groups, 1,348 equal cases, all in this family. For N_ℓ ≥ 2 the inequality is strict on every weight, DERIVED, with 12,892 exact cases all strict, and the exponent N_ℓ is approached as M/m grows: S3 on 1×1 with weights 1, 2, 2¹⁶⁰ on the identity, the 3-cycles and the transpositions reads an effective exponent, the n with ((M/m)^n − 1)/((M/m)^n + 1) equal to the ratio, of 1.972 of 2, and S3 on 1×1×1 with 2, 1, 2¹²⁸ reads 2.946 of 3. Among weights with T ≥ 0 on the orbits the largest share measured is 1/2, on Z2 on L×1. SU(2) is connected, so its inequality is strict at every β > 0, and on one link it reads I₂(β)/I₁(β), an effective exponent at most 0.249 at the nine β measured.
+SHOWN BY: DERIVED: DERIVATIONS.txt section 2. MEASURED: out/search-A.hbp, out/search-B.hbp (equal=372 and 976, ALERT rows 0), out/search-C*.hbp, out/search-D2.hbp, out/search-E*.hbp (equal=0), out/trend-s3.hbp, out/trend-s3-n3.hbp, out/trend-su2.hbp, out/trend-fixed.hbp.
+
+======== H4a
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 52
+OLD:
+By Theorem 5(d)'s argument, |θ| < 1 for θ = μ/λ₀.
+NEW:
+With θ = μ/λ₀, |θ| < 1: for real unit h, |μ| = |⟨h, Th⟩| < ⟨|h|, T|h|⟩ ≤ λ₀, the first step strict because the kernel is strictly positive and h changes sign, the second because λ₀ is the largest eigenvalue of the compact self-adjoint T. Theorem 5(d) reads μ < λ₀ at β > 0, where T ≥ 0, and this line also covers the negative μ of a general weight.
+SHOWN BY: DERIVED: Lemma 0004, Theorem 5(d), reads 'so lambda_0 = ||T_op|| > 0 is an eigenvalue' and 'the rest lie strictly below lambda_0', with T >= 0 from part (a). A general weight has negative eigenvalues: Z2 with w = 1/4, 1 has mu = -3/8, equal to -tau*lambda_0, MEASURED (out/search-A.hbp, 8,496 of 9,012 cases with a negative eigenvalue).
+
+======== H4b
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 80
+OLD:
+and |θ| < 1, which Theorem 5(d)'s argument gives for this strictly positive kernel.
+NEW:
+and |θ| < 1, which the line in Step 3 gives for this strictly positive kernel.
+SHOWN BY: As H4a.
+
+======== H5
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 79
+OLD:
+This seat read those statements and did not rework Birkhoff's own proof.
+NEW:
+This seat read a search summary quoting those statements and left Birkhoff's own proof unreworked. The second seat opened both papers on November 4, 2026: Lemmens and Nussbaum, equation (2.2) and Theorem 2.9, for cones in any real vector space, with C taken together with 0, which covers SU(2); Reeb, Kastoryano and Wolf, Theorems 4 and 5, for proper cones in finite dimension, where Theorem 5 is the eigenvalue bound itself.
+SHOWN BY: MEASURED: session transcript lines 13764 and 13773 are one WebSearch whose summary closes 'I did not find an explicit source stating the second-eigenvalue-ratio bound'; lines 12900 to 14600 hold no WebFetch of either paper. Opened here: arXiv 1304.7921v1 pages 5, 9, 10; arXiv 1102.5170 pages 3, 5, 6.
+
+======== H6a
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 5
+OLD:
+[section 7 of Lemma 0004](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ym4-02c-reflection-transfer/docs/LEMMA-0004-REFLECTION-TRANSFER.md), on draft PR #14 under the operator's HOLD, and they are written out here so this note reads alone.
+NEW:
+[section 7 of Lemma 0004](LEMMA-0004-REFLECTION-TRANSFER.md), on main since PR #14 merged at `e7a12fc`, and they are written out here so this note reads alone.
+SHOWN BY: MEASURED: gh pr view 14: state=MERGED, mergedAt 2026-11-04T15:00:20Z, merge commit e7a12fc, after this commit. Section 7 on main differs from the branch read here in one line, the pointer to YM4-02d.
+
+======== H6b
+FILE: README.md
+LINE: 17
+OLD:
+The objects come from draft PR #14, on the operator's HOLD.
+NEW:
+The objects come from Lemma 0004, on main since PR #14.
+SHOWN BY: As H6a.
+
+======== H6c
+FILE: docs/PROOF_OBLIGATIONS.md
+LINE: 9
+OLD:
+[DERIVED, proof verified by GPT-6, exact tests MEASURED, second seat's attack OPEN](NOTE-YM4-02d-QUANTITATIVE-GAP.md)
+NEW:
+Resolve the merge conflict by keeping main's row at line 9 and replacing, in it, 'DERIVED on PR #22, unmerged, with the second seat's attack OPEN' by 'DERIVED, the SU(2) bound verified by GPT-6 at the proof level from a sketch, exact tests MEASURED, with the second seat's attack filed'.
+SHOWN BY: MEASURED: gh pr view 22: mergeable=CONFLICTING, mergeStateStatus=DIRTY; git merge-tree origin/main f7a3dbc: CONFLICT (content) in docs/PROOF_OBLIGATIONS.md, and README.md auto-merges. Plus H2a.
+
+======== H7
+FILE: docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md
+LINE: 119
+OLD:
+On each case of at most 32 orbits, the cross-ratio with A equals the one without A at every quadruple, each averaged entry lies in [m^{N_ℓ}, M^{N_ℓ}], and the largest cross-ratio is at most (M/m)^{2N_ℓ}.
+NEW:
+On each case of at most 32 orbits, each averaged entry lies in [m^{N_ℓ}, M^{N_ℓ}], and the largest cross-ratio is at most (M/m)^{2N_ℓ}. The field `A_cancels=1` is an identity of the code's multiplication, reading 1 for any array in place of A, and the cancellation of A stands on Step 1, DERIVED.
+SHOWN BY: MEASURED: mutant cross_ratio_any_array_for_A, a[i] = i*i + 7 in place of the plaquette weights: exit 0, failed 0, rows byte-equal to the receipt (out/mut-c.hbp). The code multiplies by A where the kernel has A^(1/2), and each side holds the same six factors.
+
+======== H8
+FILE: reviews/gpt6-quantitative-gap/README.md
+LINE: 3
+OLD:
+The first column of its numerical table was lost the same way. FABLE5 reads it as q = exp(−2β), since (1/q)⁸ then gives the bound column exactly: (5⁸ − 1)/(5⁸ + 1), 255/257 and 325089/456161.
+NEW:
+The heading of the first column of its numerical table was lost the same way, and its values 0.2, 0.5 and 0.8 came through. FABLE5 reads that column as q = exp(−2β), since (1/q)⁸ then gives the bound column to its six printed digits: (5⁸ − 1)/(5⁸ + 1), 255/257 and 325089/456161. The relay's first line, `Worked for 4m 19s`, is left out here, and the padding of its table cells is normalized.
+SHOWN BY: MEASURED: relay, session transcript line 13702, against the filed block: 49 diff lines, all the first line, table padding and the last newline (opus/relay_diff.py). Rows GPT6_FLOAT in out/record-check.hbp: tau rounds to 999995, 992218, 712663; ratios 812023026, 146218419, 12665598 ppb round to the three printed values; on 4x1, the other Z2 lattice with 8 links and 32 orbits, the ratios read 995106, 624404, 138840 ppm, so 2x2 is the lattice.

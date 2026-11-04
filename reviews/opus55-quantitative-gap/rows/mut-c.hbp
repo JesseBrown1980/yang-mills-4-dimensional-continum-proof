@@ -1,0 +1,11 @@
+MUTANT|index=8|name=gauge_out_on_the_right|exit=1|failed=1|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=0|first=orbits_S3_dims_1|json=0
+MUTANT|index=9|name=cross_ratio_any_array_for_A|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=41|first=|json=0
+MUTANT|index=10|name=cross_ratio_no_bound_check|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=41|first=|json=0
+MUTANT|index=11|name=entries_never_checked|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=41|first=|json=0
+MUTANT|index=12|name=certificate_no_negative_side|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=38|first=|json=0
+MUTANT|index=13|name=certificate_at_lo_not_tau_lo|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=41|first=|json=0
+MUTANT|index=14|name=certificate_always_true|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=32|first=|json=0
+MUTANT|index=15|name=full_space_runs_on_orbits|exit=0|failed=0|rows_equal_receipt=0|class=SCRIPT_PASSES_ONLY_THE_RECEIPT_DIFFERS|seconds=32|first=|json=0
+MUTANT|index=16|name=full_space_top_not_checked|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=39|first=|json=0
+MUTANT|index=17|name=no_class_function_check|exit=0|failed=0|rows_equal_receipt=1|class=SURVIVES|seconds=40|first=|json=0
+MUTANT|index=18|name=no_symmetry_check|exit=1|failed=1|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=41|first=refused_asymmetric_weight|json=0

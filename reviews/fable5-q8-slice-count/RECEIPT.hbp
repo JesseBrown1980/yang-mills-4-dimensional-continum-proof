@@ -1,0 +1,7 @@
+SLICE|lattice=(Z/2)x(Z/1)|configs=4096|p1_is_inverse_of_p0=2176|same_class=3712|both_central=1024|central_with_different_sign=384|json=0
+SLICE_HOLONOMY_TRIVIAL|configs=512|p1_is_inverse_of_p0=320|json=0
+SLICE_CLASS_PAIRS|0,0=320|0,1=192|1,0=192|1,1=320|2,2=1024|3,3=1024|4,4=1024|json=0
+SLICE_WEIGHT|w=3,2,1,-1,-2|slice_product_negative=0|plaquette_negative_at_p0=2048|json=0
+SLICE_WEIGHT|w=1,1,1,-1,-1|slice_product_negative=0|plaquette_negative_at_p0=2048|json=0
+SLICE_WEIGHT|w=3,2,1,-1,2|slice_product_negative=0|plaquette_negative_at_p0=1024|json=0
+SLICE_WEIGHT|w=1,-1,1,1,1|slice_product_negative=384|plaquette_negative_at_p0=512|json=0

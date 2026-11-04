@@ -1,0 +1,12 @@
+GROUP_SCAN|group=Z2|order=2|classes=2|inverse_closed_orbits=2|value_range=-9..9|weights_with_a_zero_and_opposite_coefficient=18|PSD=0|json=0
+GROUP_SCAN|group=Z3|order=3|classes=3|inverse_closed_orbits=2|value_range=-9..9|weights_with_a_zero_and_opposite_coefficient=18|PSD=0|json=0
+GROUP_SCAN|group=Z4|order=4|classes=4|inverse_closed_orbits=3|value_range=-9..9|weights_with_a_zero_and_opposite_coefficient=740|PSD=0|json=0
+GROUP_SCAN|group=Z2xZ2|order=4|classes=4|inverse_closed_orbits=4|value_range=-5..5|weights_with_a_zero_and_opposite_coefficient=3760|PSD=0|json=0
+GROUP_SCAN|group=Z5|order=5|classes=5|inverse_closed_orbits=3|value_range=-9..9|weights_with_a_zero_and_opposite_coefficient=818|PSD=12|json=0
+GROUP_SCAN_EXAMPLE|group=Z5|values_on_orbits=-9,0,5|c0_times_order=1|K_inertia=1,4|dim_S=15|positive=15|negative=0|rank=15|json=0
+GROUP_SCAN_EXAMPLE|group=Z5|values_on_orbits=-9,5,0|c0_times_order=1|K_inertia=1,4|dim_S=15|positive=15|negative=0|rank=15|json=0
+GROUP_SCAN_EXAMPLE|group=Z5|values_on_orbits=-7,0,4|c0_times_order=1|K_inertia=1,4|dim_S=15|positive=15|negative=0|rank=15|json=0
+GROUP_SCAN_EXAMPLE|group=Z5|values_on_orbits=-7,4,0|c0_times_order=1|K_inertia=1,4|dim_S=15|positive=15|negative=0|rank=15|json=0
+GROUP_SCAN|group=Z6|order=6|classes=6|inverse_closed_orbits=4|value_range=-5..5|weights_with_a_zero_and_opposite_coefficient=4074|PSD=0|json=0
+GROUP_SCAN|group=S3|order=6|classes=3|inverse_closed_orbits=3|value_range=-7..7|weights_with_a_zero_and_opposite_coefficient=504|PSD=0|json=0
+GROUP_SCAN|group=D4|order=8|classes=5|inverse_closed_orbits=5|value_range=-3..3|weights_with_a_zero_and_opposite_coefficient=8270|PSD=0|json=0

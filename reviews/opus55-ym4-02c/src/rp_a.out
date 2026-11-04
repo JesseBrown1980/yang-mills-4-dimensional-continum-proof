@@ -1,0 +1,15 @@
+SINGLE_W_SITE|lattice=(Z/1)^2x(Z/2)|w=w(+1)=1,w(-1)=-1,w(else)=1|values=1,-1,1,1,1|N(delta_C)_min_over_C_numerator=-64|denominator=8^6|Z=7/64|product_over_a_slice_goes_negative=1|json=0
+SINGLE_W_SITE|lattice=(Z/1)^2x(Z/2)|w=w(+1)=3,w(-1)=1,w(else)=1|values=3,1,1,1,1|N(delta_C)_min_over_C_numerator=64|denominator=8^6|Z=1179/64|product_over_a_slice_goes_negative=0|json=0
+SINGLE_W_SITE|lattice=(Z/1)^2x(Z/2)|w=w(+1)=3,w(-1)=1,signed_elsewhere|values=3,1,-2,1,-1|N(delta_C)_min_over_C_numerator=64|denominator=8^6|Z=2253/64|product_over_a_slice_goes_negative=0|json=0
+SINGLE_W_SITE|lattice=(Z/1)^2x(Z/2)|w=w=-1_everywhere|values=-1,-1,-1,-1,-1|N(delta_C)_min_over_C_numerator=64|denominator=8^6|Z=1|product_over_a_slice_goes_negative=1|json=0
+SINGLE_W_SITE|lattice=(Z/1)^3x(Z/2)|w=w(+1)=1,w(-1)=-1,w(else)=1|values=1,-1,1,1,1|N(delta_C)_min_over_C_numerator=-64|denominator=8^8|Z=11/128|product_over_a_slice_goes_negative=1|json=0
+SINGLE_W_SITE|lattice=(Z/1)^3x(Z/2)|w=w(+1)=3,w(-1)=1,w(else)=1|values=3,1,1,1,1|N(delta_C)_min_over_C_numerator=64|denominator=8^8|Z=170535/128|product_over_a_slice_goes_negative=0|json=0
+SINGLE_W_SITE|lattice=(Z/1)^3x(Z/2)|w=w(+1)=3,w(-1)=1,signed_elsewhere|values=3,1,-2,1,-1|N(delta_C)_min_over_C_numerator=192|denominator=8^8|Z=423723/128|product_over_a_slice_goes_negative=0|json=0
+SINGLE_W_SITE|lattice=(Z/1)^3x(Z/2)|w=w=-1_everywhere|values=-1,-1,-1,-1,-1|N(delta_C)_min_over_C_numerator=64|denominator=8^8|Z=1|product_over_a_slice_goes_negative=1|json=0
+SIGN_CHAR_SITE|lattice=(Z/2)x(Z/1)x(Z/2)|w=sign_character_values_+1,+1,+1,-1,-1|configs_of_a_slice=4096|fixed_plaquette_evaluations_with_w<0=4096|values_of_product_over_a_slice=[1]|so_N(F)=integral_dC_|G(C)|^2_for_every_F=1|json=0
+SIGN_CHAR_SITE_NOTE|w_is_a_homomorphism_so_prod_over_all_plaquettes_is_prod_over_links_of_w(U)w(U^-1)=1_for_every_configuration=1|Z=1|json=0
+INVALID_REFLECTION_GRAM|lattice=(Z/2)x(Z/2)|group=Q8|c=8,3,3,3,1|reflection=site_with_the_inverse_on_time_links_dropped|fixed_links_tested=4096|blocks_that_lose_symmetry=3648|most_negative_value_found=-6351452416|at_ABAB=(0, 0, 2, 3)|json=0
+INVALID_REFLECTION_SIDE_1|lattice=(Z/1)x(Z/2)|lower_plaquette_weight_equal_with_or_without_the_inverse_for_every_(a,b,v)=1|json=0
+L2_SAME_KERNEL|lattice=(Z/2)x(Z/2)|entries=4096|equal_entry_by_entry=1|json=0
+T_SPECTRUM|spatial=(Z/1)x(Z/1)|c=8,3,3,3,1|orbits=28|M_positive_eigenvalues=28|negative=0|zero=0|lambda_0_times_512_in=5529088..5529089|lambda_1_times_512_in=5529088..5529089|top_simple=0|json=0
+T_SPECTRUM|spatial=(Z/1)x(Z/1)|c=8,3,3,3,-1|orbits=28|M_positive_eigenvalues=20|negative=8|zero=0|lambda_0_times_512_in=4637184..4637185|lambda_1_times_512_in=4637184..4637185|top_simple=0|json=0

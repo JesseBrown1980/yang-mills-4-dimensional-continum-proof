@@ -1,0 +1,11 @@
+STAGE_C|group=Z2|dims=3,2|links=12|plaquettes=6|orbits=128|cases=2|top_n_eff_permille=2724|top_over_N_permille=227|top_values=[16, 1]|verdict=HOLDS|seconds=61|json=0
+STAGE_C|group=Z2|dims=3,1,1|links=9|plaquettes=9|orbits=128|cases=2|top_n_eff_permille=2991|top_over_N_permille=332|top_values=[16, 1]|verdict=HOLDS|seconds=115|json=0
+STAGE_C|group=Z2|dims=2,1,1,1|links=8|plaquettes=12|orbits=128|cases=2|top_n_eff_permille=1997|top_over_N_permille=249|top_values=[16, 1]|verdict=HOLDS|seconds=174|json=0
+STAGE_C|group=Z3|dims=3,1|links=6|plaquettes=3|orbits=81|cases=6|top_n_eff_permille=2844|top_over_N_permille=474|top_values=[16, 1]|verdict=HOLDS|seconds=206|json=0
+BUDGET|stage=C|stopped_before=Z3_(1, 1, 1)|visited=24|json=0
+CLOSEST|stage=C|N=6|group=Z3|dims=3,1|sector=PH|values=[16, 1]|M_over_m=16|rho_ppm=999250|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=2844|n_eff_over_N_permille=474|json=0
+CLOSEST|stage=C|N=8|group=Z2|dims=2,1,1,1|sector=PH|values=[16, 1]|M_over_m=16|rho_ppm=992158|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=1997|n_eff_over_N_permille=249|json=0
+CLOSEST|stage=C|N=9|group=Z2|dims=3,1,1|sector=PH|values=[16, 1]|M_over_m=16|rho_ppm=999501|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=2991|n_eff_over_N_permille=332|json=0
+CLOSEST|stage=C|N=12|group=Z2|dims=3,2|sector=PH|values=[16, 1]|M_over_m=16|rho_ppm=998952|tau_ppm=1000000|verdict=HOLDS|negatives=0|n_eff_permille=2724|n_eff_over_N_permille=227|json=0
+TALLY|stage=C|cases=12|holds=12|equal=0|violated=0|undecided=0|cases_with_negative_eigenvalue=5|seconds=206|json=0
+SEARCH_DONE|stage=C|seconds=206|json=0

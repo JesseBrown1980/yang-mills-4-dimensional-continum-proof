@@ -1,0 +1,31 @@
+GATE|old=86d779b7c141d75c|new=935bd77b893026a8|json=0
+SET|name=BAD_IMPORT|old=15|new=23|added=marshal,pickle,plistlib,psutil,resource,shelve,toml,tomllib,yaml|removed=struct|json=0
+SET|name=MATH_OK|old=9|new=10|added=prod|removed=none|json=0
+SET|name=TIME_OK|old=6|new=16|added=altzone,asctime,ctime,daylight,gmtime,localtime,strftime,struct_time,timezone,tzname|removed=none|json=0
+SET|name=RANDOM_OK|old=12|new=12|added=none|removed=none|json=0
+SET|name=RANDOM_METHODS|old=12|new=14|added=binomialvariate,choices|removed=none|json=0
+SET|name=BAD_ATTRIBUTE|old=20|new=28|added=__ipow__,__pow__,__rpow__,as_integer_ratio,float_info,getloadavg,getswitchinterval,ipow|removed=none|json=0
+SET|name=BAD_NAME|old=5|new=8|added=compile,globals,vars|removed=none|json=0
+SET|name=PY_EXT|old=3|new=3|added=none|removed=none|json=0
+OLD_MUST_FLAG|rows=85|missed_by_new=0|json=0
+OLD_MUST_PASS|rows=39|flagged_by_new=0|json=0
+NEW_ONLY|path=reviews/opus55-site-sign/code/cube_and_cycles.py|new_first=power with an unproven exponent at line 198|new=2|json=0
+NEW_ONLY|path=reviews/opus55-site-sign/code/mutants_auto.py|new_first=[ast_parse] ast.parse at line 138|new=3|json=0
+NEW_ONLY|path=reviews/opus55-site-sign/code/side_one.py|new_first=power with an unproven exponent at line 51|new=1|json=0
+NEW_ONLY|path=reviews/opus55-site-sign/code/zeros_srp.py|new_first=power with an unproven exponent at line 48|new=4|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|new_first=power with an unproven exponent at line 66|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|new_first=power with an unproven exponent at line 87|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02b/designs_explicit.py|new_first=power with an unproven exponent at line 26|new=3|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02b/first_diff_t2.py|new_first=power with an unproven exponent at line 120|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02b/haarpoly.py|new_first=power with an unproven exponent at line 50|new=1|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c-last/src/exps.py|new_first=[ast_parse] ast.parse at line 3|new=1|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c-last/src/recount.py|new_first=power with an unproven exponent at line 63|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/cyl.py|new_first=power with an unproven exponent at line 68|new=3|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/exact.py|new_first=power with an unproven exponent at line 54|new=1|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/gram12.py|new_first=power with an unproven exponent at line 43|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/rp4d.py|new_first=power with an unproven exponent at line 201|new=1|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/su2num.py|new_first=power with an unproven exponent at line 12|new=2|json=0
+NEW_ONLY|path=reviews/opus55-ym4-02c/src/transfer.py|new_first=power with an unproven exponent at line 41|new=9|json=0
+NEW_ONLY|path=tests/test_one_by_l_2d.py|new_first=[more_attrs] times at line 188|new=3|json=0
+NEW_ONLY|path=tests/test_subgroup_designs_4d.py|new_first=power with an unproven exponent at line 506|new=4|json=0
+TREE|files=446|flagged_by_both=9|flagged_by_old_only=0|flagged_by_new_only=19|json=0

@@ -1,0 +1,5 @@
+IND_ZERO_SRP_DIRECT|lattice=1x1xT2|group=Q8|slices=64|slice_g_-1=24|slice_g_+1=40|C_with_f<0=1920|of_those_with_W_plus_not_identically_0=0|A_per_C=8|json=0
+IND_ZERO_SRP_DIRECT|lattice=1x1x1xT2|group=Q8|slices=512|slice_g_-1=192|slice_g_+1=320|C_with_f<0=122880|of_those_with_W_plus_not_identically_0=0|A_per_C=8|json=0
+IND_ZERO_SRP_REACHABLE|lattice=1x1xT2|group=Q8|C0_read=64|with_g_-1=24|with_g_+1=40|C1_read_with_every_time_like_plaquette_central=2048|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=2x1xT2|group=Q8|C0_read=1024|with_g_-1=384|with_g_+1=640|C1_read_with_every_time_like_plaquette_central=1048576|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0
+IND_ZERO_SRP_REACHABLE|lattice=1x2xT2|group=Q8|C0_read=1024|with_g_-1=384|with_g_+1=640|C1_read_with_every_time_like_plaquette_central=1048576|g(C1)=0_on=0|g(C1)_opposite_g(C0)_on=0|json=0

@@ -1,0 +1,3 @@
+MUTANT|index=0|name=plaq_drop_all_inverses|exit=1|failed=2|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=44|first=full_space_top_is_the_orbit_top_Z3_dims_2x1,full_space_certificate_Z3_dims_2x1|json=0
+MUTANT|index=1|name=plaq_drop_third_inverse|exit=1|failed=2|rows_equal_receipt=0|class=KILLED_BY_A_PREDICTED_ROW|seconds=43|first=full_space_top_is_the_orbit_top_Z3_dims_2x1,full_space_certificate_Z3_dims_2x1|json=0
+MUTANT|index=2|name=plaq_drop_fourth_inverse|exit=0|failed=0|rows_equal_receipt=0|class=SCRIPT_PASSES_ONLY_THE_RECEIPT_DIFFERS|seconds=49|first=|json=0

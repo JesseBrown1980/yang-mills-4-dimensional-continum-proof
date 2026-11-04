@@ -1,0 +1,6 @@
+IND_SU2_BANDS_SIDES_2|lattice=2x2|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS_SIDES_2|lattice=2x3|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS_SIDES_2|lattice=3x3|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS_SIDES_2|lattice=2x2x2|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS_SIDES_2|lattice=2x2x3|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_BANDS2_DONE|json=0

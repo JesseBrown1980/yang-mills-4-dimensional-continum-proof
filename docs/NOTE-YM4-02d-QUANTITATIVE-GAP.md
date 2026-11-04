@@ -1,8 +1,8 @@
 # YM4-02d: an explicit gap at each fixed lattice
 
-**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026. GPT-6, a different model family, read the proof the same day, verified it, and added the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md). Its exact tests, registered first in [`PREDICTION-YM4-02d.hbp`](PREDICTION-YM4-02d.hbp), are MEASURED below, with every predicted row met. The second seat's attack is OPEN.**
+**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026. GPT-6, a different model family, read FABLE5's sketch of Steps 1 and 2 the same day, for the Wilson weight, tagged CONJECTURE, and returned a proof of its own for SU(2) at the proof level, with the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md). Its report came before this note was written, so the general weight and Step 3 as written here await a different model family. Its exact tests, registered first in [`PREDICTION-YM4-02d.hbp`](PREDICTION-YM4-02d.hbp), are MEASURED below: every row the test reads was met, and the gate clause of the limits row was met at the next commit, as stated below. The second seat's attack at `f7a3dbc` found no falsifier in 38,367 exact cases and no step that fails, and it gave a second proof with no citation. Its corrections are applied: [its report](../reviews/opus55-quantitative-gap/README.md).**
 
-**Scope:** one finite periodic lattice and one β > 0. The objects are those of [section 7 of Lemma 0004](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ym4-02c-reflection-transfer/docs/LEMMA-0004-REFLECTION-TRANSFER.md), on draft PR #14 under the operator's HOLD, and they are written out here so this note reads alone. Theorem 5 there gives 0 < λ₁ < λ₀, and Proposition 6 there bounds λ₀. This note bounds the ratio. Zero spacing at fixed finite physical volume stays OPEN.
+**Scope:** one finite periodic lattice and one β > 0. The objects are those of [section 7 of Lemma 0004](LEMMA-0004-REFLECTION-TRANSFER.md), on main since PR #14 merged at `e7a12fc`, and they are written out here so this note reads alone. Theorem 5 there gives 0 < λ₁ < λ₀, and Proposition 6 there bounds λ₀. This note bounds the ratio. Zero spacing at fixed finite physical volume stays OPEN.
 
 ## The statement
 
@@ -49,7 +49,7 @@ every factor of A cancels. Each value of B lies in [m^{N_ℓ}, M^{N_ℓ}], so th
 
 and the integrands have ratio at most R pointwise. So the image of C has projective diameter Δ ≤ log R = 2N_ℓ log(M/m). Birkhoff's theorem says T contracts d by the factor tanh(Δ/4). With x = (M/m)^{N_ℓ}, tanh((log x)/2) = (x − 1)/(x + 1), which is τ.
 
-**Step 3, from the contraction to the eigenvalue.** T is self-adjoint and compact, so μ is real, and μ = 0 needs nothing. Let μ ≠ 0, λ₀ with real eigenfunction h, continuous because h = Th/μ and the kernel is continuous. h is orthogonal to Ω > 0, so it changes sign, and ρ = h/Ω is continuous and nonconstant. By Theorem 5(d)'s argument, |θ| < 1 for θ = μ/λ₀. Take ε > 0 small enough that f = Ω(1 + ερ) lies in C. Then
+**Step 3, from the contraction to the eigenvalue.** T is self-adjoint and compact, so μ is real, and μ = 0 needs nothing. Let μ ≠ 0, λ₀ with real eigenfunction h, continuous because h = Th/μ and the kernel is continuous. h is orthogonal to Ω > 0, so it changes sign, and ρ = h/Ω is continuous and nonconstant. With θ = μ/λ₀, |θ| < 1: for real unit h, |μ| = |⟨h, Th⟩| < ⟨|h|, T|h|⟩ ≤ λ₀, the first step strict because the kernel is strictly positive and h changes sign, the second because λ₀ is the largest eigenvalue of the compact self-adjoint T. Theorem 5(d) reads μ < λ₀ at β > 0, where T ≥ 0, and this line also covers the negative μ of a general weight. Take ε > 0 small enough that f = Ω(1 + ερ) lies in C. Then
 
 ```text
 T^n f = lambda_0^n Omega (1 + eps theta^n rho),
@@ -66,25 +66,43 @@ Iterating Step 2, the left side is at most τⁿ d(f, Ω), a constant times τ�
 
 The two routes differ in one way: on H the first eigenvalue after λ₀ can belong to a gauge-noninvariant function, and it is at most τλ₀ too.
 
+## A second proof, with no citation
+
+By the second seat, DERIVED, in [its derivations](../reviews/opus55-quantitative-gap/DERIVATIONS.txt), section 2. FABLE5 read it step by step. It replaces Steps 2 and 3 whole, and it uses Ω > 0, continuity and Step 1.
+
+Let h be a real eigenfunction for μ ≠ λ₀, ρ = h/Ω, and x₁, x₂ the points of largest and smallest ρ. P(x, dy) = K(x,y) Ω(y) / (λ₀ Ω(x)) dy is a probability kernel, and Pρ = θρ with θ = μ/λ₀. With p = P(x₁, ·) and q = P(x₂, ·), θ osc(ρ) = ∫(p − q)ρ, so |θ| ≤ TV(p, q).
+
+Let r = p/q, with range [r₋, r₊], r₋ ≤ 1 ≤ r₊. With E = {r > 1}, a = q(E) and b = p(E), we have b ≤ r₊a and 1 − b ≥ r₋(1 − a), so
+
+```text
+TV(p, q) = b - a <= min( (r+ - 1) a, (1 - r-)(1 - a) ) <= (r+ - 1)(1 - r-) / (r+ - r-).
+```
+
+With r₊/r₋ = S fixed, this is largest at r₊ = √S, where it equals (√S − 1)/(√S + 1). S is the largest of K(x₁,y) K(x₂,y′) / (K(x₁,y′) K(x₂,y)), since Ω cancels, so S ≤ R by Step 1. And √R = (M/m)^{N_ℓ}, so |θ| ≤ τ. ∎
+
+**Where equality lives.** |θ| = τ > 0 forces r to take only the values (M/m)^{N_ℓ} on E and (M/m)^{−N_ℓ} off E, so every link carries M at x₁ and m at x₂ for y in E, and the reverse off E. Take y in E and y′ off E, and splice the first link of y into y′. The ratio there is (M/m)^{2−N_ℓ}, which is neither value when N_ℓ ≥ 2. On PH the same holds of every gauge image, since an average of values at most M^{N_ℓ} equals M^{N_ℓ} only when each equals it. On connected G, r is continuous on a connected space and takes one value, so the inequality is strict at every N_ℓ.
+
+**The multipliers.** The proof uses A only through positivity. For finite G with w(1) = M and w(g₀) = m, take A = 1 on (1, …, 1) and (g₀, …, g₀) and ε elsewhere, on H. As ε → 0, T tends to the block [[M^{N_ℓ}, m^{N_ℓ}], [m^{N_ℓ}, M^{N_ℓ}]], with ratio τ. So τ is the exact supremum over positive multipliers at every N_ℓ, DERIVED by the second seat, section 7, and a better dependence on N_ℓ has to use the form of A or B beyond positivity.
+
 ## Where it is sharp and where it is loose
 
-**Sharp in this generality.** Z2 on one link, with w = 1 at the identity and q at the other element, has N_ℓ = 1, M/m = 1/q and T = ½[[1, q], [q, 1]], with eigenvalues (1 ± q)/2. So λ₁/λ₀ = (1 − q)/(1 + q) = τ, and no smaller constant holds for all such weights.
+**Sharp at N_ℓ = 1.** Z2 on one link, with w = 1 at the identity and q at the other element, has N_ℓ = 1, M/m = 1/q and T = ½[[1, q], [q, 1]], with eigenvalues (1 ± q)/2. So λ₁/λ₀ = (1 − q)/(1 + q) = τ, the least constant at N_ℓ = 1. Equality holds exactly when N_ℓ = 1 and G has a closed subgroup of index 2, with w = M on it and m off it, where μ = τλ₀, or w = m on it and M off it, where μ = −τλ₀: DERIVED by the second seat, and MEASURED on 25 finite groups, 1,348 equal cases, all in this family. For N_ℓ ≥ 2 the inequality is strict on every weight, DERIVED, with 12,892 exact cases all strict, and the exponent N_ℓ is approached as M/m grows: S3 on 1×1 with weights 1, 2, 2¹⁶⁰ on the identity, the 3-cycles and the transpositions reads an effective exponent, the n with ((M/m)^n − 1)/((M/m)^n + 1) equal to the ratio, of 1.972 of 2, and S3 on 1×1×1 with 2, 1, 2¹²⁸ reads 2.946 of 3. Among weights with T ≥ 0 on the orbits the largest share measured is 1/2, on Z2 on L×1. SU(2) is connected, so its inequality is strict at every β > 0, and on one link it reads I₂(β)/I₁(β), an effective exponent at most 0.249 at the nine β measured.
 
 **Loose with many links.** The bound sees only the range of each weight and the number of links. GPT-6's float diagnostic on Z2 at N_ℓ = 8 reads 0.146 against 0.992.
 
-**What it says as the lattice grows.** −log tanh x = 2 exp(−2x)(1 + O(exp(−4x))), so the bound in lattice units falls like 2 exp(−2βN_ℓ). At fixed physical size, L = L_phys/a grows as a → 0, and (1/a)(−log tanh(βN_ℓ)) goes to 0. So this result sizes the gap at each fixed lattice, and carrying a gap to zero spacing needs a dependence on N_ℓ far better than this. That is OPEN.
+**What it says as the lattice grows.** −log tanh x = 2 exp(−2x)(1 + O(exp(−4x))), so the bound in lattice units falls like 2 exp(−2βN_ℓ). At fixed physical size, L = L_phys/a grows as a → 0, and (1/a)(−log tanh(βN_ℓ)) goes to 0 as long as 2βN_ℓ − log(1/a) goes to infinity, which holds with N_ℓ = 3(L_phys/a)³ for β bounded below. So this result sizes the gap at each fixed lattice, and carrying a gap to zero spacing needs a dependence on N_ℓ far better than this. That is OPEN.
 
 ## What could fail
 
-- **Step 2** rests on Birkhoff's theorem, NAMED: G. Birkhoff, *Extensions of Jentzsch's theorem*, Trans. AMS 85 (1957), in the form stated by [Lemmens and Nussbaum](https://arxiv.org/abs/1304.7921) and [Reeb, Kastoryano and Wolf](https://arxiv.org/abs/1102.5170). This seat read those statements and did not rework Birkhoff's own proof.
-- **Step 3** needs ρ bounded and nonconstant, which continuity of h and Ω > 0 give, and |θ| < 1, which Theorem 5(d)'s argument gives for this strictly positive kernel.
-- **The Wilson case** needs w > 0, so it holds for every real β in the bound's form, with m and M read off the weight. Theorem 5 and this statement are written for β > 0.
+- **Step 2** rests on Birkhoff's theorem, NAMED: G. Birkhoff, *Extensions of Jentzsch's theorem*, Trans. AMS 85 (1957), in the form stated by [Lemmens and Nussbaum](https://arxiv.org/abs/1304.7921) and [Reeb, Kastoryano and Wolf](https://arxiv.org/abs/1102.5170). FABLE5 read a search summary quoting those statements and left Birkhoff's own proof unreworked. The second seat opened both papers on November 4, 2026: Lemmens and Nussbaum, equation (2.2) and Theorem 2.9, for cones in any real vector space, with C taken together with 0, which covers SU(2); Reeb, Kastoryano and Wolf, Theorems 4 and 5, for proper cones in finite dimension, where Theorem 5 is the eigenvalue bound itself. The second proof above stands on none of them.
+- **Step 3** needs ρ bounded and nonconstant, which continuity of h and Ω > 0 give, and |θ| < 1, which the line in Step 3 gives for this strictly positive kernel.
+- **The Wilson case** needs w > 0, so it holds for every real β in the bound's form, with m and M read off the weight and τ = tanh(|β|N_ℓ). Theorem 5 and this statement are written for β > 0.
 
 **Falsifier:** one positive symmetric class weight in [m, M], on one lattice, with a non-leading eigenvalue of modulus above τλ₀.
 
 ## What is measured
 
-[`tests/test_quantitative_gap.py`](../tests/test_quantitative_gap.py), in exact integers, against [the prediction](PREDICTION-YM4-02d.hbp), pushed at commit `9d1c334` before that test existed. Every predicted row was met on its first run, `failed=0`. The rows are in [`tests/QUANTITATIVE_GAP_RECEIPT.txt`](../tests/QUANTITATIVE_GAP_RECEIPT.txt).
+[`tests/test_quantitative_gap.py`](../tests/test_quantitative_gap.py), in exact integers, against [the prediction](PREDICTION-YM4-02d.hbp), pushed at commit `9d1c334` before that test existed. Every row the test reads was met on its first run, `failed=0`, and the receipt is byte-equal to that run. The clause `integers_only_under_scripts/no_float_gate.py=1` of the limits row was missed at commit `f7a3dbc`: the gate refused `.modules` at line 556, `failed=1`, in hosted run 41840421497, which skipped the test's own steps, and an earlier local read held 28 code files, before the test was tracked. Commit `c64eed3` reads the imports from the source with the same row, and hosted run 41841734786 reads `failed=0`, the receipt byte-equal and each sabotage exit 1. The rows are in [`tests/QUANTITATIVE_GAP_RECEIPT.txt`](../tests/QUANTITATIVE_GAP_RECEIPT.txt).
 
 **Exact spectra, one link direction, no spatial plaquettes.** The values were worked out by hand from characters, as (c_ρ/d_ρ)^L, and the test reads them through the orbit matrix, a separate route, with the nullity at each value and the multiplicities summing to the number of orbits.
 
@@ -116,7 +134,7 @@ The two routes differ in one way: on H the first eigenvalue after λ₀ can belo
 
 GPT-6's float diagnostic, recorded in the prediction as already seen, falls in the first three brackets: 0.812023, 0.146218 and 0.012666. Q8 on 1×1×1 is the spatial slice of a four-dimensional lattice.
 
-**Both routes.** Route 1 on all configurations, Z2 on 2×1×1 (dimension 64), Z3 on 2×1 (81) and Q8 on 1×1 (64): the top eigenvalue lies in the bracket from the orbits, and the certificate holds. Route 2 is every row above. On each case of at most 32 orbits, the cross-ratio with A equals the one without A at every quadruple, each averaged entry lies in [m^{N_ℓ}, M^{N_ℓ}], and the largest cross-ratio is at most (M/m)^{2N_ℓ}.
+**Both routes.** Route 1 on all configurations, Z2 on 2×1×1 (dimension 64), Z3 on 2×1 (81) and Q8 on 1×1 (64): the top eigenvalue lies in the bracket from the orbits, and the certificate holds. Route 2 is every row above. On each case of at most 32 orbits, each averaged entry lies in [m^{N_ℓ}, M^{N_ℓ}], and the largest cross-ratio is at most (M/m)^{2N_ℓ}. The field `A_cancels=1` is an identity of the code's multiplication, reading 1 for any array in place of A, and the cancellation of A stands on Step 1, DERIVED.
 
 **Broken kernels, each named in the prediction.**
 
@@ -129,6 +147,10 @@ GPT-6's float diagnostic, recorded in the prediction as already seen, falls in t
 
 **The sabotages.** `drop_gauge_average`, `drop_orbit_measure`, `half_the_exponent` and `drop_spatial_weight` each exit 1 on the check the prediction named, with no crash, and an unknown name exits 2.
 
+**The test's reach, from the second seat.** 26 mutants: 10 killed by a predicted row, 3 passing the script with only the receipt differing (A inverted, a dropped fourth inverse, and Route 1 run on the orbits), and 13 surviving, of which 12 weaken a checker and 1 is equivalent on the filed lattices. Its own integer route, a characteristic polynomial and Descartes, met 7 of 7 exact rows, 11 of 11 plaquette rows and 3 of 3 full-space rows. Controls to add, OPEN: a plaquette ratio pinned in the prediction on Z3, S3, Q8 and 2T, since Z2 at 2×2 reads A and 1/A alike; a row with a negative eigenvalue, such as Z2 with w = 1/4, 1, where μ = −3/8; and Z3 on 2×2, with four distinct links in a word whose order matters. Its engine reads Q8 on 1×1×1 at 582784 to 582785 ppm and Z3 on 2×2 at 73035 to 73036 ppm.
+
 **Scope.** Finite groups at rational weights. SU(2) itself is covered by the proof, and read here through Q8 and 2T at rational r. 2O and 2I have irrational Wilson weights at rational r and are left out.
 
-**Seen after the run, in no prediction.** On some lattices the gauge-averaged kernel's largest cross-ratio sits far below R. Z2 at q = 1/4 on 2 links reads 289/64 against R = 256, and at q = 1/2 on 2×2 it reads 124609/16384 against 65536. On those two-orbit cases of Z2, tanh(Δ/4) from the actual cross-ratio equals the exact ratio: 9/25 at 2 links and 27/125 at 3. On others it reaches R: 256 on Q8 and 2T with one link, 65536 on Q8 at 1×1, 64 on Z2 at 1×1×1. So the bound from the true diameter of BP is tighter than τ on some lattices and equal on others. How that diameter grows with N_ℓ is OPEN.
+**Seen after the run, in no prediction.** On some lattices the gauge-averaged kernel's largest cross-ratio sits far below R. Z2 at q = 1/4 on 2 links reads 289/64 against R = 256, and at q = 1/2 on 2×2 it reads 124609/16384 against 65536. On those two-orbit cases of Z2, tanh(Δ/4) from the actual cross-ratio equals the exact ratio: 9/25 at 2 links and 27/125 at 3. On others it reaches R: 256 on Q8 and 2T with one link, 65536 on Q8 at 1×1, 64 on Z2 at 1×1×1. So the bound from the true diameter of BP is tighter than τ on some lattices and equal on others. How that diameter grows is the next paragraph.
+
+**The true diameter, from the second seat** ([derivations](../reviews/opus55-quantitative-gap/DERIVATIONS.txt), section 5). For abelian G the largest cross-ratio of BP is (Z_max/Z_min)², where Z(W) is the gauge average of the product of w with holonomy W, DERIVED, and 27 of 27 cases equal the direct orbit matrix. For any compact G with a central element W, SU(2) included, Δ ≥ 2 log(Z(1)/Z(W)), DERIVED. On a circle Δ falls to 0, and on Z2 tanh(Δ/4) equals the exact ratio to L = 12, MEASURED. On the 2D torus with Z2 at q = 1/2, a lower bound on log₂ of the largest cross-ratio reads 0.752, 1.810, 3.133, 5.094 and 7.747 at L = 2, 4, 6, 8 and 10, growing linearly in the sites, MEASURED. So the true diameter improves the constant in the exponent and keeps the exponential form in d ≥ 2 on those cases, and for d ≥ 3 and SU(2) that is CONJECTURE. Iterates do converge: on Z2 at 2×2 with q = 1/2, tanh(Δ(T^k)/4)^{1/k} reads 467776, 273970, 200288, 171131 and 158185 ppm at k = 1, 2, 4, 8 and 16, against an exact ratio of 146218, MEASURED, and A enters from k = 2. A dependence on N_ℓ good enough for zero spacing is OPEN.

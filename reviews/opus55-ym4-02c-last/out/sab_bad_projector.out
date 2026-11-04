@@ -1,0 +1,6 @@
+LINK_SPECTRUM|group=Q8|c=8,3,3,3,1|eigenvalues=8,3,3,3,1/2|multiplicities=1,1,1,1,4|eigenfunctions=the_four_signs_and_the_four_quaternion_coordinates|trace=19|w_at_1=19|ok=1|json=0
+TRANSFER|spatial=(Z/2)x(Z/1)|N_t=1|group=Q8|c=8,3,3,3,1|terms=262144|Tr_ABP=10276069/4|Z_direct=2571382|Z_direct_forest_fixed=2571382|trace_over_the_176_gauge_orbits=2571382|ok=0|json=0
+TRANSFER|spatial=(Z/2)x(Z/1)|N_t=1|group=Q8|c=8,3,3,3,-1|terms=262144|Tr_ABP=9143733/4|Z_direct=2283606|Z_direct_forest_fixed=2283606|trace_over_the_176_gauge_orbits=2283606|ok=0|json=0
+REFLECTION_TRANSFER_DONE|failed=2|json=0
+FAILED|check=Tr(A_B_P)_against_the_lattice_sum_c=(8,_3,_3,_3,_1)|json=0
+FAILED|check=Tr(A_B_P)_against_the_lattice_sum_c=(8,_3,_3,_3,_-1)|json=0

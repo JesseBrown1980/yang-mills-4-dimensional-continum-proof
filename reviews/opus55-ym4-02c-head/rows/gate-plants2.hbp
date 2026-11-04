@@ -1,0 +1,118 @@
+CONTROL|the head as pushed
+  OWN_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+Note: switching to '40cc40d226a54bf3362f2d8da7cc51009e69ad0f'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+  BASE_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+  LIST_UNCHANGED_JOB|fork=762925b|flagged=scripts/FLOAT-EVIDENCE.txt|red=1
+PLANT|name=row_twice_rerun
+  OWN_GATE|rc=1|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+    NO_FLOAT|row_twice=reviews/opus55-ym4-02b/haarpoly.py|json=0
+PLANT|name=float_in_listed_file_with_its_row_repinned
+  OWN_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=163|failed=0|json=0
+Note: switching to 'f835eff8d6a435c296c64cbb3dcbda1bbc72699a'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+  BASE_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=163|failed=0|json=0
+  LIST_UNCHANGED_JOB|fork=762925b|flagged=scripts/FLOAT-EVIDENCE.txt|red=1
+PLANT|name=float_in_new_file_with_its_own_row
+  OWN_GATE|rc=0|NO_FLOAT_DONE|code_files=99|listed_files=29|listed_folders=0|listed_findings=163|failed=0|json=0
+Note: switching to '3bc94230aae0a84674b744b15dc29514f08f6266'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+  BASE_GATE|rc=0|NO_FLOAT_DONE|code_files=99|listed_files=29|listed_folders=0|listed_findings=163|failed=0|json=0
+  LIST_UNCHANGED_JOB|fork=762925b|flagged=scripts/FLOAT-EVIDENCE.txt|red=1
+PLANT|name=gate_rule_deleted_with_its_row_repinned
+  OWN_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+Note: switching to '61aca2e643e6fc06af355623e4ae94557eb221a8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+  BASE_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+  LIST_UNCHANGED_JOB|fork=762925b|flagged=scripts/FLOAT-EVIDENCE.txt,scripts/no_float_gate.py|red=1
+PLANT|name=compiled_script_edited_to_always_pass
+  OWN_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+Note: switching to '42769d9c47cd6f6e57bed8c0cddfc25c18eb0df0'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+  BASE_GATE|rc=0|NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+  LIST_UNCHANGED_JOB|fork=762925b|flagged=scripts/FLOAT-EVIDENCE.txt|red=1
+PLANT|name=child_process|path=tests/p1.py|gate_rc=0|
+PLANT|name=awk_in_a_script|path=tests/p2.sh|gate_rc=0|
+PLANT|name=percent_on_two_names|path=tests/p3.py|gate_rc=0|
+PLANT|name=random_sample|path=tests/p4.py|gate_rc=0|
+PLANT|name=data_row_with_a_decimal|path=tests/p5.hbp|gate_rc=0|
+PLANT|name=decimal_in_markdown|path=docs/p6.md|gate_rc=0|
+PLANT|name=fullwidth_float_name|path=tests/p7.py|gate_rc=1|NO_FLOAT|file=tests/p7.py|first=float at line 1|count=1|json=0
+PLANT|name=tilde_exponent|path=tests/p8.py|gate_rc=1|NO_FLOAT|file=tests/p8.py|first=power with an unproven exponent at line 1|count=1|json=0
+PLANT|name=walrus_exponent|path=tests/p9.py|gate_rc=1|NO_FLOAT|file=tests/p9.py|first=power with an unproven exponent at line 1|count=1|json=0
+PLANT|name=unittest_almost_equal|path=tests/p10.py|gate_rc=0|

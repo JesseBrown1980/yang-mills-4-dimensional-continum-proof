@@ -1,0 +1,15 @@
+IND_STEP3|group=Q8|lattice=2x2|reads=3200|u_x_i_in_the_same_conjugacy_class=3200|u_x_i_in_the_same_inversion_closed_class=3200|json=0
+IND_STEP3|group=F21|lattice=2x2|reads=3200|u_x_i_in_the_same_conjugacy_class=1670|u_x_i_in_the_same_inversion_closed_class=3200|json=0
+IND_STEP3|group=SL23_2T|lattice=2x2x2|reads=3840|u_x_i_in_the_same_conjugacy_class=2598|u_x_i_in_the_same_inversion_closed_class=3840|json=0
+IND_STEP3|group=S3|lattice=2x3|reads=2400|u_x_i_in_the_same_conjugacy_class=2400|u_x_i_in_the_same_inversion_closed_class=2400|json=0
+IND_FIVE|w=3,2,1,-1,-2|lattice=2x2|configs=32768|negative=0|json=0
+IND_FIVE|w=1,1,1,-1,-1|lattice=2x2|configs=32768|negative=0|json=0
+IND_FIVE|w=-1,-1,-1,-1,-1|lattice=2x2|configs=32768|negative=0|json=0
+IND_FIVE|w=3,2,1,-1,2|lattice=2x2|configs=32768|negative=12288|json=0
+IND_FIVE|w=1,-1,1,1,1|lattice=2x2|configs=32768|negative=10944|json=0
+IND_SU2_BANDS|lattice=2x1|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS|lattice=1x1|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS|lattice=3x1|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS|lattice=2x1x1|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_SU2_BANDS|lattice=1x1x1|real_part_band_patterns=15|patterns_showing_both_values_of_S=15|json=0
+IND_EXTRA_DONE|json=0

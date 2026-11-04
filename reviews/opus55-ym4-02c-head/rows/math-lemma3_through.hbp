@@ -1,0 +1,12 @@
+KERNEL_DIFF|group=Q8|t=3|m:class_pairs_where_K_m^G_differs_from_K_m^Haar=1:0,2:9,3:0,4:9|json=0
+THROUGH_ONLY|group=Q8|lattice=1x2x2|t=3|multisets_above_the_plain_bound_with_k<=t=72|distinct_sums_read=5|nonzero_values=1|differ=0|with_a_surd=0|json=0
+THROUGH_CONTROL|group=Q8|k=t+1|single_plaquette_G_vs_K_Haar_averaged_over_G=1/4_vs_7/40|json=0
+KERNEL_DIFF|group=2T|t=5|m:class_pairs_where_K_m^G_differs_from_K_m^Haar=1:0,2:0,3:16,4:25,5:16,6:25|json=0
+THROUGH_ONLY|group=2T|lattice=1x2x2|t=5|multisets_above_the_plain_bound_with_k<=t=360|distinct_sums_read=360|nonzero_values=16|differ=0|with_a_surd=0|json=0
+THROUGH_CONTROL|group=2T|k=t+1|single_plaquette_G_vs_K_Haar_averaged_over_G=3/32_vs_9/112|json=0
+KERNEL_DIFF|group=2O|t=7|m:class_pairs_where_K_m^G_differs_from_K_m^Haar=1:0,2:0,3:0,4:36,5:16,6:36,7:16,8:36|json=0
+THROUGH_ONLY|group=2O|lattice=1x2x2|t=7|multisets_above_the_plain_bound_with_k<=t=1320|distinct_sums_read=51|nonzero_values=8|differ=0|with_a_surd=0|json=0
+THROUGH_CONTROL|group=2O|k=t+1|single_plaquette_G_vs_K_Haar_averaged_over_G=15/256_vs_127/2304|json=0
+KERNEL_DIFF|group=2I|t=11|m:class_pairs_where_K_m^G_differs_from_K_m^Haar=1:0,2:0,3:0,4:0,5:0,6:49,7:36,8:49,9:36,10:49,11:36,12:49|json=0
+THROUGH_ONLY|group=2I|lattice=1x2x2|t=11|multisets_above_the_plain_bound_with_k<=t=10296|distinct_sums_read=284|nonzero_values=40|differ=0|with_a_surd=0|json=0
+THROUGH_CONTROL|group=2I|k=t+1|single_plaquette_G_vs_K_Haar_averaged_over_G=133/4096_vs_1717/53248|json=0

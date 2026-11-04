@@ -1,0 +1,220 @@
+[head_attacked]
+  1618199d51d722124bdb5ecc0ec28c5ba3f5a9ce
+[refuted]
+  True
+[findings]
+  - 
+    [severity]
+      blocker
+    [claim]
+      The miss accounting is false. Section 10 says 'Three clauses of the prediction need a correction' and row YM4_02C_RESULT says clauses_corrected_beside=3. Two more clauses fail the test the builder applied to GRAM_LINK_RED and stand uncorrected: YM4_02C_SIGNED_SITE meaning=site_reflection_positivity_fails_for_a_signed_weight_on_fixed_slice_plaquettes, and YM4_02C_CORRECTION beside=YM4_02C_GRAM_SITE corrected=the_weight_must_be_real_and_non_negative_on_plaquettes_of_the_fixed_slices_since_each_is_split_in_half. Section 4 step 2, 'This is the step that a signed weight on a fixed slice breaks', carries the same error. Scope of this finding: Theorem 2 as a sufficient statement stays true and no predicted value moves.
+    [evidence]
+      MEASURED on (Z/2)x(Z/1)x(Z/2), Q8, real class weight w=3,2,1,-1,-2 on +1,-1,i,j,k. w<0 on 4096 of 8192 fixed-slice plaquette evaluations over the 4096 slice configurations; product over a slice negative on 0 of 4096. Over all 8^10=1,073,741,824 point functions of the closed half: mirror mismatches 0, C pairs with negative prefactor 0, so every Gram block is PSD of rank at most 1. N(delta_C) lowest numerator 20736 over 8^12 across all 8^8 C. Z=53321326354432/8^12, equal to the generic walker's 104143215536/8^9. w=1,1,1,-1,-1 and w=3,2,1,-1,2 behave the same. Same lattice, w=1,-1,1,1,1 goes red: 1,572,864 C with N(delta_C)<0, lowest -2304, Z=10989076480/8^12. On (Z/1)^2x(Z/2) and (Z/1)^3x(Z/2), w=-1 everywhere has N(delta_C) lowest +64 although the product over one slice is negative. DERIVED: N_w(F)=integral dC [prod_fixed w(C)] |integral dA F(C,A) prod_upper w(C,A)|^2 with no square root, which is Knowles (2.92). The operative condition is prod_fixed w(C)>=0 for almost every C. Falsifier: one negative N_w(F) for w=3,2,1,-1,-2 on that lattice, or a nonzero mismatch count.
+    [reproduce]
+      C:/tmp/opus55/attack-4d-02c-20261103/rust/brute3.exe sitec 3 2 1 -1 -2 ; brute3.exe siteblocks 3 2 1 -1 -2 ; brute3.exe sitec 1 -1 1 1 1 ; python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/rp4d.py single signchar
+    [suggested_fix]
+      Add YM4_02C_MISS rows beside both clauses, found_by=second_seat, leaving the originals in place. Add a correction beside the count in section 10 and YM4_02C_RESULT. Mark w>=0 on fixed slices as sufficient, state the sharp form prod_fixed w(C)>=0, and treat the square root in step 2 as a convenience. Keep -15/64 as the control on its own lattice.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      The corrected clause a_negative_one_fails_on_odd_L_here in YM4_02C_MISS, and Remark 6.2's 'Whether a negative coefficient breaks positivity depends on the lattice', understate the dependence. At T=2 it also depends on T and on the weight: a negative sign-character coefficient on odd L can stay PSD. The c_2dim=-1 case the row measured is right.
+    [evidence]
+      MEASURED from the literal 8^12 histogram, characteristic polynomial and Descartes: (Z/3)x(Z/2), c=8,-1,3,3,2, w=17,9,1,9,9, five-character Gram inertia 5 positive, 0 negative. By Proposition 4.1 those five span the gauge-invariant F there. (Z/1)x(Z/2), all 8 point functions: 5 positive, 0 negative. Same c on (Z/1)x(Z/4), all 64: 17 positive, 8 negative. c=8,-1,2,2,1 on (Z/3)x(Z/2): 4 positive, 1 negative. Mechanism, DERIVED: T=2 uses the pointwise square of BP, and that square can be PSD when BP is not. CONJECTURE: on odd L a negative coefficient is red at every T>=4; every sample here agrees.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/extra.py neg C:/tmp/opus55/attack-4d-02c-20261103/rust/gram12.hist
+    [suggested_fix]
+      Scope the clause to c_2dim<0 and add the T=2 row with c=8,-1,3,3,2. Reword the remark to name the lattice, T and the weight.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      Theorem 2 is stated for one class function w, while part G's rows use two functions: SIGNED_SITE (fixed-slice w(-1)=-1, time-like weight 1), SIGNED_SITE_CONTROL, and SIGNED_OPEN_HALF (fixed-slice w(-1)=+1, time-like w(-1)=-2). They are instances of the proof and outside the statement as written, though the code comment calls the last 'The theorem in full'. The sentence 'On plaquettes of the upper and lower sets w may take either sign' is empty on the target: with one w on SU(2) at k>=2 every group element is a fixed-slice plaquette value, so the hypothesis reads w>=0 on all of SU(2).
+    [evidence]
+      READ: test lines 1148-1153, 1177, 1183, 1190-1191; lemma section 4. DERIVED for sides >=2: an exclusive link makes the plaquette Haar distributed. NAMED for side 1: Goto's commutator theorem on SU(2), not run. MEASURED single-w controls: w=1,-1,1,1,1 gives N(delta_C) lowest -64/8^6, Z=7/64 on (Z/1)^2x(Z/2), and -64/8^8, Z=11/128 on (Z/1)^3x(Z/2). w=3,1,-2,1,-1, a true instance on Q8 at side 1 since commutators take only +-1, gives lowest +64/8^6 and +192/8^8. So the teeth survive with one w, including on a 4D lattice.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/rp4d.py single
+    [suggested_fix]
+      State Theorem 2 for plaquette-dependent weights with w_(theta p)=w_p, which the same proof covers, or add single-w rows. Say in one line what the hypothesis reads on SU(2) at k>=2.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      Issue #2 acceptance test (4) asks for an intentionally invalid reflection to give red controls, and section 11 lists the sabotage controls for it. No Gram, PSD or transfer row reacts to an invalid reflection. Both reflection sabotages run section_geometry only.
+    [evidence]
+      READ: main() lines 1419-1420. MEASURED: with the inverse on time links removed in a full run, only the six REFLECTION rows and EVERY_FUNCTION_SITE change, the last through its literal fixed_ok, and every Gram, PSD and transfer row stays byte-identical. Mutants no_inverse_only_part_G and every_site_block_mirror_no_inverse: exit 0, rows byte-identical to the receipt. signed_open_half_mirror_is_identity, theta replaced by the identity: exit 0, caught only by cmp. Reason: on Q8 v^-1=+-v, and a side-1 plaquette holds v twice; on (Z/1)x(Z/2) the lower weight is equal with or without the inverse for every (a,b,v). A Gram-level red exists one lattice up: (Z/2)x(Z/2), c=8,3,3,3,1, site reflection with the inverse dropped, 3648 of 4096 fixed (A,B) lose symmetry and the form reaches -6351452416 at element indices (0,0,2,3), while the correct mirror gives a rank-one square at all 4096.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/rp4d.py invalid ; python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/mut/out/no_inverse_full_run.py ; rows in C:/tmp/opus55/attack-4d-02c-20261103/mut/mutations.out and mutations2.out
+    [suggested_fix]
+      Add a Gram row on (Z/2)x(Z/2) with F moved by gauge transformations, and a sabotage that drops the inverse in that row and must go red on a named check. Name the reach of the existing two sabotages in section 11.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      EVERY_FUNCTION and EVERY_FUNCTION_T4 pass with a wrong kernel, because they print only PSD and rank. The T=2 row that carries 'every F' cannot detect the second crossing plane, which is the Schur product step.
+    [evidence]
+      MEASURED: mutant every_function_plane_dropped, one plane instead of two, so BP in place of its pointwise square: exit 0, rows byte-identical. Mutant t4_upper_and_lower_weights_dropped: exit 0, rows byte-identical. Scope: the two-plane value is pinned elsewhere, since GRAM_LINK 593/4 and GRAM_LINK_T4 2389/8 catch the class-level error, so no result changes.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/mut/mutate.py C:/tmp/opus55/attack-4d-02c-20261103 every_function_plane_dropped ; python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/mut/mutate2.py C:/tmp/opus55/attack-4d-02c-20261103 t4_upper_and_lower_weights_dropped
+    [suggested_fix]
+      Print an exact kernel entry or the integer sum of all entries in both rows, so a dropped plane or dropped half weight changes the receipt.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      The four-dimensional reach of the controls is left unstated. Only part A and part C run on a k=3 lattice, and part C's integrand is one 2D strip plus a 648-plaquette scan. Every Gram, PSD and transfer row is at k=1 or k=2, and nothing in part E tests four dimensions. The 4D content of RP and of the transfer operator is carried by the proofs. Section 1 says 'the controls use k = 1 and k = 2 as well', while the file name and prediction row 1 say 4D.
+    [evidence]
+      READ: Lattice(L,L,L,T) and Lattice(3,3,3,4) are the only k=3 calls; part E Lattice(3,2); T=4 Lattice(1,4); part G Lattice(1,1,2); part F Slice(2,1), Slice(1,1), Lattice(2,1,1). MEASURED, 4D controls run here: (Z/1)^3x(Z/2), Q8, every point function of the slice reduced to 176 orbits. c_2dim=+1: inertia 176,0, rank 176, F=chi_2dim(U_1) gives 5696786251574. c_2dim=-1: inertia 112,64, rank 176, same F gives -1965328413750. Z=366894732506723/16 and 257883799138323/16, each equal to Tr(T^2 P), to the direct sum with and without gauge fixing, and to one step on spatial (Z/2)x(Z/1)x(Z/1) over 8960 orbits. N_t=3: 559775981543075516869/16 equals the direct sum.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/rp4d.py link4d ; python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/transfer.py C:/tmp/opus55/attack-4d-02c-20261103/rust/brute.exe transfer
+    [suggested_fix]
+      Add one sentence naming which rows run at k=3 and which at k=1,2, and add the (Z/1)^3x(Z/2) rows, which cost well under the 900 s limit in Rust and are feasible in Python at the orbit level.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      The Jaffe-Janssens row in section 9 reads MATCHED and leaves a sign out. As printed, Corollary IX.2 is exp(-(1/(2 g0^2)) S_YM) with S_YM=+sum of traces, which in this lemma's parametrisation is beta<0. Read literally, that statement is contradicted by this lemma's own Remark 6.2 and SU2_GRAM_2D at L=3. Theorem IX.1's proof cites Theorem VII.3, whose expansion is -H=sum J; the printed (IX.6) has S=sum J.
+    [evidence]
+      READ, images of PDF pages 43-45 and text of (V.5), (VII.3), Theorem VII.3, sha256 9df0224f39d03311...: (IX.6) S=sum J_IJ Theta(U_I) U_J, Theorem IX.1 exp(-beta S), Corollary IX.2 exp(-(1/(2g0^2)) S_YM). Luescher (1),(2): e^A with +1/(2 g0^2) sum Tr, so the physical weight has the plus sign. MEASURED: SU(2) on (Z/3)x(Z/2) at beta=-1, numerator over exp(+6) = -0.014450588094 in my separate integer run, as in the builder's row. With the sign of (V.5) the row is a true match.
+    [reproduce]
+      Read C:/tmp/opus55/attack-4d-02c-20261103/lit/jj.pdf pages 27, 33, 43-45; python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/su2num.py
+    [suggested_fix]
+      Keep MATCHED and add beside it: the printed sign in section IX differs from (V.5) and (VII.3); this lemma reads it through (V.5), since the literal print is the beta<0 case measured red at L=3.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      Theorem 5(c) is presented only as a recorded DIFFERENCE against Luescher. The exact statement, with the projector and periodic time, is in a source the lemma already cites, and it is uncredited. Theorem 5(a),(b) and Proposition 4.1 also have closer written matches in sources already cited.
+    [evidence]
+      READ, Knowles sha256 00e2ff42...be4e0e, PDF page 31 image: Lemma 2.3, (2.135) Z=tr[P T^N0], (2.137) Z_0=Z_Lambda for periodic time, (2.138)-(2.140) the same integration of the gauge variable. PDF page 66: Lemma 3.14, (3.184) Z=tr P_0 T^N1. PDF pages 27-30: (2.106) T=M T M, Lemma 2.1 strictly positive, Lemma 2.2 [T,P]=0. Jaffe-Janssens section IX introduction: 'any two elements of A+ that differ by a gauge transformation that does not involve the reflection plane yield the same state in H', the content of Proposition 4.1. The lemma's reference line lists Knowles sections 2.4 and 2.5 as read, and row YM4_02C_LITERATURE marks them MATCHED, with no table row for 2.5.
+    [reproduce]
+      Read C:/tmp/opus55/attack-4d-02c-20261103/lit/knowles.pdf pages 28-31, 66; lit/kn.txt lines 1395, 1547, 1612, 3704; lit/jj.txt lines 2338-2343
+    [suggested_fix]
+      Add MATCHED rows: Theorem 5(c) to Knowles Lemma 2.3 and Lemma 3.14; Theorem 5(a),(b) to Lemma 2.1 and 2.2; Proposition 4.1 to the Jaffe-Janssens sentence. Keep the Luescher difference beside them and widen the read list.
+  - 
+    [severity]
+      should_fix
+    [claim]
+      Three receipt fields tagged MEASURED come from checks that cannot fail: L_N_COEFFICIENTS all_positive, its power-parity field, and SU2_GRAM_2D beta^3_coefficient with twice_the_cylinder_value.
+    [evidence]
+      READ: l_coefficient returns red(1, positive), so c[0]>0 holds by construction, and (2k+n)%2==n%2 is an identity. leading=(1/2)(1/64) and doubled=2*(1/256) are typed constants. MEASURED: mutant su2_leading_constant_wrong_derivation exits 0, rows byte-identical. Scope: the values are right. My series extraction of (1/2) sum (l_n l_(n+1))^3 gives 0,0,0,1/128,0,5/1024,0,71/49152,0,133/491520 through beta^9.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/su2num.py ; read test lines 372-374, 440-448, 578-580
+    [suggested_fix]
+      Extract the beta^3 coefficient from the l_n series in the test. Tag the positivity and parity fields DERIVED, or check the l_n series against an independent expansion.
+  - 
+    [severity]
+      note
+    [claim]
+      Two hypotheses can be tightened. Theorem 4's 'on a group whose characters are real' is stronger than the proof needs, and w(g^-1)=w(g), added in section 10, has no control in the test.
+    [evidence]
+      MEASURED on 2T, (Z/1)x(Z/2), all 24 point functions: real w from c=7,2,2,4,3,1,1, including complex characters, is PSD of rank 7. c=7,2,2,4,-1,1,1 has inertia 6,1. Real positive w=9,7,5,8,2,3,6 with w(g^-1) different from w(g): 384 of 576 fixed-link blocks lose symmetry and the form reaches -144.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/extra.py 2t
+    [suggested_fix]
+      Drop the real-character clause or mark it as a convenience, and add the 2T row as the control for w(g^-1)=w(g).
+  - 
+    [severity]
+      note
+    [claim]
+      Row YM4_02C_TRANSFER N_t=2 on spatial (Z/2)x(Z/1) reads Z_direct=NOT_MEASURED, reason BUDGET. It can close, and the value agrees.
+    [evidence]
+      MEASURED: direct gauge-fixed sum over 8^9 leaves with my own forest: 74118236294774521856/8^9 = 8835582291457/16, equal to the orbit trace, in 7 s wall in Rust at below-normal priority, and equal again for c_2dim=-1. The prediction's limit is 900 s and the script uses 30 s, so the budget had room. The literal 8^12 no-gauge-fixing pass on this lattice is NOT_MEASURED here, reason BUDGET.
+    [reproduce]
+      C:/tmp/opus55/attack-4d-02c-20261103/rust/brute.exe lat Q8 fix sum 19 15 5 5 5 -- 2 1 2
+    [suggested_fix]
+      Record it as a row beside the NOT_MEASURED one and move the item out of section 12.
+  - 
+    [severity]
+      note
+    [claim]
+      The owning gate is real and goes red, but branch protection does not require it. Main's required contexts are only no-float, whose workflow exists only on PR #10's branch.
+    [evidence]
+      MEASURED via gh: required_status_checks.contexts=[no-float]. .github/workflows on main and on this branch hold no no-float.yml; it is on status-numbering-20261103. PR #10's scripts/no_float_gate.py on a clone of this head: the new test file has no finding, and two older files are flagged for import fractions (tests/test_exact_su2_4d.py line 9, tests/test_haar_moments_4d.py line 14). git merge-tree against origin/main reports no conflict.
+    [reproduce]
+      gh api repos/JesseBrown1980/yang-mills-4-dimensional-continum-proof/branches/main/protection ; git ls-tree origin/main .github/workflows/
+    [suggested_fix]
+      Operator's call: register reflection-transfer as required once it reaches main, and settle merge order against PR #10.
+  - 
+    [severity]
+      note
+    [claim]
+      Smaller wording items. (a) 'For SU(2) those multiplicities are B(m,n)' mixes symbols: Luescher's c_nu(n,m) equals B(n+m, nu). (b) 'The prediction's route used E[a_p]=0': row YM4_02C_BOUNDS names only S>=0 and Jensen. (c) Theorems 2 and 4 say 'bounded function' where bounded measurable is meant. (d) EVERY_FUNCTION_T4 has a family of 64 functions of (U(0),U(1)), while the open half also holds V(0); the prose says so, the row name does not. (e) The commit title of c31a033 says 'proved in full' beside status DERIVED and independent review OPEN. (f) Section 9 cites Knowles section 2.8 while the reference line lists sections 2.4 and 2.5.
+    [evidence]
+      READ from the lemma, the prediction, the commit log and Luescher p. 9. For (d), MEASURED: all 512 point functions of (U(0),U(1),V(0)) on (Z/1)x(Z/4) give inertia 25,0 for c_2dim=+1 and 17,8 for -1, so the row's rank 25 holds on the full open half.
+    [reproduce]
+      python3 -I -X utf8 C:/tmp/opus55/attack-4d-02c-20261103/src/rp4d.py t4
+    [suggested_fix]
+      Edit the wording beside the originals, and add the 512-function row if wanted.
+[reran]
+  - Builder script from the blob at 1618199: exit 0, rows byte-identical to the receipt after CR strip, 15 s wall, below-normal priority, Python 3.13.14, copy at C:/tmp/opus55/attack-4d-02c-20261103/run/t.py. This is scoped local evidence; the owning gate is the hosted workflow.
+  - Six sabotages: each exit 1 on named checks, FAILED counts 6,6,9,1,1,2, no traceback. Unknown name exit 2. The hosted log of run 41728224382 shows the same counts.
+  - Hosted runs read through gh: 41728224382 head 1618199 success, 18 s, ubuntu-24.04, all six steps success. 41727758077 head c31a033 success, 22 s.
+  - Literal 8^12 = 68,719,476,736 assignments with no gauge fixing on (Z/3)x(Z/2), Rust 1.81, 116 s wall: Z=16917185/64 for both weights, G_FF=593/4 and -593/4.
+  - Full 5x5 Gram from that histogram equals character gluing entry by entry. PSD by characteristic polynomial and Descartes: inertia 5,0,0 and 4,1,0, confirmed by rational LDL and rank mod p.
+  - Cylinder on SU(2) itself by index contraction with the degree-2 Haar integrals: 1/16, 1/64, 1/256 at L=1,2,3, equal to 4^-(L+1) and to character gluing.
+  - Geometry from the universal cover, with no use of the builder's rule, on 16 lattices, both reflections, three seeds: all counts, mirror halves, every crossing plaquette self-reversed, a_theta_p identity, action split, link supports, exclusive-link and commutator counts.
+  - 2D torus rule on 52 new cases, all equal: Q8 at (1,2),(1,3),(1,5),(5,1),(2,3),(3,3),(4,2),(2,4),(5,2),(1,1) with four weights including signed coefficients; 2T at (1,4),(1,5),(2,2),(3,1),(3,2),(2,3) with two complex weights, up to 24^7 leaves, imaginary part 0.
+  - Transfer identity on 44 new cases, all equal to direct sums: spatial (2,1) N_t=2; (1,1) N_t=1..3; (1,1,1) N_t=1..3; (1) N_t=2..5; (3,1) and (2,1,1) N_t=1, Q8 with three weights; 2T with a real weight on (1) and (1,1).
+  - Top of T on 28 orbits of spatial (Z/1)x(Z/1), exact characteristic polynomial: c_2dim=+1 has 28 positive eigenvalues, lambda_0*512 in 575782..575783, lambda_1*512 in 233471..233472, top simple. c_2dim=-1 has 20 positive, 8 negative, top simple.
+  - Separate code: part G -15/64, 1/16, 45/64, 81/16, commutators 40 and 24; T=4 +-2389/8; Tr(AB)=47567165/4; Collatz-Wielandt f=1 gives 102400 and 1478656; after 120 power steps lambda_0*10^6 in 466057660913..466057660914, inside the builder's interval.
+  - SU(2) enclosures by a separate 10^80 integer route: Z=0.029996399843810 (F=4), Z=0.005170360694832 (F=6), numerator 0.014450588093864, exp(-4)=0.018315638888734.
+  - 54 mutants of the script: 29 caught on a named check, 5 caught by a crash, 6 exit 0 and caught only by cmp, 14 survive. Of the 14: 5 are real gaps (findings 4, 5, 9), 4 are equivalent code, 4 remove a passing check, and 1 lies below the printed resolution (enclosure tail).
+  - Workflow steps replayed in separate strict shells on a clone: baseline all pass; prediction row changed turns step 3 red; receipt value changed turns step 4 red; weight bug turns step 4 red; check() disabled turns step 5 red.
+  - integer_only_audit.py: 0 violations on the test and on all my Python. Imports: collections, itertools, math, sys. CR bytes 0 in all five target blobs. No Co-Authored-By or Claude trailer in 1a7c738..HEAD.
+  - Prediction order: first 26 rows sha256 2448d8e6... equal to the file at daaf50c; 0 deleted lines in each later diff; pushes 0e9bcff 21:06:06Z, daaf50c 21:15:21Z, c31a033 22:06:03Z, 1618199 22:09:05Z; test, lemma and workflow first appear at c31a033.
+  - Literature read here: Luescher KEK scan, sha256 2093c746...4e8d11 matches, pages read as images; Knowles sha256 00e2ff42...be4e0e matches; Jaffe-Janssens PDF; Clay Jaffe-Witten PDF. Abstracts: INSPIRE JSON for Osterwalder-Seiler, OSTI for Menotti-Pelissetto.
+  - Fabric health read: ok, uptime 117929 s. Recall :4796 count=0 for Osterwalder, Osterwalder Seiler and reflection positivity Wilson, which is an index miss and proves no absence. Council query not fired, since it fires an envelope and this step runs at E=0.
+  - Method failures of mine, none a finding about the work: grep with a CR pattern on Git Bash matched every line, and byte counts replaced it; a Taylor-shift bug in my bracket gave a false top_simple=0, fixed and rerun; my first CI replay used set -e inside an || context on a CRLF clone, fixed and rerun; the mutation harness timed out twice under load from my own walkers. I stopped two of my own redundant 8^12 walkers after checking each command line; those passes are NOT_MEASURED, reason BUDGET. No other process was touched and the builder worktree is clean at 1618199.
+  - Rows and sha256 of every file above: C:/tmp/opus55/attack-4d-02c-20261103/SECOND_SEAT_FILES.hbp, sha256 e767a32b7f0981bc5ffd35909b2334fd5d04c487deb5b9dd7985d00245855173.
+[survived]
+  - Theorem 1: read step by step, including the exclusive-link case split and the commutator value 1/4, which SU(2) contraction reproduces. No false step found.
+  - Theorem 2 as a sufficient statement: orientation rule, both fixed slices, T=2, measure change, independence given C. No false step found. Its hypothesis is sufficient and fails as a necessary one (finding 1).
+  - Theorem 4: crossing plaquette as a gauge move, BP=PBP and PSD for c_rho>=0, tensor step at T>=4, Mercer and Schur at T=2, second plane, non-gauge-invariant F, side 1 and side 2 parallel links. No false step found. New exact checks: (Z/1)^3x(Z/2) with 176 orbits, and all 512 functions of the open half on (Z/1)x(Z/4).
+  - Proposition 3 and section 5: ballot formula, l_n, Bessel form, kernel spectrum and trace, torus rule.
+  - Proposition 4.1, and Remark 6.2 on L odd, sphere count 4^-(L+1), T=2 doubling, exact 2D formula, staggered flip. The 'same PSD kernel' sentence at L=2 is confirmed entry by entry on 4096 entries.
+  - Remark 6.3 and Remark 7.1, including negative eigenvalues on PH at odd L: 8 of 28 on Q8 at c_2dim=-1.
+  - Theorem 5(a)-(e): self-adjoint, injective, trace class, Tr T=integral of A, [T,P]=0, Z=Tr(T^N P) through the diagonal argument, Jentzsch step proved inline, gauge invariance of Omega, 0<lambda_1<lambda_0 on PH. No false step found. Part (e) is correctly stated on the gauge-invariant subspace.
+  - Proposition 6, Collatz-Wielandt, and its explicit bound: correct. The Q8 bracket reproduced by separate code.
+  - Every predicted value: all numeric rows of the prediction and every number the builder reported that I recomputed. Geometry 96/48/24, 192/48/72, 648/162/243; 593/4 and -593/4; Z=16917185/64; 1/256; 69425/16, 16917185/64, 1572881/648; 2571382, 2283606; 47567165/4; -15/64 and 45/64; 2389/8; SU(2) enclosures.
+  - Scope of the gap: not inflated. Heading 'at fixed L and beta', 'in lattice units', Scope paragraph, row SCOPE, section 12 with uniformity OPEN, and lambda_1 with a quantitative gap OPEN for SU(2).
+  - Writing rule: all 21 negative-word hits in the lemma are mathematical statements, status words or quotations. No text of the kind the operator banned.
+  - Prediction order, frozen rows, no trailer, no CR, no fractions, integer audit 0, and the workflow going red on each planted fault.
+  - Section 9 quotations of Luescher checked word by word against page images, including 'wether', footnote 3, beta=2/g0^2 from (2),(21),(22), odd sides, and the differences recorded in rows (25),(30) and Section I. Menotti-Pelissetto abstract confirmed via OSTI. The literal words 'fix the gauge on bonds that cross the reflection plane' occur in Jaffe-Janssens, inside the sentence 'we do not fix the gauge...' contrasting with those proofs.
+[literature_match]
+  - Theorem 1: the lemma claims no source and I searched for none. DERIVED, proof checked.
+  - Theorem 2: Knowles thesis 2.4.1 and 2.4.2, eqs (2.90)-(2.92), read here: MATCHED. Knowles keeps exp(-S0) whole with no square root, which yields the sharper condition of finding 1. Menotti-Pelissetto 1987: abstract read via OSTI; body CANNOT_SEE (Project Euclid gave an Incapsula page to curl and empty text to WebFetch, Sapienza IRIS HTTP 403, OpenAlex closed). Their hypothesis on fixed plaquettes is unmatched.
+  - Proposition 3 positivity route: Luescher preprint (22),(23) and the multiplicity argument, page images read: MATCHED, with c_nu(n,m)=B(n+m,nu).
+  - Theorem 4: Jaffe-Janssens Corollary IX.2 read: MATCHED on compact Lie group, hypercubic lattice in R^d or T^d, plane halfway between lattice points, full algebra. The printed sign differs from (V.5) and (VII.3); see finding 7. Knowles 2.4.1-2.4.3: MATCHED as a cone proof. Osterwalder-Seiler 1978 body: CANNOT_SEE. Abstract read from INSPIRE JSON and equal to the lemma's quote. INSPIRE lists no document, OpenAlex is_oa=false and any_repository_has_fulltext=false, Semantic Scholar CLOSED, Elsevier linkinghub text 'Redirecting'. Absence of an open copy is unproven. Class of observables, boundary conditions and T=2 remain unmatched against their text.
+  - Theorem 4, secondary: Jaffe-Witten Clay description, read: 'Reflection positivity holds for the Wilson approximation [36]', where [36] is Osterwalder-Seiler. This supports the citation and is no match to their statement. Seiler, Lecture Notes in Physics 159: CANNOT_SEE, the Springer URL redirected to an identity provider, no text read, no claim made. Osterwalder-Seiler, LNP 80 (1978), surfaced in search: not read.
+  - Proposition 4.1: Jaffe-Janssens section IX introduction and the sentence after Corollary IX.2, read: MATCHED, the closer sentence being the one about gauge transformations that do not involve the plane. Luescher Section I remark read: the recorded DIFFERENCE is accurate.
+  - Theorem 5(a),(b): Luescher Proposition 1 a,b,c with (17),(20),(21), preprint DESY 76/54 page images read: MATCHED. Knowles (2.106), Lemma 2.1 and Lemma 2.2 read: MATCHED, uncited in the lemma. Luescher journal body: CANNOT_SEE. Project Euclid gave an Incapsula page; a third-party scispace copy surfaced in search, the permission system denied that fetch as walled content from a copy, and I did not pursue it, so preprint-to-journal wording changes are unchecked.
+  - Theorem 5(c): Luescher (25),(30), footnote 3 read: the DIFFERENCE is accurate. Knowles Lemma 2.3 (2.135)-(2.140) and Lemma 3.14 (3.184) read: exact match, uncited in the lemma (finding 8). Creutz, Phys. Rev. D 15 (1977) 1128: NAMED candidate; abstract summary only, body not read.
+  - Theorem 5(d): Luescher after (26), quotation verified on the page image; his sentence concerns the theory with fermions. Knowles section 2.8 note 3, Perron-Frobenius uniqueness, read: MATCHED. Proof here DERIVED and checked.
+  - Theorem 5(e), Proposition 6, Remark 6.2, Remark 7.1: unmatched in anything read here. DERIVED and checked. Read literally with its printed sign, Jaffe-Janssens Corollary IX.2 conflicts with Remark 6.2 at L odd; with the sign of (V.5) there is no conflict.
+[summary]
+  Refuted on one count, and it is the record of misses, not the mathematics. Every theorem and proposition held up when read step by step, and every number I recomputed reproduced by a different method, so no theorem statement or predicted value changes.
+
+What held, MEASURED here:
+- A literal 8^12 pass with no gauge fixing gives 593/4 and -593/4.
+- A characteristic-polynomial PSD test agrees with the builder's rank and negative pivot.
+- SU(2) index contraction gives 1/256.
+- 52 new torus cases and 44 new transfer cases all match, including 4D lattices and the N_t=2 direct sum the builder left NOT_MEASURED (8835582291457/16).
+- Prediction order, frozen rows, no trailer, no CR, no fractions and the integer audit all pass, and the workflow goes red on planted faults.
+- The gap claim is correctly scoped to fixed L and beta, in lattice units, on the gauge-invariant subspace, with uniformity OPEN.
+
+The blocker is an undisclosed miss by the builder's own standard. Section 10 counts three corrected clauses, but YM4_02C_SIGNED_SITE's meaning clause and the 'must be non-negative' correction are false as general statements. On (Z/2)x(Z/1)x(Z/2) with Q8, w=3,2,1,-1,-2 is negative on half the fixed-slice plaquette evaluations, and all 8^10 point functions of the closed half stay PSD. On the same lattice w=1,-1,1,1,1 goes red. The operative condition is the sign of the product over the fixed plaquettes for each C, as in Knowles (2.92), and the square root in step 2 is not needed.
+
+The should_fix items:
+- The negative-coefficient clause also depends on T and on the weight at T=2.
+- Part G's controls use two weights while Theorem 2 states one, and the either-sign sentence is empty on SU(2) at k>=2.
+- No Gram row reacts to an invalid reflection, which acceptance test (4) asks for.
+- The EVERY_FUNCTION rows cannot see the second crossing plane.
+- The k=3 reach of the controls is unstated, though I ran 4D controls and they pass.
+- The Jaffe-Janssens MATCHED row omits a printed sign that conflicts with Remark 6.2.
+- Knowles Lemma 2.3 states Z=tr(P T^N) and goes uncredited.
+- Three receipt fields come from checks that cannot fail.
+
+CANNOT_SEE: the bodies of Osterwalder-Seiler 1978, Menotti-Pelissetto 1987 and Luescher's journal version, and Seiler LNP 159. The permission system denied one third-party copy of the Luescher journal text, and I did not pursue it. Issue #2 acceptance test (5), independent review against Osterwalder-Seiler, stays OPEN. This was one seat's attack on the same model family, and the hosted workflow remains the owning gate for CI state.
+
+I wrote only under C:/tmp/opus55/attack-4d-02c-20261103. Hashes of all my rows are in C:/tmp/opus55/attack-4d-02c-20261103/SECOND_SEAT_FILES.hbp.

@@ -1,0 +1,6 @@
+RING3|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,1|w=19,15,5,5,5|family=all_512_point_functions_of_the_slice|pos=5|neg=0|rank=5|kernel_sample=300|agree=300|json=0
+RING3|lattice=(Z/3)x(Z/2)|group=Q8|c=8,3,3,3,-1|w=15,19,5,5,5|family=all_512_point_functions_of_the_slice|pos=4|neg=1|rank=5|kernel_sample=300|agree=300|json=0
+RING3|lattice=(Z/3)x(Z/2)|group=Q8|c=1,-2,-2,-2,-1|w=-7,-3,3,3,3|family=all_512_point_functions_of_the_slice|pos=5|neg=0|rank=5|kernel_sample=300|agree=300|json=0
+RING3|lattice=(Z/3)x(Z/2)|group=Q8|c=-8,-3,-3,-3,-1|w=-19,-15,-5,-5,-5|family=all_512_point_functions_of_the_slice|pos=5|neg=0|rank=5|kernel_sample=300|agree=300|json=0
+SCAN|w_in_0..6^5_with_c_2dim<0|L=1,3,5|cases=21609|G_EE_negative=21609|lowest_(t_0+t_1+t_2+t_3)_times_8^L=4|json=0
+SCAN_SIGNED|w_in_-6..6^5_with_c_0>0_and_c_2dim<0|L=3|cases=83502|G_EE_positive=36891|json=0

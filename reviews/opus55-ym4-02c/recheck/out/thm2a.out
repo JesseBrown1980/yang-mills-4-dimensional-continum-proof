@@ -1,0 +1,6 @@
+THM2|group=Q8|order=8|dims=[1, 1, 1, 2]|seed=13|one_w=0|links=8|fixed=6|upper=3|lower=3|C_links=6|A_links=1|LHS_re=-102884656|LHS_im=0|RHS=-102884656|equal=1|C_with_f<0=15360|of=262144|json=0
+THM2|group=Q8|order=8|dims=[2, 2]|seed=14|one_w=0|links=8|fixed=0|upper=2|lower=2|C_links=4|A_links=2|LHS_re=14926914|LHS_im=0|RHS=14926914|equal=1|C_with_f<0=0|of=4096|json=0
+THM2|group=Q8|order=8|dims=[1, 4]|seed=15|one_w=0|links=8|fixed=0|upper=2|lower=2|C_links=2|A_links=3|LHS_re=872452|LHS_im=0|RHS=872452|equal=1|C_with_f<0=0|of=64|json=0
+THM2|group=Q8|order=8|dims=[1, 1, 1, 2]|seed=18|one_w=1|links=8|fixed=6|upper=3|lower=3|C_links=6|A_links=1|LHS_re=145444366827|LHS_im=0|RHS=145444366827|equal=1|C_with_f<0=0|of=262144|json=0
+THM2|group=SL23|order=24|dims=[1, 1, 2]|seed=16|one_w=0|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=575844420|LHS_im=0|RHS=575844420|equal=1|C_with_f<0=96768|of=331776|json=0
+THM2|group=D4|order=8|dims=[1, 1, 2]|seed=19|one_w=0|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=-16030816|LHS_im=0|RHS=-16030816|equal=1|C_with_f<0=4096|of=4096|json=0

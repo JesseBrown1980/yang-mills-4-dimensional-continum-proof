@@ -1,0 +1,2 @@
+T4_EVERY_FUNCTION|lattice=(Z/1)x(Z/4)|c=8,3,3,3,1|family=all_512_point_functions_of_(U(0),U(1),V(0))|symmetric=1|positive=25|negative=0|zero_tail_ok=1|rank_mod_p=25|json=0
+T4_EVERY_FUNCTION|lattice=(Z/1)x(Z/4)|c=8,3,3,3,-1|family=all_512_point_functions_of_(U(0),U(1),V(0))|symmetric=1|positive=17|negative=8|zero_tail_ok=1|rank_mod_p=25|json=0
