@@ -17,11 +17,15 @@ Every hold in [`HOLDS.txt`](HOLDS.txt), in its text, in the commit after `c64eed
 
 Its notes acted on, with FABLE5's wording, in the note: the second proof and the multipliers, the condition on the limit line, τ = tanh(|β|N_ℓ) for negative β, the test's reach, its two new ratios, and the true diameter.
 
+## The final read
+
+A fresh seat read the changed text at `27f9886`: [its report, verbatim](FINAL-READ-REPORT.md). The statement and the second proof stand, and it held five sentences of the note, applied in the next commit in its text. It read the last clause on the multipliers as true, and 84 relative links as resolving. **A correction beside the attack's report:** that report reads the Wilson form on Q8 and 2T at most 0.25, and [its own rows](rows/trend-wilson.hbp) read Q8 on one link at 0.450 at r = 1/256. The report stays verbatim.
+
 ## Open
 
 - A different model family's reading of the general weight and of Step 3 as written.
 - The controls it names: a plaquette ratio pinned on Z3, S3, Q8 and 2T, a row with a negative eigenvalue, and Z3 on 2×2.
-- The bodies of Birkhoff 1957 and Eveson 1995: CANNOT_SEE. Q8's orbit matrix on 2×2, with 8⁸ configurations: BUDGET. Its engine on hosted Linux: it ran on Windows Python 3.13.14 alone.
+- The bodies of Birkhoff 1957 and Eveson 1995, and Q8's orbit matrix on 2×2, with 8⁸ configurations: NOT_MEASURED, BUDGET. Its engine on hosted Linux: it ran on Windows Python 3.13.14 alone.
 - Stage D of its search on abelian lattices was killed by its timeout and is uncounted, and its rows carried no alert.
 
 ## Its files

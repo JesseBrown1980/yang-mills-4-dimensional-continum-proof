@@ -9,7 +9,7 @@ The independent GPT-6 seat's report, as the operator relayed it on November 4, 2
 
 Beside "Exact finite-lattice test suite for this new bound, NOT YET RUN": the suite is registered in [`docs/PREDICTION-YM4-02d.hbp`](../../docs/PREDICTION-YM4-02d.hbp).
 
-Beside its decisions in section 3, which the operator relayed as his answer: on `Random.sample`, the seven tracked uses are all in the Yang–Mills repository. Three sit in the second seat's original scripts, kept as evidence under the operator's rule, with integer redos beside them. Two more on PR #14's branch are verbatim reviewer tools. On the token, the operator's standing rule on keys already shared applies, and the decision is his.
+Beside its decisions in section 3, which the operator relayed as his answer: on `Random.sample`, the seven tracked uses are all in the Yang–Mills repository. Three sit in the second seat's original scripts, kept as evidence under the operator's rule, with integer redos beside them. Two more, from PR #14 and now on `main`, are verbatim reviewer tools. On the token, the operator's standing rule on keys already shared applies, and the decision is his.
 
 ## The report, as relayed
 
