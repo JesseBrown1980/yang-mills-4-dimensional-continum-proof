@@ -1,0 +1,4 @@
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate reads its own test snippets|rc=0|last=NO_FLOAT_SELFTEST_DONE/must_flag=124/must_name_its_rule=158/must_pass=91/file_rows=59/list_rows=14/failed=0/json=0|json=0
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=Scan the tracked files the gate reads|rc=0|last=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|last=-|json=0
+TOTAL|section=workflow_no_float|head=fa957b5d91ad|tree_left_clean=1|json=0

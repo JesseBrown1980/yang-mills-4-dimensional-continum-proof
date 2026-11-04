@@ -1,0 +1,309 @@
+PLANT|set=native|name=rs_c_double_cast|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_c_float_os_raw|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f32 0.33333334|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_extern_libm|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=3|json=0
+PLANT|set=native|name=rs_parse_inferred|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_parse_turbofish|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_from_into|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=2|json=0
+PLANT|set=native|name=rs_generic_trait|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 4/count=1|json=0
+PLANT|set=native|name=rs_rc_wrapped_alias|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=3|json=0
+PLANT|set=native|name=rs_use_rename_c_double|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_glob_c_double|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=rs_lit_exp_inner_underscore|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 10000000000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_lit_exp_trailing_underscore|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 1000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_lit_exp_signed_underscore|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 10000000000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_lit_mantissa_underscore_exp|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 100000000000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=rs_sse_intrinsics|lang=rust|attack_state=BYPASS_MEASURED|attack_value=bits 0x3fd5555555555555|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=5|json=0
+PLANT|set=native|name=rs_inline_asm|lang=rust|attack_state=BYPASS_MEASURED|attack_value=bits 0x3fd5555555555555|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=2|json=0
+PLANT|set=native|name=rs_global_asm|lang=rust|attack_state=BYPASS_MEASURED|attack_value=bits 0x3fd5555555555555|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=2|json=0
+PLANT|set=native|name=rs_include_non_rs|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_path_attr_txt|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_cfg_attr_path|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_build_rs_generated|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=build.rs/first=build.rs generates code at build time/count=1|json=0
+PLANT|set=native|name=rs_proc_macro_string|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=pm/Cargo.toml/first=a proc-macro crate/count=1|json=0
+PLANT|set=native|name=rs_paste_crate|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=Cargo.toml/first=dependency paste leaves the tracked tree/count=1|json=0
+PLANT|set=native|name=rs_libm_crate|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=Cargo.toml/first=dependency libm leaves the tracked tree/count=1|json=0
+PLANT|set=native|name=rs_doctest_line|lang=rust|attack_state=BYPASS_MEASURED|attack_value=running 1 test . test result: ok. 1 passed; 0 fail|candidate=FLAGGED|gate=FLAGGED|first=file=src/lib.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_doctest_block|lang=rust|attack_state=BYPASS_MEASURED|attack_value=running 1 test . test result: ok. 1 passed; 0 fail|candidate=FLAGGED|gate=FLAGGED|first=file=src/lib.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_doctest_attr_string|lang=rust|attack_state=BYPASS_MEASURED|attack_value=running 1 test . test result: ok. 1 passed; 0 fail|candidate=FLAGGED|gate=FLAGGED|first=file=src/lib.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_doctest_readme|lang=rust|attack_state=BYPASS_MEASURED|attack_value=running 1 test . test result: ok. 1 passed; 0 fail|candidate=FLAGGED|gate=FLAGGED|first=file=src/lib.rs/first=line 1/count=1|json=0
+PLANT|set=native|name=rs_concat_idents_stable|lang=rust|attack_state=PASSED_NO_FLOAT|attack_value=BUILD_FAILED|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=rs_concat_idents_bootstrap|lang=rust|attack_state=PASSED_NO_FLOAT|attack_value=BUILD_FAILED|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=rs_lex_lifetime_r_string|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 4/count=1|json=0
+PLANT|set=native|name=rs_lex_string_suffix_r|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_rs_raw_ident|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_lit_suffix_underscore|lang=rust|attack_state=CONTROL_OK|attack_value=f64 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_lit_E|lang=rust|attack_state=CONTROL_OK|attack_value=f64 1000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_lit_e_plus|lang=rust|attack_state=CONTROL_OK|attack_value=f64 1000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_lit_0_0_f32|lang=rust|attack_state=CONTROL_OK|attack_value=f32 0|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_lit_1e3f32|lang=rust|attack_state=CONTROL_OK|attack_value=f32 1000|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_as_secs|lang=rust|attack_state=CONTROL_OK|attack_value=f64 3|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_cfg_gated|lang=rust|attack_state=CONTROL_OK|attack_value=i32 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_nested_comment_quote|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_char_dquote|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_byte_char_dquote|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_byte_string_escape|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_comment_in_string|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_string_continuation|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_rs_raw_backslash|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_lifetime_beside_string|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_rs_char_backslash|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_char_apostrophe|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_label|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=native|name=ctl_rs_crlf|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_rs_bom|lang=rust|attack_state=CONTROL_OK|attack_value=f64 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=1|json=0
+PLANT|set=native|name=c_float64_keyword|lang=c|attack_state=BYPASS_MEASURED|attack_value=0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=c_float32_keyword|lang=c|attack_state=BYPASS_MEASURED|attack_value=5.19447e-315|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=c_float128_keyword|lang=c|attack_state=BYPASS_MEASURED|attack_value=333|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=c_float80|lang=c|attack_state=BYPASS_MEASURED|attack_value=333|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=c_decimal64|lang=c|attack_state=BYPASS_MEASURED|attack_value=333|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=c_complex_keyword|lang=c|attack_state=FLAGGED|attack_value=|candidate=FLAGGED|gate=FLAGGED|first=file=main.c/first=line 3/count=1|json=0
+PLANT|set=native|name=cpp_std_float64_t|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=DF64_ 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_chrono_float64_t|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=DF64_ 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=2|json=0
+PLANT|set=native|name=cpp_lit_1e5f|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=f 100000|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_upper_1E5F|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=f 100000|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_long_1e5L|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=e 100000|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_1e_5f|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=f 1e-05|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_1e5f64|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=DF64_ 100000|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_lit_1dot_e5|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 100000|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_1dot_E_minus5|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1e-05|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_hex_digit_sep|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 8|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lit_cast_dot5|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=2|json=0
+PLANT|set=native|name=cpp_complex_header_sqrt|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_atof|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=cpp_stod|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=cpp_uniform_real|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.997185|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_numbers_pi|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 3.14159|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_builtin_sqrt|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_dbl_epsilon_macro|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 2.22045e-16|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_immintrin|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=x 4599676419421066581|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=3|json=0
+PLANT|set=native|name=cpp_inline_asm|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=y 4599676419421066581|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 6/count=1|json=0
+PLANT|set=native|name=cpp_typedef_in_inc|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=e 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=1|json=0
+PLANT|set=native|name=cpp_function_in_inl|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=1|json=0
+PLANT|set=native|name=cpp_hxx_header|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=1|json=0
+PLANT|set=native|name=cpp_macro_paste|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=1|json=0
+PLANT|set=native|name=cpp_line_splice|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_cmdline_define|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.333333|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=cpp_digraph_include|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_include_quoted_math|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_include_tgmath|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_include_splice|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=cpp_lex_raw_string|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=cpp_lex_raw_string_delim|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=cpp_lex_multichar_quote|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=cpp_lex_multichar_slashes|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lex_multichar_block|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=cpp_lex_if0_quote|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 8/count=1|json=0
+PLANT|set=native|name=cpp_lex_warning_quote|lang=cpp|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=ctl_cpp_chrono_double|lang=cpp|attack_state=CONTROL_OK|attack_value=d 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=native|name=ctl_cpp_long_double|lang=cpp|attack_state=CONTROL_OK|attack_value=e 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_hex_float|lang=cpp|attack_state=CONTROL_OK|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_hex_float_upper|lang=cpp|attack_state=CONTROL_OK|attack_value=d 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_dot5f|lang=cpp|attack_state=CONTROL_OK|attack_value=f 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_1dotf|lang=cpp|attack_state=CONTROL_OK|attack_value=f 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_digit_sep_dot|lang=cpp|attack_state=CONTROL_OK|attack_value=d 1000.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_digit_sep_exp|lang=cpp|attack_state=CONTROL_OK|attack_value=d 100|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_exp_digit_sep|lang=cpp|attack_state=CONTROL_OK|attack_value=d 1e+10|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_cmath|lang=cpp|attack_state=CONTROL_OK|attack_value=d 1.41421|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=native|name=ctl_cpp_char_dquote|lang=cpp|attack_state=CONTROL_OK|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_typedef_local|lang=cpp|attack_state=CONTROL_OK|attack_value=d 0.333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=ctl_cpp_bidi_comment|lang=cpp|attack_state=CONTROL_OK|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=js_template_division|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_template_literal_float|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_template_math|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_json_parse|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_date_div_negative|lang=js|attack_state=BYPASS_MEASURED|attack_value=-1793745863.261|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_exponent_negative|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_exponent_variable|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.125|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_divide_assign|lang=js|attack_state=BYPASS_MEASURED|attack_value=2.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_divide_unary|lang=js|attack_state=BYPASS_MEASURED|attack_value=-0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_divide_newline|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_divide_string_left|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_divide_paren_right_string|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_bracket|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_destructure|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_alias|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_optional|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_space|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_math_newline|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_unicode_escape_math|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_global_this_strings|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_eval|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_function_ctor|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_number_space|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_number_alias|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_number_epsilon|lang=js|attack_state=BYPASS_MEASURED|attack_value=2.220446049250313e-16|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_unary_plus_string|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_string_times_one|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_dataview_float|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 4/count=1|json=0
+PLANT|set=native|name=js_float16array|lang=js|attack_state=BYPASS_MEASURED|attack_value=-0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=2|json=0
+PLANT|set=native|name=js_performance_now|lang=js|attack_state=BYPASS_MEASURED|attack_value=143.4563|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_lit_1dot_e5|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.00001|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_lit_exp_separator|lang=js|attack_state=BYPASS_MEASURED|attack_value=1e-10|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_infinity_division_free|lang=js|attack_state=BYPASS_MEASURED|attack_value=5e-324|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_integer_rounds_above_2_53|lang=js|attack_state=BYPASS_MEASURED|attack_value=9007199254740992|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_integer_product_rounds|lang=js|attack_state=BYPASS_MEASURED|attack_value=9007199515875288|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=js_negative_zero|lang=js|attack_state=BYPASS_MEASURED|attack_value=true|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=js_lex_regex_quote|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_lex_regex_apostrophe|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_lex_regex_block_open|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_lex_regex_slashes|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5 /[//]/|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_lex_line_separator|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_lex_paragraph_separator|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=js_lex_nested_template|lang=js|attack_state=BYPASS_MEASURED|attack_value=abc0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=js_module_mts|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=js_module_cts|lang=js|attack_state=BYPASS_MEASURED|attack_value=1.5|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=ts_number_annotation|lang=js|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.ts/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_js_literal|lang=js|attack_state=CONTROL_OK|attack_value=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_division|lang=js|attack_state=CONTROL_OK|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_date_div|lang=js|attack_state=CONTROL_OK|attack_value=1793745910.362|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_math|lang=js|attack_state=CONTROL_OK|attack_value=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_parsefloat|lang=js|attack_state=CONTROL_OK|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_number|lang=js|attack_state=CONTROL_OK|attack_value=0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_js_float64array|lang=js|attack_state=CONTROL_OK|attack_value=Float64Array(1) [ 0 ]|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=native|name=clean_js_bigint_division|lang=js|attack_state=FALSE_ALARM|attack_value=3n|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_bigint_power|lang=js|attack_state=CLEAN_OK|attack_value=18446744073709551616n|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_regex_flag|lang=js|attack_state=FALSE_ALARM|attack_value=ab|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=html_onload_handler|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_onload_unquoted|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_onerror_math|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_apostrophe_swallows_script|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_quote_swallows_script|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 2/count=1|json=0
+PLANT|set=native|name=html_block_comment_in_text|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 2/count=1|json=0
+PLANT|set=native|name=html_line_comment_in_text|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=1.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_unclosed_script|lang=html|attack_state=PASSED_NO_FLOAT|attack_value=title=t|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_close_with_space|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_script_src_txt|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=calc.txt/first=Python under a name the scan does not read: true division at line 1/count=1|json=0
+PLANT|set=native|name=html_srcdoc|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_template_literal|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_divide_assign|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=2.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=html_utf16_bom|lang=html|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=NUL bytes in code/count=2|json=0
+PLANT|set=native|name=html_mathml_only|lang=html|attack_state=PASSED_NO_FLOAT|attack_value=title=t|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=ctl_html_script_math|lang=html|attack_state=CONTROL_OK|attack_value=title=1.4142135623730951|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 1/count=1|json=0
+PLANT|set=native|name=ctl_html_script_division|lang=html|attack_state=CONTROL_OK|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.html/first=line 2/count=1|json=0
+PLANT|set=native|name=clean_rs_enum_variant_float|lang=rust|attack_state=FALSE_ALARM|attack_value=i32 2|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=2|json=0
+PLANT|set=native|name=clean_rs_struct_float|lang=rust|attack_state=FALSE_ALARM|attack_value=i32 3|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=2|json=0
+PLANT|set=native|name=clean_rs_var_named_f64|lang=rust|attack_state=FALSE_ALARM|attack_value=i32 4|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 2/count=2|json=0
+PLANT|set=native|name=clean_rs_tuple_index|lang=rust|attack_state=CLEAN_OK|attack_value=i32 6|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_range|lang=rust|attack_state=CLEAN_OK|attack_value=i32 9|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_method_on_int|lang=rust|attack_state=CLEAN_OK|attack_value=i32 1240|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_name_like_exponent|lang=rust|attack_state=CLEAN_OK|attack_value=i32 4|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_format_float_spec_on_int|lang=rust|attack_state=CLEAN_OK|attack_value=alloc::string::String 1.5e3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_float_in_string|lang=rust|attack_state=CLEAN_OK|attack_value=usize 11|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_rs_attr_version_string|lang=rust|attack_state=CLEAN_OK|attack_value=i32 1|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_digit_sep_int|lang=cpp|attack_state=CLEAN_OK|attack_value=i 1000000|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_hex_e|lang=cpp|attack_state=CLEAN_OK|attack_value=i 740|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_name_double_it|lang=cpp|attack_state=CLEAN_OK|attack_value=i 8|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_int_division|lang=cpp|attack_state=CLEAN_OK|attack_value=i 3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_version_macro|lang=cpp|attack_state=FALSE_ALARM|attack_value=i 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=1|json=0
+PLANT|set=native|name=clean_cpp_cstdlib_abs|lang=cpp|attack_state=CLEAN_OK|attack_value=i 3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_cpp_cmath_for_abs|lang=cpp|attack_state=FALSE_ALARM|attack_value=i 3|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=1|json=0
+PLANT|set=native|name=clean_js_bigint_vars|lang=js|attack_state=FALSE_ALARM|attack_value=3n|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=clean_js_regex_escape|lang=js|attack_state=CLEAN_OK|attack_value=a-b|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_path_in_string|lang=js|attack_state=CLEAN_OK|attack_value=7|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_url_comment|lang=js|attack_state=CLEAN_OK|attack_value=1|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_bigint_power_var|lang=js|attack_state=CLEAN_OK|attack_value=18446744073709551616n|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 2/count=1|json=0
+PLANT|set=native|name=clean_js_shift_not_division|lang=js|attack_state=CLEAN_OK|attack_value=3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_js_jsx_like_closing|lang=js|attack_state=CLEAN_OK|attack_value=6|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_ts_generic_arrow|lang=js|attack_state=FALSE_ALARM|attack_value=3n|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_html_css_decimals|lang=html|attack_state=FALSE_ALARM|attack_value=title=3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_html_version_text|lang=html|attack_state=FALSE_ALARM|attack_value=title=t|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_html_inline_svg_path|lang=html|attack_state=FALSE_ALARM|attack_value=title=t|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=clean_html_apostrophe_only|lang=html|attack_state=CLEAN_OK|attack_value=title=t|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=rs_cargo_bin_path_txt|lang=rust|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=Cargo.toml/first=a Cargo target at tools/verify.txt/count=1|json=0
+PLANT|set=native|name=rs_cargo_build_path_txt|lang=rust|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=Cargo.toml/first=a Cargo target at gen.txt/count=1|json=0
+PLANT|set=native|name=cpp_ucn_keyword|lang=cpp|attack_state=PASSED_NO_FLOAT|attack_value=BUILD_FAILED|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=cpp_latin1_comment_control|lang=cpp|attack_state=CONTROL_OK|attack_value=1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=code that is not UTF-8/count=2|json=0
+PLANT|set=native|name=cpp_utf8_invalid_before_quote|lang=cpp|attack_state=FLAGGED|attack_value=1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=code that is not UTF-8/count=2|json=0
+PLANT|set=native|name=sh_awk|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_bc|lang=other|attack_state=BYPASS_MEASURED|attack_value=.333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_python_c|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_python_heredoc|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_base64_pipe|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_writes_py_then_runs|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sh_printf_float|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.500|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=yml_run_block|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=ipynb_cell|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=pl_perl|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=java|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=f90|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.33333333333333331|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=sql_sqlite|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=ps1|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=makefile|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=cplusplus_ext|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=cp_ext|lang=other|attack_state=BYPASS_MEASURED|attack_value=0.333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=gas_S|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=dockerfile|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=rb|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=kt|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=swift|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=x.swift/first=Python under a name the scan does not read: true division at line 1/count=1|json=0
+PLANT|set=native|name=zig|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=jl|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=x.jl/first=Python under a name the scan does not read: true division at line 1/count=1|json=0
+PLANT|set=native|name=lua|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=x.lua/first=Python under a name the scan does not read: true division at line 1/count=1|json=0
+PLANT|set=native|name=lean|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=vue|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=svelte|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=wat|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=cython_pxd|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=svg_script|lang=other|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=xhtml_script|lang=other|attack_state=BYPASS_MEASURED|attack_value=title=0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=native|name=go_time_seconds|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_parsefloat|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_rand_float|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=2|json=0
+PLANT|set=native|name=go_math_alias|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=1|json=0
+PLANT|set=native|name=go_math_dot|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=1|json=0
+PLANT|set=native|name=go_big_float|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_cgo|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 5/count=1|json=0
+PLANT|set=native|name=go_imaginary|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_lit_1dot_e5|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_lit_exp_sep|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_lit_hex_sep|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=go_json_any|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_go_float64|lang=other|attack_state=CONTROL_OK|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=1|json=0
+PLANT|set=native|name=ctl_go_math|lang=other|attack_state=CONTROL_OK|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 2/count=2|json=0
+PLANT|set=native|name=ctl_go_literal|lang=other|attack_state=CONTROL_OK|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.go/first=line 3/count=1|json=0
+PLANT|set=native|name=jsx_apostrophe_multiline|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.jsx/first=line 2/count=1|json=0
+PLANT|set=native|name=tsx_template|lang=other|attack_state=PASSED_NOT_RUN|attack_value=NOT_MEASURED|candidate=FLAGGED|gate=FLAGGED|first=file=a.tsx/first=line 2/count=1|json=0
+SURVIVOR|set=native|plant=cpp_cmdline_define|json=0
+SURVIVOR|set=native|plant=js_integer_product_rounds|json=0
+SURVIVOR|set=native|plant=js_negative_zero|json=0
+SURVIVOR|set=native|plant=js_module_mts|json=0
+SURVIVOR|set=native|plant=js_module_cts|json=0
+SURVIVOR|set=native|plant=sh_awk|json=0
+SURVIVOR|set=native|plant=sh_bc|json=0
+SURVIVOR|set=native|plant=sh_python_c|json=0
+SURVIVOR|set=native|plant=sh_python_heredoc|json=0
+SURVIVOR|set=native|plant=sh_base64_pipe|json=0
+SURVIVOR|set=native|plant=sh_writes_py_then_runs|json=0
+SURVIVOR|set=native|plant=sh_printf_float|json=0
+SURVIVOR|set=native|plant=yml_run_block|json=0
+SURVIVOR|set=native|plant=ipynb_cell|json=0
+SURVIVOR|set=native|plant=pl_perl|json=0
+SURVIVOR|set=native|plant=java|json=0
+SURVIVOR|set=native|plant=f90|json=0
+SURVIVOR|set=native|plant=sql_sqlite|json=0
+SURVIVOR|set=native|plant=ps1|json=0
+SURVIVOR|set=native|plant=makefile|json=0
+SURVIVOR|set=native|plant=cplusplus_ext|json=0
+SURVIVOR|set=native|plant=cp_ext|json=0
+SURVIVOR|set=native|plant=svg_script|json=0
+SURVIVOR|set=native|plant=xhtml_script|json=0
+CLEAN_FLAGGED|set=native|plant=clean_rs_enum_variant_float|json=0
+CLEAN_FLAGGED|set=native|plant=clean_rs_struct_float|json=0
+CLEAN_FLAGGED|set=native|plant=clean_rs_var_named_f64|json=0
+CLEAN_FLAGGED|set=native|plant=clean_cpp_version_macro|json=0
+CLEAN_FLAGGED|set=native|plant=clean_cpp_cmath_for_abs|json=0
+CLEAN_FLAGGED|set=native|plant=clean_js_bigint_vars|json=0
+CLEAN_FLAGGED|set=native|plant=clean_js_bigint_power_var|json=0
+NATIVE_TALLY|attack_state=BYPASS_MEASURED|gate=FLAGGED|plants=128|json=0
+NATIVE_TALLY|attack_state=BYPASS_MEASURED|gate=PASSED|plants=24|json=0
+NATIVE_TALLY|attack_state=CLEAN_OK|gate=FLAGGED|plants=1|json=0
+NATIVE_TALLY|attack_state=CLEAN_OK|gate=PASSED|plants=19|json=0
+NATIVE_TALLY|attack_state=CONTROL_OK|gate=FLAGGED|plants=47|json=0
+NATIVE_TALLY|attack_state=FALSE_ALARM|gate=FLAGGED|plants=6|json=0
+NATIVE_TALLY|attack_state=FALSE_ALARM|gate=PASSED|plants=6|json=0
+NATIVE_TALLY|attack_state=FLAGGED|gate=FLAGGED|plants=2|json=0
+NATIVE_TALLY|attack_state=PASSED_NOT_RUN|gate=FLAGGED|plants=17|json=0
+NATIVE_TALLY|attack_state=PASSED_NOT_RUN|gate=PASSED|plants=10|json=0
+NATIVE_TALLY|attack_state=PASSED_NO_FLOAT|gate=FLAGGED|plants=1|json=0
+NATIVE_TALLY|attack_state=PASSED_NO_FLOAT|gate=PASSED|plants=4|json=0
+TOTAL|section=native|plants=265|bypass_rows=152|closed=128|open=24|flagged_controls=49|controls_opened=0|clean_rows=32|clean_flagged=7|json=0

@@ -1,0 +1,11 @@
+OWN_PLANT|name=strftime_bound_in_the_file|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 3|json=0
+OWN_PLANT|name=strftime_method_of_a_class_in_the_file|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 4|json=0
+OWN_PLANT|name=strftime_result_formatted_again|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 5|json=0
+OWN_PLANT|name=isinstance_rebound|produced=float=3.0|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float at line 2|json=0
+OWN_PLANT|name=type_rebound_compare|produced=bool=False|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float literal at line 2|json=0
+OWN_PLANT|name=bytes_rebound_fromhex|produced=float=1.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float literal at line 3|json=0
+OWN_PLANT|name=bytearray_rebound_fromhex|produced=float=1.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=true division at line 1|json=0
+OWN_PLANT|name=star_import_rebinds_isinstance|produced=float=3.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float at line 3|json=0
+OWN_PLANT|name=control_strftime_on_time|produced=str='1970-01-01'|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
+OWN_PLANT|name=control_isinstance|produced=bool=False|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
+OWN_PLANT|name=control_bytes_fromhex|produced=bytes=b'\xff'|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
