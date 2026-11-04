@@ -18,6 +18,28 @@ Let G be a finite subgroup of SU(2), and let t+1 be the first n ≥ 1 at which G
 
 **Exactly one side of length 1.** A plaquette through that direction is A V B⁻¹ V⁻¹, degree 1 in A and B and 2 in V, and any other plaquette holds four distinct links. Agreement was measured through β^t on 1×2 (Q8, 2T, 2O), on 1×3 (Q8, 2T), and for Q8 on 1×2×2 and 1×2×2×2. Four distinct links is the hypothesis this proof uses, and the sharp condition stays OPEN.
 
+**Beside this, November 4: the periodic 1×L lattice in two dimensions.** There the statement above is a theorem, and the sharp condition stays OPEN in d ≥ 3.
+
+**Theorem (1×L, L ≥ 2).** Let G ⊂ SU(2) be finite, with its uniform average agreeing with Haar through degree t. On the periodic 1×L lattice write P_x = A_x V_x A_{x+1}⁻¹ V_x⁻¹ and a_x = (1/2) Tr P_x. For every monomial with k = Σ_x m_x ≤ t,
+
+E_G[∏_x a_x^{m_x}] = E_{SU(2)}[∏_x a_x^{m_x}] = 2^{−k} Σ_{n=0}^{min_x m_x} ∏_x B(m_x, n) / (n+1)^L,
+
+with B(m, n) = (n+1)/(m+1) · binom(m+1, (m−n)/2) when n ≤ m and m−n is even, and 0 otherwise. So the Taylor coefficients of the Wilson partition function agree with SU(2)'s through order t.
+
+*Proof.* Each A_x has degree m_x + m_{x−1} ≤ k ≤ t, so its G average can be replaced by the Haar integral with every other link fixed. Expand a^m = 2^{−m} Σ_n B(m, n) χ_{n/2}. Schur orthogonality in the A_x gives 0 unless every n_x equals one n, and then
+
+∫ ∏_x dA_x ∏_x χ_{n/2}(P_x) = χ_{n/2}(V_0 V_1 ⋯ V_{L−1})² / (n+1)^L.
+
+So n ≤ min_x m_x, and what remains has degree 2n in each V_x, with 2n ≤ 2 min_x m_x ≤ 2k/L ≤ k ≤ t. So each V_x average is exact too, and the Haar integral of χ_{n/2}² is 1. ∎
+
+The form also gives the Haar values at L = 1, E[a] = 1/4 and E[a²] = 1/3, where the bound reads 2n ≤ 2k and agreement stops at floor(t/2).
+
+**Status.** DERIVED by the second seat at its recheck, and checked independently by GPT-6, which also derived the closed form: [its report, verbatim](../reviews/gpt6-one-by-l/README.md). MEASURED in [`tests/test_one_by_l_2d.py`](../tests/test_one_by_l_2d.py), by exact group sums on Q8 at L = 2 to 5, 2T at L = 2 to 4, 2O at L = 2 and 3, and 2I at L = 2: all 548 monomials through t equal the form, X^(t+1) differs from Haar in all 10 cases, and at L = 1 agreement stops at floor(t/2) on all four groups. [The prediction](PREDICTION-YM4-02b.hbp) went up first. Two of its sabotage rows missed, and they are recorded beside it.
+
+**What these rows can see of orientation.** Dropping an inverse on V or on the far A moves one row only, X⁶ on 1×2 for 2T, from 25/12 to 185/96. Every class of Q8, 2O, 2I and SU(2) is closed under inversion, so the law of these words cannot see it there, and through degree t 2T agrees with SU(2). Only 2T past its strength sees it, since its order-3 and order-6 classes are not inverse-closed. The test pins that value by name.
+
+**Exactly one side of 1 in d ≥ 3: a derivation to check, CONJECTURE.** From the second seat, unread by any other seat. Let A be the links along the side-1 direction and V the rest. A plaquette through that direction has degree 1 in each A, so for k ≤ t each A swaps from G to Haar with V fixed. Expand a_P^m in characters χ_{j_P}. The Haar integral over an A vanishes unless each j_P is at most the sum of the other j at that A, the polygon condition for an invariant. So 4 j_P is at most the total power of the through-plaquettes at that A. Each V lies in exactly one through-plaquette, with degree 4 j_P there, plus other plaquettes that hold it once each, so the surviving degree in V is at most k ≤ t, and V swaps too. If this holds, agreement through t holds for every such G and d whenever no plane has both sides 1, which would close the sharp condition. **Falsifier:** one such lattice whose first difference comes at k ≤ t. MEASURED support, by the second seat, filed in [`confirm-last/`](../reviews/opus55-ym4-02b/confirm-last/): exact sums on the only multisets above the plain degree bound give differ = 0 for 2T (40 multisets) and Q8 (4) across 1×2×2, 1×2×3, 1×3×3 and 1×2×2×2. 2O and 2I in d ≥ 3 are unmeasured.
+
 **Where a group first departs, on a lattice with four distinct links per plaquette.** For N_p plaquettes,
 
 ```text

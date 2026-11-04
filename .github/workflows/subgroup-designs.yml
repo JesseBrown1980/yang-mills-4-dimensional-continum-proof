@@ -7,6 +7,8 @@ on:
     paths:
       - 'tests/test_subgroup_designs_4d.py'
       - 'tests/SUBGROUP_DESIGNS_RECEIPT.txt'
+      - 'tests/test_one_by_l_2d.py'
+      - 'tests/ONE_BY_L_RECEIPT.txt'
       - 'docs/LEMMA-0003-SUBGROUP-DESIGNS.md'
       - 'docs/PREDICTION-YM4-02b.hbp'
       - 'reviews/opus55-ym4-02b/**'
@@ -42,6 +44,26 @@ jobs:
             grep -qF "FAILED|check=$named|" "$out"
             echo "sabotage=$s exit=$rc named=$named"
           done
+      - name: The periodic 1 x L lattice against its closed form, and each sabotage on its named check
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_one_by_l_2d.py > /tmp/one-by-l.out
+          cmp /tmp/one-by-l.out tests/ONE_BY_L_RECEIPT.txt
+          grep -q '^ONE_BY_L_DONE|failed=0|json=0$' /tmp/one-by-l.out
+          for pair in 'wrong_multiplicity|multiplicity_against_the_walk_count' 'no_inverse_on_the_plaquette|filed_value_2T_1x2' 'no_inverse_on_the_far_link|filed_value_2T_1x2' 'one_side_of_two_read_as_one|every_monomial_through_t_Q8_1x1' 'a_subset_for_a_group|gauge_fixed_reduction_Q8_1x2'; do
+            s="${pair%%|*}"
+            named="${pair##*|}"
+            out="/tmp/oxl-$s.out"
+            rc=0
+            python3 -I -X utf8 tests/test_one_by_l_2d.py "sabotage=$s" > "$out" 2>&1 || rc=$?
+            test "$rc" = 1
+            if grep -q Traceback "$out"; then echo "sabotage=$s crashed"; exit 1; fi
+            grep -qF "FAILED|check=$named|" "$out"
+            echo "sabotage=$s exit=$rc named=$named"
+          done
+          rc=0
+          python3 -I -X utf8 tests/test_one_by_l_2d.py sabotage=nope > /dev/null 2>&1 || rc=$?
+          test "$rc" = 2
       - name: The second seat's files are the ones it delivered
         working-directory: reviews/opus55-ym4-02b
         run: sha256sum -c SHA256SUMS > /dev/null
