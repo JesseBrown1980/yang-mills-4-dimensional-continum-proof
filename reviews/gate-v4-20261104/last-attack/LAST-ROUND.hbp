@@ -1,0 +1,167 @@
+LAST_ROUND|seat=second_seat|for=ACER-CLAUDE-FABLE5|owner=OP-JESSE|gate_sha256=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193|date=2026-11-04|json=0
+INTCODE|lane=linux|plants=75|flagged=38|clean=37|json=0
+SELFTEST|lane=linux|python=3.12.3|rc=0|last=NO_FLOAT_SELFTEST_DONE/must_flag=124/must_name_its_rule=158/must_pass=91/file_rows=59/list_rows=14/failed=0/json=0|json=0
+TOTAL|section=python|lane=linux|python=3.12.3|plants=578|v3_bypass=395|survivors=9|survivors_within_v3_bypass=9|v3_bypass_unflagged=9|reads_differ=0|flagged_only_as_untracked_import=35|BYPASS=9|CAUGHT=511|NOT_RUN=3|NO_FLOAT_CLEAN=23|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=2|RUN_ERROR_FLAGGED=18|json=0
+INTCODE|lane=win|plants=75|flagged=38|clean=37|json=0
+SELFTEST|lane=win|python=3.13.14|rc=0|last=NO_FLOAT_SELFTEST_DONE/must_flag=124/must_name_its_rule=158/must_pass=91/file_rows=59/list_rows=14/failed=0/json=0|json=0
+TOTAL|section=python|lane=win|python=3.13.14|plants=578|v3_bypass=392|survivors=7|survivors_within_v3_bypass=7|v3_bypass_unflagged=7|reads_differ=0|flagged_only_as_untracked_import=35|BYPASS=7|CAUGHT=507|NOT_RUN=11|NO_FLOAT_CLEAN=22|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=2|RUN_ERROR_FLAGGED=17|json=0
+TOTAL|section=native|lane=linux|plants=265|bypass_rows=152|closed=135|open=17|opened_from_flagged=0|clean_rows=32|clean_flagged=7|crashes=0|json=0
+TOTAL|section=heldout|lane=linux|plants=26|valid=20|flagged=6|flagged_names=ho_cpp_lerp,ho_cpp_midpoint_ptrfree,ho_cpp_ratio_free_tgamma,ho_cpp_user_literal,ho_rs_macro_rules_token_rename,ho_rs_transmute_duration_free|json=0
+TOTAL|section=native|lane=win|plants=265|bypass_rows=152|closed=135|open=17|opened_from_flagged=0|clean_rows=32|clean_flagged=7|crashes=0|json=0
+TOTAL|section=heldout|lane=win|plants=26|valid=20|flagged=6|flagged_names=ho_cpp_lerp,ho_cpp_midpoint_ptrfree,ho_cpp_ratio_free_tgamma,ho_cpp_user_literal,ho_rs_macro_rules_token_rename,ho_rs_transmute_duration_free|json=0
+TOTAL|section=linux_scan|plants=50|still_open_of_attack_bypass=0|setup_errors=0|setup_error_names=|rc=0|json=0
+TOTAL|section=fresh_read|lane=linux|python=3.12.3|plants=40|passed=39|flagged=1|prediction_misses=0|misses=|json=0
+TOTAL|section=fresh_read|lane=win|python=3.13.14|plants=40|passed=39|flagged=1|prediction_misses=0|misses=|json=0
+TOTAL|section=reopen|lane=linux|float_plants_flagged_only_by_import=18|reopened_by_a_tracked_same_name=18|stayed_flagged=0|json=0
+TOTAL|section=reopen|lane=win|float_plants_flagged_only_by_import=19|reopened_by_a_tracked_same_name=19|stayed_flagged=0|json=0
+TOTAL|section=fresh_compiled|lane=linux|plants=7|red=6|green=1|green_names=cpp_dot_ii_source|json=0
+TOTAL|section=fresh_compiled|lane=win|plants=4|red=4|green=0|green_names=|json=0
+TOTAL|section=claims|forms=45|read_silent=40|python=3.13.14|json=0
+TOTAL|section=sim_workflows|scenarios=17|json=0
+SURVIVOR|lane=linux|plant=format/percent_tuple_on_variable|json=0
+SURVIVOR|lane=linux|plant=noword/socket_timeout_property|json=0
+SURVIVOR|lane=linux|plant=noword/os_wait4_rusage_by_index|json=0
+SURVIVOR|lane=linux|plant=format/percent_computed_through_function|json=0
+SURVIVOR|lane=linux|plant=format/percent_name_bound_to_call|json=0
+SURVIVOR|lane=linux|plant=exponent/pow_none_through_parameter_no_default|json=0
+SURVIVOR|lane=linux|plant=noword/inline_child_interpreter_stdin|json=0
+SURVIVOR|lane=linux|plant=noword/subprocess_child_python|json=0
+SURVIVOR|lane=linux|plant=noword/os_popen_awk|json=0
+FRACTION_WITH_NO_LEADING_DIGIT_UNFLAGGED|lane=linux|plant=noword/os_popen_bc|value='.500'|json=0
+SURVIVOR|lane=win|plant=format/percent_tuple_on_variable|json=0
+SURVIVOR|lane=win|plant=noword/socket_timeout_property|json=0
+SURVIVOR|lane=win|plant=format/percent_computed_through_function|json=0
+SURVIVOR|lane=win|plant=format/percent_name_bound_to_call|json=0
+SURVIVOR|lane=win|plant=exponent/pow_none_through_parameter_no_default|json=0
+SURVIVOR|lane=win|plant=noword/inline_child_interpreter_stdin|json=0
+SURVIVOR|lane=win|plant=noword/subprocess_child_python|json=0
+SURVIVOR|set=native|plant=cpp_cmdline_define|json=0
+SURVIVOR|set=native|plant=f90|json=0
+SURVIVOR|set=native|plant=java|json=0
+SURVIVOR|set=native|plant=js_integer_product_rounds|json=0
+SURVIVOR|set=native|plant=js_negative_zero|json=0
+SURVIVOR|set=native|plant=makefile|json=0
+SURVIVOR|set=native|plant=pl_perl|json=0
+SURVIVOR|set=native|plant=ps1|json=0
+SURVIVOR|set=native|plant=sh_awk|json=0
+SURVIVOR|set=native|plant=sh_base64_pipe|json=0
+SURVIVOR|set=native|plant=sh_bc|json=0
+SURVIVOR|set=native|plant=sh_printf_float|json=0
+SURVIVOR|set=native|plant=sh_python_c|json=0
+SURVIVOR|set=native|plant=sh_python_heredoc|json=0
+SURVIVOR|set=native|plant=sh_writes_py_then_runs|json=0
+SURVIVOR|set=native|plant=sql_sqlite|json=0
+SURVIVOR|set=native|plant=yml_run_block|json=0
+SURVIVOR|set=heldout|plant=ho_js_array_avg|json=0
+SURVIVOR|set=heldout|plant=ho_js_process_uptime|json=0
+SURVIVOR|set=heldout|plant=ho_js_require_json|json=0
+SURVIVOR|set=heldout|plant=ho_js_string_math|json=0
+SURVIVOR|set=heldout|plant=ho_rs_asm_renamed_spaced|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_braces|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_brackets|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_env|json=0
+SURVIVOR|set=heldout|plant=ho_rs_path_raw_string|json=0
+SURVIVOR|set=heldout|plant=ho_sh_gawk|json=0
+SURVIVOR|set=heldout|plant=ho_sh_node_e|json=0
+SURVIVOR|set=heldout|plant=ho_sh_perl_e|json=0
+SURVIVOR|set=heldout|plant=ho_sh_python_stdin_redirect|json=0
+SURVIVOR|set=heldout|plant=ho_sh_var_interpreter|json=0
+SURVIVOR|lane=linux|scenario=any_reason_text_is_accepted|json=0
+SURVIVOR|lane=linux|scenario=folder_row_prefix|json=0
+SURVIVOR|lane=linux|scenario=pull_request_replaces_the_gate_it_runs|json=0
+SURVIVOR|lane=linux|scenario=listed_exec_helper_called_from_unlisted_file|json=0
+SURVIVOR|lane=linux|scenario=generated_file_shadows_clean_tracked_module|json=0
+SURVIVOR|lane=win|scenario=any_reason_text_is_accepted|json=0
+SURVIVOR|lane=win|scenario=folder_row_prefix|json=0
+SURVIVOR|lane=win|scenario=pull_request_replaces_the_gate_it_runs|json=0
+SURVIVOR|lane=win|scenario=listed_exec_helper_called_from_unlisted_file|json=0
+SURVIVOR|lane=win|scenario=generated_file_shadows_clean_tracked_module|json=0
+FRESH|plant=py_from_ast_parse|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.5,win:float 0.5|route=the ast_parse rule reads ast.parse on the module name, and a from-import reaches the same function|json=0
+FRESH|plant=py_two_level_module_attr|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 768.763786554,win:float 136287.1381502|route=the reexport rule reads one attribute off an import; two levels down hands back the time module|json=0
+FRESH|plant=py_from_import_submodule_attr|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 1793767467.5175407,win:float 1793767469.4329493|route=a submodule from a from-import is outside the module_flow and reexport reads|json=0
+FRESH|plant=py_robotparser_mtime|lang=python|style=ordinary|predict=PASS|gate=PASSED|float_shown=linux:float 1793767467.6127832,win:float 1793767469.5537128|route=an allowed module's method returns time.time()|json=0
+FRESH|plant=py_testresult_durations|lang=python|style=ordinary|predict=PASS|gate=PASSED|float_shown=linux:float 1.89200000022538e-05,win:float 1.889999839477241e-05|route=unittest records each test's duration as a float from Python 3.12|json=0
+FRESH|plant=py_meta_path_load_module|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 1.4142135623730951,win:float 1.4142135623730951|route=a module loaded through the import system's own finder carries no watched name|json=0
+FRESH|plant=py_string_annotation_eval|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.3333333333333333,win:float 0.3333333333333333|route=the standard library evaluates a string the scan reads as a string|json=0
+FRESH|plant=py_isinstance_captures_float|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 3.0,win:float 3.0|route=the name float is excused inside isinstance in either argument, and a metaclass hook receives it|json=0
+FRESH|plant=py_methodcaller_as_a_name|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.13436424411240122,win:float 0.13436424411240122|route=methodcaller from a from-import, held in a name, is called with a denied method|json=0
+FRESH|plant=py_match_args_truediv|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.5,win:float 0.5|route=a positional class pattern reads the attribute named in __match_args__, which the source builds|json=0
+FRESH|plant=py_struct_reinit|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.0,win:float 0.0|route=the float code goes in through __init__ on an integer Struct|json=0
+FRESH|plant=py_memoryview_getattr_cast|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.0,win:float 0.0|route=getattr of cast with a shown name, then a float code|json=0
+FRESH|plant=py_pow_none_inline|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.5,win:float 0.5|route=the modulus is an expression that yields None, with no parameter or name involved|json=0
+FRESH|plant=py_prepare_lambda|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.5,win:float 0.5|route=__prepare__ assigned rather than defined supplies e = -1 to a class body, while the file's only binding of e is 1|json=0
+FRESH|plant=py_radd_under_if|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 1.5,win:float 1.5|route=__radd__ one statement down in the class body leaves the path-join reading of / in place|json=0
+FRESH|plant=py_path_from_tracked_star|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 1.5,win:float 1.5|route=a star import of a tracked module brings an int subclass named Path, and / on Path(...) reads as a join|json=0
+FRESH|plant=py_percent_on_percent|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:str 1.000000,win:str 1.000000|route=a format string built by a % on the left of a %|json=0
+FRESH|plant=py_two_hole_format_spec|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:str 1.00,win:str 1.00|route=a spec of two replacement fields|json=0
+FRESH|plant=py_fstring_percent_fill|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:str %%1.00,win:str %%1.00|route=an f-string spec opening with % is excused as a date format, and % here is a fill character|json=0
+FRESH|plant=py_allowlist_by_same_name|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.3333333333333333,win:float 0.3333333333333333|route=any tracked file or folder named sqlite3 anywhere in the tree opens the import allow list for the standard module|json=0
+FRESH|plant=py_named_html|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.3333333333333333,win:float 0.3333333333333333|route=python3 runs a file named .html, whose reader takes it for a page with no script|json=0
+FRESH|plant=py_pyc_under_other_name|lang=python|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:float 0.3333333333333333,win:float 0.3333333333333333|route=python3 runs a compiled file under any name by its magic number, and a ./ path is outside the run_targets reading|json=0
+FRESH|plant=cal_from_reexport_time|lang=python|style=crafted|predict=FLAG|gate=FLAGGED|float_shown=linux:float 770.136884654,win:float 136288.5481865|route=a calibration: the reexport rule's own form, with this module and name|json=0
+FRESH|plant=cpp_load_factor|lang=c|style=ordinary|predict=PASS|gate=PASSED|float_shown=linux:0.076923|route=auto holds the float the standard container returns|json=0
+FRESH|plant=c_typeof_difftime|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:0.333333|route=a float type taken from a library function the list leaves out, then ordinary arithmetic with no float word|json=0
+FRESH|plant=c_computed_include|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:0.333333|route=#include of a macro names a file the scan does not read|json=0
+FRESH|plant=c_trigraph_splice|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:0.333333|route=the backslash trigraph splices the float word across a line under -std=c17|json=0
+FRESH|plant=c_std_raw_string_lookalike|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:0.333333 (a )|route=the reader takes R"( for a raw string in a .c file, and strict C reads two strings with code between them|json=0
+FRESH|plant=cpp_dot_ii_source|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:0.333333|route=g++ compiles .ii as C++ by its extension, and the scan reads no .ii|json=0
+FRESH|plant=c_exp_literal_q_suffix|lang=c|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:333333|route=a float literal with an exponent and the q suffix, no decimal point; the value 333333 comes from quad arithmetic|json=0
+FRESH|plant=rs_include_macro_param|lang=rust|style=crafted|predict=PASS|gate=PASSED|float_shown=win:f64 0.3333333333333333|route=include! takes a macro parameter, so the include reader sees no target|json=0
+FRESH|plant=rs_shebang_quote|lang=rust|style=crafted|predict=PASS|gate=PASSED|float_shown=win:f64 0.3333333333333333|route=a quote on the shebang line opens a string to the reader, and rustc drops that line|json=0
+FRESH|plant=rs_cargo_quoted_build|lang=rust|style=crafted|predict=PASS|gate=PASSED|float_shown=win:0.3333333333333333|route=a quoted build key in Cargo.toml names a build script outside .rs|json=0
+FRESH|plant=rs_proc_macro_underscore|lang=rust|style=crafted|predict=PASS|gate=PASSED|float_shown=win:f64 0.3333333333333333|route=proc_macro with an underscore is a proc-macro crate to Cargo, and its output lives in a string|json=0
+FRESH|plant=js_function_via_constructor|lang=js|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:number 0.3333333333333333,win:number 0.3333333333333333|route=the Function constructor reached from an arrow function, with its code in a string|json=0
+FRESH|plant=js_postfix_regex_mislex|lang=js|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:number 3.5,win:number 3.5|route=a / after a postfix ++ reads as a regex opening, and both divisions are blanked|json=0
+FRESH|plant=js_hashbang_backtick|lang=js|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:number 0.3333333333333333,win:number 0.3333333333333333|route=a backtick on the hashbang line opens a template to the reader, and node drops that line|json=0
+FRESH|plant=js_global_bracket|lang=js|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:number 1.4142135623730951,win:number 1.4142135623730951|route=global with a built name, beside the window and self forms the rules name|json=0
+FRESH|plant=js_wasm_valid|lang=js|style=crafted|predict=PASS|gate=PASSED|float_shown=linux:number 0.3333333333333333,win:number 0.3333333333333333|route=f64.div in WebAssembly bytes held as integers; the earlier plant's byte counts were off by one and it never ran|json=0
+FRESH|plant=js_stat_mtime_ms|lang=js|style=ordinary|predict=PASS|gate=PASSED|float_shown=linux:number 1793767477640.1357,win:number 1793767473389.157|route=a file time in milliseconds is a double with a fraction|json=0
+SIM|scenario=control_clean_pr|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=the plant step ran too|json=0
+SIM|scenario=float_no_row|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=the base gate's job for this|json=0
+SIM|scenario=float_with_its_own_row|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=run_output=0.3333333333333333|json=0
+SIM|scenario=folder_row_over_a_new_float|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=run_output=0.3333333333333333|json=0
+SIM|scenario=gate_edit_row_unchanged|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=the row's pin|json=0
+SIM|scenario=gate_softened_with_its_row|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=the softened gate passes its own selftest and plants|json=0
+SIM|scenario=next_pr_after_a_softened_gate_merged|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=run_output=0.3333333333333333|json=0
+SIM|scenario=new_workflow_with_the_same_job_names_and_a_float|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=the real base job is red; the flag job reads only its four paths; what GitHub does with two same-named checks is NOT_MEASURED|json=0
+SIM|scenario=second_workflow_named_no_float_yaml_with_no_float|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=added beside the real file, one letter away|json=0
+SIM|scenario=float_inline_in_a_new_workflow|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=workflow code is outside the reading|json=0
+SIM|scenario=compiled_check_script_replaced|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=no_float_compiled.sh is outside the flag's four paths|json=0
+SIM|scenario=pull_request_deletes_both_workflows|no_float=NO_JOB|no_float_base=GREEN|no_float_list_unchanged=RED|note=later pull requests have no base job at all once this merges|json=0
+SIM|scenario=list_deleted|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=cat-file fails under set -e|json=0
+SIM|scenario=branch_a_power_with_proven_exponent|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=|json=0
+SIM|scenario=branch_b_rebinds_the_name_elsewhere|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=|json=0
+SIM_MERGE|what=merged_tree_of_two_green_branches|merge_conflicts=0|run_output=0.125|json=0
+SIM|scenario=the_merged_tree_of_the_two|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=only the push-to-main run of no_float.yml reads this tree, after it landed|json=0
+SIM|scenario=unrelated_history|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=merge-base fails under set -e|json=0
+TOTAL|section=fresh|plants=40|passed=39|flagged=1|shown_producing_a_float=40|json=0
+OWN|file=claims.py|findings=1|division_or_literal=0|kinds=[import_allow] import no_float_gate, out|json=0
+OWN|file=consolidate.py|findings=1|division_or_literal=0|kinds=[import_allow] import no_float_gate, out|json=0
+OWN|file=fresh.py|findings=16|division_or_literal=0|kinds=[brace_anywhere] float field in a {}-for;[exec_attrs] .compile;[import_allow] import py_compile, outsid;[module_flow] the module subprocess as a;[percent_parser] float %-format;float %-format|json=0
+OWN|file=fresh_compiled.py|findings=2|division_or_literal=0|kinds=[module_flow] the module subprocess as a;exec|json=0
+OWN|file=make_scenarios.py|findings=0|division_or_literal=0|kinds=|json=0
+OWN|file=reopen.py|findings=3|division_or_literal=0|kinds=[ast_parse] ast.parse;[import_allow] import no_float_gate, out;[module_flow] the module subprocess as a|json=0
+OWN|file=rerun_native.py|findings=3|division_or_literal=0|kinds=[module_flow] the module subprocess as a;exec|json=0
+OWN|file=rerun_python.py|findings=3|division_or_literal=0|kinds=[ast_parse] ast.parse;[import_allow] import no_float_gate, out;[module_flow] the module subprocess as a|json=0
+OWN|file=rerun_scan.py|findings=0|division_or_literal=0|kinds=|json=0
+OWN|file=sim_workflows.py|findings=0|division_or_literal=0|kinds=|json=0
+FILE|name=claims.hbp|sha256=894fa99c14d7430d59ae151f74115d422304d268a312a5bdfb4ef6a13e7db76a|json=0
+FILE|name=compiled_fail_open_win.hbp|sha256=6ba7e813c903f71c36688ea6851e9778a8ff1cd7161fed1544aaf2146a874655|json=0
+FILE|name=fresh_compiled_linux.hbp|sha256=5fcfea9e8cfca08c48fd466df82deed13b5d4e4f26509b8a869b70c63039e1b4|json=0
+FILE|name=fresh_compiled_win.hbp|sha256=090479aabca5d2b0508cfdddf84a4aa4f1fab1c032d4b4e019f302ab60c9379c|json=0
+FILE|name=fresh_exec_linux.hbp|sha256=c6c8e61dcb10209503b13e718b2cc16bf505c496e0fd0c1417f3d540bf5c16b3|json=0
+FILE|name=fresh_exec_win.hbp|sha256=4e05721c4d8a66ac70677c0fa5f915c39f93130ae39b768d82b96b5bbcebdd9a|json=0
+FILE|name=fresh_frozen.hbp|sha256=a1d372166abf1f8d22021aedf18bc71dd4308fe18782e733163dd88536465adf|json=0
+FILE|name=fresh_read_linux.hbp|sha256=e92ba826050b32e631cae494f9fe8007ec92f570755137096b50d51442f81ff3|json=0
+FILE|name=fresh_read_win.hbp|sha256=e5d8983e03f790de4444ae99f0cc5f90db93378c954a90211e33011207c7513e|json=0
+FILE|name=main_gates.hbp|sha256=5a3e1bd5357440fabf9a8d3674a231aa1717b280bf54870b1adb4adcf164a5d8|json=0
+FILE|name=native_linux.hbp|sha256=cd43410c5e29a0c4cc206e0c08dbfbf3b1d4a21b2d2f5ef736b34a4e0c6439c8|json=0
+FILE|name=native_win.hbp|sha256=30ae0a949239d9df2649ae07c3b667580bcfe417d81663c49689a4001a36441e|json=0
+FILE|name=python_linux.hbp|sha256=5a74a4c91a893aca1b74ed1ecddbaaa7e8aa808ab32f24d6fa26e85d29ee2f4b|json=0
+FILE|name=python_win.hbp|sha256=8a5f04f33a1dc60cffe454cb2c46dae6d009fb03ef194402e2fe6c139ce21b10|json=0
+FILE|name=reopen_linux.hbp|sha256=6dc00eddad20ea9cc052fc466d0074d2f7960ba3b8912beb40a84ad60b66e333|json=0
+FILE|name=reopen_win.hbp|sha256=d3ac0d59fa3e4efb96a5398035ba3562214d51b66b8a661e82b01f18ce452ff5|json=0
+FILE|name=scan_linux.hbp|sha256=436d443ab33bbb7dec506ddbe8222cb946b734c0b4c769be4df2eecb495a0a81|json=0
+FILE|name=scen_linux.hbp|sha256=4750e34a51fa8f1b26b833ca4459cf351a7c13259009b3119f80ea98f96438ff|json=0
+FILE|name=scen_win.hbp|sha256=9671eeb66bc48e38f9e968d4ba42c9d4b3d50fa49aa2c0fd1efbb02ce63f0499|json=0
+FILE|name=sim_workflows.hbp|sha256=23b7f11cdaab672a226a397561e9cc571203eb4a15f6fdbca0e6249e75539cf4|json=0

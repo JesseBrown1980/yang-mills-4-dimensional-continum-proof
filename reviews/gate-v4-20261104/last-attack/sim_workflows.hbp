@@ -1,0 +1,129 @@
+SIM_STEP|scenario=control_clean_pr|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=control_clean_pr|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=control_clean_pr|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=the plant step ran too|json=0
+SIM_STEP|scenario=float_no_row|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/file=src/v.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|first=NO_FLOAT/file=src/v.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=float_no_row|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=the base gate's job for this|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=2/listed_folders=0/listed_findings=94/failed=0/json=0|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=2/listed_folders=0/listed_findings=94/failed=0/json=0|json=0
+SIM_STEP|scenario=float_with_its_own_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=float_with_its_own_row|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=run_output=0.3333333333333333|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=1/listed_findings=94/failed=0/json=0|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=1/listed_findings=94/failed=0/json=0|json=0
+SIM_STEP|scenario=folder_row_over_a_new_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=folder_row_over_a_new_float|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=run_output=0.3333333333333333|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/pin_moved=scripts/no_float_gate.py/listed=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193/actu|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|first=NO_FLOAT/pin_moved=scripts/no_float_gate.py/listed=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193/actu|json=0
+SIM_STEP|scenario=gate_edit_row_unchanged|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=scripts/no_float_gate.py/json=0|json=0
+SIM|scenario=gate_edit_row_unchanged|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=the row's pin|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=gate_softened_with_its_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=gate_softened_with_its_row|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=RED|note=the softened gate passes its own selftest and plants|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=next_pr_after_a_softened_gate_merged|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=next_pr_after_a_softened_gate_merged|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=run_output=0.3333333333333333|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/file=src/v.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|first=NO_FLOAT/file=src/v.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=new_workflow_with_the_same_job_names_and_a_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=new_workflow_with_the_same_job_names_and_a_float|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=the real base job is red; the flag job reads only its four paths; what GitHub does with two same-named checks is NOT_MEASURED|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=second_workflow_named_no_float_yaml_with_no_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=second_workflow_named_no_float_yaml_with_no_float|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=added beside the real file, one letter away|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=float_inline_in_a_new_workflow|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=float_inline_in_a_new_workflow|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=workflow code is outside the reading|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=compiled_check_script_replaced|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=compiled_check_script_replaced|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=no_float_compiled.sh is outside the flag's four paths|json=0
+SIM_STEP|scenario=pull_request_deletes_both_workflows|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=pull_request_deletes_both_workflows|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=pull_request_deletes_both_workflows|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=pull_request_deletes_both_workflows|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=.github/workflows/no_float.yml/json=0|json=0
+SIM|scenario=pull_request_deletes_both_workflows|no_float=NO_JOB|no_float_base=GREEN|no_float_list_unchanged=RED|note=later pull requests have no base job at all once this merges|json=0
+SIM_STEP|scenario=list_deleted|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=list_deleted|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/no_readable_list_beside_the_gate=FLOAT-EVIDENCE.txt/json=0|json=0
+SIM_STEP|scenario=list_deleted|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=list_deleted|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=list_deleted|job=no-float-base|step=The base gate reads the pull request's list and files|rc=128|first=fatal: path 'scripts/FLOAT-EVIDENCE.txt' does not exist in 'HEAD'|json=0
+SIM_STEP|scenario=list_deleted|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=list_deleted|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=cat-file fails under set -e|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=branch_a_power_with_proven_exponent|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=branch_a_power_with_proven_exponent|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float|step=Scan the tracked files the gate reads|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|first=NO_FLOAT_DONE/code_files=3/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+SIM_STEP|scenario=branch_b_rebinds_the_name_elsewhere|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=branch_b_rebinds_the_name_elsewhere|no_float=GREEN|no_float_base=GREEN|no_float_list_unchanged=GREEN|note=|json=0
+SIM_MERGE|what=merged_tree_of_two_green_branches|merge_conflicts=0|run_output=0.125|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/file=src/m.py/first=power with an unproven exponent at line 2/count=1/json=0|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|first=NO_FLOAT/file=src/m.py/first=power with an unproven exponent at line 2/count=1/json=0|json=0
+SIM_STEP|scenario=the_merged_tree_of_the_two|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|first=NO_FLOAT_LIST_UNCHANGED/json=0|json=0
+SIM|scenario=the_merged_tree_of_the_two|no_float=RED|no_float_base=RED|no_float_list_unchanged=GREEN|note=only the push-to-main run of no_float.yml reads this tree, after it landed|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float|step=The gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float|step=Scan the tracked files the gate reads|rc=1|first=NO_FLOAT/file=src/m.py/first=power with an unproven exponent at line 2/count=1/json=0|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|first=-|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float-base|step=The base gate reads its own test snippets|rc=0|first=-|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|first=NO_FLOAT/file=src/m.py/first=power with an unproven exponent at line 2/count=1/json=0|json=0
+SIM_STEP|scenario=unrelated_history|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|first=-|json=0
+SIM|scenario=unrelated_history|no_float=RED|no_float_base=RED|no_float_list_unchanged=RED|note=merge-base fails under set -e|json=0
+TOTAL|section=sim_workflows|scenarios=17|json=0
