@@ -1,0 +1,5 @@
+SITE_C|lattice=(Z/2)x(Z/1)x(Z/2)|w=[1, 1, 1, -1, -1]|C=8^8|fixed_plaquette_evaluations_with_w<0=4096|slice_products_negative=0|N(delta_C)_lowest_numerator=4096|C_with_negative_N=0|up_equals_down_failures=0|Z_numerator=68719476736|denominator=8^12|json=0
+SITE_C|lattice=(Z/2)x(Z/1)x(Z/2)|w=[3, 2, 1, -1, 2]|C=8^8|fixed_plaquette_evaluations_with_w<0=2048|slice_products_negative=0|N(delta_C)_lowest_numerator=256|C_with_negative_N=0|up_equals_down_failures=0|Z_numerator=25274644652032|denominator=8^12|json=0
+SITE_C|lattice=(Z/2)x(Z/1)x(Z/2)|w=[3, 2, 1, -1, -2]|C=8^8|fixed_plaquette_evaluations_with_w<0=4096|slice_products_negative=0|N(delta_C)_lowest_numerator=20736|C_with_negative_N=0|up_equals_down_failures=0|Z_numerator=53321326354432|denominator=8^12|json=0
+SITE_C|lattice=(Z/2)x(Z/1)x(Z/2)|w=[1, -1, 1, 1, 1]|C=8^8|fixed_plaquette_evaluations_with_w<0=1024|slice_products_negative=384|N(delta_C)_lowest_numerator=-2304|C_with_negative_N=1572864|up_equals_down_failures=0|Z_numerator=10989076480|denominator=8^12|json=0
+done 

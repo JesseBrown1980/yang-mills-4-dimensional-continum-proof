@@ -1,0 +1,14 @@
+HAAR_COMMUTATOR|k=1..6|E[a^k]=1/4,1/3,5/32,1/5,11/96,1/7|json=0
+FIRST_DIFFERENCE|group=Q8|t=3|expected_t=3|first_k_differing=2|floor(t/2)+1=2|agree=1|E_G_vs_Haar=1:1/4=;2:1!=;3:1/4!=;4:1!=;5:1/4!=|json=0
+FIRST_DIFFERENCE|group=2T|t=5|expected_t=5|first_k_differing=3|floor(t/2)+1=3|agree=1|E_G_vs_Haar=1:1/4=;2:1/3=;3:1/4!=;4:1/3!=;5:1/4!=;6:1/3!=;7:1/4!=|json=0
+FIRST_DIFFERENCE|group=2O|t=7|expected_t=7|first_k_differing=4|floor(t/2)+1=4|agree=1|E_G_vs_Haar=1:1/4=;2:1/3=;3:5/32=;4:23/96!=;5:17/128!=;6:83/384!=;7:65/512!=;8:323/1536!=;9:257/2048!=|json=0
+FIRST_DIFFERENCE|group=2I|t=11|expected_t=11|first_k_differing=6|floor(t/2)+1=6|agree=1|E_G_vs_Haar=1:1/4=;2:1/3=;3:5/32=;4:1/5=;5:11/96=;6:115/768!=;7:73/768!=;8:239/1920!=;9:173/2048!=;10:337/3072!=;11:5/64!=;12:8229/81920!=;13:3643/49152!=|json=0
+FIRST_DIFFERENCE_DIC|group=Dic_2|order=8|t=3_from_the_spin_2_weight_0_vector|first_k_differing=2|floor(t/2)+1=2|agree=1|json=0
+FIRST_DIFFERENCE_DIC|group=Dic_3|order=12|t=3_from_the_spin_2_weight_0_vector|first_k_differing=2|floor(t/2)+1=2|agree=1|json=0
+FIRST_DIFFERENCE_DIC|group=Dic_6|order=24|t=3_from_the_spin_2_weight_0_vector|first_k_differing=2|floor(t/2)+1=2|agree=1|json=0
+FIRST_DIFFERENCE_CYCLIC|group=Z2|t=1|first_k_differing=1|floor(t/2)+1=1|k_at_most_t=1|json=0
+FIRST_DIFFERENCE_CYCLIC|group=Z3|t=1|first_k_differing=1|floor(t/2)+1=1|k_at_most_t=1|json=0
+FIRST_DIFFERENCE_CYCLIC|group=Z4|t=1|first_k_differing=1|floor(t/2)+1=1|k_at_most_t=1|json=0
+FIRST_DIFFERENCE_CYCLIC|group=Z5|t=1|first_k_differing=1|floor(t/2)+1=1|k_at_most_t=1|json=0
+FIRST_DIFFERENCE_CYCLIC|group=Z6|t=1|first_k_differing=1|floor(t/2)+1=1|k_at_most_t=1|json=0
+FIRST_DIFFERENCE_TRIVIAL|group=Z1|t=0|first_k_differing=1|floor(t/2)+1=1|that_k_is_above_t=1|agreement_through_t_on_1x1=1|so_exactly_when_fails_at_this_group=1|json=0

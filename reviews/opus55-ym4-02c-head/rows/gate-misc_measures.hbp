@@ -1,0 +1,11 @@
+GATE_READS|path=tests/test_reflection_transfer_4d.py|findings=0|sha256=1da57a621bbde273|json=0
+GATE_READS|path=tests/test_site_sign_4d.py|findings=0|sha256=1aa52e8c503d3255|json=0
+GATE_READS|path=reviews/opus55-site-sign/code/indep.py|findings=0|sha256=6e5436a086f93abe|json=0
+GATE_READS|path=reviews/opus55-ym4-02c-last/src/exact5.py|findings=0|sha256=ebd893aff0197c91|json=0
+GATE_READS|path=reviews/fable5-q8-slice-count/fixed_slice_mechanism.py|findings=0|sha256=371c877e10c8beb9|json=0
+LIST_LINE|line=3|path=reviews/opus55-site-sign/code/astscan.py|json=0
+LIST_LINE|line=5|path=reviews/opus55-site-sign/code/decode.py|json=0
+LIST_LINE|line=28|path=tests/test_one_by_l_2d.py|json=0
+COMPILED_YML_LINE_2|# This repository's compiled code is one C++ review file and two Rust review files built alone, with no Cargo package, s
+GATE_08D23B3|sha256=24293fb2|json=0
+GATE_08D23B3_ON_1078E6D|findings=3|rows=[more_attrs] times at line 114;[ast_parse] ast.parse at line 1045;[more_attrs] times at line 98|json=0

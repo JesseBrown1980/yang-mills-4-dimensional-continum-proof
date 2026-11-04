@@ -1,0 +1,119 @@
+F|float %-format at line 2
+F|the string __truediv__ at line 138
+F|the string __float__ at line 138
+F|the string __pow__ at line 138
+F|the string __truediv__ at line 141
+F|the string __float__ at line 141
+F|the string __pow__ at line 141
+F|the string __pow__ at line 149
+F|the string __truediv__ at line 149
+F|the string __truediv__ at line 150
+F|the string __pow__ at line 150
+F|the string __float__ at line 150
+F|float %-format at line 1684
+F|float %-format at line 1684
+F|float %-format at line 1684
+F|float %-format at line 1684
+F|float %-format at line 1687
+F|float %-format at line 1693
+F|float %-format at line 1693
+F|float %-format at line 1693
+F|float %-format at line 1737
+F|float %-format at line 1737
+F|float %-format at line 1737
+F|float %-format at line 910
+F|the string __truediv__ at line 217
+F|float %-format at line 891
+F|float %-format at line 896
+F|[import_allow] import codecs, outside the allowed list at line 118
+F|[import_allow] import html, outside the allowed list at line 120
+F|[import_allow] import string, outside the allowed list at line 124
+F|[import_allow] import warnings, outside the allowed list at line 127
+F|[percent_parser] float %-format at line 2
+F|[dunder_strings] the string __truediv__ at line 138
+F|[dunder_strings] the string __rtruediv__ at line 138
+F|[dunder_strings] the string __itruediv__ at line 138
+F|[dunder_strings] the string __float__ at line 138
+F|[dunder_strings] the string __complex__ at line 138
+F|[dunder_strings] the string __pow__ at line 138
+F|[dunder_strings] the string __rpow__ at line 138
+F|[dunder_strings] the string __ipow__ at line 138
+F|[dunder_strings] the string ipow at line 138
+F|[dunder_strings] the string __truediv__ at line 141
+F|[dunder_strings] the string __float__ at line 141
+F|[dunder_strings] the string __pow__ at line 141
+F|[dunder_strings] the string __pow__ at line 149
+F|[dunder_strings] the string __rpow__ at line 149
+F|[dunder_strings] the string __truediv__ at line 149
+F|[dunder_strings] the string __rtruediv__ at line 149
+F|[dunder_strings] the string __truediv__ at line 150
+F|[dunder_strings] the string __rtruediv__ at line 150
+F|[dunder_strings] the string __itruediv__ at line 150
+F|[dunder_strings] the string itruediv at line 150
+F|[dunder_strings] the string __pow__ at line 150
+F|[dunder_strings] the string __rpow__ at line 150
+F|[dunder_strings] the string __ipow__ at line 150
+F|[dunder_strings] the string ipow at line 150
+F|[dunder_strings] the string __complex__ at line 150
+F|[dunder_strings] the string __float__ at line 150
+F|[dunder_strings] the string __format__ at line 150
+F|[dunder_strings] the string itruediv at line 151
+F|[brace_anywhere] float field in a {}-format at line 1684
+F|[percent_parser] float %-format at line 1684
+F|[brace_anywhere] float field in a {}-format at line 1684
+F|[brace_anywhere] float field in a {}-format at line 1684
+F|[percent_parser] float %-format at line 1684
+F|[percent_parser] float %-format at line 1684
+F|[percent_parser] float %-format at line 1684
+F|[brace_anywhere] float field in a {}-format at line 1684
+F|[percent_parser] float %-format at line 1687
+F|[percent_parser] float %-format at line 1693
+F|[percent_parser] float %-format at line 1693
+F|[percent_parser] float %-format at line 1693
+F|[percent_parser] float %-format at line 1712
+F|[percent_parser] float %-format at line 1712
+F|[percent_parser] float %-format at line 1712
+F|[brace_anywhere] float field in a {}-format at line 1712
+F|[brace_anywhere] float field in a {}-format at line 1712
+F|[format_attr_strings] format string reads __float__ at line 1712
+F|[percent_parser] float %-format at line 1737
+F|[percent_parser] float %-format at line 1737
+F|[percent_parser] float %-format at line 1737
+F|[ast_parse] ast.parse at line 943
+F|[ast_parse] ast.parse at line 1441
+F|[dunder_strings] the string itruediv at line 802
+F|[format_calls] Formatter at line 419
+F|[dunder_strings] the string __format__ at line 832
+F|[percent_parser] float %-format at line 910
+F|[dunder_strings] the string __truediv__ at line 217
+F|[dunder_strings] the string __rtruediv__ at line 217
+F|[percent_parser] float %-format at line 891
+F|[percent_parser] float %-format at line 896
+F|[dunder_strings] the string itruediv at line 633
+F|[dunder_strings] the string ipow at line 633
+---
+KIND|n=18|[percent_parser] float %-format
+KIND|n=15|float %-format
+KIND|n=6|[brace_anywhere] float field in a {}-format
+KIND|n=5|[dunder_strings] the string __truediv__
+KIND|n=5|the string __truediv__
+KIND|n=4|[dunder_strings] the string __pow__
+KIND|n=4|[dunder_strings] the string __rtruediv__
+KIND|n=4|[dunder_strings] the string itruediv
+KIND|n=4|the string __pow__
+KIND|n=3|[dunder_strings] the string __float__
+KIND|n=3|[dunder_strings] the string __rpow__
+KIND|n=3|[dunder_strings] the string ipow
+KIND|n=3|the string __float__
+KIND|n=2|[ast_parse] ast.parse
+KIND|n=2|[dunder_strings] the string __complex__
+KIND|n=2|[dunder_strings] the string __format__
+KIND|n=2|[dunder_strings] the string __ipow__
+KIND|n=2|[dunder_strings] the string __itruediv__
+KIND|n=1|[format_attr_strings] format string reads __float__
+KIND|n=1|[format_calls] Formatter
+KIND|n=1|[import_allow] import codecs, outside the allowed list
+KIND|n=1|[import_allow] import html, outside the allowed list
+KIND|n=1|[import_allow] import string, outside the allowed list
+KIND|n=1|[import_allow] import warnings, outside the allowed list
+TOTAL|93

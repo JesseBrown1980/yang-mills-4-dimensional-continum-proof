@@ -96,7 +96,7 @@ The statement is known. The values t = 3, 5, 7, 11 are the classical strengths o
 
 - The lemma gives zero error on the Taylor coefficients through β^t for these lattices. It starts the bounded approximation that [YM4-03](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/3) asks of any use of Q8, 2T, 2O or 2I, and the remainder bound at β > 0 stays OPEN. A crude bound from |X| ≤ N_p depends on the volume.
 - It concerns polynomial link averages and the Euclidean Wilson series at β = 0. The Hamiltonian series in the [SU(N) repository](https://github.com/JesseBrown1980/Finite-Universe-SU-N-solved) carry a group-specific electric term, and their relation to SU(2) stays OPEN. S₃ has three involutions and SU(2) has one, so S₃ sits outside this lemma.
-- It speaks to strong coupling. [Discrete subgroups of SU(2) have a freezing transition](https://www.arxiv.org/pdf/2201.09625) at larger β, which bounds how far a subgroup can follow SU(2), and the continuum limit needs β → ∞. Reflection positivity, the transfer matrix, the renormalization group, the continuum limit and the physical mass gap stay OPEN in the [ledger](PROOF_OBLIGATIONS.md).
+- It speaks to strong coupling. [Discrete subgroups of SU(2) have a freezing transition](https://www.arxiv.org/pdf/2201.09625) at larger β, which bounds how far a subgroup can follow SU(2), and the continuum limit needs β → ∞. The renormalization group, the continuum limit and the physical mass gap stay OPEN in the [ledger](PROOF_OBLIGATIONS.md), which holds reflection positivity and the transfer operator at each fixed finite lattice as DERIVED.
 
 ## Reproduce
 

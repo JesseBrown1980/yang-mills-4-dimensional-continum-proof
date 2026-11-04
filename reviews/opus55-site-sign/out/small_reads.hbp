@@ -1,0 +1,8 @@
+IND_ZERO_2x2|gauge_fixed=32768|central=512|negative_S=192|orbit=512|central_times_orbit=262144|negative_times_orbit=98304|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x2|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x3|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=3x3|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x2x2|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x2x3|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x3x3|failures=0|json=0
+IND_REMARK_EXCLUSIVE|lattice=2x2x2x2|failures=0|json=0

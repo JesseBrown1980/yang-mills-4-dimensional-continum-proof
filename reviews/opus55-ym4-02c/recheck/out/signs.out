@@ -1,0 +1,32 @@
+SIGNS|group=Q8|order=8|classes=5|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=8|one_signed_iff_homomorphism_agree=32|disagree=0|json=0
+SIGNS|group=S3|order=6|classes=3|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=D4|order=8|classes=5|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=8|one_signed_iff_homomorphism_agree=32|disagree=0|json=0
+SIGNS|group=Z4|order=4|classes=4|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=A4|order=12|classes=4|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=2|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=S4|order=24|classes=5|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=32|disagree=0|json=0
+SIGNS|group=SL23|order=24|classes=7|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=2|one_signed_iff_homomorphism_agree=32|disagree=0|json=0
+SIGNS|group=Q8|order=8|classes=5|dims=[3, 2]|free_links=7|plaquettes=6|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=8|one_signed_iff_homomorphism_agree=32|disagree=0|json=0
+SIGNS|group=S3|order=6|classes=3|dims=[3, 2]|free_links=7|plaquettes=6|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=S3|order=6|classes=3|dims=[3, 3]|free_links=10|plaquettes=9|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=Z3|order=3|classes=3|dims=[2, 2, 2]|free_links=17|plaquettes=24|inverse_symmetric_patterns=4|plus_or_minus_homomorphisms=2|one_signed_iff_homomorphism_agree=4|disagree=0|json=0
+SIGNS|group=Z2|order=2|classes=2|dims=[2, 2, 2]|free_links=17|plaquettes=24|inverse_symmetric_patterns=4|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=4|disagree=0|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[-1, -1, 1, 1, 1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[1, 1, -1, 1, 1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[1, 1, 1, -1, 1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[-1, -1, -1, -1, 1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[1, 1, 1, 1, -1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[-1, -1, -1, 1, -1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[-1, -1, 1, -1, -1]|is_hom=0|neg=0|pos=512|json=0
+DISAGREE|group=Q8|dims=[2, 1]|sign_on_classes=[1, 1, -1, -1, -1]|is_hom=0|neg=0|pos=512|json=0
+SIGNS|group=Q8|order=8|classes=5|dims=[2, 1]|free_links=3|plaquettes=2|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=8|one_signed_iff_homomorphism_agree=24|disagree=8|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[-1, -1, 1, 1, 1]|is_hom=0|neg=64|pos=0|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[1, 1, -1, 1, 1]|is_hom=0|neg=0|pos=64|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[1, 1, 1, -1, 1]|is_hom=0|neg=0|pos=64|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[-1, -1, -1, -1, 1]|is_hom=0|neg=64|pos=0|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[1, 1, 1, 1, -1]|is_hom=0|neg=0|pos=64|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[-1, -1, -1, 1, -1]|is_hom=0|neg=64|pos=0|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[-1, -1, 1, -1, -1]|is_hom=0|neg=64|pos=0|json=0
+DISAGREE|group=Q8|dims=[1, 1]|sign_on_classes=[1, 1, -1, -1, -1]|is_hom=0|neg=0|pos=64|json=0
+SIGNS|group=Q8|order=8|classes=5|dims=[1, 1]|free_links=2|plaquettes=1|inverse_symmetric_patterns=32|plus_or_minus_homomorphisms=8|one_signed_iff_homomorphism_agree=24|disagree=8|json=0
+SIGNS|group=S3|order=6|classes=3|dims=[2, 1]|free_links=3|plaquettes=2|inverse_symmetric_patterns=8|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=8|disagree=0|json=0
+SIGNS|group=GL23|order=48|classes=8|dims=[2, 2]|free_links=5|plaquettes=4|inverse_symmetric_patterns=128|plus_or_minus_homomorphisms=4|one_signed_iff_homomorphism_agree=128|disagree=0|json=0

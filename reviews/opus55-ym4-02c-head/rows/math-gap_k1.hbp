@@ -1,0 +1,14 @@
+GAP_K1|statement=lambda_n_on_chi_n=(exp(-beta)*l_n)^L|from=section_5_of_the_lemma|tag=DERIVED|json=0
+GAP_K1|beta=1|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=4163306117|high=4163306117|json=0
+GAP_K1|beta=2|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=2308789373|high=2308789373|json=0
+GAP_K1|beta=4|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=1519647675|high=1519647675|json=0
+GAP_K1|beta=8|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=1220629502|high=1220629502|json=0
+GAP_K1|beta=16|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=1101546206|high=1101546206|json=0
+GAP_K1|beta=32|l_0>l_1>l_2>0=1|(l_0/l_1)_times_10^9_low=1048764231|high=1048764231|json=0
+GAP_K1_FAMILY|n=1|L=1|a=1/1|beta=1|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=4163306|exp(Delta_physical)_times_10^6_low=4163306|high=4163306|json=0
+GAP_K1_FAMILY|n=2|L=2|a=1/2|beta=4|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=2309329|exp(Delta_physical)_times_10^6_low=5333000|high=5333000|json=0
+GAP_K1_FAMILY|n=3|L=3|a=1/3|beta=9|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=1695816|exp(Delta_physical)_times_10^6_low=4876822|high=4876822|json=0
+GAP_K1_FAMILY|n=4|L=4|a=1/4|beta=16|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=1472349|exp(Delta_physical)_times_10^6_low=4699411|high=4699411|json=0
+GAP_K1_FAMILY|n=6|L=6|a=1/6|beta=36|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=1288519|exp(Delta_physical)_times_10^6_low=4576638|high=4576638|json=0
+GAP_K1_FAMILY|n=8|L=8|a=1/8|beta=64|gap_in_lattice_units_L*log(l_0/l_1)_as_(l_0/l_1)^L_times_10^6=1208005|exp(Delta_physical)_times_10^6_low=4534715|high=4534715|json=0
+GAP_K1_READING|at_k=1=the_lattice_gap_is_L*log(l_0(beta)/l_1(beta)):exact|at_fixed_L_it_tends_to_0_as_beta_grows|along_L=n_beta=n*n*beta0_the_physical_exp(Delta)_stays_finite|k=1_is_two_dimensional:no_statement_about_k>=2|json=0

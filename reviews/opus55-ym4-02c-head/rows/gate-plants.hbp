@@ -1,0 +1,64 @@
+PLANT|name=control_pristine|gate_rc=0|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+PLANT|name=listed_file_float_appended|gate_rc=1|json=0
+  NO_FLOAT|count_moved=reviews/opus55-site-sign/code/decode.py|listed=1|found=2|first=true division at line 5|json=0
+  NO_FLOAT|pin_moved=reviews/opus55-site-sign/code/decode.py|listed=19233b6477ae855a412ce7aec991d79daee6e4b497fa8a4f1fc9638ec00f1c72|actual=d0240946d84ce830adeff84bb9e203bd44fadb491a2a81b78c80
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=163|failed=2|json=0
+PLANT|name=listed_file_comment_bytes_only|gate_rc=1|json=0
+  NO_FLOAT|pin_moved=tests/test_one_by_l_2d.py|listed=18a4bfae533864cf596a8baddcf43689ec445e40fb96767e34f9e80df90aa2b4|actual=454132180bb07ac0cb1043f82e14c028a91144e44a1bdf18f829198b88ea48af|j
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PLANT|name=listed_file_same_count_swap|gate_rc=1|json=0
+  NO_FLOAT|pin_moved=reviews/opus55-ym4-02b/haarpoly.py|listed=0179ed29013fb0416e71ef9cc87a7d18e51dd5dd8ff8fc09ef851c812107b9ed|actual=b3da9fdbbdb4fc697bae0f6e9447947b9df41a7af069be8c5c6b17500
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=copy_of_listed_file_no_row|gate_rc=1|json=0
+  NO_FLOAT|file=reviews/opus55-ym4-02c/src/exact_copy.py|first=power with an unproven exponent at line 54|count=1|json=0
+  NO_FLOAT_DONE|code_files=99|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=copy_of_listed_file_float_added|gate_rc=1|json=0
+  NO_FLOAT|file=reviews/opus55-ym4-02c/src/exact_copy.py|first=true division at line 145|count=2|json=0
+  NO_FLOAT_DONE|code_files=99|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=new_file_true_division|gate_rc=1|json=0
+  NO_FLOAT|file=tests/new_float.py|first=true division at line 1|count=1|json=0
+  NO_FLOAT_DONE|code_files=99|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=new_file_float_literal|gate_rc=1|json=0
+  NO_FLOAT|file=docs/new_float.py|first=float literal at line 1|count=1|json=0
+  NO_FLOAT_DONE|code_files=99|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=new_file_rust_float|gate_rc=1|json=0
+  NO_FLOAT|file=reviews/new_float.rs|first=rust float literal at line 1|count=1|json=0
+  NO_FLOAT_DONE|code_files=99|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=new_file_not_staged|gate_rc=0|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+PLANT|name=index_float_worktree_clean|gate_rc=1|json=0
+  NO_FLOAT|count_moved=reviews/opus55-site-sign/code/decode.py|listed=1|found=2|first=true division at line 5|json=0
+  NO_FLOAT|pin_moved=reviews/opus55-site-sign/code/decode.py|listed=19233b6477ae855a412ce7aec991d79daee6e4b497fa8a4f1fc9638ec00f1c72|actual=d0240946d84ce830adeff84bb9e203bd44fadb491a2a81b78c80
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=163|failed=2|json=0
+PLANT|name=row_removed_test_file|gate_rc=1|json=0
+  NO_FLOAT|file=tests/test_one_by_l_2d.py|first=[more_attrs] times at line 188|count=3|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=27|listed_folders=0|listed_findings=159|failed=1|json=0
+PLANT|name=row_removed_review_tool|gate_rc=1|json=0
+  NO_FLOAT|file=reviews/opus55-ym4-02c/src/transfer.py|first=power with an unproven exponent at line 41|count=9|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=27|listed_folders=0|listed_findings=153|failed=1|json=0
+PLANT|name=row_removed_the_gate|gate_rc=1|json=0
+  NO_FLOAT|file=scripts/no_float_gate.py|first=float %-format at line 2|count=93|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=27|listed_folders=0|listed_findings=69|failed=1|json=0
+PLANT|name=row_count_edited|gate_rc=1|json=0
+  NO_FLOAT|count_moved=reviews/opus55-ym4-02b/haarpoly.py|listed=2|found=1|first=power with an unproven exponent at line 50|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=row_pin_edited|gate_rc=1|json=0
+  NO_FLOAT|pin_moved=reviews/opus55-ym4-02b/haarpoly.py|listed=1179ed29013fb0416e71ef9cc87a7d18e51dd5dd8ff8fc09ef851c812107b9ed|actual=0179ed29013fb0416e71ef9cc87a7d18e51dd5dd8ff8fc09ef851c812
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=row_for_a_missing_file|gate_rc=1|json=0
+  NO_FLOAT|listed_and_gone=reviews/opus55-ym4-02b/no_such_file.py|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=29|listed_folders=0|listed_findings=162|failed=1|json=0
+grep: input file 'scripts/FLOAT-EVIDENCE.txt' is also the output
+PLANT|name=row_twice|gate_rc=0|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+PLANT|name=row_reason_emptied|gate_rc=1|json=0
+  NO_FLOAT|row_without_a_reason=reviews/opus55-ym4-02b/haarpoly.py|json=0
+  NO_FLOAT_DONE|code_files=98|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+PLANT|name=listed_file_deleted|gate_rc=1|json=0
+  NO_FLOAT|listed_and_gone=reviews/opus55-site-sign/code/decode.py|json=0
+  NO_FLOAT_DONE|code_files=97|listed_files=28|listed_folders=0|listed_findings=161|failed=1|json=0
+PLANT|name=listed_file_as_symlink|gate_rc=1|json=0
+  NO_FLOAT|pin_moved=reviews/opus55-site-sign/code/decode.py|listed=19233b6477ae855a412ce7aec991d79daee6e4b497fa8a4f1fc9638ec00f1c72|actual=ffcc23261de0513e582d81b5667206919c1e9acd408d5b3adf9e
+  NO_FLOAT_DONE|code_files=97|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0

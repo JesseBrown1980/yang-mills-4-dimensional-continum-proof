@@ -1,0 +1,13 @@
+SABOTAGE|name=no_inverse_on_time_links|exit=1|failed_rows=6|first=FAILED|check=reflection_link_on_L=2_T=2|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=wrong_plane|exit=1|failed_rows=6|first=FAILED|check=reflection_link_on_L=2_T=2|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=wrong_multiplicity|exit=1|failed_rows=10|first=FAILED|check=character_series_through_beta^20|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=negative_weight_called_positive|exit=1|failed_rows=1|first=FAILED|check=GRAM_LINK|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=signed_site_weight_called_positive|exit=1|failed_rows=1|first=FAILED|check=positive_site_weight_control|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=bad_projector|exit=1|failed_rows=2|first=FAILED|check=Tr(A_B_P)_against_the_lattice_sum_c=(8,_3,_3,_3,_1)|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=no_inverse_in_gram|exit=1|failed_rows=2|first=FAILED|check=gauge-moved_site_Gram_blocks|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=wrong_plane_in_gram|exit=1|failed_rows=1|first=FAILED|check=gauge-moved_site_Gram|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=dropped_inverse_third_letter|exit=1|failed_rows=9|first=FAILED|check=reflection_link_on_L=2_T=2|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=dropped_inverse_fourth_letter|exit=1|failed_rows=3|first=FAILED|check=plaquette_orientation_on_L=2_T=2|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=every_function_one_plane|exit=1|failed_rows=4|first=FAILED|check=every_function_on_L=1_c=(8,_3,_3,_3,_1)|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=t4_half_weights_dropped|exit=1|failed_rows=2|first=FAILED|check=every_function_at_T=4_c=(8,_3,_3,_3,_1)|json=0|stderr_bytes=0|json=0
+SABOTAGE|name=unknown|exit=2|json=0

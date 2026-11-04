@@ -1,0 +1,3 @@
+K2_ORBITS|lattice=(Z/1)x(Z/1)x(Z/T),T>=4|group=Q8|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|slice_orbits=6|K_on_those_positive=6|K_negative=0|pairs_reached=6|positive=6|negative=0|rank=6|json=0
+K2_ORBITS|lattice=(Z/3)x(Z/1)x(Z/T),T>=4|group=Q8|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|slice_orbits=6|K_on_those_positive=6|K_negative=0|pairs_reached=6|positive=6|negative=0|rank=6|json=0
+K2_ORBITS|lattice=(Z/2)x(Z/1)x(Z/T),T>=4|group=Q8|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|slice_orbits=22|K_on_those_positive=14|K_negative=8|pairs_reached=22|positive=14|negative=8|rank=22|json=0

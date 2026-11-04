@@ -1,0 +1,18 @@
+stable-x86_64-unknown-linux-gnu (active, default)
+1.81-x86_64-unknown-linux-gnu
+1.81.0-x86_64-unknown-linux-gnu
+rustc 1.81.0 (eeb90cda1 2024-09-04)
+4:# Each tracked Rust file is built alone with rustc 1.81.0 at opt-level 0, the way the full form builds a loose file. Its LLVM IR is read for float types and i
+5:# Scope: what g++ and rustc 1.81.0 compile on this runner, with their default cfg. A library's own bodies are not read, and a tracked Cargo.toml stops this fo
+36:  rustc +1.81.0 --edition 2021 --crate-type "$kind" --crate-name loose -A warnings -C opt-level=0 -C codegen-units=1 --emit=llvm-ir,mir --out-dir "$d" "$src"
+RUN|compiled_check|rc=0|json=0
+COMPILED_CPP|file=reviews/gpt6-q8-0e9bcff/q8_gram_independent.cpp|fp_ops=0|json=0
+COMPILED_RUST|file=reviews/opus55-ym4-02b/read-pr13/forest.rs|fp_lines=0|json=0
+COMPILED_RUST|file=reviews/opus55-ym4-02b/read-pr13/over.rs|fp_lines=0|json=0
+COMPILED_RUST|file=reviews/opus55-ym4-02c/recheck/rust/rp5.rs|fp_lines=0|json=0
+COMPILED_RUST|file=reviews/opus55-ym4-02c/rust/brute.rs|fp_lines=0|json=0
+COMPILED_DONE|cpp_files=1|rust_files=4|failed=0|json=0
+RUN|compiled_plants|rc=0|json=0
+PLANT|lang=rust|name=type_from_a_macro.rs|fp_ops=6|result=RED|json=0
+PLANTS_DONE|failed=0|json=0
+TREE_DIRTY_ROWS=0

@@ -1,0 +1,6 @@
+SAB_ON_MUT|mutant=moved_guard_removed|sabotage=wrong_plane_in_gram|exit=0|named_failures=0|checks=|traceback=0|json=0
+SAB_ON_MUT|mutant=moved_guard_removed|sabotage=no_inverse_in_gram|exit=1|named_failures=2|checks=gauge-moved_site_Gram_blocks,gauge-moved_site_Gram|traceback=0|json=0
+SAB_ON_MUT|mutant=moved_mirror_ignores_sign_uses_inverse|sabotage=no_inverse_in_gram|exit=0|named_failures=0|checks=|traceback=0|json=0
+SAB_ON_MUT|mutant=orientation_once_check_removed|sabotage=dropped_inverse_fourth_letter|exit=1|named_failures=3|checks=plaquette_orientation_on_L=2_T=2,plaquette_orientation_on_L=2_T=4,plaquette_orientation_on_L=3_T=4|traceback=0|json=0
+SAB_ON_MUT|mutant=orientation_closed_check_removed|sabotage=dropped_inverse_fourth_letter|exit=1|named_failures=3|checks=plaquette_orientation_on_L=2_T=2,plaquette_orientation_on_L=2_T=4,plaquette_orientation_on_L=3_T=4|traceback=0|json=0
+SAB_ON_MUT|mutant=orientation_conjugate_check_removed|sabotage=dropped_inverse_fourth_letter|exit=1|named_failures=3|checks=plaquette_orientation_on_L=2_T=2,plaquette_orientation_on_L=2_T=4,plaquette_orientation_on_L=3_T=4|traceback=0|json=0

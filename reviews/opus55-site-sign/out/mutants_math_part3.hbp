@@ -1,0 +1,50 @@
+MUT_BASE|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|exit=0|ms=24938|lines=55|json=0
+MUT|id=m15_wrong_link_third|desc=third link of a face at x instead of x+nu|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=killed_by_named_check|exit=1|named_failures=25|first=lattice_facts_on_(Z/2)x(Z/2)|rows_changed=55|ms=15872|json=0
+MUT|id=m16_wrong_link_second|desc=second link of a face at x instead of x+mu|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=killed_by_named_check|exit=1|named_failures=30|first=lattice_facts_on_(Z/2)x(Z/2)|rows_changed=65|ms=16947|json=0
+MUT|id=m17_both_orders|desc=plaquettes also listed with mu > nu|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=killed_by_crash|exit=1|named_failures=0|first=none|rows_changed=46|ms=27384|json=0
+MUT_BASE|sel=lattices|exit=0|ms=3318|lines=11|json=0
+MUT|id=m18_exclusive_loose|desc=exclusive-link check ignores the other staples|sel=lattices|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=2|ms=2226|json=0
+MUT|id=m19_exclusive_always|desc=exclusive-link check always true|sel=lattices|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=3|ms=2983|json=0
+MUT_BASE|sel=groups,exhaustive|exit=0|ms=11042|lines=13|json=0
+MUT|id=m20_parity_or|desc=parity with or|sel=groups,exhaustive|verdict=killed_by_named_check|exit=1|named_failures=2|first=Q8_exhaustive_keeps_exactly_the_patterns_of_the_rule|rows_changed=6|ms=3782|json=0
+MUT_BASE|sel=groups,exhaustive,torus_route,zeros_light|exit=0|ms=33656|lines=20|json=0
+MUT|id=m21_tree_not_a_tree|desc=gauge-fixing set closes a Polyakov loop on (Z/2)x(Z/2)|sel=groups,exhaustive,torus_route,zeros_light|verdict=killed_by_named_check|exit=1|named_failures=2|first=torus_route_on_(Z/2)x(Z/2)|rows_changed=8|ms=10198|json=0
+MUT|id=m22_tree_short|desc=one tree link too few|sel=groups,exhaustive,torus_route,zeros_light|verdict=killed_by_named_check|exit=1|named_failures=2|first=Q8_exhaustive_reads_8^5_configurations|rows_changed=8|ms=38395|json=0
+MUT_BASE|sel=witnesses,second_seat,su2|exit=0|ms=6898|lines=24|json=0
+MUT|id=m23_stream_shift|desc=stream reads other bits|sel=witnesses,second_seat,su2|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=18|ms=8540|json=0
+MUT_BASE|sel=witnesses|exit=0|ms=11419|lines=19|json=0
+MUT|id=m24_exact_conj_c|desc=exact recheck forgets the third inverse|sel=witnesses|verdict=killed_by_named_check|exit=1|named_failures=16|first=witnesses_for_Q8_on_(Z/2)x(Z/2)|rows_changed=34|ms=13787|json=0
+MUT|id=m25_gauge_right|desc=gauge move forgets the inverse|sel=witnesses|verdict=killed_by_named_check|exit=1|named_failures=16|first=witnesses_for_Q8_on_(Z/2)x(Z/2)|rows_changed=34|ms=13391|json=0
+MUT_BASE|sel=torus_route|exit=0|ms=1605|lines=7|json=0
+MUT|id=m26_torus_degree|desc=torus route wrong degree scaling|sel=torus_route|verdict=killed_by_named_check|exit=1|named_failures=3|first=torus_route_on_(Z/2)x(Z/2)|rows_changed=8|ms=1268|json=0
+MUT_BASE|sel=side_one|exit=0|ms=1676|lines=9|json=0
+MUT|id=m27_side_centre|desc=up-to-centre read as same class|sel=side_one|verdict=killed_by_named_check|exit=1|named_failures=1|first=holonomy_counts_on_(Z/2)x(Z/1)|rows_changed=4|ms=2380|json=0
+MUT|id=m28_side_row_minus|desc=side row built with the s(1)=-1 value|sel=side_one|verdict=killed_by_named_check|exit=1|named_failures=1|first=side_one_row|rows_changed=4|ms=3044|json=0
+MUT|id=m29_side_literal_true|desc=the miss hidden: literal always true|sel=side_one|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=5|ms=2013|json=0
+MUT_BASE|sel=second_seat|exit=0|ms=2524|lines=4|json=0
+MUT|id=m30_second_seat_w|desc=second seat weight off the rule|sel=second_seat|verdict=killed_by_named_check|exit=1|named_failures=1|first=second_seat_weight_stays_positive|rows_changed=4|ms=1458|json=0
+MUT_BASE|sel=su2|exit=0|ms=2675|lines=7|json=0
+MUT|id=m31_su2_real_part|desc=one sign in the quaternion product real part|sel=su2|verdict=killed_by_named_check|exit=1|named_failures=2|first=both_signs_of_g_on_(Z/2)x(Z/2)|rows_changed=6|ms=2630|json=0
+MUT|id=m32_su2_k_part|desc=one sign in the k part of the product|sel=su2|verdict=killed_by_named_check|exit=1|named_failures=2|first=both_signs_of_g_on_(Z/2)x(Z/2)|rows_changed=6|ms=1169|json=0
+MUT|id=m33_su2_inverse|desc=rational inverse keeps d|sel=su2|verdict=killed_by_named_check|exit=1|named_failures=2|first=both_signs_of_g_on_(Z/2)x(Z/2)|rows_changed=6|ms=2361|json=0
+MUT|id=m34_su2_palette|desc=palette element off the unit sphere|sel=su2|verdict=killed_by_named_check|exit=1|named_failures=1|first=exact_unit_quaternions|rows_changed=6|ms=1645|json=0
+MUT|id=m35_su2_face_order|desc=SU(2) faces read in another order, both routes|sel=su2|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=2|ms=1550|json=0
+MUT|id=m36_su2_sign_swap|desc=positive g filed under -1|sel=su2|verdict=killed_by_named_check|exit=1|named_failures=2|first=both_signs_of_g_on_(Z/2)x(Z/2)|rows_changed=6|ms=1439|json=0
+MUT_BASE|sel=zeros_light|exit=0|ms=9038|lines=6|json=0
+MUT|id=m37_twist_third_axis|desc=twist uses i on both directions|sel=zeros_light|verdict=killed_by_named_check|exit=1|named_failures=1|first=twist_on_three_lattices|rows_changed=4|ms=15880|json=0
+MUT|id=m38_control_orbit|desc=control orbit wrong|sel=zeros_light|verdict=killed_by_named_check|exit=1|named_failures=1|first=the_reduction_equals_the_direct_read_on_(Z/2)x(Z/2)|rows_changed=4|ms=22075|json=0
+MUT|id=m39_section_noncentral|desc=section base i and j swapped with k|sel=zeros_light|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=6435|json=0
+MUT|id=m40_flat_extra|desc=flat cochain kernel drops a basis vector|sel=zeros_light|verdict=killed_by_named_check|exit=1|named_failures=1|first=the_reduction_equals_the_direct_read_on_(Z/2)x(Z/2)|rows_changed=4|ms=9287|json=0
+MUT|id=m41_row_lookup_loose|desc=row lookup always true|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=25300|json=0
+MUT|id=m42_clean_true|desc=summary clean always true|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=17278|json=0
+MUT|id=m43_off_rule_count|desc=witness rows stop counting off-rule constants|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=12193|json=0
+MUT|id=m44_witness_ok_weak|desc=witness ok reduced to the exact recheck|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=7918|json=0
+MUT|id=m45_witness_values_weak|desc=witness both-values test weakened|sel=witnesses|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=7065|json=0
+MUT|id=m46_lattices_expect|desc=(2,1,2) marked as full|sel=lattices|verdict=killed_by_named_check|exit=1|named_failures=1|first=lattice_facts_on_(Z/2)x(Z/1)x(Z/2)|rows_changed=4|ms=1079|json=0
+MUT_BASE|sel=witnesses,summary|exit=0|ms=6890|lines=22|json=0
+MUT|id=m47_drop_added_lattice|desc=the odd-plaquette lattice left out|sel=witnesses,summary|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=19|ms=5077|json=0
+MUT|id=m48_epsilon_plus_no_added|desc=epsilon +1 with the odd lattice left out|sel=witnesses,summary|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=22|ms=8807|json=0
+MUT_BASE|sel=groups|exit=0|ms=6143|lines=11|json=0
+MUT|id=m49_group_sizes|desc=expected class sizes for 2I altered|sel=groups|verdict=killed_by_named_check|exit=1|named_failures=1|first=2I_table|rows_changed=4|ms=4219|json=0
+MUT|id=m50_exhaustive_rule_len|desc=exhaustive equality dropped|sel=groups,exhaustive|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=2264|json=0
+MUT_DONE|json=0

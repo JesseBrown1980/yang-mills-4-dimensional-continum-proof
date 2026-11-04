@@ -1,0 +1,7 @@
+MUT_BASE|sel=groups|exit=0|ms=6041|lines=11|json=0
+MUT|id=m01_hamilton_sign|desc=one Hamilton sign wrong|sel=groups|verdict=killed_by_crash|exit=1|named_failures=0|first=none|rows_changed=10|ms=2951|json=0
+MUT|id=m02_conjugate|desc=conjugate leaves k alone|sel=groups|verdict=killed_by_crash|exit=1|named_failures=0|first=none|rows_changed=11|ms=3505|json=0
+MUT|id=m03_ico_odd|desc=2I built from odd permutations|sel=groups|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|rows_changed=0|ms=2791|json=0
+MUT|id=m04_no_inverse_merge|desc=classes not merged with their inverses|sel=groups|verdict=killed_by_named_check|exit=1|named_failures=1|first=2T_patterns_row_equals_the_prediction|rows_changed=4|ms=2792|json=0
+MUT|id=m05_hom_and|desc=homomorphism test with and instead of xor|sel=groups|verdict=killed_by_named_check|exit=1|named_failures=3|first=Q8_patterns_row_equals_the_prediction|rows_changed=8|ms=2834|json=0
+MUT_BASE|sel=groups,exhaustive,witnesses,side_one,summary|exit=0|ms=5056|lines=38|json=0

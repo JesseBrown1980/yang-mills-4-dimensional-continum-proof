@@ -1,0 +1,13 @@
+MUT_BASE|sel=groups,exhaustive,side_one,summary|exit=0|ms=2904|lines=22|json=0
+MUT|id=m06_rule_no_minus|desc=rule without the minus sign|sel=groups,exhaustive,side_one,summary|verdict=killed_by_named_check|exit=1|named_failures=7|first=Q8_patterns_row_equals_the_prediction|rows_changed=17|ms=3762|json=0
+MUT|id=m07_rule_flip_bit0|desc=rule flips only the identity class|sel=groups,exhaustive,side_one,summary|verdict=killed_by_named_check|exit=1|named_failures=4|first=Q8_exhaustive_keeps_exactly_the_patterns_of_the_rule|rows_changed=11|ms=5419|json=0
+MUT_BASE|sel=groups|exit=0|ms=3588|lines=11|json=0
+MUT|id=m08_index_no_squares|desc=second count of homs drops the squares|sel=groups|verdict=killed_by_named_check|exit=1|named_failures=1|first=2T_patterns_row_equals_the_prediction|rows_changed=4|ms=2008|json=0
+MUT_BASE|sel=witnesses|exit=0|ms=7395|lines=19|json=0
+MUT|id=m09_epsilon_plus|desc=epsilon always +1|sel=witnesses|verdict=killed_by_named_check|exit=1|named_failures=4|first=witnesses_for_Q8_on_(Z/3)x(Z/3)|rows_changed=22|ms=11245|json=0
+MUT|id=m10_constant_ignores_F|desc=constant at epsilon -1 taken as -1 always|sel=witnesses|verdict=killed_by_named_check|exit=1|named_failures=12|first=witnesses_for_Q8_on_(Z/2)x(Z/2)|rows_changed=26|ms=10287|json=0
+MUT|id=m11_constant_plus|desc=constant taken as +1 always|sel=witnesses|verdict=killed_by_named_check|exit=1|named_failures=4|first=witnesses_for_Q8_on_(Z/3)x(Z/3)|rows_changed=10|ms=13918|json=0
+MUT_BASE|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|exit=0|ms=57668|lines=55|json=0
+MUT|id=m12_third_letter|desc=plaquette third letter not inverted, in table route|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=killed_by_named_check|exit=1|named_failures=17|first=witnesses_for_Q8_on_(Z/2)x(Z/2)|rows_changed=37|ms=34122|json=0
+MUT|id=m13_fourth_letter|desc=plaquette fourth letter not inverted, in table route|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=killed_by_named_check|exit=1|named_failures=17|first=witnesses_for_Q8_on_(Z/2)x(Z/2)|rows_changed=37|ms=28703|json=0
+MUT|id=m14_shift_back|desc=lattice shift runs backward|sel=groups,lattices,exhaustive,torus_route,witnesses,side_one,second_seat,su2,summary|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|rows_changed=7|ms=7859|json=0

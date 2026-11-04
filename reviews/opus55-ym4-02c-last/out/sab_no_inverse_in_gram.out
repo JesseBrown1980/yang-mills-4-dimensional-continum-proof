@@ -1,0 +1,6 @@
+GRAM_SITE_MOVED_BLOCKS|lattice=(Z/2)x(Z/2)|group=Q8|c=8,3,3,3,1|family=all_64_point_functions_of_(V(0,0),V(1,0))_at_each_fixed_(A,B)|fixed_(A,B)=4096|mirror_equal_so_a_rank_one_square=448|sum_of_all_entries=72797388800|expected_8^8*Z=72797388800|ok=0|json=0
+GRAM_SITE_MOVED|lattice=(Z/2)x(Z/2)|group=Q8|c=8,3,3,3,1|family=1_and_the_16_products_of_a_coordinate_of_V(0,0)_and_a_coordinate_of_V(1,0)|moved_by_gauge_transformations=1|assignments=16777216|F=e_1(V(0,0))*e_0(V(1,0))|G_FF=-91/128|expected=91/128|Z=69425/16|symmetric=1|PSD=0|rank=0|reason=negative_pivot|ok=0|json=0
+GRAM_SITE_MOVED_RED|lattice=(Z/2)x(Z/2)|group=Q8|c=8,3,3,3,1|reflection=site_with_the_inverse_on_time_links_dropped|fixed_(A,B)_that_lose_symmetry=3648|expected_second_seat=3648|form_value_at_(A,B)=(0,0,2,3)=-6351452416|expected_second_seat=-6351452416|G_FF=-91/128|expected=-91/128|ok=1|json=0
+REFLECTION_TRANSFER_DONE|failed=2|json=0
+FAILED|check=gauge-moved_site_Gram_blocks|json=0
+FAILED|check=gauge-moved_site_Gram|json=0

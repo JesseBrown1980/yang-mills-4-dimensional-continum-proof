@@ -1,0 +1,7 @@
+T4_EVERY_FUNCTION|lattice=(Z/1)x(Z/4)|c=8,3,3,3,1|family=all_512_point_functions_of_(U(0),U(1),V(0))|symmetric=1|positive=25|negative=0|zero_tail_ok=1|json=0
+T4_EVERY_FUNCTION|lattice=(Z/1)x(Z/4)|c=8,3,3,3,-1|family=all_512_point_functions_of_(U(0),U(1),V(0))|symmetric=1|lowest_diagonal=408000|red=0|json=0
+FOUR_D_ORBITS|triples=512|orbits=176|json=0
+FOUR_D_LINK|lattice=(Z/1)^3x(Z/2)|c=8,3,3,3,1|w=19,15,5,5,5|family=every_point_function_of_the_slice_reduced_to_176_orbits|Z=366894732506723/16|sample_of_literal_entries_ok=1|symmetric=1|positive=176|negative=0|zero_tail_ok=1|rank_mod_p=176|json=0
+FOUR_D_LINK_F|F=chi_2dim(U_1)|numerator=5696786251574|Z_side=366894732506723/16|json=0
+FOUR_D_LINK|lattice=(Z/1)^3x(Z/2)|c=8,3,3,3,-1|w=15,19,5,5,5|family=every_point_function_of_the_slice_reduced_to_176_orbits|Z=257883799138323/16|sample_of_literal_entries_ok=1|symmetric=1|positive=112|negative=64|zero_tail_ok=1|rank_mod_p=176|json=0
+FOUR_D_LINK_F|F=chi_2dim(U_1)|numerator=-1965328413750|Z_side=257883799138323/16|json=0

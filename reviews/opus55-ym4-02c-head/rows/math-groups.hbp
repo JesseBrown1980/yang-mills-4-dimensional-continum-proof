@@ -1,0 +1,5 @@
+GROUP|name=Q8|order=8|class_sizes=1,2,2,2,1|inverse_closed_orbits=5|orbit_sizes=1,2,2,2,1|patterns=32|homomorphisms=4|plus_or_minus_homomorphisms=8|json=0
+GROUP|name=2T|order=24|class_sizes=1,4,4,6,4,4,1|inverse_closed_orbits=5|orbit_sizes=1,8,6,8,1|patterns=32|homomorphisms=1|plus_or_minus_homomorphisms=2|json=0
+GROUP|name=2O|order=48|class_sizes=1,8,6,6,12,6,8,1|inverse_closed_orbits=8|orbit_sizes=1,8,6,6,12,6,8,1|patterns=256|homomorphisms=2|plus_or_minus_homomorphisms=4|json=0
+GROUP|name=2I|order=120|class_sizes=1,20,12,12,30,12,12,20,1|inverse_closed_orbits=9|orbit_sizes=1,20,12,12,30,12,12,20,1|patterns=512|homomorphisms=1|plus_or_minus_homomorphisms=2|json=0
+GROUP|name=S3|order=6|class_sizes=1,3,2|inverse_closed_orbits=3|orbit_sizes=1,3,2|patterns=8|homomorphisms=2|plus_or_minus_homomorphisms=4|json=0

@@ -1,5 +1,5 @@
 # The operator's rule: "The gate must reject operations capable of silently introducing floating-point values." The source scan in no_float.yml reads text; this job reads what g++ and rustc produced.
-# This repository's compiled code is one C++ review file and two Rust review files built alone, with no Cargo package, so this is the small form, with its scope and limits in scripts/no_float_compiled.sh. A pass means these reads found nothing in what they read. Integer only, json=0.
+# This repository's compiled code is one C++ review file and four Rust review files built alone, with no Cargo package, so this is the small form, with its scope and limits in scripts/no_float_compiled.sh. A pass means these reads found nothing in what they read. Integer only, json=0.
 name: No floating point, compiled level
 
 on:

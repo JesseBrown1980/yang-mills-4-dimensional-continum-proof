@@ -1,0 +1,4 @@
+MUTATION|name=series_half_dropped|exit=1|named_failures=1|checks=SU(2)_2D_Gram_entry|same_as_receipt=0|traceback=0|json=0
+MUTATION|name=series_second_factor_wrong_index|exit=1|named_failures=1|checks=SU(2)_2D_Gram_entry|same_as_receipt=0|traceback=0|json=0
+MUTATION|name=s3_moment_wrong_denominator|exit=1|named_failures=1|checks=l_n_coefficients|same_as_receipt=0|traceback=0|json=0
+MUTATION|name=l_coefficient_wrong_factorial|exit=1|named_failures=5|checks=character_series_through_beta^20,l_n_coefficients,Bessel_recurrence,trace_of_the_link_kernel,SU(2)_2D_Gram_entry|same_as_receipt=0|traceback=0|json=0

@@ -1,0 +1,2 @@
+T_SPECTRUM|spatial=(Z/1)x(Z/1)|c=8,3,3,3,1|orbits=28|M_positive_eigenvalues=28|negative=0|zero=0|lambda_0_times_512_in=575782..575783|lambda_1_times_512_in=233471..233472|top_simple=1|json=0
+T_SPECTRUM|spatial=(Z/1)x(Z/1)|c=8,3,3,3,-1|orbits=28|M_positive_eigenvalues=20|negative=8|zero=0|lambda_0_times_512_in=543194..543195|lambda_1_times_512_in=222327..222328|top_simple=1|json=0

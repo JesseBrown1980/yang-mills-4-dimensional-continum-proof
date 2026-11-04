@@ -1,0 +1,16 @@
+MUTPRED|id=p01_patterns_2O|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=groups|exit=1|test_named_failures=1|first=2O_patterns_row_equals_the_prediction|hash_step_catches=1|json=0
+MUTPRED|id=p02_side_one_384|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=side_one|exit=1|test_named_failures=1|first=side_one_row|hash_step_catches=1|json=0
+MUTPRED|id=p03_side_one_corner|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=side_one|exit=1|test_named_failures=1|first=side_one_row|hash_step_catches=1|json=0
+MUTPRED|id=p04_twist|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=zeros_light|exit=1|test_named_failures=1|first=twist_on_three_lattices|hash_step_catches=1|json=0
+MUTPRED|id=p05_su2|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=su2|exit=1|test_named_failures=1|first=SU(2)_row|hash_step_catches=1|json=0
+MUTPRED|id=p06_method|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=summary|exit=1|test_named_failures=1|first=rule_and_method_rows|hash_step_catches=1|json=0
+MUTPRED|id=p07_rule|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=summary|exit=1|test_named_failures=1|first=rule_and_method_rows|hash_step_catches=1|json=0
+MUTPRED|id=p08_class_pairs|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=side_one|exit=1|test_named_failures=1|first=class_pairs_on_(Z/2)x(Z/1)|hash_step_catches=1|json=0
+MUTPRED|id=p09_earlier_case4|file=PREDICTION-YM4-02c.hbp|sel=exhaustive|exit=1|test_named_failures=1|first=five_Q8_cases|hash_step_catches=0|json=0
+MUTPRED|id=p10_limits_gate|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=groups|exit=0|test_named_failures=0|first=none|hash_step_catches=1|json=0
+MUTPRED|id=p11_limits_integers|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=groups|exit=0|test_named_failures=0|first=none|hash_step_catches=1|json=0
+MUTPRED|id=p12_teeth|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=groups|exit=0|test_named_failures=0|first=none|hash_step_catches=1|json=0
+MUTPRED|id=p13_falsifiers|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=summary|exit=0|test_named_failures=0|first=none|hash_step_catches=1|json=0
+MUTPRED|id=p14_first_row|file=PREDICTION-YM4-02c-SITE-SIGN.hbp|sel=groups|exit=0|test_named_failures=0|first=none|hash_step_catches=1|json=0
+MUTPRED|id=p15_zeros_S|sel=heavy_row_read_by_reading_the_source|hash_step_catches=1|json=0
+MUTPRED_DONE|json=0

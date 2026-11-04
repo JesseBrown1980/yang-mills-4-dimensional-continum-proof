@@ -1,0 +1,8 @@
+CYLINDER_SU2_CONTRACTION|L=1|index_variables=6|E=1/16|closed_form_4^-(L+1)=1/16|equal=1|json=0
+CYLINDER_SU2_CONTRACTION|L=2|index_variables=12|E=1/64|closed_form_4^-(L+1)=1/64|equal=1|json=0
+CYLINDER_SU2_CONTRACTION|L=3|index_variables=18|E=1/256|closed_form_4^-(L+1)=1/256|equal=1|json=0
+CYLINDER_GLUING|L=1|value=1/16|json=0
+CYLINDER_GLUING|L=2|value=1/64|json=0
+CYLINDER_GLUING|L=3|value=1/256|json=0
+CYLINDER_GLUING|L=5|value=1/4096|json=0
+CYLINDER_GLUING|L=7|value=1/65536|json=0

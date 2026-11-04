@@ -1,0 +1,3 @@
+GRAM_SITE_MOVED|lattice=(Z/2)x(Z/2)|group=Q8|reflection_fixes_both_slices=0|time_links_swap=0|plaquette_words_as_written=1|ok=0|json=0
+REFLECTION_TRANSFER_DONE|failed=1|json=0
+FAILED|check=gauge-moved_site_Gram|json=0

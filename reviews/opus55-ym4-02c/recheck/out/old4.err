@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "C:\tmp\opus55\recheck-02c-20261103\mut\old\fourth_letter.py", line 1452, in <module>
+    main()
+    ~~~~^^
+  File "C:\tmp\opus55\recheck-02c-20261103\mut\old\fourth_letter.py", line 1439, in main
+    section_gram(lat, hist)
+    ~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\tmp\opus55\recheck-02c-20261103\mut\old\fourth_letter.py", line 952, in section_gram
+    psd, rank, reason = psd_exact(matrix)
+                        ~~~~~~~~~^^^^^^^^
+  File "C:\tmp\opus55\recheck-02c-20261103\mut\old\fourth_letter.py", line 73, in psd_exact
+    assert all(m[i][j] == m[j][i] for i in range(n) for j in range(i))
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
