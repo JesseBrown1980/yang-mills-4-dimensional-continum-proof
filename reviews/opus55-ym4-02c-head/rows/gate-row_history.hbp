@@ -1,0 +1,28 @@
+HIST|path=scripts/no_float_gate.py|commits=4|first=9d8e678 Jesse Daniel Brown|The ledger and the issues share one numbering, the README gets a statu
+HIST|path=reviews/opus55-site-sign/code/astscan.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/cube_and_cycles.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/decode.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/mutants_auto.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/run_gates.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/side_one.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-site-sign/code/zeros_srp.py|commits=1|first=414e3ff Jesse Daniel Brown|The second seat's findings on the site-sign note applied, with every r
+HIST|path=reviews/opus55-ym4-02b/beta12_values.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/confirm-last/filed_cells.py|commits=1|first=180727b Jesse Daniel Brown|The periodic 1 x L lattice: agreement through t, with a closed form fo
+HIST|path=reviews/opus55-ym4-02b/confirm-last/mckay_check.py|commits=1|first=180727b Jesse Daniel Brown|The periodic 1 x L lattice: agreement through t, with a closed form fo
+HIST|path=reviews/opus55-ym4-02b/designs_explicit.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/first_diff_t2.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/haarpoly.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/sphere_q8.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/stretch_b11.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02b/stretch_b13.py|commits=1|first=61d49a2 Jesse Daniel Brown|The second seat's findings on YM4-02b: the hypothesis stated, groups b
+HIST|path=reviews/opus55-ym4-02c-last/src/exps.py|commits=1|first=338e298 Jesse Daniel Brown|The second seat's confirmation at b302549: its conjecture on weights w
+HIST|path=reviews/opus55-ym4-02c-last/src/recount.py|commits=1|first=338e298 Jesse Daniel Brown|The second seat's confirmation at b302549: its conjecture on weights w
+HIST|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|commits=1|first=86fb144 Jesse Daniel Brown|YM4-02c: the second seat's recheck at c32087a and GPT-6's assessment f
+HIST|path=reviews/opus55-ym4-02c/src/cyl.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=reviews/opus55-ym4-02c/src/exact.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=reviews/opus55-ym4-02c/src/gram12.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=reviews/opus55-ym4-02c/src/rp4d.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=reviews/opus55-ym4-02c/src/su2num.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=reviews/opus55-ym4-02c/src/transfer.py|commits=1|first=71aa828 Jesse Daniel Brown|YM4-02c: rows for the second seat's findings, every power through an i
+HIST|path=tests/test_one_by_l_2d.py|commits=2|first=180727b Jesse Daniel Brown|The periodic 1 x L lattice: agreement through t, with a closed form fo
+HIST|path=tests/test_subgroup_designs_4d.py|commits=4|first=49b115c Jesse Daniel Brown|YM4-02b: finite subgroups of SU(2) average exactly as Haar through a f

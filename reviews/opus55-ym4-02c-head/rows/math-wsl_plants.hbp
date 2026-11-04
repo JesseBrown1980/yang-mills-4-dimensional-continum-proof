@@ -1,0 +1,15 @@
+PLANTS_NO_FLOAT|all_as_named=1|json=0
+STEP|no_float_plants|rc=0|json=0
+STEP|tracked_cpp_float|rc=1|want=1|row=1|json=0
+STEP|tracked_rust_float|rc=1|want=1|row=1|json=0
+error: expected expression, found `;`
+ --> planted.rs:1:25
+  |
+1 | fn main() { let x: u8 = ; }
+  |                         ^ expected expression
+
+error: aborting due to 1 previous error
+
+STEP|tracked_rust_not_built|rc=1|want=1|row=1|json=0
+STEP|tracked_cargo|rc=1|want=1|row=1|json=0
+TREE|head=40cc40d226a54bf3362f2d8da7cc51009e69ad0f|dirty=0|json=0

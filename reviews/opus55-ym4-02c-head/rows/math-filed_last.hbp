@@ -1,0 +1,32 @@
+LAST_FILE_NOT_FILED|src/integer_only_audit.py|json=0
+LAST_FILES_READ|rows=100|same_bytes=51|same_after_CR_put_back=27|other=0|not_filed=22|json=0
+HARD_CODED_PATH|src/binary_scan.py
+HARD_CODED_PATH|src/falsifier.py
+HARD_CODED_PATH|src/falsifier_lib.py
+HARD_CODED_PATH|src/gram_direct.py
+HARD_CODED_PATH|src/k1scan.py
+HARD_CODED_PATH|src/k2_family.py
+HARD_CODED_PATH|src/k2_orbits.py
+HARD_CODED_PATH|src/list_files.py
+HARD_CODED_PATH|src/literal.py
+HARD_CODED_PATH|src/literal2.py
+HARD_CODED_PATH|src/literal3.py
+HARD_CODED_PATH|src/nowhere_and_t6.py
+HARD_CODED_PATH|src/q8_wide.py
+HARD_CODED_PATH|src/recount.py
+HARD_CODED_PATH|src/site_center.py
+HARD_CODED_PATH|src/small_groups.py
+HARD_CODED_PATH|src/zn_scan.py
+FILED_RERUN|literal.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=8|err=ModuleNotFoundError: No module named 'exact5'|json=0
+FILED_RERUN|gram_direct.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=7|err=ModuleNotFoundError: No module named 'exact5'|json=0
+FILED_RERUN|k2_orbits.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=3|err=ModuleNotFoundError: No module named 'exact5'|json=0
+FILED_RERUN|k2_family.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=30|err=ModuleNotFoundError: No module named 'exact5'|json=0
+FILED_RERUN|literal2.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=4|err=ModuleNotFoundError: No module named 'exact5'|json=0
+FILED_RERUN|literal3.py|rc=1|same_as_filed=0|lines_here=0|lines_filed=2|err=ModuleNotFoundError: No module named 'literal'|json=0
+FILED_RERUN|k2_orbits.py|rc=0|secs=-6|same_as_filed=1|json=0
+FILED_RERUN|literal3.py|rc=0|secs=11|same_as_filed=1|json=0
+FILED_RERUN|k2_family.py|rc=0|secs=2|same_as_filed=1|json=0
+FILED_RERUN|gram_direct.py|rc=0|secs=34|same_as_filed=1|json=0
+FILED_RERUN|literal.py|rc=0|secs=7|same_as_filed=1|json=0
+FILED_RERUN|literal2.py|rc=0|secs=7|same_as_filed=1|json=0
+FILED_RERUN|recount.py|rc=0|secs=13|same_as_filed=1|json=0

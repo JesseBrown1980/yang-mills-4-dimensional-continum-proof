@@ -12,4 +12,4 @@
 | Both central | 1,024 | `both_central=1024` |
 | Negative products | 0 and 384 | `slice_product_negative=0` on w = 3, 2, 1, −1, −2, on 1, 1, 1, −1, −1 and on 3, 2, 1, −1, 2, and `slice_product_negative=384` on 1, −1, 1, 1, 1 |
 
-GPT-6's review of the theorem in [the note](../../docs/NOTE-YM4-02c-SITE-SIGN.md) is preliminary, and the operator asked for its final check.
+GPT-6's review of the theorem in [the note](../../docs/NOTE-YM4-02c-SITE-SIGN.md) was preliminary at this filing, and its final check is [its report](../gpt6-sign-and-bridge/README.md).

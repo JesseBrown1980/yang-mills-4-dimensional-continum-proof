@@ -1,0 +1,44 @@
+CLAIM|path=reviews/opus55-site-sign/code/cube_and_cycles.py|claim=star_helper_binds_neither_len_nor_range|holds=1|helper=reviews/opus55-site-sign/code/indep.py|json=0
+CLAIM|path=reviews/opus55-site-sign/code/cube_and_cycles.py|claim=star_helper_reads_0_findings|holds=1|helper=reviews/opus55-site-sign/code/indep.py|findings=0|json=0
+HELPER_IMPORTS|helper=reviews/opus55-site-sign/code/indep.py|imports=itertools|json=0
+CLAIM|path=reviews/opus55-site-sign/code/zeros_srp.py|claim=star_helper_binds_neither_len_nor_range|holds=1|helper=reviews/opus55-site-sign/code/indep.py|json=0
+CLAIM|path=reviews/opus55-site-sign/code/zeros_srp.py|claim=star_helper_reads_0_findings|holds=1|helper=reviews/opus55-site-sign/code/indep.py|findings=0|json=0
+HELPER_IMPORTS|helper=reviews/opus55-site-sign/code/indep.py|imports=itertools|json=0
+CLAIM|path=reviews/opus55-site-sign/code/side_one.py|claim=star_helper_binds_neither_len_nor_range|holds=1|helper=reviews/opus55-site-sign/code/indep.py|json=0
+CLAIM|path=reviews/opus55-site-sign/code/side_one.py|claim=star_helper_reads_0_findings|holds=1|helper=reviews/opus55-site-sign/code/indep.py|findings=0|json=0
+HELPER_IMPORTS|helper=reviews/opus55-site-sign/code/indep.py|imports=itertools|json=0
+CLAIM|path=reviews/opus55-ym4-02c-last/src/recount.py|claim=star_helper_binds_neither_len_nor_range|holds=1|helper=reviews/opus55-ym4-02c-last/src/exact5.py|json=0
+CLAIM|path=reviews/opus55-ym4-02c-last/src/recount.py|claim=star_helper_reads_0_findings|holds=1|helper=reviews/opus55-ym4-02c-last/src/exact5.py|findings=0|json=0
+HELPER_IMPORTS|helper=reviews/opus55-ym4-02c-last/src/exact5.py|imports=itertools|json=0
+CLAIM|path=reviews/opus55-site-sign/code/decode.py|claim=first_10_lines_cut_at_for_name_in|holds=1|lines=10|last='(lambda *a, **k: None)(ROOT + "/mut/auto/docs", exist_ok=Tru'|json=0
+CLAIM|path=reviews/opus55-site-sign/code/decode.py|claim=exec_slice_reads_0_findings|holds=1|findings=0|first=none|json=0
+DECODE_SLICE|string_constants=['C:/tmp/opus55/site-sign-attack-20261103', '/repl/tests/test_site_sign_4d.py', '/mut/auto/tests', '/mut/auto/docs']|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=line_138_is_ast_parse_of_SOURCE|holds=1|text='tree0 = ast.parse(SOURCE)'|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=line_166_is_ast_parse_of_SOURCE|holds=1|text='path = write(ast.parse(SOURCE), "base_" + re.sub(r"\\W+", "_", sel)[:50])'|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=line_181_is_ast_parse_of_SOURCE|holds=1|text='tree = ast.parse(SOURCE)'|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=BIN_holds_neither_div_nor_pow|holds=1|ops=Add,BitAnd,BitOr,BitXor,FloorDiv,LShift,Mult,RShift,Sub|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=copy_has_blob_at_1078e6d_by_FILED_row|holds=1|blob=031f97db92a46e7c|filed=031f97db92a46e7c|json=0
+CLAIM|path=reviews/opus55-site-sign/code/mutants_auto.py|claim=mutants_held_outside_by_tree_hash|holds=1|row=HELD_OUTSIDE|path=mut/|files=150|bytes=7295207|tree_sha256=0|json=0
+LAT_TREE|lines=285-300|src='    def tree(self):\n        # BFS tree over sites using forward links, one link per non-origin site\n        seen = {self.sites[0]}\n        q = [self.sites[0]]\n        tr = []\n        while q:\n            n = []\n            for x in q:\n                for mu in range(self.k):\n                    y = self.step(x, mu)\n                    if y not in seen:\n                        seen.add(y)\n                        tr.append(self.lid[(x, mu)])\n                        n.append(y)\n            q = n\n        return tr'|json=0
+CLAIM|path=reviews/opus55-ym4-02b/classes_d3_F12.txt|claim=lines_and_int_literals|holds=1|lines=10|want=10|non_int_nodes=0|sha256=482d3b58e9a16585|json=0
+CLAIM|path=reviews/opus55-ym4-02b/classes_d4_F12.txt|claim=lines_and_int_literals|holds=1|lines=200|want=200|non_int_nodes=0|sha256=59a1a9f122247867|json=0
+CLAIM|path=reviews/opus55-ym4-02b/classes_d4_F14.txt|claim=lines_and_int_literals|holds=1|lines=668|want=668|non_int_nodes=0|sha256=b4c04be1c89118d9|json=0
+CLAIM|path=reviews/opus55-ym4-02b/sphere_q8.py|claim=slice_1_reads_0_findings|holds=1|lines=25|findings=0|first=none|json=0
+CLAIM|path=reviews/opus55-ym4-02b/sphere_q8.py|claim=slice_2_reads_0_findings|holds=1|lines=106|findings=0|first=none|json=0
+BLOB|tests/test_subgroup_designs_4d.py@39bb57f|sha256=1b4d93226b4dcf198e1dfd19116bbc3016c6f5da80b327dffc52c6fefd36855b|json=0
+BLOB|tests/test_subgroup_designs_4d.py@head|sha256=b9fc7fc2d5fe57e53d6cb0e7b3d45ed0c252efecc107a66c3c4927f61cfb0299|json=0
+CLAIM|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|claim=blob_at_c32087a_sha_986b6f40|holds=1|sha256=986b6f40ab483ec73bfc1197004f6cfe79e9282e22a108a6c7b041ba70cec49e|json=0
+CLAIM|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|claim=function_37_lines|holds=1|lines=37|json=0
+CLAIM|path=reviews/opus55-ym4-02c/recheck/src/inertia_check.py|claim=function_reads_0_findings|holds=1|findings=0|first=none|json=0
+RECHECK_FILED|HELD_OUTSIDE|path=run/receipt.txt|bytes=22017|sha256=e4fa180e23c5c98a8e9a7bdff9d55efc00389b91afe9a7ac040785e42c13791d|reason=same_bytes_as_tests/REFLECTION_TRANSFER_RECEIPT.txt_at_c32087a=1|json=0
+RECHECK_FILED|HELD_OUTSIDE|path=run/t.py|bytes=109377|sha256=986b6f40ab483ec73bfc1197004f6cfe79e9282e22a108a6c7b041ba70cec49e|reason=same_bytes_as_tests/test_reflection_transfer_4d.py_at_c32087a=1|json=0
+CLAIM|path=reviews/opus55-ym4-02c-last/src/recount.py|claim=exact5_in_LAST_FILES_same_bytes|holds=1|blob=ebd893aff0197c91|listed=ebd893aff0197c91|json=0
+LAST_FILES_HEAD|LAST_FILES|head=b3025496309fa6a8132ed11d2f95c10db7460ff7|files=100|seat=second_seat|json=0
+CLAIM|path=module_haarpoly|claim=importers|holds=1|count=6|want=6|who=reviews/opus55-ym4-02b/beta12_values.py,reviews/opus55-ym4-02b/moments_z2.py,reviews/opus55-ym4-02b/read-pr13/haar_against_engine.py,reviews/opus55-ym4-02b/recheck/multiset_check.py,reviews/opus55-ym4-02b/stretch_b11.py,reviews/opus55-ym4-02b/stretch_b13.py|json=0
+CLAIM|path=module_exact|claim=importers|holds=1|count=13|want=13|who=reviews/opus55-ym4-02c/recheck/src/clause.py,reviews/opus55-ym4-02c/recheck/src/conj.py,reviews/opus55-ym4-02c/recheck/src/inertia_check.py,reviews/opus55-ym4-02c/recheck/src/ring3.py,reviews/opus55-ym4-02c/recheck/src/t4_2t.py,reviews/opus55-ym4-02c/recheck/src/zero_clause.py,reviews/opus55-ym4-02c/src/cyl.py,reviews/opus55-ym4-02c/src/extra.py,reviews/opus55-ym4-02c/src/geom.py,reviews/opus55-ym4-02c/src/gram12.py,reviews/opus55-ym4-02c/src/misc.py,reviews/opus55-ym4-02c/src/rp4d.py,reviews/opus55-ym4-02c/src/transfer.py|json=0
+CLAIM|path=module_decode|claim=zero_tracked_importers|holds=1|who=none|json=0
+CLAIM|path=module_run_gates|claim=zero_tracked_importers|holds=1|who=none|json=0
+CLAIM|path=module_sphere_q8|claim=zero_tracked_importers|holds=1|who=none|json=0
+CLAIM|path=module_inertia_check|claim=zero_tracked_importers|holds=1|who=none|json=0
+CLAIM|path=module_gram12|claim=zero_tracked_importers|holds=1|who=none|json=0
+CLAIM|path=tests/test_subgroup_designs_4d.py|claim=surface_rows_faces_6_or_10_chi_2|holds=1|rows=5|pairs=[(6, 2), (10, 2)]|json=0

@@ -1,0 +1,16 @@
+GRAM_RECOUNT|group=Q8|dims=1x1x4|w=0,1,0,0,0|c_times_8=1,1,1,1,-2|literal_entries_checked=36864|literal_mismatches=0|points_with_W_plus_nonzero=192|positive=6|negative=0|zero=186|method=literal_and_factored|json=0
+GRAM_RECOUNT|group=Q8|dims=1x1x4|w=0,-1,0,0,0|c_times_8=-1,-1,-1,-1,2|literal_entries_checked=784|literal_mismatches=0|points_with_W_plus_nonzero=192|positive=6|negative=0|zero=186|method=literal_and_factored|json=0
+GRAM_RECOUNT|group=Q8|dims=1x1x4|w=0,3,0,0,1|c_times_8=5,1,1,5,-6|literal_entries_checked=10201|literal_mismatches=0|points_with_W_plus_nonzero=704|positive=12|negative=0|zero=692|method=literal_and_factored|json=0
+GRAM_RECOUNT|group=Q8|dims=1x1x6|w=0,1,0,0,0|points_with_W_plus_nonzero=1536|positive=6|negative=0|zero=1530|method=factored_every_point|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x4|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x6|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x8|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x10|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x12|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT_REDUCED|group=Q8|dims=1x1x14|w=0,1,0,0,0|live_slices=24|reachable_end_pairs=96|positive=6|negative=0|zero=90|json=0
+GRAM_RECOUNT|group=Q8|dims=1x4|w=0,1,0,0,0|points_with_W_plus_nonzero=64|positive=4|negative=1|zero=59|method=factored_every_point|json=0
+GRAM_RECOUNT|group=Z6|dims=1x4|w=7,4,0,0,0,4|literal_entries_checked=11664|literal_mismatches=0|points_with_W_plus_nonzero=108|positive=18|negative=0|zero=90|method=literal_and_factored|json=0
+GRAM_RECOUNT|group=Z6|dims=1x4|w=3,2,0,0,0,2|literal_entries_checked=11664|literal_mismatches=0|points_with_W_plus_nonzero=108|positive=15|negative=3|zero=90|method=literal_and_factored|json=0
+GRAM_RECOUNT|group=Z5|dims=1x4|w=-7,0,4,4,0|literal_entries_checked=5625|literal_mismatches=0|points_with_W_plus_nonzero=75|positive=15|negative=0|zero=60|method=literal_and_factored|json=0
+Z6_COEFFICIENTS|w=7,4,0,0,0,4|c_times_12=30,22,6,-2,6,22|json=0
+GRAM_RECOUNT_REDUCED|group=Z6|dims=1x6|w=7,4,0,0,0,4|live_slices=6|reachable_end_pairs=30|positive=25|negative=5|zero=0|json=0

@@ -24,6 +24,8 @@ The site gauge law is `U_μ(x) -> g(x) U_μ(x) g(x+μ)^(-1)`. Each plaquette tra
 
 ## Actual acceptance gates
 
+These gates state target 3, the Clay problem. The primary scope is target 1, a finite lattice at fixed spacing: [the README](README.md).
+
 1. Define a consistent renormalized weak-coupling trajectory as the lattice spacing a→0 and physical volume→∞, with controlled order/compatibility of limits.
 2. Prove nonperturbative, volume- and scale-uniform estimates, with explicit control of large fields, localization, ultraviolet behavior and infrared behavior. Perturbative asymptotic freedom is an input, and this gate requires these estimates in addition to it.
 3. Construct **nontrivial** continuum, gauge-invariant correlation functions and establish the required Osterwalder–Schrader axioms.
@@ -31,7 +33,7 @@ The site gauge law is `U_μ(x) -> g(x) U_μ(x) g(x+μ)^(-1)`. Each plaquette tra
 5. Prove that the **physical** excitation spectrum above the vacuum has `Δ > 0` in physical units. In transfer-matrix terms, a lattice-unit gap must be rescaled by 1/a and controlled uniformly through the limits.
 6. Explain and prove the extension to every compact simple group, or preserve an explicit SU(2)-only scope.
 
-**Scope set by the operator, November 4, 2026:** "We're not doing physical volume becoming infinite. We're a finite system." In this scope gate 1 reads as the limit a→0 at fixed finite physical size L_phys, and the uniformity of gate 2 is along L = L_phys/a, where the number of sites per side still grows. Gates 1 and 2 as written above state the Clay problem on ℝ⁴, which stays named here as a separate target.
+**Scope set by the operator, November 4, 2026:** "We're not doing physical volume becoming infinite. We're a finite system." On this seat's reading of that scope, gate 1 reads as the limit a→0 at fixed finite physical size L_phys, and the uniformity of gate 2 is along L = L_phys/a with β following a, where the number of sites per side still grows. How gates 3 to 5 read in this scope is OPEN. Gates 1 and 2 as written above state the Clay problem on ℝ⁴, which stays named here as a separate target.
 
 The finite S₃ spectral bounds and the results for Q8, 2T, 2O and 2I each hold for their finite model. Carrying any of them to continuous SU(2) needs its own proved argument.
 
