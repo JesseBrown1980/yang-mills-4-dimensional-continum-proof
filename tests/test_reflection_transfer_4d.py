@@ -1676,6 +1676,7 @@ def section_site_sharp():
     R = Reflection(lat, "site")
     upper, shared, lower = partition(lat, "site")
     time_links = [((0, 0, 0), 2), ((1, 0, 0), 2)]
+    mirror_ok = R.link(time_links[0])[0] == ((0, 0, 1), 2) and R.link(time_links[1])[0] == ((1, 0, 1), 2)
 
     def block(weight, c0, c1):
         """The Gram block of the 64 point functions of (V(0,0,0), V(1,0,0)) at the fixed-slice links c0, c1, from the plaquette words, with the mirror from Reflection.link."""
@@ -1728,6 +1729,9 @@ def section_site_sharp():
         with_negative = [config for config, f in zip(S.configs, faces) if any(weight[k] < 0 for k in f)]
         c0 = next((config for config, f in zip(S.configs, faces) if weight[f[0]] * weight[f[1]] < 0), with_negative[0])
         c1 = next((config for config, f in zip(S.configs, faces) if weight[f[0]] * weight[f[1]] > 0), c0) if negative_slices else with_negative[-1]
+        if not mirror_ok:
+            print("SITE_SHARP_BLOCK|lattice=(Z/2)x(Z/1)x(Z/2)|group=Q8|w_on_classes=%s|mirror_of_the_time_links_at_t=1=0|ok=%d|json=0" % (",".join(map(str, w)), check("site block w=%s" % (w,), False)))
+            continue
         prefactor, fixed_values, gram = block(weight, c0, c1)
         psd, rank, reason = psd_exact(gram)
         print("SITE_SHARP_BLOCK|lattice=(Z/2)x(Z/1)x(Z/2)|group=Q8|w_on_classes=%s|family=all_64_point_functions_of_(V(0,0,0),V(1,0,0))_at_one_C|w_on_its_fixed_plaquettes=%s|f(C)=%d|PSD=%d|rank=%d|reason=%s|ok=%d|json=0" % (
