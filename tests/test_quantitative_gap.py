@@ -553,7 +553,8 @@ def section_broken():
 
 
 def section_limits():
-    modules = sorted(m for m in ("itertools", "math", "os", "sys", "time") if m in sys.modules)
+    with open(os.path.abspath(__file__), encoding="utf-8") as handle:
+        modules = sorted(line.split()[1] for line in handle if line.startswith("import "))
     elapsed = (time.perf_counter_ns() - START_NS) // 1000000000
     within = elapsed <= 600
     check("runtime_within_600_seconds", within)
