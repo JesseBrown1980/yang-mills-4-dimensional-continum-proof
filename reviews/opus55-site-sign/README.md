@@ -4,7 +4,7 @@ Target: `1078e6d11832449fa31a50066efcef5d8c6cd10f`, the note, its prediction, it
 
 **Verdict, verbatim from its report.** "I could not break the SU(2) sign characterization. Theorem and Corollary hold as stated, for w != 0 a.e., k >= 2 and every side >= 2."
 
-**How it was run.** Python 3.13, standard library, integers only, at below-normal priority. It wrote its own groups from permutations and matrices mod p, its own lattice code and exact rational quaternions, sharing no code with the test, and it ran mutants of the test and tampered copies of the prediction. `REPORT.txt` holds its findings, each with its evidence and its fix.
+**How it was run.** Python 3.13, standard library, integers only, at below-normal priority. It wrote its own groups from permutations and matrices mod p, its own lattice code and exact rational quaternions, and it ran mutants of the test and tampered copies of the prediction. `REPORT.txt` holds its findings, each with its evidence and its fix.
 
 **What is here.**
 
