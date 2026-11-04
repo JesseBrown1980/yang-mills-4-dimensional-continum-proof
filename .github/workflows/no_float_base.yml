@@ -9,6 +9,7 @@
 # - The list is taken with git cat-file, so a list that is a symlink in the pull request yields its target's name, which fails as a bad row.
 # - The second job compares trees with git diff-tree, plumbing that runs no diff driver or textconv.
 # - No value from the pull request reaches a run: line. The head sha and repository name go through with: inputs only.
+# - The gate prints each row on one line with newlines escaped, so a file name cannot start a workflow command in the log.
 # Keep it this way. A step that builds, installs, tests or sources anything from the head path breaks all of the above.
 name: No floating point, base gate
 

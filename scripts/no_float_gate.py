@@ -36,7 +36,8 @@ is proven, a range index, a comprehension's own target, or a sum or product of t
 star import, a numeric dunder or an int subclass in the file voids what depends on it, and a pow whose modulus may be None counts. Such a power is written
 with an integer power that refuses a negative exponent, or with three-argument pow;
 format specs, str.format, format(), and %-formats read by CPython's grammar, in any string and on the left of %, with a built format string on the left of %
-counting too. The literal first argument of strftime and an f-string spec opening with % are date formats and pass.
+counting too. The literal first argument of a strftime the file does not bind itself, and an f-string spec opening with %, are date formats and pass. The narrowings
+that read isinstance, issubclass, type, bytes and bytearray hold only where the file leaves those names unbound.
 
 Rust, .rs, with comments and strings removed across lines: f16 f32 f64 f128, to_f32 and its kin, the Float trait, hexf64, 1f64, 0.5, 2., 1e9 with underscores
 anywhere in the exponent; c_double, c_float, c_longdouble and the named float crates; asm!, global_asm!, naked_asm!, intrinsics and std::arch; doc-test fences
@@ -67,7 +68,7 @@ A pass means these checks found nothing in what they read. It is evidence and no
 the measurements for specific scripts. Compiler-level checks, LLVM IR for Rust and assembly for C++, hold the type information this scan lacks and caught every plant
 tried, on plants and a sample of real crates; they cover compiled code only.
 Written rules did not converge. The second seat's candidate reading rules flagged 175 of 178 measured bypasses on the plants they were written from and 9 of 20 on
-plants written afterwards, with the three candidate rules left out here among them. The next plant may pass.
+plants written afterwards, with the three candidate rules left out here among them; the rules kept here flag 6 of those 20. The next plant may pass.
 It reads each tracked file's source alone, with no types, no values, no call graph and no view across files or into a run. A float returned by any function it does
 not name passes it, and a vendored library can run f64 inside an integer-looking call: num-bigint with default features does so in BigInt::sqrt, Display and parse.
 It cannot tell a format string from an integer on the left of %: s % v on two names passes, and s may hold %f built at run time.
@@ -95,9 +96,11 @@ The list: nothing checks what a reason says. A row is true of its file, and a li
 whether it takes its code from a caller. A pin stops a later change to a listed file; a float added in the same change as its own pinned row passes this scan, because
 the list is in that change.
 The gate, its list and its workflow live in the pull request they check. no_float.yml runs the pull request's own copies. no_float_base.yml runs the base commit's gate
-over the pull request's list and files as data, and flags any change to the gate, the list or either workflow for a person to read. Hosted behaviour of both: NOT_MEASURED
-until a push; a throwaway repository settles it, along with whether a second job of the same name muddies a required check.
-It reads what the index holds. A file edited and left unstaged is read as it was staged.
+over the pull request's list and files as data, and flags any change to the gate, the list or either workflow for a person to read. Hosted behaviour of both is NOT_MEASURED
+until a pull request runs them; a throwaway repository settles it, along with whether a second job of the same name muddies a required check.
+A pull request that changes a rule so that a listed count moves reads differently under its own gate and the base gate, so one of the two jobs stays red until a person acts.
+It reads what the index holds. A file edited and left unstaged is read as it was staged. A file above 1 MiB, or one holding a NUL, under a name the scan does not read stays unparsed.
+Executing the attackers' Go, Ruby, Kotlin, Swift, Zig, Julia, Lua, Lean, Vue, Svelte, WAT, Cython and Docker plants is NOT_MEASURED, for want of a toolchain here, so what those rows hold is known by reading.
 
 usage: no_float_gate.py [ROOT]          Scans ROOT. Exits 1 on a finding that is not listed, a moved count or pin, a bad row, or when no code is read.
        no_float_gate.py --selftest      Runs the snippets below. Exits 1 if one is misread. Integer only, json=0.
@@ -141,6 +144,8 @@ FORMAT_FIELD = re.compile(r"\{[^{}]*:[^{}]*[eEfFgG%]\}")
 PERCENT_FLOAT = re.compile(r"(?<!%)%(\([^)]*\))?[-+#0]*(\*|\d+)?(\.(\*|\d+))?[eEfFgG]")
 PY_EXT = (".py", ".pyw", ".pyi")
 BOUND_BUILTINS = ("len", "abs", "max", "min", "range", "enumerate")
+# A narrowing that reads these names proves nothing where the file binds them.
+NARROWING_BUILTINS = ("isinstance", "issubclass", "type", "bytes", "bytearray")
 NUM_DUNDERS = {"__abs__", "__mod__", "__rmod__", "__gt__", "__lt__", "__ge__", "__le__", "__add__", "__radd__", "__mul__", "__rmul__", "__and__", "__rand__", "__or__", "__ror__", "__xor__", "__rxor__", "__lshift__", "__rlshift__", "__rshift__", "__rrshift__", "__floordiv__", "__rfloordiv__", "__pow__", "__rpow__", "__index__", "__int__", "__truediv__", "__rtruediv__"}
 EXT_DUNDERS = {"__truediv__", "__rtruediv__", "__itruediv__", "itruediv", "__pow__", "__rpow__", "__ipow__", "ipow", "__complex__", "__float__", "__format__"}
 EXT_BAD = BAD_ATTRIBUTE | RANDOM_METHODS | BAD_NAME | EXT_DUNDERS | {"pow", "__import__", "itruediv", "format", "format_map", "vformat", "format_field", "times", "st_birthtime"}
@@ -164,7 +169,8 @@ COMP_TYPES = (ast.ListComp, ast.SetComp, ast.GeneratorExp, ast.DictComp)
 READ_ERRORS = (SyntaxError, ValueError, RecursionError, MemoryError, LookupError, OverflowError)
 TOO_DEEP = "[recursion_guard] an expression too deep to read at line 1"
 # Set per file by set_context: what the file's own bindings do to the proofs and to the path-join reading.
-CTX = {"shadowed": set(), "void": False, "path_ok": True, "defines_radd": False, "defines_div": False, "has_star": False}
+CTX_NONE = {"shadowed": frozenset(), "void": False, "path_ok": True, "defines_radd": False, "defines_div": False, "has_star": False}
+CTX = dict(CTX_NONE)
 
 
 def bound_names(tree):
@@ -192,7 +198,7 @@ def bound_names(tree):
 def set_context(tree):
     # A proof builtin bound anywhere in the file proves nothing. A class with numeric dunders or an int or bool base voids abs, max, min and % there.
     bound = bound_names(tree)
-    CTX["shadowed"] = {b for b in BOUND_BUILTINS if b in bound}
+    CTX["shadowed"] = {b for b in BOUND_BUILTINS + NARROWING_BUILTINS if b in bound}
     void, radd, div, path_ok, has_star = False, False, False, True, False
     for n in ast.walk(tree):
         if isinstance(n, ast.ClassDef):
@@ -222,7 +228,7 @@ def set_context(tree):
                     path_ok = False
     CTX.update(void=void, defines_radd=radd, defines_div=div, path_ok=path_ok, has_star=has_star)
     if has_star:
-        CTX["shadowed"] = set(BOUND_BUILTINS)
+        CTX["shadowed"] = set(BOUND_BUILTINS + NARROWING_BUILTINS)
 
 
 def is_path_join(node):
@@ -573,17 +579,21 @@ def comp_handle(out, comp, outer, base):
         comp_drop(out, ast.Expression(part), local, base)
 
 
-def date_format_args(tree):
+def date_format_args(tree, parent):
     # The literal first argument of a strftime call prints a date: %F and %f there are date directives. So does an f-string spec that opens with %, which an int or a float refuses.
+    # A strftime the file binds itself proves nothing, and neither does a call whose result is formatted again on the left of %.
     out = set()
+    own = "strftime" in bound_names(tree) or any(isinstance(s, (ast.FunctionDef, ast.AsyncFunctionDef)) and s.name == "strftime" for c in ast.walk(tree) if isinstance(c, ast.ClassDef) for s in c.body)
     for n in ast.walk(tree):
         if isinstance(n, ast.FormattedValue) and n.format_spec is not None and len(n.format_spec.values) == 1:
             only = n.format_spec.values[0]
             if isinstance(only, ast.Constant) and only.value.startswith("%") and len(only.value) >= 2:
                 out.add(id(only))
-        if isinstance(n, ast.Call) and n.args and isinstance(n.args[0], ast.Constant) and isinstance(n.args[0].value, str):
+        if isinstance(n, ast.Call) and n.args and isinstance(n.args[0], ast.Constant) and isinstance(n.args[0].value, str) and not own:
             f = n.func
-            if (isinstance(f, ast.Attribute) and f.attr == "strftime") or (isinstance(f, ast.Name) and f.id == "strftime"):
+            p = parent.get(n)
+            reformatted = isinstance(p, ast.BinOp) and isinstance(p.op, ast.Mod) and p.left is n
+            if ((isinstance(f, ast.Attribute) and f.attr == "strftime") or (isinstance(f, ast.Name) and f.id == "strftime")) and not reformatted:
                 out.add(id(n.args[0]))
     return out
 
@@ -629,7 +639,7 @@ def tree_findings(tree, safe, parent, date_args, constants):
         elif isinstance(n, ast.Attribute):
             if isinstance(n.value, ast.Name) and n.value.id in aliases and n.attr not in WATCHED[aliases[n.value.id]]:
                 out.append("%s.%s at line %d" % (aliases[n.value.id], n.attr, line))
-            elif n.attr == "fromhex" and isinstance(n.value, ast.Name) and n.value.id in ("bytes", "bytearray"):
+            elif n.attr == "fromhex" and isinstance(n.value, ast.Name) and n.value.id in ("bytes", "bytearray") and n.value.id not in CTX["shadowed"]:
                 pass
             elif n.attr in RANDOM_METHODS or n.attr in BAD_ATTRIBUTE:
                 out.append("%s at line %d" % (n.attr, line))
@@ -694,8 +704,8 @@ def rejects_a_type(n, parent):
         return False
     if isinstance(p, ast.Tuple):
         p = parent.get(p)
-    typecheck = isinstance(p, ast.Call) and isinstance(p.func, ast.Name) and p.func.id in ("isinstance", "issubclass") and len(p.args) == 2
-    compare = isinstance(p, ast.Compare) and isinstance(p.left, ast.Call) and isinstance(p.left.func, ast.Name) and p.left.func.id == "type" and all(isinstance(o, (ast.Is, ast.IsNot, ast.Eq, ast.NotEq)) for o in p.ops)
+    typecheck = isinstance(p, ast.Call) and isinstance(p.func, ast.Name) and p.func.id in ("isinstance", "issubclass") and p.func.id not in CTX["shadowed"] and len(p.args) == 2
+    compare = isinstance(p, ast.Compare) and "type" not in CTX["shadowed"] and isinstance(p.left, ast.Call) and isinstance(p.left.func, ast.Name) and p.left.func.id == "type" and all(isinstance(o, (ast.Is, ast.IsNot, ast.Eq, ast.NotEq)) for o in p.ops)
     return typecheck or compare
 
 
@@ -925,6 +935,9 @@ def source_notes(data):
 
 
 def python_findings(data, local=frozenset()):
+    # One file's bytes, or text taken as its UTF-8. local holds the names of the tracked Python, which import_allow and star_import let through; a caller that wants a scan's count passes local_modules of the tracked paths.
+    if isinstance(data, str):
+        data = data.encode("utf-8", "backslashreplace")
     notes = source_notes(data)
     try:
         tree = ast.parse(data)
@@ -939,7 +952,7 @@ def python_findings(data, local=frozenset()):
         for p in ast.walk(tree):
             for c in ast.iter_child_nodes(p):
                 parent[c] = p
-        date_args = date_format_args(tree)
+        date_args = date_format_args(tree, parent)
         constants = constant_bindings(tree)
         out = tree_findings(tree, safe, parent, date_args, constants)
         for n in ast.walk(tree):
@@ -952,6 +965,8 @@ def python_findings(data, local=frozenset()):
         return notes + out + route_findings(tree, parent, date_args, constants, local)
     except RecursionError:
         return notes + [TOO_DEEP]
+    finally:
+        CTX.update(CTX_NONE)
 
 
 EXP = r"[eE][-+]?[\d_]*\d[\d_]*"
@@ -1508,6 +1523,7 @@ def parse_list(lines):
 def git_env():
     env = dict(os.environ)
     env["GIT_OPTIONAL_LOCKS"] = "0"
+    env["GIT_NO_REPLACE_OBJECTS"] = "1"
     return env
 
 
@@ -1566,24 +1582,30 @@ def tree_line(mode, pin, path):
     return "%s %s %s\n" % (mode, pin, path)
 
 
+def one_row(row):
+    # Each row stays one line with its own prefix, so a file name holding a newline cannot start a line of its own, such as a workflow command in the job's log.
+    print(row.replace("\r", "\\r").replace("\n", "\\n"))
+
+
+def listed():
+    # The rows of the list beside this file: folder pins, file (count, pin) pairs, and the failed rows.
+    with open(os.path.join(HERE, LIST_NAME), encoding="utf-8") as f:
+        return parse_list(f)
+
+
 def scan(root):
     rows = ls_files(root)
     tracked_set = {r[3] for r in rows}
     local = local_modules(tracked_set)
-    list_path = os.path.join(HERE, LIST_NAME)
-    if not os.path.isfile(list_path):
-        print("NO_FLOAT|no_list_beside_the_gate=%s|json=0" % LIST_NAME)
-        return 1
     try:
-        with open(list_path, encoding="utf-8") as f:
-            folders, files, bad_rows = parse_list(f)
-    except UnicodeDecodeError:
-        print("NO_FLOAT|list_is_not_utf8=%s|json=0" % LIST_NAME)
+        folders, files, bad_rows = listed()
+    except (OSError, UnicodeDecodeError):
+        print("NO_FLOAT|no_readable_list_beside_the_gate=%s|json=0" % LIST_NAME)
         return 1
     scanned, kept, fails, seen = 0, 0, 0, set()
     for row in bad_rows:
         fails += 1
-        print("NO_FLOAT|%s|json=0" % row)
+        one_row("NO_FLOAT|%s|json=0" % row)
     folder_lines = {f: [] for f in folders}
     blobs = Blobs(root)
     for mode, sha, stage, path in rows:
@@ -1605,24 +1627,24 @@ def scan(root):
             listed_count, listed_pin = files[path]
             if len(found) != listed_count:
                 fails += 1
-                print("NO_FLOAT|count_moved=%s|listed=%d|found=%d|first=%s|json=0" % (path, listed_count, len(found), found[0] if found else "none"))
+                one_row("NO_FLOAT|count_moved=%s|listed=%d|found=%d|first=%s|json=0" % (path, listed_count, len(found), found[0] if found else "none"))
             if pin != listed_pin:
                 fails += 1
-                print("NO_FLOAT|pin_moved=%s|listed=%s|actual=%s|json=0" % (path, listed_pin, pin))
+                one_row("NO_FLOAT|pin_moved=%s|listed=%s|actual=%s|json=0" % (path, listed_pin, pin))
         elif found:
             fails += 1
-            print("NO_FLOAT|file=%s|first=%s|count=%d|json=0" % (path, found[0], len(found)))
+            one_row("NO_FLOAT|file=%s|first=%s|count=%d|json=0" % (path, found[0], len(found)))
     blobs.close()
     for f in sorted(folders):
         if f in seen and tree_pin(folder_lines[f]) != folders[f]:
             fails += 1
-            print("NO_FLOAT|pin_moved=%s|listed=%s|actual=%s|json=0" % (f, folders[f], tree_pin(folder_lines[f])))
+            one_row("NO_FLOAT|pin_moved=%s|listed=%s|actual=%s|json=0" % (f, folders[f], tree_pin(folder_lines[f])))
     for gone in sorted((set(folders) | set(files)) - seen):
         fails += 1
-        print("NO_FLOAT|listed_and_gone=%s|json=0" % gone)
+        one_row("NO_FLOAT|listed_and_gone=%s|json=0" % gone)
     if scanned == 0:
         fails += 1
-        print("NO_FLOAT|no_code_files_read=1|json=0")
+        one_row("NO_FLOAT|no_code_files_read=1|json=0")
     print("NO_FLOAT_DONE|code_files=%d|listed_files=%d|listed_folders=%d|listed_findings=%d|failed=%d|json=0" % (scanned, len(files), len(folders), kept, fails))
     return 1 if fails else 0
 
@@ -1668,6 +1690,7 @@ FLOATS = (
     ("x.c", "double a;"), ("x.cc", "double a;"), ("x.hpp", "double a;"), ("x.c", "__float128 a;"), ("x.cpp", "x = .5;"), ("x.cpp", "x = 1.f;"), ("x.cpp", "x = 0x1p-1;"), ("x.cpp", "#include <cmath>"), ("x.c", "#include <math.h>"), ("x.go", "var a float64"), ("x.go", "x := math.Sqrt(y)"), ("x.go", "x := .5"),
     ("x.html", "<script>Math.sqrt(2)</script>"), ("x.js", "let a = 1.5;"), ("x.js", "let a = .5;"), ("x.js", 'let a = Number("5");'), ("x.tsx", "let a = 1.5;"), ("x.js", "let a = new Float64Array(2);"), ("x.js", "let a = b / c;"), ("x.html", "<script>\nlet a = b / c;\n</script>"),
     ("x.html", "<p>don't</p>\n<script>let a = 0.5;</script>"), ("x.html", "<p>see http://x don't</p><script>let a = 0.5;</script>"), ("x.jsx", "const a = <p>don't</p>;\nlet b = 0.5;"), ("x.py", "from random import Random\nx = Random(1).choices(y)"), ("x.py", "x = rng.binomialvariate(3)"),
+    ('x.py', 'def strftime(s):\n    return s\nx = strftime("%f") % 1'), ('x.py', 'class C:\n    def strftime(self, s):\n        return s\ny = C().strftime("%f")'), ('x.py', 'x = d.strftime("%f") % 1'), ("x.py", "isinstance = lambda a, b: b(a)\nx = isinstance(3, float)"), ("x.py", "def type(a):\n    return 3\nx = type(1) is float"), ('x.py', 'bytes = q\nx = bytes.fromhex("a")'), ("x.py", "from there import *\nx = isinstance(3, float)"),
 )
 # A row here must draw a finding whose text holds the third field, so each rule shows it fires.
 POWER = "power with an unproven exponent"
@@ -1710,7 +1733,7 @@ CLEAN = (
     ("x.rs", '// f64 0.5\nlet a = 1;'), ("x.rs", 'let s = "HTTP/1.1\nf64 0.5";'), ("x.rs", '/* f64 */ let a = 1;'), ("x.rs", 'let s = r#"a"f64"#;'), ("x.rs", 'let s = br#"f64"#;'), ("x.rs", "let a = 1.max(2);"), ("x.rs", "let a = 12_345;"),
     ("x.c", 'int a = 1; /* double */'), ("x.go", 'var a uint64'), ("x.go", 'x := `0.5`'), ("x.js", "let v = '1.5';"), ("x.html", '<small>HTTP/"1.1" Rust "1.81"</small>'), ("x.html", "<p>a / b</p>"), ('x.py', 'x = array("q", y)'), ('x.py', 's = "5% faster"'),
     ("x.html", "<small>HTTP/1.1 Rust 1.81</small>"), ("x.html", "<p>don't</p>"), ("x.html", "<!-- 0.5 -->"), ("x.html", "<style>p{font-size:1.5rem;opacity:.5}</style><script>document.title = String(7n / 2n);</script>"), ("x.html", "<svg width=100 height=100><path d=M0.5,1.5L2.5,3.5 /></svg>"), ("x.svg", '<svg><path d="M0.5,1.5L2.5,3.5"/></svg>'),
-    # The narrowings: integer code these rules leave alone.
+    # The narrowings: integer code these rules leave alone, with rows in FLOATS for the same forms where the file rebinds what the narrowing reads.
     ('x.py', 'x = bytes.fromhex("ff")'), ('x.py', 'x = bytearray.fromhex("ff")'), ("x.py", "x = isinstance(y, float)"), ("x.py", "x = isinstance(y, (float, complex))"), ("x.py", "x = type(y) is complex"), ('x.py', 'import time\nx = time.strftime("%F", time.gmtime(0))'), ('x.py', 'x = d.strftime("%Y%m%d%f")'), ('x.py', 'x = f"{d:%F}"'), ('x.py', 'root = Path("a")\nx = root / name'), ('x.py', 'x = Path("a").parent / name'), ('x.py', 'x = root / name / "c"'),
     ('x.py', 'import struct\nx = struct.unpack_from("<" + "Ii" * c, b)'), ('x.py', 'import struct\nFMT = "<I"\nx = struct.pack(FMT, 1)'), ('x.py', 'x = f"{n:>{w}d}"'), ("x.py", "def f(k):\n    return k\nx = [2 ** k for k in range(3)]"), ("x.py", "for k in range(n - 1, -1, -1):\n    x = 2 ** k"), ("x.py", "for k in range(9, 2, -1):\n    x = 2 ** k"), ("x.py", "k = 8\nk >>= 1\nx = 2 ** k"), ("x.py", "import time\nx = time.timezone"), ('x.py', 'x = {"kind": "float"}'), ('x.py', 'x = ["complex", "truediv", "fromhex"]'),
     ("x.js", "let x = 7n / 2n;"), ("x.js", 'let x = "aXb".replace(/x/gi, "");'), ("x.js", "let x = 2n ** 64n;"), ("x.jsx", "const a = <div>hi</div>;"), ("x.jsx", "const a = <br />;"), ("x.ts", "let x = id<bigint>(7n / 2n);"), ("x.rs", "/// ```text\n/// 0.5 f64\n/// ```\nfn f() {}"), ("x.cpp", "int x = 1'000'000;"), ("x.cpp", "int x = 0x1e5 + 0xFF;"), ("x.cpp", "auto double_it = 1;"), ("x.cpp", "int x = 7 / 2;"),
