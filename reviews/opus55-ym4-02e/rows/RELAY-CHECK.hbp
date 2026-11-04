@@ -1,0 +1,13 @@
+RELAY|line=5054|time=2026-11-03T11:54:43.043Z|chars=4073|keys=characteristic_polynomial|json=0
+RELAY|line=10337|time=2026-11-03T23:43:12.916Z|chars=9658|keys=Theorem_5|json=0
+RELAY|line=12694|time=2026-11-04T06:57:22.041Z|chars=32260|keys=Theorem_5|json=0
+RELAY|line=15797|time=2026-11-04T17:20:37.286Z|chars=2732|keys=YM4-02e,Worked_for_1m_23s|json=0
+RELAY_MATCH|line=15797|section=direction|section_inside_message_whitespace_normalized=1|edit_ops=0|first_edits=|json=0
+RELAY|line=15925|time=2026-11-04T18:13:49.740Z|chars=3019|keys=YM4-02e,Theorem_5,Worked_for_3m_29s|json=0
+RELAY_MATCH|line=15925|section=first|section_inside_message_whitespace_normalized=1|edit_ops=0|first_edits=|json=0
+RELAY|line=15958|time=2026-11-04T18:22:33.591Z|chars=2718|keys=Theorem_5,Worked_for_2m_18s|json=0
+RELAY_MATCH|line=15958|section=second|section_inside_message_whitespace_normalized=1|edit_ops=0|first_edits=|json=0
+RELAY|line=16016|time=2026-11-04T18:29:21.420Z|chars=2733|keys=YM4-02e,first_208,should_remain_on_HOLD|json=0
+RELAY_MATCH|line=16016|section=third|section_inside_message_whitespace_normalized=1|edit_ops=0|first_edits=|json=0
+RELAY|line=16120|time=2026-11-04T18:57:33.762Z|chars=1823|keys=YM4-02e,characteristic_polynomial|json=0
+RELAY|line=16286|time=2026-11-04T19:51:48.088Z|chars=3714|keys=YM4-02e,Theorem_5|json=0

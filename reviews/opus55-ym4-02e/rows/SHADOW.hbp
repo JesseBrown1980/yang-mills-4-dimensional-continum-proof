@@ -1,0 +1,11 @@
+SHADOW|mutant=C_milli_H1_c_milli_swapped|calls=202|calls_differing=6|first_example=((999,1001),(1000,1000))|json=0
+SHADOW|mutant=C_milli_H2_tau_hi_is_lo|calls=202|calls_differing=1|first_example=((1799,1801),(1799,1800))|json=0
+SHADOW|mutant=C_milli_H3_sqrt_scale_1e12|calls=202|calls_differing=5|first_example=((1999,2000),(1999,2001))|json=0
+SHADOW|mutant=C_milli_H3b_sqrt_scale_1e30|calls=202|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=root_ppm_H4_strict|calls=218|calls_differing=6|first_example=((600000,600001),(599999,600000))|json=0
+SHADOW|mutant=sandwich_H4_strict|calls=199|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_ppm_H2_tau_hi_is_lo|calls=230|calls_differing=5|first_example=((600000,600001),(600000,600000))|json=0
+SHADOW|mutant=tau_ppm_H3_sqrt_scale_1e12|calls=230|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_ppm_H3b_sqrt_scale_1e30|calls=230|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_range_H9_links_plus_1|calls=68|calls_differing=64|first_example=(600000,882353)|json=0
+SHADOW_DONE|exit=0|json=0

@@ -1,0 +1,68 @@
+STARTS|kind=ring|size=1|q=1/2|k=1|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=1/2|k=2|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=1/2|k=4|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=4/5|k=1|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=4/5|k=2|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=4/5|k=4|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=1/5|k=1|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=1/5|k=2|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=1|q=1/5|k=4|n=2|starts=1|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/2|k=1|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/2|k=2|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/2|k=4|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=4/5|k=1|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=4/5|k=2|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=4/5|k=4|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/5|k=1|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/5|k=2|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=1/5|k=4|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/2|k=1|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/2|k=2|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/2|k=4|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=4/5|k=1|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=4/5|k=2|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=4/5|k=4|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/5|k=1|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/5|k=2|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=1/5|k=4|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/2|k=1|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/2|k=2|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/2|k=4|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=4/5|k=1|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=4/5|k=2|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=4/5|k=4|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/5|k=1|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/5|k=2|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=1/5|k=4|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/2|k=1|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/2|k=2|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/2|k=4|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=4/5|k=1|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=4/5|k=2|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=4/5|k=4|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/5|k=1|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/5|k=2|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=1/5|k=4|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/2|k=1|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/2|k=2|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/2|k=4|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=4/5|k=1|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=4/5|k=2|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=4/5|k=4|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/5|k=1|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/5|k=2|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=1/5|k=4|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=2|q=520/1000|k=2|n=4|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=3|q=556/1000|k=3|n=8|starts=2|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=4|q=520/1000|k=4|n=16|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=5|q=499/1000|k=5|n=32|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ring|size=6|q=485/1000|k=6|n=64|starts=8|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(2, 2)|q=1/2|k=1|n=32|starts=14|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(2, 2)|q=1/2|k=2|n=32|starts=14|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(2, 2)|q=4/5|k=1|n=32|starts=14|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(2, 2)|q=4/5|k=2|n=32|starts=14|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(3, 2)|q=1/2|k=1|n=128|starts=16|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(3, 2)|q=1/2|k=2|n=128|starts=16|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(5, 1)|q=4/5|k=1|n=64|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS|kind=ladder|size=(5, 1)|q=4/5|k=2|n=64|starts=4|starts_equal_all_unfolded=1|direct_rows=1|direct_equal=1|json=0
+STARTS_DONE|cases=67|differ=0|json=0

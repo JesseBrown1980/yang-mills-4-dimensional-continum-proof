@@ -1,0 +1,66 @@
+# Builds docs/PREDICTION-YM4-02e.hbp from the closed-form rows and the rows below. Usage: build_pred_02e.py WORKTREE ROWS. json=0.
+import sys
+
+W, ROWS = sys.argv[1], sys.argv[2]
+closed = [r for r in open(ROWS, encoding="utf-8").read().splitlines() if r.startswith("YM4_02E_")]
+head = """YM4_02E_PREDICTION|written_before_any_control_of_this_file_runs=1|seat=ACER-CLAUDE-FABLE5|statement_and_proof=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md|tag=DERIVED|direction=the_operator_relayed_GPT-6_start_YM4-02e|first_theorem_named_by=GPT-6|json=0
+YM4_02E_METHOD|integers_only=1|C_1=the_gauge-averaged_B_on_orbits_symmetric_integer_scale|C_2k=C_k*diag(A_i*|O_i|)*C_k|the_outer_A^(1/2)_cancels_from_every_four_point_ratio|R_k=largest_four_point_ratio_of_C_k|tau_k=(sqrt(R_k)-1)/(sqrt(R_k)+1)|predicates=x<=tau_k_iff_R_k>=((1+x)/(1-x))^2_and_tau_2k<=tau_k^2_iff_4*R_k*R_2k<=(R_k+1)^2|eigenvalues=Sylvester_inertia_of_C-tD_as_in_YM4-02d|symmetric_blocks=congruence_by_involutions_checked_on_the_matrices|json=0
+YM4_02E_LAW|name=k_step_bound|statement=|mu|/lambda_0<=tau_k^(1/k)|tag=DERIVED|falsifier=one_lattice_and_k_with_theta_low^k_above_tau_k|checked_on_every_row_with_a_ratio|json=0
+YM4_02E_LAW|name=composition|statement=tau_2k<=tau_k^2|tag=NAMED_Birkhoff|falsifier=4*R_k*R_2k_above_(R_k+1)^2|checked_on_every_row|json=0
+YM4_02E_LAW|name=limit_constant|statement=tau_k/theta^k_tends_to_C=(1/4)max_sum_j(rho_j(U)-rho_j(U'))(rho_j(V)-rho_j(V'))|tag=DERIVED|json=0
+YM4_02E_LAW|name=copies|statement=n_independent_copies_have_Delta_k_times_n_the_same_theta_and_C=n|tag=DERIVED|json=0
+YM4_02E_LAW|name=local_bound|statement=if_2eps+sigma<1_then_|mu|/lambda_0<=r_on_H_and_PH_on_every_periodic_lattice|tag=DERIVED|falsifier=one_lattice_with_2eps+sigma<1_and_theta_above_r|json=0
+YM4_02E_KSTEP_SOURCE|by_characters_before_any_run|kernel_on_classes_of_one_link=sum_over_irreps_lambda_rho^k_chi_rho(x)_chi_rho(y)|the_test_reads_them_through_orbit_matrices_a_separate_route|quadruple_of_largest_ratio_is_part_of_the_prediction=1,-1;1,-1_on_Q8_and_2T_and_0,1;0,1_on_Z3|json=0"""
+middle = """YM4_02E_THETA|group=Z2|dims=2,1|weight=q=1/2|theta=24/(25+sqrt481)|ratio_ppm=511381..511382|source=by_hand_equal_to_the_2x1x1_row_of_YM4-02d|json=0
+YM4_02E_LIMIT|group=Z2|dims=1|weight=q=1/4|C=1/1|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=Z3|dims=1|weight=1,1/2,1/2|C=3/2|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=S3|dims=1|weight=1,1/2,1/3|C=9/4|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=Q8|dims=1|weight=r=1/2|C=4/1|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=2T|dims=1|weight=r=1/2|C=4/1|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=Z2|dims=1,1|weight=q=1/4|C=2/1|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=Z2|dims=1,1,1|weight=q=1/4|C=3/1|at_k=8|within_percent=2|json=0
+YM4_02E_LIMIT|group=Z2|dims=2,1|weight=q=1/2|C=118769/100000|note=1+t^2_with_t=(sqrt481-15)/16|at_k=8|within_percent=2|json=0
+YM4_02E_SEEN|seat=second_seat|group=Z2|dims=2,2|weight=q=1/2|k=1|kth_root_ppm=467776|R=124609/16384|exact_ratio_ppm=146218..146219|json=0
+YM4_02E_SEEN|seat=second_seat|group=Z2|dims=2,2|weight=q=1/2|k=2|kth_root_ppm=273970|exact_ratio_ppm=146218..146219|json=0
+YM4_02E_SEEN|seat=second_seat|group=Z2|dims=2,2|weight=q=1/2|k=4|kth_root_ppm=200288|exact_ratio_ppm=146218..146219|json=0
+YM4_02E_SEEN|seat=second_seat|group=Z2|dims=2,2|weight=q=1/2|k=8|kth_root_ppm=171131|exact_ratio_ppm=146218..146219|json=0
+YM4_02E_SEEN|seat=second_seat|group=Z2|dims=2,2|weight=q=1/2|k=16|kth_root_ppm=158185|exact_ratio_ppm=146218..146219|json=0
+YM4_02E_SEEN_R|seat=second_seat|group=Q8|dims=1,1|weight=r=1/2|k=1|R=65536|json=0
+YM4_02E_CONTROL_RATIO|group=Z3|dims=2,1|weight=1,1/2,1/2|ratio_ppm=385446..385447|source=YM4-02d_receipt_and_the_second_seat's_own_route|json=0
+YM4_02E_CONTROL_RATIO|group=Z3|dims=3,1|weight=1,1/2,1/2|ratio_ppm=428816..428818|source=YM4-02d_receipt_and_the_second_seat's_own_route|json=0
+YM4_02E_CONTROL_RATIO|group=S3|dims=1,1|weight=1,1/2,1/3|ratio_ppm=279835..279836|source=YM4-02d_receipt_and_the_second_seat's_own_route|json=0
+YM4_02E_CONTROL_RATIO|group=Q8|dims=1,1|weight=r=1/2|ratio_ppm=529896..529897|source=YM4-02d_receipt_and_the_second_seat's_own_route|json=0
+YM4_02E_CONTROL_RATIO|group=2T|dims=1,1|weight=r=1/2|ratio_ppm=435408..435409|source=YM4-02d_receipt_and_the_second_seat's_own_route|json=0
+YM4_02E_CONTROL_RATIO|group=Q8|dims=1,1,1|weight=r=1/2|ratio_ppm=582784..582785|source=the_second_seat's_engine|json=0
+YM4_02E_CONTROL_RATIO|group=Z3|dims=2,2|weight=1,1/2,1/2|ratio_ppm=73035..73036|source=the_second_seat's_engine|four_distinct_links_in_a_word_whose_order_matters=1|json=0
+YM4_02E_CONTROL_NEGATIVE|group=Z2|dims=1|weight=1/4,1|eigenvalues=5/8,-3/8|ratio=3/5|tau=3/5|top_after_lambda_0_is_negative=1|equality=1|sqrt_R_at_k_1=4|sqrt_R_at_k_2=17/8|json=0
+YM4_02E_WILSON|group=Q8|dims=1,1|weight=r=1/2|ks=1,2,4,8|the_actual_Wilson_form|read=sandwich_and_composition|json=0
+YM4_02E_WILSON|group=2T|dims=1,1|weight=r=1/2|ks=1,2,4,8|the_actual_Wilson_form|read=sandwich_and_composition|json=0
+YM4_02E_WILSON|group=Q8|dims=1,1,1|weight=r=1/2|ks=1,2,4|the_actual_Wilson_form|read=sandwich_and_composition|json=0
+YM4_02E_WILSON|group=Q8|dims=2,1|weight=r=1/2|ks=1,2,4|the_actual_Wilson_form|read=sandwich_and_composition|json=0
+YM4_02E_SCALE|group=Z2|family=Lx1|weight=q=1/2|L=1,2,3,4,5,6,7,8|ks=1,2,4,8|read=sandwich_and_composition_with_the_ratio_to_L=6|json=0
+YM4_02E_SCALE|group=Z2|family=Lx1|weight=q=4/5|L=1,2,3,4,5,6,7,8|ks=1,2,4,8|read=sandwich_and_composition_with_the_ratio_to_L=6|json=0
+YM4_02E_SCALE|group=Z2|family=Lx1|weight=q=1/5|L=1,2,3,4,5,6,7,8|ks=1,2,4,8|read=sandwich_and_composition_with_the_ratio_to_L=6|json=0
+YM4_02E_SCALE|group=Z2|family=Lx2|weight=q=1/2|L=2,3,4|ks=1,2,4,8|read=sandwich_and_composition_with_the_ratio_to_L=3|json=0
+YM4_02E_SCALE|group=Z2|family=Lx2|weight=q=4/5|L=2,3,4|ks=1,2,4,8|read=sandwich_and_composition_with_the_ratio_to_L=3|json=0
+YM4_02E_CONJ|name=fixed_q_C_grows|group=Z2|family=Lx1|weight=q=4/5|k=8|L=3,4,5,6|statement=C_8(L)-C_8(L-1)_lies_in_[55/100,95/100]|because=C_about_L/chi_with_chi_near_128/100|tag=CONJECTURE|json=0
+YM4_02E_CONJ|name=root_rises_with_size|group=Z2|family=Lx1|weight=q=1/2|ks=1,2,4,8|L=2,3,4,5,6,7,8|statement=tau_k^(1/k)_at_L_at_least_that_at_L-1|tag=CONJECTURE|json=0
+YM4_02E_CONJ|name=ladder_additive|group=Z2|family=Lx2|weight=q=4/5|ks=1,2|statement=R_k(4)/R_k(3)_within_25_percent_of_R_k(3)/R_k(2)|tag=CONJECTURE|json=0
+YM4_02E_CONJ|name=ising_disordered|group=Z2|family=Lx1|weight=q=1/2|L=1,2,3,4,5,6|statement=theta(L)_rises_and_stays_below_eps/q=2/3|tag=NAMED_Onsager_Kaufman|json=0
+YM4_02E_CONJ|name=ising_high_t|group=Z2|family=Lx1|weight=q=4/5|L=1,2,3,4,5,6|statement=theta(L)_rises_and_stays_below_eps/q=5/36|tag=NAMED_Onsager_Kaufman|json=0
+YM4_02E_CONJ|name=ising_ordered|group=Z2|family=Lx1|weight=q=1/5|L=1,2,3,4,5,6|statement=theta(L)_rises_and_theta(6)_above_9/10|tag=NAMED_Onsager_Kaufman|json=0
+YM4_02E_CONJ|name=ring_fixed_mu_C_bounded|group=Z2|family=Lx1|mu=1,2|k=2L|L=2,3,4,5,6,7,8|statement=C_lies_in_[1,18/10]_and_changes_by_at_most_1/10_from_L=5_on|because=fixed_boundary_states_with_C=sqrt2_at_criticality_NAMED_Cardy|tag=CONJECTURE|json=0
+YM4_02E_CONJ|name=ring_fixed_mu_tau_below_one|group=Z2|family=Lx1|mu=1,2|k=L|L=2,3,4,5,6,7,8|statement=tau_k_at_most_9/10_at_every_L_so_Delta_stays_bounded_in_d=1|tag=CONJECTURE|json=0
+YM4_02E_LOCAL_UNIFORM|group=Z2|family=Lx1|weight=q=4/5|L=1,2,3,4,5,6|statement=theta(L)_at_most_r_at_each_L_while_tau_from_the_range_rises_toward_1|r_ppm_ceil_for_L_at_least_2=208713|json=0
+YM4_02E_LOCAL_FULL_SPACE|cases=Z2:2,1:q=4/5;Z2:3,1:q=4/5;Z2:2,1,1:q=7/8;Z3:2,1:1,8/9,8/9;S3:1,1:1,9/10,4/5;Q8:1,1:r=19/20|statement=theta_on_all_configurations_at_most_r|json=0
+YM4_02E_ENGINE_AGREE|cases=Z2:2,1:q=1/2;Z2:3,1:q=4/5;Z2:2,2:q=1/2|statement=the_fast_Z2_engine_and_the_general_orbit_matrices_give_the_same_R_k_at_k=1,2,4|json=0
+YM4_02E_LIMITS|runtime_within_1500_seconds=1|modules=itertools,math,os,sys,time|integers_only_under_scripts/no_float_gate.py=1|json=0
+YM4_02E_SABOTAGE|name=A_inverted|must_fail=control_ratio_Z3_dims_2x1|json=0
+YM4_02E_SABOTAGE|name=drop_spatial_weight|must_fail=a_enters_Z2_dims_2x1_k=2|json=0
+YM4_02E_SABOTAGE|name=dropped_fourth_inverse|must_fail=control_ratio_Z3_dims_2x2|json=0
+YM4_02E_SABOTAGE|name=drop_orbit_measure|must_fail=kstep_S3_dims_1_k=2|json=0
+YM4_02E_SABOTAGE|name=no_kth_root|must_fail=sandwich_Z2_dims_2x1_q=1/2_k=2|json=0
+YM4_02E_SABOTAGE|name=small_epsilon|must_fail=local_bound_Z2_dims_1_q=4/5|json=0"""
+text = head + "\n" + "\n".join(closed) + "\n" + middle + "\n"
+open(W + "/docs/PREDICTION-YM4-02e.hbp", "w", encoding="utf-8", newline="\n").write(text)
+print("ROWS|%d" % len(text.splitlines()))

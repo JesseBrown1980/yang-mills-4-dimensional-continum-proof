@@ -1,0 +1,41 @@
+HOLD 1, severity: false word.
+file=docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md line=34
+old=The overshoot is n^{1/k}, so **at each fixed k the bound worsens with size, and holding it to a factor 1 + η needs k ≥ log n / log(1 + η).**
+new=The overshoot is at most n^{1/k} and tends to it as x → 0, since tanh(n artanh x)/x rises to n. So **at each fixed k the bound worsens with size, and k ≥ log n / log(1 + η) is enough to hold it to a factor 1 + η, sharp as n x → 0.** The exact condition at (1 + η)|θ| < 1 is n artanh(x) ≤ artanh(((1 + η)|θ|)^k): θ = 3/5, η = 3/5, n = 2 reads τ₁ = 15/17 ≤ 24/25 at k = 1, below that threshold.
+reason=tanh(n artanh x)<=n x makes it sufficient; saturation lets smaller k pass. a5.py 67 of 180 rows.
+falsifier=15/17>24/25 by exact arithmetic, or a row with k>=log n/log(1+eta) and tau_k>((1+eta)|theta|)^k; a5.py found 0 of 180.
+
+HOLD 2, severity: incomplete, mixed sign unstated.
+line=107
+old=- **Proposition 3** assumes one positive top value after λ₀. With a negative top value it holds along even k.
+new=- **Proposition 3** assumes one positive top value after λ₀. With only a negative value at that modulus it holds at every k, read with |θ|^k, since the maximum is unchanged when U and U′ swap. With both signs at that modulus, τ_k/|θ|^k has one limit along even k, summing every j, and another along odd k, with each j carrying its sign: Z5 on one link with weights 2, 3, 1, 1, 3 has eigenvalues 10, √5 twice, −√5 twice, and reads 5/2 and √5.
+reason=N1, N2.
+falsifier=a pure-negative case with tau_k/|theta|^k off C at odd k, or Z5 odd rows off 2236 milli.
+
+HOLD 3, severity: missing normalization.
+line=24
+old=with orthonormal eigenfunctions h_j and ρ_j = h_j/Ω.
+new=with orthonormal eigenfunctions h_j, Ω of unit norm, and ρ_j = h_j/Ω.
+reason=02d leaves the norm of Omega free, and C scales with ||Omega||^-2. The expansion on line 30 needs unit Omega.
+falsifier=C independent of ||Omega||; Z2 one link with Haar, h=sigma, reads C=1 at Omega=1 and C=1/4 at Omega=2.
+
+HOLD 4, severity: missing scope.
+line=22
+old=and constant on Z2 with one link, 600000 ppm at each k.
+new=and constant on Z2 with one link, where τ_k = |θ|^k, 600000 ppm at each k at q = 1/4.
+reason=q absent from the sentence; the prediction row has q=1/4. q=1/2 reads 333333.
+falsifier=tau_k^{1/k} off (1-q)/(1+q) on one link.
+
+HOLD 5, severity: undefined symbol.
+line=34
+old=For Z2 with x = ρ^k,
+new=For Z2 with x = |θ|^k,
+reason=rho here is undefined and clashes with rho_j on line 24.
+falsifier=a definition of rho as a ratio earlier in the note; grep finds none before line 34 other than rho_j.
+
+HOLD 6, severity: scale, optional.
+line=46
+old=T_v has the blocks [[5/4, 1/2], [1/2, 5/16]] on even functions and 3/4, 3/16 on odd ones.
+new=T_v has, up to the scale 1/4 of Haar measure on the two self-loops, the blocks [[5/4, 1/2], [1/2, 5/16]] on even functions and 3/4, 3/16 on odd ones.
+reason=line 5 takes normalized Haar; 02d line 'Sharp at N_l=1' carries the 1/2. Ratios unaffected.
+falsifier=the blocks computed with normalized Haar equal those printed.

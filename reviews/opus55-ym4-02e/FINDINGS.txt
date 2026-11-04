@@ -1,0 +1,138 @@
+FINDINGS, second seat for ACER-CLAUDE-FABLE5, on YM4-02e at 09ff0f2cad50324968e0f758a7e94173434bba04, 2026-11-04.
+Workspace C:/tmp/opus55/02e-records-20261104. Named FINDINGS.txt because this seat's harness bars .md report files. Tags MEASURED, DERIVED, NAMED, CONJECTURE, CANNOT_SEE.
+Vantage: seat=opus55 second seat, host=acer, Windows, python 3.13.14 -I -X utf8, integers only, 8 logical cores shared with this seat's own parallel runs.
+
+VERDICT: HOLD at the commit. Every number recomputed agrees, the run reproduces the receipt byte for byte, and the prediction came first. The holds are in HOLDS.txt: 2 sentences of the measured section that the receipt contradicts or cannot show, 1 general sentence the receipt contradicts, a GPT-6 message missing from its verbatim file, a first-run sentence that points at the wrong commit, stale hosted text, and test edits that make unexercised paths turn red.
+
+== 1. PREDICTION FIRST
+MEASURED GitHub activity API: branch_creation 17:43:11Z with 23cec81, push of f818bc5 18:59:02Z, push of 09ff0f2 19:16:34Z.
+MEASURED git show --stat 23cec81: 2 files, the note and the prediction, 130 lines. git ls-tree at 23cec81 has no test for 02e.
+MEASURED sha256 of the first 130 lines at 23cec81, f818bc5 and 09ff0f2: 7931f9bf147e12cbb0ac346a240923136f6081036aa4fa730693ac6430f8cb77 at each. Whole file at 23cec81: the same hash. CR count 0.
+MEASURED session transcript: first Write of the test at 17:48:51Z (line 15901), first run started 17:49:08Z (line 15915), NTFS birth of the test file 14:48:55-03:00 in C:/tmp/ym4-02e-wt. So the test was first written 5 min 40 s after the rows reached the remote. CANNOT_SEE: a draft outside this session and path; what would settle it is any file older than 17:43:11Z holding the test's code.
+Rows appended later, all with new tags or rows the test reads for new sections, in two commits: 131 to 142 at f818bc5 (MISS 2, ACCEPTANCE, BLOCKS_AGREE, BLOCKS_SPECTRUM 4, ATTEMPT 2, BLOCKS_CHARPOLY, SABOTAGE bad_block_measure), 143 to 145 at 09ff0f2 (ATTEMPT 2, MISS). MEASURED: none of them is read in place of a frozen row, and none changes a frozen number. The one loosening is in the test, recorded at row 131: control_ratio went from equal floor and ceil to containment. MEASURED: containment changes the outcome on Z3 3x1 alone, since the other 6 printed intervals equal the registered ones.
+Same logic: MEASURED predict_02e.py (transcript line 15836, saved in rows/) computes KSTEP, PRODUCT, A_ENTERS and NO_A by characters and hand blocks, and its header says it holds no lattice, no orbit matrix and no cross-ratio search; that holds on reading it. Those 35 rows are a separate route. LOCAL is the same logic: the Edit at line 15863 replaced hand counts (8 and 10 at 2x1x1 and 2x2x1) with the plaquette sum the test uses, reading 5 and 8, and r comes from the same bisection on phi. So local_neighbours and local_r pin a repeat. Five CONTROL_RATIO rows cite YM4-02d's receipt, whose pencil the test repeats, beside the second seat's own route. The script is on no ref. H16, H20.
+MEASURED separate code (scripts/closed_forms.py): 60 of 60 rows agree: KSTEP 20, PRODUCT 8, A_ENTERS 4, NO_A 3, THETA, the limit's decimal, LOCAL 23 with epsilon, sigma, c below 1, neighbours and r by the quadratic formula.
+NAMED, frozen, for the record: row 102 says the Z3 word's order matters. Z3 is abelian, so the inverses matter. The sabotage dropping the fourth inverse fires on that row all the same (MEASURED).
+
+== 2. RUN, SABOTAGES, HOSTED
+MEASURED local run at the commit: exit 0, 286 rows, CR-removed stdout sha256 a265e1883d20c7b031db5798a27b5dc919e72b40fa3ef3a95735fb588433dc86 = receipt. 747 s wall, under load from this seat's other runs. Instrumented run with line coverage: 923 s, stdout equal as well.
+MEASURED 7 sabotages each exit 1 on the named check, no traceback; unknown name exit 2. rows/SABOTAGES.hbp.
+MEASURED hosted, ubuntu-24.04: run 41895366817 (push, 09ff0f2) success, test step 403 s, SECTION blocks 402; run 41895559528 (pull_request, 09ff0f2) success, test step 597 s, SECTION blocks 596. Limit 1,500 s. Earlier: run 41892470079 (push, f818bc5) failure at cmp, 'No such file', the receipt being absent at that commit as its message says, test step 1207 s, sabotages skipped. Run lists at f818bc5 and 09ff0f2 are the only ones on the branch for this workflow.
+MEASURED transcript: fourth RC=1 SECS=1863 LINES=280 at 19:05:46Z; fifth RC=0 SECS=571 LINES=286; the five starts at 17:49:08, 18:25:27, 18:32:35, 18:34:33 and 19:02:34Z fit the record.
+
+== 3. MUTANTS (rows/MUTANTS.hbp, stdout of each under mutants/)
+MUTANT|name=A5_last_column_dropped|target=largest_ratio_columns|status=KILLED_CHECK|first_failed=kstep_Z2_dims_1_k=1|seconds=0|rows_before=0|first_diff_row=1|json=0
+MUTANT|name=A3_low_not_tracked|target=largest_ratio_low_branch|status=KILLED_CHECK|first_failed=engines_agree_Z2_dims_2x1|seconds=125|rows_before=101|first_diff_row=101|json=0
+MUTANT|name=C1_holonomy_not_squared|target=ring_results_R_W|status=KILLED_CHECK|first_failed=engines_agree_Z2_dims_2x1|seconds=133|rows_before=101|first_diff_row=102|json=0
+MUTANT|name=D2_chi_sign_off|target=block_vectors_character|status=KILLED_CHECK|first_failed=sandwich_Z2_dims_1_q=1/4_k=1|seconds=0|rows_before=0|first_diff_row=1|json=0
+MUTANT|name=A4_second_rows_from_starts|target=largest_ratio_second_row_restricted_to_starts|status=KILLED_CHECK|first_failed=engines_agree_Z2_dims_2x1|seconds=133|rows_before=101|first_diff_row=102|json=0
+MUTANT|name=D3_no_canonical_sign|target=block_vectors_canonical_sign|status=KILLED_CRASH|error=AssertionError: (3, 2)|seconds=0|rows_before=0|json=0
+MUTANT|name=B1_lift_not_composed|target=Z2Conv.orbit_starts_lift|status=KILLED_CHECK|first_failed=engines_agree_Z2_dims_2x1|seconds=134|rows_before=101|first_diff_row=102|json=0
+MUTANT|name=E1_gcd_skips_db|target=compress_gcd|status=KILLED_CHECK|first_failed=theta_Z2_dims_2x1|seconds=0|rows_before=24|first_diff_row=1|json=0
+MUTANT|name=E4_abs_coefficients|target=compress_cb|status=KILLED_CHECK|first_failed=sandwich_Z2_dims_1_q=1/4_k=1|seconds=0|rows_before=0|first_diff_row=1|json=0
+MUTANT|name=G6_enough_off_by_one|target=seeded_enough|status=KILLED_CHECK|first_failed=sandwich_Z2_dims_1_q=1/4_k=1|seconds=0|rows_before=0|first_diff_row=1|json=0
+MUTANT|name=E3_db_not_divided|target=compress_db|status=KILLED_CHECK|first_failed=control_ratio_Q8_dims_1x1|seconds=0|rows_before=31|first_diff_row=13|json=0
+MUTANT|name=G3_bisect_strict|target=bisect_count|status=KILLED_CHECK|first_failed=local_bound_S3_dims_1x1_1,9/10,4/5|seconds=87|rows_before=53|first_diff_row=54|json=0
+MUTANT|name=H6_phi_without_sigma|target=phi_at_most_one|status=KILLED_CHECK|first_failed=local_r_Z2_dims_1x1_q=4/5|seconds=5|rows_before=37|first_diff_row=38|json=0
+MUTANT|name=H7_neighbours_repeats|target=neighbours_counts_repeats|status=KILLED_CHECK|first_failed=local_neighbours_Z2_dims_1x1_q=4/5|seconds=5|rows_before=37|first_diff_row=38|json=0
+MUTANT|name=H5_no_kth_root_in_root_ppm|target=root_ppm|status=KILLED_CHECK|first_failed=seen_Z2_dims_2x2_k=2|seconds=102|rows_before=82|first_diff_row=2|json=0
+MUTANT|name=H8_neighbours_first_link|target=neighbours_reads_link_0|status=KILLED_CHECK|first_failed=local_neighbours_Z2_dims_2x1_q=4/5|seconds=5|rows_before=38|first_diff_row=39|json=0
+MUTANT|name=H10_epsilon_wrong|target=epsilon_of|status=KILLED_CHECK|first_failed=local_epsilon_Z2_dims_1_q=4/5|seconds=5|rows_before=36|first_diff_row=37|json=0
+MUTANT|name=I1_diagonal_ignores_orbit_size|target=Pencil.build_diagonal|status=KILLED_CHECK|first_failed=sandwich_S3_dims_1_1,1/2,1/3_k=4|seconds=0|rows_before=10|first_diff_row=9|json=0
+MUTANT|name=I3_inertia_sign_of_top_alone|target=inertia_sign_rule|status=KILLED_CHECK|first_failed=sandwich_Z3_dims_1_1,1/2,1/2_k=1|seconds=0|rows_before=4|first_diff_row=5|json=0
+MUTANT|name=H11_sigma_halved|target=section_local_sigma|status=KILLED_CHECK|first_failed=local_r_Z2_dims_1x1_q=4/5|seconds=5|rows_before=37|first_diff_row=38|json=0
+MUTANT|name=C5_open_chain|target=ring_A_boundary|status=KILLED_CHECK|first_failed=engines_agree_Z2_dims_2x1|seconds=129|rows_before=101|first_diff_row=102|json=0
+MUTANT|name=G7_gallop_no_refine|target=seeded_skips_the_final_bisect|status=NOT_MEASURED|reason=BUDGET|cap=900|rows_read=267|rows_agreeing=53|json=0
+MUTANT|name=I12_ladder_z_partial_gauge|target=LadderZ2_z|status=NOT_MEASURED|reason=BUDGET|cap=900|rows_read=47|rows_agreeing=44|json=0
+MUTANT|name=I13_a_only_in_general_engine_k2|target=KSteps_measure_uses_A_at_orbit_0_alone|status=NOT_MEASURED|reason=BUDGET|cap=900|rows_read=266|rows_agreeing=266|json=0
+MUTANT|name=A2_ladder_first_start_only|target=largest_ratio_starts_in_ladder_results|status=SURVIVED|seconds=1050|rows=286|exit=0|json=0
+MUTANT|name=A1_ring_first_start_only|target=largest_ratio_starts_in_ring_results|status=SURVIVED|seconds=1118|rows=286|exit=0|json=0
+MUTANT|name=A6_general_first_row_only|target=largest_ratio_general_engine_reads_row_0_alone|status=KILLED_CHECK|first_failed=first_run_rows_reproduce|seconds=1221|rows_before=284|first_diff_row=101|json=0
+MUTANT|name=C3_holonomy_k_capped_at_4|target=ring_holonomy_y_beyond_engine_agree's_k|status=KILLED_CHECK|first_failed=composition_Z2_dims_1x1_q=1/2_k=4|seconds=145|rows_before=104|first_diff_row=105|json=0
+MUTANT|name=B5_non_affine_symmetry_L4|target=Z2Conv.commutes_accepts_one_row_alone:_a_swap_of_1_and_2_at_L_>=_4|status=SURVIVED|seconds=1266|rows=286|exit=0|json=0
+MUTANT|name=B2_lift_order_swapped|target=Z2Conv.orbit_starts_lift_order|status=SURVIVED|seconds=1269|rows=286|exit=0|json=0
+MUTANT|name=B3_unfold_inverse|target=Z2Conv.unfold|status=SURVIVED|seconds=1291|rows=286|exit=0|json=0
+MUTANT|name=E2_no_gcd|target=compress_gcd_removed|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=95|rows_agreeing=95|json=0
+MUTANT|name=G1_seed_at_bottom|target=seeded_start|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=47|rows_agreeing=47|json=0
+MUTANT|name=H1_c_milli_swapped|target=c_milli|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=236|rows_agreeing=0|json=0
+MUTANT|name=G2_lo_unverified|target=seeded_gallop_down|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=248|rows_agreeing=0|json=0
+MUTANT|name=D6_above_counts_small_only|target=BlockPencil.above|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=266|rows_agreeing=266|json=0
+MUTANT|name=C6_A_doubled_at_L_ge_4|target=ring_A_beyond_engine_agree's_L|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=248|rows_agreeing=116|json=0
+MUTANT|name=C4_no_max_with_rho|target=ring_results_max(theta_v,_rho_W)|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=266|rows_agreeing=139|json=0
+MUTANT|name=C2_holonomy_L_capped_at_3|target=ring_holonomy_rho_beyond_engine_agree's_L|status=NOT_MEASURED|reason=BUDGET|cap=1500|rows_read=267|rows_agreeing=116|json=0
+
+Status counts of the rows above: KILLED_CHECK=22, KILLED_CRASH=1, NOT_MEASURED=11, SURVIVED=5
+
+Not run as processes, DERIVED from the instrumented run's coverage (rows/INSTRUMENTED.hbp: COVERAGE possible=1341, run=1287, not run=54; first_above=1 on 99 of 99 top_two calls; free=1 on 99 of 99; COMMUTES accepted=310 rejected=0; perms_kept = perms_given on 54 of 54 Z2Conv builds):
+  SURVIVES F1_no_certifying_count, F2_certify_above_2, F3_second_fallback_off, F4_upper_quartered: lines 658 to 665 never run.
+  SURVIVES F5_negative_free_true, D7_below_counts_small_only: free=1 on every call.
+  SURVIVES D1_commutes_true, D4_cycles_unfiltered, B4_conv_filter_off: no candidate is ever refused (lines 397, 491, 493, 1019 not run).
+  SURVIVES I2_inertia_zero_diagonal: lines 107 to 112 not run.
+  SURVIVES I7 composition off, I8 blocks_agree off, I10 limit tolerance 100, I11 seen tolerance 1000, I9 every check off: no check fails in the receipt. Under the workflow's sabotages I9 turns red; I7, I8, I10, I11 have no sabotage that fires them. C3 shows composition can fire.
+MEASURED with the proposed edits (fixed_ rows): fixed_F1_no_certifying_count KILLED_CHECK; fixed_D6_above_counts_small_only KILLED_CHECK; fixed_F3_second_fallback_off KILLED_CHECK; fixed_F5_negative_free_true KILLED_CHECK; fixed_F2_certify_above_2 NOT_MEASURED; fixed_Z0_no_change SURVIVED; fixed_C6_A_doubled_at_L_ge_4 NOT_MEASURED; fixed_C2_holonomy_L_capped_at_3 NOT_MEASURED.
+Meaning of the survivors, MEASURED: A1 and A2 say the identity's row attains R_k on every ring and ladder row, so start rows past the first are never decisive. A6 says the same of the general engine on all rows but one: Q8 at 2x1, k = 4, receipt row 101, caught by cmp and by first_run_rows_reproduce alone; separate code confirms that row. B2 and B3 are equivalent on abelian symmetry groups, DERIVED. B5 feeds Z2Conv a non-symmetry, which it accepts, and no row moves.
+Rows beyond ENGINE_AGREE's reach (L > 3 on the ring, L = 3, 4 and 2x2x1 on the ladder) have no predicted value: inside the test they meet the sandwich, composition, and conjecture windows, and otherwise cmp against the receipt. MEASURED: C2 changes 42 rows with no FAILED row through 267 read, C6 changes 76 with none through 248, C4 changes 1 (row 140), H1 6 and G2 13: each stopped by this seat's own clock before the closing rows, so those NOT_MEASURED rows read as no check firing up to there, and first_run_rows_reproduce would fire at the end for any change within the first 208 rows, DERIVED. D6 agrees on 266 of 266 rows read, and the last 20 rows call no above, DERIVED: it survives. fixed_C2 and fixed_C6 ran with H10 to H15 alone. A silent check at L = 4 past ENGINE_AGREE's cases is what these ask for; this seat wrote none and measured none. And I12: 3x2 q=4/5 read 111151..111152 against 12669..12670 with within_r=1 and no FAILED row at that point.
+
+== 4. top_two AND THE SYMMETRIES
+DERIVED, the certifying count: eigenvalues of a small block are true eigenvalues, the small blocks being invariant subspaces. With above(hi1) <= 1: lambda_1 <= hi1; lambda_1 >= the small second > lo1 when above_small(lo1) >= 2. With lo0 >= hi1, the small top is the one eigenvalue above hi1, so lambda_0 is in (lo0, hi0]. This needs Perron only when both tops share one grid cell. MEASURED: same_cell=0 and lo1_is_zero=0 on 99 of 99 calls, so every row of the receipt sits in the case that needs no more. The docstring's claim fails on one case: with no positive second eigenvalue among the small blocks lo1 = 0 goes unverified. MEASURED Z2 with w = 1/4, 1: lo1=0, hi1=2^-20, and lambda_1 = -3/8 lies outside that bracket; free=0 flags it, and low=0 then raises ZeroDivisionError in c_milli. No row reaches it.
+MEASURED fuzz, 14 seeds, positive class weights, including w above 1 away from the identity (rows/FUZZ.hbp): 168 lattice pencils and 161 rings, top_two against a dense bisection with its own minor count: bracket mismatches 0, free mismatches 0, certifying count above 1 on 26. Theorem 5 on 52 random-weight cases with 2eps + sigma < 1: 0 violations. Sandwich 504 checks: 0 violations. Scope: at most 32 orbits, 24 bits.
+MEASURED BlockPencil's filter compares all n^2 entries and D, so what it accepts is a symmetry by definition. It refused a swap of two orbits (rows/FIRES.hbp), and in the run it never refused anything. Non-involutions kept: 0 on 120 builds. It relies on the candidates being involutions by construction, and conv_ratio checks that for itself.
+MEASURED Z2Conv.commutes is weaker: one row of z and all of a. Swap of 1 and 2 at L = 3, 4, 5: accepted, true_symmetry=0, witness (1, 5) (rows/FILTER.hbp). BlockPencil refuses the same map. H10.
+MEASURED start rows are rigorous for each symmetry used: all kept perms on 54 of 54 builds are GF(2)-affine and full symmetries of z and a, so of each C_k. rows/STARTS.hbp: 67 cases, ratio on start rows = ratio on all unfolded rows = ratio on rows computed with no symmetry at all, 0 differ. Scope there: L <= 6, ladder 2x2, 3x2, 5x1, k up to 6.
+MEASURED power_estimate has no influence on any row in common: FOURTH-ATTEMPT, with plain bisection, equals the receipt on every row apart from the scope fields, the charpoly rows and the closing rows. Lines 636 and 637, the gallop down past one step, never run.
+
+== 5. INDEPENDENT RECOMPUTATION (scripts/independent.py, no shared lines; different group code, gauge sums, one-step products, literal quadruple search on small cases, Collatz-Wielandt for lambda_0, leading minors for lambda_1)
+INDEP_R|case=Q8_1x1_r=1/2|k=1|orbits=28|R_digits=5|root_floor_ppm=992217|receipt_root_ppm=992217..992218|agree=1|R=65536/1|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Q8_1x1_r=1/2|k=2|orbits=28|R_digits=11|root_floor_ppm=914269|receipt_root_ppm=914269..914270|agree=1|R=14125084801/112869376|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Q8_1x1_r=1/2|k=4|orbits=28|R_digits=23|root_floor_ppm=733470|receipt_root_ppm=733470..733471|agree=1|R=25741813561782766740889/7817610819577780170889|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=1|orbits=32|R_digits=6|root_floor_ppm=467775|receipt_root_ppm=467775..467776|agree=1|R=124609/16384|at=(0, 27, 0, 27)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=2|orbits=32|R_digits=12|root_floor_ppm=273969|receipt_root_ppm=273969..273970|agree=1|R=237988841281/176164878400|at=(0, 27, 0, 27)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=4|orbits=32|R_digits=28|root_floor_ppm=200287|receipt_root_ppm=200287..200288|agree=1|R=4222372140461927097524478889/4195280329453359203097009025|at=(0, 27, 0, 27)|json=0
+INDEP_R|case=Q8_2x1_r=1/2|k=1|orbits=176|R_digits=6|root_floor_ppm=997171|receipt_root_ppm=997171..997172|agree=1|R=498436/1|at=(0, 34, 0, 34)|json=0
+INDEP_R|case=Q8_2x1_r=1/2|k=2|orbits=176|R_digits=21|root_floor_ppm=973462|receipt_root_ppm=973462..973463|agree=1|R=710898246527704974649/514030540350029824|at=(0, 34, 0, 34)|json=0
+INDEP_R|case=Q8_2x1_r=1/2|k=4|orbits=176|R_digits=53|root_floor_ppm=936960|receipt_root_ppm=936960..936961|agree=1|R=32626280851796476969777728670685589841793613348151681/547129480947413038029580381779933415481170233760000|at=(2, 36, 2, 36)|json=0
+INDEP_RATIO|case=Q8_1x1x1_r=1/2|orbits=176|lambda0_bracket_width_below_2^-60=1|above_lower=4|above_upper=1|certified=1|ratio_ppm=582784..582785|receipt=582784..582785|inside_receipt=1|json=0
+INDEP_RATIO|case=Z3_2x2_1,1/2,1/2|orbits=243|lambda0_bracket_width_below_2^-60=1|above_lower=5|above_upper=1|certified=1|ratio_ppm=73035..73036|receipt=73035..73036|inside_receipt=1|json=0
+INDEP_RATIO|case=ring_mu=2_L=4_q=520/1000|orbits=32|lambda0_bracket_width_below_2^-60=1|above_lower=2|above_upper=1|certified=1|ratio_ppm=578156..578157|receipt=578156..578157|inside_receipt=1|json=0
+INDEP_R|case=ring_mu=2_L=4_q=520/1000|k=4|orbits=32|R_digits=102|root_floor_ppm=663092|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 31, 0, 31)|json=0
+INDEP_R|case=ring_mu=2_L=4_q=520/1000|k=8|orbits=32|R_digits=225|root_floor_ppm=619234|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 31, 0, 31)|json=0
+INDEP_RING|L=4|k=4|tau_ppm=193328..193329|receipt_tau_ppm=193328..193329|tau_agree=1|C_milli=1730..1731|receipt_C_milli=1730..1731|C_agree=1|json=0
+INDEP_RING|L=4|k=8|tau_ppm=21619..21620|receipt_tau_ppm=21619..21620|tau_agree=1|C_milli=1731..1732|receipt_C_milli=1731..1732|C_agree=1|json=0
+INDEP_RATIO|case=ring_mu=2_L=6_q=485/1000|orbits=128|blocks=2|above_lower=2|above_upper=1|ratio_inside_693503..693504_ppm=1|json=0
+INDEP_R|case=ring_mu=2_L=6_q=485/1000|k=6|orbits=128|R_digits=451|root_floor_ppm=773590|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 127, 0, 127)|json=0
+INDEP_RING|L=6|k=6|tau_ppm=214321..214322|receipt_tau_ppm=214321..214322|json=0
+INDEP_LOCAL|case=Z2_2x2x1_q=7/8|links=12|neighbours=8|epsilon=1/15|sigma=8/15|c=2/3|c_below_1=1|r_ppm=145899|receipt_r=145899|tau_range_ppm=664701|receipt_tau=664701|json=0
+INDEP_RATIO|case=LOCAL_TABLE_Q8_1x1x1_r=19/20|orbits=176|lambda0_bracket_width_below_2^-60=1|above_lower=4|above_upper=1|certified=1|ratio_ppm=29469..29470|receipt=29469..29470|inside_receipt=1|json=0
+INDEP_LOCAL|case=Q8_1x1x1_r=19/20|neighbours=2|tau_range_ppm=298398|receipt_tau=298398|json=0
+
+NOT_MEASURED|subject=Z2_2x2x1_ratio_by_this_seat's_code|reason=BUDGET|r_c_neighbours_tau_range_agree=1|the_Q8_row_of_the_same_table_stands_in|json=0
+MEASURED the engine's exact R at k = 1, 2, 4 on Q8 1x1 and Z2 2x2 equals these digit for digit (rows/ENGINE-R.hbp). agree=-1 marks ring k rows, whose root is printed nowhere in the receipt; their tau and C are compared in INDEP_RING rows.
+
+== 6. RECORDS
+MEASURED scripts/note_vs_receipt.py: 44 claims of the measured section against the receipt, 42 hold. The two others: composition (0 rows with the word, H2) and falling steps at mu = 2 (223,152,113,84,51,58, H1).
+MEASURED first-run record: 208 lines, 208 distinct; line 30 the FAILED row, line 31 as_pinned=0; 154 sandwich=1, 29 within_r=1, 32 matched=1, 6 agrees=1, no 0 among them. SECOND and THIRD are byte-identical, 47 rows each, equal to FIRST-RUN's head apart from the correction. FOURTH has 280 rows, and its difference from the receipt is exactly 10 scope fields, 7 charpoly rows and the 3 closing rows. The first-run README's commit is wrong: H9.
+MEASURED GPT-6: the four filed messages equal the relays at transcript lines 15797, 15925, 15958 and 16016 after whitespace is squeezed, edit_ops=0 on each. A fifth, line 16120, 18:57:33Z, holds the characteristic-polynomial refinement that prediction row 141 credits; it is missing from the file. A sixth, line 16286, 19:51:48Z, reviews this commit. H7, H8.
+Status: note line 3 and the file's header say HOLD with no contradiction identified, as GPT-6's text does. PR #26 says Draft, on HOLD. The PR body's 'Bounded on the 1D ring up to L = 8, MEASURED' overstates: H17.
+General sentences: H3 (C read as how much of the lattice), H4 (falls). Theorem 5's statements at every L are scoped to its proof, and the note says so. MEASURED beside it: root_rises_with_size is read on Lx1 alone; on Lx2 at q = 1/2, k = 1 the root reads 467775, 461569, 519738 at L = 2, 3, 4.
+MEASURED geometry: neighbours = 6(d - 1) on (3,3), (3,3,3), (4,4,4), (3,3,3,3), and on (2,2), (2,2,2) as well.
+
+== 7. THE GATE
+MEASURED selftest failed=0; python3 -I -X utf8 scripts/no_float_gate.py . prints NO_FLOAT_DONE|code_files=100|listed_files=28|listed_findings=162|failed=0. MEASURED git diff 5a65234..09ff0f2 -- scripts/ is empty, so no row was added. Hosted no-float-list-unchanged: pass.
+
+== 8. WHAT THIS SEAT COULD NOT CHECK
+CANNOT_SEE: the 209th line and the stop at 36 minutes beyond the transcript's times; a test draft outside this session; GPT-6's own original beside the operator's relay. Theorem 5's proof was read for the row-sum counts and tested on the 29 rows and 52 fuzz cases, with no proof review of my own. NOT_MEASURED reason=BUDGET: mutants listed with that status, and the mutants of the list never started, whose names are in scripts/mutate.py.
+FIXED_RUN: see the row below, the test with H10 to H15 applied against the receipt.
+MUTANT|name=fixed_Z0_no_change|target=the_source_with_no_mutation,_for_--fixed|status=SURVIVED|seconds=1292|rows=286|exit=0|json=0
+
+== 9. SHADOW OF THE OUTPUT FUNCTIONS (one run: each call compared with a mutant's value, rows/SHADOW.hbp)
+SHADOW|mutant=C_milli_H1_c_milli_swapped|calls=202|calls_differing=6|first_example=((999,1001),(1000,1000))|json=0
+SHADOW|mutant=C_milli_H2_tau_hi_is_lo|calls=202|calls_differing=1|first_example=((1799,1801),(1799,1800))|json=0
+SHADOW|mutant=C_milli_H3_sqrt_scale_1e12|calls=202|calls_differing=5|first_example=((1999,2000),(1999,2001))|json=0
+SHADOW|mutant=C_milli_H3b_sqrt_scale_1e30|calls=202|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=root_ppm_H4_strict|calls=218|calls_differing=6|first_example=((600000,600001),(599999,600000))|json=0
+SHADOW|mutant=sandwich_H4_strict|calls=199|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_ppm_H2_tau_hi_is_lo|calls=230|calls_differing=5|first_example=((600000,600001),(600000,600000))|json=0
+SHADOW|mutant=tau_ppm_H3_sqrt_scale_1e12|calls=230|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_ppm_H3b_sqrt_scale_1e30|calls=230|calls_differing=0|first_example=None|json=0
+SHADOW|mutant=tau_range_H9_links_plus_1|calls=68|calls_differing=64|first_example=(600000,882353)|json=0
+SHADOW_DONE|exit=0|json=0
