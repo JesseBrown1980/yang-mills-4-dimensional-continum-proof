@@ -1,0 +1,46 @@
+CLAIM|line=19|sentence=the names float and complex, except as the type being tested|file=x.py|form=class M(type):\n    def __eq__(c, o):\n        return False\nclass C(metaclass=M):\n    pass\nx = type(C()) == complex|findings=0|first=-|json=0
+CLAIM|line=22|sentence=any import outside a short allowed list and outside the tracked Python|file=x.py|form=import sqlite3|findings=0|first=-|json=0
+CLAIM|line=24|sentence=an imported module passed around as a value|file=x.py|form=from urllib import request\nf(request)|findings=0|first=-|json=0
+CLAIM|line=24|sentence=a watched module reached through another module|file=x.py|form=import unittest\nt = unittest.case.time|findings=0|first=-|json=0
+CLAIM|line=24|sentence=a watched module reached through another module|file=x.py|form=from unittest import case\nt = case.time|findings=0|first=-|json=0
+CLAIM|line=27|sentence=a store into a module|file=x.py|form=from pkg import b\nb.e = -1|findings=1|first=[import_allow] import pkg, outside the allowed list at line 1|json=0
+CLAIM|line=27|sentence=attrgetter and methodcaller the same way as getattr as a value|file=x.py|form=from operator import attrgetter\nh = attrgetter|findings=0|first=-|json=0
+CLAIM|line=28|sentence=a call through __class__ or type(v)|file=x.py|form=k = y.__class__\nx = k(1)|findings=0|first=-|json=0
+CLAIM|line=28|sentence=a call through __class__ or type(v)|file=x.py|form=k = type(y)\nx = k(1)|findings=0|first=-|json=0
+CLAIM|line=28|sentence=three-argument type()|file=x.py|form=T = type(*["T", (int,), {}])|findings=0|first=-|json=0
+CLAIM|line=28|sentence=__prepare__|file=x.py|form=class M(type):\n    __prepare__ = classmethod(lambda c, n, b: {})|findings=0|first=-|json=0
+CLAIM|line=28|sentence=class patterns that read a denied attribute|file=x.py|form=class N(int):\n    __match_args__ = (name,)\nmatch N(1):\n    case N(f):\n        x = f(2)|findings=0|first=-|json=0
+CLAIM|line=28|sentence=ast.parse|file=x.py|form=from ast import parse\nx = parse("0.5")|findings=0|first=-|json=0
+CLAIM|line=29|sentence=struct calls with a float code|file=x.py|form=import struct\ns = struct.Struct("<I")\ns.__init__("<d")|findings=0|first=-|json=0
+CLAIM|line=29|sentence=array calls with a float code|file=x.py|form=import array\nk = type(array.array("q"))\nx = k("d", [1])|findings=0|first=-|json=0
+CLAIM|line=30|sentence=.cast the same way|file=x.py|form=x = getattr(b, "cast")("d")|findings=0|first=-|json=0
+CLAIM|line=33|sentence=true division void where the file defines __add__ or __radd__|file=x.py|form=class R:\n    __radd__: object = lambda s, o: 3\nx = ("a" + R()) / 2|findings=1|first=true division at line 3|json=0
+CLAIM|line=33|sentence=true division void where the file defines __add__ or __radd__|file=x.py|form=class R:\n    __radd__, y = (lambda s, o: 3), 0\nr = R()\nx = ("a" + r) / 2|findings=0|first=-|json=0
+CLAIM|line=36|sentence=a pow whose modulus may be None counts|file=x.py|form=x = pow(2, -1, None if a else None)|findings=0|first=-|json=0
+CLAIM|line=38|sentence=with a built format string on the left of % counting too|file=x.py|form=x = (chr(37) + chr(102)) % 1|findings=0|first=-|json=0
+CLAIM|line=38|sentence=format specs and str.format read by CPython's grammar|file=x.py|form=x = "{:{}.{}{}}".format(1, 6, 2, "f")|findings=0|first=-|json=0
+CLAIM|line=46|sentence=every literal form with suffixes|file=x.c|form=__auto_type a = 1e3q;|findings=0|first=-|json=0
+CLAIM|line=46|sentence=every literal form with suffixes|file=x.c|form=__auto_type a = 1e3i;|findings=0|first=-|json=0
+CLAIM|line=46|sentence=every literal form with suffixes|file=x.c|form=__auto_type a = 1e3dd;|findings=0|first=-|json=0
+CLAIM|line=46|sentence=every literal form with suffixes|file=x.cpp|form=auto a = 1E3Q;|findings=0|first=-|json=0
+CLAIM|line=46|sentence=the float functions of the C library|file=x.c|form=auto x = difftime(a, b);|findings=0|first=-|json=0
+CLAIM|line=46|sentence=the float functions of the C library|file=x.c|form=auto x = drand48();|findings=0|first=-|json=0
+CLAIM|line=46|sentence=the float functions of the C library|file=x.cpp|form=auto x = std::wcstod(L"0.5", nullptr);|findings=0|first=-|json=0
+CLAIM|line=46|sentence=the float functions of the C library|file=x.c|form=auto x = copysign(1, 2);|findings=0|first=-|json=0
+CLAIM|line=49|sentence=imaginary literals|file=x.go|form=x := 1e3i|findings=0|first=-|json=0
+CLAIM|line=49|sentence=the same literals|file=x.go|form=x := 1e3i + 0|findings=0|first=-|json=0
+CLAIM|line=16|sentence=any file whose first line is a shebang naming python, whatever its name|file=report.html|form=#!/usr/bin/env python3\nx = 1 / 3\n|findings=0|first=-|json=0
+CLAIM|line=16|sentence=any file whose first line is a shebang naming python, whatever its name|file=tool.svg|form=#!/usr/bin/env python3\nx = 1 / 3\n|findings=0|first=-|json=0
+CLAIM|line=16|sentence=any file whose first line is a shebang naming python, whatever its name|file=tool.rs|form=#!/usr/bin/env python3\nx = float(3)\n|findings=0|first=-|json=0
+CLAIM|line=16|sentence=any file whose first line is a shebang naming python, whatever its name|file=tool.js|form=#!/usr/bin/env python3\nx = float(3)\n|findings=1|first=[js_ops] ** or arithmetic on a string at line 1|json=0
+CLAIM|line=62|sentence=a line that runs a tracked file of another name under python|file=run.sh|form=python3 ./verify.txt\n|findings=0|first=-|json=0
+CLAIM|line=62|sentence=a line that runs a tracked file of another name under python|file=run.yml|form=run: python3 -I -X utf8 ${{ env.D }}/verify.txt\n|findings=0|first=-|json=0
+CLAIM|line=62|sentence=a control: the plain form the rule was written from|file=run.sh|form=python3 verify.txt\n|findings=1|first=[run_targets] python runs verify.txt at line 1|json=0
+CLAIM|line=64|sentence=a proc-macro crate|file=Cargo.toml|form=[lib]\nproc_macro = true\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a Cargo target outside .rs|file=Cargo.toml|form=[package]\n"build" = "gen.txt"\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a dependency that leaves the tree|file=Cargo.toml|form=[dependencies.q]\n"path" = "../../q"\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a crate outside a short allowed list|file=Cargo.toml|form=[dependencies.evil]\nversion = "1"\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a crate outside a short allowed list|file=Cargo.toml|form=[dependencies]\nnum-traits = { package = "evil", version = "1" }\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a crate outside a short allowed list|file=Cargo.toml|form=[dependencies]\nnum-traits = { git = "https://example.invalid/evil" }\n|findings=0|first=-|json=0
+CLAIM|line=64|sentence=a control: the plain form the rule was written from|file=Cargo.toml|form=[dependencies]\nevil = "1"\n|findings=1|first=[rs_buildsys] crate evil is not on the allow list|json=0
+TOTAL|section=claims|forms=45|read_silent=40|python=3.13.14|json=0

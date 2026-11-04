@@ -1,0 +1,41 @@
+FRESH_EXEC|lane=linux|name=py_from_ast_parse|lang=python|state=FLOAT_SHOWN|output=float 0.5|json=0
+FRESH_EXEC|lane=linux|name=py_two_level_module_attr|lang=python|state=FLOAT_SHOWN|output=float 768.763786554|json=0
+FRESH_EXEC|lane=linux|name=py_from_import_submodule_attr|lang=python|state=FLOAT_SHOWN|output=float 1793767467.5175407|json=0
+FRESH_EXEC|lane=linux|name=py_robotparser_mtime|lang=python|state=FLOAT_SHOWN|output=float 1793767467.6127832|json=0
+FRESH_EXEC|lane=linux|name=py_testresult_durations|lang=python|state=FLOAT_SHOWN|output=float 1.89200000022538e-05|json=0
+FRESH_EXEC|lane=linux|name=py_meta_path_load_module|lang=python|state=FLOAT_SHOWN|output=float 1.4142135623730951|json=0
+FRESH_EXEC|lane=linux|name=py_string_annotation_eval|lang=python|state=FLOAT_SHOWN|output=float 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=py_isinstance_captures_float|lang=python|state=FLOAT_SHOWN|output=float 3.0|json=0
+FRESH_EXEC|lane=linux|name=py_methodcaller_as_a_name|lang=python|state=FLOAT_SHOWN|output=float 0.13436424411240122|json=0
+FRESH_EXEC|lane=linux|name=py_match_args_truediv|lang=python|state=FLOAT_SHOWN|output=float 0.5|json=0
+FRESH_EXEC|lane=linux|name=py_struct_reinit|lang=python|state=FLOAT_SHOWN|output=float 0.0|json=0
+FRESH_EXEC|lane=linux|name=py_memoryview_getattr_cast|lang=python|state=FLOAT_SHOWN|output=float 0.0|json=0
+FRESH_EXEC|lane=linux|name=py_pow_none_inline|lang=python|state=FLOAT_SHOWN|output=float 0.5|json=0
+FRESH_EXEC|lane=linux|name=py_prepare_lambda|lang=python|state=FLOAT_SHOWN|output=float 0.5|json=0
+FRESH_EXEC|lane=linux|name=py_radd_under_if|lang=python|state=FLOAT_SHOWN|output=float 1.5|json=0
+FRESH_EXEC|lane=linux|name=py_path_from_tracked_star|lang=python|state=FLOAT_SHOWN|output=float 1.5|json=0
+FRESH_EXEC|lane=linux|name=py_percent_on_percent|lang=python|state=FLOAT_SHOWN|output=str 1.000000|json=0
+FRESH_EXEC|lane=linux|name=py_two_hole_format_spec|lang=python|state=FLOAT_SHOWN|output=str 1.00|json=0
+FRESH_EXEC|lane=linux|name=py_fstring_percent_fill|lang=python|state=FLOAT_SHOWN|output=str %%1.00|json=0
+FRESH_EXEC|lane=linux|name=py_allowlist_by_same_name|lang=python|state=FLOAT_SHOWN|output=float 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=py_named_html|lang=python|state=FLOAT_SHOWN|output=float 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=py_pyc_under_other_name|lang=python|state=FLOAT_SHOWN|output=float 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=cal_from_reexport_time|lang=python|state=FLOAT_SHOWN|output=float 770.136884654|json=0
+FRESH_EXEC|lane=linux|name=cpp_load_factor|lang=c|state=FLOAT_SHOWN|output=0.076923|json=0
+FRESH_EXEC|lane=linux|name=c_typeof_difftime|lang=c|state=FLOAT_SHOWN|output=0.333333|json=0
+FRESH_EXEC|lane=linux|name=c_computed_include|lang=c|state=FLOAT_SHOWN|output=0.333333|json=0
+FRESH_EXEC|lane=linux|name=c_trigraph_splice|lang=c|state=FLOAT_SHOWN|output=0.333333|json=0
+FRESH_EXEC|lane=linux|name=c_std_raw_string_lookalike|lang=c|state=FLOAT_SHOWN|output=0.333333 (a )|json=0
+FRESH_EXEC|lane=linux|name=cpp_dot_ii_source|lang=c|state=FLOAT_SHOWN|output=0.333333|json=0
+FRESH_EXEC|lane=linux|name=c_exp_literal_q_suffix|lang=c|state=FLOAT_SHOWN|output=333333|json=0
+FRESH_EXEC|lane=linux|name=rs_include_macro_param|lang=rust|state=NOT_MEASURED|reason=NO_TOOLCHAIN_ON_THIS_LANE|json=0
+FRESH_EXEC|lane=linux|name=rs_shebang_quote|lang=rust|state=NOT_MEASURED|reason=NO_TOOLCHAIN_ON_THIS_LANE|json=0
+FRESH_EXEC|lane=linux|name=rs_cargo_quoted_build|lang=rust|state=NOT_MEASURED|reason=NO_TOOLCHAIN_ON_THIS_LANE|json=0
+FRESH_EXEC|lane=linux|name=rs_proc_macro_underscore|lang=rust|state=NOT_MEASURED|reason=NO_TOOLCHAIN_ON_THIS_LANE|json=0
+FRESH_EXEC|lane=linux|name=js_function_via_constructor|lang=js|state=FLOAT_SHOWN|output=number 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=js_postfix_regex_mislex|lang=js|state=FLOAT_SHOWN|output=number 3.5|json=0
+FRESH_EXEC|lane=linux|name=js_hashbang_backtick|lang=js|state=FLOAT_SHOWN|output=number 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=js_global_bracket|lang=js|state=FLOAT_SHOWN|output=number 1.4142135623730951|json=0
+FRESH_EXEC|lane=linux|name=js_wasm_valid|lang=js|state=FLOAT_SHOWN|output=number 0.3333333333333333|json=0
+FRESH_EXEC|lane=linux|name=js_stat_mtime_ms|lang=js|state=FLOAT_SHOWN|output=number 1793767477640.1357|json=0
+TOTAL|section=fresh_exec|lane=linux|python=3.12.3|plants=40|FLOAT_SHOWN=36|json=0

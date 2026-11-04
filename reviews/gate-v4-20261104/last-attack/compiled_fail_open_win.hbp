@@ -1,0 +1,5 @@
+FRESH_COMPILED|lane=win|name=rs_include_macro_param|rc=0|first=COMPILED_RUST/file=main.rs/fp_lines=0/json=0|done=COMPILED_DONE/cpp_files=0/rust_files=1/failed=0/json=0|json=0
+FRESH_COMPILED|lane=win|name=rs_shebang_quote|rc=0|first=COMPILED_RUST/file=main.rs/fp_lines=0/json=0|done=COMPILED_DONE/cpp_files=0/rust_files=1/failed=0/json=0|json=0
+FRESH_COMPILED|lane=win|name=rs_cargo_quoted_build|rc=1|first=COMPILED_SMALL/result=FAIL/reason=a_cargo_package_needs_the_full_form/json=0|done=COMPILED_SMALL/result=FAIL/reason=a_cargo_package_needs_the_full_form/json=0|json=0
+FRESH_COMPILED|lane=win|name=rs_proc_macro_underscore|rc=1|first=COMPILED_SMALL/result=FAIL/reason=a_cargo_package_needs_the_full_form/json=0|done=COMPILED_SMALL/result=FAIL/reason=a_cargo_package_needs_the_full_form/json=0|json=0
+TOTAL|section=fresh_compiled|lane=win|plants=4|red=2|green=2|green_names=rs_include_macro_param,rs_shebang_quote|json=0
