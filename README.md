@@ -8,6 +8,8 @@
 | 2. A finite physical volume with the spacing going to zero | OPEN. On this seat's reading of the scope, the number of sites per side still grows, L = L_phys/a, with β following a, so any bound must hold along that family |
 | 3. The Clay problem on ℝ⁴ | OPEN, and a separate target, stated next as this repository first wrote it |
 
+**Data on Hugging Face:** [Jessedbrown/ym-3x4-room-store](https://huggingface.co/datasets/Jessedbrown/ym-3x4-room-store) holds the evidence archive shared with the companion repositories, with every pull request's SHAs and a status row per track, and the second seat's tools from its review of PR #14.
+
 ## The Clay problem, target 3
 
 **Status: OPEN.** This repository works toward a rigorous four-dimensional pure Yang–Mills quantum field theory with a strictly positive *physical* mass gap. The first gauge group is **continuous SU(2)**, represented in small exact tests by rational unit quaternions. The official Clay problem covers every compact simple gauge group and asks for **both** a nontrivial quantum theory on four-dimensional spacetime **and** a mass gap.
