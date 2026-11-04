@@ -134,3 +134,4 @@ YM4_02C_SLICE_PAIRS|row=SLICE_PAIRS|slice=(Z/2)x(Z/1)|group=Q8|configurations=40
 YM4_02C_TEETH|second_seat_mutants=witness_middle_dropped,inertia_pair_branch_returns|on_c32087a=exit_0_rows_byte_identical|expect_on_the_new_script=exit_1_on_a_named_check|json=0
 YM4_02C_INTEGER_GATE|gate=scripts/no_float_gate.py_as_merged_from_main_at_08f5361|scans=every_tracked_code_file|expect=failed=0_with_rows_in_scripts/FLOAT-EVIDENCE.txt_only_for_the_second_seat_verbatim_tools|json=0
 YM4_02C_COST|round=3|local_wall_secs_under=900|below_normal=1|json=0
+YM4_02C_W_PLUS_CONTROL|row=W_PLUS_CONTROL|added_field=mirror_equal_at_each_C|expected=4096_for_both_time_like_weights|by_hand=Lemma_3.1_gives_W_plus(theta_U)=W_plus(U)_at_V(1)=V(0)^-1_for_each_C|why_added=a_mutant_that_drops_the_lower_weight_changes_no_row_since_W_plus_is_constant_in_V(0)_on_this_lattice|written_before_this_field_ran=1|json=0
