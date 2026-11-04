@@ -8,14 +8,14 @@ jobs:
     name: no-float-base
     runs-on: ubuntu-24.04
     steps:
-      - run: exit 0
+      - run: sleep 200
   no-float:
     name: no-float
     runs-on: ubuntu-24.04
     steps:
-      - run: exit 0
+      - run: sleep 200
   no-float-list-unchanged:
     name: no-float-list-unchanged
     runs-on: ubuntu-24.04
     steps:
-      - run: exit 0
+      - run: sleep 200
