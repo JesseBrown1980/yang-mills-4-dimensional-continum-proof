@@ -11,8 +11,10 @@ with B(m, n) the multiplicity of spin n/2 in (spin 1/2)^m. This script compares 
 
 usage = test_one_by_l_2d.py [sabotage=NAME]
 NAME is one of wrong_multiplicity no_inverse_on_the_plaquette no_inverse_on_the_far_link one_side_of_two_read_as_one a_subset_for_a_group,
-and each must exit 1. Dropping either inverse moves one row only: every class of Q8, 2O, 2I and SU(2) is closed under inversion, so the
-law of these words cannot see it, and through degree t 2T agrees with SU(2). Only 2T past its strength can, on 1 x 2 at k = 6.
+and each must exit 1. Dropping either inverse here, on the closing plaquette of the gauge-fixed sum, moves one row only: every class of
+Q8, 2O, 2I and SU(2) is closed under inversion, so the law of these words cannot see it, and through degree t 2T agrees with SU(2). In these
+rows only 2T past its strength can, on 1 x 2 at k = 6. The V inverse dropped from the ungauged word is seen by SU(2) itself: E[a_0 a_1] = -1/32
+against 1/16 on 1 x 2.
 Python standard library, integers only, json=0.
 """
 import itertools
@@ -311,7 +313,7 @@ bad = sum(1 for m, n in pairs if multiplicity(m, n) != walk_count(m, n))
 check("multiplicity_against_the_walk_count", bad == 0)
 print("ONE_BY_L_MULTIPLICITY|pairs=%d|differ=%d|json=0" % (len(pairs), bad))
 
-# Values the closed form must give, read by hand in the lemma.
+# Values the closed form must give: the prediction row's hand reads, GPT-6's, and the second seat's filed rows.
 known = ((2, 2, (5, 8)), (3, 3, (3, 32)), (4, 3, (3, 2)), (5, 3, (15, 32)), (4, 2, (11, 12)), (6, 2, (465, 256)), (8, 2, (1351, 320)))
 for k, L, value in known:
     check("closed_form_X^%d_on_1x%d" % (k, L), haar_x_power(k, L) == value)

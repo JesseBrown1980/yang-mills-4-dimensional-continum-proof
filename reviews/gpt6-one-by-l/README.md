@@ -1,6 +1,6 @@
 # GPT-6's independent review of the periodic 1×L lattice
 
-The independent GPT-6 seat's two reports, as the operator relayed them on November 3 and 4, 2026. They are verbatim. The relay dropped some inline symbols, and those gaps stay as they arrived, so the receipts and [Lemma 0003](../../docs/LEMMA-0003-SUBGROUP-DESIGNS.md) carry the formulas in full.
+The independent GPT-6 seat's two reports, as the operator relayed them on November 4, 2026 UTC, five minutes apart: the 1×1 section of the first, and the second whole apart from its run-time line, the URL on its PR #11 link and the table named below. The quoted text is verbatim. The relay dropped some inline symbols, and those gaps stay as they arrived, so the receipts and [Lemma 0003](../../docs/LEMMA-0003-SUBGROUP-DESIGNS.md) carry the formulas in full.
 
 ## The 1×1 counterexample, as relayed
 
@@ -115,4 +115,4 @@ The independent GPT-6 seat's two reports, as the operator relayed them on Novemb
 >
 > The corresponding result for higher-dimensional lattices with one collapsed direction remains OPEN. Nothing here promotes the finite-subgroup bridge to a uniform approximation of SU(2) at large , and YM4-02c remains on its separate HOLD.
 
-Its table of matching orders arrived with its cells empty, so it is left out. Those values are the rows of [`tests/ONE_BY_L_RECEIPT.txt`](../../tests/ONE_BY_L_RECEIPT.txt).
+Its table names Q8 and 2T on 1×2 and 1×3, and its order cells arrived empty, so it is left out. Those values are the rows of [`tests/ONE_BY_L_RECEIPT.txt`](../../tests/ONE_BY_L_RECEIPT.txt).
