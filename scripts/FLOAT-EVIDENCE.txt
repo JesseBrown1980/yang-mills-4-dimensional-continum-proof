@@ -4,3 +4,6 @@ reviews/opus55-ym4-02b/beta12_values.py | findings=1 | The second seat's receipt
 reviews/opus55-ym4-02b/sphere_q8.py | findings=3 | The second seat's receipt, kept verbatim: two exec calls run slices of the integer test at 39bb57f, and literal_eval reads integer tuples from classes_d4_F12.txt
 reviews/opus55-ym4-02b/stretch_b11.py | findings=1 | The second seat's receipt, kept verbatim: literal_eval reads integer tuples from the classes files
 reviews/opus55-ym4-02b/stretch_b13.py | findings=1 | The second seat's receipt, kept verbatim: literal_eval reads integer tuples from the classes files
+reviews/opus55-site-sign/code/astscan.py | findings=2 | The second seat's receipt, kept verbatim: it names float and complex in order to count them in the test by syntax tree
+reviews/opus55-site-sign/code/decode.py | findings=1 | The second seat's receipt, kept verbatim: one exec runs the leading part of its own mutants_auto.py to decode mutant sites
+reviews/opus55-site-sign/code/run_gates.py | findings=1 | The second seat's receipt, kept verbatim: importlib.util loads copies of the gate to call them on the test's blob

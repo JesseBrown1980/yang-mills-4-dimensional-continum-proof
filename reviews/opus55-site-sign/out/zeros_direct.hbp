@@ -1,0 +1,5 @@
+IND_ZERO_DFS|lattice=2x2xT2|S(twist)=-1|S(trivial)=+1|f(twist,trivial)=-1|V_with_every_time_like_plaquette_central_at_(twist,trivial)=0|same_count_at_(twist,twist)=64|json=0
+IND_ZERO_DFS|lattice=3x3xT2|S(twist)=-1|S(trivial)=+1|f(twist,trivial)=-1|V_with_every_time_like_plaquette_central_at_(twist,trivial)=0|same_count_at_(twist,twist)=2048|json=0
+IND_ZERO_DFS|lattice=3x2xT2|S(twist)=-1|S(trivial)=+1|f(twist,trivial)=-1|V_with_every_time_like_plaquette_central_at_(twist,trivial)=0|same_count_at_(twist,twist)=256|json=0
+IND_ZERO_DFS|lattice=2x2x3xT2|S(twist)=-1|S(trivial)=+1|f(twist,trivial)=-1|V_with_every_time_like_plaquette_central_at_(twist,trivial)=0|same_count_at_(twist,twist)=16384|json=0
+IND_ZERO_DFS|lattice=2x3x3xT2|S(twist)=-1|S(trivial)=+1|f(twist,trivial)=-1|V_with_every_time_like_plaquette_central_at_(twist,trivial)=0|same_count_at_(twist,twist)=1048576|json=0
