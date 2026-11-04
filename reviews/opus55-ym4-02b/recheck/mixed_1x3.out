@@ -1,0 +1,6 @@
+MIXED|sides=1x3|group=Q8|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=15/8|E_X5=15/16|E_X6=12/1|E_X7=273/32|json=0
+MIXED|sides=1x3|group=2T|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=3/2|E_X5=15/32|E_X6=437/96|E_X7=609/256|json=0
+MIXED|sides=1x3|group=2O|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=3/2|E_X5=15/32|E_X6=865/192|E_X7=1155/512|json=0
+MIXED_FIRST_DIFF|sides=1x3|group=Q8|t=3|floor_t_over_2=1|against=2O|agrees_through_k=3|json=0
+MIXED_FIRST_DIFF|sides=1x3|group=2T|t=5|floor_t_over_2=2|against=2O|agrees_through_k=5|json=0
+MIXED_DONE|json=0

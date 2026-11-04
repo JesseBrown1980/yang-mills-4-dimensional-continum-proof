@@ -1,0 +1,255 @@
+RECHECK_YM4_02B|pr=11|head=61d49a2ef1c660a6ea9f3e58738d0b367032a202|attacked_at=39bb57f|seat=second_seat_for_ACER-CLAUDE-FABLE5|date=2026-11-03|float_used=0|json=0
+SOURCE|file=mixed_a.out|json=0
+MIXED|sides=1x1|group=Q8|free_links=2|N_p=1|E_X1=1/4|E_X2=1/1|E_X3=1/4|E_X4=1/1|E_X5=1/4|E_X6=1/1|E_X7=1/4|E_X8=1/1|json=0
+MIXED|sides=1x1|group=2T|free_links=2|N_p=1|E_X1=1/4|E_X2=1/3|E_X3=1/4|E_X4=1/3|E_X5=1/4|E_X6=1/3|E_X7=1/4|E_X8=1/3|json=0
+MIXED|sides=1x1|group=2O|free_links=2|N_p=1|E_X1=1/4|E_X2=1/3|E_X3=5/32|E_X4=23/96|E_X5=17/128|E_X6=83/384|E_X7=65/512|E_X8=323/1536|json=0
+MIXED|sides=1x1|group=2I|free_links=2|N_p=1|E_X1=1/4|E_X2=1/3|E_X3=5/32|E_X4=1/5|E_X5=11/96|E_X6=115/768|E_X7=73/768|E_X8=239/1920|json=0
+MIXED_FIRST_DIFF|sides=1x1|group=Q8|t=3|floor_t_over_2=1|against=2I|agrees_through_k=1|json=0
+MIXED_FIRST_DIFF|sides=1x1|group=2T|t=5|floor_t_over_2=2|against=2I|agrees_through_k=2|json=0
+MIXED_FIRST_DIFF|sides=1x1|group=2O|t=7|floor_t_over_2=3|against=2I|agrees_through_k=3|json=0
+MIXED|sides=1x2|group=Q8|free_links=3|N_p=2|E_X1=0/1|E_X2=5/8|E_X3=0/1|E_X4=5/2|E_X5=0/1|E_X6=10/1|E_X7=0/1|E_X8=40/1|json=0
+MIXED|sides=1x2|group=2T|free_links=3|N_p=2|E_X1=0/1|E_X2=5/8|E_X3=0/1|E_X4=11/12|E_X5=0/1|E_X6=25/12|E_X7=0/1|E_X8=27/4|json=0
+MIXED|sides=1x2|group=2O|free_links=3|N_p=2|E_X1=0/1|E_X2=5/8|E_X3=0/1|E_X4=11/12|E_X5=0/1|E_X6=465/256|E_X7=0/1|E_X8=2245/512|json=0
+MIXED|sides=1x2|group=2I|free_links=3|N_p=2|E_X1=0/1|E_X2=5/8|E_X3=0/1|E_X4=11/12|E_X5=0/1|E_X6=465/256|E_X7=0/1|E_X8=1351/320|json=0
+MIXED_FIRST_DIFF|sides=1x2|group=Q8|t=3|floor_t_over_2=1|against=2I|agrees_through_k=3|json=0
+MIXED_FIRST_DIFF|sides=1x2|group=2T|t=5|floor_t_over_2=2|against=2I|agrees_through_k=5|json=0
+MIXED_FIRST_DIFF|sides=1x2|group=2O|t=7|floor_t_over_2=3|against=2I|agrees_through_k=7|json=0
+MIXED_DONE|json=0
+SOURCE|file=mixed_1x3.out|json=0
+MIXED|sides=1x3|group=Q8|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=15/8|E_X5=15/16|E_X6=12/1|E_X7=273/32|json=0
+MIXED|sides=1x3|group=2T|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=3/2|E_X5=15/32|E_X6=437/96|E_X7=609/256|json=0
+MIXED|sides=1x3|group=2O|free_links=4|N_p=3|E_X1=0/1|E_X2=3/4|E_X3=3/32|E_X4=3/2|E_X5=15/32|E_X6=865/192|E_X7=1155/512|json=0
+MIXED_FIRST_DIFF|sides=1x3|group=Q8|t=3|floor_t_over_2=1|against=2O|agrees_through_k=3|json=0
+MIXED_FIRST_DIFF|sides=1x3|group=2T|t=5|floor_t_over_2=2|against=2O|agrees_through_k=5|json=0
+MIXED_DONE|json=0
+SOURCE|file=multiset_1x2.out|json=0
+MOMENT|sides=1x2|N_p=2|k=1|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=2|kept=3|patterns=2|Q8=5/8|2T=5/8|Haar=5/8|json=0
+MOMENT|sides=1x2|N_p=2|k=3|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=4|kept=5|patterns=4|Q8=5/2|2T=11/12|Haar=11/12|json=0
+MOMENT|sides=1x2|N_p=2|k=5|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=6|kept=7|patterns=6|Q8=10/1|2T=25/12|Haar=465/256|json=0
+MULTISET_DONE|json=0
+SOURCE|file=multiset_b.out|json=0
+MOMENT|sides=2x3|N_p=6|k=1|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=2x3|N_p=6|k=2|kept=6|patterns=1|Q8=3/2|2T=3/2|Haar=3/2|json=0
+MOMENT|sides=2x3|N_p=6|k=3|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=2x3|N_p=6|k=4|kept=21|patterns=5|Q8=57/8|2T=51/8|Haar=51/8|json=0
+MOMENT|sides=1x3|N_p=3|k=1|kept=0|patterns=0|Q8=0/1|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x3|N_p=3|k=2|kept=3|patterns=1|Q8=3/4|2T=3/4|Haar=3/4|json=0
+MOMENT|sides=1x3|N_p=3|k=3|kept=1|patterns=1|Q8=3/32|2T=3/32|Haar=3/32|json=0
+MOMENT|sides=1x3|N_p=3|k=4|kept=6|patterns=3|Q8=15/8|2T=3/2|Haar=3/2|json=0
+MOMENT|sides=1x1x2|N_p=6|k=1|kept=2|patterns=1|Q8=1/2|2T=1/2|Haar=1/2|json=0
+MOMENT|sides=1x1x2|N_p=6|k=2|kept=9|patterns=4|Q8=27/8|2T=49/24|Haar=49/24|json=0
+MOMENT|sides=1x1x2|N_p=6|k=3|kept=16|patterns=13|Q8=5/1|2T=13/4|Haar=49/16|json=0
+MOMENT|sides=2x2x2|N_p=24|k=1|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=2x2x2|N_p=24|k=2|kept=24|patterns=1|Q8=6/1|Haar=6/1|json=0
+MOMENT|sides=2x2x2|N_p=24|k=3|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=2x2x2|N_p=24|k=4|kept=306|patterns=20|Q8=1761/16|Haar=1713/16|json=0
+MOMENT|sides=1x2x2|N_p=12|k=1|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=2|kept=16|patterns=3|Q8=7/2|Haar=7/2|json=0
+MOMENT|sides=1x2x2|N_p=12|k=3|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=4|kept=149|patterns=68|Q8=1441/32|Haar=3595/96|json=0
+MULTISET_DONE|json=0
+SOURCE|file=multiset_e.out|json=0
+MOMENT|sides=1x2x2|N_p=12|k=1|kept=0|patterns=0|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=2|kept=16|patterns=3|2T=7/2|Haar=7/2|json=0
+MOMENT|sides=1x2x2|N_p=12|k=3|kept=0|patterns=0|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=4|kept=149|patterns=68|2T=3595/96|Haar=3595/96|json=0
+MULTISET_DONE|json=0
+SOURCE|file=multiset_d4.out|json=0
+MOMENT|sides=1x1x2x2|N_p=24|k=1|kept=4|patterns=1|Q8=1/1|Haar=1/1|json=0
+MOMENT|sides=1x1x2x2|N_p=24|k=2|kept=38|patterns=5|Q8=43/4|Haar=97/12|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=1|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=2|kept=60|patterns=3|Q8=27/2|Haar=27/2|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=3|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=4|kept=1920|patterns=87|Q8=1161/2|Haar=554/1|json=0
+MULTISET_DONE|json=0
+SOURCE|file=transverse.out|json=0
+TRANSVERSE|sides=2x2|N_p=4|links=8|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=8|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=2x3|N_p=6|links=12|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=12|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=3x3|N_p=9|links=18|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=18|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=2x2x2|N_p=24|links=24|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=264|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=2x2x3|N_p=36|links=36|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=396|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=3x3x3|N_p=81|links=81|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=891|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=2x2x2x2|N_p=96|links=64|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=3648|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=3x3x3x3|N_p=486|links=324|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=18468|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=2x3x4x5|N_p=720|links=480|four_distinct_links_per_plaquette=1|sets_of_two_or_more_through_a_link=27360|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=1x2|N_p=2|links=4|four_distinct_links_per_plaquette=0|sets_of_two_or_more_through_a_link=2|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=1x3|N_p=3|links=6|four_distinct_links_per_plaquette=0|sets_of_two_or_more_through_a_link=3|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE|sides=1x2x2|N_p=12|links=12|four_distinct_links_per_plaquette=0|sets_of_two_or_more_through_a_link=76|sets_without_a_private_transverse_link=0|json=0
+TRANSVERSE_DONE|json=0
+SOURCE|file=groups_compare.out|json=0
+GROUPS_COMPARE|group=Q8|order=8|same_elements=1|class_sizes=1,1,2,2,2|same_levels=1|levels=-2+0w:1;0+0w:6;2+0w:1|associative_mine=1|json=0
+GROUPS_COMPARE|group=2T|order=24|same_elements=1|class_sizes=1,1,4,4,4,4,6|same_levels=1|levels=-2+0w:1;-1+0w:8;0+0w:6;1+0w:8;2+0w:1|associative_mine=1|json=0
+GROUPS_COMPARE|group=2O|order=48|same_elements=1|class_sizes=1,1,6,6,6,8,8,12|same_levels=1|levels=-2+0w:1;-1+0w:8;0+-1w:6;0+0w:18;0+1w:6;1+0w:8;2+0w:1|associative_mine=1|json=0
+GROUPS_COMPARE|group=2I|order=120|same_elements=1|class_sizes=1,1,12,12,12,12,20,20,30|same_levels=1|levels=-2+0w:1;-1+0w:20;-1+1w:12;0+-1w:12;0+0w:30;0+1w:12;1+-1w:12;1+0w:20;2+0w:1|associative_mine=1|json=0
+FAILS []
+SOURCE|file=mutate_head.out|json=0
+MUTANT|name=plaquette_order_broken|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=6|failed=Q8_forced_past_its_strength,moments_on_Z2^4,plaquette_trace_is_gauge_invariant,side_of_length_one,torus_value|last_err=|json=0
+MUTANT|name=inverse_ignored|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=side_of_length_one|last_err=|json=0
+MUTANT|name=no_translation_in_symmetry|verdict=RED|exit=0|cmp_equal=0|crash=0|diff_rows=1|failed=|last_err=|json=0
+MUTANT|name=symmetry_not_a_symmetry|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=4|failed=Q8_forced_past_its_strength,moments_on_Z2^4|last_err=|json=0
+MUTANT|name=q8_on_degree4|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=moments_on_Z2^4|last_err=|json=0
+MUTANT|name=t2_everywhere_harmless|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=multinomial_dropped|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=4|failed=Q8_forced_past_its_strength,moments_on_Z2^4|last_err=|json=0
+MUTANT|name=back_face_dropped|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=7|failed=closed_surfaces_in_d=3,closed_surfaces_in_d=4,per-site_count_is_an_integer,plaquette_series_against_the_published_table,split_of_beta^9|last_err=|json=0
+MUTANT|name=prune_too_hard|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=4|failed=|last_err=KeyError: 10|json=0
+MUTANT|name=prune_off|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=RecursionError: maximum recursion depth exceeded|json=0
+MUTANT|name=limit_8|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=4|failed=|last_err=KeyError: 10|json=0
+MUTANT|name=limit_12|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=14|failed=closed_surfaces_in_d=3,closed_surfaces_in_d=4,each_link_covered_twice,per-site_count_is_an_integer,surface_value|last_err=|json=0
+MUTANT|name=catalan_typo|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=4|failed=design_strength_of_2I,first_difference_of_2I|last_err=|json=0
+MUTANT|name=rule_exponent|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=7|failed=surface_value|last_err=|json=0
+MUTANT|name=series_F10_only_flat|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=4|failed=plaquette_series_against_the_published_table,split_of_beta^9|last_err=|json=0
+MUTANT|name=series_cube_value_wrong|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=2|failed=|last_err=KeyError: 6|json=0
+MUTANT|name=published_table_b5_sign|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=plaquette_series_against_the_published_table|last_err=|json=0
+MUTANT|name=inverse_ignored_expectation_and_loop|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=plaquette_trace_is_gauge_invariant,side_of_length_one|last_err=|json=0
+MUTANT|name=plaquette_third_link_not_inverted|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=2|failed=plaquette_trace_is_gauge_invariant|last_err=|json=0
+MUTANT|name=plaquette_no_inverses|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=plaquette_trace_is_gauge_invariant,side_of_length_one|last_err=|json=0
+MUTANT|name=plaquette_third_base_wrong|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=AssertionError|json=0
+MUTANT|name=side_row_on_side_2|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=side_of_length_one|last_err=|json=0
+MUTANT|name=gauge_move_wrong|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=2|failed=plaquette_trace_is_gauge_invariant|last_err=|json=0
+MUTANT|name=gauge_row_compares_itself|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=group_2T_lost_element|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=KeyError: ((-1, 0), (-1, 0), (-1, 0), (-1, 0))|json=0
+MUTANT|name=group_2O_sign_tied|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=AssertionError|json=0
+MUTANT|name=group_2O_wrong_ring|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=KeyError: ((0, 0), (1, 1), (0, 0), (0, 0))|json=0
+MUTANT|name=group_2I_wrong_ring|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=KeyError: ((-1, 1), (0, 1), (2, -1), (0, 0))|json=0
+MUTANT|name=group_2I_odd_perms|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=group_2I_all_perms|verdict=RED|exit=1|cmp_equal=0|crash=1|diff_rows=1|failed=|last_err=AssertionError|json=0
+MUTANT|name=levels_overwrite_not_add|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=9|failed=Q8_forced_past_its_strength,design_strength_of_2O,design_strength_of_2T,design_strength_of_Q8,first_difference_of_2O,first_difference_of_2T,first_difference_of_Q8,invariant_count_is_an_integer_in_2O,invariant_count_is_an_integer_in_2T|last_err=|json=0
+MUTANT|name=trace_wrong_coordinate|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=10|failed=design_strength_of_2I,design_strength_of_2O,design_strength_of_2T,design_strength_of_Q8,first_difference_of_2I,first_difference_of_2O,first_difference_of_2T,invariant_count_is_an_integer_in_2I,invariant_count_is_an_integer_in_2O,invariant_count_is_an_integer_in_2T,invariant_count_is_an_integer_in_Q8,irrational_part_vanishes_in_2I,irrational_part_vanishes_in_2O,plaquette_trace_is_gauge_invariant,side_of_length_one|last_err=|json=0
+MUTANT|name=classes_wrong_orbit|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=15|failed=Q8_forced_past_its_strength,design_strength_of_2I,design_strength_of_2O,design_strength_of_2T,design_strength_of_Q8,first_difference_of_2I,first_difference_of_2O,first_difference_of_2T,first_difference_of_Q8,group_table_of_2I,group_table_of_2O,group_table_of_2T,group_table_of_Q8|last_err=|json=0
+MUTANT|name=expected_class_size_typo|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=3|failed=group_table_of_2I|last_err=|json=0
+MUTANT|name=associativity_not_checked|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=norm_not_checked|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=character_recurrence_wrong|verdict=RED|exit=1|cmp_equal=0|crash=0|diff_rows=7|failed=Q8_forced_past_its_strength,design_strength_of_2I,design_strength_of_2O,design_strength_of_2T,design_strength_of_Q8|last_err=|json=0
+MUTANT|name=series_hardcodes_36|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTANT|name=forced_rule_literal|verdict=SURVIVES|exit=0|cmp_equal=1|crash=0|diff_rows=0|failed=|last_err=|json=0
+MUTATION_DONE|json=0
+SOURCE|file=wf_replay_head.out|json=0
+python=Python 3.12.3 nice=10
+STEP1_EXIT=0
+sabotage=bad_group exit=1 named=group_table_of_Q8
+sabotage=wrong_class exit=1 named=first_difference_of_2I
+sabotage=wrong_table exit=1 named=plaquette_series_against_the_published_table
+sabotage=drop_direction exit=1 named=closed_surfaces_in_d=4
+sabotage=drop_bent exit=1 named=closed_surfaces_in_d=4
+sabotage=q8_everywhere exit=1 named=moments_on_Z2^4
+STEP2_EXIT=0
+STEP3_EXIT=0
+step1_secs=16 step2_secs=89
+--- bad_group: traceback=0 failed: Q8_forced_past_its_strength design_strength_of_Q8 first_difference_of_Q8 group_table_of_Q8 invariant_count_is_an_integer_in_Q8 moments_on_Z2^4 plaquette_series_against_the_published_table side_of_length_one split_of_beta^9 surface_value torus_value 
+--- wrong_class: traceback=0 failed: design_strength_of_2I first_difference_of_2I invariant_count_is_an_integer_in_2I 
+--- wrong_table: traceback=0 failed: plaquette_series_against_the_published_table 
+--- drop_direction: traceback=0 failed: closed_surfaces_in_d=4 plaquette_series_against_the_published_table split_of_beta^9 
+--- drop_bent: traceback=0 failed: closed_surfaces_in_d=4 plaquette_series_against_the_published_table split_of_beta^9 
+--- q8_everywhere: traceback=0 failed: moments_on_Z2^4 
+SERIES|d=4|b1=1/4|b3=-1/96|b5=7/1536|b7=-31/23040|b9=3101/8847360|published=arXiv_0807.0185_Table_1_opposite_sign_as_it_
+SURFACES|d=4|per_site_F6=4|F7=0|F8=0|F9=0|F10=12|F10_flat=12|F10_bent=0|smaller_than_6=0|ok=0|json=0
+SOURCE|file=wf_plants.out|json=0
+PLANT|name=crash|shell=bash -e|step2_exit=1|last=sabotage=bad_group crashed|json=0
+PLANT|name=noop|shell=bash -e|step2_exit=1|last=sabotage=wrong_class exit=1 named=first_difference_of_2I|json=0
+PLANT|name=renamed|shell=bash -e|step2_exit=1|last=sabotage=wrong_class exit=1 named=first_difference_of_2I|json=0
+PLANT|name=exit_no_done|shell=bash -e|step2_exit=1|last=sabotage=wrong_table exit=1 named=plaquette_series_against_the_published_table|json=0
+PLANT|name=series_hardcodes_36|shell=bash -e|step2_exit=0|last=sabotage=q8_everywhere exit=1 named=moments_on_Z2^4|json=0
+SERIES|d=4|b1=1/4|b3=-1/96|b5=7/1536|b7=-31/23040|b9=4451/8847360|published=arXiv_0807.0185_Table_1_
+PLANT_DROP_BENT_FAILED_ROWS=FAILED|check=closed_surfaces_in_d=4|json=0 
+STRONGER_PAIR_ON_series_hardcodes_36=goes_red
+PLANT|name=renamed|shell=bash|step2_exit=0|last=sabotage=q8_everywhere exit=1 named=moments_on_Z2^4|json=0
+ASSOC_ONLY_FAULT|exit=1|group_row=GROUP_TABLE|group=Q8|order=8|closed_associative_unit=0|class_sizes=1,1,2,2,2|ok=0|json=0|named=1|traceback=0|json=0
+PLANTS_DONE
+SOURCE|file=rule_scope2.out|json=0
+HEMI_CUBE|edge_classes=6|faces=3|chi=1|Q8=-1/32|rule=1/32|cover=[2]|json=0
+CYCLE_SPACE|sides=2x2x2|faces=24|links=24|dim=10|json=0
+CLASS|sides=2x2x2|F=4|chi=0|orientable=1|count=6|rule=1/256|sample=0,6,12,18|json=0
+CLASS_VALUE|sides=2x2x2|F=4|chi=0|orientable=1|free_links=5|one_sample_Q8=1/256|json=0
+CLASS|sides=2x2x2|F=6|chi=2|orientable=1|count=8|rule=1/1024|sample=0,3,4,5,10,17|json=0
+CLASS_VALUE|sides=2x2x2|F=6|chi=2|orientable=1|free_links=5|one_sample_Q8=1/1024|json=0
+CLASS|sides=2x2x2|F=8|chi=0|orientable=1|count=96|rule=1/65536|sample=0,1,9,10,12,13,21,22|json=0
+CLASS_VALUE|sides=2x2x2|F=8|chi=0|orientable=1|free_links=9|one_sample_Q8=1/65536|json=0
+CLASS|sides=2x2x2|F=10|chi=-2|orientable=1|count=24|rule=1/4194304|sample=4,5,6,9,10,12,15,17,18,21|json=0
+CLASS|sides=2x2x2|F=12|chi=-4|orientable=0|count=12|rule=1/268435456|sample=0,1,3,8,10,11,12,15,16,19,20,23|json=0
+CLASS|sides=2x2x2|F=12|chi=-4|orientable=1|count=16|rule=1/268435456|sample=1,4,5,7,8,10,12,15,17,18,20,21|json=0
+CLASS|sides=2x2x2|F=12|chi=0|orientable=1|count=56|rule=1/16777216|sample=4,5,6,7,8,9,12,13,15,17,20,22|json=0
+CYCLE_SPACE|sides=2x2x3|faces=36|links=36|dim=14|json=0
+CLASS|sides=2x2x3|F=4|chi=0|orientable=1|count=3|rule=1/256|sample=0,9,18,27|json=0
+CLASS_VALUE|sides=2x2x3|F=4|chi=0|orientable=1|free_links=5|one_sample_Q8=1/256|json=0
+CLASS|sides=2x2x3|F=6|chi=0|orientable=1|count=4|rule=1/4096|sample=1,4,7,19,22,25|json=0
+CLASS_VALUE|sides=2x2x3|F=6|chi=0|orientable=1|free_links=7|one_sample_Q8=1/4096|json=0
+CLASS|sides=2x2x3|F=6|chi=2|orientable=1|count=12|rule=1/1024|sample=5,21,22,23,24,31|json=0
+CLASS_VALUE|sides=2x2x3|F=6|chi=2|orientable=1|free_links=5|one_sample_Q8=1/1024|json=0
+CLASS|sides=2x2x3|F=8|chi=0|orientable=1|count=48|rule=1/65536|sample=3,4,13,15,21,22,31,33|json=0
+CLASS_VALUE|sides=2x2x3|F=8|chi=0|orientable=1|free_links=9|one_sample_Q8=1/65536|json=0
+CLASS|sides=2x2x3|F=10|chi=-2|orientable=1|count=12|rule=1/4194304|sample=4,5,12,13,15,21,23,24,30,33|json=0
+CLASS|sides=2x2x3|F=10|chi=0|orientable=1|count=96|rule=1/1048576|sample=0,1,12,13,16,18,19,30,31,34|json=0
+CLASS|sides=2x2x3|F=10|chi=2|orientable=1|count=12|rule=1/262144|sample=0,3,4,5,7,8,13,16,23,26|json=0
+CLASS|sides=2x2x3|F=12|chi=0|orientable=1|count=340|rule=1/16777216|sample=0,1,3,5,13,16,18,19,22,23,24,34|json=0
+CLASS|sides=2x2x3|F=14|chi=-2|orientable=0|count=48|rule=1/1073741824|sample=1,3,5,7,8,13,15,18,19,22,23,26,33,34|json=0
+CLASS|sides=2x2x3|F=14|chi=-2|orientable=1|count=276|rule=1/1073741824|sample=3,5,6,7,9,12,16,22,23,25,27,30,31,34|json=0
+CLASS|sides=2x2x3|F=14|chi=0|orientable=1|count=96|rule=1/268435456|sample=3,4,5,6,10,11,16,19,23,27,29,30,31,34|json=0
+CLASS|sides=2x2x3|F=16|chi=-4|orientable=0|count=84|rule=1/68719476736|sample=0,1,4,5,8,10,13,15,19,21,23,25,26,28,33,34|json=0
+CLASS|sides=2x2x3|F=16|chi=-4|orientable=1|count=156|rule=1/68719476736|sample=3,5,7,8,9,12,15,16,18,22,23,26,27,30,31,33|json=0
+CLASS|sides=2x2x3|F=16|chi=0|orientable=1|count=192|rule=1/4294967296|sample=1,5,6,7,10,11,12,16,21,22,23,25,27,29,31,34|json=0
+CLASS|sides=2x2x3|F=18|chi=-6|orientable=0|count=24|rule=1/4398046511104|sample=1,3,5,7,8,10,11,15,16,18,22,23,26,27,29,30,31,33|json=0
+CLASS|sides=2x2x3|F=18|chi=-2|orientable=1|count=24|rule=1/274877906944|sample=1,5,7,8,10,11,12,15,16,18,21,22,23,26,27,29,31,33|json=0
+RULE_SCOPE2_DONE|json=0
+SOURCE|file=gate/gate_on_merge.out|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/beta12_values.py|first=literal_eval at line 20|count=1|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/sphere_q8.py|first=exec at line 6|count=3|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b11.py|first=literal_eval at line 241|count=1|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b13.py|first=literal_eval at line 241|count=1|json=0
+NO_FLOAT_DONE|code_files=19|listed_files=1|listed_folders=0|listed_findings=8|failed=4|json=0
+SOURCE|file=gate/perfile.out|json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/b13_part.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/beta12_values.py|findings=1|literal_eval at line 20|json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/designs_explicit.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/first_diff_t2.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/grp.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/haarpoly.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/moments_z2.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/side1.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/sphere_q8.py|findings=3|exec at line 6;exec at line 9;literal_eval at line 12|json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/stretch_b11.py|findings=1|literal_eval at line 241|json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/stretch_b13.py|findings=1|literal_eval at line 241|json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/surfaces.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/surfaces_exact.py|findings=0||json=0
+GATE_FILE|path=reviews/opus55-ym4-02b/surfaces_periodic.py|findings=0||json=0
+GATE_FILE|path=tests/test_exact_su2_4d.py|findings=0||json=0
+GATE_FILE|path=tests/test_haar_moments_4d.py|findings=0||json=0
+GATE_FILE|path=tests/test_subgroup_designs_4d.py|findings=0||json=0
+GATE_TOTAL|findings=6|json=0
+SOURCE|file=gate/gate_rows.out|json=0
+merged_main_10_11_no_rows|NO_FLOAT|file=reviews/opus55-ym4-02b/beta12_values.py|first=literal_eval at line 20|count=1|json=0
+merged_main_10_11_no_rows|NO_FLOAT|file=reviews/opus55-ym4-02b/sphere_q8.py|first=exec at line 6|count=3|json=0
+merged_main_10_11_no_rows|NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b11.py|first=literal_eval at line 241|count=1|json=0
+merged_main_10_11_no_rows|NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b13.py|first=literal_eval at line 241|count=1|json=0
+merged_main_10_11_no_rows|NO_FLOAT_DONE|code_files=19|listed_files=1|listed_folders=0|listed_findings=8|failed=4|json=0
+GATE_EXIT|case=merged_main_10_11_no_rows|exit=1|json=0
+four_file_rows|NO_FLOAT_DONE|code_files=19|listed_files=5|listed_folders=0|listed_findings=14|failed=0|json=0
+GATE_EXIT|case=four_file_rows|exit=0|json=0
+four_file_rows_plus_planted_float_in_listed_file|NO_FLOAT|count_moved=reviews/opus55-ym4-02b/sphere_q8.py|listed=3|found=4|first=true division at line 23|json=0
+four_file_rows_plus_planted_float_in_listed_file|NO_FLOAT_DONE|code_files=19|listed_files=5|listed_folders=0|listed_findings=15|failed=1|json=0
+GATE_EXIT|case=four_file_rows_plus_planted_float_in_listed_file|exit=1|json=0
+folder_row_plus_planted_float|NO_FLOAT_DONE|code_files=19|listed_files=1|listed_folders=1|listed_findings=15|failed=0|json=0
+GATE_EXIT|case=folder_row_plus_planted_float|exit=0|json=0
+rows_on_pr10_alone|NO_FLOAT|listed_and_gone=reviews/opus55-ym4-02b/beta12_values.py|json=0
+rows_on_pr10_alone|NO_FLOAT|listed_and_gone=reviews/opus55-ym4-02b/sphere_q8.py|json=0
+rows_on_pr10_alone|NO_FLOAT|listed_and_gone=reviews/opus55-ym4-02b/stretch_b11.py|json=0
+rows_on_pr10_alone|NO_FLOAT|listed_and_gone=reviews/opus55-ym4-02b/stretch_b13.py|json=0
+rows_on_pr10_alone|NO_FLOAT_DONE|code_files=4|listed_files=5|listed_folders=0|listed_findings=8|failed=4|json=0
+GATE_EXIT|case=rows_on_pr10_alone|exit=1|json=0
+SOURCE|file=replay_reviews/rerun_table.out|json=0
+RERUN|script=side1|exit=0|secs=8|equal_to_delivered_out=1|lines=10|json=0
+RERUN|script=first_diff_t2|exit=0|secs=1|equal_to_delivered_out=1|lines=6|json=0
+RERUN|script=sphere_q8|exit=0|secs=1|equal_to_delivered_out=1|lines=2|json=0
+RERUN|script=designs_explicit|exit=0|secs=2|equal_to_delivered_out=1|lines=14|json=0
+RERUN|script=moments_z2|exit=0|secs=43|equal_to_delivered_out=1|lines=11|json=0
+RERUN|script=surfaces_periodic|exit=1|secs=0|equal_to_delivered_out=0|lines=0|json=0
+RERUN|script=beta12_values|exit=124|secs=503|equal_to_delivered_out=1|lines=2|json=0
+RERUN|script=stretch_b11|exit=0|secs=23|equal_to_delivered_out=1|lines=33|json=0
+RERUN|script=stretch_b13|exit=0|secs=19|equal_to_delivered_out=1|lines=40|json=0
+SOURCE|file=replay_reviews/rerun_sp.lf|json=0
+PERIODIC|d=4|side=2|limit=6|F4:anchored=6,per_site=6/4|F6:anchored=24,per_site=24/6|json=0
+PERIODIC|d=4|side=3|limit=10|F6:anchored=24,per_site=24/6|F9:anchored=6,per_site=6/9|F10:anchored=360,per_site=360/10|json=0
+PERIODIC|d=4|side=4|limit=10|F6:anchored=24,per_site=24/6|F10:anchored=360,per_site=360/10|json=0
+PERIODIC|d=4|side=5|limit=10|F6:anchored=24,per_site=24/6|F10:anchored=360,per_site=360/10|json=0

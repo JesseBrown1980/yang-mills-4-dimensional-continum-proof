@@ -1,0 +1,215 @@
+CONFIRM|pr=11|repo=yang-mills-4-dimensional-continum-proof|head=f4d094602ba88aca36648d78b48575bd15b476f6|recheck_head=61d49a2|date=2026-11-03|seat=opus55_second_seat|writes_to_github=0|json=0
+STATE|draft=1|merge_state=BLOCKED|mergeable=MERGEABLE|main=080e16c|pr10_head=3e78d44|pr10_state=OPEN|required_check=no-float|no_float_ran_at_head=0|hosted_ran=exact-lemma:SUCCESS,haar-moments:SUCCESS,subgroup-designs:SUCCESS|run=41734973589|json=0
+BLOCKER|id=new_1|what=side_length_1_sentence|lemma=closed|pr_body=closed|prediction_row=closed|reviews_readme=closed|test_comment=closed|counterexample_kept=SIDE_ONE_row_byte_equal,side1_py_reran_byte_equal,check_side_of_length_one_live|hypothesis_kept=four_distinct_links_in_corollary_and_first_departure|json=0
+SHOULD_FIX|id=new_2|float_rows=pending_by_plan|scratch_merge=main+pr10+pr11|gate_no_rows=exit1_failed4|gate_four_rows=exit0_code_files19_listed_files5_listed_findings14|planted_x=1_over_2_in_sphere_q8=count_moved_exit1|no_float_yml_steps_on_scratch=0,0,0|json=0
+CLOSED|id=new_3|drop_bent_pair=added|plant=series_hardcodes_36|step2_bash_e=exit1|step2_plain_bash=exit1|ci_log_row=sabotage=drop_bent_named=plaquette_series_against_the_published_table|json=0
+CLOSED|id=new_4|orientable=in_rule|cube=1/1024|ten_face=1/262144|json=0
+CLOSED|id=new_5|beta7_sentence=as_proposed|drop_bent_b7=-31/23040|drop_bent_b9=3101/8847360|head_b9=4451/8847360|json=0
+CLOSED|id=new_6|step2=set_-euo_pipefail|plant=renamed|plain_bash=exit1|bash_e=exit1|json=0
+CLOSED|id=new_7|denbleyker_link=named|raw=Balian_et_al_1975_1979_PRD11_2104_PRD19_2514|bannai=read_in_pdf_lemma_8|json=0
+CLOSED|id=new_8|clause=added|dims=Q8:4-2=2,2T:6-5=1,2O:15-14=1,2I:133-132=1|json=0
+CLOSED|id=new_9a|hist_files=4|byte_equal_to_attack_folder=4|first_diff_t2_from_folder_copy=exit0_byte_equal|json=0
+CLOSED|id=new_9b|manifest_rows=35|ok=35|folder_files=37|outside_manifest=README.md,SHA256SUMS|json=0
+OPEN|id=new_9c|typed_field=SU2_a2=1/3_at_test_line_308|measured_beside=2T_1/3,Haar_1x1_k2_1/3,closed_form_1/3|moved=0|json=0
+VALUES|receipt_sha256=8eea92c61135a42d98efb553231756214d11807bd5d69ce8eea57e556f76578f|run_equals_receipt=1|lines=29|number_tokens_removed_lemma=0|number_tokens_removed_readme=0|number_tokens_removed_prediction=0|test_diff=one_comment_line|json=0
+READING|sentence=agreement_measured_through_beta^t_on_1x2,1x3,1x2x2,1x2x2x2|lemma_form=exact|cells_in_lemma=7|cells_held_with_todays_haar_rows=8|cells_group_free=16|json=0
+READING|new_haar_rows=1x3_k5=15/32,1x3_k6=865/192,1x3_k7=1155/512,1x2_k7=0/1|before_today=1x3_2T_read_against_2O_above_k4,1x2_2O_read_against_2I_at_k7|json=0
+READING|group_free_forms=pr_body,prediction_row,reviews_readme|scope=wider_than_rows|json=0
+NEW_WORDING|where=lemma_prior_work|text=agreeing_for_1<=t<=5_exceeding_for_t>=6|same_paragraph_has=t=11_for_2I|cause=M2t_dropped|json=0
+NEW_WORDING|where=lemma_one_side_paragraph|text=There_a_plaquette_is_A_V_Binv_Vinv|holds_on=1x2:2/2,1x3:3/3,1x2x2:8/12,1x2x2x2:24/48|author=second_seat|json=0
+NEW_WORDING|where=reviews_readme|text=added_beside_it_at_that_recheck|t2brute_in_folder=0|added_by=f4d0946_after_recheck|json=0
+RECEIPT_GAP|tracked_files_matching_mixed_multiset_recheck=0|gate_findings_in_two_tools=0|json=0
+INSTRUMENT|tool=multiset_check.py|line=56|reads=rational_part_of_trace|valid_columns=Q8,2T,Haar|haar_1x1_k6_2I_column=artifact_9/40|right_2I_from=mixed_sides_and_side1_out|earlier_receipts_used_2O_or_2I_columns=0|json=0
+INSTRUMENT|tool=side_tools.sh|lane=wsl_python|from_grp_import=ImportError|cause=linux_builtin_grp|tools_affected=designs_explicit.py,moments_z2.py,side1.py|reran_on=windows|finding_about_math=0|json=0
+INSTRUMENT|env=PYTHONDONTWRITEBYTECODE|under_-I=ignored|sys_dont_write_bytecode=0|under_-B_-I=1|worktree_pycache_dirs=0|json=0
+NOT_MEASURED|what=filter_removed_mutant,first_diff_of_2O_on_1x3_at_k8,haar_on_1x2_at_k8,t2brute_regeneration_of_hist_2I_24883200000_configs|reason=BUDGET|json=0
+PROCESS|stopped=my_own_multiset_check_1x2:8:Haar_pid4328_after_k7_rows|others_touched=0|json=0
+SOURCE|file=replay.out|json=0
+STEPS|count=3|json=0
+PLANTS|count=5|json=0
+python=Python 3.12.3 nice=10
+STEP1_EXIT=0
+sabotage=bad_group exit=1 named=group_table_of_Q8
+sabotage=wrong_class exit=1 named=first_difference_of_2I
+sabotage=wrong_table exit=1 named=plaquette_series_against_the_published_table
+sabotage=drop_direction exit=1 named=closed_surfaces_in_d=4
+sabotage=drop_bent exit=1 named=plaquette_series_against_the_published_table
+sabotage=drop_bent exit=1 named=closed_surfaces_in_d=4
+sabotage=q8_everywhere exit=1 named=moments_on_Z2^4
+STEP2_EXIT=0
+STEP3_EXIT=0
+step1_secs=12 step2_secs=80
+--- bad_group: traceback=0 failed: Q8_forced_past_its_strength design_strength_of_Q8 first_difference_of_Q8 group_table_of_Q8 invariant_count_is_an_integer_in_Q8 moments_on_Z2^4 plaquette_series_against_the_published_table side_of_length_one split_of_beta^9 surface_value torus_value 
+--- wrong_class: traceback=0 failed: design_strength_of_2I first_difference_of_2I invariant_count_is_an_integer_in_2I 
+--- wrong_table: traceback=0 failed: plaquette_series_against_the_published_table 
+--- drop_direction: traceback=0 failed: closed_surfaces_in_d=4 plaquette_series_against_the_published_table split_of_beta^9 
+--- drop_bent: traceback=0 failed: closed_surfaces_in_d=4 plaquette_series_against_the_published_table split_of_beta^9 
+--- q8_everywhere: traceback=0 failed: moments_on_Z2^4 
+SERIES|d=4|b1=1/4|b3=-1/96|b5=7/1536|b7=-31/23040|b9=3101/8847360|published=arXiv_0807.0185_Table_1_opposite_sign_as_it_
+SURFACES|d=4|per_site_F6=4|F7=0|F8=0|F9=0|F10=12|F10_flat=12|F10_bent=0|smaller_than_6=0|ok=0|json=0
+8eea92c61135a42d98efb553231756214d11807bd5d69ce8eea57e556f76578f  /tmp/designs.out
+8eea92c61135a42d98efb553231756214d11807bd5d69ce8eea57e556f76578f  tests/SUBGROUP_DESIGNS_RECEIPT.txt
+29
+SIDE_ONE|d=2|degree_per_link=2|E_Q8_a=1/4|E_Q8_a2=1|E_2T_a2=1/3|SU2_a2=1/3|ok=1|json=0
+=== plants
+PLANT|name=crash|shell=bash -e|step2_exit=1|last=sabotage=bad_group crashed|json=0
+PLANT|name=noop|shell=bash -e|step2_exit=1|last=sabotage=wrong_class exit=1 named=first_difference_of_2I|json=0
+PLANT|name=renamed|shell=bash -e|step2_exit=1|last=sabotage=wrong_class exit=1 named=first_difference_of_2I|json=0
+PLANT|name=exit_no_done|shell=bash -e|step2_exit=1|last=sabotage=wrong_table exit=1 named=plaquette_series_against_the_published_table|json=0
+PLANT|name=series_hardcodes_36|shell=bash -e|step2_exit=1|last=sabotage=drop_direction exit=1 named=closed_surfaces_in_d=4|json=0
+PLANT|name=renamed|shell=bash|step2_exit=1|last=sabotage=wrong_class exit=1 named=first_difference_of_2I|json=0
+PLANT|name=series_hardcodes_36|shell=bash|step2_exit=1|last=sabotage=drop_direction exit=1 named=closed_surfaces_in_d=4|json=0
+PLANTS_DONE
+SOURCE|file=win_tools.out|json=0
+RUN|name=mixed_a|exit=0|secs=5|json=0
+RUN|name=mixed_1x3|exit=0|secs=14|json=0
+RUN|name=multiset_1x2|exit=0|secs=30|json=0
+RUN|name=multiset_b|exit=0|secs=55|json=0
+RUN|name=multiset_e|exit=0|secs=442|json=0
+RUN|name=multiset_d4|exit=0|secs=22|json=0
+CMP|name=mixed_a|same=1|json=0
+CMP|name=mixed_1x3|same=1|json=0
+CMP|name=multiset_1x2|same=1|json=0
+CMP|name=multiset_b|same=1|json=0
+CMP|name=multiset_e|same=1|json=0
+CMP|name=multiset_d4|same=1|json=0
+RUN|name=haar_1x3_k7|exit=0|secs=39|json=0
+RUN|name=haar_1x2_k8|exit=0|secs=115|json=0
+RUN|name=haar_1x1_k6|exit=0|secs=6|json=0
+WIN_TOOLS_DONE
+SOURCE|file=side1_win.out|json=0
+SIDE1|exit=0|same_as_receipt=1|secs=8|json=0
+SOURCE|file=first_diff_linux.out|json=0
+FD_EXIT=0
+FD_SAME=1
+GRP_MODULE_ON_LINUX <module 'grp' (built-in)>
+3:import math
+4:import sys
+7:from grp import O, build, table
+SOURCE|file=merged.out|json=0
+merged_head=239f6cd eol_lf=55 eol_crlf=6
+NF_STEPS 3
+NOFLOAT_STEP1|exit=0|last=NO_FLOAT_SELFTEST_DONE|must_flag=85|must_pass=39|failed=0|json=0|json=0
+NOFLOAT_STEP2|exit=0|last=NO_FLOAT_DONE|code_files=19|listed_files=5|listed_folders=0|listed_findings=14|failed=0|json=0|json=0
+NOFLOAT_STEP3|exit=0|last=|json=0
+0
+TEST_EXIT=0
+RECEIPT_SAME=1
+35
+exact-su2-4d.yml
+gpt6-q8-audit.yml
+no-float.yml
+su2-haar-moments.yml
+subgroup-designs.yml
+tests/test_exact_su2_4d.py exit=0
+tests/test_haar_moments_4d.py exit=0
+MERGED_DONE
+SOURCE|file=cells.out|json=0
+CELL|sides=1x2|group=Q8|t=3|target=3|haar_read_through_k=7|agrees_with_haar_through_k=3|first_diff_k=4|reaches_target=1|json=0
+CELL|sides=1x2|group=2T|t=5|target=5|haar_read_through_k=7|agrees_with_haar_through_k=5|first_diff_k=6|reaches_target=1|json=0
+CELL|sides=1x2|group=2O|t=7|target=7|haar_read_through_k=7|agrees_with_haar_through_k=7|first_diff_k=0|reaches_target=1|json=0
+CELL|sides=1x2|group=2I|t=11|target=11|haar_read_through_k=7|agrees_with_haar_through_k=7|first_diff_k=0|reaches_target=0|json=0
+CELL|sides=1x3|group=Q8|t=3|target=3|haar_read_through_k=7|agrees_with_haar_through_k=3|first_diff_k=4|reaches_target=1|json=0
+CELL|sides=1x3|group=2T|t=5|target=5|haar_read_through_k=7|agrees_with_haar_through_k=5|first_diff_k=6|reaches_target=1|json=0
+CELL|sides=1x3|group=2O|t=7|target=7|haar_read_through_k=7|agrees_with_haar_through_k=7|first_diff_k=0|reaches_target=1|json=0
+CELL|sides=1x3|group=2I|rows=0|json=0
+CELL|sides=1x2x2|group=Q8|t=3|target=3|haar_read_through_k=4|agrees_with_haar_through_k=3|first_diff_k=4|reaches_target=1|json=0
+CELL|sides=1x2x2|group=2T|t=5|target=5|haar_read_through_k=4|agrees_with_haar_through_k=4|first_diff_k=0|reaches_target=0|json=0
+CELL|sides=1x2x2|group=2O|rows=0|json=0
+CELL|sides=1x2x2|group=2I|rows=0|json=0
+CELL|sides=1x2x2x2|group=Q8|t=3|target=3|haar_read_through_k=4|agrees_with_haar_through_k=3|first_diff_k=4|reaches_target=1|json=0
+CELL|sides=1x2x2x2|group=2T|rows=0|json=0
+CELL|sides=1x2x2x2|group=2O|rows=0|json=0
+CELL|sides=1x2x2x2|group=2I|rows=0|json=0
+CELL|sides=1x1|group=Q8|t=3|target=1|haar_read_through_k=6|agrees_with_haar_through_k=1|first_diff_k=2|reaches_target=1|json=0
+CELL|sides=1x1|group=2T|t=5|target=2|haar_read_through_k=6|agrees_with_haar_through_k=2|first_diff_k=3|reaches_target=1|json=0
+CELL|sides=1x1|group=2O|t=7|target=3|haar_read_through_k=6|agrees_with_haar_through_k=3|first_diff_k=4|reaches_target=1|json=0
+CELL|sides=1x1|group=2I|t=11|target=5|haar_read_through_k=6|agrees_with_haar_through_k=5|first_diff_k=6|reaches_target=1|json=0
+CELL|sides=1x1x1|group=Q8|t=3|target=1|haar_read_through_k=3|agrees_with_haar_through_k=1|first_diff_k=2|reaches_target=1|json=0
+CELL|sides=1x1x1|group=2T|t=5|target=2|haar_read_through_k=3|agrees_with_haar_through_k=2|first_diff_k=3|reaches_target=1|json=0
+CELL|sides=1x1x1|group=2O|rows=0|json=0
+CELL|sides=1x1x1|group=2I|rows=0|json=0
+CELL|sides=1x1x2|group=Q8|t=3|target=1|haar_read_through_k=3|agrees_with_haar_through_k=1|first_diff_k=2|reaches_target=1|json=0
+CELL|sides=1x1x2|group=2T|t=5|target=2|haar_read_through_k=3|agrees_with_haar_through_k=2|first_diff_k=3|reaches_target=1|json=0
+CELL|sides=1x1x2|group=2O|rows=0|json=0
+CELL|sides=1x1x2|group=2I|rows=0|json=0
+CELL|sides=1x1x3|group=Q8|t=3|target=1|haar_read_through_k=3|agrees_with_haar_through_k=1|first_diff_k=2|reaches_target=1|json=0
+CELL|sides=1x1x3|group=2T|t=5|target=2|haar_read_through_k=3|agrees_with_haar_through_k=2|first_diff_k=3|reaches_target=1|json=0
+CELL|sides=1x1x3|group=2O|rows=0|json=0
+CELL|sides=1x1x3|group=2I|rows=0|json=0
+CELL|sides=1x1x2x2|group=Q8|t=3|target=1|haar_read_through_k=2|agrees_with_haar_through_k=1|first_diff_k=2|reaches_target=1|json=0
+CELL|sides=1x1x2x2|group=2T|rows=0|json=0
+CELL|sides=1x1x2x2|group=2O|rows=0|json=0
+CELL|sides=1x1x2x2|group=2I|rows=0|json=0
+CELLS_REACHING_T|of=16|held=8|json=0
+SOURCE|file=shape_census.out|json=0
+SHAPE|sides=1x1|N_p=1|U_V_Uinv_Vinv=1|json=0
+SHAPE|sides=1x2|N_p=2|A_V_Binv_Vinv=2|json=0
+SHAPE|sides=1x3|N_p=3|A_V_Binv_Vinv=3|json=0
+SHAPE|sides=1x1x2|N_p=6|A_V_Binv_Vinv=4|U_V_Uinv_Vinv=2|json=0
+SHAPE|sides=1x2x2|N_p=12|A_V_Binv_Vinv=8|four_distinct=4|json=0
+SHAPE|sides=1x1x2x2|N_p=24|A_V_Binv_Vinv=16|U_V_Uinv_Vinv=4|four_distinct=4|json=0
+SHAPE|sides=1x2x2x2|N_p=48|A_V_Binv_Vinv=24|four_distinct=24|json=0
+SHAPE|sides=2x2|N_p=4|four_distinct=4|json=0
+SHAPE|sides=2x2x2x2|N_p=96|four_distinct=96|json=0
+SOURCE|file=token_audit.out|json=0
+FRACTIONS|in=pr_body|distinct=4|outside_rows=1|tokens=3101/8847360|json=0
+FRACTIONS|in=lemma|distinct=19|outside_rows=3|tokens=2/2,3101/8847360,9/4|json=0
+NUMBER_TOKENS|file=docs/LEMMA-0003-SUBGROUP-DESIGNS.md|removed=|added=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,10,11,14,19,1975,1979,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2104,2514,3,4,42,5,5,6,6,8,8,8,8|json=0
+NUMBER_TOKENS|file=reviews/opus55-ym4-02b/README.md|removed=|added=1,1,1,2,2,2,2,256,3,49,61|json=0
+NUMBER_TOKENS|file=tests/test_subgroup_designs_4d.py|removed=|added=|json=0
+NUMBER_TOKENS|file=docs/PREDICTION-YM4-02b.hbp|removed=|added=0,0,02,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,3,4,49,61|json=0
+SOURCE|file=tools_scan.out|json=0
+GATE_FUNCS ['findings', 'native_findings', 'python_findings']
+TOOL_SCAN|file=cells.py|findings=0|first=[]|json=0
+TOOL_SCAN|file=shape_census.py|findings=0|first=[]|json=0
+TOOL_SCAN|file=token_audit.py|findings=1|first=['import json at line 2']|json=0
+TOOL_SCAN|file=extract_steps.py|findings=0|first=[]|json=0
+TOOL_SCAN|file=wf_plants.py|findings=0|first=[]|json=0
+TOOL_SCAN|file=mixed_sides.py|findings=0|first=[]|json=0
+TOOL_SCAN|file=multiset_check.py|findings=0|first=[]|json=0
+SOURCE|file=gate_no_rows.out|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/beta12_values.py|first=literal_eval at line 20|count=1|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/sphere_q8.py|first=exec at line 6|count=3|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b11.py|first=literal_eval at line 241|count=1|json=0
+NO_FLOAT|file=reviews/opus55-ym4-02b/stretch_b13.py|first=literal_eval at line 241|count=1|json=0
+NO_FLOAT_DONE|code_files=19|listed_files=1|listed_folders=0|listed_findings=8|failed=4|json=0
+SOURCE|file=gate_rows.out|json=0
+NO_FLOAT_DONE|code_files=19|listed_files=5|listed_folders=0|listed_findings=14|failed=0|json=0
+SOURCE|file=gate_rows_plant.out|json=0
+NO_FLOAT|count_moved=reviews/opus55-ym4-02b/sphere_q8.py|listed=3|found=4|first=true division at line 23|json=0
+NO_FLOAT_DONE|code_files=19|listed_files=5|listed_folders=0|listed_findings=15|failed=1|json=0
+SOURCE|file=haar_1x3_k7.out|json=0
+MOMENT|sides=1x3|N_p=3|k=1|kept=0|patterns=0|Haar=0/1|json=0
+MOMENT|sides=1x3|N_p=3|k=2|kept=3|patterns=1|Haar=3/4|json=0
+MOMENT|sides=1x3|N_p=3|k=3|kept=1|patterns=1|Haar=3/32|json=0
+MOMENT|sides=1x3|N_p=3|k=4|kept=6|patterns=3|Haar=3/2|json=0
+MOMENT|sides=1x3|N_p=3|k=5|kept=3|patterns=3|Haar=15/32|json=0
+MOMENT|sides=1x3|N_p=3|k=6|kept=10|patterns=6|Haar=865/192|json=0
+MOMENT|sides=1x3|N_p=3|k=7|kept=6|patterns=6|Haar=1155/512|json=0
+MULTISET_DONE|json=0
+SOURCE|file=haar_1x2_k7.out|json=0
+MOMENT|sides=1x2|N_p=2|k=1|kept=0|patterns=0|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=2|kept=3|patterns=2|Haar=5/8|json=0
+MOMENT|sides=1x2|N_p=2|k=3|kept=0|patterns=0|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=4|kept=5|patterns=4|Haar=11/12|json=0
+MOMENT|sides=1x2|N_p=2|k=5|kept=0|patterns=0|Haar=0/1|json=0
+MOMENT|sides=1x2|N_p=2|k=6|kept=7|patterns=6|Haar=465/256|json=0
+MOMENT|sides=1x2|N_p=2|k=7|kept=0|patterns=0|Haar=0/1|json=0
+MULTISET_DONE|json=0
+SOURCE|file=haar_1x1_k6_q8_2t.out|json=0
+MOMENT|sides=1x1|N_p=1|k=1|kept=1|patterns=1|Q8=1/4|2T=1/4|Haar=1/4|json=0
+MOMENT|sides=1x1|N_p=1|k=2|kept=1|patterns=1|Q8=1/1|2T=1/3|Haar=1/3|json=0
+MOMENT|sides=1x1|N_p=1|k=3|kept=1|patterns=1|Q8=1/4|2T=1/4|Haar=5/32|json=0
+MOMENT|sides=1x1|N_p=1|k=4|kept=1|patterns=1|Q8=1/1|2T=1/3|Haar=1/5|json=0
+MOMENT|sides=1x1|N_p=1|k=5|kept=1|patterns=1|Q8=1/4|2T=1/4|Haar=11/96|json=0
+MOMENT|sides=1x1|N_p=1|k=6|kept=1|patterns=1|Q8=1/1|2T=1/3|Haar=1/7|json=0
+MULTISET_DONE|json=0
+SOURCE|file=both_sides_extra.out|json=0
+MOMENT|sides=1x1x1|N_p=3|k=1|kept=3|patterns=1|Q8=3/4|2T=3/4|Haar=3/4|json=0
+MOMENT|sides=1x1x1|N_p=3|k=2|kept=6|patterns=4|Q8=9/2|2T=7/4|Haar=7/4|json=0
+MOMENT|sides=1x1x1|N_p=3|k=3|kept=10|patterns=8|Q8=27/4|2T=41/12|Haar=265/96|json=0
+MOMENT|sides=1x1x3|N_p=9|k=1|kept=3|patterns=1|Q8=3/4|2T=3/4|Haar=3/4|json=0
+MOMENT|sides=1x1x3|N_p=9|k=2|kept=12|patterns=3|Q8=39/8|2T=23/8|Haar=23/8|json=0
+MOMENT|sides=1x1x3|N_p=9|k=3|kept=30|patterns=13|Q8=285/32|2T=189/32|Haar=45/8|json=0
+MULTISET_DONE|json=0

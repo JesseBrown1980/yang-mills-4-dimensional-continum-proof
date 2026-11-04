@@ -1,0 +1,6 @@
+HAAR_T2|E_X2=1/1|E_X4=91/32|E_X6=25/2|E_X8=40831/576|E_X12=59175303/16384|hand_E_X4=91/32|json=0
+T2_FIRST_DIFF|group=Q8|t=3|moments_agree_through_k=3|E_G_X^4-E_H_X^4=1/2|predicted_N_p*dimInv/2^(t+1)=1/2|plaquette_series_delta_at_beta^3=1/48|json=0
+T2_FIRST_DIFF|group=2T|t=5|moments_agree_through_k=5|E_G_X^6-E_H_X^6=1/16|predicted_N_p*dimInv/2^(t+1)=1/16|plaquette_series_delta_at_beta^5=1/7680|json=0
+T2_FIRST_DIFF|group=2O|t=7|moments_agree_through_k=7|E_G_X^8-E_H_X^8=1/64|predicted_N_p*dimInv/2^(t+1)=1/64|plaquette_series_delta_at_beta^7=1/1290240|json=0
+T2_FIRST_DIFF|group=2I|t=11|moments_agree_through_k=11|E_G_X^12-E_H_X^12=1/1024|predicted_N_p*dimInv/2^(t+1)=1/1024|plaquette_series_delta_at_beta^11=1/163499212800|json=0
+FIRST_DIFF_T2_DONE|json=0
