@@ -1,0 +1,5 @@
+INDEP_RATIO|case=ring_mu=2_L=4_q=520/1000|orbits=32|lambda0_bracket_width_below_2^-60=1|above_lower=2|above_upper=1|certified=1|ratio_ppm=578156..578157|receipt=578156..578157|inside_receipt=1|json=0
+INDEP_R|case=ring_mu=2_L=4_q=520/1000|k=4|orbits=32|R_digits=102|root_floor_ppm=663092|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 31, 0, 31)|json=0
+INDEP_R|case=ring_mu=2_L=4_q=520/1000|k=8|orbits=32|R_digits=225|root_floor_ppm=619234|receipt_root_ppm=not_printed|agree=-1|R=long/long|at=(0, 31, 0, 31)|json=0
+INDEP_RING|L=4|k=4|tau_ppm=193328..193329|receipt_tau_ppm=193328..193329|tau_agree=1|C_milli=1730..1731|receipt_C_milli=1730..1731|C_agree=1|json=0
+INDEP_RING|L=4|k=8|tau_ppm=21619..21620|receipt_tau_ppm=21619..21620|tau_agree=1|C_milli=1731..1732|receipt_C_milli=1731..1732|C_agree=1|json=0

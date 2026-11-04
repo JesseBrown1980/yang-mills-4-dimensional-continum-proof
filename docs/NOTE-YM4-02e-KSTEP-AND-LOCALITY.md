@@ -1,6 +1,6 @@
 # YM4-02e: bounds that use the structure of the weights
 
-**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026, on the operator's word, with the first theorem to test named by GPT-6. Its exact tests are registered first in [`PREDICTION-YM4-02e.hbp`](PREDICTION-YM4-02e.hbp), pushed before the test existed, and read below. GPT-6, a different model family, has reviewed the argument with no contradiction identified and holds it for final certification: [its reviews, verbatim](../reviews/gpt6-ym4-02e/README.md). The second seat's attack is OPEN.**
+**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026, on the operator's word, with the first theorem to test named by GPT-6. Its exact tests are registered first in [`PREDICTION-YM4-02e.hbp`](PREDICTION-YM4-02e.hbp), pushed before the test existed, and read below. GPT-6, a different model family, has reviewed the argument with no contradiction identified and holds it for final certification: [its reviews, verbatim](../reviews/gpt6-ym4-02e/README.md). The second seat's records lane read the test and receipt, with [every number it recomputed in agreement](../reviews/opus55-ym4-02e/README.md). Its proof lane failed on an output limit and checked nothing, so its proof review is OPEN.**
 
 **Scope:** one finite periodic lattice and one β, except section 3, which holds on every periodic lattice at small β. The objects are those of [YM4-02d](NOTE-YM4-02d-QUANTITATIVE-GAP.md): T = A^{1/2} B A^{1/2} on H = L²(G^{N_ℓ}), with θ = μ/λ₀ for an eigenvalue μ ≠ λ₀. Zero spacing at fixed finite physical volume stays OPEN.
 
@@ -19,7 +19,7 @@ Delta_k = log R_k,    tau_k = tanh(Delta_k / 4) = (sqrt(R_k) - 1) / (sqrt(R_k) +
 
 *Proof.* T^k has a continuous, strictly positive, symmetric kernel, with top eigenvalue λ₀^k, eigenfunction Ω, and μ^k on the same eigenfunction as μ. The second proof of YM4-02d, which uses only those properties and the bound on the four-point ratio, gives |μ|^k/λ₀^k ≤ τ_k. ∎
 
-**Proposition 2, NAMED.** τ_k ≥ |θ|^k, and τ_{2k} ≤ τ_k². The second is Birkhoff's: the contraction coefficient of a positive kernel is tanh(Δ/4), and it is submultiplicative, with the diagonal A an isometry of Hilbert's metric. In exact integers, with s_k = √R_k, it reads 4 R_k R_{2k} ≤ (R_k + 1)², and x ≤ τ_k reads R_k ≥ ((1 + x)/(1 − x))². So τ_k^{1/k} falls along k = 1, 2, 4, 8.
+**Proposition 2, NAMED.** τ_k ≥ |θ|^k, and τ_{2k} ≤ τ_k². The second is Birkhoff's: the contraction coefficient of a positive kernel is tanh(Δ/4), and it is submultiplicative, with the diagonal A an isometry of Hilbert's metric. In exact integers, with s_k = √R_k, it reads 4 R_k R_{2k} ≤ (R_k + 1)², and x ≤ τ_k reads R_k ≥ ((1 + x)/(1 − x))². So τ_k^{1/k} is non-increasing along k = 1, 2, 4, 8, and constant on Z2 with one link, 600000 ppm at each k.
 
 **Proposition 3, the limit.** Let the eigenvalues of largest modulus after λ₀ share one positive value θλ₀, with orthonormal eigenfunctions h_j and ρ_j = h_j/Ω. Then τ_k/θ^k tends to
 
@@ -29,7 +29,7 @@ C = (1/4) max over U, U', V, V' of  sum_j ( rho_j(U) - rho_j(U') ) ( rho_j(V) - 
 
 *Derivation.* K_k(U,V) / (λ₀^k Ω(U) Ω(V)) = 1 + θ^k Σ_j ρ_j(U)ρ_j(V) + o(θ^k), uniformly, so log R_k = θ^k · 4C + o(θ^k), and τ_k = (log R_k)/4 + o(θ^k). ∎ With one eigenfunction, C = osc(h₁/Ω)²/4.
 
-So **the k-th root overshoots by C^{1/k}**, and the size of C says how much of the lattice the worst pair of configurations can read. Growth of C with the lattice is proved for independent copies, next. On interacting lattices it is a CONJECTURE, read in the rows below.
+So **the k-th root overshoots by C^{1/k}**. On Z2 at L = 8, k = 8, C reads 6355 thousandths at q = 4/5, 2624 at q = 1/2 and 1000 at q = 1/5, so its size depends on the weight as well as on the lattice. Growth of C with the lattice is proved for independent copies, next. On interacting lattices it is a CONJECTURE, read in the rows below.
 
 **Proposition 4, independent copies.** If T = T₁ ⊗ … ⊗ T₁ with n factors, the four-point ratio is a product, so Δ_k = nΔ_k(T₁), while |θ| stays that of T₁. For Z2 with x = ρ^k, τ_k = tanh(n artanh x) = ((1+x)ⁿ − (1−x)ⁿ)/((1+x)ⁿ + (1−x)ⁿ), and C = n. The overshoot is n^{1/k}, so **at each fixed k the bound worsens with size, and holding it to a factor 1 + η needs k ≥ log n / log(1 + η).** Z2 on 1×1 and on 1×1×1 are exactly this case, since their plaquette words are trivial.
 
@@ -85,7 +85,7 @@ where G(x → y) bounds the sum over slices of D: from a site, a path moves one 
 
 *On PH.* T commutes with the gauge projection P, and Ω, the unique positive top eigenfunction, is gauge invariant. So every eigenvalue of T on PH other than λ₀ is an eigenvalue on H other than λ₀, and the bound carries over.
 
-**What it is and is not sized for.** Theorem 5 covers small β alone, as it must in general: on Z2 with sides L×1, T_v is the transfer matrix of the two-dimensional Ising model, with λ₁/λ₀ tending to ε/q above q_c = √2 − 1 and to 1 below it, by Onsager and Kaufman, NAMED. Small β here is strong coupling, and at fixed physical volume β grows as the spacing falls. So this result is an explicit form of a classical statement, the strong-coupling gap of Osterwalder and Seiler, NAMED, and its gain is the removal of N_ℓ at fixed small β.
+**What it is sized for.** Theorem 5 covers small β alone, as it must in general: on Z2 with sides L×1, T_v is the transfer matrix of the two-dimensional Ising model, with λ₁/λ₀ tending to ε/q above q_c = √2 − 1 and to 1 below it, by Onsager and Kaufman, NAMED. Small β here is strong coupling, and at fixed physical volume β grows as the spacing falls. So this result is an explicit form of a classical statement, the strong-coupling gap of Osterwalder and Seiler, NAMED, and its gain is the removal of N_ℓ at fixed small β.
 
 ## 4. Fixed physical volume
 
@@ -112,9 +112,9 @@ So **the supremum over all configurations looks like the obstruction in d ≥ 2.
 
 ## What is measured
 
-[`tests/test_k_step_locality.py`](../tests/test_k_step_locality.py), in exact integers, against [the prediction](PREDICTION-YM4-02e.hbp), whose first 130 rows were pushed at commit `23cec81` before that test existed. Its rows are in [`tests/K_STEP_LOCALITY_RECEIPT.txt`](../tests/K_STEP_LOCALITY_RECEIPT.txt), and they are finite cases: the theorems' proofs stand or fall on their own.
+[`tests/test_k_step_locality.py`](../tests/test_k_step_locality.py), in exact integers, against [the prediction](PREDICTION-YM4-02e.hbp), whose first 130 rows were pushed at commit `23cec81`, at 17:43:11Z, before that test was first written, at 17:48:51Z. Its closed forms came by characters and by hand blocks, from [a script with no lattice and no cross-ratio search](../reviews/fable5-ym4-02e-first-run/predict_02e.py). Its neighbours and r came from the same plaquette sum and the same bisection the test uses, and separate code confirms them on all 23 rows. Its rows are in [`tests/K_STEP_LOCALITY_RECEIPT.txt`](../tests/K_STEP_LOCALITY_RECEIPT.txt), and they are finite cases: the theorems' proofs stand or fall on their own.
 
-**The runs.** The first run FAILED two rows and the fourth FAILED one, and those failures stay: [the record](../reviews/fable5-ym4-02e-first-run/README.md). The receipt is the fifth, 571 s on one machine, `failed=0`. GPT-6's three conditions on it: all 208 rows of the first run reproduce, 206 identical and 2 changed by the documented correction of the Z3 check; the block solver gives the same characteristic polynomial as direct elimination on 7 small matrices, with exact multiplicities on 4 known spectra, and the same inertia at the listed thresholds on 10 cases, with that scope; and the run-time row reads 1, with the hosted run still to read.
+**The runs.** The first run FAILED two rows and the fourth FAILED one, and those failures stay: [the record](../reviews/fable5-ym4-02e-first-run/README.md). The receipt is the fifth, 571 s on one machine, `failed=0`. GPT-6's three conditions on it: all 208 rows of the first run reproduce, 206 identical and 2 changed by the documented correction of the Z3 check; the block solver gives the same characteristic polynomial as direct elimination on 7 small matrices, with exact multiplicities on 4 known spectra, and the same inertia at the listed thresholds on 10 cases, with that scope; and the run-time row reads 1, on the hosted runs as well: 403 s on the push and 597 s on the pull request, against 1,500 s.
 
 **The k-step bound on the actual Wilson form,** at r = 1/2, in parts per million, against the exact ratio on orbits.
 
@@ -125,7 +125,7 @@ So **the supremum over all configurations looks like the obstruction in d ≥ 2.
 | Q8 | 1×1×1 | 3 | 176 | 999512 | 980579 | 851540 | not run | 582784 to 582785 |
 | Q8 | 2×1 | 4 | 176 | 997172 | 973463 | 936961 | not run | 874448 to 874449 |
 
-No row in the receipt has |θ| above τ_k^{1/k}, and every composition row holds. **Closed forms:** 32 of 32 rows match, by characters and by the hand block on Z2 at 2×1, including S3's R₂ = 4473/3025, Q8's √R₂ = 353/128, and 2T's √R₂ = 299/128. **The second seat's five values** on Z2 at 2×2, q = 1/2, agree: 467776, 273970, 200288, 171131 and 158185 at k = 1, 2, 4, 8 and 16, against 146218.
+All 199 rows with a sandwich field read 1, so θ_low^k stays at or below τ_k on each. The receipt prints no composition row: the 142 composition checks report only when they fail, and they stand inside `failed=0`. **Closed forms:** 32 of 32 rows match, by characters and by the hand block on Z2 at 2×1, including S3's R₂ = 4473/3025, Q8's √R₂ = 353/128, and 2T's √R₂ = 299/128. **The second seat's five values** on Z2 at 2×2, q = 1/2, agree: 467776, 273970, 200288, 171131 and 158185 at k = 1, 2, 4, 8 and 16, against 146218.
 
 **The limit constant,** read at k = 8 against Proposition 3 and 4.
 
@@ -152,7 +152,7 @@ No row in the receipt has |θ| above τ_k^{1/k}, and every composition row holds
 | τ_L at μ = 1, ppm | 288373 | 321488 | 350863 | 371288 | 384117 | 393455 | 402412 |
 | τ_L at μ = 2, ppm | 147675 | 172951 | 193329 | 205726 | 214322 | 225214 | 227937 |
 
-So at fixed q, C rises by 0.79 per site from L = 4, inside the predicted 0.55 to 0.95. At fixed μ, C rises with falling steps, and τ at k = L, one unit of physical time, stays well below 1 up to L = 8. That range is short, and whether either settles is OPEN.
+So at fixed q, C rises by 0.79 per site from L = 4, inside the predicted 0.55 to 0.95. At μ = 1, C rises by 142, 94, 63, 46, 34 and 23 thousandths per site. At μ = 2 it rises by 223, 152, 113, 84, 51 and 58, and q, rounded to three digits, gives (ε/q)^L of 137078 ppm at L = 7 and 134227 ppm at L = 8, against e⁻² = 135335 ppm, a CONJECTURE for why the last step is the larger. τ at k = L, one unit of physical time, rises at each L to 402412 ppm at μ = 1 and 227937 ppm at μ = 2, at L = 8. That range is short, and whether either settles is OPEN.
 
 **Conjectures read: 9 of 10 met,** in `YM4_02E_CONJ_READ` rows. **The miss:** C at μ = 2 passes the registered ceiling of 1.8, reaching 2.037 at L = 8. The Ising limits came out as registered: λ₁/λ₀ rises to 138889 ppm at q = 4/5, against 5/36, and to 652334 ppm at L = 6 at q = 1/2, below 2/3, and reaches 999666 ppm at q = 1/5, in the ordered phase.
 

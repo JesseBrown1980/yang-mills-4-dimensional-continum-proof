@@ -1,0 +1,6 @@
+INDEP_R|case=Q8_1x1_r=1/2|k=1|orbits=28|R_digits=5|root_floor_ppm=992217|receipt_root_ppm=992217..992218|agree=1|R=65536/1|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Q8_1x1_r=1/2|k=2|orbits=28|R_digits=11|root_floor_ppm=914269|receipt_root_ppm=914269..914270|agree=1|R=14125084801/112869376|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Q8_1x1_r=1/2|k=4|orbits=28|R_digits=23|root_floor_ppm=733470|receipt_root_ppm=733470..733471|agree=1|R=25741813561782766740889/7817610819577780170889|at=(0, 6, 0, 6)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=1|orbits=32|R_digits=6|root_floor_ppm=467775|receipt_root_ppm=467775..467776|agree=1|R=124609/16384|at=(0, 27, 0, 27)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=2|orbits=32|R_digits=12|root_floor_ppm=273969|receipt_root_ppm=273969..273970|agree=1|R=237988841281/176164878400|at=(0, 27, 0, 27)|json=0
+INDEP_R|case=Z2_2x2_q=1/2|k=4|orbits=32|R_digits=28|root_floor_ppm=200287|receipt_root_ppm=200287..200288|agree=1|R=4222372140461927097524478889/4195280329453359203097009025|at=(0, 27, 0, 27)|json=0

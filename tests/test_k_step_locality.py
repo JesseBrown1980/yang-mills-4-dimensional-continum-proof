@@ -913,7 +913,7 @@ def section_seen():
         root = root_ppm(r, k)
         value = int(row["kth_root_ppm"])
         wanted = row["exact_ratio_ppm"].split("..")
-        ok = root[0] - 1 <= value <= root[1] + 1 and ppm_floor(low) == int(wanted[0]) and ppm_ceil(high) == int(wanted[1])
+        ok = root[0] <= value <= root[1] and ppm_floor(low) == int(wanted[0]) and ppm_ceil(high) == int(wanted[1])
         if "R" in row:
             ok = ok and show(r) == row["R"]
         check("seen_Z2_dims_2x2_k=%d" % k, ok)
@@ -963,11 +963,34 @@ def section_controls():
         t = times(tau, top)
         fires = signs((-t[0], t[1]))[1] == 0 and signs(frac(-t[0] * 999, t[1] * 1000))[1] == 1
         check("negative_side_reads_it", fires)
+        check("top_two_reads_the_negative_top", not top_two(blocks_of(pencil), pencil.top(), 20)[4])
         steps = KSteps(pencil)
         r1, r2 = largest_ratio(steps.at(1)), largest_ratio(steps.at(2))
         s1, s2 = read_frac(row["sqrt_R_at_k_1"]), read_frac(row["sqrt_R_at_k_2"])
         check("negative_k_rows", r1[0] * s1[1] * s1[1] == r1[1] * s1[0] * s1[0] and r2[0] * s2[1] * s2[1] == r2[1] * s2[0] * s2[0])
         say("YM4_02E_CONTROL_NEGATIVE|weight=%s|eigenvalues=%s|ratio=%s|tau=%s|negative_side_reads_it=%d|R_1=%s|R_2=%s|json=0" % (row["weight"], row["eigenvalues"], show(frac(-bottom[0] * top[1], bottom[1] * top[0])), show(tau), fires, show(r1), show(r2)))
+    # The odd ring with q above 1: the second eigenvalue has momentum, outside the small blocks, so the count and the search on all blocks run.
+    conv = ring(3, 5, 4)
+    c, d, top = conv.dense()
+    inv = [p for p in conv.perms if all(p[p[i]] == i for i in range(conv.n))]
+    bp = BlockPencil(c, d, inv, [p for p in conv.perms if p not in inv])
+
+    def direct(t):
+        return inertia([[t[1] * c[i][j] - (t[0] * d[i] if i == j else 0) for j in range(conv.n)] for i in range(conv.n)])[0]
+
+    for name, upper in (("certifying_count_fires", None), ("ceiling_too_low_falls_back", (1, 1000))):
+        lo0, hi0, lo1, hi1, _ = top_two(bp, top, 30, upper)
+        check(name, bp.above_small(lo1) == 1 and direct(lo1) >= 2 and direct(hi1) == 1 and direct(lo0) >= 1 and direct(hi0) == 0)
+    # A pencil whose count above the small blocks' second reads exactly 2, where the search on all blocks must still run.
+    twice, _ = pencil_for({"group": "Z3", "dims": "2,1", "weight": "1/4,1,1"})
+    c2, d2 = twice.c_matrix(), twice.diagonal
+    bp2 = blocks_of(twice)
+    lo0, hi0, lo1, hi1, _ = top_two(bp2, twice.top(), 30)
+
+    def direct_twice(t):
+        return inertia([[t[1] * c2[i][j] - (t[0] * d2[i] if i == j else 0) for j in range(twice.orbits)] for i in range(twice.orbits)])[0]
+
+    check("certifying_count_of_two", direct_twice(lo1) >= 2 and direct_twice(hi1) == 1 and direct_twice(lo0) >= 1 and direct_twice(hi0) == 0)
 
 
 def section_wilson():
@@ -1017,7 +1040,7 @@ class Z2Conv:
         n = self.n
         if sorted(p) != list(range(n)) or any(self.a[p[i]] != self.a[i] for i in range(n)):
             return False
-        return all(self.z[p[0] ^ p[i]] == self.z[i] for i in range(n))
+        return all(self.z[p[i] ^ p[j]] == self.z[i ^ j] for i in range(n) for j in range(n))
 
     def orbit_starts(self):
         lift = [None] * self.n
@@ -1252,8 +1275,8 @@ def ladder_results(dims, numerator, denominator, ks):
     return out, low, high, free
 
 
-def section_engines():
-    for text in read_rows("YM4_02E_ENGINE_AGREE")[0]["cases"].split(";"):
+def section_engines(tag):
+    for text in read_rows(tag)[0]["cases"].split(";"):
         group, dims, weight = text.split(":")
         row = {"group": group, "dims": dims, "weight": weight}
         pencil, _ = pencil_for(row)
@@ -1355,6 +1378,8 @@ def section_local():
         if not SABOTAGE:
             check("local_epsilon_%s" % name, show(eps) == row["epsilon"])
             check("local_r_%s" % name, str(r) == row["r_ppm_ceil"])
+            c_read = frac(2 * eps[0] * sigma[1] + sigma[0] * eps[1], eps[1] * sigma[1])
+            check("local_c_below_1_%s" % name, show(c_read) == row["c"] and c_read[0] < c_read[1])
         if large_z2:
             q = read_frac(row["weight"][2:])
             conv = LadderZ2(dims, q[0], q[1]).conv
@@ -1494,6 +1519,7 @@ def section_first_run():
     with open(path, encoding="utf-8") as handle:
         rows = [line.rstrip("\n") for line in handle]
     printed = set(PRINTED)
+    check("first_run_rows_distinct", len(set(rows)) == len(rows) and len(printed) == len(PRINTED))
     missing = []
     corrected = 0
     for line in rows:
@@ -1594,7 +1620,8 @@ def main():
         stamp("product_limit_seen")
         section_wilson()
         stamp("wilson")
-        section_engines()
+        section_engines("YM4_02E_ENGINE_AGREE")
+        section_engines("YM4_02E_ENGINE_AGREE_MORE")
         stamp("engines")
         scale = section_scale()
         stamp("scale")

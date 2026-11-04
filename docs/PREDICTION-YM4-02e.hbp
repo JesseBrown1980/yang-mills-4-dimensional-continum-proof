@@ -143,3 +143,8 @@ YM4_02E_SABOTAGE|name=bad_block_measure|added_after_the_first_130_rows=1|must_fa
 YM4_02E_ATTEMPT|run=fourth_local|finished=1|failed_rows=runtime_within_1500_seconds_at_1863_seconds|the_other_checks_passed=1|rows_kept=280|json=0
 YM4_02E_ATTEMPT|run=fifth_local|finished=1|failed_rows=0|seconds=571|the_receipt=tests/K_STEP_LOCALITY_RECEIPT.txt|hosted_run_still_to_read=1|json=0
 YM4_02E_MISS|run=every_full_run|row=conjecture_ring_fixed_mu_C_bounded_mu=2|read=C_milli_1356_to_2038_at_L=2_to_8|registered=C_in_[1,18/10]|recorded_as_a_conjecture_not_met=1|json=0
+YM4_02E_ATTEMPT|run=hosted_push_41895366817|finished=1|failed_rows=0|seconds=403|beside_row=144|json=0
+YM4_02E_ATTEMPT|run=hosted_pull_request_41895559528|finished=1|failed_rows=0|seconds=597|beside_row=144|json=0
+YM4_02E_SOURCE|rows=YM4_02E_LOCAL|neighbours_and_r_ppm_ceil_by=the_same_plaquette_sum_and_the_same_bisection_as_the_test|read_by_separate_code=second_seat_23_of_23|control_ratio_from_YM4-02d=the_pencil_the_test_repeats|json=0
+YM4_02E_ENGINE_AGREE_MORE|added_after_the_first_130_rows=1|by=the_second_seat's_finding_that_rows_past_L=3_had_no_second_route|cases=Z2:4,1:q=1/2;Z2:5,1:q=4/5;Z2:3,2:q=4/5|statement=the_fast_Z2_engines_and_the_general_orbit_matrices_give_the_same_R_k_at_k=1,2,4_and_the_same_ratio|json=0
+YM4_02E_ATTEMPT|run=second_seat_proof_lane|failed=1|cause=its_reply_passed_the_128000_token_output_limit_after_7_tool_calls|what_it_checked=nothing|relaunched_in_narrower_lanes=1|json=0

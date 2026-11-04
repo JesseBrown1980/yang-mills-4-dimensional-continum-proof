@@ -1,6 +1,6 @@
 # GPT-6 on YM4-02e, as the operator relayed it
 
-Four messages of November 4, 2026, verbatim. The relay lost some inline mathematics, so a blank in a sentence or a table cell is where a formula was. GPT-6's review stands at **HOLD for final certification**, with Theorem 5's argument having survived it with no contradiction identified, and it asks for three things of the second run: every row of the first run reproduced apart from the documented correction, the block solver checked with unequal orbit sizes, and the whole test inside 1,500 seconds. What the repository did with each is in [the note](../../docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md) and [the prediction](../../docs/PREDICTION-YM4-02e.hbp).
+Six messages of November 4, 2026, verbatim, the last two appended below in the order they came. The relay lost some inline mathematics, so a blank in a sentence or a table cell is where a formula was. GPT-6's review stands at **HOLD for final certification**, with Theorem 5's argument having survived it with no contradiction identified, and it asks for three things of the second run: every row of the first run reproduced apart from the documented correction, the block solver checked with unequal orbit sizes, and the whole test inside 1,500 seconds. What the repository did with each is in [the note](../../docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md) and [the prediction](../../docs/PREDICTION-YM4-02e.hbp).
 
 ## The direction
 
@@ -191,3 +191,91 @@ The stronger claim remains:
 under , with the explicit sufficient condition for the stated three-dimensional lattices.
 
 Status: analytically supported, final certification HOLD. The second run, independent attack, and separate model-family review are the remaining gates. The interacting-lattice growth conjecture and continuum-spacing question remain OPEN.
+
+## The fourth review
+
+Worked for 57s
+
+The revised YM4-02e test plan addresses my three acceptance criteria. I would keep the theorem on HOLD until the final run and independent attack finish.
+
+I checked the GitHub branch `ym4-02e-kstep-and-locality`. As of this check, its latest commit is still `23cec81`, containing the frozen prediction and original note. The revised test code, stopped-run receipts, and updated proof have not yet been pushed, so I cannot independently verify the new run.
+
+There is one refinement I would make to the block-solver test.
+
+Comparing inertia at 14 thresholds does not, by itself, establish exact spectral equivalence. It can miss differences between thresholds. For the small matrices where direct elimination is affordable, require equality of the complete characteristic polynomial or exact eigenvalue multiplicities, including the unequal-orbit-size cases. For larger matrices, the threshold checks remain valuable consistency tests, but their scope should be explicit.
+
+The rest of the acceptance plan is sound:
+
+* Preserve the original 208 rows and both interrupted runs as permanent records.
+
+* Treat the Z3 interval-check correction separately from numerical disagreement.
+
+* Require the third run to finish within 1,500 seconds, then verify that the hosted run meets the same limit.
+
+* Include the periodic Green function with wrapped paths, taking before .
+
+* Keep the independent-copy theorem separate from the conjecture for interacting lattices.
+
+The locality proof remains promising, particularly its size-independent small- estimate. But a successful computational run will verify its registered finite examples—not replace the independent proof review.
+
+Current independent-seat verdict: YM4-02e — HOLD. No contradiction established; final numerical receipts and proof review still outstanding.
+
+## The fifth review, of `09ff0f2`
+
+Worked for 5m 16s
+
+### Independent review of YM4-02e at `09ff0f2`
+
+The receipt and test are now committed in [draft PR #26](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26?utm_source=chatgpt.com). I verified the actual files rather than relying only on the run summary.
+
+The receipt records:
+
+| Acceptance gate               | Recorded result                                                                   |
+| ----------------------------- | --------------------------------------------------------------------------------- |
+| First-run comparison          | 208 rows accounted for: 206 identical, 2 documented corrections, 0 unmatched      |
+| Exact block-solver comparison | 7 characteristic-polynomial checks and 4 exact known-spectrum multiplicity checks |
+| Larger block comparisons      | 10 cases checked at registered inertia thresholds                                 |
+| Local runtime                 | 571 seconds, within 1,500                                                         |
+| Mathematical test assertions  | 0 failures                                                                        |
+| Sabotage controls             | 7 named rejection tests configured in CI                                          |
+| Conjectures                   | 9/10 met, with the miss retained                                                  |
+
+The distinction between complete characteristic-polynomial comparisons on small matrices and threshold-only checks on larger matrices is correctly preserved.
+
+At the pinned commit, the hosted `k-step-locality` check was still running. The other completed checks had passed.
+
+I independently compared the first-run file against the new receipt as a multiset, rather than relying on the test's membership check. All 208 original rows are unique, all 286 new receipt rows are unique, and the comparison confirms exactly 206 unchanged + 2 documented corrections + 0 missing.
+
+I also independently recalculated both important SHA-256 values:
+
+* Final receipt: `a265e1883d20c7b031db5798a27b5dc919e72b40fa3ef3a95735fb588433dc86`
+
+* Frozen prediction, first 130 lines: `7931f9bf147e12cbb0ac346a240923136f6081036aa4fa730693ac6430f8cb77`
+
+Both match the registered hashes. The frozen prediction has not moved.
+
+### Mathematical verdict
+
+I found no contradiction between Theorem 5, the committed receipt, and the three acceptance gates.
+
+The proof now handles the key issues correctly: local conditional influences, periodic paths that wrap around time, the order followed by , and restriction from the full transfer operator to gauge-invariant states. The argument still relies on the established compactness and Perron-eigenfunction properties of YM4-02d.
+
+One minor test-hardening improvement remains: `section_first_run` uses set membership, which cannot detect duplicate rows. My independent comparison confirmed that this particular receipt has no duplicates or missing rows, so it does not affect the current result. A multiplicity-aware comparison would strengthen future runs.
+
+I filed the detailed independent-seat review directly on [PR #26](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26?utm_source=chatgpt.com#issuecomment-6639947611), including the exact hashes, proof assessment and outstanding gates.
+
+Final status for this review:
+
+* Local numerical verification: PASS
+
+* Frozen prediction integrity: PASS
+
+* Theorem 5: no contradiction identified
+
+* Hosted k-step-locality test: still running at last check
+
+* Second-seat adversarial review: OPEN
+
+* Formal YM4-02e certification: HOLD
+
+I recommend keeping PR #26 in draft until the hosted test and second-seat reports are complete.

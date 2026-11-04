@@ -1,6 +1,6 @@
 # The first run of YM4-02e's test: a failed run, kept
 
-**FAILED, on two rows registered before the run.** The rows in [`FIRST-RUN.hbp`](FIRST-RUN.hbp) are its output as it stood, 208 complete lines, with the cut 209th line dropped. Rust is outside this test: Python 3.13 on Windows, at the commit after `23cec81`, as it first ran.
+**FAILED, on two rows registered before the run.** The rows in [`FIRST-RUN.hbp`](FIRST-RUN.hbp) are its output as it stood, 208 complete lines, with the cut 209th line dropped. Rust is outside this test: Python 3.13 on Windows, on the test as it first ran, written at 17:48:51Z after `23cec81` and started at 17:49:08Z. That version stayed uncommitted: the first commit holding the test, `f818bc5`, already reads the interval as a containment. [The version as first written](test_k_step_locality_as_first_written.py), recovered from the session transcript, has the check that asked for the same floor and ceil.
 
 | Row | Registered | Read | Cause |
 |---|---|---|---|

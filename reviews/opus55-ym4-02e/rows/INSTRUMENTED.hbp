@@ -1,0 +1,329 @@
+BLOCKPENCIL|n=2|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=2|largest_block=1|json=0
+TOP_TWO|call=1|n=2|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=624999|lambda1_ppm_of_top=374999|json=0
+BLOCKPENCIL|n=3|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=3|largest_block=2|json=0
+TOP_TWO|call=2|n=3|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=666666|lambda1_ppm_of_top=166666|json=0
+BLOCKPENCIL|n=3|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=3|largest_block=3|json=0
+TOP_TWO|call=3|n=3|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=527777|lambda1_ppm_of_top=111111|json=0
+BLOCKPENCIL|n=5|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=5|largest_block=4|json=0
+TOP_TWO|call=4|n=5|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=320312|lambda1_ppm_of_top=117187|json=0
+BLOCKPENCIL|n=7|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=7|largest_block=4|json=0
+TOP_TWO|call=5|n=7|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=315104|lambda1_ppm_of_top=101562|json=0
+BLOCKPENCIL|n=8|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=3|small_blocks=2|small_dim=6|largest_block=4|json=0
+TOP_TWO|call=6|n=8|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=206242|lambda1_ppm_of_top=105468|json=0
+BLOCKPENCIL|n=27|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=18|largest_block=10|json=0
+TOP_TWO|call=7|n=27|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=102050|lambda1_ppm_of_top=39335|json=0
+BLOCKPENCIL|n=81|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=33|largest_block=41|json=0
+TOP_TWO|call=8|n=81|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=27999|lambda1_ppm_of_top=12006|json=0
+BLOCKPENCIL|n=11|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=11|largest_block=11|json=0
+TOP_TWO|call=9|n=11|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=189764|lambda1_ppm_of_top=53103|json=0
+BLOCKPENCIL|n=28|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=28|largest_block=16|json=0
+TOP_TWO|call=10|n=28|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=70837|lambda1_ppm_of_top=37536|json=0
+BLOCKPENCIL|n=76|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=76|largest_block=22|json=0
+TOP_TWO|call=11|n=76|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=46806|lambda1_ppm_of_top=20379|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=176|largest_block=64|json=0
+TOP_TWO|call=12|n=176|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=14244|lambda1_ppm_of_top=8301|json=0
+BLOCKPENCIL|n=243|inv_candidates=3|independent=3|cycle_candidates=2|non_involutions_kept=0|full_blocks=8|small_blocks=2|small_dim=81|largest_block=44|json=0
+TOP_TWO|call=13|n=243|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=7787|lambda1_ppm_of_top=568|json=0
+BLOCKPENCIL|n=2|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=2|largest_block=1|json=0
+TOP_TWO|call=14|n=2|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=899999|lambda1_ppm_of_top=99999|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=4|largest_block=1|json=0
+TOP_TWO|call=15|n=4|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=809999|lambda1_ppm_of_top=89999|json=0
+BLOCKPENCIL|n=8|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=3|small_blocks=2|small_dim=6|largest_block=4|json=0
+TOP_TWO|call=16|n=8|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=538325|lambda1_ppm_of_top=72899|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=8|largest_block=4|json=0
+TOP_TWO|call=17|n=16|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=388173|lambda1_ppm_of_top=53754|json=0
+BLOCKPENCIL|n=32|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=12|largest_block=12|json=0
+TOP_TWO|call=18|n=32|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=282655|lambda1_ppm_of_top=39243|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=16|largest_block=16|json=0
+TOP_TWO|call=19|n=64|bits=46|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=590964|lambda1_ppm_of_top=82074|json=0
+Z2CONV|n=128|perms_given=4|perms_kept=4|starts=16|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=3|json=0
+BLOCKPENCIL|n=128|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=28|largest_block=40|json=0
+TOP_TWO|call=20|n=128|bits=46|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=531940|lambda1_ppm_of_top=73880|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=2|non_involutions_kept=0|full_blocks=4|small_blocks=1|small_dim=14|largest_block=14|json=0
+TOP_TWO|call=21|n=32|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=282474|lambda1_ppm_of_top=3577|json=0
+Z2CONV|n=128|perms_given=4|perms_kept=4|starts=16|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=3|json=0
+BLOCKPENCIL|n=128|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=48|largest_block=40|json=0
+TOP_TWO|call=22|n=128|bits=46|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=531448|lambda1_ppm_of_top=6733|json=0
+BLOCKPENCIL|n=8|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=8|largest_block=1|json=0
+TOP_TWO|call=23|n=8|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=823974|lambda1_ppm_of_top=54931|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=3|cycle_candidates=1|non_involutions_kept=0|full_blocks=7|small_blocks=4|small_dim=20|largest_block=8|json=0
+TOP_TWO|call=24|n=32|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=529215|lambda1_ppm_of_top=39961|json=0
+Z2CONV|n=512|perms_given=5|perms_kept=5|starts=88|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=5|json=0
+BLOCKPENCIL|n=512|inv_candidates=5|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=512|largest_block=88|json=0
+TOP_TWO|call=25|n=512|bits=46|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=469514|lambda1_ppm_of_top=40856|json=0
+BLOCKPENCIL|n=3|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=3|largest_block=2|json=0
+TOP_TWO|call=26|n=3|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=925925|lambda1_ppm_of_top=37037|json=0
+BLOCKPENCIL|n=27|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=18|largest_block=10|json=0
+TOP_TWO|call=27|n=27|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=632199|lambda1_ppm_of_top=27357|json=0
+BLOCKPENCIL|n=81|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=33|largest_block=41|json=0
+TOP_TWO|call=28|n=81|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=500321|lambda1_ppm_of_top=21686|json=0
+BLOCKPENCIL|n=243|inv_candidates=3|independent=3|cycle_candidates=2|non_involutions_kept=0|full_blocks=8|small_blocks=2|small_dim=81|largest_block=44|json=0
+TOP_TWO|call=29|n=243|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=397115|lambda1_ppm_of_top=637|json=0
+BLOCKPENCIL|n=3|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=3|largest_block=3|json=0
+TOP_TWO|call=30|n=3|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=883333|lambda1_ppm_of_top=33333|json=0
+BLOCKPENCIL|n=11|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=11|largest_block=11|json=0
+TOP_TWO|call=31|n=11|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=702291|lambda1_ppm_of_top=28415|json=0
+BLOCKPENCIL|n=5|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=5|largest_block=4|json=0
+TOP_TWO|call=32|n=5|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=903688|lambda1_ppm_of_top=23186|json=0
+BLOCKPENCIL|n=28|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=28|largest_block=16|json=0
+TOP_TWO|call=33|n=28|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=759849|lambda1_ppm_of_top=20953|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=176|largest_block=64|json=0
+TOP_TWO|call=34|n=176|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=597852|lambda1_ppm_of_top=17618|json=0
+BLOCKPENCIL|n=7|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=7|largest_block=4|json=0
+TOP_TWO|call=35|n=7|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=903687|lambda1_ppm_of_top=23166|json=0
+BLOCKPENCIL|n=76|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=76|largest_block=22|json=0
+TOP_TWO|call=36|n=76|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=757257|lambda1_ppm_of_top=19914|json=0
+BLOCKPENCIL|n=16|inv_candidates=3|independent=3|cycle_candidates=1|non_involutions_kept=0|full_blocks=7|small_blocks=4|small_dim=10|largest_block=4|json=0
+TOP_TWO|call=37|n=16|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=538325|lambda1_ppm_of_top=72899|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=24|largest_block=16|json=0
+TOP_TWO|call=38|n=64|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=388173|lambda1_ppm_of_top=53754|json=0
+BLOCKPENCIL|n=64|inv_candidates=4|independent=4|cycle_candidates=1|non_involutions_kept=0|full_blocks=15|small_blocks=8|small_dim=36|largest_block=8|json=0
+TOP_TWO|call=39|n=64|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=529215|lambda1_ppm_of_top=39961|json=0
+BLOCKPENCIL|n=81|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=45|largest_block=25|json=0
+TOP_TWO|call=40|n=81|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=632199|lambda1_ppm_of_top=27357|json=0
+BLOCKPENCIL|n=36|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=36|largest_block=36|json=0
+TOP_TWO|call=41|n=36|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=702291|lambda1_ppm_of_top=28415|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=64|largest_block=16|json=0
+TOP_TWO|call=42|n=64|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=759849|lambda1_ppm_of_top=20953|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=4|largest_block=1|json=0
+TOP_TWO|call=43|n=4|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=390624|lambda1_ppm_of_top=234374|json=0
+BLOCKPENCIL|n=8|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=8|largest_block=1|json=0
+TOP_TWO|call=44|n=8|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=244140|lambda1_ppm_of_top=146484|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=2|non_involutions_kept=0|full_blocks=4|small_blocks=1|small_dim=14|largest_block=14|json=0
+TOP_TWO|call=45|n=32|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=32323|lambda1_ppm_of_top=4726|json=0
+BLOCKPENCIL|n=28|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=28|largest_block=16|json=0
+TOP_TWO|call=46|n=28|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=70837|lambda1_ppm_of_top=37536|json=0
+BLOCKPENCIL|n=76|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=76|largest_block=22|json=0
+TOP_TWO|call=47|n=76|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=46806|lambda1_ppm_of_top=20379|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=176|largest_block=64|json=0
+TOP_TWO|call=48|n=176|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=14244|lambda1_ppm_of_top=8301|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=102|largest_block=70|json=0
+TOP_TWO|call=49|n=176|bits=34|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=1908|lambda1_ppm_of_top=1668|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=50|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=651829|lambda1_ppm_of_top=333333|json=0
+BLOCKPENCIL|n=8|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=3|small_blocks=2|small_dim=6|largest_block=4|json=0
+TOP_TWO|call=51|n=8|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=206242|lambda1_ppm_of_top=105468|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=52|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=730417|lambda1_ppm_of_top=101148|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=8|largest_block=4|json=0
+TOP_TWO|call=53|n=16|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=388173|lambda1_ppm_of_top=53754|json=0
+Z2CONV|n=32|perms_given=4|perms_kept=4|starts=14|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=32|largest_block=14|json=0
+TOP_TWO|call=54|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=322866|lambda1_ppm_of_top=47209|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=2|non_involutions_kept=0|full_blocks=4|small_blocks=1|small_dim=14|largest_block=14|json=0
+TOP_TWO|call=55|n=32|bits=40|upper_given=0|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=32323|lambda1_ppm_of_top=4726|json=0
+Z2CONV|n=2|perms_given=1|perms_kept=1|starts=1|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=2|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=2|largest_block=1|json=0
+TOP_TWO|call=56|n=2|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=999999|lambda1_ppm_of_top=333333|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=57|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=651829|lambda1_ppm_of_top=333333|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=58|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=468484|lambda1_ppm_of_top=275848|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+TOP_TWO|call=59|n=16|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=347973|lambda1_ppm_of_top=217276|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+TOP_TWO|call=60|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=261787|lambda1_ppm_of_top=168189|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=8|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=14|largest_block=20|json=0
+TOP_TWO|call=61|n=64|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=198105|lambda1_ppm_of_top=129230|json=0
+Z2CONV|n=128|perms_given=2|perms_kept=2|starts=10|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=128|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=20|largest_block=64|json=0
+TOP_TWO|call=62|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=150367|lambda1_ppm_of_top=98940|json=0
+Z2CONV|n=256|perms_given=3|perms_kept=3|starts=20|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=256|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=36|largest_block=72|json=0
+TOP_TWO|call=63|n=256|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=114323|lambda1_ppm_of_top=75606|json=0
+Z2CONV|n=2|perms_given=1|perms_kept=1|starts=1|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=2|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=2|largest_block=1|json=0
+TOP_TWO|call=64|n=2|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=999999|lambda1_ppm_of_top=111111|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=65|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=820493|lambda1_ppm_of_top=111111|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=66|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=730417|lambda1_ppm_of_top=101148|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+TOP_TWO|call=67|n=16|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=656625|lambda1_ppm_of_top=91165|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+TOP_TWO|call=68|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=590964|lambda1_ppm_of_top=82074|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=8|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=14|largest_block=20|json=0
+TOP_TWO|call=69|n=64|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=531940|lambda1_ppm_of_top=73880|json=0
+Z2CONV|n=128|perms_given=2|perms_kept=2|starts=10|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=128|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=20|largest_block=64|json=0
+TOP_TWO|call=70|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=478820|lambda1_ppm_of_top=66502|json=0
+Z2CONV|n=256|perms_given=3|perms_kept=3|starts=20|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=256|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=36|largest_block=72|json=0
+TOP_TWO|call=71|n=256|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=431005|lambda1_ppm_of_top=59861|json=0
+Z2CONV|n=2|perms_given=1|perms_kept=1|starts=1|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=2|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=2|largest_block=1|json=0
+TOP_TWO|call=72|n=2|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=999999|lambda1_ppm_of_top=666666|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=73|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=726645|lambda1_ppm_of_top=666666|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=74|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=587518|lambda1_ppm_of_top=575910|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+TOP_TWO|call=75|n=16|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=486812|lambda1_ppm_of_top=484430|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+TOP_TWO|call=76|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=405646|lambda1_ppm_of_top=405135|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=8|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=14|largest_block=20|json=0
+TOP_TWO|call=77|n=64|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=338471|lambda1_ppm_of_top=338357|json=0
+Z2CONV|n=128|perms_given=2|perms_kept=2|starts=10|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=128|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=20|largest_block=64|json=0
+TOP_TWO|call=78|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=282516|lambda1_ppm_of_top=282490|json=0
+Z2CONV|n=256|perms_given=3|perms_kept=3|starts=20|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=256|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=36|largest_block=72|json=0
+TOP_TWO|call=79|n=256|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=235832|lambda1_ppm_of_top=235826|json=0
+Z2CONV|n=32|perms_given=4|perms_kept=4|starts=14|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=32|largest_block=14|json=0
+TOP_TWO|call=80|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=322866|lambda1_ppm_of_top=47209|json=0
+Z2CONV|n=128|perms_given=4|perms_kept=4|starts=16|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=3|json=0
+BLOCKPENCIL|n=128|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=48|largest_block=40|json=0
+TOP_TWO|call=81|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=179882|lambda1_ppm_of_top=26964|json=0
+Z2CONV|n=512|perms_given=5|perms_kept=5|starts=80|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=512|inv_candidates=4|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=140|largest_block=152|json=0
+TOP_TWO|call=82|n=512|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=101332|lambda1_ppm_of_top=15232|json=0
+Z2CONV|n=32|perms_given=4|perms_kept=4|starts=14|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=32|largest_block=14|json=0
+TOP_TWO|call=83|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=656205|lambda1_ppm_of_top=8311|json=0
+Z2CONV|n=128|perms_given=4|perms_kept=4|starts=16|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=3|json=0
+BLOCKPENCIL|n=128|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=48|largest_block=40|json=0
+TOP_TWO|call=84|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=531448|lambda1_ppm_of_top=6733|json=0
+Z2CONV|n=512|perms_given=5|perms_kept=5|starts=80|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=512|inv_candidates=4|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=140|largest_block=152|json=0
+TOP_TWO|call=85|n=512|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=430473|lambda1_ppm_of_top=5453|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=86|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=657534|lambda1_ppm_of_top=315789|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=87|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=462529|lambda1_ppm_of_top=286400|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+TOP_TWO|call=88|n=16|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=333910|lambda1_ppm_of_top=234270|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+TOP_TWO|call=89|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=243639|lambda1_ppm_of_top=184027|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=8|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=14|largest_block=20|json=0
+TOP_TWO|call=90|n=64|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=178805|lambda1_ppm_of_top=141616|json=0
+Z2CONV|n=128|perms_given=2|perms_kept=2|starts=10|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=128|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=20|largest_block=64|json=0
+TOP_TWO|call=91|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=131617|lambda1_ppm_of_top=107809|json=0
+Z2CONV|n=256|perms_given=3|perms_kept=3|starts=20|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=256|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=36|largest_block=72|json=0
+TOP_TWO|call=92|n=256|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=97028|lambda1_ppm_of_top=81568|json=0
+Z2CONV|n=4|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=4|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=3|small_blocks=3|small_dim=4|largest_block=2|json=0
+TOP_TWO|call=93|n=4|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=703277|lambda1_ppm_of_top=230012|json=0
+Z2CONV|n=8|perms_given=2|perms_kept=2|starts=2|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=8|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=4|largest_block=4|json=0
+TOP_TWO|call=94|n=8|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=498743|lambda1_ppm_of_top=238671|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+TOP_TWO|call=95|n=16|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=359145|lambda1_ppm_of_top=207642|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+TOP_TWO|call=96|n=32|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=261260|lambda1_ppm_of_top=168519|json=0
+Z2CONV|n=64|perms_given=3|perms_kept=3|starts=8|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=64|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=14|largest_block=20|json=0
+TOP_TWO|call=97|n=64|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=191013|lambda1_ppm_of_top=132468|json=0
+Z2CONV|n=128|perms_given=2|perms_kept=2|starts=10|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=128|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=20|largest_block=64|json=0
+TOP_TWO|call=98|n=128|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=139752|lambda1_ppm_of_top=102462|json=0
+Z2CONV|n=256|perms_given=3|perms_kept=3|starts=20|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=256|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=36|largest_block=72|json=0
+TOP_TWO|call=99|n=256|bits=46|upper_given=1|above_calls=1|first_above=1|lo1_is_zero=0|same_cell=0|free=1|lambda0_ppm_of_top=102848|lambda1_ppm_of_top=78225|json=0
+BLOCKPENCIL|n=11|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=11|largest_block=11|json=0
+BLOCKPENCIL|n=27|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=18|largest_block=10|json=0
+BLOCKPENCIL|n=28|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=28|largest_block=16|json=0
+BLOCKPENCIL|n=76|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=76|largest_block=22|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=102|largest_block=70|json=0
+BLOCKPENCIL|n=176|inv_candidates=3|independent=3|cycle_candidates=0|non_involutions_kept=0|full_blocks=8|small_blocks=8|small_dim=176|largest_block=64|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=2|non_involutions_kept=0|full_blocks=4|small_blocks=1|small_dim=14|largest_block=14|json=0
+Z2CONV|n=16|perms_given=3|perms_kept=3|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=2|json=0
+BLOCKPENCIL|n=16|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=6|largest_block=6|json=0
+Z2CONV|n=32|perms_given=2|perms_kept=2|starts=4|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=1|json=0
+BLOCKPENCIL|n=32|inv_candidates=1|independent=1|cycle_candidates=1|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=8|largest_block=16|json=0
+Z2CONV|n=32|perms_given=4|perms_kept=4|starts=14|all_kept_affine=1|all_kept_full_symmetry=1|kept_involutions=4|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=32|largest_block=14|json=0
+BLOCKPENCIL|n=3|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=3|largest_block=3|json=0
+BLOCKPENCIL|n=5|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=5|largest_block=4|json=0
+BLOCKPENCIL|n=5|inv_candidates=2|independent=0|cycle_candidates=1|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=5|largest_block=5|json=0
+BLOCKPENCIL|n=7|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=7|largest_block=4|json=0
+BLOCKPENCIL|n=3|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=3|largest_block=3|json=0
+BLOCKPENCIL|n=11|inv_candidates=0|independent=0|cycle_candidates=0|non_involutions_kept=0|full_blocks=1|small_blocks=1|small_dim=11|largest_block=11|json=0
+BLOCKPENCIL|n=5|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=5|largest_block=4|json=0
+BLOCKPENCIL|n=28|inv_candidates=2|independent=2|cycle_candidates=0|non_involutions_kept=0|full_blocks=4|small_blocks=4|small_dim=28|largest_block=16|json=0
+BLOCKPENCIL|n=7|inv_candidates=1|independent=1|cycle_candidates=0|non_involutions_kept=0|full_blocks=2|small_blocks=2|small_dim=7|largest_block=4|json=0
+BLOCKPENCIL|n=27|inv_candidates=2|independent=2|cycle_candidates=1|non_involutions_kept=0|full_blocks=4|small_blocks=2|small_dim=18|largest_block=10|json=0
+BLOCKPENCIL|n=32|inv_candidates=4|independent=2|cycle_candidates=2|non_involutions_kept=0|full_blocks=4|small_blocks=1|small_dim=14|largest_block=14|json=0
+COMMUTES_TOTAL|accepted=310|rejected=0|json=0
+LINE_NOT_RUN|line=0|text=
+LINE_NOT_RUN|line=24|text=if not argument.startswith("sabotage=") or argument.split("=", 1)[1] not in SABOTAGE_NAMES:
+LINE_NOT_RUN|line=25|text=print("usage = test_k_step_locality.py [sabotage=NAME]")
+LINE_NOT_RUN|line=26|text=sys.exit(2)
+LINE_NOT_RUN|line=27|text=SABOTAGE = argument.split("=", 1)[1]
+LINE_NOT_RUN|line=47|text=FAILS.append(name)
+LINE_NOT_RUN|line=48|text=say("FAILED|check=%s|json=0" % name)
+LINE_NOT_RUN|line=72|text=n, d = -n, -d
+LINE_NOT_RUN|line=99|text=return 0, 0, -1
+LINE_NOT_RUN|line=107|text=i, j = pair
+LINE_NOT_RUN|line=108|text=for r in range(k, n):
+LINE_NOT_RUN|line=109|text=m[i][r] += m[j][r]
+LINE_NOT_RUN|line=110|text=for r in range(k, n):
+LINE_NOT_RUN|line=111|text=m[r][i] += m[r][j]
+LINE_NOT_RUN|line=112|text=pivot = i
+LINE_NOT_RUN|line=308|text=return ipow(self.denominator, self.n_plaquettes)
+LINE_NOT_RUN|line=397|text=return False
+LINE_NOT_RUN|line=491|text=continue
+LINE_NOT_RUN|line=493|text=continue
+LINE_NOT_RUN|line=534|text=value = 1
+LINE_NOT_RUN|line=535|text=while 2 * value * pair[0] <= pair[1]:
+LINE_NOT_RUN|line=536|text=value *= 2
+LINE_NOT_RUN|line=537|text=return 1, value
+LINE_NOT_RUN|line=556|text=return None, None
+LINE_NOT_RUN|line=570|text=return None, None
+LINE_NOT_RUN|line=574|text=return number, x
+LINE_NOT_RUN|line=591|text=return None, None
+LINE_NOT_RUN|line=595|text=best = i
+LINE_NOT_RUN|line=617|text=return bisect(count, k, lo, hi, bits, top)
+LINE_NOT_RUN|line=636|text=hi -= step
+LINE_NOT_RUN|line=637|text=step *= 2
+LINE_NOT_RUN|line=658|text=ceiling = hi0
+LINE_NOT_RUN|line=659|text=if upper is not None:
+LINE_NOT_RUN|line=660|text=bound = times(upper, grid(hi0))
+LINE_NOT_RUN|line=661|text=ceiling = min(hi0, -((-bound[0] * den) // (bound[1] * top[0])) + 1)
+LINE_NOT_RUN|line=662|text=lo1, hi1 = seeded(bp.above, 1, estimate_top_two(bp.full)[1], hi1, ceiling, bits, top)
+LINE_NOT_RUN|line=663|text=if bp.above(grid(hi1)) > 1:
+LINE_NOT_RUN|line=664|text=lo0, hi0 = bisect(bp.above, 0, 0, ipow(2, bits), bits, top)
+LINE_NOT_RUN|line=665|text=lo1, hi1 = bisect(bp.above, 1, 0, hi0, bits, top)
+LINE_NOT_RUN|line=754|text=return False
+LINE_NOT_RUN|line=934|text=continue
+LINE_NOT_RUN|line=936|text=continue
+LINE_NOT_RUN|line=944|text=return
+LINE_NOT_RUN|line=1019|text=return False
+LINE_NOT_RUN|line=1138|text=high = rho
+LINE_NOT_RUN|line=1373|text=return bounds
+LINE_NOT_RUN|line=1394|text=return 0
+LINE_NOT_RUN|line=1396|text=m[k], m[pivot] = m[pivot], m[k]
+LINE_NOT_RUN|line=1397|text=sign = -sign
+LINE_NOT_RUN|line=1431|text=same = False
+LINE_NOT_RUN|line=1507|text=missing.append(line)
+LINE_NOT_RUN|line=1509|text=say("YM4_02E_FIRST_RUN_DIFFERS|%s" % line)
+LINE_NOT_RUN|line=1530|text=bad.append("%d:%d" % (k, L))
+LINE_NOT_RUN|line=1577|text=section_charpoly()
+COVERAGE|possible_lines=1341|run=1287|not_run=54|exit=0|json=0

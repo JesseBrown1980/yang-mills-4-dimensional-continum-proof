@@ -1,0 +1,3 @@
+INDEP_R|case=Q8_2x1_r=1/2|k=1|orbits=176|R_digits=6|root_floor_ppm=997171|receipt_root_ppm=997171..997172|agree=1|R=498436/1|at=(0, 34, 0, 34)|json=0
+INDEP_R|case=Q8_2x1_r=1/2|k=2|orbits=176|R_digits=21|root_floor_ppm=973462|receipt_root_ppm=973462..973463|agree=1|R=710898246527704974649/514030540350029824|at=(0, 34, 0, 34)|json=0
+INDEP_R|case=Q8_2x1_r=1/2|k=4|orbits=176|R_digits=53|root_floor_ppm=936960|receipt_root_ppm=936960..936961|agree=1|R=32626280851796476969777728670685589841793613348151681/547129480947413038029580381779933415481170233760000|at=(2, 36, 2, 36)|json=0
