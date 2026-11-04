@@ -2,7 +2,7 @@
 """YM4-02c: reflection positivity and the transfer operator of the finite 4D SU(2) Wilson lattice.
 
 Exact checks against the rows of docs/PREDICTION-YM4-02c.hbp. The theorems of docs/LEMMA-0004-REFLECTION-TRANSFER.md hold
-for a compact group with a real class weight, so Q8 and 2T with counting measure are instances of them in their own right.
+for a compact group with a real class weight with w(g^-1) = w(g), so Q8 and 2T with counting measure are instances of them in their own right.
 Q8 stands in for Haar on SU(2) only where a row says so, within its exact degree of 3 per link.
 
 usage = test_reflection_transfer_4d.py [sabotage=NAME]
@@ -174,7 +174,10 @@ def section_psd_controls():
     ok = (psd_exact([[1, 1], [1, 1]])[:2] == (True, 1) and psd_exact([[0, 1], [1, 0]])[0] is False
           and psd_exact([[1, 2], [2, 1]])[0] is False and psd_exact([[0, 0], [0, 3]])[:2] == (True, 1)
           and all_principal_minors_nonnegative([[1, 1], [1, 1]]) and not all_principal_minors_nonnegative([[1, 2], [2, 1]]))
-    print("PSD_TEST_CONTROLS|rank_one=green|zero_diagonal_indefinite=red|negative_minor=red|ok=%d|json=0" % check("exact PSD test reads its controls", ok))
+    # Both matrices have a zero diagonal, so each enters the congruence branch of inertia_exact.
+    pair, triangle = inertia_exact([[0, 1], [1, 0]]), inertia_exact([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+    ok = ok and pair == (1, 1, 2) and triangle == (1, 2, 3)
+    print("PSD_TEST_CONTROLS|rank_one=green|zero_diagonal_indefinite=red|negative_minor=red|inertia_of_[[0,1],[1,0]]=%d,%d|inertia_of_the_triangle=%d,%d|ok=%d|json=0" % (pair[0], pair[1], triangle[0], triangle[1], check("exact PSD test reads its controls", ok)))
 
 
 # ---- Exact SU(2) elements as five ints (a, b, c, d, den), meaning (a, b, c, d) / den, reduced with den > 0.
@@ -1348,6 +1351,61 @@ def section_signed_site():
         closed_size, 1 if psd else 0, rank, reason, check("signed weight on the open half stays PSD", psd and rank == 9)))
 
 
+def section_w_plus_control():
+    """The clause of Theorem 2, at which W_plus(C, .) is not almost everywhere zero. On (Z/1)x(Z/1)x(Z/2) with Q8 the fixed slices carry the values 1, -1 on +1, -1, and two time-like weights run side by side: 1 everywhere, and 1 on +1, -1 with 0 elsewhere. f(C) < 0 on the same C for both. With the second weight W_plus vanishes at each of those C, and every Gram block stays PSD. Point functions of V(0) at each C, from the plaquette words, with the mirror from Reflection.link. N(delta_C) over 8^6."""
+    lat = Lattice(1, 1, 2)
+    R = Reflection(lat, "site")
+    upper, shared, lower = partition(lat, "site")
+    words_upper, words_shared, words_lower = [lat.word(p) for p in upper], [lat.word(p) for p in shared], [lat.word(p) for p in lower]
+    time_zero = ((0, 0, 0), 2)
+    time_one, sign = R.link(time_zero)
+    mirror_ok = time_one == ((0, 0, 1), 2) and sign == -1
+    if time_one != ((0, 0, 1), 2):
+        print("W_PLUS_CONTROL|lattice=(Z/1)x(Z/1)x(Z/2)|group=Q8|mirror_of_V(0)_lies_on_the_slice_t=1=0|ok=%d|json=0" % check("W_plus control mirror", False))
+        return
+    inv, cls = Q8.inv, Q8.cls
+    plus_class, minus_class = cls[Q8.index[(2, 0, 0, 0)]], cls[Q8.index[(-2, 0, 0, 0)]]
+    fixed_weight = [0] * Q8.nclasses
+    fixed_weight[plus_class], fixed_weight[minus_class] = 1, -1
+    support = [0] * Q8.nclasses
+    support[plus_class], support[minus_class] = 1, 1
+    elements = range(8)
+    for time_weight, want in (([1] * Q8.nclasses, (1920, 1920, 0, 1920, -64)), (support, (1920, 0, 3840, 0, 0))):
+        total, negative_f, negative_live, dead, negative_blocks, asymmetric, mirror_equal, lowest = 0, 0, 0, 0, 0, 0, 0, None
+        for a0, b0, a1, b1 in itertools.product(elements, repeat=4):
+            value = {((0, 0, 0), 0): a0, ((0, 0, 0), 1): b0, ((0, 0, 1), 0): a1, ((0, 0, 1), 1): b1}
+            f = 1
+            for word in words_shared:
+                f *= fixed_weight[word_class(Q8, word, value)]
+            ups, downs = [], []
+            for v in elements:
+                # F(U) reads V(0) = v, and F(theta U) reads V(1)^-1 = v, so V(1) = v^-1 in the lower plaquettes.
+                value[time_zero] = v
+                value[time_one] = inv[v] if sign < 0 else v
+                up, down = 1, 1
+                for word in words_upper:
+                    up *= time_weight[word_class(Q8, word, value)]
+                for word in words_lower:
+                    down *= time_weight[word_class(Q8, word, value)]
+                ups.append(up)
+                downs.append(down)
+            live = any(ups)
+            total += 1
+            mirror_equal += 1 if ups == downs else 0
+            negative_f += 1 if f < 0 else 0
+            negative_live += 1 if f < 0 and live else 0
+            dead += 0 if live else 1
+            positive, negative, rank = inertia_exact([[f * d * u for u in ups] for d in downs])
+            asymmetric += 1 if rank < 0 else 0
+            negative_blocks += 1 if negative else 0
+            at_c = f * sum(ups) * sum(downs)
+            lowest = at_c if lowest is None or at_c < lowest else lowest
+        got = (negative_f, negative_live, dead, negative_blocks, lowest)
+        label = ",".join(map(str, time_weight))
+        print("W_PLUS_CONTROL|lattice=(Z/1)x(Z/1)x(Z/2)|group=Q8|fixed_slice_weight_plus1=1|fixed_slice_weight_minus1=-1|time_like_weight_on_classes=%s|family=all_8_point_functions_of_V(0)_at_each_C|C=%d|mirror_equal_at_each_C=%d|C_with_f<0=%d|of_those_W_plus_not_identically_zero=%d|C_with_W_plus_identically_zero=%d|Gram_blocks_with_a_negative_eigenvalue=%d|blocks_not_symmetric=%d|lowest_N(delta_C)_over_8^6=%d|ok=%d|json=0" % (
+            label, total, mirror_equal, negative_f, negative_live, dead, negative_blocks, asymmetric, lowest, check("W_plus control time-like weight %s" % label, mirror_ok and total == 4096 and mirror_equal == 4096 and asymmetric == 0 and got == want)))
+
+
 # ---- Part F. The transfer operator on a spatial slice.
 class Slice:
     def __init__(self, *dims):
@@ -1586,11 +1644,12 @@ def side_one_strip(group, weight):
 
 
 def section_negative_coefficient(hist):
-    """What a negative coefficient does depends on the lattice, on T and on the weight. At T = 2 the kernel is the pointwise square of BP, and the square can be PSD when BP is not."""
+    """What a negative coefficient does depends on the lattice, on T and on the weight. At T = 2 the kernel is the pointwise square of BP, and the square can be PSD when BP is not. The third weight has c_2dim < 0 and takes both signs, and it is PSD at T = 2, so the red statement there asks for w >= 0, as in section_negative_coefficient_scan."""
     pairs = list(itertools.product(range(8), repeat=2))
-    expect = (((8, -1, 3, 3, 2), (5, 0), (1130, 1), (435, 1), (263604, 1), (5, 0), (17, 8)),
-              ((8, -1, 2, 2, 1), (4, 1), (527, 4), (-57343, 64), (16785473, 64), (4, 1), (17, 8)))
-    for c, want_three, want_e, want_s, want_z, want_one, want_four in expect:
+    expect = (((8, -1, 3, 3, 2), True, (5, 0), (1130, 1), (435, 1), (263604, 1), (5, 0), (17, 8)),
+              ((8, -1, 2, 2, 1), True, (4, 1), (527, 4), (-57343, 64), (16785473, 64), (4, 1), (17, 8)),
+              ((1, -2, -2, -2, -1), False, (5, 0), (23, 4), (7169, 64), (12353, 64), (5, 0), (17, 8)))
+    for c, want_positive, want_three, want_e, want_s, want_z, want_one, want_four in expect:
         weight = q8_weight(c)
         matrix = gram_link_matrix(hist, weight)
         three = inertia_exact(matrix)
@@ -1601,14 +1660,63 @@ def section_negative_coefficient(hist):
         strip = side_one_strip(Q8, weight)
         one = inertia_exact([[strip[a][b] * strip[b][a] for a in range(8)] for b in range(8)])
         four = inertia_exact([[strip[a][b] * strip[b][b2] * strip[b2][a2] * strip[a2][a] for (a, b) in pairs] for (a2, b2) in pairs])
-        ok = (three[:2] == want_three and entry_e == want_e == rule_e and entry_s == want_s == rule_s and z == want_z and one[:2] == want_one and four[:2] == want_four and min(weight) > 0)
+        ok = (three[:2] == want_three and entry_e == want_e == rule_e and entry_s == want_s == rule_s and z == want_z and one[:2] == want_one and four[:2] == want_four and (min(weight) > 0) == want_positive)
         print("NEGATIVE_COEFFICIENT|group=Q8|c=%s|w_on_classes=%s|pointwise_positive=%d|(Z/3)x(Z/2)_five_characters_positive=%d|negative=%d|G_EE=%s|rule_2*t_E*(t_0+t_1+t_2+t_3)=%s|G_s1s1=%s|rule_2*t_0*t_1+2*t_2*t_3+t_E^2=%s|Z=%s|(Z/1)x(Z/2)_all_8_positive=%d|negative=%d|(Z/1)x(Z/4)_all_64_positive=%d|negative=%d|ok=%d|json=0" % (
             ",".join(map(str, c)), ",".join(map(str, weight)), 1 if min(weight) > 0 else 0, three[0], three[1], text(entry_e), text(rule_e), text(entry_s), text(rule_s), text(z), one[0], one[1], four[0], four[1], check("negative coefficient c=%s" % (c,), ok)))
 
 
+def section_negative_coefficient_scan():
+    """The convolution line of Remark 6.2. With w2(x) the sum of w over the coset x of {+1, -1} in Q8, one has 8 c_a = sum_x w2(x) chi_a(x) for the four characters of the quotient, and Fourier inversion gives sum_a (8 c_a)^L = 4 (w2 * ... * w2)(1), with L factors. For w >= 0 with c_2dim < 0 the right side is at least 4 w2(1)^L > 0, so G_EE = 2 t_E (t_0 + t_1 + t_2 + t_3) is negative at every odd L."""
+    coset = [next(i for i in range(4) if e[i]) for e in Q8.elements]
+    quotient = [[0] * 4 for _ in range(4)]
+    for g in range(8):
+        for h in range(8):
+            quotient[coset[g]][coset[h]] = coset[Q8.mult[g][h]]
+    well_defined = all(quotient[coset[g]][coset[h]] == coset[Q8.mult[g][h]] for g in range(8) for h in range(8))
+    sizes = [len(members) for members in Q8.classes]
+    weights, cases, identity_failures, bound_failures, negative = 0, 0, 0, 0, 0
+    for w in itertools.product(range(7), repeat=5):
+        c8 = [sum(sizes[k] * w[k] * Q8_CHI[rho][k] for k in range(5)) for rho in range(5)]
+        if c8[E_INDEX] >= 0:
+            continue
+        weights += 1
+        w2 = [sum(w[Q8.cls[g]] for g in range(8) if coset[g] == x) for x in range(4)]
+        convolution = w2
+        for length in range(1, 6):
+            if length > 1:
+                step = [0] * 4
+                for y in range(4):
+                    for z in range(4):
+                        step[quotient[y][z]] += convolution[y] * w2[z]
+                convolution = step
+            if length % 2:
+                total = sum(power(c8[a], length) for a in range(4))
+                entry = pmul(pmul((2, 1), red(power(c8[E_INDEX], length), power(16, length))), red(total, power(8, length)))
+                cases += 1
+                identity_failures += 0 if total == 4 * convolution[0] else 1
+                bound_failures += 0 if convolution[0] >= power(w2[0], length) > 0 else 1
+                negative += 1 if entry[0] < 0 else 0
+    ok = well_defined and weights == 7203 and cases == 21609 and identity_failures == 0 and bound_failures == 0 and negative == cases
+    print("NEGATIVE_COEFFICIENT_SCAN|group=Q8|weights=w_on_classes_in_0..6_with_c_2dim<0|weights_counted=%d|L=1,3,5|cases=%d|identity_sum_a_(8*c_a)^L=4*(w2^*L)(1)_failures=%d|(w2^*L)(1)>=w2(1)^L>0_failures=%d|G_EE_negative=%d|quotient_by_{+1,-1}_well_defined=%d|ok=%d|json=0" % (
+        weights, cases, identity_failures, bound_failures, negative, 1 if well_defined else 0, check("negative coefficient scan", ok)))
+
+
+def section_minus_w(hist):
+    """Theorem 4 through -w at T = 2. N_p is even when T is even, so the product of -w over all plaquettes is the product of w, and c_rho c_0 >= 0 with c_0 < 0 gives a PSD form through the weight -w."""
+    c, twin = (-8, -3, -3, -3, -1), (8, 3, 3, 3, 1)
+    weight = q8_weight(c)
+    plaquettes = len(Lattice(3, 2).plaquettes)
+    matrix, matrix_twin = gram_link_matrix(hist, weight), gram_link_matrix(hist, q8_weight(twin))
+    positive, negative, rank = inertia_exact(matrix)
+    entry = red(matrix[E_INDEX][E_INDEX], 8 ** 7)
+    ok = matrix == matrix_twin and (positive, negative) == (5, 0) and rank == 5 and entry == (593, 4) and plaquettes % 2 == 0
+    print("MINUS_W|c=%s|w_on_classes=%s|twin_c=%s|lattice=(Z/3)x(Z/2)|N_p=%d|family=five_characters_of_W|Gram_equal_to_the_twin=%d|positive=%d|negative=%d|G_EE=%s|ok=%d|json=0" % (
+        ",".join(map(str, c)), ",".join(map(str, weight)), ",".join(map(str, twin)), plaquettes, 1 if matrix == matrix_twin else 0, positive, negative, text(entry), check("the form of -w at T=2", ok)))
+
+
 def section_t4_witness():
-    """A witness at T = 4 for a pointwise positive weight with a negative coefficient. F = chi_rho(U(0)) / w(p_0) lies on the open half, and the half weights cancel, so the numerator is the sum of chi_rho(U(3)) chi_rho(U(0)) w(p_1) w(p_3), with V(0) and V(2) free. The rule is (c_rho/d_rho)^L c_0^(2 N_links - L), and L = N_links = 1 here."""
-    for c, rho in (((8, -1, 3, 3, 2), 1), ((8, 3, 3, 3, -1), E_INDEX)):
+    """A witness at T = 4 for a nowhere-zero weight with c_rho c_0 < 0. F = chi_rho(U(0)) / w(p_0) lies on the open half, bounded since w is nowhere zero on a finite group, and the half weights cancel, so the numerator is the sum of chi_rho(U(3)) chi_rho(U(0)) w(p_1) w(p_3), with V(0) and V(2) free. The rule is (c_rho/d_rho)^L c_0^(2 N_links - L), and L = N_links = 1 here. The weight may take both signs, and c_0 need not be the order of the group."""
+    for c, rho in (((8, -1, 3, 3, 2), 1), ((8, 3, 3, 3, -1), E_INDEX), ((1, -2, -2, -2, -1), 1), ((8, -3, 3, 3, 1), 1), ((-8, 3, -3, -3, -1), 1)):
         weight = q8_weight(c)
         strip = side_one_strip(Q8, weight)
         character = [Q8_CHI[rho][Q8.cls[g]] for g in range(8)]
@@ -1618,7 +1726,7 @@ def section_t4_witness():
         numerator = red(top * middle * 8 * 8, 8 ** 8)
         rule = pmul(red(c[rho], Q8_DIM[rho]), (c[0], 1))
         print("T4_RED_WITNESS|lattice=(Z/1)x(Z/4)|group=Q8|c=%s|w_on_classes=%s|pointwise_positive=%d|F=chi_%s(U(0))/w(p_0)|numerator=%s|rule_(c_rho/d_rho)^L*c_0^(2*N_links-L)=%s|ok=%d|json=0" % (
-            ",".join(map(str, c)), ",".join(map(str, weight)), 1 if min(weight) > 0 else 0, "2dim" if rho == E_INDEX else "s1", text(numerator), text(rule), check("witness at T=4 c=%s" % (c,), numerator == rule and numerator[0] < 0 and min(weight) > 0)))
+            ",".join(map(str, c)), ",".join(map(str, weight)), 1 if min(weight) > 0 else 0, "2dim" if rho == E_INDEX else "s1", text(numerator), text(rule), check("witness at T=4 c=%s" % (c,), numerator == rule and numerator[0] < 0 and all(weight))))
 
 
 def section_t4_open_half():
@@ -1629,16 +1737,23 @@ def section_t4_open_half():
     mult, inv, cls = Q8.mult, Q8.inv, Q8.cls
     elements = range(8)
     triples = list(itertools.product(elements, repeat=3))
-    for c, want in (((8, 3, 3, 3, 1), (25, 0)), ((8, 3, 3, 3, -1), (17, 8))):
+    forms = {}
+    for c, want in (((8, 3, 3, 3, 1), (25, 0)), ((8, 3, 3, 3, -1), (17, 8)), ((-8, -3, -3, -3, -1), (25, 0)), ((-8, -3, -3, -3, 1), (17, 8)), ((1, -2, -2, -2, -1), (17, 8))):
         weight = q8_weight(c)
         strip = side_one_strip(Q8, weight)
 
         def plaquette(lower, upper, v):
             return weight[cls[mult[mult[mult[lower][v]][inv[upper]]][inv[v]]]]
         matrix = [[plaquette(a, b, v) * strip[b][b2] * plaquette(b2, a2, inv[v2]) * strip[a2][a] for (a, b, v) in triples] for (a2, b2, v2) in triples]
+        forms[c] = matrix
         positive, negative, rank = inertia_exact(matrix)
         print("EVERY_FUNCTION_T4_OPEN_HALF|lattice=(Z/1)x(Z/4)|group=Q8|c=%s|family=all_512_point_functions_of_(U(0),U(1),V(0))|positive=%d|negative=%d|rank=%d|ok=%d|json=0" % (
             ",".join(map(str, c)), positive, negative, rank, check("every function of the open half at T=4 c=%s" % (c,), mirror_ok and (positive, negative) == want and rank == 25)))
+    # Theorem 4 through -w at T = 4. N_p is even when T is even, so the two weights give one form.
+    c, twin = (-8, -3, -3, -3, -1), (8, 3, 3, 3, 1)
+    equal = forms[c] == forms[twin]
+    print("MINUS_W|c=%s|w_on_classes=%s|twin_c=%s|lattice=(Z/1)x(Z/4)|N_p=%d|family=all_512_point_functions_of_(U(0),U(1),V(0))|Gram_equal_to_the_twin=%d|ok=%d|json=0" % (
+        ",".join(map(str, c)), ",".join(map(str, q8_weight(c))), ",".join(map(str, twin)), len(lat.plaquettes), 1 if equal else 0, check("the form of -w at T=4", equal and len(lat.plaquettes) % 2 == 0)))
 
 
 def sign_is_character(group, weight):
@@ -1723,7 +1838,7 @@ def section_site_sharp():
         ok = weighed == 8 ** 8 and mismatches == 0 and len(faces) == 4096 and (negative == 0) == every_block_psd
         if w in second_seat:
             ok = ok and (negative, lowest, z) == second_seat[w]
-        print("SITE_SHARP|lattice=(Z/2)x(Z/1)x(Z/2)|group=Q8|w_on_classes=%s|sign_is_a_homomorphism=%d|slice_configurations=%d|fixed_plaquette_evaluations=%d|with_w<0=%d|slices_with_negative_product=%d|C_with_negative_prefactor=%d|plaquette_mirror_mismatches=%d|C_with_negative_N(delta_C)=%d|of=%d|lowest_N(delta_C)_over_8^12=%d|Z_over_8^12=%d|every_Gram_block_PSD=%d|ok=%d|json=0" % (
+        print("SITE_SHARP|lattice=(Z/2)x(Z/1)x(Z/2)|group=Q8|w_on_classes=%s|sign_is_a_homomorphism=%d|slice_configurations=%d|fixed_plaquette_evaluations=%d|with_w<0=%d|slices_with_negative_product=%d|C_with_negative_prefactor=%d|plaquette_mirror_mismatches=%d|C_with_negative_N(delta_C)=%d|of=%d|lowest_N(delta_C)_over_8^12=%d|Z_over_8^12=%d|every_Gram_block_PSD_from_the_formula=%d|ok=%d|json=0" % (
             ",".join(map(str, w)), 1 if sign_is_character(Q8, weight) else 0, len(faces), 2 * len(faces), evaluations, negative_slices, prefactor_negative, mismatches, negative, weighed, lowest, z, 1 if every_block_psd else 0, check("sharp form of the site theorem w=%s" % (w,), ok)))
         # One Gram block from the words. A C whose slices hold a negative plaquette weight, with a negative prefactor when the weight has one.
         with_negative = [config for config, f in zip(S.configs, faces) if any(weight[k] < 0 for k in f)]
@@ -1736,6 +1851,28 @@ def section_site_sharp():
         psd, rank, reason = psd_exact(gram)
         print("SITE_SHARP_BLOCK|lattice=(Z/2)x(Z/1)x(Z/2)|group=Q8|w_on_classes=%s|family=all_64_point_functions_of_(V(0,0,0),V(1,0,0))_at_one_C|w_on_its_fixed_plaquettes=%s|f(C)=%d|PSD=%d|rank=%d|reason=%s|ok=%d|json=0" % (
             ",".join(map(str, w)), ",".join(map(str, fixed_values)), prefactor, 1 if psd else 0, rank, reason, check("site block w=%s" % (w,), psd == (prefactor > 0) and (rank == 1 or not psd) and min(fixed_values) < 0)))
+
+
+def section_slice_pairs():
+    """The two plaquettes of a slice of (Z/2)x(Z/1) with Q8, over all 4096 configurations: how often the second is the inverse of the first, how often they lie in one class up to the center, and how often the pair is +1, -1 in either order."""
+    S = Slice(2, 1)
+    mult, inv, cls = Q8.mult, Q8.inv, Q8.cls
+    plus, minus = Q8.index[(2, 0, 0, 0)], Q8.index[(-2, 0, 0, 0)]
+    inverse_pairs, same_class, sign_pairs = 0, 0, 0
+    for config in S.configs:
+        values = []
+        for face in S.faces:
+            h = Q8.one
+            for i, s in face:
+                h = mult[h][config[i] if s > 0 else inv[config[i]]]
+            values.append(h)
+        first, second = values
+        inverse_pairs += 1 if second == inv[first] else 0
+        same_class += 1 if cls[second] in (cls[first], cls[mult[minus][first]]) else 0
+        sign_pairs += 1 if {first, second} == {plus, minus} else 0
+    ok = (len(S.configs), inverse_pairs, same_class, sign_pairs) == (4096, 2176, 4096, 384)
+    print("SLICE_PAIRS|slice=(Z/2)x(Z/1)|group=Q8|configurations=%d|second_plaquette_is_the_inverse_of_the_first=%d|same_class_up_to_the_center=%d|the_pair_+1,-1_in_either_order=%d|ok=%d|json=0" % (
+        len(S.configs), inverse_pairs, same_class, sign_pairs, check("plaquette pairs of a slice", ok)))
 
 
 def section_site_character():
@@ -1888,7 +2025,7 @@ def section_two_t_controls():
                 broken += 1
                 lowest = form_minimum(f, h)
                 worst = lowest if worst is None or lowest < worst else worst
-    print("W_INVERSE_CONTROL|lattice=(Z/1)x(Z/2)|group=2T|w_on_classes=%s|pointwise_positive=1|inverse_symmetric=%d|fixed_link_blocks=%d|blocks_not_symmetric=%d|most_negative_form_value=%d|ok=%d|json=0" % (
+    print("W_INVERSE_CONTROL|lattice=(Z/1)x(Z/2)|group=2T|w_on_classes=%s|pointwise_positive=1|inverse_symmetric=%d|fixed_link_blocks=%d|blocks_not_symmetric=%d|lowest_form_value_on_two_coordinate_test_vectors=%d|ok=%d|json=0" % (
         ",".join(map(str, asymmetric)), 1 if inverse_symmetric else 0, blocks, broken, worst, check("w(g^-1) control on 2T", not inverse_symmetric and blocks == 576 and broken == 384 and worst == -144)))
     for c, want, want_weight in (((7, 2, 2, 4, 3, 1, 1), (7, 0), (33, 13, 7, 7, 7, 3, 3)), ((7, 2, 2, 4, -1, 1, 1), (6, 1), (25, 21, 7, 3, 3, 7, 7))):
         parts = [(sum(c[rho] * T2_CHI[rho][k][0] for rho in range(7)), sum(c[rho] * T2_CHI[rho][k][1] for rho in range(7))) for k in range(T2.nclasses)]
@@ -1971,13 +2108,17 @@ def main():
         section_torus(hist)
         section_gram(lat, hist)
         section_negative_coefficient(hist)
+        section_negative_coefficient_scan()
+        section_minus_w(hist)
         section_gram_t4()
         section_every_function()
         section_every_function_t4_and_site()
         section_t4_witness()
         section_t4_open_half()
         section_signed_site()
+        section_w_plus_control()
         section_site_sharp()
+        section_slice_pairs()
         section_site_character()
         section_single_w()
         section_gram_moved()
