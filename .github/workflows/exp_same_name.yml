@@ -1,0 +1,21 @@
+name: Throwaway jobs with the required names
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  no-float-base:
+    name: no-float-base
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 0
+  no-float:
+    name: no-float
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 0
+  no-float-list-unchanged:
+    name: no-float-list-unchanged
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 0
