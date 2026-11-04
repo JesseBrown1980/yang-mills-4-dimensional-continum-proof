@@ -101,8 +101,8 @@ jobs:
             p=${p#path=}; d=${d#sha256_as_delivered=}; e=${e#cr_on=}
             case "$e" in
               none) got=$(sha256sum "$p" | cut -d' ' -f1) ;;
-              every_line) got=$(sed 's/$//' "$p" | sha256sum | cut -d' ' -f1) ;;
-              last_line) got=$(sed '$ s/$//' "$p" | sha256sum | cut -d' ' -f1) ;;
+              every_line) got=$(sed 's/$/\r/' "$p" | sha256sum | cut -d' ' -f1) ;;
+              last_line) got=$(sed '$ s/$/\r/' "$p" | sha256sum | cut -d' ' -f1) ;;
               *) echo "unknown cr_on: $e"; exit 1 ;;
             esac
             test "$got" = "$d"
