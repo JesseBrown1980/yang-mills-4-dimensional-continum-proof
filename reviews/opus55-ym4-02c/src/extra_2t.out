@@ -1,0 +1,6 @@
+2T_CLASSES|sizes=[1, 1, 6, 4, 4, 4, 4]|inverse_class=[0, 1, 2, 4, 3, 6, 5]|traces=[2, -2, 0, 1, 1, -1, -1]|json=0
+2T_WEIGHT|w=[9, 7, 5, 8, 2, 3, 6]|inverse_symmetric=0|json=0
+2T_ASYMMETRIC_WEIGHT|lattice=(Z/1)x(Z/2)|fixed_links=576|blocks_not_symmetric=384|most_negative_form_value=-144|json=0
+2T_LINK_T2|c=7,2,2,4,3,1,1|w=[33, 13, 7, 7, 7, 3, 3]|pointwise_positive=1|pos=7|neg=0|zero_tail_ok=1|json=0
+2T_LINK_T2|c=7,-2,-2,4,3,1,1|w=[25, 5, -1, 11, 11, 7, 7]|pointwise_positive=0|pos=4|neg=3|zero_tail_ok=1|json=0
+2T_LINK_T2|c=7,2,2,4,-1,1,1|w=[25, 21, 7, 3, 3, 7, 7]|pointwise_positive=1|pos=6|neg=1|zero_tail_ok=1|json=0

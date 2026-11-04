@@ -1,0 +1,13 @@
+HIST_READ|keys=23506|total=68719476736|is_8^12=1|json=0
+LINK_GRAM|c=8,3,3,3,1|w=19,15,5,5,5|Z=16917185/64|G_FF=593/4|agrees_with_gluing=1|symmetric=1|charpoly_inertia_pos=5|neg=0|zero=0|ldl_pos=5|ldl_neg=0|rank_mod_p=5|json=0
+LINK_GRAM_MATRIX|c=8,3,3,3,1|rows=16917185/64,1/64,1/64,1/64,0;1/64,1862785/64,1/64,1/64,0;1/64,1/64,1862785/64,1/64,0;1/64,1/64,1/64,1862785/64,0;0,0,0,0,593/4|json=0
+LINK_GRAM|c=8,3,3,3,-1|w=15,19,5,5,5|Z=16917185/64|G_FF=-593/4|agrees_with_gluing=1|symmetric=1|charpoly_inertia_pos=4|neg=1|zero=0|ldl_pos=4|ldl_neg=1|rank_mod_p=5|json=0
+LINK_GRAM_MATRIX|c=8,3,3,3,-1|rows=16917185/64,1/64,1/64,1/64,0;1/64,1862785/64,1/64,1/64,0;1/64,1/64,1862785/64,1/64,0;1/64,1/64,1/64,1862785/64,0;0,0,0,0,-593/4|json=0
+SITE_GRAM_125|weight=c=8,3,3,3,1|symmetric=1|ldl_pos=5|ldl_neg=0|zero_tail_ok=1|rank_mod_p=5|json=0
+SITE_GRAM_W0W1P|weight=c=8,3,3,3,1|symmetric=1|ldl_pos=25|ldl_neg=0|zero_tail_ok=1|json=0
+SITE_GRAM_125|weight=c=8,3,3,3,-1|symmetric=1|ldl_pos=5|ldl_neg=0|zero_tail_ok=1|rank_mod_p=5|json=0
+SITE_GRAM_W0W1P|weight=c=8,3,3,3,-1|symmetric=1|ldl_pos=25|ldl_neg=0|zero_tail_ok=1|json=0
+SITE_GRAM_125|weight=values=3,-2,1,-1,2|symmetric=1|ldl_pos=5|ldl_neg=0|zero_tail_ok=1|rank_mod_p=5|json=0
+SITE_GRAM_W0W1P|weight=values=3,-2,1,-1,2|symmetric=1|ldl_pos=25|ldl_neg=0|zero_tail_ok=1|json=0
+SITE_GRAM_125|weight=values=-1,-1,2,-3,1|symmetric=1|ldl_pos=5|ldl_neg=0|zero_tail_ok=1|rank_mod_p=5|json=0
+SITE_GRAM_W0W1P|weight=values=-1,-1,2,-3,1|symmetric=1|ldl_pos=25|ldl_neg=0|zero_tail_ok=1|json=0

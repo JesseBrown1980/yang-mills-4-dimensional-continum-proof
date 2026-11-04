@@ -9,6 +9,7 @@ on:
       - 'tests/REFLECTION_TRANSFER_RECEIPT.txt'
       - 'docs/LEMMA-0004-REFLECTION-TRANSFER.md'
       - 'docs/PREDICTION-YM4-02c.hbp'
+      - 'reviews/opus55-ym4-02c/**'
       - '.github/workflows/reflection-transfer.yml'
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - 'tests/REFLECTION_TRANSFER_RECEIPT.txt'
       - 'docs/LEMMA-0004-REFLECTION-TRANSFER.md'
       - 'docs/PREDICTION-YM4-02c.hbp'
+      - 'reviews/opus55-ym4-02c/**'
       - '.github/workflows/reflection-transfer.yml'
 
 permissions:
@@ -32,6 +34,11 @@ jobs:
           set -euo pipefail
           got=$(head -n 26 docs/PREDICTION-YM4-02c.hbp | sha256sum | cut -d' ' -f1)
           test "$got" = 2448d8e6824b4f5197ee4d30aeb3612a7d5a8c3282e3737ddf5aeb5b5e6422d3
+      - name: The rows through the second prediction stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 93 docs/PREDICTION-YM4-02c.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 08db7d8135ba1ff945c79aefaafdc6661fa47c541561431de0e2ed73dcbe8210
       - name: Every row against the recorded receipt
         run: |
           set -euo pipefail
@@ -39,20 +46,44 @@ jobs:
           cmp /tmp/reflection.out tests/REFLECTION_TRANSFER_RECEIPT.txt
           grep -q '^REFLECTION_TRANSFER_DONE|failed=0|json=0$' /tmp/reflection.out
           if grep -q '^FAILED' /tmp/reflection.out; then echo "a check failed"; exit 1; fi
-      - name: Each sabotage exits 1 on a named check, with no crash
+      - name: Each sabotage exits 1 on the check that names it, with no crash
         run: |
           set -euo pipefail
-          for s in no_inverse_on_time_links wrong_plane wrong_multiplicity negative_weight_called_positive signed_site_weight_called_positive bad_projector; do
+          while read -r s named; do
             rc=0
             python3 -I -X utf8 tests/test_reflection_transfer_4d.py "sabotage=$s" > "/tmp/sab-$s.out" 2>&1 || rc=$?
             test "$rc" = 1
-            grep -q '^FAILED|check=' "/tmp/sab-$s.out"
+            grep -q "^FAILED|check=$named" "/tmp/sab-$s.out"
             if grep -q 'Traceback' "/tmp/sab-$s.out"; then echo "sabotage=$s crashed"; exit 1; fi
             echo "sabotage=$s exit=$rc $(grep -c '^FAILED' "/tmp/sab-$s.out") failed checks"
-          done
+          done <<'NAMES'
+          no_inverse_on_time_links reflection_
+          wrong_plane reflection_
+          wrong_multiplicity l_n_coefficients
+          negative_weight_called_positive GRAM_LINK
+          signed_site_weight_called_positive positive_site_weight_control
+          bad_projector Tr(A_B_P)
+          no_inverse_in_gram gauge-moved_site_Gram
+          wrong_plane_in_gram gauge-moved_site_Gram
+          dropped_inverse_third_letter plaquette_orientation
+          dropped_inverse_fourth_letter plaquette_orientation
+          every_function_one_plane every_function_on_L=
+          t4_half_weights_dropped every_function_at_T=4
+          NAMES
       - name: An unknown sabotage name is refused, rather than passing as red
         run: |
           set -euo pipefail
           rc=0
           python3 -I -X utf8 tests/test_reflection_transfer_4d.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
           test "$rc" = 2
+      - name: The second seat's files are the ones filed, and each delivered hash comes back
+        working-directory: reviews/opus55-ym4-02c
+        run: |
+          set -euo pipefail
+          sha256sum -c --quiet SHA256SUMS
+          grep '^FILED|' FILED.hbp | while IFS='|' read -r _ p _ _ _ d c _; do
+            p=${p#path=}; d=${d#sha256_as_delivered=}; c=${c#cr_removed=}
+            if [ "$c" != 0 ]; then got=$(sed 's/$/\r/' "$p" | sha256sum | cut -d' ' -f1); else got=$(sha256sum "$p" | cut -d' ' -f1); fi
+            test "$got" = "$d"
+          done
+          echo "delivered hashes all reproduced"
