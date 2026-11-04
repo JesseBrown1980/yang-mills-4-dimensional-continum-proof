@@ -1,0 +1,26 @@
+name: Exact 4D SU2 finite-lattice lemma
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-lemma:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Exact quaternion gauge covariance and negative controls, against the receipt
+        run: |
+          python3 -I tests/test_exact_su2_4d.py > /tmp/exact.out
+          cat /tmp/exact.out
+          cmp /tmp/exact.out tests/EXACT_SU2_4D_RECEIPT.txt
+      - name: With assertions off it refuses to print a result
+        run: |
+          rc=0
+          python3 -O -I tests/test_exact_su2_4d.py > /tmp/exact-O.out 2>&1 || rc=$?
+          test "$rc" = 1
+          if grep -q 'gauge_covariance=PASS' /tmp/exact-O.out; then exit 1; fi
