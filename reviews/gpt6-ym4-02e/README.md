@@ -1,0 +1,193 @@
+# GPT-6 on YM4-02e, as the operator relayed it
+
+Four messages of November 4, 2026, verbatim. The relay lost some inline mathematics, so a blank in a sentence or a table cell is where a formula was. GPT-6's review stands at **HOLD for final certification**, with Theorem 5's argument having survived it with no contradiction identified, and it asks for three things of the second run: every row of the first run reproduced apart from the documented correction, the block solver checked with unequal orbit sizes, and the whole test inside 1,500 seconds. What the repository did with each is in [the note](../../docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md) and [the prediction](../../docs/PREDICTION-YM4-02e.hbp).
+
+## The direction
+
+Worked for 1m 23s
+
+Yes. Start the next mathematical stage: YM4-02e, a weight-structure-dependent spectral-gap bound.
+
+I checked the merged [4D PR #22](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/22?utm_source=chatgpt.com) and its proof. The existing result establishes, for the finite SU(2) Wilson model,
+
+\\frac{\\lambda_1}{\\lambda_0}\\leq\\tanh(\\beta N_\\ell).
+
+The second proof provides a useful route through a normalized positive kernel and total-variation contraction.
+
+The next improvement should use the actual Wilson plaquette weights and transfer dynamics, not only the minimum and maximum of the link weights.
+
+For a fixed physical volume, we should specifically investigate a bound that remains informative as the lattice resolution increases. We do not need to make physical volume infinite to pursue that.
+
+### The first new theorem to test
+
+Let be the integral kernel of the -step transfer operator , and let be its exact Hilbert projective diameter.
+
+The existing contraction argument gives
+
+\\boxed{
+\\frac{|\\lambda_1|}{\\lambda_0}
+\\leq
+\\left\[\\tanh\\left(\\frac{\\Delta_k}{4}\\right)\\right\]^{1/k}
+}
+
+The key observation is that at two steps,
+
+K_2(U,V)=
+\\sqrt{A(U)A(V)}
+\\int B(U,W)A(W)B(W,V)\\,dW.
+
+The spatial plaquette weight now appears inside the integral. This lets the next calculation use information that the one-step range bound discards.
+
+I would direct FABLE5 to proceed in this order:
+
+* Freeze predictions first. Compare exact projective diameters for and , using the actual Wilson weights. Track the resulting eigenvalue-ratio bounds as the number of links grows.
+
+* Complete the three outstanding controls. Add plaquette-ratio checks on Z3, S3, Q8 and 2T; a genuine negative-eigenvalue example for the general-weight theorem; and Z3 on the 2×2 lattice.
+
+* Measure scaling. Compare the resulting bounds against the exact spectral ratios on increasing finite lattices. Use integer/rational certificates wherever possible.
+
+* Attempt a fixed-physical-volume estimate. Determine whether repeated transfer steps can produce a useful bound as lattice spacing decreases. Keep this OPEN until a uniform inequality is proved.
+
+The important distinction is that a tighter finite-lattice estimate is achievable without immediately proving a spacing-uniform result. The existing experiments already show that the one-step bound can be extremely loose.
+
+My decision: pursue the two-step kernel first, with a prediction-first exact test, then extend to four and eight steps. Preserve every failure and require another model family to review the general-weight proof and Step 3.
+
+That is the strongest next mathematical direction I can justify from the merged evidence.
+
+## The first review
+
+Worked for 3m 29s
+
+### YM4-02e independent review
+
+I checked the repository branch `ym4-02e-kstep-and-locality`. The prediction and mathematical note are committed at `23cec81`, but the new test and its run receipts are not yet on that branch. I can review the proofs now; I cannot mark the numerical predictions PASS until their test output is available.
+
+Two conclusions already stand out:
+
+* The k-step direction is mathematically sound under the stated positive-kernel and spectral assumptions. The relevant quantity is the projective diameter of the actual -step transfer kernel.
+
+* Theorem 5 is the more important candidate improvement. Its proposed bound removes explicit dependence on the number of spatial links at sufficiently small . That would address the weakness of the previous bound within the strong-coupling regime.
+
+### Exact checks I completed
+
+I recalculated part of the frozen prediction using rational arithmetic, independently of the repository's test engine.
+
+| Model       |     |      |        |             |
+| ----------- | --- | ---- | ------ | ----------- |
+| Z2,         | 3/5 | 9/25 | 81/625 | 6561/390625 |
+| Z3, weights | 1/3 | 1/11 | 1/171  | 1/43691     |
+
+All eight values match the prediction file exactly. I also reproduced its two-copy and three-copy Z2 formulas. These are independent checks of the closed forms, not a substitute for the full Wilson lattice tests.
+
+The proposed k-step composition rule is consistent with the established Birkhoff–Hopf contraction theorem. Springer Nature Link
+
+### Theorem 5: preliminary finding
+
+The most important local count checks out. On a three-dimensional periodic lattice with sides at least three, each spatial link participates in four spatial plaquettes, each involving three other links. Together with two temporal neighbors, the proposed Dobrushin row-sum bound is
+
+c\\leq 12\\epsilon+2\\epsilon=14\\epsilon,
+\\qquad \\epsilon=\\tanh\\beta.
+
+The condition therefore has a coherent geometric basis. The use of Dobrushin comparison to obtain decay of correlations also has established mathematical precedent. Princeton University
+
+My remaining proof gate is to verify the complete conditional-measure comparison and its passage to the transfer-operator spectrum, including periodic temporal boundaries and the gauge-invariant subspace. The full-space argument should be established before restricting to gauge-invariant states.
+
+One scope correction matters: the growth factor is proved for independent tensor copies. Its growth for general interacting Wilson lattices is not established by that example alone.
+
+Independent-seat status: exact closed-form predictions PASS; k-step theorem supported within its stated hypotheses; locality theorem HOLD pending the complete proof check and registered numerical controls. The fixed-physical-volume spacing limit remains OPEN.
+
+I would keep the prediction commit `23cec81` fixed, preserve every failed control, and require the full test receipts before changing YM4-02e's formal status.
+
+## The second review
+
+Worked for 2m 18s
+
+The correction about is accepted. Growth with lattice size is proved for independent tensor copies; for interacting Wilson lattices, it remains a conjecture. The note should keep those statements separate.
+
+I examined Theorem 5's full-space argument and its restriction to gauge-invariant states. The central reasoning is consistent with the Dobrushin comparison framework. Springer Nature Link +1
+
+### Independent mathematical checks
+
+For a conditional distribution affected by weight factors, the proposed influence estimate is
+
+C_{ij}\\leq \\tanh\\!\\left(s\\,\\operatorname{artanh}\\epsilon\\right)\\leq s\\epsilon.
+
+This supports the stated row-sum condition . For three spatial dimensions with sides at least three, the plaquette count gives , hence the sufficient condition .
+
+I also checked two of the frozen locality-bound constants independently:
+
+| Case     | Exact locality bound | Registered ceiling |
+| -------- | -------------------- | ------------------ |
+| Z2, 2×1, |                      | 208713 ppm         |
+| Z3, 2×2, |                      | 91674 ppm          |
+
+Both ceilings agree.
+
+The spectral argument has a coherent path: the cyclic Gibbs correlation of tends to ; the Dobrushin comparison estimate bounds its magnitude by a lattice-dependent constant times . Taking at each fixed finite lattice eliminates that prefactor and yields the claimed uniform eigenvalue-ratio bound.
+
+The gauge-invariant step is also valid provided the transfer operator commutes with the gauge projection and its unique positive leading eigenfunction is gauge invariant. Then the nonleading eigenvalues of the restricted operator are among those of the full operator.
+
+### What remains on HOLD
+
+The pending independent proof review should still verify the conditional-law comparison across periodic time boundaries, the exact plaquette multiplicities for degenerate small lattices, and the passage from the finite-time Green function to its infinite-time limit.
+
+The Z3 3×1 observation, 428817..428818, is contained in the registered interval 428816..428818. Its exact-match test failure should remain recorded, followed by a versioned interval-check correction. Likewise, a breach of the frozen 1,500-second runtime limit remains an engineering FAIL even if the mathematical inequalities hold.
+
+My current verdict: Theorem 5's analytical argument has survived this review without an identified contradiction, and its two independently recalculated locality constants agree. I would retain HOLD for final certification until the complete test receipts, the three adversarial controls, and the separate model-family review are available. The fixed-physical-volume spacing limit remains OPEN.
+
+## The third review
+
+YM4-02e should remain on HOLD, but the revised proof is moving in the right direction. Preserving the first 208 rows and registering the 36-minute run as a runtime failure is the correct approach.
+
+I have one important refinement to your three proof clarifications.
+
+### Periodic time: the boundary contribution is not zero
+
+Translation invariance means the conditional influence bounds are identical at every time slice. It does not mean the periodic boundary contributes nothing at finite temporal circumference .
+
+Your proposed wrapped-path calculation resolves this rigorously. With
+
+D=\\sqrt{(1-\\sigma)^2-4\\epsilon^2},\\qquad
+r=\\frac{1-\\sigma-D}{2\\epsilon},
+
+the Green function on the periodic temporal ring is
+
+\\boxed{
+G_n(d)=\\frac{r^d+r^{n-d}}{D(1-r^n)}
+},\\qquad 0\\le d<n.
+
+Since , we have . Consequently, for fixed temporal separation ,
+
+\\lim_{n\\to\\infty}G_n(d)=\\frac{r^d}{D}.
+
+That establishes precisely why the additional paths wrapping around the temporal boundary disappear in the infinite-time limit.
+
+The proof should therefore say “periodic contributions are explicitly included and vanish in the prescribed limit,” rather than “the boundary adds nothing.”
+
+### The second run's acceptance criteria
+
+I would require the second run to establish three things before promoting its numerical results:
+
+* Every one of the first 208 overlapping rows reproduces the original mathematical values, apart from the documented interval-check correction.
+
+* The optimized symmetry-block solver preserves the exact matrix multiplicities and spectral comparisons, including unequal orbit sizes.
+
+* The entire test finishes within the original 1,500-second limit, without changing the frozen predictions.
+
+Keep the original Z3 exact-match failure and the runtime failure as separate recorded outcomes. A successful second run validates the corrected implementation; it does not retroactively turn the first run into a PASS.
+
+### My current mathematical verdict
+
+The local influence estimate, small-lattice multiplicities, and order of limits now have credible proof routes. The restriction from the full transfer operator to its gauge-invariant subspace is straightforward once commutation and the Perron eigenfunction properties are established.
+
+The stronger claim remains:
+
+\\boxed{
+\\frac{|\\lambda_1|}{\\lambda_0}
+\\le
+\\frac{1-\\sigma-\\sqrt{(1-\\sigma)^2-4\\epsilon^2}}{2\\epsilon}
+}
+
+under , with the explicit sufficient condition for the stated three-dimensional lattices.
+
+Status: analytically supported, final certification HOLD. The second run, independent attack, and separate model-family review are the remaining gates. The interacting-lattice growth conjecture and continuum-spacing question remain OPEN.
