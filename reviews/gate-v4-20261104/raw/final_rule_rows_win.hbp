@@ -1,0 +1,87 @@
+NAMED|rows=158|v3_already_flagged=3|v3_missed=155|json=0
+RULE_ROWS|holds=[array_cast]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[ast_parse]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[bare_spec]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[brace_anywhere]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[c_include]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[c_names]|rows=5|v3_missed=5|json=0
+RULE_ROWS|holds=[c_types]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[class_call]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[computed_percent]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[dunder_strings]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[exec_attrs]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[exec_imports]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[format_attr_strings]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[format_calls]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[format_receiver]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[getattr_strict]|rows=3|v3_missed=2|json=0
+RULE_ROWS|holds=[go_names]|rows=5|v3_missed=5|json=0
+RULE_ROWS|holds=[html_view]|rows=6|v3_missed=6|json=0
+RULE_ROWS|holds=[import_allow]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[js_names]|rows=6|v3_missed=6|json=0
+RULE_ROWS|holds=[js_ops]|rows=4|v3_missed=4|json=0
+RULE_ROWS|holds=[locals_setattr]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[match_attrs]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[module_flow]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[module_store]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[more_attrs]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[operator_names]|rows=2|v3_missed=1|json=0
+RULE_ROWS|holds=[percent_parser]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[pow_attr]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[pow_none]|rows=3|v3_missed=2|json=0
+RULE_ROWS|holds=[pow_value]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[prepare_def]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[recursion_guard]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[reexport]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[reflection_attrs]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[rs_arch]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[rs_cnames]|rows=2|v3_missed=2|json=0
+RULE_ROWS|holds=[rs_doctest]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[rs_include]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[star_import]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[struct_alias]|rows=3|v3_missed=3|json=0
+RULE_ROWS|holds=[sys_modules]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=[underscore_imports]|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=c float literal|rows=10|v3_missed=10|json=0
+RULE_ROWS|holds=c float word|rows=6|v3_missed=6|json=0
+RULE_ROWS|holds=go float literal|rows=1|v3_missed=1|json=0
+RULE_ROWS|holds=javascript division|rows=9|v3_missed=9|json=0
+RULE_ROWS|holds=javascript float literal|rows=9|v3_missed=9|json=0
+RULE_ROWS|holds=power with an unproven exponent|rows=17|v3_missed=17|json=0
+RULE_ROWS|holds=rust float literal|rows=5|v3_missed=5|json=0
+RULE_ROWS|holds=true division|rows=3|v3_missed=3|json=0
+CLEAN|rows=91|v3_flagged=28|json=0
+CLEAN_V3_FLAGGED|x.html|'<small>HTTP/1.1 Rust 1.81</small>'|json=0
+CLEAN_V3_FLAGGED|x.html|'<!-- 0.5 -->'|json=0
+CLEAN_V3_FLAGGED|x.html|'<style>p{font-size:1.5rem;opacity:.5}</style><script>document.title = '|json=0
+CLEAN_V3_FLAGGED|x.html|'<svg width=100 height=100><path d=M0.5,1.5L2.5,3.5 /></svg>'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = bytes.fromhex("ff")'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = bytearray.fromhex("ff")'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = isinstance(y, float)'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = isinstance(y, (float, complex))'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = type(y) is complex'|json=0
+CLEAN_V3_FLAGGED|x.py|'import time\nx = time.strftime("%F", time.gmtime(0))'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = d.strftime("%Y%m%d%f")'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = f"{d:%F}"'|json=0
+CLEAN_V3_FLAGGED|x.py|'root = Path("a")\nx = root / name'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = Path("a").parent / name'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = root / name / "c"'|json=0
+CLEAN_V3_FLAGGED|x.py|'import struct\nx = struct.unpack_from("<" + "Ii" * c, b)'|json=0
+CLEAN_V3_FLAGGED|x.py|'import struct\nFMT = "<I"\nx = struct.pack(FMT, 1)'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = f"{n:>{w}d}"'|json=0
+CLEAN_V3_FLAGGED|x.py|'def f(k):\n    return k\nx = [2 ** k for k in range(3)]'|json=0
+CLEAN_V3_FLAGGED|x.py|'for k in range(n - 1, -1, -1):\n    x = 2 ** k'|json=0
+CLEAN_V3_FLAGGED|x.py|'for k in range(9, 2, -1):\n    x = 2 ** k'|json=0
+CLEAN_V3_FLAGGED|x.py|'k = 8\nk >>= 1\nx = 2 ** k'|json=0
+CLEAN_V3_FLAGGED|x.py|'import time\nx = time.timezone'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = {"kind": "float"}'|json=0
+CLEAN_V3_FLAGGED|x.py|'x = ["complex", "truediv", "fromhex"]'|json=0
+CLEAN_V3_FLAGGED|x.js|'let x = 7n / 2n;'|json=0
+CLEAN_V3_FLAGGED|x.js|'let x = "aXb".replace(/x/gi, "");'|json=0
+CLEAN_V3_FLAGGED|x.ts|'let x = id<bigint>(7n / 2n);'|json=0
+FLOATS|rows=124|v3_missed=5|json=0
+FLOATS_V3_MISSED|x.html|"<p>don't</p>\n<script>let a = 0.5;</script>"|json=0
+FLOATS_V3_MISSED|x.html|"<p>see http://x don't</p><script>let a = 0.5;</script>"|json=0
+FLOATS_V3_MISSED|x.jsx|"const a = <p>don't</p>;\nlet b = 0.5;"|json=0
+FLOATS_V3_MISSED|x.py|'from random import Random\nx = Random(1).choices(y)'|json=0
+FLOATS_V3_MISSED|x.py|'x = rng.binomialvariate(3)'|json=0

@@ -1,0 +1,76 @@
+INT|lane=linux|family=intcode|name=bytes_fromhex|produced=bytes|value=b'\xff\x00'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=bytearray_fromhex|produced=bytearray|value=bytearray(b'\xff\x00')|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=strftime_iso_date|produced=str|value='1970-01-01'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=strftime_day_of_month|produced=str|value=' 1'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=strftime_iso_year|produced=str|value='1970-W01'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=strftime_microsecond_field|produced=str|value='20260101000000000000'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=fstring_date_iso|produced=str|value='2026-11-03'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=str_format_date_day|produced=str|value=' 3'|gate=FLAGGED|first=float format at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=url_escape_constant|produced=str|value='https://example.org/a%E2%9C%93'|gate=FLAGGED|first=float %-format at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=sql_like_pattern|produced=str|value="SELECT * FROM t WHERE a LIKE '%foo%'"|gate=FLAGGED|first=float %-format at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=prose_percent_word|produced=str|value='a 50%fee on the total'|gate=FLAGGED|first=float %-format at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=git_log_format_argument|produced=list|value=['git', 'log', '--format=%f']|gate=FLAGGED|first=float %-format at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=date_command_argument|produced=list|value=['date', '+%F']|gate=FLAGGED|first=float %-format at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=docstring_mentions_percent_f|produced=int|value=1|gate=FLAGGED|first=float %-format at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=string_word_float_as_dict_value|produced=str|value='float'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=string_word_complex_label|produced=str|value='complex'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=string_truediv_label|produced=int|value=1|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=isinstance_rejects_float|produced=int|value=3|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=type_is_rejects_complex|produced=int|value=3|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=name_vars_local_list|produced=int|value=1|gate=FLAGGED|first=vars at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=name_compile_local_function|produced=int|value=2|gate=FLAGGED|first=compile at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=name_eval_local_function|produced=int|value=2|gate=FLAGGED|first=eval at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=name_exec_as_parameter|produced=int|value=2|gate=FLAGGED|first=exec at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=name_float_as_field_in_namedtuple|produced=int|value=3|gate=FLAGGED|first=float at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_param_guarded|produced=int|value=32|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_minus_one_guarded|produced=int|value=16|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_len_minus_one|produced=int|value=4|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_descending_range_literal|produced=int|value=63|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_descending_range_n|produced=int|value=31|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_while_down|produced=int|value=31|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_int_of_string|produced=int|value=8|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_class_constant|produced=int|value=8|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_dict_value|produced=int|value=8|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_tuple_unpacked|produced=int|value=8|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_shift_augmented|produced=int|value=256|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_unary_plus|produced=int|value=8|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_loop_var_poisoned_by_other_function|produced=int|value=13|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_range_loop_var_poisoned_by_other_function|produced=int|value=43|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_negated_after_guard|produced=int|value=9|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_minus_one_base_parity|produced=int|value=-1|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=power_shift_instead_literal_exponent_expression|produced=int|value=8|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=power_gf_inverse_user_class|produced=int|value=5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=exact_rational_division_user_class|produced=tuple|value=(4, 6)|gate=FLAGGED|first=true division at line 6|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=path_join_two_variables|produced=str|value='a/b'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=path_join_parent_then_variable|produced=str|value='b'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=path_join_variable_then_string|produced=str|value='a/b/c'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=path_join_method_right_side|produced=str|value='a/b'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=fstring_dynamic_width|produced=str|value='       5'|gate=FLAGGED|first=float format at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=fstring_dynamic_width_d|produced=str|value='       5'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=attribute_timestamp_on_user_int_field|produced=int|value=1730000000|gate=FLAGGED|first=timestamp at line 3|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=attribute_random_on_user_integer_lfsr|produced=int|value=48271|gate=FLAGGED|first=random at line 7|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=attribute_uniform_on_user_integer_rng|produced=int|value=5|gate=FLAGGED|first=uniform at line 4|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=attribute_gauss_named_user_integer|produced=int|value=10|gate=FLAGGED|first=gauss at line 4|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=time_timezone_is_int|produced=int|value=10800|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=time_asctime_text|produced=str|value='Thu Jan  1 00:00:00 1970'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=random_choices_of_ints|produced=int|value=2|gate=FLAGGED|first=random.choices at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=math_sumprod_of_ints|produced=int|value=11|gate=FLAGGED|first=math.sumprod at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=as_integer_ratio_on_int|produced=tuple|value=(3, 1)|gate=FLAGGED|first=as_integer_ratio at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=import_json_ints_only|produced=str|value='{"a": 1}'|gate=FLAGGED|first=import json at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=import_pickle_ints_only|produced=int|value=3|gate=FLAGGED|first=import pickle at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=import_ctypes_for_priority_only|produced=int|value=4|gate=FLAGGED|first=import ctypes at line 1|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=import_yaml_absent_but_flagged|produced=int|value=1|gate=FLAGGED|first=import yaml at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=struct_format_built_from_ints|produced=tuple|value=(0, 0, 0, 0)|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=struct_format_named_constant|produced=bytes|value=b'\x01\x00\x00\x00'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=getattr_module_alias_ok_name|produced=int|value=3|gate=FLAGGED|first=getattr on math at line 2|verdict=FALSE_ALARM|json=0
+INT|lane=linux|family=intcode|name=from_time_ctime_is_text|produced=str|value='Wed Dec 31 21:00:00 1969'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=intcode|name=dunder_pow_definition_only_is_clean_control|produced=int|value=1|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=pow_three_args|produced=int|value=5|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=power_literal|produced=int|value=1024|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=power_range_var|produced=list|value=[1, 2, 4]|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=floor_division|produced=int|value=3|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=path_string|produced=str|value='a/b'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=strftime_integer_fields|produced=str|value='1970-01-01'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=percent_d|produced=str|value='3'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+INT|lane=linux|family=control_clean|name=format_d|produced=str|value='3'|gate=CLEAN|first=-|verdict=CLEAN_OK|json=0
+TOTAL|section=intcode|lane=linux|plants=75|false_alarms=38|clean=37|still_flagged=str_format_date_day,url_escape_constant,sql_like_pattern,prose_percent_word,git_log_format_argument,date_command_argument,docstring_mentions_percent_f,name_vars_local_list,name_compile_local_function,name_eval_local_function,name_exec_as_parameter,name_float_as_field_in_namedtuple,power_param_guarded,power_minus_one_guarded,power_len_minus_one,power_while_down,power_int_of_string,power_class_constant,power_dict_value,power_tuple_unpacked,power_unary_plus,power_negated_after_guard,power_minus_one_base_parity,power_gf_inverse_user_class,exact_rational_division_user_class,fstring_dynamic_width,attribute_timestamp_on_user_int_field,attribute_random_on_user_integer_lfsr,attribute_uniform_on_user_integer_rng,attribute_gauss_named_user_integer,random_choices_of_ints,math_sumprod_of_ints,as_integer_ratio_on_int,import_json_ints_only,import_pickle_ints_only,import_ctypes_for_priority_only,import_yaml_absent_but_flagged,getattr_module_alias_ok_name|json=0

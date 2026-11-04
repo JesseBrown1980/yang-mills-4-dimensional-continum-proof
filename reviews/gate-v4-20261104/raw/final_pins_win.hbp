@@ -1,0 +1,17 @@
+PINS_MODE|rc=1|want_rc=1|not_tracked=2|json=0
+PINS|step=correct_pins|rc=0|want=0|json=0
+PINS|step=count_swap|rc=1|want=pin_moved=plant.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=plant.py/listed=c8ce2da62d5d23ed104ea7a46eb249a9a9dc38742270e0e42da0a1015de6beab/actual=0b0|json=0
+PINS|step=bom_shield_more_floats|rc=1|want=count_moved=bomrow.py|RED_FOR_ITS_REASON|rows=2|first=NO_FLOAT/count_moved=bomrow.py/listed=1/found=3/first=true division at line 1/json=0|json=0
+PINS|step=bom_shield_same_count|rc=1|want=pin_moved=bomrow.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=bomrow.py/listed=f539bf0cc0db017bc6c0445eaf4215596030d034b045e8af826200f0b43ed08e/actual=c3|json=0
+PINS|step=new_file_under_folder_row|rc=1|want=pin_moved=vendor/|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=vendor//listed=f4fef92737e2d69bb773fd6bebf92b81af3740b0ef0cb7a0ea4151e816d3fda8/actual=083f|json=0
+PINS|step=edited_vendored_crate|rc=1|want=pin_moved=vendor/|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=vendor//listed=f4fef92737e2d69bb773fd6bebf92b81af3740b0ef0cb7a0ea4151e816d3fda8/actual=390b|json=0
+PINS|step=new_file_under_evidence_row|rc=1|want=pin_moved=evidence/|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=evidence//listed=b0a0aebefef3ea4d7c4000ebc329a204e12d9a40281fc6159810c43ba51290ed/actual=95|json=0
+PINS|step=gate_edit|rc=1|want=pin_moved=scripts/no_float_gate.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/pin_moved=scripts/no_float_gate.py/listed=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f44|json=0
+PINS|step=row_without_a_reason|rc=1|want=row_without_a_reason=plant.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/row_without_a_reason=plant.py/json=0|json=0
+PINS|step=row_one_dot_reason|rc=1|want=row_without_a_reason=plant.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/row_without_a_reason=plant.py/json=0|json=0
+PINS|step=row_without_a_pin|rc=1|want=row_without_a_pin=plant.py|RED_FOR_ITS_REASON|rows=2|first=NO_FLOAT/row_without_a_pin=plant.py/json=0|json=0
+PINS|step=row_twice|rc=1|want=row_twice=plant.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/row_twice=plant.py/json=0|json=0
+PINS|step=listed_and_gone|rc=1|want=listed_and_gone=plant.py|RED_FOR_ITS_REASON|rows=1|first=NO_FLOAT/listed_and_gone=plant.py/json=0|json=0
+PINS|step=same_change_float_with_its_pinned_row|rc=0|measured_passes=1|json=0
+PINS|step=run_without_I|rc=1|reason=needs_python3_-I|json=0
+TOTAL|section=pins|steps=15|misses=0|json=0
