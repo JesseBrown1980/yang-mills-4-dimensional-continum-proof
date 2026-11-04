@@ -16,7 +16,7 @@ For a plaquette `p`, its ordered Wilson holonomy `U_p` is the product of four li
 E[A_p]=0,          E[A_p²]=1/4.
 ```
 
-For two distinct plaquettes `p≠q`, their link supports share at most two of their four positive links; each has an exclusive Haar variable. Integrating an exclusive variable in `A_p A_q` first gives `E[A_p A_q]=0`. **This covariance statement uses the independent product Haar measure at β=0, not the interacting Wilson measure at β>0.**
+For two distinct plaquettes `p≠q`, their link supports share at most two of their four positive links; each has an exclusive Haar variable. Integrating an exclusive variable in `A_p A_q` first gives `E[A_p A_q]=0`. **This covariance statement is for the independent product Haar measure at β=0.**
 
 Set `X = sum_p A_p`, `N_p=96`. Then
 
@@ -37,12 +37,12 @@ Z'(0)=-96
 Z''(0)=9240.
 ```
 
-Equivalently `Z(β)=1−96β+4620β²+O(β³)` near zero. The finite measure is positive for each `β≥0`, and `0<Z(β)≤1` for the indicated normalized Wilson action. These statements are standard finite-cutoff SU(2) facts, not a four-dimensional continuum theorem.
+Equivalently `Z(β)=1−96β+4620β²+O(β³)` near zero. The finite measure is positive for each `β≥0`, and `0<Z(β)≤1` for the indicated normalized Wilson action. These statements are standard finite-cutoff SU(2) facts.
 
 ## Reproducible geometry and fault controls
 
-Run `python3 -I tests/test_haar_moments_4d.py`. The checker independently enumerates all 96 oriented plaquettes and all 4,560 unordered pairs on the four-dimensional periodic lattice. Distinct pairs share 0, 1 or 2 positive links in counts 3,696; 768; and 96. The 64 positive links each occur in six plaquettes. It uses the **proved** SU(2) Haar moment formula above as mathematical input and exact integer/rational arithmetic to obtain the derivatives. It deliberately duplicates a plaquette support or removes one link; both must be rejected.
+Run `python3 -I tests/test_haar_moments_4d.py`. The checker independently enumerates all 96 oriented plaquettes and all 4,560 unordered pairs on the four-dimensional periodic lattice. Distinct pairs share 0, 1 or 2 positive links in counts 3,696; 768; and 96. The 64 positive links each occur in six plaquettes. It uses the **proved** SU(2) Haar moment formula above as mathematical input and exact integer arithmetic to obtain the derivatives. It deliberately duplicates a plaquette support or removes one link; both must be rejected.
 
-**Important limitation:** the executable does not compute the Haar integral from first principles or establish reflection positivity. It checks the combinatorial premises and the arithmetic consequences of Haar orthogonality. The next substantial task is to match the finite Wilson measure to a reflection-positive transfer kernel and its gauge projection, and then begin an explicit gauge-equivariant blocking construction.
+**Scope:** the executable takes Haar orthogonality as input, and checks the combinatorial premises and the arithmetic consequences. Reflection positivity is the rest of this row, YM4-02. The next substantial task is to match the finite Wilson measure to a reflection-positive transfer kernel and its gauge projection, and then begin an explicit gauge-equivariant blocking construction.
 
 References: Osterwalder–Seiler, *Gauge field theories on a lattice* (1978), DOI 10.1016/0003-4916(78)90039-8; Clay/Jaffe–Witten official problem statement.
