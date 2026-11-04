@@ -22,4 +22,6 @@ Target: `1078e6d11832449fa31a50066efcef5d8c6cd10f`, the note, its prediction, it
 
 **What the builder did with its findings.** The four should-fix items and the notes are applied in [the note](../../docs/NOTE-YM4-02c-SITE-SIGN.md), in rows 16 to 41 of [the prediction](../../docs/PREDICTION-YM4-02c-SITE-SIGN.hbp), and in [the test](../../tests/test_site_sign_4d.py). Remark 4.2 of Lemma 0004 sits on the other branch and stays with that branch.
 
+**At the merge, November 4, 2026, beside the two paragraphs above.** This folder and Lemma 0004 now share the branch `ym4-02c-reflection-transfer`, and Remark 4.2 takes this seat's two items: second-countable, and a link to the note. Under the final gate, `scripts/no_float_gate.py` at sha256 `935bd77b`, `scripts/FLOAT-EVIDENCE.txt` holds a file row for each of seven scripts here, each byte for byte as delivered: `code/astscan.py`, `code/cube_and_cycles.py`, `code/decode.py`, `code/mutants_auto.py`, `code/run_gates.py`, `code/side_one.py` and `code/zeros_srp.py`.
+
 **Tags.** A value in `REPORT.txt` is MEASURED by the second seat on that host, and this folder records it. The owning gate for this repository's rows is the hosted workflow. The note's status stays DERIVED with independent review OPEN: GPT-6's review is preliminary, and the operator asked for its final check.
