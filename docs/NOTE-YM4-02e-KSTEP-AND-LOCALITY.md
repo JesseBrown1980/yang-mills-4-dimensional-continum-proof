@@ -1,6 +1,6 @@
 # YM4-02e: bounds that use the structure of the weights
 
-**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026, on the operator's word, with the first theorem to test named by GPT-6. Its exact tests are registered first in [`PREDICTION-YM4-02e.hbp`](PREDICTION-YM4-02e.hbp), pushed before the test existed. The second seat's attack and a different model family's reading are OPEN.**
+**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026, on the operator's word, with the first theorem to test named by GPT-6. Its exact tests are registered first in [`PREDICTION-YM4-02e.hbp`](PREDICTION-YM4-02e.hbp), pushed before the test existed, and read below. GPT-6, a different model family, has reviewed the argument with no contradiction identified and holds it for final certification: [its reviews, verbatim](../reviews/gpt6-ym4-02e/README.md). The second seat's attack is OPEN.**
 
 **Scope:** one finite periodic lattice and one β, except section 3, which holds on every periodic lattice at small β. The objects are those of [YM4-02d](NOTE-YM4-02d-QUANTITATIVE-GAP.md): T = A^{1/2} B A^{1/2} on H = L²(G^{N_ℓ}), with θ = μ/λ₀ for an eigenvalue μ ≠ λ₀. Zero spacing at fixed finite physical volume stays OPEN.
 
@@ -112,4 +112,62 @@ So **the supremum over all configurations looks like the obstruction in d ≥ 2.
 
 ## What is measured
 
-Filled from the receipt after the run, against [the prediction](PREDICTION-YM4-02e.hbp).
+[`tests/test_k_step_locality.py`](../tests/test_k_step_locality.py), in exact integers, against [the prediction](PREDICTION-YM4-02e.hbp), whose first 130 rows were pushed at commit `23cec81` before that test existed. Its rows are in [`tests/K_STEP_LOCALITY_RECEIPT.txt`](../tests/K_STEP_LOCALITY_RECEIPT.txt), and they are finite cases: the theorems' proofs stand or fall on their own.
+
+**The runs.** The first run FAILED two rows and the fourth FAILED one, and those failures stay: [the record](../reviews/fable5-ym4-02e-first-run/README.md). The receipt is the fifth, 571 s on one machine, `failed=0`. GPT-6's three conditions on it: all 208 rows of the first run reproduce, 206 identical and 2 changed by the documented correction of the Z3 check; the block solver gives the same characteristic polynomial as direct elimination on 7 small matrices, with exact multiplicities on 4 known spectra, and the same inertia at the listed thresholds on 10 cases, with that scope; and the run-time row reads 1, with the hosted run still to read.
+
+**The k-step bound on the actual Wilson form,** at r = 1/2, in parts per million, against the exact ratio on orbits.
+
+| Group | Lattice | N_ℓ | Orbits | k = 1 | k = 2 | k = 4 | k = 8 | Exact |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| Q8 | 1×1 | 2 | 28 | 992218 | 914270 | 733471 | 624178 | 529896 to 529897 |
+| 2T | 1×1 | 2 | 76 | 992218 | 884002 | 655054 | 534509 | 435408 to 435409 |
+| Q8 | 1×1×1 | 3 | 176 | 999512 | 980579 | 851540 | not run | 582784 to 582785 |
+| Q8 | 2×1 | 4 | 176 | 997172 | 973463 | 936961 | not run | 874448 to 874449 |
+
+No row in the receipt has |θ| above τ_k^{1/k}, and every composition row holds. **Closed forms:** 32 of 32 rows match, by characters and by the hand block on Z2 at 2×1, including S3's R₂ = 4473/3025, Q8's √R₂ = 353/128, and 2T's √R₂ = 299/128. **The second seat's five values** on Z2 at 2×2, q = 1/2, agree: 467776, 273970, 200288, 171131 and 158185 at k = 1, 2, 4, 8 and 16, against 146218.
+
+**The limit constant,** read at k = 8 against Proposition 3 and 4.
+
+| Case | C predicted | τ₈/θ⁸, in thousandths |
+|---|---:|---:|
+| Z2, one link | 1 | 999 to 1001 |
+| Z3, one link | 3/2 | 1499 to 1500 |
+| S3, one link | 9/4 | 2249 to 2250 |
+| Q8, one link | 4 | 3999 to 4000 |
+| 2T, one link | 4 | 3999 to 4000 |
+| Z2, 2 independent links | 2 | 1999 to 2000 |
+| Z2, 3 independent links | 3 | 2997 to 2998 |
+| Z2 at 2×1, q = 1/2 | 1 + t² = 1.18769 | 1187 to 1188 |
+
+**Where A enters,** Z2 at 2×1, q = 1/2: √R₂ reads 779/400 with A and 205/128 with A set to 1, as derived by hand, and λ₁/λ₀ reads 511381 to 511382 ppm.
+
+**Fixed q against fixed physical size,** on Z2 at L×1. Fixed q is the interacting case of the CONJECTURE in section 1. Fixed μ holds m L_phys near a chosen value, with q tuned by the Ising law.
+
+| L | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| C at q = 4/5, k = 8, thousandths | 1633 | 2391 | 3178 | 3972 | 4766 | 5560 | 6355 |
+| C at μ = 1, k = 2L, thousandths | 1213 | 1355 | 1449 | 1512 | 1558 | 1592 | 1615 |
+| C at μ = 2, k = 2L, thousandths | 1356 | 1579 | 1731 | 1844 | 1928 | 1979 | 2037 |
+| τ_L at μ = 1, ppm | 288373 | 321488 | 350863 | 371288 | 384117 | 393455 | 402412 |
+| τ_L at μ = 2, ppm | 147675 | 172951 | 193329 | 205726 | 214322 | 225214 | 227937 |
+
+So at fixed q, C rises by 0.79 per site from L = 4, inside the predicted 0.55 to 0.95. At fixed μ, C rises with falling steps, and τ at k = L, one unit of physical time, stays well below 1 up to L = 8. That range is short, and whether either settles is OPEN.
+
+**Conjectures read: 9 of 10 met,** in `YM4_02E_CONJ_READ` rows. **The miss:** C at μ = 2 passes the registered ceiling of 1.8, reaching 2.037 at L = 8. The Ising limits came out as registered: λ₁/λ₀ rises to 138889 ppm at q = 4/5, against 5/36, and to 652334 ppm at L = 6 at q = 1/2, below 2/3, and reaches 999666 ppm at q = 1/5, in the ordered phase.
+
+**Theorem 5.** All 29 rows with 2ε + σ < 1 read within r, on orbits and on 6 all-configuration cases.
+
+| Group, weight | Lattices | r, ppm | Largest ratio read, ppm | τ from the range, ppm, at the largest lattice |
+|---|---|---:|---:|---:|
+| Z2, q = 4/5 | 2×1 to 6×1 | 208713 | 138889 | 871399 |
+| Z2, q = 4/5 | 2×2, 3×2 | 381967 | 12670 | 871399 |
+| Z2, q = 7/8 | 2×2×1 | 145899 | 87018 | 664701 |
+| Z3, 1, 8/9, 8/9 | 2×2 | 91674 | 1606 | 439114 |
+| Q8, r = 19/20 | 1×1×1 | 130697 | 29470 | 298398 |
+
+The first row is the point of the theorem: r stays fixed as L grows, while τ from the range climbs toward 1. These lattices are small, and the theorem's claim at every L stands on its proof.
+
+**The controls.** Plaquette ratios on Z3, S3, Q8 and 2T are now pinned, including Q8 on 1×1×1 and Z3 on 2×2 at the second seat's values. The negative eigenvalue on Z2 with w = 1/4, 1 reads −3/8, with equality, and the certificate's negative side reads it. Seven sabotages each exit 1 on their named check.
+
+**Seen after the run, in no prediction.** On Z2 at L×2, q = 4/5, C reads 3936, 2951 and 3935 thousandths at L = 2, 3 and 4, against 12665 to 12670 ppm for the ratio, near ε² = 12346. A reading, CONJECTURE: the lightest excitations are loops around the side of length 2, L of them when L ≥ 3 and 2 + 2 at L = 2, and C counts them.

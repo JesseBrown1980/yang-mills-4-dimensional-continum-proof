@@ -549,6 +549,95 @@ def bisect(count, k, lo, hi, bits, top):
     return lo, hi
 
 
+def power_estimate(cb, db, avoid=None, rounds=300):
+    """The largest eigenvalue of a block by power iteration on integers, as a pair, with its vector. An estimate, used to start a search."""
+    size = len(cb)
+    if size == 0:
+        return None, None
+    scale = 220
+    x = [ipow(2, scale) + (i + 1) * ipow(2, scale - 9) * (1 if avoid is None else (-1 if i % 2 else 1)) for i in range(size)]
+    d = [db[i][i] for i in range(size)]
+    last = None
+    for _ in range(rounds):
+        if avoid is not None:
+            top_part = sum(a * e * b for a, e, b in zip(x, d, avoid))
+            bottom_part = sum(b * e * b for b, e in zip(avoid, d))
+            part = (top_part << 64) // bottom_part
+            x = [a - ((part * b) >> 64) for a, b in zip(x, avoid)]
+        y = [sum(a * b for a, b in zip(row, x)) for row in cb]
+        number = (sum(a * b for a, b in zip(x, y)), sum(a * a * e for a, e in zip(x, d)))
+        if number[1] == 0:
+            return None, None
+        z = [a // e for a, e in zip(y, d)]
+        largest = max(abs(a) for a in z)
+        if largest == 0:
+            return number, x
+        shift = largest.bit_length() - scale
+        x = [a >> shift for a in z] if shift > 0 else [a << (-shift) for a in z]
+        if last is not None and abs(number[0] * last[1] - last[0] * number[1]) << 64 <= abs(number[0] * last[1]):
+            return number, x
+        last = number
+    return last, x
+
+
+def estimate_top_two(blocks):
+    """Estimates of the two largest eigenvalues across blocks: the largest top, then the next top or the second of the largest's block."""
+    found = []
+    for cb, db in blocks:
+        value, vector = power_estimate(cb, db)
+        if value is not None and value[1] != 0:
+            found.append((value, vector, cb, db))
+    if not found:
+        return None, None
+    best = 0
+    for i in range(1, len(found)):
+        if found[i][0][0] * found[best][0][1] > found[best][0][0] * found[i][0][1]:
+            best = i
+    candidates = [found[i][0] for i in range(len(found)) if i != best]
+    value, vector, cb, db = found[best]
+    if len(cb) > 1:
+        other, _ = power_estimate(cb, db, vector)
+        if other is not None:
+            candidates.append(other)
+    second = None
+    for c in candidates:
+        if c[1] != 0 and (second is None or c[0] * second[1] > second[0] * c[1]):
+            second = c
+    return value, second
+
+
+def seeded(count, k, guess, lo, hi, bits, top):
+    """The same bracket as bisect, by galloping from a guessed grid index and then bisecting."""
+    den = ipow(2, bits) * top[1]
+
+    def enough(i):
+        return count(frac(i * top[0], den)) >= k + 1
+
+    if guess is None or hi - lo <= 1:
+        return bisect(count, k, lo, hi, bits, top)
+    i = (guess[0] * ipow(2, bits) * top[1]) // (guess[1] * top[0])
+    i = max(lo + 1, min(hi - 1, i))
+    step = 1
+    if enough(i):
+        lo = i
+        while lo + step < hi:
+            if enough(lo + step):
+                lo += step
+                step *= 2
+            else:
+                hi = lo + step
+                break
+    else:
+        hi = i
+        while hi - step > lo:
+            if enough(hi - step):
+                lo = hi - step
+                break
+            hi -= step
+            step *= 2
+    return bisect(count, k, lo, hi, bits, top)
+
+
 def top_two(bp, top, bits, upper=None):
     """Brackets of the top two eigenvalues, found on the small blocks and certified on all of them.
 
@@ -562,14 +651,15 @@ def top_two(bp, top, bits, upper=None):
 
     # Eigenvalues found on a small block are true eigenvalues. So one count on all blocks at hi1 certifies the rest: if exactly one
     # eigenvalue lies above hi1, it is the small blocks' top, which is then lambda_0, and the second largest is in (lo1, hi1].
-    lo0, hi0 = bisect(bp.above_small, 0, 0, ipow(2, bits), bits, top)
-    lo1, hi1 = bisect(bp.above_small, 1, 0, hi0, bits, top)
+    first, second = estimate_top_two(bp.small)
+    lo0, hi0 = seeded(bp.above_small, 0, first, 0, ipow(2, bits), bits, top)
+    lo1, hi1 = seeded(bp.above_small, 1, second, 0, hi0, bits, top)
     if bp.above(grid(hi1)) > 1:
         ceiling = hi0
         if upper is not None:
             bound = times(upper, grid(hi0))
             ceiling = min(hi0, -((-bound[0] * den) // (bound[1] * top[0])) + 1)
-        lo1, hi1 = bisect(bp.above, 1, hi1, ceiling, bits, top)
+        lo1, hi1 = seeded(bp.above, 1, estimate_top_two(bp.full)[1], hi1, ceiling, bits, top)
         if bp.above(grid(hi1)) > 1:
             lo0, hi0 = bisect(bp.above, 0, 0, ipow(2, bits), bits, top)
             lo1, hi1 = bisect(bp.above, 1, 0, hi0, bits, top)
