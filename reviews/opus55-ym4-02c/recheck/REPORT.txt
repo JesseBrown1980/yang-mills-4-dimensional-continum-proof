@@ -1,0 +1,60 @@
+HEAD c32087a3f2c54412bb3028f7d0a53b8b63d6133c
+MERGE_READY False
+
+SUMMARY
+Not merge ready: one blocker remains, and it comes from my own suggested fix. I told the builder to scope the clause to c_2dim<0, and that scope is too broad. On (Z/3)x(Z/2) with Q8, c=1,-2,-2,-2,-1 (values -7,-3,3,3,3) has c_2dim<0 and is PSD on all 512 point functions, 5 positive and 0 negative, with G_EE=+23/4. So row 96, section 10 item 6 and the sentence in Remark 6.2 are false as written. They hold for w>=0 pointwise, which I derived by convolution on Q8/{+-1} and scanned on 21,609 cases. It is a one-line fix, and no theorem or predicted value moves.
+
+I also retract my own CONJECTURE, odd L at T>=4. w=-19,-15,-5,-5,-5 has every coefficient negative and is PSD, 25 and 0, because the plaquette count is even. The derived case reaches further than w>0: for nowhere-zero w on an odd side at T>=4, the form is PSD exactly when every c_rho c_0>=0 (c_0 nonzero). Only weights with a zero stay open: all 8,270 grid samples with a zero and an opposite-sign coefficient are red.
+
+Everything else the builder listed holds. All nine findings except the scoped clause in finding 2 are closed, and the notes and wording items are closed too.
+- Restated Theorem 2: read step by step, and both sides agree exactly in 24 of 24 Rust cases. The clause about W_plus vanishing has teeth on a control I ran, which the script lacks.
+- Remark 4.2 and the T>=4 case of Remark 6.2, which no seat had attacked: both held. The census of all sign patterns has 0 disagreements on the lattices with every side >=2.
+- New Gram row: a literal walk gives inertia 17,0 and G_FF=91/128 with the correct mirror, and 11,6 and -91/128 with the inverse dropped. Both new sabotages go red, one of them at a position guard.
+
+The hosted workflow is green at this head, but it is still not a required check. Osterwalder-Seiler stays CANNOT_SEE, and review by a different model family stays OPEN. merge_ready is false until the blocker is fixed; the should_fix on the conjecture would also mislead a reader.
+
+Everything is under C:/tmp/opus55/recheck-02c-20261103, and C:/tmp/opus55/recheck-02c-20261103/RECHECK_FILES.hbp lists each file with its hash.
+
+STILL_OPEN
+- Finding 2: partly closed. The NEGATIVE_COEFFICIENT rows and the wording 'the lattice, on T and on the weight' are right. The scoped clause is false; see the blocker.
+- Section 12's CONJECTURE, odd L at T>=4: refuted as worded; see the should_fix.
+- Branch protection, the operator's call: required contexts read [no-float] through gh, and that workflow is absent from main. No PR is open for this branch. git merge-tree against origin/main 080e16c reports no conflict, tree d74643d. Merge order against PR #10 stays his.
+- Issue #2 acceptance test (5): OPEN. Osterwalder-Seiler 1978 and Menotti-Pelissetto 1987 bodies stay CANNOT_SEE from this seat. Review by a different model family: OPEN.
+- Mutants still exiting 0, each classified. Old 11: 4 equivalent code (no_inverse_only_part_G, every_site_block_mirror_no_inverse, every_function_site_family_drops_lower_weight, bp_form_uses_inverse_table), 4 remove a passing check, 2 type a constant of equal value, and enclosure_tail_dropped. That last one closes the builder's NOT_MEASURED: on the new script it exits 0 with no row changed, below the printed resolution. psd_ignores_negative_diagonal and collatz_vector_not_iterated are caught by cmp only, as stated.
+
+NEW_FINDINGS
+[blocker] The scoped clause is false as written, and its wording came from my own suggested fix. Row 96 reads scoped=a_negative_c_2dim_fails_on_odd_L_at_T=2_here, section 10 item 6 reads 'holds for c_{2dim} < 0', and Remark 6.2 reads 'On (Z/3) x (Z/2) with Q8, c_{2dim} < 0 is red'. Signed weights with c_{2dim} < 0 are PSD on every F on that lattice. The statement holds for w >= 0 pointwise. Scope: no theorem and no predicted value moves.
+EVIDENCE: MEASURED from my literal 8^12 histogram with characteristic polynomial and Descartes, (Z/3)x(Z/2), Q8. c=1,-2,-2,-2,-1, values -7,-3,3,3,3 on +1,-1,i,j,k: 5 positive, 0 negative, 0 zero, G_EE=+23/4, equal to 2t_E(t_0+t_1+t_2+t_3). c=-8,-3,-3,-3,-1, values -19,-15,-5,-5,-5: 5,0,0, G_EE=+593/4. Control c=8,3,3,3,-1: 4,1,0, G_EE=-593/4. All 512 point functions of the slice, by Bareiss: 5,0 rank 5 for both signed weights, 4,1 rank 5 for the control; the kernel read at class representatives agrees with a walk over all V on 300 of 300 seeded pairs. (Z/1)x(Z/2), all 8 point functions: 5,0 for both. c=2,-2,-2,-2,-1 and c=1,-1,-1,-1,-1 are PSD of rank 3. Scan, w in -6..6 with c_0>0, c_2dim<0, L=3: G_EE>0 on 36,891 of 83,502. DERIVED for w>=0: with w' the weight on Q8/{+-1}, w'(1)=(w(1)+w(-1))/2, one has t_0+t_1+t_2+t_3=4^(1-L) * sum over g_1...g_L=1 of prod w'(g_i), positive because c_2dim<0 forces w(-1)>w(1)>=0, so G_EE<0 at every odd L. MEASURED scan, w in 0..6, L=1,3,5: G_EE<0 on 21,609 of 21,609. Falsifier: one F with N_w(F)<0 for c=1,-2,-2,-2,-1 on that lattice, or a w>=0 with c_2dim<0, odd L and G_EE>=0.
+REPRODUCE: Run C:/tmp/opus55/recheck-02c-20261103/run/clause.cmd and read out/clause.out. python3 -I -X utf8 C:/tmp/opus55/recheck-02c-20261103/src/ring3.py
+FIX: Add a YM4_02C_MISS row beside row 96, found_by=second_seat, recording that the broad scope was the second seat's suggestion: corrected=for_w>=0_pointwise_on_Q8_a_negative_c_2dim_gives_G_EE<0_at_every_odd_L_at_T=2, with the convolution line as derivation. Reword Remark 6.2 and section 10 item 6 the same way, with an entry in the wording table. Add c=1,-2,-2,-2,-1 to NEGATIVE_COEFFICIENT, prediction row first. It corrects a correction, so the count of five stands.
+
+[should_fix] My CONJECTURE as the lemma carries it is false, and I retract it here. 'On odd L at T>=4 a negative coefficient is red' fails for w=-w' with every coefficient of w' non-negative, because the plaquette count is even and the two weights give one form. The DERIVED case also reaches further than w>0: F=chi_rho(W)/W_plus needs only 1/w bounded, and then N_w(F) is negative exactly when c_rho c_0<0. So the sample filed under the conjecture, c=8,-3,3,3,1, is a case of the derivation.
+EVIDENCE: MEASURED (Z/1)x(Z/4), Q8, all 512 point functions: c=-8,-3,-3,-3,-1, values -19,-15,-5,-5,-5: 25 positive, 0 negative. c=-8,-3,-3,-3,1: 17,8. c=8,-3,3,3,1: 17,8. c=1,-2,-2,-2,-1: 17,8. c=-8,3,-3,-3,-1: 17,8. Literal walks over every link, exact: w=13,9,-1,11,11: -24. w=-7,-3,3,3,3: -2. w=-13,-9,1,-11,-11, with c_0=-8 and c_rho=+3: -24. Each equals (c_rho/d_rho) c_0. Grid of all 16,806 nonzero w in -3..3 on that lattice: for the 15,934 with c_0 nonzero, PSD exactly when no coefficient has sign opposite to c_0, including 8,270 red weights that have a zero value. For the 872 with c_0=0: 158 PSD, 714 red. DERIVED converse: every c_rho c_0>=0 gives PSD through Theorem 4 for w or -w, since N_p is even when T is even. Falsifier: a nowhere-zero w on an odd side at T>=4 with c_rho c_0<0 and N_w(F)>=0 for that F.
+REPRODUCE: Run C:/tmp/opus55/recheck-02c-20261103/run/light.cmd and read out/zero_clause.out and out/conj3.out. C:/tmp/opus55/recheck-02c-20261103/rust/rp5.exe witness Q8 -13 -9 1 -11 -11 1 1 1 -1 -1 1 4
+FIX: Restate the T>=4 case: a side L odd, w nowhere zero with 1/w bounded, and c_rho c_0<0 give the formula and a negative N_w(F); every c_rho c_0>=0 gives PSD through Theorem 4 for w or -w. Name continuity or the bound on 1/w, which the present 'w>0' leaves implicit. Move section 12's item to: w with a zero, c_0 nonzero, some c_rho c_0<0: CONJECTURE, red on all 8,270 grid samples; c_0=0: mixed on the grid. Add a YM4_02C_MISS row found_by=second_seat beside the old wording; REPORT.txt stays as filed. Add a T4_RED_WITNESS row with c_0 other than 8: both present weights have c_0=8=|Q8|, so my mutant witness_middle_dropped changes no row. c=1,-2,-2,-2,-1 reads -2.
+
+[note] The clause of Theorem 2 'at which W_plus(C,.) is not almost everywhere zero' is correct and has no control in the script.
+EVIDENCE: MEASURED (Z/1)x(Z/1)x(Z/2), Q8, fixed-slice weight 1,-1 on +1,-1. Time-like weight 1 on +-1 and 0 elsewhere: f<0 on 1920 of 4096 C, W_plus identically zero at all 1920, Gram blocks with a negative eigenvalue 0. Time-like weight 1 everywhere: f<0 on the same 1920, 1920 negative blocks, lowest N(delta_C) -64 over 8^6.
+REPRODUCE: python3 -I -X utf8 C:/tmp/opus55/recheck-02c-20261103/src/zero_clause.py
+FIX: Add this pair as a row, prediction row first.
+
+[note] Receipt field every_Gram_block_PSD in SITE_SHARP is computed as mismatches==0 and prefactor_negative==0, so it reads the formula, and SITE_SHARP_BLOCK reads one block. The values are right.
+EVIDENCE: READ: test line 1722. MEASURED: my walker over all 8^8 C reports up_equals_down_failures=0 for all four weights. Mutant sharp_block_mirror_no_inverse exits 0 and only cmp catches it, as the lemma's list for the dropped inverse implies.
+REPRODUCE: Run C:/tmp/opus55/recheck-02c-20261103/run/sitec.cmd and read out/sitec.out; mutant rows in mut/mut3new.out.
+FIX: Rename the field to every_Gram_block_PSD_from_the_formula, or walk the mirror over all C in Rust and cite it.
+
+[note] wrong_plane_in_gram reaches the position guard of the row. The Gram entries read only the sign from Reflection.link.
+EVIDENCE: MEASURED: with the guard removed, wrong_plane_in_gram exits 0 with 0 named failures, while no_inverse_in_gram still exits 1 on 2. A literal walk with c=-1 on the same 17 functions gives inertia 11,6,0 and G_FF=-69425/256, so a walk through the moved plane would go red on its own.
+REPRODUCE: python3 -I -X utf8 C:/tmp/opus55/recheck-02c-20261103/mut/sab_on_mut.py ; C:/tmp/opus55/recheck-02c-20261103/rust/rp5.exe moved
+FIX: Say in section 11 that this sabotage goes red at the guard, or take positions from Reflection.link in the walk.
+
+[note] inertia_exact has no control row, and no row enters its zero-diagonal branch. The function is correct.
+EVIDENCE: MEASURED: mutant inertia_pair_branch_returns exits 0 with no row changed. Against characteristic polynomials on 12,000 seeded matrices, 2,935 with zero diagonal: 0 disagreements, 0 assertion failures.
+REPRODUCE: python3 -I -X utf8 C:/tmp/opus55/recheck-02c-20261103/src/inertia_check.py
+FIX: Add [[0,1],[1,0]] reads 1,1 and the triangle reads 1,2 to PSD_TEST_CONTROLS.
+
+[note] Small record items. (a) Row 85 'crashes_at_GRAM_LINK': at 1618199 the fourth-letter mutant prints GRAM_LINK and GRAM_LINK_RED with ok=0, then the AssertionError comes from the first site Gram matrix in section_gram. (b) Row 102 reads clauses_of_the_second_prediction_corrected=0, and row 121 later corrects a clause beside YM4_02C_PREDICTION_2 with no said/now pair. (c) Row 46 reads met=1 for SIGNED_SITE where rows 39 and 40 carry meaning_clause_met=0. (d) Line 325 lists rank 17 and two counts as printed first; row 103 also lists lowest and Z for two weights, which my walker has now reproduced. (e) Line 107 'the form first stated here' can read as a priority claim, and Knowles (2.92) holds the condition. (f) Test docstring line 5 says 'real class weight', and W_INVERSE_CONTROL shows w(g^-1)=w(g) is also needed. (g) Field most_negative_form_value is the lowest on two-coordinate test vectors, a label I wrote first; the lemma's 'reaches' is the right word.
+EVIDENCE: READ from the lemma, the prediction and the test. MEASURED for (a): traceback at section_gram, psd_exact, with G_FF=593/16. MEASURED for (d): out/sitec.out.
+REPRODUCE: Run C:/tmp/opus55/recheck-02c-20261103/run/old4.cmd and read out/old4.err and out/old4.out.
+FIX: Rows beside each, with the wording table for (e) and (f): 'the form at commit 1618199' and 'real class weight with w(g^-1)=w(g)'.
+

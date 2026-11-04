@@ -1,0 +1,7 @@
+MUTATION|name=two_t_link_one_plane|verdict=CAUGHT_NAMED|exit=1|named_failures=2|checks=link_reflection_on_2T_c=(7,_2,_2,_4,_3,_1,_1),link_reflection_on_2T_c=(7,_2,_2,_4,_-1,_1,_1)|rows_differ=5|crash=|secs=187|json=0
+MUTATION|name=four_d_area_dropped|verdict=CAUGHT_NAMED|exit=1|named_failures=2|checks=four-dimensional_link_reflection_c=(8,_3,_3,_3,_1),four-dimensional_link_reflection_c=(8,_3,_3,_3,_-1)|rows_differ=5|crash=|secs=181|json=0
+MUTATION|name=four_d_trace3_two_steps|verdict=CAUGHT_NAMED|exit=1|named_failures=2|checks=three_steps_against_the_second_seat's_direct_sum_c=(8,_3,_3,_3,_1),three_steps_against_the_second_seat's_direct_sum_c=(8,_3,_3,_3,_-1)|rows_differ=5|crash=|secs=194|json=0
+MUTATION|name=l_n_route_positive_check_removed|verdict=SURVIVES_ALL|exit=0|named_failures=0|checks=|rows_differ=0|crash=|secs=152|json=0
+MUTATION|name=l_n_route_parity_check_removed|verdict=SURVIVES_ALL|exit=0|named_failures=0|checks=|rows_differ=0|crash=|secs=139|json=0
+MUTATION|name=orientation_conjugate_wrong_site|verdict=CAUGHT_NAMED|exit=1|named_failures=3|checks=plaquette_orientation_on_L=2_T=2,plaquette_orientation_on_L=2_T=4,plaquette_orientation_on_L=3_T=4|rows_differ=7|crash=|secs=171|json=0
+MUTATION|name=orientation_once_check_removed|verdict=SURVIVES_ALL|exit=0|named_failures=0|checks=|rows_differ=0|crash=|secs=95|json=0

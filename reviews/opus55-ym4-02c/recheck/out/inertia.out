@@ -1,0 +1,2 @@
+INERTIA_EXACT|trials=12000|zero_diagonal_nonzero_matrices=2935|disagree_with_char_poly=0|assertion_failures=0|first=None|json=0
+INERTIA_EXACT_CONTROLS|[[0,1],[1,0]]=(1, 1, 2)|triangle=(1, 2, 3)|zero=(0, 0, 0)|json=0

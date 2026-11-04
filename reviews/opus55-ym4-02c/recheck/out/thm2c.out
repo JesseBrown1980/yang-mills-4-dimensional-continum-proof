@@ -1,0 +1,6 @@
+THM2|group=Z3|order=3|dims=[1, 1, 4]|seed=21|one_w=0|links=12|fixed=2|upper=5|lower=5|C_links=4|A_links=4|LHS_re=12828120|LHS_im=0|RHS=12828120|equal=1|C_with_f<0=0|of=81|json=0
+THM2|group=Z3|order=3|dims=[2, 1, 2]|seed=22|one_w=0|links=12|fixed=4|upper=4|lower=4|C_links=8|A_links=2|LHS_re=377059608|LHS_im=0|RHS=377059608|equal=1|C_with_f<0=1458|of=6561|json=0
+THM2|group=Z4|order=4|dims=[1, 1, 4]|seed=23|one_w=0|links=12|fixed=2|upper=5|lower=5|C_links=4|A_links=4|LHS_re=-2999694789|LHS_im=0|RHS=-2999694789|equal=1|C_with_f<0=256|of=256|json=0
+THM2|group=Z3|order=3|dims=[1, 1, 4]|seed=24|one_w=1|links=12|fixed=2|upper=5|lower=5|C_links=4|A_links=4|LHS_re=2015910|LHS_im=0|RHS=2015910|equal=1|C_with_f<0=0|of=81|json=0
+THM2|group=Z4|order=4|dims=[1, 1, 4]|seed=25|one_w=1|links=12|fixed=2|upper=5|lower=5|C_links=4|A_links=4|LHS_re=34819264|LHS_im=0|RHS=34819264|equal=1|C_with_f<0=0|of=256|json=0
+THM2|group=Z4|order=4|dims=[2, 1, 2]|seed=26|one_w=0|links=12|fixed=4|upper=4|lower=4|C_links=8|A_links=2|LHS_re=0|LHS_im=0|RHS=0|equal=1|C_with_f<0=0|of=65536|json=0

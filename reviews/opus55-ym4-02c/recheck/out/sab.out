@@ -1,0 +1,13 @@
+SABOTAGE|name=no_inverse_on_time_links|exit=1|failed=6|named_check_hit=1|traceback=0|checks=reflection_link_on_L=2_T=2,reflection_site_on_L=2_T=2,reflection_link_on_L=2_T=4,reflection_site_on_L=2_T=4,reflection_link_on_L=3_T=4,reflection_site_on_L=3_T=4|json=0
+SABOTAGE|name=wrong_plane|exit=1|failed=6|named_check_hit=1|traceback=0|checks=reflection_link_on_L=2_T=2,reflection_site_on_L=2_T=2,reflection_link_on_L=2_T=4,reflection_site_on_L=2_T=4,reflection_link_on_L=3_T=4,reflection_site_on_L=3_T=4|json=0
+SABOTAGE|name=wrong_multiplicity|exit=1|failed=10|named_check_hit=1|traceback=0|checks=character_series_through_beta^20,l_n_coefficients,Bessel_recurrence,trace_of_the_link_kernel,ballot_recursion,Haar_moments_against_the_ballot_formula,quadrature_over_Q8,quadrature_over_2T,quadrature_over_2O,quadrature_over_2I|json=0
+SABOTAGE|name=negative_weight_called_positive|exit=1|failed=1|named_check_hit=1|traceback=0|checks=GRAM_LINK|json=0
+SABOTAGE|name=signed_site_weight_called_positive|exit=1|failed=1|named_check_hit=1|traceback=0|checks=positive_site_weight_control|json=0
+SABOTAGE|name=bad_projector|exit=1|failed=2|named_check_hit=1|traceback=0|checks=Tr(A_B_P)_against_the_lattice_sum_c=(8,_3,_3,_3,_1),Tr(A_B_P)_against_the_lattice_sum_c=(8,_3,_3,_3,_-1)|json=0
+SABOTAGE|name=no_inverse_in_gram|exit=1|failed=2|named_check_hit=1|traceback=0|checks=gauge-moved_site_Gram_blocks,gauge-moved_site_Gram|json=0
+SABOTAGE|name=wrong_plane_in_gram|exit=1|failed=1|named_check_hit=1|traceback=0|checks=gauge-moved_site_Gram|json=0
+SABOTAGE|name=dropped_inverse_third_letter|exit=1|failed=9|named_check_hit=1|traceback=0|checks=reflection_link_on_L=2_T=2,reflection_site_on_L=2_T=2,plaquette_orientation_on_L=2_T=2,reflection_link_on_L=2_T=4,reflection_site_on_L=2_T=4,plaquette_orientation_on_L=2_T=4,reflection_link_on_L=3_T=4,reflection_site_on_L=3_T=4,plaquette_orientation_on_L=3_T=4|json=0
+SABOTAGE|name=dropped_inverse_fourth_letter|exit=1|failed=3|named_check_hit=1|traceback=0|checks=plaquette_orientation_on_L=2_T=2,plaquette_orientation_on_L=2_T=4,plaquette_orientation_on_L=3_T=4|json=0
+SABOTAGE|name=every_function_one_plane|exit=1|failed=4|named_check_hit=1|traceback=0|checks=every_function_on_L=1_c=(8,_3,_3,_3,_1),every_function_on_L=1_c=(8,_3,_3,_3,_-1),every_function_on_L=2_c=(8,_3,_3,_3,_1),every_function_on_L=2_c=(8,_3,_3,_3,_-1)|json=0
+SABOTAGE|name=t4_half_weights_dropped|exit=1|failed=2|named_check_hit=1|traceback=0|checks=every_function_at_T=4_c=(8,_3,_3,_3,_1),every_function_at_T=4_c=(8,_3,_3,_3,_-1)|json=0
+SABOTAGE|name=no_such_name|exit=2|json=0

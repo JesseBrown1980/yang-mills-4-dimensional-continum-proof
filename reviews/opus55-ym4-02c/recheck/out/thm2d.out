@@ -1,0 +1,10 @@
+THM2|group=Q8|order=8|dims=[1, 1, 2]|seed=1|one_w=0|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=-2538286|LHS_im=0|RHS=-2538286|equal=1|C_with_f<0=1600|of=4096|json=0
+THM2|group=Q8|order=8|dims=[1, 1, 2]|seed=2|one_w=1|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=92608|LHS_im=0|RHS=92608|equal=1|C_with_f<0=0|of=4096|json=0
+THM2|group=S3|order=6|dims=[1, 1, 2]|seed=3|one_w=0|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=2495709|LHS_im=0|RHS=2495709|equal=1|C_with_f<0=0|of=1296|json=0
+THM2|group=S3|order=6|dims=[1, 1, 2]|seed=4|one_w=1|links=6|fixed=2|upper=2|lower=2|C_links=4|A_links=1|LHS_re=2407|LHS_im=0|RHS=2407|equal=1|C_with_f<0=648|of=1296|json=0
+THM2|group=Z2|order=2|dims=[2, 1, 2]|seed=5|one_w=0|links=12|fixed=4|upper=4|lower=4|C_links=8|A_links=2|LHS_re=2308692|LHS_im=0|RHS=2308692|equal=1|C_with_f<0=0|of=256|json=0
+THM2|group=Z2|order=2|dims=[2, 2, 2]|seed=6|one_w=0|links=24|fixed=8|upper=8|lower=8|C_links=16|A_links=4|LHS_re=-111758919264|LHS_im=0|RHS=-111758919264|equal=1|C_with_f<0=2048|of=65536|json=0
+THM2|group=Z2|order=2|dims=[1, 1, 4]|seed=7|one_w=0|links=12|fixed=2|upper=5|lower=5|C_links=4|A_links=4|LHS_re=120981|LHS_im=0|RHS=120981|equal=1|C_with_f<0=0|of=16|json=0
+THM2|group=S3|order=6|dims=[2, 2]|seed=8|one_w=0|links=8|fixed=0|upper=2|lower=2|C_links=4|A_links=2|LHS_re=1384100|LHS_im=0|RHS=1384100|equal=1|C_with_f<0=0|of=1296|json=0
+THM2|group=S3|order=6|dims=[1, 4]|seed=9|one_w=0|links=8|fixed=0|upper=2|lower=2|C_links=2|A_links=3|LHS_re=606117|LHS_im=0|RHS=606117|equal=1|C_with_f<0=0|of=36|json=0
+THM2|group=S3|order=6|dims=[1, 4]|seed=10|one_w=1|links=8|fixed=0|upper=2|lower=2|C_links=2|A_links=3|LHS_re=266296|LHS_im=0|RHS=266296|equal=1|C_with_f<0=0|of=36|json=0

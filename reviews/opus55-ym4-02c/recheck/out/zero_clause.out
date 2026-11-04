@@ -1,0 +1,8 @@
+W_PLUS_ZERO_CONTROL|label=fixed_+1,-1_time_like_1_red|lattice=(Z/1)x(Z/1)x(Z/2)|group=Q8|C=4096|C_with_f<0=1920|C_with_f<0_and_W_plus_not_identically_zero=1920|C_with_W_plus_identically_zero=0|Gram_blocks_with_a_negative_eigenvalue=1920|lowest_N(delta_C)_over_8^6=-64|json=0
+W_PLUS_ZERO_CONTROL|label=fixed_+1,-1_time_like_supported_on_+-1|lattice=(Z/1)x(Z/1)x(Z/2)|group=Q8|C=4096|C_with_f<0=1920|C_with_f<0_and_W_plus_not_identically_zero=0|C_with_W_plus_identically_zero=3840|Gram_blocks_with_a_negative_eigenvalue=0|lowest_N(delta_C)_over_8^6=0|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=8,3,3,3,1|w=19,15,5,5,5|family=all_512_point_functions|pos=25|neg=0|rank=25|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=-8,-3,-3,-3,-1|w=-19,-15,-5,-5,-5|family=all_512_point_functions|pos=25|neg=0|rank=25|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=-8,-3,-3,-3,1|w=-15,-19,-5,-5,-5|family=all_512_point_functions|pos=17|neg=8|rank=25|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=8,-3,3,3,1|w=13,9,-1,11,11|family=all_512_point_functions|pos=17|neg=8|rank=25|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=1,-2,-2,-2,-1|w=-7,-3,3,3,3|family=all_512_point_functions|pos=17|neg=8|rank=25|json=0
+T4_OPEN_HALF_LITERAL|lattice=(Z/1)x(Z/4)|group=Q8|c=-8,3,-3,-3,-1|w=-13,-9,1,-11,-11|family=all_512_point_functions|pos=17|neg=8|rank=25|json=0
