@@ -1,0 +1,38 @@
+FINDINGS (in progress) target a72a0c3 docs/NOTE-YM4-02e sec 4 + last section
+(a) DERIVED: k=t/a, |theta|<=tau_k^{1/k}, log(1/|theta|)/a >= -log tau_k /(ka) = (1/t)(-log tanh(Delta_k/4)). Correct.
+(c,d) DERIVED + MEASURED: closed form for Ising ring T_v from Kaufman fermion sectors. |+> = (NS_top + R_top)/sqrt2, pairs blocks
+ T_p = [[ (1/q)(c - s cos p), s sin p ],[ s sin p, q (c + s cos p) ]], c=cosh2K*=(1/e+e)/2, s=(1/e-e)/2, e=(1-q)/(1+q), det=1.
+ F_p = (T_aa - e^{-E_p})/(2 sinh E_p). C_lim(L,q) = prod_{R,0<p<pi}F_p / prod_{NS,0<p<pi}F_p.
+ tau_k at (+,-) = pref^k prod_R W_p(k)/prod_NS W_p(k), W_p(k)=(T_p^k)_aa, pref=1/q (L even), e (L odd).
+ Matches receipt: C at q=4/5, L=2..8 limit 1633018 2391316 3178905 3972106 4766287 5560630 6355000 micro. work/ringform.py
+(c,d) MEASURED closed form vs receipt: exact on all L>=4 rows compared; L=2,3 at small k differ only by the holonomy factor: tanh(artanh tau_v + artanh eps^{Lk}) reproduces 288372 and 321487 (T = T_v x T_W, theta_W = eps^L on orbits).
+ Own brute 4-point search (work/brute.py) 13 ring cases: maximum sits at (+,-;+,-) in all 13.
+(d) THEOREM (DERIVED given Kaufman, NAMED): for q>q_c, C(L,q) >= rho(+)^2 = L c(q) (1+O(e^{-kL})), c(q) = sinh(E0)/s = (q^2+2q-1)(1+q^2)/(4 q^2).
+ Proof: F_p = 4 sin^2(p/2) G(p), G analytic positive 2pi-periodic, G(0)=(s/(2 sinh E0))^2, F_pi=1;
+ prod_{n=1}^{L-1} 2 sin(pi n/L)=L, prod_{n=1}^{L} 2 sin(pi(n-1/2)/L)=2; ln C = ln(L/2) - (1/2) ln G(0) + (1/2)[sum_R lnG - sum_NS lnG], bracket exponentially small by Poisson.
+ q=4/5: c=1271/1600=0.794375; closed-form C(8)=6.355000, C(10)=7.943750, C(12)=9.532500 MEASURED. q=1/2: c=5/16; C(64)=20.000000.
+ q=1/5 (ordered): C -> 1.000000 MEASURED L>=16.
+(c) C(L,q_c): 1101020(2) 1231438(4) 1319354(8) 1365967(16) 1389881(32) 1401994(64) 1408090(128) 1411148(256) 1412680(512) 1413446(1024) micro -> sqrt2=1414213: deficit halves per doubling. MEASURED.
+(c) scaling function, CONJECTURE-from-limit, checked: C(mu) = sqrt2 prod_{n>=1} (1-mu/E_n)/(1-mu/E_{n-1/2}), E_n=sqrt(mu^2+(2 pi n)^2).
+ mu=1: 1825727 vs lattice L=512 1822229, Richardson 1825725. mu=2: 2438510 vs Richardson 2438494. mu=4: 4100283 vs 4100139. 
+ tau_{k=L}: mu=1: 400068(8) 425697(16) 438966(32) 445721(64) 449129(128) 450841(256) 451699(512) ppm; mu=2: 229117 250812 262746 269014 272227 273853 274671.
+(c) MEASURED closed form exact-law q: C(mu=2) L=2..12 micro: 1355436 1578944 1733240 1842813 1923558 1985236 2033804 2073015 2105323 2132398 2155414: steps fall at every L, so the note's larger last step is the 3-digit rounding of q (its CONJECTURE, now measured).
+ C(mu=1): 1211928 1353947 1448685 1513278 1559329 1593631 1620130 1641206 1658368 1672612 1684623.
+ Critical: tau_{k=L}: 460495(2) 547339(4) 597687(8) 621108(16) 632468(32) 638061(64) 640835(128) 642216(256) 642906(512) ppm; Richardson 643596; Ising characters sqrt2 chi_{1/16}/(chi_0+chi_{1/2}) at e^{-4pi} = 643594. Agreement.
+ Bound at t=L_phys in the limit: -ln tau: mu=1 about .794 against exact 1; mu=2 about 1.292 against exact 2; critical -ln(.6436)=.4407 against pi/4=.7854.
+(d) MEASURED work/is.rs (Rust 1.81 fixed point; regressed on ring rows 402411, 25556, 350862): Ising on LxL torus at q=6419/10000 (near 3D K_c, NAMED .22165), tau_{k=L} at (+,-) ppm, a lower bound for tau_k: 361145(2, doubled bonds) 507888(3) 603438(4) 663860(5). log(pp/pm) 1.120(3) 1.397(4) 1.600(5): increments .277,.203 fall. Gaussian scaling would hold them constant. Three points; CONJECTURE: Delta_{t/a} bounded for d=2 Ising at criticality.
+(b) DERIVED: interior elimination of (beta/2)|phi_{t+1}-phi_t|^2 + (beta/2)phi kappa phi gives block tridiagonal [M,-1], M=2+kappa, corner inverse = 1/U_{k-1}(M/2). So bilinear B = beta sinh(W)/sinh(kW), cosh W = 1+kappa/2. Note writes beta W/sinh(kW), the continuum-time Mehler form; k=1 must give beta*I. Same scale for low modes.
+ All entries of B are >=0 (M-matrix inverse) and B*1=(beta/k)*1, so max over box [-pi,pi]^N is at constant mode: Delta_k = 4 pi^2 beta N/k exactly; with mass term Delta_k = 4 pi^2 beta N sinh(W0)/sinh(kW0), C = 2 pi^2 beta N sinh(W0), log C = (d-1) log(1/a) + log(2 pi^2 beta L^d m). d=3 gives note's 2 log(1/a).
+ MEASURED work/gauss.py: 9 lattices d=1,2,3: U row sums =k, 0 negative inverse entries, sum of inverse entries = N/k exact.
+ Compact angles (w periodic) identify +pi and -pi: constant-mode value becomes pi^2 beta N/k, same scale.
+(d) DERIVED via Griffiths/Ginibre (NAMED): log(Z++/Z+-) is monotone in each ferromagnetic coupling incl. many-body plaquette terms (<s_A>_{++} >= |<s_A>_{+-}|). Cutting all spatial couplings: tau_k >= tanh(N artanh eps^k) on H for Z2 spin and gauge. Same for XY/U(1) with column heat-kernel ratio. Checked on brute rows: L=4,q=4/5,k=1 equality 418842; k=2 61222 >= 49340.
+(c) Registered ceiling: prediction line 119 C in [1, 18/10]. Limits C(1)=1.825727, C(2)=2.438510 both exceed it. mu=1 stays inside through the L=8 rows read; closed form crosses 1.8 between L=64 (1797966) and L=128 (1811772). tau<=9/10 holds: limits about .4526, .2755.
+(e) PRIOR ART. Opened: arXiv 1811.09770 via ar5iv (Chatterjee, Ising LGT, sec 5: "The easiest way to prove exponential decay of correlations at strong coupling is by using Dobrushin's condition [9,10]"; read through 100000 of 138163 chars); arXiv 2204.12737 via ar5iv excerpt (Shen-Zhu-Zhu: SU(N) |beta|<1/(16(d-1)), Bakry-Emery, Guionnet-Zegarlinski; cites Osterwalder-Seiler cluster expansion; its normalization and rate formula CANNOT_SEE in the excerpt); github mrdouglasny/lgt mass-gap-roadmap (Lean, U(n) beta<1/(32n(d-1)), m=(-log alpha)/2, Dobrushin, cites Chatterjee 2026 sec 16.3, no transfer-matrix eigenvalue statement). Search hits only, record-level: Kunsch CMP 84 (1982) 207-222 bibliographic record only.
+ CANNOT_SEE: Chatterjee 2026 sec 16.3, Osterwalder-Seiler 1978 text, Follmer 1982 text, Kunsch text. arXiv PDFs came back as compressed binary through the fetch lane.
+ Reading: the method (Dobrushin for LGT at strong coupling, correlation decay) is in the literature; volume-free strong-coupling gap is classical. Form of Theorem 5 (eigenvalue bound on H, closed-form r as smaller root of eps(x+1/x)+sigma=1, temporal gauge transfer matrix) found in 0 sources I opened; count 0 over a small search, which leaves it open.
+(f) DERIVED: Wilson SU(2): conditional law of a link is e^{beta x.S} on S^3, S the sum of neighbours and staples, because 1/2 Tr is linear in x. Changing one factor moves S by delta, |delta|<=2. d/dt log f_t = beta (x-E_t x).delta, so TV <= (beta |delta|/2) sup sqrt Var_S(x.e) <= beta * 1/2.
+ Var<=1/4: transverse Var=(1-E x0^2)/3 and E_k x0^2>=1/4 by log-convex moments; parallel Var decreases in kappa by GHS, Ellis-Monroe-Newman class, V=-(1/2)log(1-x^2), V' convex on [0,1) (NAMED, applied by me).
+ So Theorem 5 holds for SU(2) with eps'=beta/2 in place of tanh beta on every step (C_ij, b_a; s factors give s*eps'). Sides>=3, d=3: 14 eps'<1 gives beta<1/7=.1429 against .0716, and r' = smaller root of (beta/2)(x+1/x)+6 beta=1, r' about (beta/2)/(1-6 beta).
+ MEASURED work/tv.py integer quadrature, 54 points beta<=1, |S| up to 5.4 beta+: max TV/beta = 424413 micro at S=0, small beta = 4/(3 pi). CONJECTURE: sup TV/beta = 4/(3 pi) for all S, which would give beta<3 pi/56=.1683.
+ Single-link floor on H: theta about I2/I1 about beta/4, so r' stays above it. Z2 has no such gain: tanh beta is reached by a tilt.
+ Gauge average on PH: Z2 row 12670 ppm against eps^2=12346 on Lx2 and the known plaquette-power strong-coupling rate (NAMED) point to r^4-type decay on PH for L>=3; no proof here. OPEN.

@@ -1,0 +1,17 @@
+OWN OUTLINE, written before reading the note's proof (from the task text only).
+1. Gibbs measure on a time-periodic box Z/n x (spatial slice). Sites = links (gauge fixed: temporal gauge or not).
+2. Influence matrix C(l,l') = sup over boundary pairs differing at l' of TV(cond law at l). Summed by rows or columns: alpha<1.
+3. Dobrushin comparison: for two measures, or one measure with a perturbed boundary, the vector of site TV distances
+   satisfies w <= b + C^T w, so w <= (I-C^T)^-1 b = sum_k (C^T)^k b.
+4. Covariance of F (on slice s) with G (on slice s+t): write cov as an integral over G's value of TV between conditional and
+   marginal, or use the tilted measure dmu_h = (h/mean h) dmu. That needs bounded h/Omega: a tilted measure at slice 0.
+   Tilt changes conditional laws only at the links coupled to slice 0, so b supported at distance 0.
+5. Project C onto the slice index: slice-to-slice kernel a(s,s') = max sum over l' in s' of C(l,l'). Random walk on Z/n with
+   step weights: a(0) stay, a(1) adjacent. Green's function decays as r^|t| with r the smaller root of a1 r^2 -(1-a0) r + a1 = 0.
+6. Spectral side: cov(F_0,G_t) on n-torus = sum_k c_k (lam_k/lam_0)^t (lam_k/lam_0)^(n-t) terms; take n->inf first at fixed t,
+   then (lam_1/lam_0)^t <F,v1><v1,G> <= bound; then t -> inf gives lam_1/lam_0 <= r, with v1 overlap nonzero needed for a test function.
+Failure points I expect: (a) walk wraps on Z/n; (b) removing slice 0 reduces Z/n to a segment (Dirichlet), which improves r;
+(c) is the lam ratio for the sector carrying F? complex lam, negative lam: T self-adjoint positive? T = A B A with B a kernel, sign;
+(d) PH vs H: projector onto gauge invariants; (e) compact G measurable sup attained; (f) trace-class needed for spectral sum;
+(g) the transfer matrix lives on slice links only if temporal gauge, then the temporal link is integrated; the conditional law
+    in an unfixed form differs; n=3 may have plaquette words with a link appearing twice (t small), n=2 has doubling.

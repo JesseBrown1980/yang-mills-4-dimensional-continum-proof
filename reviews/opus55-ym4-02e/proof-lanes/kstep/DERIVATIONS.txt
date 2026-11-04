@@ -1,0 +1,39 @@
+SEAT opus55 attack on 02e sections 1,2 at a72a0c3. Derived by hand before comparing.
+D1 [DERIVED] T^k kernel: A^{1/2} C_k A^{1/2}, C_{j+k}=C_j A C_k; A cancels in cross ratio. Matches line 11.
+D2 [DERIVED] tanh(log R/4)=(sqrt R-1)/(sqrt R+1). Matches line 15.
+D3 [DERIVED] Prop 1: 02d second proof with K->K_k, lambda0->lambda0^k, mu->mu^k.
+    P_k(x,dy)=K_k(x,y)Omega(y)/(lambda0^k Omega(x)) dy is a prob kernel; P_k rho=theta^k rho;
+    theta^k osc(rho)=int(p-q)rho so |theta|^k<=TV(p,q)<=tanh(Delta_k/4).
+    Sign of theta^k is not used: |int(p-q)rho|<=TV*osc. Negative mu at odd k is covered.
+    rho nonconstant needs h perp Omega, mu != lambda0: T^k h=mu^k h, h is an eigenfn of T, ok.
+    mu=-lambda0 excluded by 02d step 3 strictness (kernel strictly positive).
+D4 [DERIVED] with s=sqrt R_k, t=sqrt R_2k, (t-1)/(t+1)<=((s-1)/(s+1))^2
+    <=> (t-1)(s+1)^2<=(t+1)(s-1)^2 <=> 4st<=2s^2+2 <=> 2st<=s^2+1 <=> 4 R_k R_2k<=(R_k+1)^2. Exact.
+D5 [DERIVED] for 0<=x<1: x<=(s-1)/(s+1) <=> s>=(1+x)/(1-x) <=> R>=((1+x)/(1-x))^2.
+    Domain x in [0,1); x=1 undefined; all uses have x=theta^k in [0,1).
+D6 [DERIVED] Isometry: (Af)/(Ag)=f/g for A>0 so d(Af,Ag)=d(f,g). Right. A is also a bijection of the cone.
+    C_2k=C_k A C_k gives kappa(C_2k)<=kappa(C_k)*1*kappa(C_k), and kappa=tanh(Delta/4) by
+    Birkhoff-Hopf (equality form, NAMED). Same chain direct from T^2k=T^k T^k with no A mention.
+    Delta(T^k image)=log R_k: sup of image cross ratio over f,g is reached in limit of point masses. Ok.
+D7 [DERIVED] Prop 3 expansion. Take unit Omega. K_k=sum_n mu_n^k h_n h_n; rest term:
+    K_k^rest(U,V)=<K(U,.),T^{k-2}P_rest K(.,V)>, |.|<=sup||K(U,.)||^2 (theta' lambda0)^{k-2}, k>=3.
+    T compact => nonzero spectrum discrete => theta'<|theta| strictly. Omega>=c>0. Uniform O(theta'^k).
+    So uniformity claim holds, rate (theta'/theta)^k. Needs ||Omega||=1 (line 24-27 do not state it).
+D8 [DERIVED] G(U,U',V,V')=sum_j(rho_j(U)-rho_j(U'))(rho_j(V)-rho_j(V')); log R_k=theta^k max G+O(eps2).
+    max G>0: take V=U,V'=U'. tanh x=x+O(x^3). tau_k/theta^k->max G/4=C. basis-free: sum_j h_j h_j.
+D9 [DERIVED] Negative top alone: G flips under U<->U', and max over quadruple is invariant, so
+    max(-G)=max G. Hence tau_k/|theta|^k->C along ALL k, odd included.
+    Mixed: +|theta| and -|theta| both present: even k gives max(G_+ + G_-)/4, odd k gives
+    max(G_+ - G_-)/4. Two limit points in general. To be measured.
+R1 [MEASURED a2.py] Householder kernels n=3..5, 600 cases, k=1..8, patterns distinct/deg/neg/mix:
+   P1 4800 rows bad=0; Birkhoff predicate 4800 rows bad=0, equality rows 0.
+R2 [MEASURED a3.py] exact C vs tau_k/|theta|^k bracket 1%: 400 cases, 800 rows, bad=0.
+   neg alone: C_odd==C_even in 153/153. mixed +t,-t: C_even != C_odd in 93/93,
+   e.g. v=[10,2,2,1,1] D=[197,27,-27,-2,-2]: C_even=1960200/518400 C_odd=1154340/518400, both bracket.
+D10 [DERIVED] Prop 4: tanh(n artanh x)<=n x (subadditive), ->n as x->0. So k>=log n/log(1+eta) is
+   SUFFICIENT for overshoot<=1+eta. "needs" is false: theta=3/5, eta=3/5, n=2, k=1:
+   tau_1=60/68=15/17 <= (8/5)(3/5)=24/25, while log 2/log(8/5)>1 (8/5<2).
+D11 [SUPERSEDED by D11b] my first block used T12=q; right entry is 2q^2, equal only at q=1/2. Own error, caught by a4.py misses (121/144).
+D11b [DERIVED] even block general q: [[1+q^2,2q^2],[2q^2,q^2(1+q^2)]], odd 1-q^2, q^2(1-q^2).
+   sqrtR_A(2)=(1+3q^4)/(2q^2(1+q^2)); sqrtR_1(2)=(1+q^2)^2/(4q^2);
+   difference=(1-q^2)^3/(4q^2(1+q^2)); q=1/2 gives 27/80=19/10-25/16.

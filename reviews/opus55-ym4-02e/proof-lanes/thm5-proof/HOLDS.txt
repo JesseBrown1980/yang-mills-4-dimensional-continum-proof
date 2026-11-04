@@ -1,0 +1,19 @@
+HOLDS at a72a0c336e5b6d00cee520af0790f7e089eb5e14. File for all: docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md
+
+H1, line 58. The sentence derives sigma at sides>=3, then the bold claim reads at every L, which includes L=1 and L=2.
+OLD: On a hypercubic lattice with d spatial dimensions and sides at least 3, σ = 6(d − 1)ε.
+NEW: On a hypercubic lattice with d spatial dimensions, a link lies in at most 2(d − 1) plaquettes, each holding at most 3 other links, so σ ≤ 6(d − 1)ε on every side, with equality when all sides are at least 2. r increases with σ, so the value at σ = 6(d − 1)ε bounds every lattice with 2ε + 6(d − 1)ε < 1.
+REASON: the step to L=1,2 needs the inequality and the monotonicity. MEASURED on 69 lattices, d=1..4, sides 1..4: sum of s<=6(d-1) everywhere; d=3 L=1 reads 2, L=2 reads 12.
+FALSIFIER: one periodic hypercubic lattice with sum of s above 6(d-1), or equal-sided L>=2 with a lower sum.
+
+H2, line 58. 0.0716 lies outside the stated hypothesis.
+OLD: about β < 0.0716,
+NEW: about β < 0.07155,
+REASON: artanh(1/14)=0.071550421 MEASURED in integers; beta=0.0716 gives tanh beta>1/14.
+FALSIFIER: artanh(1/14)>=0.0716 in exact arithmetic.
+
+H3, line 52. At M=m, eps=0, the hypothesis holds and r reads 0/0.
+OLD: **Theorem 5.** If 2ε + σ < 1, then
+NEW: **Theorem 5.** If ε > 0 and 2ε + σ < 1, then
+REASON: the formula divides by 2 eps. At eps=0, w is constant and T has rank one, so the only eigenvalues are lambda_0 and 0.
+FALSIFIER: a reading of r at eps=0 that the note defines; it has none at this commit.

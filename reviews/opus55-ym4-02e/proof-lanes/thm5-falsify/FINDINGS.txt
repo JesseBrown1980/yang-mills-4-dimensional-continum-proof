@@ -1,0 +1,25 @@
+FINDINGS start 2026-11-04. Target a72a0c3, Thm 5 of NOTE-YM4-02e. Engine in eng/ (own code, integer only).
+ENGINE (DERIVED method): fixed point 2^-56 integer, verified Cholesky with remainder residual bound; pencil B - mu A^-1 by Sylvester; lambda0 by Collatz-Wielandt lower bound; rank-1 deflation shows at most one eigenvalue above mu. Z2 flux blocks by ker d characters. Blocks and dense 256 agree on 2x2.
+RUN1 MEASURED: 3150 dense rows, all configurations, groups Z2 Z3 Z4 Z5 Z6 V4 S3 D4 Q8 A4 D6 Dic3, dims to 1728, 5 levels of c. Certified theta within r on 3148; 2 rows are Z2 one link at eps=1/1000 where the 7.5e-5 relative slack of the certificate exceeds r-eps (exact theta=eps<r there). rows/d_*.hbp
+RUN2 MEASURED: Z2 blocks by ker d, 176 rows, sides 1x1..8x1, 2x2 (256), 3x2 (4096), 4x2 (65536), 3x3 (262144, 1024 blocks of 256), 1x1x1..5x1x1, 2x2x1 (4096). All within r. Dense 4096 at 2x2x1 agrees with blocks (mid cert 0.0610716 vs block row, r ratio 727734 ppm). rows/s_*, rows/z2_table.txt
+RUN3 MEASURED exact Python Bareiss inertia, 10 cases incl S3 1x1 and Z2 one link eps=1/1000: pass all, rows/exact.hbp.
+DERIVED: a two-valued weight on an index-2 subgroup has K(x,y) depending only on phi(x),phi(y), phi:G->Z2, so T reduces to Z2 on the same lattice; Z2 is that whole family.
+DERIVED: on Z2 the small-eps law is theta = eps + a eps^2 with a from the table: a<=~3 and S>=4 on 2x1 up; r = eps + S eps^2 + (S^2+1) eps^3.
+FIXES beside the record: first pass had i64 overflow of A^-1 on complexes with D>=128 (K-8,B-5 at edge), and overshoot from step raising; both gave spurious rows above r. Engine now F=52, checked mulfx, per-block bisection; those rows now within r, and exact Python confirms K4,K6,C5. rows0/ keeps the first-pass rows.
+
+RESULT at a72a0c3, final engine (F=52, checked overflow). Tags as marked. Rows in rows/, first pass kept in rows0/.
+MEASURED certified all-configuration rows, 0 above r:
+ dense 3150: Z2 Z3 Z4 Z5 Z6 V4 S3 D4 Q8 A4 D6 Dic3, sides 1,1x1,2x1,3x1,1x1x1,2x1x1, dims to 1728, every two-valued class pattern, 5 levels c from 0.002 to 0.9995.
+ random class weights 1250: S3 Q8 D4 Z5 D6 Dic3, dims to 1296.
+ Z2 blocks 178: 2x2(256) 3x2(4096) 4x2(65536) 3x3(262144; 1024 blocks of 256) 5x2(1048576; 2048 blocks of 512, mid level, id_M only), rings to 8x1, Lx1x1 to 5, 2x2x1(4096).
+ dense 4096: Q8 2x1 and V4 3x1 one row each at mid; Z2 2x2x1 two levels (first-pass engine) agrees with blocks.
+ Exact Python Bareiss inertia, 15 cases incl S3 1x1: pass. rows/exact.hbp, eng/exact2.py output.
+LARGEST theta/r, MEASURED (cert, ppm of r): one link no plaquette eps=1/1000: 999999. With plaquettes: 1x1 eps=1/1000 998999; 2x1 997990; 2x2 993999; 3x3 993999; 2x2x1 995975. At c near 1: one link 535289, 1x1 357156, 8x1 250157, 2x2x1 159673, 3x3 134138.
+LARGEST theta/eps, MEASURED: 1.4884 Z2 2x2x1 at c=0.9995. 8x1 at the edge 1.3995 with M/m=1.3996, matching eps/q of the note's Ising remark at L=8.
+SIGMA, MEASURED: Smax=6(d-1) at sides 2 and at sides>=3 for all of 2x2,3x3,4x4,2x2x2,3x3x3,4x4x4,2^4,3^4. Side 1 values: 1x1 1, Lx1 4, 1x1x1 2, Lx1x1 5, 2x2x1 8.
+DERIVED: index-2 two-valued weights reduce exactly to Z2 (kernel depends only on phi). D4/Q8 rows match Z2 1x1 (798547 at mid).
+OUTSIDE the lattice family, MEASURED: Z2 with two-letter plaquettes on a graph, same statement: C-3..8, K-3..12, K33, K55, doubled ring; 0 above r at final engine. K-n at c=1/2: 932713, 935589, 941761, 947346, 952126, 956183 ppm for n=3,4,6,8,10,12. C-5 eps=1/200 999924 ppm (cert slack near r-theta; exact Python passes C5, K4, K6).
+DERIVED: eps(x+1/x)+sigma=1 is the mode equation of mean-field propagation m_t = eps(m_{t+1}+m_{t-1})+sigma m_t. CONJECTURE: theta/r -> 1 on K-n as n grows at fixed c; so r has no room as a function of (eps,sigma) on that wider family.
+ESTIMATE ONLY, uncertified: Z2 2x2x2 all 16777216 configurations, mid, 60 power iterations: est/r 569191 ppm. Row flag within=false there means cert absent, cert_over_r=-2.
+COULD NOT REACH: 4x3 estimate gave no row inside its 200 s limit (CANNOT_SEE). S3 2x2 (1679616) and any non-abelian lattice with sides >= 2x2. Certified Z2 2x2x2. Compact groups beyond finite groups.
+ENGINE BOUNDARY: entry error bound e_ent=256 ulp covers 2 P Dmax <= 256. Rows with larger D (e.g. 5x1x1 edge) exceed it by a factor about 2, an effect near 1e-12 absolute, against ratios at or below 0.36 on those rows.

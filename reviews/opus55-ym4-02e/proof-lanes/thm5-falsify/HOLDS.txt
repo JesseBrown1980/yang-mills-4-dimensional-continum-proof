@@ -1,0 +1,12 @@
+HOLD 1 (low, text). File docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md, line 52 (OLD) and line 58 (added sentence).
+OLD: **Theorem 5.** If 2ε + σ < 1, then every eigenvalue
+NEW: **Theorem 5.** If 2ε + σ < 1, with ε > 0, then every eigenvalue
+And after the code block sentence ending "the smaller root of ε(x + 1/x) + σ = 1." add: "At ε = 0 the weight is constant and T has rank one, so every μ ≠ λ₀ is 0."
+REASON: at M = m the formula for r is 0/0 and ε(x + 1/x) + σ = 1 has no root, while the hypothesis 2ε + σ < 1 holds. DERIVED.
+FALSIFIER: a reading of the note where ε > 0 is already assumed in scope for section 3.
+
+HOLD 2 (low, text). Same file, line 58.
+OLD: about β < 0.0716
+NEW: about β < 0.07155
+REASON: artanh(1/14) = 0.0715504 at 12 digits, MEASURED in integers (rows/chk.txt). β = 0.0716 has tanh β > 1/14, so the rounded figure sits past the edge of the condition.
+FALSIFIER: artanh(1/14) >= 0.0716 by any exact evaluation.

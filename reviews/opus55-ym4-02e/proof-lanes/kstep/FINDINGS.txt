@@ -1,0 +1,29 @@
+FINDINGS|seat=opus55|target=a72a0c336e5b6d00cee520af0790f7e089eb5e14|scope=02e sections 1,2|arith=integers only|json=0
+VERDICT|HOLD at the commit: proved statements all stand; one false word on line 34; four scope corrections.
+
+CONFIRMED
+P1 [DERIVED+MEASURED] k-step bound; sign of theta^k unused, so negative mu at odd k is covered. a2.py: 4800 rows, 600 kernels, bad=0.
+P2 [DERIVED+MEASURED] 4 R_k R_2k <= (R_k+1)^2 is the exact form; x<=tau_k iff R_k>=((1+x)/(1-x))^2 on 0<=x<1. a2.py 4800 rows bad=0, equality 0.
+   Isometry claim right: (Af)/(Ag)=f/g, A>0, so d(Af,Ag)=d(f,g), and A is a bijection of the cone.
+P3 [DERIVED+MEASURED] uniformity holds: rest term bounded by sup||K(U,.)||^2 (theta' lambda0)^{k-2}, theta'<|theta| by compactness. a3.py 400 cases 800 rows 1% bracket bad=0, degenerate included.
+P4 [DERIVED+MEASURED] Delta_k=n Delta_k(T1); closed form exact on n=2,3, k=1..8, 16 rows bad=0, direct search (a9.py). C=n.
+S2 [DERIVED] factorization with bridge law right, needs only the convolution. w_2 range strictly tightens for nonconstant w.
+HB [MEASURED a4.py,a5.py] from lattice geometry, not the block: blocks, theta in 511381..511382 ppm, 1+t^2=1.18769 (L=2 osc formula 1187 milli),
+   sqrtR_v(k)=(E_k+a^k)/(E_k-a^k) exact at q=1/2 k=1..16 and at 6 other q in (0,1) (112 rows, bad=0), 19/10 vs 25/16, full orbits 779/400 vs 205/128.
+C-rows [MEASURED a7.py,a8.py] separate code: q=4/5 L=2..8 1633 2391 3178 3972 4766 5560 6355 from osc(rho)^2/4; full search L=8 k=8 reads 6355, 2624, 1000.
+
+REFUTED WORD
+line 34 "needs k >= log n/log(1+eta)": that bound is sufficient, and it is sharp as n theta^k->0. Falsifier theta=3/5, eta=3/5, n=2, k=1: tau_1=15/17<=24/25, threshold>1.
+   a5.py: 180 rows, sufficiency 180/180, first k below threshold in 67, e.g. theta=3/5 eta=1/5 n=3: first k=6, threshold 7.
+
+NEW RESULTS
+N1 [DERIVED+MEASURED] negative top alone: limit holds at every k with |theta|^k, because max G is invariant under U<->U'. a3.py 153/153 C_odd=C_even.
+N2 [MEASURED, a lattice case] both signs at one modulus: two limit points. Z5 one link w=(2,3,1,1,3): spectrum 10, +sqrt5 x2, -sqrt5 x2 (traces 10,120,1000,10100).
+   tau_k/|theta|^k reads 2236 milli at odd k (sqrt5), 2499 milli at k=8..40 (tends to 5/2 by hand). Householder kernels: 93/93 differ.
+N3 [DERIVED] C>=1 always, from tau_k>=|theta|^k; with one eigenfunction also from int rho Omega^2=0, int rho^2 Omega^2=1 giving osc>=2. Equality when rho takes only +-1.
+N4 [DERIVED+MEASURED] sqrtR_A(2)-sqrtR_1(2)=(1-q^2)^3/(4q^2(1+q^2)) on the 2x1 self-loops, positive at each q in (0,1), 27/80 at q=1/2; A raises at the 7 q run, and at q=1/2 for k=2,3,4,6,8,12; k=1 equal.
+N5 [DERIVED] tau_{j+k}<=tau_j tau_k by the same chain with C_{j+k}=C_j A C_k.
+N6 [MEASURED a7.py] true C at L=8: q=1/2 2625 milli against reading 2624 at k=8; q=1/5 1000 milli. At q=1/5 the k=8 reading is capped by 1/theta^8 (theta 999974 ppm), and osc formula confirms the value.
+
+OWN ERROR, beside: first block used T12=q; right entry 2q^2, equal only at q=1/2. a4.py exposed it with 121 misses; corrected rows bad=0 at q<1. q>1 is outside the note and my block scaling there is unchecked.
+CANNOT_SEE: Birkhoff-Hopf source unopened, NAMED; connected groups unmeasured, derivation only; repo test not run; fabric and recall not asked.

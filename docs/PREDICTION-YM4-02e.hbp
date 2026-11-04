@@ -149,3 +149,4 @@ YM4_02E_SOURCE|rows=YM4_02E_LOCAL|neighbours_and_r_ppm_ceil_by=the_same_plaquett
 YM4_02E_ENGINE_AGREE_MORE|added_after_the_first_130_rows=1|by=the_second_seat's_finding_that_rows_past_L=3_had_no_second_route|cases=Z2:4,1:q=1/2;Z2:5,1:q=4/5;Z2:3,2:q=4/5|statement=the_fast_Z2_engines_and_the_general_orbit_matrices_give_the_same_R_k_at_k=1,2,4_and_the_same_ratio|json=0
 YM4_02E_ATTEMPT|run=second_seat_proof_lane|failed=1|cause=its_reply_passed_the_128000_token_output_limit_after_7_tool_calls|what_it_checked=nothing|relaunched_in_narrower_lanes=1|json=0
 YM4_02E_ATTEMPT|run=sixth_local|finished=1|failed_rows=0|seconds=615|the_receipt=tests/K_STEP_LOCALITY_RECEIPT.txt|rows_of_the_fifth_lost=0|rows_gained=3|json=0
+YM4_02E_ATTEMPT|run=second_seat_four_proof_lanes|head=a72a0c3|agents_failed=0|falsifier_of_theorem_5=none_found|corrections_to_the_note=applied|test_and_receipt_changed=0|json=0

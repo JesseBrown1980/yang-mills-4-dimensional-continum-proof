@@ -279,3 +279,33 @@ Final status for this review:
 * Formal YM4-02e certification: HOLD
 
 I recommend keeping PR #26 in draft until the hosted test and second-seat reports are complete.
+
+## Seventh relay, at `52ceaa9`
+
+> ### YM4-02e: new receipt verified
+>
+> I checked PR #26 at commit `52ceaa9` against the previous `09ff0f2` receipt.
+>
+> All 286 previous receipt rows are preserved exactly.
+>
+> The new receipt has 289 rows, with precisely three additions:
+>
+> | Lattice | Weight  | Comparison                   |
+> | ------- | ------- | ---------------------------- |
+> | Z2, 4×1 | q = 1/2 | Fast engine = general matrix |
+> | Z2, 5×1 | q = 4/5 | Fast engine = general matrix |
+> | Z2, 3×2 | q = 4/5 | Fast engine = general matrix |
+>
+> All three record matching and spectral ratios. The first 130 frozen prediction rows are byte-identical to the previous commit. The prediction document has additional run-history records appended after the frozen section.
+>
+> The reported sixth local run took 615 seconds with zero failed checks. The new hosted test remains in progress, and the separate proof reviews are still outstanding.
+>
+> Formal status: YM4-02e remains HOLD.
+>
+> I filed the new independent receipt comparison on [YM4-02e PR #26](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26#issuecomment-6642000157), without changing the proof branch.
+>
+> Latest YM4-02e hosted status: eight checks passed, two k-step-locality check runs still active, no reported failures. Theorem 5 remains HOLD pending those results and the proof reviews.
+
+## Eighth relay, after the four proof lanes
+
+> For YM4-02e, the four proof lanes finding no counterexample is encouraging. Apply their section 4 correction, preserve their attack reports, and retain HOLD until the revised exact head is checked.

@@ -1,8 +1,12 @@
-# The second seat on YM4-02e, at `09ff0f2`
+# The second seat on YM4-02e
+
+**The proof lanes, at `a72a0c3`: HOLD on text only.** Every proof step of Theorem 5 checks by hand, and no falsifier was found: 3,150 dense rows on 12 groups, including non-abelian ones, and 1,250 random-weight rows, with 0 above r. Propositions 1 to 4 and section 2 stand as mathematics, with one false word corrected. Section 4's logic stands, with its Gaussian kernel corrected. [Their reports, verbatim](PROOF-LANES.md), and [their findings and holds](proof-lanes/). All holds and the lanes' upgrades are applied in the note, where its upgrade on C is stated as the lower bound its findings prove, with the maximizer unproved. Those edits are FABLE5's, unread by this seat.
+
+## The records lane, at `09ff0f2`
 
 **The records lane: HOLD at the commit, with every number it recomputed in agreement.** [Its report, verbatim](RECORDS-LANE-REPORT.md), [its findings](FINDINGS.txt) and [its holds](HOLDS.txt).
 
-**The proof lane: FAILED, and it checked nothing.** Its reply passed the 128,000-token output limit after 7 tool calls, and it returned no result. So at this commit the second seat has run no proof review of Theorem 5, and the records lane says so too. It was relaunched in narrower lanes, whose reports are filed beside this one when they return.
+**The proof lane: FAILED, and it checked nothing.** Its reply passed the 128,000-token output limit after 7 tool calls, and it returned no result. So at this commit the second seat has run no proof review of Theorem 5, and the records lane says so too. It was relaunched in the narrower lanes above.
 
 | What the records lane did | Result |
 |---|---|

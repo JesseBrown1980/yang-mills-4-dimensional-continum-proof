@@ -1,0 +1,43 @@
+SEAT: second seat, Theorem 5 of docs/NOTE-YM4-02e at a72a0c3. Own outline in OUTLINE.txt was written before the proof was read.
+LINE CHECK (DERIVED by this seat, by hand, step by step):
+L1 chain limit: E[f(x0)f(xt)] = tr(f T^t f T^(n-t))/tr T^n. T Hilbert-Schmidt from the continuous kernel, so T^2 trace class;
+   ||T^m/l0^m - P||_1 <= thetamax^(m-2) ||T^2||_1/l0^2. Limit = <h,T^t h>/l0^t = theta^t. OK. Mean -> <Omega,h> = 0. OK.
+L2 TV lemma: min((r+ -1)a,(1-r-)(1-a)) <= xy/(x+y), x=r+-1,y=1-r-. With r-=r+/S the value (r+-1)(S-r+)/(r+(S-1)) peaks at sqrt S,
+   value (sqrtS-1)/(sqrtS+1), increasing in S. OK. Text says "largest at r+=sqrtS" and leaves ratio<S to monotonicity.
+L3 influence: unnormalized ratio in [(m/M)^s,(M/m)^s], so S=(M/m)^(2s), sqrtS=(M/m)^s, TV<=tanh(s artanh eps). OK.
+   Normalization constants do not change largest/smallest. OK. Word multiplicity plays no part. OK.
+L4 row sum: row i = sum over changed j of C_ij <= 2eps+sigma. n>=3 keeps the two time neighbours distinct. OK.
+L5 C vs D direction: delta_j(pi_i g) <= delta_j(g)+C_ij delta_i(g) moves mass from i to j with C_ij, row i. OK.
+   Identity (mu-mu')(g) = (mu-mu')(pi_i g) + mu'(pi_i g - pi'_i g) OK, last term <= b_i delta_i(g).
+L6 sweep factor c: potential Phi = sum_visited delta + c sum_unvisited delta is nonincreasing, Phi_0 = c Sum, Phi_end = Sum_end. OK.
+   osc(g_s) <= Sum delta_j(g_s) -> 0, so g_s tends uniformly to a constant, (mu-mu')(g_s) -> 0. OK.
+L7 w <= delta(g)+C^T w: mass at a at a visit is initial or sent by a visit to b with C_ba. OK. C^T is l1 contraction by c, so iterate. OK.
+L8 walk: sum over a in slice s of (C^m)_ja <= W^m(slice j,s) by induction on the row sums. Only rows used, matching D_ja. OK.
+   x0,x0' may differ everywhere: b_a<=eps on all sites of slices +-1, one factor per site. No N_l factor enters. OK.
+L9 Green: on Z coefficient r^|m|/D, D=sqrt((1-s)^2-4e^2)>0 from hypothesis. Lift to Z/n gives (r^d+r^(n-d))/(D(1-r^n)). OK.
+   Removing slice 0 deletes rows and columns of a nonnegative matrix, Green's function can only fall. OK.
+L10 limits: n->inf at fixed t, then t->inf. |theta|^t <= K (r^(t-1)+r^(t+1))/D. OK.
+L11 compact G: densities continuous and >0; E={p>q} open; g_s stay continuous by uniform continuity; h=Th/mu continuous; f bounded since
+   Omega has positive minimum. No disintegration is used. Non-metrizable G: kernel uniform limit of finite sums, compactness stays. OK.
+L12 PH: T commutes with gauge action because w is a class function; Omega invariant by simplicity. OK.
+
+MEASURED by this seat (integers only; files in this workspace):
+M1 count_s.py, 69 lattices d=1..4 sides 1..4: max sum of s <= 6(d-1) on all 69, equal on all sides>=3 (14 lattices) and all with min side 2.
+   L=1, d=3: sum 2. L=2, d=3: sum 12 with s=2 present. Mixed side 1 lower. DERIVED reason: <=2 plaquettes per other direction, <=3 other links each.
+M2 influence.py, C_ij from the definition, Z2 Z3 S3, 22 runs incl. commutator words and s=2 pairs: 0 violations of tanh(s artanh eps).
+   Z2 (2,1) and (2,2) w=29,21: s=2 pairs read C=312012 ppm = the bound exactly, against eps=160000. So s counting is required and sharp.
+M3 inertia.py, exact Sylvester inertia of q ABA - p A, 26 runs at c up to 980000 ppm, weights both signs of bias: above_c=1, below_-c=0, all met.
+   Largest theta/r read 599606 ppm (Z2 one link, eps=49/100). Sanity: Z2 one link theta bracket holds eps=490000; Z3 (1,1) holds 8/71.
+M4 walk.py, exact conditional expectations at n=3..6, every t, site and random functions, wrapped Green's function solved exactly:
+   1246 tests, 0 violations; worst LHS/RHS 131402 ppm. n=3 and t=1 included.
+M5 thresh.py: artanh(1/14)=0.071550421. beta=0.0716 lies outside tanh beta<1/14; 0.07155 inside.
+   r/(eps/(1-12eps)): 1000176 ppm at eps=1/100, 1003936 at 1/28, 1145899 at 1/15, 1818800 at 100/1401.
+ROOT: r solves eps x^2-(1-sigma)x+eps=0, smaller root, r<1 from 1-sigma>2eps. Coefficient r^|m|/D confirmed via G_n closed form against walk.py solve (n=3..6).
+SIGMA: 6(d-1)eps right on sides>=3 (M1). tanh beta<1/14 is 14 eps<1, right at d=3.
+Z2 ring remark in the same section: with q=e^(-2K), tanh K=eps=e^(-2K*), gap 2(K*-K) gives eps/q. DERIVED, agrees with the note.
+n=3: only sets distinct time neighbours; lifts to Z correctly. Small t: t=1 uses G(0) and G(2). No failure found.
+M3b big2.py, integer threshold c<=r lambda_0: S3 (1,1,1) five weights (dim 216), Z2 (2,2) w=5,4 (dim 256), Z2 (2,1,1) two weights: above_c=1, below_-c=0, all 8 met.
+   First attempt big.py at w=31,25,19 hit its 570 s timeout with no result: a timeout, recorded as no reading.
+VERDICT: every step of the proof checks (L1..L12). Three text holds, in HOLDS.txt. Falsifier of the theorem: one lattice with 2eps+sigma<1 and |theta|>r; 34 exact runs read none.
+CANNOT_SEE: SU(2) lattices numerically (proof line only); lattices above dim 256.
+TAGS: L-lines DERIVED, M-lines MEASURED, Dobrushin/Foellmer attribution NAMED (sources unopened; the note's own proof stands alone and was checked).
