@@ -1,6 +1,6 @@
 # YM4-02d: an explicit gap at each fixed lattice
 
-**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026. GPT-6, a different model family, read the proof the same day, verified it, and added the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md). The exact tests are registered first in [`PREDICTION-YM4-02d.hbp`](PREDICTION-YM4-02d.hbp). The second seat's attack is OPEN.**
+**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 4, 2026. GPT-6, a different model family, read the proof the same day, verified it, and added the full-space route in Step 4: [its report, verbatim](../reviews/gpt6-quantitative-gap/README.md). Its exact tests, registered first in [`PREDICTION-YM4-02d.hbp`](PREDICTION-YM4-02d.hbp), are MEASURED below, with every predicted row met. The second seat's attack is OPEN.**
 
 **Scope:** one finite periodic lattice and one β > 0. The objects are those of [section 7 of Lemma 0004](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ym4-02c-reflection-transfer/docs/LEMMA-0004-REFLECTION-TRANSFER.md), on draft PR #14 under the operator's HOLD, and they are written out here so this note reads alone. Theorem 5 there gives 0 < λ₁ < λ₀, and Proposition 6 there bounds λ₀. This note bounds the ratio. Zero spacing at fixed finite physical volume stays OPEN.
 
@@ -84,4 +84,51 @@ The two routes differ in one way: on H the first eigenvalue after λ₀ can belo
 
 ## What is measured
 
-Nothing yet, at the commit that adds this note. [The prediction](PREDICTION-YM4-02d.hbp) lists exact spectra from characters, plaquette cases with their orbit counts, GPT-6's float values as already seen, both routes, broken-kernel controls and sabotages.
+[`tests/test_quantitative_gap.py`](../tests/test_quantitative_gap.py), in exact integers, against [the prediction](PREDICTION-YM4-02d.hbp), pushed at commit `9d1c334` before that test existed. Every predicted row was met on its first run, `failed=0`. The rows are in [`tests/QUANTITATIVE_GAP_RECEIPT.txt`](../tests/QUANTITATIVE_GAP_RECEIPT.txt).
+
+**Exact spectra, one link direction, no spatial plaquettes.** The values were worked out by hand from characters, as (c_ρ/d_ρ)^L, and the test reads them through the orbit matrix, a separate route, with the nullity at each value and the multiplicities summing to the number of orbits.
+
+| Group | Weight | Links | Spectrum on PH | λ₁/λ₀ | τ |
+|---|---|---:|---|---:|---:|
+| Z2 | q = 1/4 | 1 | 5/8, 3/8 | **3/5** | **3/5**, equal |
+| Z2 | q = 1/4 | 2 | 25/64, 9/64 | 9/25 | 15/17 |
+| Z2 | q = 1/4 | 3 | 125/512, 27/512 | 27/125 | 63/65 |
+| S3 | 1, 1/2, 1/3 | 1 | 19/36, 1/9, 1/36 | 4/19 | 1/2 |
+| Q8 | r = 1/2 | 1 | 41/128, 15/128, 9/128 three times | 15/41 | 15/17 |
+| Q8 | r = 1/2 | 2 | 1681/16384, 225/16384, 81/16384 three times | 225/1681 | 255/257 |
+| 2T | r = 1/2 | 1 | 121/384, 13/128, 3/128, 1/128 twice, 1/384 twice | 39/121 | 15/17 |
+
+**With spatial plaquettes.** The ratio is an exact bracket in parts per million. The certificate reads: at least one eigenvalue above a rational lo, at most one above τ·lo, and none below −τ·lo, so every other eigenvalue has modulus at most τ·lo < τλ₀.
+
+| Group | Weight | Lattice | N_ℓ | N_s | Orbits | λ₁/λ₀, ppm | τ |
+|---|---|---|---:|---:|---:|---:|---:|
+| Z2 | q = 1/5 | 2×2 | 8 | 4 | 32 | 812023 to 812024 | 195312/195313 |
+| Z2 | q = 1/2 | 2×2 | 8 | 4 | 32 | 146218 to 146219 | 255/257 |
+| Z2 | q = 4/5 | 2×2 | 8 | 4 | 32 | 12665 to 12666 | 325089/456161 |
+| Z2 | q = 1/2 | 2×1×1 | 6 | 6 | 32 | 511381 to 511382 | 63/65 |
+| Z2 | q = 1/2 | 1×1×1 | 3 | 3 | 8 | 333333 to 333334 | 7/9 |
+| Z3 | 1, 1/2, 1/2 | 2×1 | 4 | 2 | 27 | 385446 to 385447 | 15/17 |
+| Z3 | 1, 1/2, 1/2 | 3×1 | 6 | 3 | 81 | 428816 to 428818 | 63/65 |
+| S3 | 1, 1/2, 1/3 | 1×1 | 2 | 1 | 11 | 279835 to 279836 | 4/5 |
+| Q8 | r = 1/2 | 1×1 | 2 | 1 | 28 | 529896 to 529897 | 255/257 |
+| Q8 | r = 1/2 | 1×1×1 | 3 | 3 | 176 | certificate alone | 4095/4097 |
+| 2T | r = 1/2 | 1×1 | 2 | 1 | 76 | 435408 to 435409 | 255/257 |
+
+GPT-6's float diagnostic, recorded in the prediction as already seen, falls in the first three brackets: 0.812023, 0.146218 and 0.012666. Q8 on 1×1×1 is the spatial slice of a four-dimensional lattice.
+
+**Both routes.** Route 1 on all configurations, Z2 on 2×1×1 (dimension 64), Z3 on 2×1 (81) and Q8 on 1×1 (64): the top eigenvalue lies in the bracket from the orbits, and the certificate holds. Route 2 is every row above. On each case of at most 32 orbits, the cross-ratio with A equals the one without A at every quadruple, each averaged entry lies in [m^{N_ℓ}, M^{N_ℓ}], and the largest cross-ratio is at most (M/m)^{2N_ℓ}.
+
+**Broken kernels, each named in the prediction.**
+
+| Kernel | Reading |
+|---|---|
+| Z3, weight 1, −1/2, −1/2 | The hypothesis refuses it. Spectrum 1/2 twice, 0, so the ratio is 1, above the 1/3 that the range of \|w\| would give. The bound is false here |
+| Z3, weight 1, 0, 0 | The hypothesis refuses it. Spectrum 1/3 three times, with no finite range |
+| Z3, weight 1, 1/2, 1/4 | The hypothesis refuses it, and the inertia reports an asymmetric matrix |
+| Half the exponent, on Z2 with q = 1/4 | That constant reads 1/3 against an exact ratio of 3/5, so it is false here |
+
+**The sabotages.** `drop_gauge_average`, `drop_orbit_measure`, `half_the_exponent` and `drop_spatial_weight` each exit 1 on the check the prediction named, with no crash, and an unknown name exits 2.
+
+**Scope.** Finite groups at rational weights. SU(2) itself is covered by the proof, and read here through Q8 and 2T at rational r. 2O and 2I have irrational Wilson weights at rational r and are left out.
+
+**Seen after the run, in no prediction.** On some lattices the gauge-averaged kernel's largest cross-ratio sits far below R. Z2 at q = 1/4 on 2 links reads 289/64 against R = 256, and at q = 1/2 on 2×2 it reads 124609/16384 against 65536. On those two-orbit cases of Z2, tanh(Δ/4) from the actual cross-ratio equals the exact ratio: 9/25 at 2 links and 27/125 at 3. On others it reaches R: 256 on Q8 and 2T with one link, 65536 on Q8 at 1×1, 64 on Z2 at 1×1×1. So the bound from the true diameter of BP is tighter than τ on some lattices and equal on others. How that diameter grows with N_ℓ is OPEN.
