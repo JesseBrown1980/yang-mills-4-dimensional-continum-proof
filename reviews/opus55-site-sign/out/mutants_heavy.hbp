@@ -1,0 +1,10 @@
+MUTH|id=h2_face_bit_swapped|desc=route 1 records each negative face at its neighbour's bit|verdict=killed_by_named_check|exit=1|named_failures=1|first=every_cube_on_(Z/2)^3_holds_an_even_number_of_negative_faces|zero_rows_changed=1|ms=214245|json=0
+MUTH|id=h1_lifts_all_zero|desc=route 1 reads the zero lift of each field|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|zero_rows_changed=1|ms=266943|json=0
+MUTH|id=h3_gray_no_flip|desc=route 2 flips nothing|verdict=killed_by_named_check|exit=1|named_failures=1|first=gauge-fixed_central_configurations_on_(Z/2)^3|zero_rows_changed=1|ms=307644|json=0
+MUTH|id=h4_cycles_short|desc=cycle count one bit short|verdict=killed_by_named_check|exit=1|named_failures=1|first=gauge-fixed_central_configurations_on_(Z/2)^3|zero_rows_changed=1|ms=153442|json=0
+MUTH|id=h5_tree_ignored|desc=route 2 fields taken as any eight flat cochains, tree left free|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|zero_rows_changed=0|ms=133527|json=0
+MUTH|id=h6_negative_s_constant|desc=route 2 counts odd S as zero|verdict=SURVIVES_identical_output|exit=0|named_failures=0|first=none|zero_rows_changed=0|ms=111442|json=0
+MUTH|id=h7_face_order_cube|desc=cube masks read a shifted face|verdict=killed_by_named_check|exit=1|named_failures=3|first=dual_lattice|zero_rows_changed=3|ms=235863|json=0
+MUTH|id=h8_patterns_formula|desc=patterns per field formula off|verdict=killed_by_named_check|exit=1|named_failures=1|first=gauge-fixed_central_configurations_on_(Z/2)^3|zero_rows_changed=1|ms=238824|json=0
+MUTH|id=h9_section_lift_ignored|desc=route 1 section ignores the lift bit, so flips are never read|verdict=passes_its_checks_cmp_catches_it|exit=0|named_failures=0|first=none|zero_rows_changed=1|ms=221824|json=0
+MUTH_DONE|json=0
