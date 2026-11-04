@@ -1,0 +1,262 @@
+GATE_V4_RESULTS|seat=ACER-CLAUDE-FABLE5|owner=OP-JESSE|branch=gate-v4-20261104|prediction_commit=08d23b3|frozen_gate_sha256=24293fb263bea9327fba2bac5e703ff8a8a39165acdbab050f4743231580b7e9|post_run_gate_sha256=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193|json=0
+PREDICTION_RESULT|id=selftest_py312|state=MET|value=want=must_flag=117;must_name_its_rule=158;must_pass=91;file_rows=59;list_rows=14;failed=0;got=must_flag=117;must_name_its_rule=158;must_pass=91;file_rows=59;list_rows=14;failed=0|json=0
+PREDICTION_RESULT|id=selftest_py313|state=MET|value=want=must_flag=117;must_name_its_rule=158;must_pass=91;file_rows=59;list_rows=14;failed=0;got=must_flag=117;must_name_its_rule=158;must_pass=91;file_rows=59;list_rows=14;failed=0|json=0
+PREDICTION_RESULT|id=python_plants_linux|state=MET|value=want=plants=578;v3_bypass=395;v4_bypass=9;opened=0;got=plants=578;v3_bypass=395;v4_bypass=9;opened=0|json=0
+PREDICTION_RESULT|id=python_plants_linux_names|state=MET|value=want=inline_child_interpreter_stdin,os_popen_awk,os_wait4_rusage_by_index,percent_computed_through_function,percent_name_bound_to_call,percent_tuple_on_variable,pow_none_through_parameter_no_default,socket_timeout_property,subprocess_child_python;got=inline_child_interpreter_stdin,os_popen_awk,os_wait4_rusage_by_index,percent_computed_through_function,percent_name_bound_to_call,percent_tuple_on_variable,pow_none_through_parameter_no_default,socket_timeout_property,subprocess_child_python|json=0
+PREDICTION_RESULT|id=python_plants_deviation_linux|state=MET|value=want=opened=0;got=opened=0|json=0
+PREDICTION_RESULT|id=python_plants_win|state=MISS|value=want=plants=578;v3_bypass=392;v4_bypass=8;opened=0;got=plants=578;v3_bypass=392;v4_bypass=6;opened=0|json=0
+PREDICTION_RESULT|id=python_plants_win_names|state=MISS|value=want=inline_child_interpreter_stdin,os_popen_awk,percent_computed_through_function,percent_name_bound_to_call,percent_tuple_on_variable,pow_none_through_parameter_no_default,socket_timeout_property,subprocess_child_python;got=percent_computed_through_function,percent_name_bound_to_call,percent_tuple_on_variable,pow_none_through_parameter_no_default,socket_timeout_property,subprocess_child_python|json=0
+PREDICTION_RESULT|id=scenarios_linux|state=MET|value=want=BYPASS=5;got=BYPASS=5|json=0
+PREDICTION_RESULT|id=scenarios_linux_names|state=MET|value=want=any_reason_text_is_accepted,folder_row_prefix,generated_file_shadows_clean_tracked_module,listed_exec_helper_called_from_unlisted_file,pull_request_replaces_the_gate_it_runs;got=any_reason_text_is_accepted,folder_row_prefix,generated_file_shadows_clean_tracked_module,listed_exec_helper_called_from_unlisted_file,pull_request_replaces_the_gate_it_runs|json=0
+PREDICTION_RESULT|id=linux_scan|state=MET|value=want=still_open_of_attack_bypass=0;got=still_open_of_attack_bypass=0|json=0
+PREDICTION_RESULT|id=native_plants|state=MET|value=want=plants=265;bypass_rows=152;closed=135;open=17;controls_opened=0;got=plants=265;bypass_rows=152;closed=135;open=17;controls_opened=0|json=0
+PREDICTION_RESULT|id=native_plants_names|state=MET|value=want=cpp_cmdline_define,f90,java,js_integer_product_rounds,js_negative_zero,makefile,pl_perl,ps1,sh_awk,sh_base64_pipe,sh_bc,sh_printf_float,sh_python_c,sh_python_heredoc,sh_writes_py_then_runs,sql_sqlite,yml_run_block;got=cpp_cmdline_define,f90,java,js_integer_product_rounds,js_negative_zero,makefile,pl_perl,ps1,sh_awk,sh_base64_pipe,sh_bc,sh_printf_float,sh_python_c,sh_python_heredoc,sh_writes_py_then_runs,sql_sqlite,yml_run_block|json=0
+PREDICTION_RESULT|id=false_alarms_native|state=MET|value=want=clean_rows=32;clean_flagged=7;got=clean_rows=32;clean_flagged=7|json=0
+PREDICTION_RESULT|id=false_alarms_native_names|state=MET|value=want=clean_cpp_cmath_for_abs,clean_cpp_version_macro,clean_js_bigint_power_var,clean_js_bigint_vars,clean_rs_enum_variant_float,clean_rs_struct_float,clean_rs_var_named_f64;got=clean_cpp_cmath_for_abs,clean_cpp_version_macro,clean_js_bigint_power_var,clean_js_bigint_vars,clean_rs_enum_variant_float,clean_rs_struct_float,clean_rs_var_named_f64|json=0
+PREDICTION_RESULT|id=heldout|state=MET|value=want=flagged=6;of=20;rust=2_of_7;cpp=4_of_4;js=0_of_4;shell=0_of_5;got=flagged=6;of=20;rust=2_of_7;cpp=4_of_4;js=0_of_4;shell=0_of_5|json=0
+PREDICTION_RESULT|id=false_alarms_intcode_linux|state=MET|value=want=plants=75;false_alarms=38;clean=37;got=plants=75;false_alarms=38;clean=37|json=0
+PREDICTION_RESULT|id=false_alarms_intcode_win|state=MET|value=want=plants=75;false_alarms=38;clean=37;got=plants=75;false_alarms=38;clean=37|json=0
+PREDICTION_RESULT|id=pins_scratch_linux|state=MET|value=want=misses=0;got=misses=0|json=0
+PREDICTION_RESULT|id=pins_same_change_linux|state=MET|value=want=rc=0;got=rc=0|json=0
+PREDICTION_RESULT|id=pins_run_without_I_linux|state=MET|value=want=rc=1;got=rc=1|json=0
+PREDICTION_RESULT|id=pins_tree_clones|state=MET|value=want=PIN_BASE_rc=0_on_3;misses=0;got=PIN_BASE_rc=0_on_3;misses=0|json=0
+PREDICTION_RESULT|id=tree_ym4_findings|state=MET|value=range=20..30;got=24|json=0
+PREDICTION_RESULT|id=tree_ym4_code_files|state=MET|value=want=4;got=4|json=0
+PREDICTION_RESULT|id=tree_ym4_files_outside|state=MET|value=want=1;got=1|json=0
+PREDICTION_RESULT|id=tree_counts_across_python_ym4|state=MET|value=py313=4,1,24,0,24,19;py312=4,1,24,0,24,19|json=0
+PREDICTION_RESULT|id=tree_su_n_findings|state=MET|value=range=870..900;got=886|json=0
+PREDICTION_RESULT|id=tree_su_n_code_files|state=MET|value=want=149;got=149|json=0
+PREDICTION_RESULT|id=tree_su_n_in_folder_rows|state=MET|value=want=879;got=879|json=0
+PREDICTION_RESULT|id=tree_su_n_outside_folder_rows|state=MET|value=want=7;got=7|json=0
+PREDICTION_RESULT|id=tree_su_n_files_outside|state=MET|value=want=1;got=1|json=0
+PREDICTION_RESULT|id=tree_counts_across_python_sun|state=MET|value=py313=149,1,886,879,7,294;py312=149,1,886,879,7,294|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_findings|state=MET|value=range=1340..1400;got=1370|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_code_files|state=MET|value=want=482;got=482|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_rows_now_file|state=MET|value=want=98;got=98|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_rows_now_folder|state=MET|value=want=2;got=2|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_new_file_rows|state=MISS|value=want=28;got=29|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_moved_counts|state=MET|value=want=43;got=43|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_rows_with_no_findings|state=MET|value=want=44;got=44|json=0
+PREDICTION_RESULT|id=tree_ym_pairs_files_outside|state=MET|value=range=78..86;got=83|json=0
+PREDICTION_RESULT|id=tree_counts_across_python_pairs|state=MET|value=py313=482,83,1370,954,416,3481;py312=482,83,1370,954,416,3481|json=0
+PREDICTION_RESULT|id=list_4d|state=MET|value=want=rows=1,findings_near=87;got=rows=1,findings=87_on_the_frozen_gate,93_on_the_post_run_gate_after_7_more_selftest_rows|json=0
+PREDICTION_RESULT|id=workflow_no_float_local|state=MET|value=want=steps=3;all_rc=0;tree_left_clean=1;got=steps=3;all_rc=0;tree_left_clean=1|json=0
+PREDICTION_RESULT|id=workflow_base_local_clean_pr|state=MET|value=want=GREEN,GREEN;got=GREEN,GREEN|json=0
+PREDICTION_RESULT|id=workflow_base_local_float_no_row|state=MET|value=want=RED,GREEN;got=RED,GREEN|json=0
+PREDICTION_RESULT|id=workflow_base_local_float_with_row|state=MET|value=want=GREEN,RED;got=GREEN,RED|json=0
+PREDICTION_RESULT|id=workflow_base_local_gate_edit_with_float|state=MET|value=want=RED,RED;got=RED,RED|json=0
+PREDICTION_RESULT|id=workflow_base_local_workflow_rewrite_with_float|state=MET|value=want=RED,RED;got=RED,RED|json=0
+PREDICTION_RESULT|id=hosted_workflows|state=NOT_MEASURED|value=reason=NO_HOSTED_RUN_MADE_HERE;a_throwaway_repository_or_this_pull_request_settles_it|json=0
+PREDICTION_TALLY|met=44|miss=3|not_measured=1|json=0
+MISS_REASON|id=python_plants_win|what=os_popen_awk is tagged linux, so it is NOT_RUN on this lane, a slip in the prediction. inline_child_interpreter_stdin hit the 60 s run limit under load, verdict RUN_ERROR_CLEAN, and the gate reads it CLEAN, so it stays open by reading|tag=MEASURED|json=0
+MISS_REASON|id=tree_ym_pairs_new_file_rows|what=native/ym/shadow/lean/HebcShadow.lean is a Lean file of import lines, which parses as Python. anything_python with import_allow flags it. A false alarm that needs one row; the candidate anything_python had been measured without import_allow|tag=MEASURED|json=0
+BASIS_NOTE|what=most rows came close because they were derived from the attackers' measured copies and from a run of the candidate rules made just before the prediction. The held-out figure is the one that speaks to the next plant, and it was read without tuning|json=0
+TREE_NOTE|tree=ym4|what=C:/tmp/ym4-status-wt moved from 3e78d44 to bff6043 during this work, by another seat. The census read bff6043; its count matches the 24 predicted for 3e78d44|tag=MEASURED|json=0
+AFTER_THE_RUN|what=four holes found by reading this seat's own merge, closed in fa957b5 with rows in the selftest: a strftime the file binds, a strftime method of a class in the file, the same formatted again, and a rebound isinstance. Each is in OWN_PLANT rows below with what it produced and what each gate read. The attackers' 653 Python plants read with no verdict changed on 3.12.3 and 3.13.14|tag=MEASURED|json=0
+CORRECTION|commit=fa957b5|what=its message names type and bytes among the holes, each with the frozen gate clean. The measured holes are the four in AFTER_THE_RUN. The plants for a rebound type and a rebound bytes drew a finding from the frozen gate on another line, so those two narrowings were tightened as the same class of risk, with no float measured through them|tag=MEASURED|json=0
+NEEDS|repo=yang-mills-4-dimensional-continum-proof|list=1 file row, done on this branch|then=a pull request, then no-float-base among the required checks once no_float_base.yml is on main|json=0
+NEEDS|repo=Finite-Universe-SU-N-solved|GATE_DIR=scripts|gate=copy, 93 findings at sha256 935bd77b|workflows=copy both, delete no-float.yml|list=2 rows: native/ym/vendor/ with a tree pin, and the gate|reason_to_rewrite=the vendor row says the rest of the tree reads 0 calls to its float conversions; the second seat measured BigInt::sqrt, Display and parse running f64 under default features, and default-features = false on the 3 manifests builds with the same checksum, with full verifier output before and after NOT_MEASURED|json=0
+NEEDS|repo=Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C|GATE_DIR=native/scripts|gate=copy|workflows=copy both, delete no-float.yml after moving its integer-pair, copy-regeneration and redone-item steps to a job of their own|list=2 folder rows and 83 file rows: 29 new, 43 with moved counts, 11 at their old count, and 44 old rows to drop as they read 0 now; each needs a pin, and the new and moved rows a person reading them|code=make_integer_pairs.py calls listed() and python_findings(); it must take the count from the (count, pin) pair and pass local_modules, 3 lines by reading, NOT_MEASURED|rows=raw/final_census_win.hbp FILE rows|json=0
+FROZEN_GATE|lane=linux|NO_FLOAT_SELFTEST_DONE|must_flag=117|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0
+FROZEN_GATE|lane=win|NO_FLOAT_SELFTEST_DONE|must_flag=117|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=python|lane=linux|plants=578|v3_bypass=395|v4_bypass=9|opened=0|BYPASS=9|CAUGHT=511|NOT_RUN=3|NO_FLOAT_CLEAN=23|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=2|RUN_ERROR_FLAGGED=18|json=0
+FROZEN_GATE|lane=win|TOTAL|section=python|lane=win|plants=578|v3_bypass=392|v4_bypass=6|opened=0|BYPASS=6|CAUGHT=507|NOT_RUN=11|NO_FLOAT_CLEAN=22|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=3|RUN_ERROR_FLAGGED=17|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=intcode|lane=linux|plants=75|false_alarms=38|clean=37|still_flagged=str_format_date_day,url_escape_constant,sql_like_pattern,prose_percent_word,git_log_format_argument,date_command_argument,docstring_mentions_percent_f,name_vars_local_list,name_compile_local_function,name_eval_local_function,name_exec_as_parameter,name_float_as_field_in_namedtuple,power_param_guarded,power_minus_one_guarded,power_len_minus_one,power_while_down,power_int_of_string,power_class_constant,power_dict_value,power_tuple_unpacked,power_unary_plus,power_negated_after_guard,power_minus_one_base_parity,power_gf_inverse_user_class,exact_rational_division_user_class,fstring_dynamic_width,attribute_timestamp_on_user_int_field,attribute_random_on_user_integer_lfsr,attribute_uniform_on_user_integer_rng,attribute_gauss_named_user_integer,random_choices_of_ints,math_sumprod_of_ints,as_integer_ratio_on_int,import_json_ints_only,import_pickle_ints_only,import_ctypes_for_priority_only,import_yaml_absent_but_flagged,getattr_module_alias_ok_name|json=0
+FROZEN_GATE|lane=win|TOTAL|section=intcode|lane=win|plants=75|false_alarms=38|clean=37|still_flagged=str_format_date_day,url_escape_constant,sql_like_pattern,prose_percent_word,git_log_format_argument,date_command_argument,docstring_mentions_percent_f,name_vars_local_list,name_compile_local_function,name_eval_local_function,name_exec_as_parameter,name_float_as_field_in_namedtuple,power_param_guarded,power_minus_one_guarded,power_len_minus_one,power_while_down,power_int_of_string,power_class_constant,power_dict_value,power_tuple_unpacked,power_unary_plus,power_negated_after_guard,power_minus_one_base_parity,power_gf_inverse_user_class,exact_rational_division_user_class,fstring_dynamic_width,attribute_timestamp_on_user_int_field,attribute_random_on_user_integer_lfsr,attribute_uniform_on_user_integer_rng,attribute_gauss_named_user_integer,random_choices_of_ints,math_sumprod_of_ints,as_integer_ratio_on_int,import_json_ints_only,import_pickle_ints_only,import_ctypes_for_priority_only,import_yaml_absent_but_flagged,getattr_module_alias_ok_name|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=scenarios|lane=linux|BYPASS=5|CAUGHT=61|FLAGGED_NO_FLOAT=10|NO_FLOAT_CLEAN=2|SOURCE_SCAN_CANNOT_TELL=1|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=native|plants=265|bypass_rows=152|closed=135|open=17|flagged_controls=49|controls_opened=0|clean_rows=32|clean_flagged=7|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=heldout|valid=20|flagged=6|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=linux_scan|plants=50|still_open_of_attack_bypass=0|rc=0|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=pins|steps=15|misses=0|json=0
+FROZEN_GATE|lane=linux|PIN_BASE|tree=ym4|head=bff6043a1a5a|rc=0|want=0|folder_rows=0|file_rows=1|last=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=87/failed=0/json=0|json=0
+FROZEN_GATE|lane=linux|PIN_BASE|tree=sun|head=dad0f705f5d5|rc=0|want=0|folder_rows=1|file_rows=1|last=NO_FLOAT_DONE/code_files=149/listed_files=1/listed_folders=1/listed_findings=966/failed=0/json=0|json=0
+FROZEN_GATE|lane=linux|PIN_BASE|tree=pairs|head=61b50229fb56|rc=0|want=0|folder_rows=2|file_rows=83|last=NO_FLOAT_DONE/code_files=482/listed_files=83/listed_folders=2/listed_findings=1433/failed=0/json=0|json=0
+FROZEN_GATE|lane=linux|TOTAL|section=pin_trees|attacks=10|misses=0|json=0
+FROZEN_GATE|lane=linux|TREE|tree=ym4|head=bff6043a1a5a|tracked=19|code_files=4|findings=24|in_folder_rows=0|outside_folder_rows=24|files_outside=1|rows_now_file=1|rows_now_folder=0|new_file_rows=0|moved_counts=1|rows_with_no_findings=0|json=0
+FROZEN_GATE|lane=linux|TREE|tree=sun|head=dad0f705f5d5|tracked=294|code_files=149|findings=886|in_folder_rows=879|outside_folder_rows=7|files_outside=1|rows_now_file=0|rows_now_folder=1|new_file_rows=1|moved_counts=0|rows_with_no_findings=0|json=0
+FROZEN_GATE|lane=linux|TREE|tree=pairs|head=61b50229fb56|tracked=3481|code_files=482|findings=1370|in_folder_rows=954|outside_folder_rows=416|files_outside=83|rows_now_file=98|rows_now_folder=2|new_file_rows=29|moved_counts=43|rows_with_no_findings=44|json=0
+FROZEN_GATE|lane=win|TREE|tree=ym4|head=bff6043a1a5a|tracked=19|code_files=4|findings=24|in_folder_rows=0|outside_folder_rows=24|files_outside=1|rows_now_file=1|rows_now_folder=0|new_file_rows=0|moved_counts=1|rows_with_no_findings=0|json=0
+FROZEN_GATE|lane=win|TREE|tree=sun|head=dad0f705f5d5|tracked=294|code_files=149|findings=886|in_folder_rows=879|outside_folder_rows=7|files_outside=1|rows_now_file=0|rows_now_folder=1|new_file_rows=1|moved_counts=0|rows_with_no_findings=0|json=0
+FROZEN_GATE|lane=win|TREE|tree=pairs|head=61b50229fb56|tracked=3481|code_files=482|findings=1370|in_folder_rows=954|outside_folder_rows=416|files_outside=83|rows_now_file=98|rows_now_folder=2|new_file_rows=29|moved_counts=43|rows_with_no_findings=44|json=0
+POST_RUN_GATE|lane=linux|NO_FLOAT_SELFTEST_DONE|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0
+POST_RUN_GATE|lane=win|NO_FLOAT_SELFTEST_DONE|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=python|lane=linux|plants=578|v3_bypass=395|v4_bypass=9|opened=0|BYPASS=9|CAUGHT=511|NOT_RUN=3|NO_FLOAT_CLEAN=23|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=2|RUN_ERROR_FLAGGED=18|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=intcode|lane=linux|plants=75|false_alarms=38|clean=37|still_flagged=str_format_date_day,url_escape_constant,sql_like_pattern,prose_percent_word,git_log_format_argument,date_command_argument,docstring_mentions_percent_f,name_vars_local_list,name_compile_local_function,name_eval_local_function,name_exec_as_parameter,name_float_as_field_in_namedtuple,power_param_guarded,power_minus_one_guarded,power_len_minus_one,power_while_down,power_int_of_string,power_class_constant,power_dict_value,power_tuple_unpacked,power_unary_plus,power_negated_after_guard,power_minus_one_base_parity,power_gf_inverse_user_class,exact_rational_division_user_class,fstring_dynamic_width,attribute_timestamp_on_user_int_field,attribute_random_on_user_integer_lfsr,attribute_uniform_on_user_integer_rng,attribute_gauss_named_user_integer,random_choices_of_ints,math_sumprod_of_ints,as_integer_ratio_on_int,import_json_ints_only,import_pickle_ints_only,import_ctypes_for_priority_only,import_yaml_absent_but_flagged,getattr_module_alias_ok_name|json=0
+POST_RUN_GATE|lane=win|TOTAL|section=intcode|lane=win|plants=75|false_alarms=38|clean=37|still_flagged=str_format_date_day,url_escape_constant,sql_like_pattern,prose_percent_word,git_log_format_argument,date_command_argument,docstring_mentions_percent_f,name_vars_local_list,name_compile_local_function,name_eval_local_function,name_exec_as_parameter,name_float_as_field_in_namedtuple,power_param_guarded,power_minus_one_guarded,power_len_minus_one,power_while_down,power_int_of_string,power_class_constant,power_dict_value,power_tuple_unpacked,power_unary_plus,power_negated_after_guard,power_minus_one_base_parity,power_gf_inverse_user_class,exact_rational_division_user_class,fstring_dynamic_width,attribute_timestamp_on_user_int_field,attribute_random_on_user_integer_lfsr,attribute_uniform_on_user_integer_rng,attribute_gauss_named_user_integer,random_choices_of_ints,math_sumprod_of_ints,as_integer_ratio_on_int,import_json_ints_only,import_pickle_ints_only,import_ctypes_for_priority_only,import_yaml_absent_but_flagged,getattr_module_alias_ok_name|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=scenarios|lane=linux|BYPASS=5|CAUGHT=61|FLAGGED_NO_FLOAT=10|NO_FLOAT_CLEAN=2|SOURCE_SCAN_CANNOT_TELL=1|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=native|plants=265|bypass_rows=152|closed=135|open=17|flagged_controls=49|controls_opened=0|clean_rows=32|clean_flagged=7|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=heldout|valid=20|flagged=6|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=linux_scan|plants=50|still_open_of_attack_bypass=0|rc=0|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=pins|steps=15|misses=0|json=0
+POST_RUN_GATE|lane=win|TOTAL|section=pins|steps=15|misses=0|json=0
+POST_RUN_GATE|lane=linux|PIN_BASE|tree=ym4|head=bff6043a1a5a|rc=0|want=0|folder_rows=0|file_rows=1|last=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+POST_RUN_GATE|lane=linux|PIN_BASE|tree=sun|head=dad0f705f5d5|rc=0|want=0|folder_rows=1|file_rows=1|last=NO_FLOAT_DONE/code_files=149/listed_files=1/listed_folders=1/listed_findings=972/failed=0/json=0|json=0
+POST_RUN_GATE|lane=linux|PIN_BASE|tree=pairs|head=61b50229fb56|rc=0|want=0|folder_rows=2|file_rows=83|last=NO_FLOAT_DONE/code_files=482/listed_files=83/listed_folders=2/listed_findings=1439/failed=0/json=0|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=pin_trees|attacks=10|misses=0|json=0
+POST_RUN_GATE|lane=linux|TREE|tree=ym4|head=bff6043a1a5a|tracked=19|code_files=4|findings=24|in_folder_rows=0|outside_folder_rows=24|files_outside=1|rows_now_file=1|rows_now_folder=0|new_file_rows=0|moved_counts=1|rows_with_no_findings=0|json=0
+POST_RUN_GATE|lane=linux|TREE|tree=sun|head=dad0f705f5d5|tracked=294|code_files=149|findings=886|in_folder_rows=879|outside_folder_rows=7|files_outside=1|rows_now_file=0|rows_now_folder=1|new_file_rows=1|moved_counts=0|rows_with_no_findings=0|json=0
+POST_RUN_GATE|lane=linux|TREE|tree=pairs|head=61b50229fb56|tracked=3481|code_files=482|findings=1370|in_folder_rows=954|outside_folder_rows=416|files_outside=83|rows_now_file=98|rows_now_folder=2|new_file_rows=29|moved_counts=43|rows_with_no_findings=44|json=0
+POST_RUN_GATE|lane=win|TREE|tree=ym4|head=bff6043a1a5a|tracked=19|code_files=4|findings=24|in_folder_rows=0|outside_folder_rows=24|files_outside=1|rows_now_file=1|rows_now_folder=0|new_file_rows=0|moved_counts=1|rows_with_no_findings=0|json=0
+POST_RUN_GATE|lane=win|TREE|tree=sun|head=dad0f705f5d5|tracked=294|code_files=149|findings=886|in_folder_rows=879|outside_folder_rows=7|files_outside=1|rows_now_file=0|rows_now_folder=1|new_file_rows=1|moved_counts=0|rows_with_no_findings=0|json=0
+POST_RUN_GATE|lane=win|TREE|tree=pairs|head=61b50229fb56|tracked=3481|code_files=482|findings=1370|in_folder_rows=954|outside_folder_rows=416|files_outside=83|rows_now_file=98|rows_now_folder=2|new_file_rows=29|moved_counts=43|rows_with_no_findings=44|json=0
+POST_RUN_GATE|lane=linux|WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate reads its own test snippets|rc=0|last=NO_FLOAT_SELFTEST_DONE/must_flag=124/must_name_its_rule=158/must_pass=91/file_rows=59/list_rows=14/failed=0/json=0|json=0
+POST_RUN_GATE|lane=linux|WORKFLOW_STEP|file=no_float.yml|job=no-float|step=Scan the tracked files the gate reads|rc=0|last=NO_FLOAT_DONE/code_files=4/listed_files=1/listed_folders=0/listed_findings=93/failed=0/json=0|json=0
+POST_RUN_GATE|lane=linux|WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|last=-|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=workflow_no_float|head=fa957b5d91ad|tree_left_clean=1|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=clean_pr|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=float_no_row|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=path_holds_a_command|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=float_with_row|no_float_base=GREEN|no_float_list_unchanged=RED|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=gate_edit_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=workflow_rewrite_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=list_is_a_symlink|no_float_base=RED|no_float_list_unchanged=RED|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=shadow_beside_the_gate|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+POST_RUN_GATE|lane=linux|SIM|scenario=base_moves_after_the_fork|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+POST_RUN_GATE|lane=linux|TOTAL|section=base_sim|head=fa957b5d91ad|scenarios=9|json=0
+OWN_PLANT|name=strftime_bound_in_the_file|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 3|json=0
+OWN_PLANT|name=strftime_method_of_a_class_in_the_file|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 4|json=0
+OWN_PLANT|name=strftime_result_formatted_again|produced=str='1.000000'|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float %-format at line 5|json=0
+OWN_PLANT|name=isinstance_rebound|produced=float=3.0|frozen_gate=CLEAN|post_run_gate=FLAGGED|first=float at line 2|json=0
+OWN_PLANT|name=type_rebound_compare|produced=bool=False|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float literal at line 2|json=0
+OWN_PLANT|name=bytes_rebound_fromhex|produced=float=1.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float literal at line 3|json=0
+OWN_PLANT|name=bytearray_rebound_fromhex|produced=float=1.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=true division at line 1|json=0
+OWN_PLANT|name=star_import_rebinds_isinstance|produced=float=3.0|frozen_gate=FLAGGED|post_run_gate=FLAGGED|first=float at line 3|json=0
+OWN_PLANT|name=control_strftime_on_time|produced=str='1970-01-01'|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
+OWN_PLANT|name=control_isinstance|produced=bool=False|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
+OWN_PLANT|name=control_bytes_fromhex|produced=bytes=b'\xff'|frozen_gate=CLEAN|post_run_gate=CLEAN|first=-|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=format/percent_tuple_on_variable|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=noword/socket_timeout_property|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=noword/os_wait4_rusage_by_index|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=format/percent_computed_through_function|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=format/percent_name_bound_to_call|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=exponent/pow_none_through_parameter_no_default|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=noword/inline_child_interpreter_stdin|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=noword/subprocess_child_python|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|plant=noword/os_popen_awk|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|scenario=any_reason_text_is_accepted|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|scenario=folder_row_prefix|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|scenario=pull_request_replaces_the_gate_it_runs|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|scenario=listed_exec_helper_called_from_unlisted_file|json=0
+POST_RUN_GATE|SURVIVOR|lane=linux|scenario=generated_file_shadows_clean_tracked_module|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=cpp_cmdline_define|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=js_integer_product_rounds|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=js_negative_zero|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_awk|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_bc|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_python_c|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_python_heredoc|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_base64_pipe|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_writes_py_then_runs|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sh_printf_float|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=yml_run_block|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=pl_perl|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=java|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=f90|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=sql_sqlite|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=ps1|json=0
+POST_RUN_GATE|SURVIVOR|set=native|plant=makefile|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_rs_include_braces|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_rs_include_brackets|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_rs_include_env|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_rs_path_raw_string|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_rs_asm_renamed_spaced|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_js_array_avg|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_js_process_uptime|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_js_require_json|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_js_string_math|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_sh_perl_e|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_sh_node_e|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_sh_gawk|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_sh_var_interpreter|json=0
+POST_RUN_GATE|SURVIVOR|set=heldout|plant=ho_sh_python_stdin_redirect|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=float %-format|findings=6|outside_folder_rows=6|files=1|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=percent_parser|findings=6|outside_folder_rows=6|files=1|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=dunder_strings|findings=5|outside_folder_rows=5|files=1|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=brace_anywhere|findings=4|outside_folder_rows=4|files=1|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=the string|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=ym4|kind=ast_parse|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|FILE|tree=ym4|path=scripts/no_float_gate.py|findings=24|first=float %-format at line 2|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rust float word|findings=545|outside_folder_rows=0|files=20|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rs_doctest|findings=230|outside_folder_rows=0|files=19|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rust float literal|findings=83|outside_folder_rows=0|files=12|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rs_cnames|findings=15|outside_folder_rows=0|files=4|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rs_arch|findings=5|outside_folder_rows=0|files=3|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=brace_anywhere|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=float %-format|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=percent_parser|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=ast_parse|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|KIND|tree=sun|kind=rs_buildsys|findings=1|outside_folder_rows=0|files=1|json=0
+POST_RUN_GATE|FILE|tree=sun|path=scripts/no_float_gate.py|findings=7|first=float %-format at line 2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rust float word|findings=545|outside_folder_rows=0|files=20|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rs_doctest|findings=230|outside_folder_rows=0|files=19|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=power with an unproven exponent|findings=87|outside_folder_rows=85|files=21|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rust float literal|findings=83|outside_folder_rows=0|files=12|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=true division|findings=71|outside_folder_rows=60|files=18|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=import_allow|findings=50|outside_folder_rows=45|files=42|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=attribute of math, time or random|findings=48|outside_folder_rows=45|files=17|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=denied import|findings=36|outside_folder_rows=31|files=30|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=float|findings=31|outside_folder_rows=4|files=4|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=float literal|findings=29|outside_folder_rows=10|files=7|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=float format|findings=27|outside_folder_rows=24|files=15|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rs_cnames|findings=15|outside_folder_rows=0|files=4|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=ast_parse|findings=13|outside_folder_rows=13|files=7|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=dunder_strings|findings=9|outside_folder_rows=9|files=2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=exec_imports|findings=9|outside_folder_rows=9|files=8|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=float %-format|findings=9|outside_folder_rows=9|files=2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=percent_parser|findings=9|outside_folder_rows=9|files=2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=random|findings=8|outside_folder_rows=8|files=4|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=truediv|findings=8|outside_folder_rows=8|files=2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=exec|findings=7|outside_folder_rows=7|files=7|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=__import__|findings=6|outside_folder_rows=6|files=5|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=compile|findings=6|outside_folder_rows=6|files=5|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rs_arch|findings=5|outside_folder_rows=0|files=3|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=the string|findings=5|outside_folder_rows=5|files=2|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=brace_anywhere|findings=4|outside_folder_rows=4|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=complex|findings=3|outside_folder_rows=3|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=module_store|findings=3|outside_folder_rows=3|files=3|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=locals_setattr|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=module_flow|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=operator.pow or builtins.pow|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=pow_attr|findings=2|outside_folder_rows=2|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=anything_python|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=as_integer_ratio|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=getattr_strict|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=javascript division|findings=1|outside_folder_rows=1|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=rs_buildsys|findings=1|outside_folder_rows=0|files=1|json=0
+POST_RUN_GATE|KIND|tree=pairs|kind=total_seconds|findings=1|outside_folder_rows=1|files=1|json=0
+RAW|file=raw/final_base_sim_linux.hbp|sha256=9c938672d1280c9a5416044eff4b905e902019cfaec0555e7dbfc5ccd089e12e|bytes=6081|json=0
+RAW|file=raw/final_census_linux.hbp|sha256=9c790eaa8a887c28634ea79843d825eee42c2e2238a1cea6d261dd0ee8284ff6|bytes=16410|json=0
+RAW|file=raw/final_census_win.hbp|sha256=9c790eaa8a887c28634ea79843d825eee42c2e2238a1cea6d261dd0ee8284ff6|bytes=16410|json=0
+RAW|file=raw/final_heldout_linux.hbp|sha256=2444e89fd3911b259c3a3a8457abc0c9e9d9b784fc0f352e7e2b4a0f570ccc10|bytes=6110|json=0
+RAW|file=raw/final_intcode_linux.hbp|sha256=03870f849a1874d2049e8635b79650c3ffcf9b43475699865343919f545e6e9d|bytes=11991|json=0
+RAW|file=raw/final_intcode_win.hbp|sha256=dedde7bdf71b6b0d737ec6092d88650fec70a9b0301786334310b8f1dce7ef3d|bytes=11844|json=0
+RAW|file=raw/final_linux_scan_linux.hbp|sha256=b2fb71ea1af2896026fa8d22e7bc00fa03950a432ce8c915742f85e55bfa2aac|bytes=11379|json=0
+RAW|file=raw/final_native_linux.hbp|sha256=7af2bb0095834e78a6fdf43ac40444ac1ebd716a92b63afe4c6625fdacb05eae|bytes=55253|json=0
+RAW|file=raw/final_pin_trees_linux.hbp|sha256=606130b548ffd8ebf10d2d807bf2ef6fafc895977233dfb1f4772ef79b32521a|bytes=2988|json=0
+RAW|file=raw/final_pins_linux.hbp|sha256=5261ea27ede08c561a2d1c9a188cd0e96066fbf23997bb733d00ec4eaf31085d|bytes=2449|json=0
+RAW|file=raw/final_pins_win.hbp|sha256=5261ea27ede08c561a2d1c9a188cd0e96066fbf23997bb733d00ec4eaf31085d|bytes=2449|json=0
+RAW|file=raw/final_python_linux.hbp|sha256=1a6fe0728e02b413fc27a42e24e24827b314a62f5d971a4af11aed0585dd335e|bytes=102672|json=0
+RAW|file=raw/final_read_diff_linux.hbp|sha256=b91bfda866c9e4fb66406b53e3ca0ed55ad97162852a737f69c22e4e4069732c|bytes=67|json=0
+RAW|file=raw/final_read_diff_win.hbp|sha256=b5c0a4be4d11de0254a2dcda079b7a336f4414ab57bfa5eb7100642833c8a8ab|bytes=68|json=0
+RAW|file=raw/final_rule_rows_win.hbp|sha256=3f54adcaf0843e3d90ba3a743a5209e5b92c5940f2402fb29233e29ff7dcce2b|bytes=5249|json=0
+RAW|file=raw/final_scenarios_linux.hbp|sha256=ac7f3fc183b128c22d408e7f02b93949c95658e00dd339da9a5419e00ef17eec|bytes=22517|json=0
+RAW|file=raw/final_selftest_linux.hbp|sha256=02ed5aac4f93d713683df692b285826f3a9f2f0ad30aa8b2f47211e4788e338e|bytes=129|json=0
+RAW|file=raw/final_selftest_win.hbp|sha256=e076fb2c525b5cce7a480f762e635f448e88dc7191127730ae5d9323e21e5d87|bytes=130|json=0
+RAW|file=raw/final_workflow_no_float_linux.hbp|sha256=e3470df3a30dea84a815d93dc55606cb382a9b2a38e6bbbbda8b93e5b2e8e977|bytes=616|json=0
+RAW|file=raw/proxy_heldout_linux.hbp|sha256=660cc3ad7135233c279042bd1d0160258e528b32c94a79fc66118d8cdd24b8ae|bytes=5686|json=0
+RAW|file=raw/proxy_native_linux.hbp|sha256=b0e1107da64c474011a791fc4e26a6589576df7021dedbe454ebc205a2a56557|bytes=48727|json=0
+RAW|file=raw/v4_census_linux.hbp|sha256=9c790eaa8a887c28634ea79843d825eee42c2e2238a1cea6d261dd0ee8284ff6|bytes=16410|json=0
+RAW|file=raw/v4_census_win.hbp|sha256=9c790eaa8a887c28634ea79843d825eee42c2e2238a1cea6d261dd0ee8284ff6|bytes=16410|json=0
+RAW|file=raw/v4_heldout_linux.hbp|sha256=2444e89fd3911b259c3a3a8457abc0c9e9d9b784fc0f352e7e2b4a0f570ccc10|bytes=6110|json=0
+RAW|file=raw/v4_intcode_linux.hbp|sha256=03870f849a1874d2049e8635b79650c3ffcf9b43475699865343919f545e6e9d|bytes=11991|json=0
+RAW|file=raw/v4_intcode_win.hbp|sha256=dedde7bdf71b6b0d737ec6092d88650fec70a9b0301786334310b8f1dce7ef3d|bytes=11844|json=0
+RAW|file=raw/v4_linux_scan_linux.hbp|sha256=fd4330fb2f5079d1e1a7c3e9b3793eb9d21c3caad1dd435db412fb6ce4eb5983|bytes=11335|json=0
+RAW|file=raw/v4_native_linux.hbp|sha256=7af2bb0095834e78a6fdf43ac40444ac1ebd716a92b63afe4c6625fdacb05eae|bytes=55253|json=0
+RAW|file=raw/v4_own_plants_linux.hbp|sha256=b622581c08a157eba6770bc70800e8ae830057cdabf988ffc9bb1104875311a3|bytes=1455|json=0
+RAW|file=raw/v4_pin_trees_linux.hbp|sha256=ca3cdd4bc5e8fa8dd67e622663ab94a9bc8e4017925361c32caee3da882c6b08|bytes=2988|json=0
+RAW|file=raw/v4_pins_linux.hbp|sha256=3cbcab0be86e597bd6b5c0aa46ea8b3b0ef85f991167739d04a54f5cf5150566|bytes=2449|json=0
+RAW|file=raw/v4_python_linux.hbp|sha256=b27141ae1d0de65cc6c0931a1016facb0e6428c76a8580c846878183d7a99177|bytes=102646|json=0
+RAW|file=raw/v4_python_win.hbp|sha256=db6ac15739d6c1bfc173e5612eb38ffc7a6cd20a488310dd08a97b32d2798aac|bytes=101526|json=0
+RAW|file=raw/v4_scenarios_linux.hbp|sha256=2457a96fc05f1c45cd69a7a62990b0edccc2a01b442a45b8ec45f669177546e0|bytes=22517|json=0
+RAW|file=raw/v4_selftest_linux.hbp|sha256=3a240379f29c95bf4464beb7a230520e219c627daa8385203a689dee9c870dca|bytes=129|json=0
+RAW|file=raw/v4_selftest_win.hbp|sha256=2f1b3ffba4d732c0cd8050c0766b79953fdaf777015b70184cbbb34c1bc3a5a6|bytes=130|json=0

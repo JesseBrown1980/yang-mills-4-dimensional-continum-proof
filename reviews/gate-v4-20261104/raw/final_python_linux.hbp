@@ -1,0 +1,588 @@
+PLANT|lane=linux|family=division|name=operator_itruediv_attr|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=operator_alias_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=from_operator_dunder_truediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] from operator import __truediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=from_operator_dunder_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] from operator import __itruediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=reduce_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=map_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=sum_of_mapped_itruediv|produced=float|value=1.0|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_rtruediv_literal|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr of __rtruediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_itruediv_on_operator_literal|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr of itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_concat|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_join|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_fstring|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_chr|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_dir_walk|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_value_map|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=dunder_getattribute_method|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] __getattribute__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=object_getattribute|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] __getattribute__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=int_dict_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=type_dict_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=methodcaller_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of __rtruediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=methodcaller_computed|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=attrgetter_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of __rtruediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=attrgetter_computed|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=from_operator_attrgetter|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of __rtruediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=inspect_getmembers|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import inspect at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=inspect_getattr_static|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import inspect at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=match_class_attr_truediv|produced=float|value=0.5|gate=FLAGGED|first=[match_attrs] class pattern reads __truediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=match_object_attr_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=[match_attrs] class pattern reads __rtruediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=formatter_get_field_attr|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=path_shadow_lambda|produced=float|value=0.5|gate=FLAGGED|first=true division at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=path_shadow_def|produced=float|value=0.5|gate=FLAGGED|first=true division at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=path_shadow_class_int|produced=float|value=0.5|gate=FLAGGED|first=true division at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=path_shadow_import|produced=float|value=0.5|gate=FLAGGED|first=true division at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=purepath_shadow_aug|produced=float|value=0.5|gate=FLAGGED|first=true division at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=str_chain_radd|produced=float|value=0.5|gate=FLAGGED|first=true division at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=fstring_chain_radd|produced=float|value=0.5|gate=FLAGGED|first=true division at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=str_chain_left_operand|produced=float|value=0.5|gate=FLAGGED|first=true division at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=int_subclass_add_str|produced=float|value=0.5|gate=FLAGGED|first=true division at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=aug_str_chain|produced=float|value=0.5|gate=FLAGGED|first=true division at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=timedelta_rtruediv_getattr|produced=float|value=1.0|gate=FLAGGED|first=[getattr_strict] getattr of __rtruediv__ at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=timedelta_itruediv_operator|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=sqlite_division_in_string|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import sqlite3, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=floordiv_float_operand|produced=float|value=9223372036.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=divmod_float_operand|produced=float|value=4.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=sum_with_float_start|produced=float|value=9223372037.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=plain_true_division|produced=float|value=0.5|gate=FLAGGED|first=true division at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=aug_true_division|produced=float|value=0.5|gate=FLAGGED|first=true division at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=operator_truediv|produced=float|value=0.5|gate=FLAGGED|first=truediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=from_operator_truediv|produced=float|value=0.5|gate=FLAGGED|first=from operator import truediv at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=dunder_truediv|produced=float|value=0.5|gate=FLAGGED|first=__truediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=dunder_rtruediv|produced=float|value=0.5|gate=FLAGGED|first=__rtruediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=getattr_truediv_literal|produced=float|value=0.5|gate=FLAGGED|first=the string __truediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=operator_dunder_truediv|produced=float|value=0.5|gate=FLAGGED|first=__truediv__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=int_type_dunder|produced=float|value=0.5|gate=FLAGGED|first=__truediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=lambda_division|produced=float|value=0.5|gate=FLAGGED|first=true division at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=division_in_fstring|produced=str|value='0.5'|gate=FLAGGED|first=true division at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_division|name=len_str_operand|produced=float|value=1.5|gate=FLAGGED|first=true division at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=failed_attack|name=divmod_ints|produced=int|value=1|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=floordiv_ints|produced=int|value=3|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=sum_ints_with_start|produced=int|value=6|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=datetime_subtraction_only|produced=timedelta|value=datetime.timedelta(days=1)|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=timedelta_floordiv|produced=int|value=3|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=exponent|name=match_capture|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_as|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_sequence|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_mapping_value|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_class_positional|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_or_as|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=star_import_stdlib_negative_constant|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=star_import_in_loop_target|produced=float|value=0.25|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mangled_name_class_body|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mangled_name_method|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mangled_name_for_target|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_len_lambda|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_len_param|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_len_class|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_len_import_neg|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_def|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_default_arg|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_operator_neg|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_max_is_min|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_min_lambda|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_range_lambda|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_range_def|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_range_comprehension|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_enumerate|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_range_for_target|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=builtins_store_len|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=builtins_store_range|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=builtins_store_name_read_before_bound|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=builtins_alias_store|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=dunder_builtins_store|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __builtins__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=setattr_builtins|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=builtins_dict_store|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=operator_index|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=operator_alias_index|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=method_count_user_class|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=method_index_user_class|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=method_bit_length_user_class|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=method_count_via_name|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=abs_dunder_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=abs_dunder_int_subclass|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mod_dunder_user_class|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mod_dunder_int_subclass|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=mod_dunder_through_name|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=max_int_subclass_gt|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=max_int_subclass_add_after|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 7|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=min_int_subclass_through_abs|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=ifexp_method_count|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=range_starred_single|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=range_starred_second|produced=float|value=0.25|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=range_starred_comprehension|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=enumerate_starred|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=range_abs_dunder_start|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=locals_store|produced=float|value=0.5|gate=FLAGGED|first=[locals_setattr] locals at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=module_setattr|produced=float|value=0.5|gate=FLAGGED|first=[locals_setattr] setattr at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=module_attr_store|produced=float|value=0.5|gate=FLAGGED|first=[sys_modules] .modules at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=module_dict_store|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=main_attr_store|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import __main__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=func_globals_store|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __globals__ at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=frame_globals_store|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] f_globals at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=inspect_frame_globals|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import inspect at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=traceback_frame_globals|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] f_globals at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=generator_frame_globals|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] f_globals at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=gc_module_dict_walk|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import gc at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=function_type_new_globals|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import types at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=code_replace_consts|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __code__ at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_mod_positional|produced=float|value=0.5|gate=FLAGGED|first=[pow_none] pow with a modulus that may be None at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_mod_keyword|produced=float|value=0.5|gate=FLAGGED|first=[pow_none] pow with a modulus that may be None at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_mod_star|produced=float|value=0.5|gate=FLAGGED|first=[pow_none] pow with a modulus that may be None at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_mod_variable|produced=float|value=0.5|gate=FLAGGED|first=[pow_none] pow with a modulus that may be None at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_mod_default_param|produced=float|value=0.5|gate=FLAGGED|first=[pow_none] pow with a modulus that may be None at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[pow_value] pow as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_value_map|produced=float|value=0.5|gate=FLAGGED|first=[pow_value] pow as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_value_reduce|produced=float|value=0.5|gate=FLAGGED|first=[pow_value] pow as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_value_partial|produced=float|value=0.5|gate=FLAGGED|first=[pow_value] pow as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_value_in_tuple|produced=float|value=0.5|gate=FLAGGED|first=[pow_value] pow as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_operator_alias|produced=float|value=0.5|gate=FLAGGED|first=[pow_attr] .pow at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_builtins_alias|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_dunder_builtins|produced=float|value=0.5|gate=FLAGGED|first=[pow_attr] .pow at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_getattr_builtins|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_from_operator_dunder|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] from operator import __pow__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=ipow_from_operator_dunder|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] from operator import __ipow__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=rpow_string_getattr|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr of __rpow__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_string_computed_getattr|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=match_attr_pow_dunder|produced=float|value=0.5|gate=FLAGGED|first=[match_attrs] class pattern reads __pow__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=int_subclass_pow_returns_float|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=int_subclass_truediv_str_operand|produced=float|value=0.5|gate=FLAGGED|first=true division at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=multifile_write_then_import|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import gen_plant_e, outside the allowed list at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=del_then_rebind|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=walrus|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=walrus_in_comprehension|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=class_attribute|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=global_rebind|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=nonlocal_rebind|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 7|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=nested_scope|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=aug_sub|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=aug_mult_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=aug_add_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=aug_xor_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=aug_floordiv_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=tuple_unpack|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=star_target|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=nested_tuple_for|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=loop_else|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=comprehension_same_name|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=bound_in_other_function|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=default_arg|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=with_as|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=import_as|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=attr_exponent|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=subscript_exponent|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=for_mutated_range_object|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=for_mutated_list|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=bool_negative|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=bool_invert|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=unary_plus_negative_name|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=from_operator_index|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=lambda_arg|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=nfkc_fullwidth_binding|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_exponent|name=type_alias_name|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=failed_attack|name=len_dunder_negative|produced=error|value=ValueError: __len__() should return >= 0|gate=CLEAN|first=-|verdict=RUN_ERROR_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=range_subclass|produced=error|value=TypeError: type 'range' is not an acceptable base type|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=bool_subclass|produced=error|value=TypeError: type 'bool' is not an acceptable base type|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=dunder_div|produced=error|value=AttributeError: 'int' object has no attribute '__div__'. Did you mean: '__dir__'?|gate=CLEAN|first=-|verdict=RUN_ERROR_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=typevar_exponent|produced=error|value=TypeError: unsupported operand type(s) for ** or pow(): 'int' and 'typing.TypeVar'|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=itertools_count_method|produced=error|value=TypeError: unsupported operand type(s) for ** or pow(): 'int' and 'itertools.count'|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=format_string_attr_call|produced=str|value="<method-wrapper '__neg__' of int object at 0xb370a8>"|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=format|name=percent_space_flag|produced=str|value=' 9007199254740992.00'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_space_flag_bare|produced=str|value=' 9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_length_l|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_length_h|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_length_L_exp|produced=str|value='9.007199e+15'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_length_precision|produced=str|value='9007199254740992.000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_dot_no_digits|produced=str|value='9007199254740992'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_width_dot_no_digits|produced=str|value='         9007199254740992'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_dot_no_digits_e|produced=str|value='9e+15'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_after_escape_pair|produced=str|value='%9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_after_escape_pair_precision|produced=str|value='100%9007199254740992.00'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_nested_paren_key|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_concat|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[percent_parser] float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_concat_inline|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_fstring_parts|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_join|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[computed_percent] a %-format the source builds at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_built_by_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[computed_percent] a %-format the source builds at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_chr|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[computed_percent] a %-format the source builds at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_mod_method|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_tuple_on_variable|produced=str|value='9.007199e+15'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=format|name=percent_bytes_concat|produced=bytes|value=b'9007199254740992.000000'|gate=FLAGGED|first=[percent_parser] float %-format on the left of % at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_replace_builds_spec|produced=str|value='9007199254740992.000000'|gate=FLAGGED|first=[computed_percent] a %-format the source builds at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_variable_receiver|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[brace_anywhere] float field in a {}-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_unbound_str_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_receiver] .format on something the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_format_map|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] format_map at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_nested_precision|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[brace_anywhere] float field in a {}-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_spec_as_argument|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[bare_spec] a float format spec at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_nested_width|produced=str|value='           9007199254740992.00'|gate=FLAGGED|first=[brace_anywhere] float field in a {}-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_concat_receiver|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_receiver] .format on something the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_fstring_receiver|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_receiver] .format on something the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_getattr_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[getattr_strict] getattr of format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_map_bound_method|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[getattr_strict] __getattribute__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=builtin_variable_spec|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[bare_spec] a float format spec at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=builtin_star_args|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] format with a spec the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=builtin_value_alias|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] format as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=builtin_map|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] format as a value at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=dunder_format_int|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] __format__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=dunder_format_type|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_calls] __format__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=dunder_format_variable_spec|produced=str|value='9.007199e+15'|gate=FLAGGED|first=[format_calls] __format__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=string_formatter_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=string_formatter_vformat|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=string_formatter_format_field|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=logging_brace_style|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=logging_percent_concat|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=locale_format_string_concat|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[import_allow] import locale, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=locale_str_like|produced=str|value='9.007199e+15'|gate=FLAGGED|first=[import_allow] import locale, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_plain|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_e|produced=str|value='9.007199e+15'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_upper_g|produced=str|value='9.0072E+15'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_mapping|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_star|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_bytes|produced=bytes|value=b'9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_variable|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=percent_implicit_concat|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float %-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_spec|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_e|produced=str|value='9.007199e+15'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_percent|produced=str|value='900719925474099200.000000%'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_dynamic_spec|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_nested_literal_spec|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_nested_fstring|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=fstring_partial_dynamic|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=str_format_literal|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=str_format_keyword|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_format|name=format_builtin_literal|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=float format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=failed_attack|name=string_template|produced=str|value='9007199254740993'|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=repr_int|produced=str|value='9007199254740993'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=format_d|produced=str|value='9007199254740993'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=percent_d_on_int|produced=str|value='9007199254740993'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=percent_x|produced=str|value='20000000000001'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=format_n_int|produced=str|value='9007199254740993'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=format_string_conversion|produced=str|value='9007199254740993'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=noword|name=builtin_self_is_builtins_eval|produced=float|value=0.5|gate=FLAGGED|first=[exec_attrs] .eval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtin_self_is_builtins_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[exec_attrs] .__import__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtin_self_getattr_float|produced=float|value=1.0|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=typing_forward_ref_evaluate_private|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import typing, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=socket_timeout_property|produced=float|value=1.0|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=os_wait4_rusage_by_index|produced=float|value=0.00147|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=os_wait3_rusage_field|produced=float|value=0.002986|gate=FLAGGED|first=[more_attrs] ru_stime at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=datetime_timezone_through_dunder_call|produced=float|value=86400.0|gate=FLAGGED|first=total_seconds at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=unbound_timedelta_method_via_class_dict|produced=float|value=86400.0|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=bound_method_stored_on_class_then_called|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[getattr_strict] __getattribute__ at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=zip_iter_of_float_struct_iter|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_join_getattr_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[getattr_strict] getattr of format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_join_methodcaller_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of format at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_join_map_format|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[format_receiver] .format on something the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=brace_constant_kept_in_tuple|produced=str|value='9007199254740992.00'|gate=FLAGGED|first=[brace_anywhere] float field in a {}-format at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=format|name=percent_computed_through_function|produced=str|value='9007199254740992.000000'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=format|name=percent_name_bound_to_call|produced=str|value='9007199254740992.000000'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=division|name=attrgetter_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] attrgetter as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=methodcaller_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] methodcaller as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=object_getattribute_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] __getattribute__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=dynamic_type_lies_in_max|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=dynamic_type_lies_in_mod|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=dynamic_type_lies_in_abs|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=module_dunder_setattr_on_self|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __setattr__ at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=max_of_name_bound_to_lying_call|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=failed_attack|name=random_choices_returns_int_through_float_inside|produced=int|value=2|gate=FLAGGED|first=choices at line 2|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=exponent|name=unittest_mock_patch_builtins_len|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import unittest.mock at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=unittest_mock_patch_main_global|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import unittest.mock at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=pow_none_through_parameter_no_default|produced=float|value=0.5|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=argparse_private_sys_modules|produced=float|value=1793757448.8466647|gate=FLAGGED|first=[sys_modules] .modules at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=collections_private_sys_modules|produced=float|value=1793757448.9513922|gate=FLAGGED|first=[import_allow] import queue, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=metaclass_prepare_namespace|produced=float|value=0.5|gate=FLAGGED|first=[prepare_def] a metaclass that supplies a class body's names at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=metaclass_prepare_missing|produced=float|value=0.5|gate=FLAGGED|first=[prepare_def] a metaclass that supplies a class body's names at line 9|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=closure_cell_store|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] cell_contents at line 7|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=frame_f_locals_in_function|produced=int|value=2|gate=FLAGGED|first=[reflection_attrs] f_locals at line 4|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=exponent|name=module_type_swap_globals_via_function_type_defaults|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import types at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=while_true_for_range_shadow_global_statement|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_class_decorator|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 6|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_with_as|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_walrus|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_except_as_is_not_callable_control_free|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 5|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=shadow_abs_match_capture|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=method_index_on_operator_through_from_import_alias_attr|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=bit_length_on_namedtuple_field|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=count_on_simple_namespace|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=exponent|name=index_on_lambda_attr|produced=float|value=0.5|gate=FLAGGED|first=power with an unproven exponent at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=getattr_computed_operator_truediv|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=map_bound_method_from_getattr|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr of __rtruediv__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=partial_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=sorted_key_itruediv|produced=int|value=2|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=division|name=dict_of_operator_itruediv|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=module_dict_truediv_computed|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=module_dict_literal_rtruediv_on_timedelta|produced=float|value=1.0|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=division|name=class_bases_dunder_lookup|produced=float|value=0.5|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=int_from_bytes_bytes_literal_then_cast|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast to a float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=binascii_unhexlify_cast|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import binascii, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=codecs_decode_hex_cast|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import codecs, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_path_dict_getmtime_literal|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_dict_times|produced=float|value=0.05|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=random_module_dict|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_star_iter_unpack|produced=float|value=0.0|gate=FLAGGED|first=[star_import] from struct import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_pack_into_then_unpack_alias|produced=float|value=1.0|gate=FLAGGED|first=[struct_alias] struct float format at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=class_inherits_from_time_module_function|produced=float|value=1267.850082327|gate=FLAGGED|first=[import_allow] import queue, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=logrecord_factory_created|produced=float|value=1793757451.973921|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=logging_formatter_converter_timestamp|produced=float|value=163.0|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=asyncio_sleep_loop_time_value|produced=float|value=1268.513159797|gate=FLAGGED|first=[import_allow] import asyncio, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=concurrent_futures_future_result_float|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] .itruediv at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=threading_timer_interval|produced=float|value=9223372036.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=decimal_from_sys_modules_after_xmlrpc|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[import_allow] import xmlrpc.client, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=fractions_from_statistics_free_pkgutil_getattr|produced=Fraction|value=Fraction(1, 2)|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=typing_get_type_hints_division|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import typing, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=str_int_then_float_via_timeout_class|produced=float|value=1.5|gate=FLAGGED|first=[class_call] a call through a value's class at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=inline_child_interpreter_stdin|produced=bytes|value=b'0.5'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=multiprocessing_value_with_lock_free|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import multiprocessing, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=fromhex_then_cast_variable|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast with a format the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=resource_getrusage|produced=float|value=0.039848|gate=FLAGGED|first=import resource at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=os_getloadavg_attr|produced=float|value=2.67431640625|gate=FLAGGED|first=getloadavg at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=random_module_uniform|produced=float|value=0.7555313444524517|gate=FLAGGED|first=random.uniform at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=time_clock_gettime|produced=float|value=1270.172038117|gate=FLAGGED|first=time.clock_gettime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=time_monotonic_from|produced=float|value=1270.253784067|gate=FLAGGED|first=from time import monotonic at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=math_pi_from|produced=float|value=3.141592653589793|gate=FLAGGED|first=from math import pi at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=math_alias_exp|produced=float|value=2.718281828459045|gate=FLAGGED|first=math.exp at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=numpy_import|produced=NoneType|value=None|gate=FLAGGED|first=import numpy at line 2|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=random_choices_instance_returns_int|produced=int|value=1|gate=FLAGGED|first=choices at line 2|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=random_binomialvariate_instance_returns_int|produced=int|value=3|gate=FLAGGED|first=binomialvariate at line 2|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=random_sample_returns_int|produced=int|value=1|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=time_gmtime_field|produced=int|value=1970|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=hash_of_int|produced=int|value=7|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=thirdparty|name=import_gmpy2|produced=error|value=ModuleNotFoundError: No module named 'gmpy2'|gate=FLAGGED|first=[import_allow] import gmpy2, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_jax|produced=error|value=ModuleNotFoundError: No module named 'jax'|gate=FLAGGED|first=[import_allow] import jax.numpy, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_polars|produced=error|value=ModuleNotFoundError: No module named 'polars'|gate=FLAGGED|first=[import_allow] import polars, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_tensorflow|produced=error|value=ModuleNotFoundError: No module named 'tensorflow'|gate=FLAGGED|first=[import_allow] import tensorflow, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_networkx|produced=error|value=ModuleNotFoundError: No module named 'networkx'|gate=FLAGGED|first=[import_allow] import networkx, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_sklearn|produced=error|value=ModuleNotFoundError: No module named 'sklearn'|gate=FLAGGED|first=[import_allow] import sklearn, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_matplotlib|produced=error|value=ModuleNotFoundError: No module named 'matplotlib'|gate=FLAGGED|first=[import_allow] import matplotlib, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_pyarrow|produced=error|value=ModuleNotFoundError: No module named 'pyarrow'|gate=FLAGGED|first=[import_allow] import pyarrow, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_flint|produced=error|value=ModuleNotFoundError: No module named 'flint'|gate=FLAGGED|first=[import_allow] import flint, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_huggingface_hub|produced=error|value=ModuleNotFoundError: No module named 'huggingface_hub'|gate=FLAGGED|first=[import_allow] import huggingface_hub, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_pysat|produced=error|value=ModuleNotFoundError: No module named 'pysat'|gate=FLAGGED|first=[import_allow] import pysat, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=thirdparty|name=import_sage|produced=error|value=ModuleNotFoundError: No module named 'sage'|gate=FLAGGED|first=[import_allow] import sage.all, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=noword|name=struct_alias|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_from_import_unpack|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_from_import_alias|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_star_import|produced=float|value=0.0|gate=FLAGGED|first=[star_import] from struct import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_Struct_value_alias|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] a struct function as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_module_rebind|produced=float|value=0.0|gate=FLAGGED|first=[module_flow] the module struct as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_getattr_literal|produced=float|value=0.0|gate=FLAGGED|first=[module_flow] the module struct as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_underscore_module|produced=float|value=0.0|gate=FLAGGED|first=[underscore_imports] import _struct at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_method_value|produced=float|value=0.0|gate=FLAGGED|first=[struct_alias] a struct function as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=struct_format_through_method|produced=float|value=0.0|gate=FLAGGED|first=[class_call] a call through a value's class at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=int_from_bytes_then_struct_alias|produced=float|value=0.5|gate=FLAGGED|first=[struct_alias] struct float format at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=memoryview_cast_at_sign|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast to a float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=memoryview_cast_keyword|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast to a float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=memoryview_cast_variable|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast with a format the source does not show at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=memoryview_cast_star|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast with a format the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=memoryview_cast_value_alias|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] .cast as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=bytes_fromhex_then_cast_at|produced=float|value=0.5|gate=FLAGGED|first=[array_cast] cast to a float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_typecode_variable|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] array with a typecode the source does not show at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_typecode_ifexp|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] array with a typecode the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_typecode_star|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] array with a typecode the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_from_import_alias|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] float array at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_ArrayType|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] float array at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_star_import_ArrayType|produced=float|value=1.0|gate=FLAGGED|first=[star_import] from array import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_value_alias|produced=float|value=1.0|gate=FLAGGED|first=[array_cast] an array constructor as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=array_frombytes_module_rebind|produced=float|value=0.5|gate=FLAGGED|first=float array at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sharedctypes_rawvalue|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import multiprocessing.sharedctypes, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sharedctypes_rawarray|produced=float|value=0.0|gate=FLAGGED|first=[import_allow] import multiprocessing.sharedctypes, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sharedctypes_reexports_ctypes|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import multiprocessing.sharedctypes, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_times_index|produced=float|value=0.05|gate=FLAGGED|first=[more_attrs] times at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_times_user_attr|produced=float|value=0.05|gate=FLAGGED|first=[more_attrs] times at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_times_sum|produced=float|value=17180850.159999996|gate=FLAGGED|first=[more_attrs] times at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=nt_times|produced=NOT_MEASURED|value=reason:WRONG_OS_FOR_THIS_LANE|gate=FLAGGED|first=[import_allow] import nt, outside the allowed list at line 1|verdict=NOT_RUN|json=0
+PLANT|lane=linux|family=noword|name=posix_times|produced=float|value=0.05|gate=FLAGGED|first=[import_allow] import posix, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=st_birthtime|produced=NOT_MEASURED|value=reason:WRONG_OS_FOR_THIS_LANE|gate=FLAGGED|first=[more_attrs] st_birthtime at line 2|verdict=NOT_RUN|json=0
+PLANT|lane=linux|family=noword|name=pathlib_st_birthtime|produced=NOT_MEASURED|value=reason:WRONG_OS_FOR_THIS_LANE|gate=FLAGGED|first=[more_attrs] st_birthtime at line 2|verdict=NOT_RUN|json=0
+PLANT|lane=linux|family=noword|name=from_ospath_getmtime|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[operator_names] from os.path import getmtime at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_ospath_getctime_alias|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[operator_names] from os.path import getctime at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_ospath_star|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[star_import] from os.path import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_genericpath_getatime|produced=float|value=1793757435.3277407|gate=FLAGGED|first=[operator_names] from genericpath import getatime at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_stat_mtime_literal|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[getattr_strict] getattr of st_mtime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_getmtime_literal|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[getattr_strict] getattr of getmtime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_st_mtime|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[match_attrs] class pattern reads st_mtime at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_total_seconds|produced=float|value=86400.0|gate=FLAGGED|first=[match_attrs] class pattern reads total_seconds at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_timestamp|produced=float|value=1767236400.0|gate=FLAGGED|first=[match_attrs] class pattern reads timestamp at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_math_module|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[module_flow] the module math as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_time_module|produced=float|value=1793757464.8430223|gate=FLAGGED|first=[module_flow] the module time as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_float_info|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=[module_flow] the module sys as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_random_method|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[match_attrs] class pattern reads random at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=match_class_as_integer_ratio_float_type|produced=float|value=1.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=formatter_get_field_st_mtime|produced=float|value=1793757435.3261132|gate=FLAGGED|first=[import_allow] import string, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=format_string_attr_st_mtime|produced=str|value='1793757435.3261132'|gate=FLAGGED|first=[format_attr_strings] format string reads st_mtime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=format_string_attr_float_info|produced=str|value='1.7976931348623157e+308'|gate=FLAGGED|first=[module_flow] the module sys as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_ast_literal_eval|produced=float|value=0.5|gate=FLAGGED|first=[operator_names] from ast import literal_eval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=ast_parse_constant|produced=float|value=0.5|gate=FLAGGED|first=[ast_parse] ast.parse at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_literal_eval_literal|produced=float|value=0.5|gate=FLAGGED|first=[getattr_strict] getattr of literal_eval at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_sys_float_info|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=[operator_names] from sys import float_info at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_sys_star|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=[star_import] from sys import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_sys_getswitchinterval|produced=float|value=0.005|gate=FLAGGED|first=[operator_names] from sys import getswitchinterval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_float_info_literal|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=[getattr_strict] getattr of float_info at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=attrgetter_float_info_dotted|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of float_info.max at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=signal_getitimer|produced=float|value=0.0|gate=FLAGGED|first=[more_attrs] getitimer at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=os_sched_rr_get_interval|produced=float|value=0.0|gate=FLAGGED|first=[more_attrs] sched_rr_get_interval at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_os_getloadavg|produced=float|value=2.74755859375|gate=FLAGGED|first=[operator_names] from os import getloadavg at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_logging_time|produced=float|value=1793757466.7150524|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_queue_time|produced=float|value=1284.328595147|gate=FLAGGED|first=[import_allow] import queue, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_from_logging_time|produced=float|value=1793757466.9975998|gate=FLAGGED|first=[reexport] from logging import time at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_gzip_time|produced=float|value=1793757467.1200056|gate=FLAGGED|first=[reexport] time.time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_from_gzip_time|produced=float|value=1793757467.2156978|gate=FLAGGED|first=[reexport] from gzip import time at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_subprocess_time|produced=float|value=1284.859102267|gate=FLAGGED|first=[more_attrs] _time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_threading_time|produced=float|value=1284.965479637|gate=FLAGGED|first=[more_attrs] _time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=reexport_sched_timefunc|produced=float|value=1285.058609927|gate=FLAGGED|first=[import_allow] import sched, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=asyncio_loop_time|produced=float|value=1285.426066907|gate=FLAGGED|first=[import_allow] import asyncio, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=threading_timeout_max|produced=float|value=9223372036.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=thread_timeout_max|produced=float|value=9223372036.0|gate=FLAGGED|first=[underscore_imports] import _thread at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_threading_star_timeout_max|produced=float|value=9223372036.0|gate=FLAGGED|first=[star_import] from threading import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=socket_default_timeout|produced=float|value=1.0|gate=FLAGGED|first=[more_attrs] getdefaulttimeout at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=logrecord_created|produced=float|value=1793757474.6695979|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=logging_start_time|produced=float|value=1793757468.2603667|gate=FLAGGED|first=[import_allow] import logging, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=colorsys_constant|produced=float|value=0.3333333333333333|gate=FLAGGED|first=[import_allow] import colorsys, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=colorsys_rgb_to_hsv|produced=float|value=0.5833333333333334|gate=FLAGGED|first=[import_allow] import colorsys, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=difflib_ratio|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import difflib, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=locale_atof|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import locale, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=csv_quote_nonnumeric|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import csv, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sqlite_real_literal_in_sql|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import sqlite3, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sqlite_avg_function|produced=float|value=1.5|gate=FLAGGED|first=[import_allow] import sqlite3, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=xmlrpc_double|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import xmlrpc.client, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=xmlrpc_reexports_decimal|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[import_allow] import xmlrpc.client, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_xmlrpc_decimal|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[reexport] from xmlrpc.client import Decimal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=configparser_getfloat|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import configparser, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=argparse_type_through_class|produced=float|value=0.5|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pickletools_read_floatnl|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import pickletools, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pickle_c_module|produced=float|value=0.5|gate=FLAGGED|first=[underscore_imports] import _pickle at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pydecimal_module|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[reexport] from _pydecimal import Decimal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=c_decimal_module|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[reexport] from _decimal import Decimal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=statistics_c_module|produced=error|value=ValueError: inv_cdf undefined for these parameters|gate=FLAGGED|first=[underscore_imports] import _statistics at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=noword|name=pydatetime_reexports_time|produced=float|value=1793757471.4357934|gate=FLAGGED|first=[underscore_imports] import _pydatetime at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=random_c_module_getattr|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[underscore_imports] import _random at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pkgutil_resolve_fraction|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pkgutil_resolve_decimal|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pkgutil_resolve_time|produced=float|value=1793757471.9703503|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pkgutil_resolve_json|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=pydoc_locate_fraction|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[exec_imports] import pydoc at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sys_modules_math|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[sys_modules] .modules at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sys_modules_time|produced=float|value=1793757472.692977|gate=FLAGGED|first=[import_allow] import queue, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=from_sys_modules|produced=float|value=1793757472.76334|gate=FLAGGED|first=[sys_modules] from sys import modules at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sys_modules_name_collides_with_watch|produced=float|value=1793757472.8772523|gate=FLAGGED|first=[import_allow] import queue, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_rebind_math|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[module_flow] the module math as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_rebind_time|produced=float|value=1793757473.0907512|gate=FLAGGED|first=[module_flow] the module time as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_rebind_random|produced=float|value=0.6235945402638128|gate=FLAGGED|first=uniform at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_in_list|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[module_flow] the module math as a value at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_returned_from_function|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[module_flow] the module math as a value at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=module_passed_as_argument|produced=float|value=1.4142135623730951|gate=FLAGGED|first=[module_flow] the module math as a value at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=frozen_importlib_gcd_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[sys_modules] .modules at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=importlib_via_variable_name|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[exec_imports] import pkgutil at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtins_import_attr|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=dunder_builtins_import|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=[exec_attrs] .__import__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtins_import_value|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=dunder_builtins_dict_float|produced=float|value=1.0|gate=FLAGGED|first=[reflection_attrs] __dict__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_dunder_builtins_float|produced=float|value=1.0|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=sys_modules_builtins_float|produced=float|value=1.0|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtins_eval_attr|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtins_exec_attr|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=builtins_compile_function_type|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=dunder_builtins_eval|produced=float|value=0.5|gate=FLAGGED|first=[exec_attrs] .eval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=subclasses_walk_class_base|produced=float|value=1.0|gate=FLAGGED|first=[reflection_attrs] __subclasses__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=subclasses_walk_mro|produced=float|value=1.0|gate=FLAGGED|first=[reflection_attrs] __subclasses__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=subclasses_walk_object|produced=float|value=1.0|gate=FLAGGED|first=[reflection_attrs] __subclasses__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=subclasses_walk_fractions|produced=complex|value=(1+0j)|gate=FLAGGED|first=[reflection_attrs] __subclasses__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=type_of_timeout_max|produced=float|value=1.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=class_of_os_times_element|produced=float|value=1.0|gate=FLAGGED|first=[class_call] a call through a value's class at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=random_getattr_random_literal|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[getattr_strict] getattr of random at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=systemrandom_getattr_gauss_literal|produced=float|value=0.0679551603799054|gate=FLAGGED|first=[getattr_strict] getattr of gauss at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=secrets_getattr_random_literal|produced=float|value=0.2343232117313736|gate=FLAGGED|first=[import_allow] import secrets, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=methodcaller_random|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of random at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=attrgetter_uniform|produced=float|value=0.13436424411240122|gate=FLAGGED|first=[getattr_strict] attrgetter or methodcaller of uniform at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_datetime_timestamp_literal|produced=float|value=1767236400.0|gate=FLAGGED|first=[getattr_strict] getattr of timestamp at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_datetime_timestamp_computed|produced=float|value=1767236400.0|gate=FLAGGED|first=[getattr_strict] getattr with a name the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=getattr_total_seconds_literal|produced=float|value=86400.0|gate=FLAGGED|first=[getattr_strict] getattr of total_seconds at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=cprofile_runctx|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import cProfile at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=cprofile_getstats_totaltime|produced=float|value=1.287e-05|gate=FLAGGED|first=[exec_imports] import cProfile at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=trace_runctx|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import trace at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=code_interpreter_runsource|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import code at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=codeop_function_type|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import codeop at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=doctest_runs_string|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import doctest at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=runpy_run_path_txt|produced=float|value=0.5|gate=FLAGGED|first=[exec_imports] import runpy at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=write_py_then_import|produced=float|value=0.5|gate=FLAGGED|first=[import_allow] import gen_plant_n, outside the allowed list at line 4|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=subprocess_child_python|produced=bytes|value=b'0.5'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=os_popen_awk|produced=str|value='0.5'|gate=CLEAN|first=-|verdict=BYPASS|json=0
+PLANT|lane=linux|family=noword|name=os_popen_bc|produced=str|value='.500'|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=noword|name=typing_forward_ref_eval|produced=float|value=1.0|gate=FLAGGED|first=[import_allow] import typing, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=dataclass_field_default_factory_from_time|produced=float|value=1295.358861207|gate=FLAGGED|first=[import_allow] import dataclasses, outside the allowed list at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=turtle_vec2d_abs|produced=error|value=ModuleNotFoundError: No module named 'tkinter'|gate=FLAGGED|first=[import_allow] import turtle, outside the allowed list at line 1|verdict=RUN_ERROR_FLAGGED|json=0
+PLANT|lane=linux|family=noword|name=statistics_like_fsum_via_sum_of_timeout|produced=float|value=0.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=noword|name=int_real_of_float_origin|produced=float|value=9223372036.0|gate=FLAGGED|first=[more_attrs] TIMEOUT_MAX at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_name|produced=float|value=3.0|gate=FLAGGED|first=float at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_alias|produced=float|value=3.0|gate=FLAGGED|first=float at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_literal|produced=float|value=0.5|gate=FLAGGED|first=float literal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=exp_literal|produced=float|value=1000000000.0|gate=FLAGGED|first=float literal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=complex_literal|produced=complex|value=2j|gate=FLAGGED|first=float literal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=nfkc_ligature_float|produced=float|value=1.0|gate=FLAGGED|first=float at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=nfkc_fullwidth_math|produced=float|value=1.4142135623730951|gate=FLAGGED|first=math.sqrt at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=nfkc_fullwidth_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=import fractions at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_fromhex|produced=float|value=0.5|gate=FLAGGED|first=fromhex at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_getattr_literal|produced=float|value=1.0|gate=FLAGGED|first=[exec_imports] import builtins at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=builtins_float_attr|produced=float|value=1.0|gate=FLAGGED|first=float at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=class_inherits_float|produced=F|value=1.0|gate=FLAGGED|first=float at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=match_class_float_pattern|produced=float|value=1.0|gate=FLAGGED|first=float at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=struct_literal_d|produced=float|value=0.0|gate=FLAGGED|first=struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=struct_variable_format|produced=float|value=0.0|gate=FLAGGED|first=struct with a format the source does not show at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=struct_struct_literal|produced=float|value=0.0|gate=FLAGGED|first=struct float format at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=struct_keyword_format|produced=float|value=0.0|gate=FLAGGED|first=struct with a format the source does not show at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=array_literal_d|produced=float|value=1.0|gate=FLAGGED|first=float array at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=memoryview_literal_d|produced=float|value=0.0|gate=FLAGGED|first=float memoryview at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=time_time|produced=float|value=1793757479.014653|gate=FLAGGED|first=time.time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=time_star|produced=float|value=1793757479.1199293|gate=FLAGGED|first=from time import * at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=time_alias|produced=float|value=1793757479.2000031|gate=FLAGGED|first=time.time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=getattr_time_alias|produced=float|value=1793757479.2931995|gate=FLAGGED|first=getattr on time at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=math_sqrt|produced=float|value=1.4142135623730951|gate=FLAGGED|first=math.sqrt at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=math_dict|produced=float|value=1.4142135623730951|gate=FLAGGED|first=math.__dict__ at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=random_random|produced=float|value=0.13436424411240122|gate=FLAGGED|first=random at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=systemrandom_uniform|produced=float|value=0.5782527793440315|gate=FLAGGED|first=uniform at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=secrets_random|produced=float|value=0.027480821976740066|gate=FLAGGED|first=random at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=json_alias|produced=float|value=0.5|gate=FLAGGED|first=import json at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=json_from|produced=float|value=0.5|gate=FLAGGED|first=import json at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=json_decoder|produced=float|value=0.5|gate=FLAGGED|first=import json.decoder at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=decimal_import|produced=Decimal|value=Decimal('1')|gate=FLAGGED|first=import decimal at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=fractions_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=import fractions at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=importlib_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=import importlib at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=dunder_import|produced=Fraction|value=Fraction(1, 3)|gate=FLAGGED|first=__import__ at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=eval_call|produced=float|value=0.5|gate=FLAGGED|first=eval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=exec_call|produced=float|value=0.5|gate=FLAGGED|first=exec at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=compile_call|produced=float|value=0.5|gate=FLAGGED|first=eval at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=globals_store|produced=float|value=0.5|gate=FLAGGED|first=globals at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=vars_store|produced=float|value=0.5|gate=FLAGGED|first=vars at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=plistlib_import|produced=float|value=0.5|gate=FLAGGED|first=import plistlib at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=tomllib_import|produced=float|value=0.5|gate=FLAGGED|first=import tomllib at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=marshal_import|produced=int|value=1|gate=FLAGGED|first=import marshal at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=control_noword|name=timeit_import|produced=float|value=1300.931982057|gate=FLAGGED|first=import timeit at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=statistics_import|produced=float|value=1.5|gate=FLAGGED|first=import statistics at line 1|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=total_seconds_attr|produced=float|value=86400.0|gate=FLAGGED|first=total_seconds at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=timestamp_attr|produced=float|value=1767236400.0|gate=FLAGGED|first=timestamp at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=st_mtime_attr|produced=float|value=1793757475.9924095|gate=FLAGGED|first=st_mtime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=getmtime_attr|produced=float|value=1793757475.9924095|gate=FLAGGED|first=getmtime at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=float_info_attr|produced=float|value=1.7976931348623157e+308|gate=FLAGGED|first=float_info at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=getswitchinterval_attr|produced=float|value=0.005|gate=FLAGGED|first=getswitchinterval at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=literal_eval_attr|produced=float|value=0.5|gate=FLAGGED|first=literal_eval at line 2|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=control_noword|name=as_integer_ratio_attr|produced=tuple|value=(3, 1)|gate=FLAGGED|first=as_integer_ratio at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=control_noword|name=argparse_type_float|produced=float|value=0.5|gate=FLAGGED|first=float at line 3|verdict=CAUGHT|json=0
+PLANT|lane=linux|family=failed_attack|name=shutil_disk_usage|produced=int|value=1081101176832|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=os_stat_index_mtime|produced=int|value=1793757475|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=os_stat_mtime_ns|produced=int|value=1793757475992409468|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=xml_etree_text|produced=str|value='0.5'|gate=FLAGGED|first=[import_allow] import xml.etree.ElementTree, outside the allowed list at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=csv_default_quoting|produced=str|value='0.5'|gate=FLAGGED|first=[import_allow] import csv, outside the allowed list at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=secrets_randbelow|produced=int|value=4|gate=FLAGGED|first=[import_allow] import secrets, outside the allowed list at line 1|verdict=NO_FLOAT_FLAGGED|json=0
+PLANT|lane=linux|family=failed_attack|name=sys_hash_info_inf|produced=int|value=314159|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=int_real|produced=int|value=5|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=round_int|produced=int|value=5|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+PLANT|lane=linux|family=failed_attack|name=time_ns|produced=int|value=1793757483805986657|gate=CLEAN|first=-|verdict=NO_FLOAT_CLEAN|json=0
+SURVIVOR|lane=linux|plant=format/percent_tuple_on_variable|json=0
+SURVIVOR|lane=linux|plant=noword/socket_timeout_property|json=0
+SURVIVOR|lane=linux|plant=noword/os_wait4_rusage_by_index|json=0
+SURVIVOR|lane=linux|plant=format/percent_computed_through_function|json=0
+SURVIVOR|lane=linux|plant=format/percent_name_bound_to_call|json=0
+SURVIVOR|lane=linux|plant=exponent/pow_none_through_parameter_no_default|json=0
+SURVIVOR|lane=linux|plant=noword/inline_child_interpreter_stdin|json=0
+SURVIVOR|lane=linux|plant=noword/subprocess_child_python|json=0
+SURVIVOR|lane=linux|plant=noword/os_popen_awk|json=0
+TOTAL|section=python|lane=linux|plants=578|v3_bypass=395|v4_bypass=9|opened=0|BYPASS=9|CAUGHT=511|NOT_RUN=3|NO_FLOAT_CLEAN=23|NO_FLOAT_FLAGGED=12|RUN_ERROR_CLEAN=2|RUN_ERROR_FLAGGED=18|json=0

@@ -1,0 +1,141 @@
+KIND|tree=ym4|kind=float %-format|findings=6|outside_folder_rows=6|files=1|json=0
+KIND|tree=ym4|kind=percent_parser|findings=6|outside_folder_rows=6|files=1|json=0
+KIND|tree=ym4|kind=dunder_strings|findings=5|outside_folder_rows=5|files=1|json=0
+KIND|tree=ym4|kind=brace_anywhere|findings=4|outside_folder_rows=4|files=1|json=0
+KIND|tree=ym4|kind=the string|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=ym4|kind=ast_parse|findings=1|outside_folder_rows=1|files=1|json=0
+FILE|tree=ym4|path=scripts/no_float_gate.py|findings=24|first=float %-format at line 2|json=0
+TREE|tree=ym4|head=bff6043a1a5a|tracked=19|code_files=4|findings=24|in_folder_rows=0|outside_folder_rows=24|files_outside=1|rows_now_file=1|rows_now_folder=0|new_file_rows=0|moved_counts=1|rows_with_no_findings=0|json=0
+KIND|tree=sun|kind=rust float word|findings=545|outside_folder_rows=0|files=20|json=0
+KIND|tree=sun|kind=rs_doctest|findings=230|outside_folder_rows=0|files=19|json=0
+KIND|tree=sun|kind=rust float literal|findings=83|outside_folder_rows=0|files=12|json=0
+KIND|tree=sun|kind=rs_cnames|findings=15|outside_folder_rows=0|files=4|json=0
+KIND|tree=sun|kind=rs_arch|findings=5|outside_folder_rows=0|files=3|json=0
+KIND|tree=sun|kind=brace_anywhere|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=sun|kind=float %-format|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=sun|kind=percent_parser|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=sun|kind=ast_parse|findings=1|outside_folder_rows=1|files=1|json=0
+KIND|tree=sun|kind=rs_buildsys|findings=1|outside_folder_rows=0|files=1|json=0
+FILE|tree=sun|path=scripts/no_float_gate.py|findings=7|first=float %-format at line 2|json=0
+TREE|tree=sun|head=dad0f705f5d5|tracked=294|code_files=149|findings=886|in_folder_rows=879|outside_folder_rows=7|files_outside=1|rows_now_file=0|rows_now_folder=1|new_file_rows=1|moved_counts=0|rows_with_no_findings=0|json=0
+KIND|tree=pairs|kind=rust float word|findings=545|outside_folder_rows=0|files=20|json=0
+KIND|tree=pairs|kind=rs_doctest|findings=230|outside_folder_rows=0|files=19|json=0
+KIND|tree=pairs|kind=power with an unproven exponent|findings=87|outside_folder_rows=85|files=21|json=0
+KIND|tree=pairs|kind=rust float literal|findings=83|outside_folder_rows=0|files=12|json=0
+KIND|tree=pairs|kind=true division|findings=71|outside_folder_rows=60|files=18|json=0
+KIND|tree=pairs|kind=import_allow|findings=50|outside_folder_rows=45|files=42|json=0
+KIND|tree=pairs|kind=attribute of math, time or random|findings=48|outside_folder_rows=45|files=17|json=0
+KIND|tree=pairs|kind=denied import|findings=36|outside_folder_rows=31|files=30|json=0
+KIND|tree=pairs|kind=float|findings=31|outside_folder_rows=4|files=4|json=0
+KIND|tree=pairs|kind=float literal|findings=29|outside_folder_rows=10|files=7|json=0
+KIND|tree=pairs|kind=float format|findings=27|outside_folder_rows=24|files=15|json=0
+KIND|tree=pairs|kind=rs_cnames|findings=15|outside_folder_rows=0|files=4|json=0
+KIND|tree=pairs|kind=ast_parse|findings=13|outside_folder_rows=13|files=7|json=0
+KIND|tree=pairs|kind=dunder_strings|findings=9|outside_folder_rows=9|files=2|json=0
+KIND|tree=pairs|kind=exec_imports|findings=9|outside_folder_rows=9|files=8|json=0
+KIND|tree=pairs|kind=float %-format|findings=9|outside_folder_rows=9|files=2|json=0
+KIND|tree=pairs|kind=percent_parser|findings=9|outside_folder_rows=9|files=2|json=0
+KIND|tree=pairs|kind=random|findings=8|outside_folder_rows=8|files=4|json=0
+KIND|tree=pairs|kind=truediv|findings=8|outside_folder_rows=8|files=2|json=0
+KIND|tree=pairs|kind=exec|findings=7|outside_folder_rows=7|files=7|json=0
+KIND|tree=pairs|kind=__import__|findings=6|outside_folder_rows=6|files=5|json=0
+KIND|tree=pairs|kind=compile|findings=6|outside_folder_rows=6|files=5|json=0
+KIND|tree=pairs|kind=rs_arch|findings=5|outside_folder_rows=0|files=3|json=0
+KIND|tree=pairs|kind=the string|findings=5|outside_folder_rows=5|files=2|json=0
+KIND|tree=pairs|kind=brace_anywhere|findings=4|outside_folder_rows=4|files=1|json=0
+KIND|tree=pairs|kind=complex|findings=3|outside_folder_rows=3|files=1|json=0
+KIND|tree=pairs|kind=module_store|findings=3|outside_folder_rows=3|files=3|json=0
+KIND|tree=pairs|kind=locals_setattr|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=pairs|kind=module_flow|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=pairs|kind=operator.pow or builtins.pow|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=pairs|kind=pow_attr|findings=2|outside_folder_rows=2|files=1|json=0
+KIND|tree=pairs|kind=anything_python|findings=1|outside_folder_rows=1|files=1|json=0
+KIND|tree=pairs|kind=as_integer_ratio|findings=1|outside_folder_rows=1|files=1|json=0
+KIND|tree=pairs|kind=getattr_strict|findings=1|outside_folder_rows=1|files=1|json=0
+KIND|tree=pairs|kind=javascript division|findings=1|outside_folder_rows=1|files=1|json=0
+KIND|tree=pairs|kind=rs_buildsys|findings=1|outside_folder_rows=0|files=1|json=0
+KIND|tree=pairs|kind=total_seconds|findings=1|outside_folder_rows=1|files=1|json=0
+FILE|tree=pairs|path=independent/gpt6_3x3_ritz_independent.py|findings=2|first=import importlib.util at line 14|json=0
+FILE|tree=pairs|path=independent/gpt6_sturm_interval.py|findings=1|first=power with an unproven exponent at line 46|json=0
+FILE|tree=pairs|path=independent/gpt6_sturm_sectors.py|findings=2|first=[exec_imports] import runpy at line 12|json=0
+FILE|tree=pairs|path=independent/seat_adaptive_cells.py|findings=9|first=true division at line 79|json=0
+FILE|tree=pairs|path=independent/seat_coupling_region.py|findings=2|first=[exec_imports] import runpy at line 18|json=0
+FILE|tree=pairs|path=independent/seat_global_coupling.py|findings=6|first=true division at line 69|json=0
+FILE|tree=pairs|path=independent/seat_integer_only_gate.py|findings=1|first=[ast_parse] ast.parse at line 23|json=0
+FILE|tree=pairs|path=independent/seat_integer_ratio.py|findings=9|first=true division at line 109|json=0
+FILE|tree=pairs|path=independent/seat_magnetic_endpoint.py|findings=4|first=true division at line 92|json=0
+FILE|tree=pairs|path=independent/seat_sturm_integer_matrix.py|findings=2|first=[exec_imports] import runpy at line 11|json=0
+FILE|tree=pairs|path=independent/seat_translation_sectors.py|findings=2|first=[exec_imports] import runpy at line 15|json=0
+FILE|tree=pairs|path=independent/seat_translation_sturm.py|findings=1|first=power with an unproven exponent at line 74|json=0
+FILE|tree=pairs|path=native/scripts/integer_only_audit.py|findings=7|first=float %-format at line 20|json=0
+FILE|tree=pairs|path=native/scripts/intpair.py|findings=10|first=power with an unproven exponent at line 255|json=0
+FILE|tree=pairs|path=native/scripts/make_integer_pairs.py|findings=7|first=exec at line 325|json=0
+FILE|tree=pairs|path=native/scripts/no_float_gate.py|findings=24|first=float %-format at line 2|json=0
+FILE|tree=pairs|path=native/scripts/test_intpair.py|findings=55|first=import decimal at line 16|json=0
+FILE|tree=pairs|path=native/vendor/rime_sphere_source/rime_prism_pipeline.py|findings=8|first=float format at line 65|json=0
+FILE|tree=pairs|path=native/web/s3_wave_observatory.html|findings=1|first=javascript division at line 53|json=0
+FILE|tree=pairs|path=native/ym/independent/gpt6_3x4_meta_check.py|findings=2|first=import decimal at line 6|json=0
+FILE|tree=pairs|path=native/ym/independent/indep_sqrt_check.py|findings=2|first=import importlib.util at line 18|json=0
+FILE|tree=pairs|path=native/ym/independent/indep_verify.py|findings=2|first=__import__ at line 249|json=0
+FILE|tree=pairs|path=native/ym/python/certify_packaging_controls.py|findings=2|first=import yaml at line 23|json=0
+FILE|tree=pairs|path=native/ym/python/certify_timing.py|findings=2|first=import json at line 9|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/attacks.py|findings=1|first=__import__ at line 335|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/brute_windows.py|findings=3|first=time.time at line 108|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/integer-clock/reader_controls.py|findings=1|first=__import__ at line 129|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/reader_controls.py|findings=4|first=time.time at line 75|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/stars.py|findings=3|first=time.time at line 87|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/failclosed/review-opus55/attack/stars2.py|findings=3|first=time.time at line 105|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/hardened/review-opus55-part3/hard/attack_judge.py|findings=1|first=exec at line 12|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/allpairs/hardened/run_hardening_controls.py|findings=4|first=import ctypes at line 340|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/hash_store.py|findings=2|first=time.time at line 9|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/hf_push_perron.py|findings=1|first=[import_allow] import huggingface_hub, outside the allowed list at line 8|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/passa_census.py|findings=1|first=power with an unproven exponent at line 30|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/perron_climb.py|findings=8|first=import fractions at line 9|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c1_inertia.py|findings=3|first=time.time at line 13|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c1_small.py|findings=5|first=time.time at line 8|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c2_acc.py|findings=4|first=float literal at line 30|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c2_fuzz.py|findings=15|first=import fractions at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c3_random.py|findings=25|first=import fractions at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c4_grid.py|findings=7|first=import fractions at line 6|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c4b_open.py|findings=6|first=import fractions at line 90|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c5_coupling.py|findings=5|first=import fractions at line 7|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c5b_tie.py|findings=1|first=__import__ at line 59|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c6_count.py|findings=9|first=import pickle at line 3|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c6_lattice.py|findings=11|first=import pickle at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c6_lift.py|findings=9|first=import pickle at line 5|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/c7_receipts.py|findings=6|first=import fractions at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/integer-redo/c3_random.py|findings=1|first=power with an unproven exponent at line 119|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/integer-redo/c6_count.py|findings=2|first=import pickle at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/integer-redo/c6_lattice.py|findings=2|first=import pickle at line 5|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/integer-redo/c6_lift.py|findings=2|first=import pickle at line 6|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/integer-redo/checked_division.py|findings=5|first=exec at line 52|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/own33_check.py|findings=3|first=time.time at line 7|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/second-seat/own34_post.py|findings=3|first=import fractions at line 3|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/test_verify_rows.py|findings=1|first=exec at line 111|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/product_bound.py|findings=12|first=import fractions at line 17|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-gpt6/cap_check.py|findings=2|first=import fractions at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/integer-pairs/py_two_numbers.py|findings=2|first=power with an unproven exponent at line 18|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_exact_t.py|findings=2|first=import fractions at line 6|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_lump_counts.py|findings=6|first=power with an unproven exponent at line 16|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_missing_check.py|findings=4|first=power with an unproven exponent at line 13|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_points_compare.py|findings=2|first=exec at line 12|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_two_numbers.py|findings=5|first=import fractions at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/vector/review-opus55/py_verify_low.py|findings=2|first=import fractions at line 5|json=0
+FILE|tree=pairs|path=native/ym/results/3x4_stream/perron/warmcal.py|findings=7|first=true division at line 31|json=0
+FILE|tree=pairs|path=native/ym/results/cantor-integer-2026-11-03/verify_cantorint.py|findings=1|first=power with an unproven exponent at line 67|json=0
+FILE|tree=pairs|path=native/ym/results/integer-pairs-2026-11-03/check_climb_estimate.py|findings=3|first=exec at line 17|json=0
+FILE|tree=pairs|path=native/ym/results/integer-pairs-2026-11-03/recheck_kept_outputs.py|findings=1|first=[module_store] a store into the module sys at line 9|json=0
+FILE|tree=pairs|path=native/ym/results/integer-pairs-2026-11-03/run_original_redirected.py|findings=5|first=[exec_imports] import builtins at line 4|json=0
+FILE|tree=pairs|path=native/ym/results/integer-pairs-2026-11-03/test_runlog.py|findings=7|first=compile at line 14|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/curve_ABC/B/test_b.py|findings=10|first=power with an unproven exponent at line 9|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/curve_ABC/C/test_c.py|findings=1|first=total_seconds at line 20|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/destination/test.py|findings=3|first=power with an unproven exponent at line 51|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/destination/test_v1.py|findings=3|first=power with an unproven exponent at line 51|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/perlevel_crosscheck/pair_check.py|findings=2|first=power with an unproven exponent at line 34|json=0
+FILE|tree=pairs|path=native/ym/results/z-one-matrix-20261030/perlevel_crosscheck/probe.py|findings=5|first=power with an unproven exponent at line 35|json=0
+FILE|tree=pairs|path=native/ym/scripts/host8_certify.py|findings=2|first=import yaml at line 33|json=0
+FILE|tree=pairs|path=native/ym/shadow/lean/HebcShadow.lean|findings=1|first=[anything_python] Python under a name the scan does not read: [import_allow] import HebcSh|json=0
+FILE|tree=pairs|path=native/ym/shadow/sat/orbit_cnf.py|findings=2|first=[import_allow] import pycosat, outside the allowed list at line 117|json=0
+FILE|tree=pairs|path=native/ym/shadow/sat/orbit_ganak.py|findings=5|first=power with an unproven exponent at line 37|json=0
+FILE|tree=pairs|path=native/ym/shadow/sat/partition_sat.py|findings=1|first=[import_allow] import pysat.solvers, outside the allowed list at line 21|json=0
+TREE|tree=pairs|head=61b50229fb56|tracked=3481|code_files=482|findings=1370|in_folder_rows=954|outside_folder_rows=416|files_outside=83|rows_now_file=98|rows_now_folder=2|new_file_rows=29|moved_counts=43|rows_with_no_findings=44|json=0

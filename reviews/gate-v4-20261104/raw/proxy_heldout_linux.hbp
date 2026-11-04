@@ -1,0 +1,51 @@
+PLANT|set=heldout|name=ho_rs_include_brackets|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_rs_include_braces|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_rs_include_env|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_rs_path_raw_string|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_rs_asm_renamed_spaced|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=bits 0x3fd5555555555555|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_rs_transmute_duration_free|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=heldout|name=ho_rs_macro_rules_token_rename|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f64 0.3333333333333333|candidate=FLAGGED|gate=FLAGGED|first=file=main.rs/first=line 3/count=1|json=0
+PLANT|set=heldout|name=ho_cpp_lerp|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=d 4|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 5/count=1|json=0
+PLANT|set=heldout|name=ho_cpp_lerp_valarray_free|lang=heldout|attack_state=PASSED_NOT_RUN|attack_value=BUILD_FAILED|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 8/count=1|json=0
+PLANT|set=heldout|name=ho_cpp_midpoint_ptrfree|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=f 1|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 6/count=1|json=0
+PLANT|set=heldout|name=ho_cpp_builtin_prefix|lang=heldout|attack_state=PASSED_NOT_RUN|attack_value=BUILD_FAILED|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_cpp_user_literal|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=d 0.5|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 3/count=2|json=0
+PLANT|set=heldout|name=ho_cpp_ratio_free_tgamma|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=d 24|candidate=FLAGGED|gate=FLAGGED|first=file=main.cpp/first=line 4/count=2|json=0
+PLANT|set=heldout|name=ho_js_process_uptime|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=0.0215903|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_js_os_loadavg|lang=heldout|attack_state=FLAGGED|attack_value=number|candidate=FLAGGED|gate=FLAGGED|first=file=main.js/first=line 1/count=1|json=0
+PLANT|set=heldout|name=ho_js_require_json|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_js_date_ratio_free|lang=heldout|attack_state=CONTROL_PASSED_BYPASS|attack_value=1 3|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_js_array_avg|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=0.5|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_js_string_math|lang=heldout|attack_state=BYPASS_MEASURED|attack_value=3.141592653589793|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_js_wasm|lang=heldout|attack_state=FLAGGED|attack_value=RUN_FAILED|candidate=PASSED|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_perl_e|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_node_e|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_gawk|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_var_interpreter|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_python_stdin_redirect|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+PLANT|set=heldout|name=ho_sh_dc|lang=heldout|attack_state=NOT_IN_ATTACK_ROWS|attack_value=|candidate=|gate=PASSED|first=-|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_braces|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_brackets|json=0
+SURVIVOR|set=heldout|plant=ho_rs_include_env|json=0
+SURVIVOR|set=heldout|plant=ho_rs_path_raw_string|json=0
+SURVIVOR|set=heldout|plant=ho_rs_asm_renamed_spaced|json=0
+SURVIVOR|set=heldout|plant=ho_js_array_avg|json=0
+SURVIVOR|set=heldout|plant=ho_js_process_uptime|json=0
+SURVIVOR|set=heldout|plant=ho_js_require_json|json=0
+SURVIVOR|set=heldout|plant=ho_js_string_math|json=0
+SURVIVOR|set=heldout|plant=ho_sh_perl_e|json=0
+SURVIVOR|set=heldout|plant=ho_sh_node_e|json=0
+SURVIVOR|set=heldout|plant=ho_sh_gawk|json=0
+SURVIVOR|set=heldout|plant=ho_sh_var_interpreter|json=0
+SURVIVOR|set=heldout|plant=ho_sh_python_stdin_redirect|json=0
+HELDOUT_LANG|lang=cpp|flagged=4|of=4|json=0
+HELDOUT_LANG|lang=js|flagged=0|of=4|json=0
+HELDOUT_LANG|lang=rust|flagged=2|of=7|json=0
+HELDOUT_LANG|lang=shell|flagged=0|of=5|json=0
+HELDOUT_OTHER|name=ho_cpp_lerp_valarray_free|attack_state=PASSED_NOT_RUN|gate=FLAGGED|json=0
+HELDOUT_OTHER|name=ho_cpp_builtin_prefix|attack_state=PASSED_NOT_RUN|gate=PASSED|json=0
+HELDOUT_OTHER|name=ho_js_os_loadavg|attack_state=FLAGGED|gate=FLAGGED|json=0
+HELDOUT_OTHER|name=ho_js_date_ratio_free|attack_state=CONTROL_PASSED_BYPASS|gate=PASSED|json=0
+HELDOUT_OTHER|name=ho_js_wasm|attack_state=FLAGGED|gate=PASSED|json=0
+HELDOUT_OTHER|name=ho_sh_dc|attack_state=NOT_IN_ATTACK_ROWS|gate=PASSED|json=0
+TOTAL|section=heldout|valid=20|flagged=6|json=0

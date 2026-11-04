@@ -1,0 +1,37 @@
+SIM_STEP|scenario=clean_pr|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=clean_pr|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=float_no_row|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/a\n::error::forged by a file name.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=path_holds_a_command|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=float_with_row|no_float_base=GREEN|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/no_float_gate.py/json=0|json=0
+SIM|scenario=gate_edit_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=.github/workflows/no_float.yml/json=0|json=0
+SIM|scenario=workflow_rewrite_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/row_without_a_count=/etc/passwd/json=0|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=list_is_a_symlink|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=shadow_beside_the_gate|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=base_moves_after_the_fork|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+TOTAL|section=base_sim|head=fa957b5d91ad|scenarios=9|json=0

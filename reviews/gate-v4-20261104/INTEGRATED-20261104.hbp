@@ -1,0 +1,80 @@
+INTEGRATED|seat=ACER-CLAUDE-FABLE5|owner=OP-JESSE|branch=gate-v4-20261104|measured_at=bfc27e5289c51dba3503196be68428b717f0b9f9|earlier_head=7b0364dc215c3b071dc81898929f7c3f9db3cc9c|merged_main=08f5361c85ee18c8eaf3860e976d09c080011b57|merged_compiled=fbca4e42177c41fc25f836be5061703824e446fa|date=2026-11-04|float_used=0|json=0
+BESIDE|file=GATE-V4-RESULTS.hbp|what=its rows stand at their commits; this file holds the tree after #10, #11, #13 and the compiled small form came in|json=0
+GATE|sha256=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193|same_file_as_results=1|tag=MEASURED|json=0
+SELFTEST|python=3.13.14|lane=windows|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|tag=MEASURED|json=0
+SELFTEST|python=3.12.3|lane=linux|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|tag=MEASURED|json=0
+SCAN|python=3.13.14|lane=windows|code_files=28|listed_files=12|listed_folders=0|listed_findings=123|failed=0|rc=0|tag=MEASURED|json=0
+SCAN|python=3.12.3|lane=linux|code_files=28|listed_files=12|listed_folders=0|listed_findings=123|failed=0|rc=0|tag=MEASURED|json=0
+LIST|rows=12|file_rows=12|folder_rows=0|findings=123|read_this_round=12|json=0
+LIST_KIND|rule=power with an unproven exponent|findings=16|files=8|reading=each exponent is a non-negative integer, by reading|json=0
+LIST_KIND|rule=literal_eval|findings=4|files=4|input=classes_d3_F12 lines=10; classes_d4_F12 lines=200; classes_d4_F14 lines=668; every line a tuple of int literals|tag=MEASURED|json=0
+LIST_KIND|rule=exec, compile|findings=4|files=1|file=reviews/opus55-ym4-02b/sphere_q8.py|input=two slices of tests/test_subgroup_designs_4d.py at 39bb57f, scratch copy byte-identical with sha256 1b4d93226b4dcf198e1dfd19116bbc3016c6f5da80b327dffc52c6fefd36855b, 0 findings in each slice|tag=MEASURED|json=0
+LIST_KIND|rule=module_flow|findings=3|files=1|file=reviews/opus55-ym4-02b/sphere_q8.py|json=0
+LIST_KIND|rule=more_attrs|findings=3|files=1|file=tests/test_one_by_l_2d.py|reading=false alarm: the word times is held for os.times(), and here group.times is the file's own ring multiplication on integer pairs|json=0
+LIST_KIND|rule=the gate's own 93|findings=93|files=1|file=scripts/no_float_gate.py|json=0
+FALSE_ALARM|file=tests/test_one_by_l_2d.py|rule=more_attrs|findings=3|receipt_changed=0|json=0
+FALSE_ALARM|file=tests/test_subgroup_designs_4d.py|rule=power with an unproven exponent|findings=4|why=the rule reads every binding of a name across the file, and the file binds size and k elsewhere|receipt_changed=0|json=0
+READ_CLEAN|files=16|what=every other tracked .py, .rs and .cpp outside the gate and these rows, tests/test_exact_su2_4d.py and tests/test_haar_moments_4d.py among them|tag=MEASURED|json=0
+COMPILED_AS_MERGED|commit=9c23b9445b2ea36f22bef927fcb10396999a6fa7|check_rc=1|row=COMPILED_CPP_SMALL/result=FAIL/reason=rust_in_this_repository_needs_the_full_form|cause=forest.rs and over.rs arrived with #13 after the small form was written|tag=MEASURED|json=0
+COMPILED_NOW|file=reviews/gpt6-q8-0e9bcff/q8_gram_independent.cpp|fp_ops=0|tag=MEASURED|json=0
+COMPILED_NOW|file=reviews/opus55-ym4-02b/read-pr13/forest.rs|fp_lines=0|rustc=1.81.0|tag=MEASURED|json=0
+COMPILED_NOW|file=reviews/opus55-ym4-02b/read-pr13/over.rs|fp_lines=0|rustc=1.81.0|tag=MEASURED|json=0
+COMPILED_PLANTS|cpp_red=6|cpp_of=6|rust_red=8|rust_of=8|cpp_controls_green=2|rust_controls_green=3|failed=0|lane=linux|tag=MEASURED|json=0
+COMPILED_WORKFLOW|file=no-float-compiled.yml|steps=7|failed_steps=0|tree_left_clean=1|lane=linux|shell=bash -e|tag=MEASURED|json=0
+BASE_ROW|row=NO_FLOAT_BASE/base_sha=bfc27e5289c51dba3503196be68428b717f0b9f9/gate_sha256=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193/head_sha=3a6849395c9af9321262e51ac610a131c61a906e/json=0|same_as_read_separately=1|lane=linux|tag=MEASURED|json=0
+BASE_ROW_NO_HEAD|rc=128|printed_row=0|lane=linux|tag=MEASURED|json=0
+WORKFLOW_FILES|jobs_named_no_float=1|file=no_float.yml|old_no-float.yml_tracked=0|job_names_repeated=0|parsed_with=PyYAML 6.0.1|tag=MEASURED|json=0
+UNCHANGED_AGAINST_MAIN|paths=docs tests reviews/opus55-ym4-02b reviews/gpt6-q8-0e9bcff reviews/gpt6-one-by-l PROBLEM.md|same=1|sha256sums_opus55=82 OK|sha256sums_gpt6_q8=3 OK|tag=MEASURED|json=0
+NOT_MEASURED|what=hosted runs of no_float.yml and no-float-compiled.yml at this branch|reason=their triggers are a pull request and a push to main or compiled-check-20261104|settled_by=the pull request|json=0
+NOT_MEASURED|what=hosted runs of no_float_base.yml|reason=pull_request_target runs the base branch's copy, so it first acts on a pull request after it reaches main|json=0
+NAMED|what=GitHub blocks pull_request_target by default from December 2, 2026, with trial blocks on November 9 and 16, 16:00 to 18:00 UTC, and a repository Actions policy allows .github/workflows/no_float_base.yml|source=the coordinator's task|checked_by=the actions/permissions read here shows enabled=true allowed_actions=all and holds no path list|json=0
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate reads its own test snippets|rc=0|last=NO_FLOAT_SELFTEST_DONE/must_flag=124/must_name_its_rule=158/must_pass=91/file_rows=59/list_rows=14/failed=0/json=0|json=0
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=Scan the tracked files the gate reads|rc=0|last=NO_FLOAT_DONE/code_files=28/listed_files=12/listed_folders=0/listed_findings=123/failed=0/json=0|json=0
+WORKFLOW_STEP|file=no_float.yml|job=no-float|step=The gate goes red on each plant, for its named reason|rc=0|last=-|json=0
+TOTAL|section=workflow_no_float|head=bfc27e5289c5|tree_left_clean=1|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=clean_pr|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=clean_pr|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=float_no_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=float_no_row|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/a\n::error::forged by a file name.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=path_holds_a_command|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=path_holds_a_command|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=float_with_row|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=float_with_row|no_float_base=GREEN|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=gate_edit_with_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/no_float_gate.py/json=0|json=0
+SIM|scenario=gate_edit_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=workflow_rewrite_with_float|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=.github/workflows/no_float.yml/json=0|json=0
+SIM|scenario=workflow_rewrite_with_float|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/row_without_a_count=/etc/passwd/json=0|json=0
+SIM_STEP|scenario=list_is_a_symlink|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=1|forged_command_lines=0|first=NO_FLOAT_LIST_CHANGED/path=scripts/FLOAT-EVIDENCE.txt/json=0|json=0
+SIM|scenario=list_is_a_symlink|no_float_base=RED|no_float_list_unchanged=RED|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-base|step=The base gate reads the pull request's list and files|rc=1|forged_command_lines=0|first=NO_FLOAT/file=scripts/new_verifier.py/first=true division at line 1/count=1/json=0|json=0
+SIM_STEP|scenario=shadow_beside_the_gate|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=shadow_beside_the_gate|no_float_base=RED|no_float_list_unchanged=GREEN|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-base|step=A row recording the trusted commit, its gate and the head they read|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-base|step=The base gate reads its own test snippets|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-base|step=The base gate reads the pull request's list and files|rc=0|forged_command_lines=0|first=-|json=0
+SIM_STEP|scenario=base_moves_after_the_fork|job=no-float-list-unchanged|step=The gate, the list and both workflows, against the point this pull request forked from|rc=0|forged_command_lines=0|first=-|json=0
+SIM|scenario=base_moves_after_the_fork|no_float_base=GREEN|no_float_list_unchanged=GREEN|json=0
+TOTAL|section=base_sim|head=bfc27e5289c5|scenarios=9|json=0
