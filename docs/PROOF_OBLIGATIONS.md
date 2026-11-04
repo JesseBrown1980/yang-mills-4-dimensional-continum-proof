@@ -1,6 +1,6 @@
 # Four-dimensional continuum proof-obligation ledger
 
-Updated 2026-11-04. Each row covers exactly its own statement, and the Clay problem is the whole chain. Scope set by the operator, November 4, 2026: "We're not doing physical volume becoming infinite. We're a finite system." Rows that name infinite volume state the Clay problem, a separate target, and in this scope read as zero spacing at fixed finite physical volume. Every row is independently auditable. The IDs YM4-02 to YM4-06 match issues #2 to #6.
+Updated 2026-11-04. Each row covers exactly its own statement, and the Clay problem is the whole chain. Primary scope, set by the operator on November 4, 2026, Yang–Mills on a finite lattice: "We're not doing physical volume becoming infinite. We're a finite system." Rows that name infinite volume state the Clay problem, a separate target, and in this scope read as zero spacing at fixed finite physical volume. Every row is independently auditable. The IDs YM4-02 to YM4-06 match issues #2 to #6.
 
 | ID | Issue | Obligation | Status | Required acceptance |
 |---|---|---|---|---|
@@ -26,7 +26,7 @@ Updated 2026-11-04. Each row covers exactly its own statement, and the Clay prob
 
 ## Next concrete proof task
 
-Finish YM4-02: match the finite Wilson measure to reflection positivity and the transfer matrix, as issue #2 sets out. GPT-6's proposal for the spectral result after it, OPEN: [a Poincaré inequality for the ground-state-transformed transfer operator](../reviews/gpt6-sign-and-bridge/README.md), and in the operator's finite scope, uniform along L = L_phys/a as a → 0 at fixed L_phys. Then YM4-03: formulate an **exact gauge-covariant one-block renormalization identity** for D=4 SU(2), showing that integration over fine links induces an invariant effective action on coarse links. Pin the blocking map, Haar conventions and precise formula. Test tractable finite-volume controls, then state separate estimates needed for infinitely many scales, weak coupling, and the actual continuum limit.
+Finish YM4-02: match the finite Wilson measure to reflection positivity and the transfer matrix, as issue #2 sets out. GPT-6's proposal for the spectral result after it, OPEN: [a Poincaré inequality for the ground-state-transformed transfer operator](../reviews/gpt6-sign-and-bridge/README.md), and in the operator's finite scope, on this seat's reading, uniform along L = L_phys/a with β following a, as a → 0 at fixed L_phys. Then YM4-03: formulate an **exact gauge-covariant one-block renormalization identity** for D=4 SU(2), showing that integration over fine links induces an invariant effective action on coarse links. Pin the blocking map, Haar conventions and precise formula. Test tractable finite-volume controls, then state separate estimates needed for infinitely many scales, weak coupling, and the actual continuum limit.
 
 ### Starting primary sources
 
