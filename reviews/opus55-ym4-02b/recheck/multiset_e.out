@@ -1,0 +1,5 @@
+MOMENT|sides=1x2x2|N_p=12|k=1|kept=0|patterns=0|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=2|kept=16|patterns=3|2T=7/2|Haar=7/2|json=0
+MOMENT|sides=1x2x2|N_p=12|k=3|kept=0|patterns=0|2T=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2|N_p=12|k=4|kept=149|patterns=68|2T=3595/96|Haar=3595/96|json=0
+MULTISET_DONE|json=0

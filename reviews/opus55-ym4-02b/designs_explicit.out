@@ -1,0 +1,14 @@
+HAAR_CLOSED_FORM|multinomial_sum_is_one_through_m=7|catalan_through_k=7|ok=1|json=0
+CLASSES|group=Q8|order=8|closed=1|associative_checked=1|n_classes=5|rows=size=1,trace=2+0w,elt_order=1;size=1,trace=-2+0w,elt_order=2;size=2,trace=0+0w,elt_order=4;size=2,trace=0+0w,elt_order=4;size=2,trace=0+0w,elt_order=4|json=0
+MONOMIALS|group=Q8|t=3|monomials_through_t=35|mismatches_through_t=0|monomials_at_t+1=35|mismatches_at_t+1=10|examples=e=0004,avg=(32+0w)/128,haar=1/8;e=0022,avg=(0+0w)/128,haar=1/24;e=0040,avg=(32+0w)/128,haar=1/8|json=0
+TRACE_MOMENT|group=Q8|k=4|E_TrU^k=(32+0w)/8|json=0
+CLASSES|group=2T|order=24|closed=1|associative_checked=1|n_classes=7|rows=size=1,trace=2+0w,elt_order=1;size=1,trace=-2+0w,elt_order=2;size=4,trace=-1+0w,elt_order=3;size=4,trace=-1+0w,elt_order=3;size=6,trace=0+0w,elt_order=4;size=4,trace=1+0w,elt_order=6;size=4,trace=1+0w,elt_order=6|json=0
+MONOMIALS|group=2T|t=5|monomials_through_t=126|mismatches_through_t=0|monomials_at_t+1=84|mismatches_at_t+1=20|examples=e=0006,avg=(144+0w)/1536,haar=5/64;e=0024,avg=(16+0w)/1536,haar=1/64;e=0042,avg=(16+0w)/1536,haar=1/64|json=0
+TRACE_MOMENT|group=2T|k=6|E_TrU^k=(144+0w)/24|json=0
+CLASSES|group=2O|order=48|closed=1|associative_checked=1|n_classes=8|rows=size=1,trace=2+0w,elt_order=1;size=1,trace=-2+0w,elt_order=2;size=8,trace=-1+0w,elt_order=3;size=6,trace=0+0w,elt_order=4;size=12,trace=0+0w,elt_order=4;size=8,trace=1+0w,elt_order=6;size=6,trace=0+-1w,elt_order=8;size=6,trace=0+1w,elt_order=8|json=0
+MONOMIALS|group=2O|t=7|monomials_through_t=330|mismatches_through_t=0|monomials_at_t+1=165|mismatches_at_t+1=35|examples=e=0008,avg=(720+0w)/12288,haar=7/128;e=0026,avg=(80+0w)/12288,haar=1/128;e=0044,avg=(80+0w)/12288,haar=3/640|json=0
+TRACE_MOMENT|group=2O|k=8|E_TrU^k=(720+0w)/48|json=0
+CLASSES|group=2I|order=120|closed=1|associative_checked=0|n_classes=9|rows=size=1,trace=2+0w,elt_order=1;size=1,trace=-2+0w,elt_order=2;size=20,trace=-1+0w,elt_order=3;size=30,trace=0+0w,elt_order=4;size=12,trace=-1+1w,elt_order=5;size=12,trace=0+-1w,elt_order=5;size=20,trace=1+0w,elt_order=6;size=12,trace=0+1w,elt_order=10;size=12,trace=1+-1w,elt_order=10|json=0
+MONOMIALS|group=2I|t=11|monomials_through_t=1365|mismatches_through_t=0|monomials_at_t+1=455|mismatches_at_t+1=84|examples=e=00012,avg=(15960+0w)/491520,haar=33/1024;e=00210,avg=(1400+0w)/491520,haar=3/1024;e=0048,avg=(504+0w)/491520,haar=1/1024|json=0
+TRACE_MOMENT|group=2I|k=12|E_TrU^k=(15960+0w)/120|json=0
+DESIGNS_EXPLICIT_DONE|json=0

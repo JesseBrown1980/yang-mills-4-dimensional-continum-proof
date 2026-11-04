@@ -1,0 +1,4 @@
+PERIODIC|d=4|side=2|limit=6|F4:anchored=6,per_site=6/4|F6:anchored=24,per_site=24/6|json=0
+PERIODIC|d=4|side=3|limit=10|F6:anchored=24,per_site=24/6|F9:anchored=6,per_site=6/9|F10:anchored=360,per_site=360/10|json=0
+PERIODIC|d=4|side=4|limit=10|F6:anchored=24,per_site=24/6|F10:anchored=360,per_site=360/10|json=0
+PERIODIC|d=4|side=5|limit=10|F6:anchored=24,per_site=24/6|F10:anchored=360,per_site=360/10|json=0

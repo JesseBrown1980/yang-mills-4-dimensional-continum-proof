@@ -1,0 +1,7 @@
+MOMENT|sides=1x1x2x2|N_p=24|k=1|kept=4|patterns=1|Q8=1/1|Haar=1/1|json=0
+MOMENT|sides=1x1x2x2|N_p=24|k=2|kept=38|patterns=5|Q8=43/4|Haar=97/12|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=1|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=2|kept=60|patterns=3|Q8=27/2|Haar=27/2|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=3|kept=0|patterns=0|Q8=0/1|Haar=0/1|json=0
+MOMENT|sides=1x2x2x2|N_p=48|k=4|kept=1920|patterns=87|Q8=1161/2|Haar=554/1|json=0
+MULTISET_DONE|json=0

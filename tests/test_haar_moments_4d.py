@@ -6,12 +6,11 @@ the standard continuum SU(2) Haar identities:
     E_Haar[(1/2)Tr(U)] = 0,
     E_Haar[((1/2)Tr(U))^2] = 1/4.
 It exhaustively checks the link-incidence hypotheses that eliminate all
-off-diagonal plaquette covariances. It does not itself integrate Haar measure
-numerically, establish reflection positivity, or approach a continuum limit.
-Python standard library, integer/rational arithmetic only.
+off-diagonal plaquette covariances. Haar orthogonality is its input. Reflection
+positivity is the rest of YM4-02, and the continuum limit is YM4-05.
+Python standard library, integers only.
 """
 from collections import Counter
-from fractions import Fraction
 from itertools import combinations, product
 
 DIM, SIDE = 4, 2
@@ -67,17 +66,18 @@ def must_reject_bad_geometry(bad):
 
 
 def exact_haar_consequences():
-    # Non-numerical input from SU(2) Haar symmetry / character orthogonality:
+    # Input from SU(2) Haar symmetry / character orthogonality:
     # χ_{1/2}(U) = Tr(U) = 2a, where uniform q=(a,b,c,d) is on S^3.
     # E[a]=0 and E[a²]=1/4; the latter follows from rotational symmetry
     # and E[a²+b²+c²+d²]=1.
-    n = Fraction(96)
-    mean_a = Fraction(0)
-    second_a = Fraction(1, 4)
+    n = 96
+    mean_a = 0
+    # E[a^2] = 1/4, carried as the integer quotient of n by 4.
+    assert n % 4 == 0
     # Distinct plaquettes each have an exclusive Haar link. Integrating that
     # link first makes their covariance exactly zero.
     mean_sum = n * mean_a
-    var_sum = n * (second_a - mean_a * mean_a)
+    var_sum = n // 4 - n * mean_a * mean_a
     # Z(β)=exp(-βn) E_Haar exp(β sum_p a_p).
     # Derivatives of log Z at β=0 are -n+mean_sum and var_sum.
     log_z_first = -n + mean_sum
@@ -88,7 +88,7 @@ def exact_haar_consequences():
     assert (log_z_first, log_z_second) == (-96, 24)
     assert (z_first, z_second) == (-96, 9240)
     # E S_W(β) = 96 β, Var S_W(β) = 24 β² under PRODUCT HAAR;
-    # these are not expectations under the interacting Wilson measure.
+    # these are expectations under product Haar.
     return (int(log_z_first), int(log_z_second), int(z_second))
 
 
