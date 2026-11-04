@@ -1,0 +1,11 @@
+EVEN_COVER|order2=96|order3=0|order4=4680|kinds=1+1+1+1=24;2+2=4560;4=96|json=0
+NOT_SINGLY_COVERED|order2=96|order3=96|order4=4680|kinds4=1+1+1+1=24;2+2=4560;4=96|json=0
+E_X2=24/1|parts={'2': (24, 1)}|patterns=1
+E_X3=0/1|parts={}
+E_X4=6897/4|parts={'4': (12, 1), '2+2': (1710, 1), '1+1+1+1': (9, 4)}|patterns=21
+KAPPA4=-15/4|json=0
+VALUES_BY_KIND|1+1+1+1:1/256 x24;2+2:1/16 x4560;4:1/8 x96|json=0
+FOUR_FACE_SETS|count=24|by(planes,transverse_positions)={(1, 1): 24}|expected_count=6*2^2=24|json=0
+P3_VALUE=(0, 1)|json=0
+SYMMETRY_POINTWISE|symmetries=384|plaquette_checks=73728|orientation_swapped_checks=36864|mismatches=0|json=0
+MOMENTS_Z2_DONE|json=0

@@ -192,11 +192,11 @@ def check_seed(seed):
     first = next(iter(corrupted))
     corrupted[first] = multiply(corrupted[first], A)
     if not covariance_holds(P, all_plaquettes(corrupted), g):
-        CONTROLS.add("corrupted_link")
+        CONTROLS.add((seed, "corrupted_link"))
     # Fault #2: remove the endpoint inverse in the gauge law. The traces must move.
     wrong = all_plaquettes(gauge_transform(U, g, bad=True))
     if [half_trace(P[k]) for k in sorted(P)] != [half_trace(wrong[k]) for k in sorted(P)]:
-        CONTROLS.add("endpoint_inverse")
+        CONTROLS.add((seed, "endpoint_inverse"))
     return wilson_action(P), detected
 
 
@@ -210,11 +210,11 @@ def main():
     assert len(set(actions)) > 1
     seen = sum(r[1][0] for r in results)
     kept = sum(r[1][1] for r in results)
-    assert seen == 96 * len(seeds) and kept == 372 and len(CONTROLS) == 2
+    assert seen == 96 * len(seeds) and kept == 372 and len(CONTROLS) == 2 * len(seeds)
     print(
         "EXACT_SU2_4D|sites=16|links=64|plaquettes=96|seeds=4|"
         "gauge_covariance=PASS|wilson_action=PASS|fault_controls=%d/2|"
-        "failures=0|json=0" % len(CONTROLS)
+        "failures=0|json=0" % (len(CONTROLS) // len(seeds))
     )
     for seed, action in zip(seeds, actions):
         print("EXACT_SU2_4D_VALUE|seed=%d|S_W=%d/%d|json=0" % (seed, action[0], action[1]))
