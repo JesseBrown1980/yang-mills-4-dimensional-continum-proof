@@ -1,5 +1,5 @@
-# The operator's rule: "The gate must reject operations capable of silently introducing floating-point values." The source scan in no-float.yml reads text; this job reads what g++ produced.
-# This repository's only compiled code is one C++ review file, so this is the small form, with its scope and limits in scripts/no_float_compiled.sh. A pass means these reads found nothing in what they read. Integer only, json=0.
+# The operator's rule: "The gate must reject operations capable of silently introducing floating-point values." The source scan in no_float.yml reads text; this job reads what g++ and rustc produced.
+# This repository's compiled code is one C++ review file and two Rust review files built alone, with no Cargo package, so this is the small form, with its scope and limits in scripts/no_float_compiled.sh. A pass means these reads found nothing in what they read. Integer only, json=0.
 name: No floating point, compiled level
 
 on:
@@ -18,7 +18,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - name: Every C and C++ file compiled -O0 -S and read
+      - name: Rust 1.81
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal
+          rustc +1.81.0 --version
+      - name: Every C, C++ and Rust file compiled and read
         run: bash scripts/no_float_compiled.sh check
       - name: Planted floats go red, controls stay green
         run: bash scripts/no_float_compiled.sh plants
@@ -34,15 +39,39 @@ jobs:
           grep -q '^COMPILED_CPP|file=reviews/planted.cpp|fp_ops=[1-9]' /tmp/planted.out
           git rm -q -f --cached reviews/planted.cpp
           rm -f reviews/planted.cpp
-      - name: A tracked Rust file stops the small form
+      - name: A tracked float in a Rust file goes red through the check itself
         run: |
           set -uo pipefail
-          printf 'fn main() {}\n' > planted.rs
+          printf 'fn main() { let a = std::env::args().count() as f64; println!("{}", (a / 3.0) as u8); }\n' > planted.rs
           git add -f planted.rs
           rc=0
           bash scripts/no_float_compiled.sh check > /tmp/planted-rs.out || rc=$?
           cat /tmp/planted-rs.out
           test "$rc" = 1
-          grep -q 'rust_in_this_repository_needs_the_full_form' /tmp/planted-rs.out
+          grep -q '^COMPILED_RUST|file=planted.rs|fp_lines=[1-9]' /tmp/planted-rs.out
           git rm -q -f --cached planted.rs
           rm -f planted.rs
+      - name: A tracked Rust file that does not build goes red
+        run: |
+          set -uo pipefail
+          printf 'fn main() { let x: u8 = ; }\n' > planted.rs
+          git add -f planted.rs
+          rc=0
+          bash scripts/no_float_compiled.sh check > /tmp/planted-rs.out || rc=$?
+          cat /tmp/planted-rs.out
+          test "$rc" = 1
+          grep -q '^COMPILED_RUST_NOT_BUILT|file=planted.rs|' /tmp/planted-rs.out
+          git rm -q -f --cached planted.rs
+          rm -f planted.rs
+      - name: A tracked Cargo package stops the small form
+        run: |
+          set -uo pipefail
+          printf '[package]\nname = "planted"\nversion = "0.1.0"\nedition = "2021"\n' > Cargo.toml
+          git add -f Cargo.toml
+          rc=0
+          bash scripts/no_float_compiled.sh check > /tmp/planted-cargo.out || rc=$?
+          cat /tmp/planted-cargo.out
+          test "$rc" = 1
+          grep -q 'a_cargo_package_needs_the_full_form' /tmp/planted-cargo.out
+          git rm -q -f --cached Cargo.toml
+          rm -f Cargo.toml
