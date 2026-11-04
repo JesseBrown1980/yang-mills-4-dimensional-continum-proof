@@ -90,3 +90,4 @@ YM4_02C_TEETH|sabotage=t4_half_weights_dropped|expect_exit=1|named_check=every_f
 YM4_02C_TEETH|second_seat_mutants=every_function_plane_dropped,t4_upper_and_lower_weights_dropped|on_1618199=exit_0_rows_byte_identical|expect_on_the_new_script=exit_1_on_a_named_check|json=0
 YM4_02C_INTEGER_GATE|gate=the_stricter_draft_no_float_gate_findings()|file=tests/test_reflection_transfer_4d.py|on_1618199=32_findings_all_power_with_an_unproven_exponent|expect=0_findings|json=0
 YM4_02C_COST|round=2|local_wall_secs_under=900|below_normal=1|json=0
+YM4_02C_T4_RED_WITNESS|row=T4_RED_WITNESS|lattice=(Z/1)x(Z/4)|group=Q8|case_1=c_8,-1,3,3,2:F_chi_s1(U(0))/w(p_0):numerator_-8|case_2=c_8,3,3,3,-1:F_chi_E(U(0))/w(p_0):numerator_-4|by_hand=(c_rho/d_rho)^L*c_0^(2*N_links-L)_from_YM4_02C_NEGATIVE_COEFFICIENT_T4|on_SU2=(exp(-beta)*l_1(beta))^L*(exp(-beta)*l_0(beta))^(2*N_links-L)<0_for_every_beta<0_with_L_odd_and_T>=4|second_seat_saw=none|json=0
