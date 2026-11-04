@@ -1,10 +1,18 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+**Primary scope, set by the operator on November 4, 2026: Yang–Mills on a finite lattice.** "We're not doing physical volume becoming infinite. We're a finite system."
+
+| Target | Where it stands |
+|---|---|
+| **1. A finite lattice at fixed spacing: the primary scope** | On `main`: Z exists and is positive, by compactness, and finite subgroups agree with SU(2) on plaquette monomials through their strength exactly when no plane has both sides 1, DERIVED and checked by GPT-6. On draft [PR #14](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14), under the operator's HOLD: reflection positivity, the transfer operator and a positive gap at each fixed lattice and β > 0 for SU(2), DERIVED. On [PR #22](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/22), with the second seat's attack OPEN: the explicit size λ₁/λ₀ ≤ tanh(βN_ℓ), DERIVED, with its proof verified by GPT-6 |
+| 2. A finite physical volume with the spacing going to zero | OPEN. On this seat's reading of the scope, the number of sites per side still grows, L = L_phys/a, with β following a, so any bound must hold along that family |
+| 3. The Clay problem on ℝ⁴ | OPEN, and a separate target, stated next as this repository first wrote it |
+
+## The Clay problem, target 3
+
 **Status: OPEN.** This repository works toward a rigorous four-dimensional pure Yang–Mills quantum field theory with a strictly positive *physical* mass gap. The first gauge group is **continuous SU(2)**, represented in small exact tests by rational unit quaternions. The official Clay problem covers every compact simple gauge group and asks for **both** a nontrivial quantum theory on four-dimensional spacetime **and** a mass gap.
 
 **Official target:** [Clay Mathematics Institute — Yang–Mills and the Mass Gap](https://www.claymath.org/millennium/yang-mills-the-maths-gap/) and [Jaffe and Witten's problem description](https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf).
-
-**Scope set by the operator, November 4, 2026:** "We're not doing physical volume becoming infinite. We're a finite system." Two targets follow, kept apart. *A finite lattice at fixed spacing:* a positive gap in lattice units, at each fixed lattice and β > 0 for SU(2), is [Theorem 5 of Lemma 0004](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ym4-02c-reflection-transfer/docs/LEMMA-0004-REFLECTION-TRANSFER.md), DERIVED, with its quantitative size OPEN, on draft [PR #14](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14) under the operator's HOLD. *A finite physical volume with the spacing going to zero:* OPEN. There the number of sites per side still grows, L = L_phys/a, so any bound must hold along that family. The Clay problem on ℝ⁴ stays named as a separate target.
 
 ## Where we stand, November 4, 2026
 
@@ -22,9 +30,9 @@
 | YM4-08, independent audit of the whole chain | OPEN | [The ledger](docs/PROOF_OBLIGATIONS.md) |
 | YM4-QNN-01, a harness for candidate generators | Draft, held on the seat's recommendation, which the operator agreed with on November 3. Its next gate is a pinned QNN adapter. It holds exact SU(2) arithmetic, receipts and four-shard CI, with synthetic input | [PR #9](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/9), [issue #8](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/8) |
 
-[The ledger](docs/PROOF_OBLIGATIONS.md) says what rows YM4-00 to YM4-08 need before they can move. The computations here use integers only. On every pull request [a gate](scripts/no_float_gate.py) reads every tracked file and fails on what it finds outside [its list](scripts/FLOAT-EVIDENCE.txt), where each row holds a count, a hash pin and a reason: [`no_float.yml`](.github/workflows/no_float.yml) runs the change's own copy as `no-float`, the check `main` requires, [`no_float_base.yml`](.github/workflows/no_float_base.yml) runs the base commit's copy over the change as data, and [`no-float-compiled.yml`](.github/workflows/no-float-compiled.yml) reads what g++ and rustc produce from the C++ and Rust files.
+[The ledger](docs/PROOF_OBLIGATIONS.md) says what rows YM4-00 to YM4-08 need before they can move. The computations here use integers only. On every pull request [a gate](scripts/no_float_gate.py) reads every tracked file and fails on what it finds outside [its list](scripts/FLOAT-EVIDENCE.txt), where each row holds a count, a hash pin and a reason: [`no_float.yml`](.github/workflows/no_float.yml) runs the change's own copy as `no-float`, [`no_float_base.yml`](.github/workflows/no_float_base.yml) runs the base commit's copy over the change as data, and [`no-float-compiled.yml`](.github/workflows/no-float-compiled.yml) reads what g++ and rustc produce from the C++ and Rust files. `main` requires all three.
 
-**Its limits, in plain words.** A pass is evidence and no proof of integer-only execution: it means these checks found nothing in what they read. Written rules reached 6 of 20 on plants written afterwards, so the next plant may pass. The gate reads each file's source alone, with no types, values or view across files, and child processes, code written at run time, data files, third-party code and shell lines stay outside its reading. A float added in the same change as its own pinned row passes both scans, and only the job `no-float-list-unchanged` flags it for a person to read. The gate's docstring states its whole scope.
+**Its limits, in plain words.** A pass is evidence and no proof of integer-only execution: it means these checks found nothing in what they read. Written rules reached 6 of 20 on plants written afterwards, and 1 of 40 from a seat that had read those rules, so the next plant may pass. The gate reads each file's source alone, with no types, values or view across files, and child processes, code written at run time, data files, third-party code and shell lines stay outside its reading. A float added in the same change as its own pinned row passes both scans, and only the job `no-float-list-unchanged` flags it for a person to read. The gate's docstring states its whole scope.
 
 ## The finite-lattice programs
 
