@@ -1,0 +1,4 @@
+OWN_FULL|group=Z2|dims=2,1,1|weight=q=1/2|dimension=64|tau=63/65|verdict_on_H=HOLDS|top_same=1|ratio_on_H_ppm=511381..511382|ratio_on_PH_ppm=511381..511382|H_above_PH=0|negatives_on_H=0|seconds=0|json=0
+OWN_FULL|group=Z3|dims=2,1|weight=1,1/2,1/2|dimension=81|tau=15/17|verdict_on_H=HOLDS|top_same=1|ratio_on_H_ppm=385446..385447|ratio_on_PH_ppm=385446..385447|H_above_PH=0|negatives_on_H=0|seconds=1|json=0
+OWN_FULL|group=Q8|dims=1,1|weight=r=1/2|dimension=64|tau=255/257|verdict_on_H=HOLDS|top_same=1|ratio_on_H_ppm=529896..529897|ratio_on_PH_ppm=529896..529897|H_above_PH=0|negatives_on_H=0|seconds=0|json=0
+OWN_DONE|section=full|mismatches=0|seconds=3|json=0

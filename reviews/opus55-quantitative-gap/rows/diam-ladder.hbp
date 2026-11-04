@@ -1,0 +1,16 @@
+LADDER|group=Z2|weight=q=1/2|dims=2,2|N=8|sites=4|log2_lower_bound_on_cross_ratio_x1000=752|per_site_x1000=188|share_of_log_R_ppm=47007|tanh_D_over_4_ppm_low=129599|seconds=0|json=0
+LADDER|group=Z2|weight=q=1/2|dims=4,2|N=16|sites=8|log2_lower_bound_on_cross_ratio_x1000=1080|per_site_x1000=135|share_of_log_R_ppm=33781|tanh_D_over_4_ppm_low=185162|seconds=0|json=0
+LADDER|group=Z2|weight=q=1/2|dims=6,2|N=24|sites=12|log2_lower_bound_on_cross_ratio_x1000=1433|per_site_x1000=119|share_of_log_R_ppm=29862|tanh_D_over_4_ppm_low=243402|seconds=0|json=0
+LADDER|group=Z2|weight=q=1/2|dims=8,2|N=32|sites=16|log2_lower_bound_on_cross_ratio_x1000=1859|per_site_x1000=116|share_of_log_R_ppm=29058|tanh_D_over_4_ppm_low=311552|seconds=0|json=0
+LADDER|group=Z2|weight=q=1/2|dims=10,2|N=40|sites=20|log2_lower_bound_on_cross_ratio_x1000=2311|per_site_x1000=115|share_of_log_R_ppm=28894|tanh_D_over_4_ppm_low=380432|seconds=0|json=0
+LADDER|group=Q8|weight=r=1/2|dims=2,2|N=8|sites=4|log2_lower_bound_on_cross_ratio_x1000=5341|per_site_x1000=1335|share_of_log_R_ppm=83453|tanh_D_over_4_ppm_low=728503|seconds=0|json=0
+LADDER|group=Q8|weight=r=1/2|dims=4,2|N=16|sites=8|log2_lower_bound_on_cross_ratio_x1000=8362|per_site_x1000=1045|share_of_log_R_ppm=65332|tanh_D_over_4_ppm_low=895519|seconds=0|json=0
+LADDER|group=Q8|weight=r=1/2|dims=6,2|N=24|sites=12|log2_lower_bound_on_cross_ratio_x1000=10584|per_site_x1000=882|share_of_log_R_ppm=55128|tanh_D_over_4_ppm_low=950232|seconds=0|json=0
+LADDER|group=Q8|weight=r=1/2|dims=8,2|N=32|sites=16|log2_lower_bound_on_cross_ratio_x1000=13188|per_site_x1000=824|share_of_log_R_ppm=51515|tanh_D_over_4_ppm_low=979509|seconds=0|json=0
+LADDER|group=Q8|weight=r=1/2|dims=10,2|N=40|sites=20|log2_lower_bound_on_cross_ratio_x1000=16085|per_site_x1000=804|share_of_log_R_ppm=50265|tanh_D_over_4_ppm_low=992443|seconds=0|json=0
+LADDER|group=2T|weight=r=1/2|dims=2,2|N=8|sites=4|log2_lower_bound_on_cross_ratio_x1000=2188|per_site_x1000=547|share_of_log_R_ppm=34201|tanh_D_over_4_ppm_low=362101|seconds=1|json=0
+LADDER|group=2T|weight=r=1/2|dims=4,2|N=16|sites=8|log2_lower_bound_on_cross_ratio_x1000=3302|per_site_x1000=412|share_of_log_R_ppm=25802|tanh_D_over_4_ppm_low=517067|seconds=4|json=0
+LADDER|group=2T|L=6|NOT_MEASURED|reason=BUDGET|json=0
+LADDER|group=2T|L=8|NOT_MEASURED|reason=BUDGET|json=0
+LADDER|group=2T|L=10|NOT_MEASURED|reason=BUDGET|json=0
+DIAMETER_DONE|mode=ladder|seconds=4|json=0

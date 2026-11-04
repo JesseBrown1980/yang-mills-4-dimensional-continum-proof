@@ -1,0 +1,71 @@
+# YM4-02d: an explicit gap at each fixed lattice. Exact integer rows against the receipt, and each sabotage must exit 1 on its named check.
+name: YM4-02d quantitative gap
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_quantitative_gap.py'
+      - 'tests/QUANTITATIVE_GAP_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md'
+      - 'docs/PREDICTION-YM4-02d.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/quantitative-gap.yml'
+  pull_request:
+    paths:
+      - 'tests/test_quantitative_gap.py'
+      - 'tests/QUANTITATIVE_GAP_RECEIPT.txt'
+      - 'docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md'
+      - 'docs/PREDICTION-YM4-02d.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/quantitative-gap.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  quantitative-gap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: The 36 rows of the prediction as pushed stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 36 docs/PREDICTION-YM4-02d.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = 5f2cf7f6965581fbe9664eed9faee26622bb945aa5411d778dfdf29b0f2b4340
+      - name: The gate reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_quantitative_gap.py > /tmp/gap.out
+          cmp /tmp/gap.out tests/QUANTITATIVE_GAP_RECEIPT.txt
+          grep -q '^YM4_02D_DONE|failed=0|json=0$' /tmp/gap.out
+          if grep -q '^FAILED' /tmp/gap.out; then echo "a check failed"; exit 1; fi
+      - name: Each sabotage exits 1 on its named check, with no crash
+        run: |
+          set -euo pipefail
+          read_sabotage() {
+            rc=0
+            python3 -I -X utf8 tests/test_quantitative_gap.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -qF "FAILED|check=$2|json=0" "/tmp/sab-$1.out"
+            if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi
+            echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"
+          }
+          read_sabotage drop_gauge_average 'exact_spectrum_Q8_dims_1'
+          read_sabotage drop_orbit_measure 'exact_spectrum_Q8_dims_1'
+          read_sabotage half_the_exponent 'tau_row_Z2_dims_1'
+          read_sabotage drop_spatial_weight 'GPT6_value_in_bracket_q=1/2'
+      - name: An unknown sabotage name exits 2
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_quantitative_gap.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2

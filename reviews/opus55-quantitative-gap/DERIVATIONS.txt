@@ -1,0 +1,43 @@
+Second seat's derivations for YM4-02d at commit f7a3dbcafdb30288fd161c9e1e09cb413f042295. Each is tagged DERIVED; the rows that test it are named.
+
+1. THE PENCIL HAS T'S SPECTRUM. DERIVED, then matched by a separate route.
+On an orbit function f: (Tf)_i = A_i^(1/2) sum_j C_ij mu_j A_j^(1/2) f_j, with C_ij the average of B(x_i, .) over orbit j and mu_j = |O_j|/|G|^N.
+Put y_j = mu_j A_j^(1/2) f_j. Then C y = t D y with D = diag(1/(A_i mu_i)). C is symmetric because B is symmetric and gauge invariant, and D > 0, so Sylvester applies.
+The code's at(t) equals v * lcm_spatial * lcm_sizes * d^N * (C - (u/v) D), a positive constant times the pencil. mu_i and A_i are in the right places.
+The second seat's route has no pencil: A B is similar to T, its matrix M_ij = A_i S_ij on orbits is integer, and Descartes on a Taylor shift of its characteristic polynomial counts exactly. All 11 plaquette ppm rows and all 7 exact spectra match. out/recompute-*.hbp.
+
+2. A PROOF WITHOUT BIRKHOFF, AND WHERE EQUALITY LIVES. DERIVED.
+Let h be a real eigenfunction for mu != lambda_0, rho = h/Omega, x1 and x2 the points of largest and smallest rho.
+P(x, dy) = K(x,y) Omega(y) / (lambda_0 Omega(x)) dy is a probability kernel, and P rho = theta rho.
+With p = P(x1, .), q = P(x2, .): theta osc(rho) = integral (p - q) rho, so |theta| osc(rho) <= osc(rho) TV(p, q), and |theta| <= TV(p, q).
+Let r = p/q, with range [r-, r+], r- <= 1 <= r+. With E = {r > 1}, a = q(E), b = p(E): b <= r+ a and 1 - b >= r- (1 - a), so TV = b - a <= min((r+ - 1) a, (1 - r-)(1 - a)) <= (r+ - 1)(1 - r-)/(r+ - r-).
+Under r+ / r- = S fixed this is largest at r+ = sqrt S, r- = 1/sqrt S, where it equals (sqrt S - 1)/(sqrt S + 1). S is the largest of K(x1,y) K(x2,y') / (K(x1,y') K(x2,y)), since Omega and the norms cancel, so S <= R by Step 1, and sqrt R = (M/m)^N. So |theta| <= tau.
+This replaces Steps 2 and 3 whole. It uses Omega > 0 and continuity, and it gives |theta| < 1 with no iteration whenever M/m is finite.
+Equality. |theta| = tau > 0 forces r to take only the two values (M/m)^N on E and (M/m)^-N off E. Since r = c B(x1,y)/B(x2,y) and that ratio lies in [(M/m)^-N, (M/m)^N], c = 1, and for y in E every link has w(x1_l y_l^-1) = M and w(x2_l y_l^-1) = m, the reverse off E. On PH the same holds of every gauge image of y, because an average of values at most M^N equals M^N only when each equals it.
+N >= 2 is impossible: take y in E, y' off E, and y'' with its first link from y and the rest from y'. Then B(x1,y'')/B(x2,y'') = (M/m)^(2-N), which is neither (M/m)^N nor (M/m)^-N. So the inequality is strict for N >= 2, on H and on PH, for every lattice and every weight with M > m.
+N = 1: T is convolution by w, A = 1, and mu = integral w phi with phi = <v, rho(g) v>, integral phi = 0, |phi| <= 1. The same bound is attained only with phi = +-1 almost everywhere, so v spans a real character chi with kernel H of index 2, and w = M on H, m off H (mu > 0), or w = m on H, M off H (mu < 0). Continuity makes this hold everywhere, and H is closed and open.
+On connected G, and so on SU(2), r is continuous on a connected space and cannot take two values, so the inequality is strict at every N.
+Measured: out/search-A.hbp: 9,012 two-valued cases on 25 groups, equal=372, every one in this family, every family member equal. out/search-B.hbp: 8,126 cases, equal=976, the same check, ALERT rows 0. N >= 2: C 8,408, D 3,665, E 819: equal=0.
+The exponent is still approached: out/trend-s3.hbp at N=2, n_eff 1.441, 1.776, 1.888, 1.944, 1.972 at M = 2^8 to 2^160, with (1 - tau)/(1 - rho) steady at 45,090 ppm; out/trend-s3-n3.hbp at N=3, n_eff 2.569, 2.784, 2.892, 2.946 at M = 2^16 to 2^128.
+
+3. |theta| < 1 FOR A GENERAL WEIGHT. DERIVED.
+Lemma 0004 Theorem 5(d) opens with lambda_0 = ||T_op||, true at beta > 0 because part (a) gives T >= 0, and closes with "the rest lie strictly below lambda_0". A general weight has negative eigenvalues, so the modulus needs its own line. For a real unit eigenfunction h: |mu| = |<h, Th>| < <|h|, T|h|> <= lambda_0, the first step strict because the kernel is strictly positive and h changes sign. The argument for simplicity runs with lambda_0 the largest eigenvalue, the supremum of the Rayleigh quotient, positive since <1, T1> > 0.
+
+4. WHY A INVERTED PASSES THE SCRIPT. DERIVED, and MEASURED by mutant A_inverted_in_D.
+For Z2 with every side even, (eta U)_mu(x) = (-1)^(x_1 + ... + x_(mu-1)) U_mu(x) flips every plaquette and leaves U_l V_l^-1 fixed. So A(eta U) = q^(N_s) / A(U) and B(eta U, eta V) = B(U, V). T built from A and T built from 1/A are unitarily equivalent up to a scale. The only pinned plaquette ratios in the prediction are on Z2 at 2x2, so the sign of A's exponent is invisible to them.
+
+5. THE TRUE DIAMETER OF BP. DERIVED, then MEASURED.
+Let Z(W) = average over g of prod_l w(g_tail W_l g_head^-1). For central W, U = V = 1, U' = V' = W gives the cross-ratio (Z(1)/Z(W))^2, for any compact G with a central element, SU(2) included. So Delta >= 2 log(Z(1)/Z(W)).
+For abelian G, BP(U,V) = Z(U V^-1), a quadruple has W1 W2 = W3 W4, so the largest cross-ratio is at most (Zmax/Zmin)^2, and V = 1, U = W*, V' = W* Wmin^-1, U' = Wmin^-1 attains it, using Z(W^-1) = Z(W). On Z2, Z(W) is the Ising partition function with bond signs W. LAW_CHECK in out/diam-z2.hbp: 27 of 27 equal to the direct orbit matrix.
+Circle, Z2, w = 1, q: C(s,s') is proportional to a^L + s s' b^L, a = 1 + q, b = 1 - q. So tanh(Delta/4) = (b/a)^L, the exact ratio at every L, and Delta falls to 0. out/diam-circle.hbp, L to 12. Q8 at r = 1/2 reads 256, 7.61, 2.16, 1.33 at L = 1 to 4; S3 reads 6, 1.48, 1.09, 1.02, 1.003.
+Side 1 in some direction: a loop keeps its full factor, so Z2 on L x 1 has Delta >= about half of log R, and tanh(Delta/4) is near tau with exponent L, which is where rho sits (out/search-C1.hbp, n_eff/N = 1/2).
+Two dimensions, every side >= 2, Z2: out/diam-z2.hbp, fully frustrated against unfrustrated, a lower bound on the largest cross-ratio, log2 at L = 2, 4, 6, 8, 10 reads 0.752, 1.810, 3.133, 5.094, 7.747 at q = 1/2, per site 0.188 falling to 0.077, and at q = 4/5 its share of log R reads 684, 683, 683 ppm at L = 6, 8, 10. So it grows linearly in the sites, with a share s(q) of log R: about 1.9% at q = 1/2, 15% at q = 1/5, 0.07% at q = 4/5. As q -> 0 the share tends to 1/4 (frustration leaves N/4 bonds unsatisfied), CONJECTURE from 23.8% at q = 1/256, L = 4.
+Noncommuting: out/diam-ladder.hbp, Q8 at r = 1/2 on L x 2, the same lower bound, log2 reads 5.341, 8.362, 10.584, 13.188, 16.085 at N = 8 to 40, about 5% of log R.
+So the true diameter improves the constant in the exponent and keeps the exponential form in d >= 2: -log tanh(Delta/4) is about 2 exp(-s(q) N log(1/q)). CONJECTURE for general L in d >= 3 and for SU(2), where only the lower bound above is derived.
+What does shrink: tanh(Delta(T^k)/4)^(1/k) tends to the exact ratio. out/diam-iterate.hbp, Z2 at 2x2, q = 1/2: 467776, 273970, 200288, 171131, 158185 ppm at k = 1, 2, 4, 8, 16, against 146218. A enters from k = 2.
+
+6. THE LIMIT LINE. DERIVED.
+-log tanh x = 2 artanh(exp(-2x)) = 2 exp(-2x) (1 + exp(-4x)/3 + ...), so the note's expansion holds. (1/a) * 2 exp(-2 beta N_links) tends to 0 exactly when 2 beta N_links - log(1/a) tends to infinity, which holds with N_links = 3 (L_phys/a)^3 for beta bounded below. The note leaves that condition unstated. Asymptotic scaling sends beta upward, NAMED.
+
+7. tau AMONG ALL MULTIPLIERS. DERIVED.
+The proof uses A only through positivity. For finite G with w(1) = M and w(g0) = m, take A = 1 on (1, ..., 1) and (g0, ..., g0) and epsilon elsewhere, on H. As epsilon -> 0, T tends to the block [[M^N, m^N], [m^N, M^N]], with ratio tau. So tau is the exact supremum over positive multipliers at every N, and the strictness of section 2 belongs to each fixed weight and multiplier.

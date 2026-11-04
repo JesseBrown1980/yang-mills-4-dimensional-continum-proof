@@ -11,7 +11,7 @@ The independent GPT-6 seat's report as the operator relayed it on November 4, 20
 
 Beside its section 3, from the operator's correction further down: the physical volume stays finite. On FABLE5's reading, which neither quote states, the uniformity needed is in the number of sites per side along L = L_phys/a with β following a, as a → 0 at fixed L_phys.
 
-Beside "a rigorous finite-lattice Yang–Mills existence and positive-gap result": this is Theorem 5 of Lemma 0004 and the compactness bound before it, on draft PR #14 under the operator's HOLD at this filing, since merged on his approval, for SU(2) at each fixed lattice and β > 0. Its quantitative size, OPEN at this filing, is on PR #22, DERIVED, with the second seat's attack OPEN. The separate S₃ verdict on the 3×4 lattice, in the finite Yang–Mills repository, stays under its own HOLD.
+Beside "a rigorous finite-lattice Yang–Mills existence and positive-gap result": this is Theorem 5 of Lemma 0004 and the compactness bound before it, on draft PR #14 under the operator's HOLD at this filing, since merged on his approval, for SU(2) at each fixed lattice and β > 0. Its quantitative size, OPEN at this filing, is [YM4-02d](../../docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md), from PR #22, DERIVED. The separate S₃ verdict on the 3×4 lattice, in the finite Yang–Mills repository, stays under its own HOLD.
 
 ## The report, as relayed
 
