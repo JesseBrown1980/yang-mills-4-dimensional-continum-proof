@@ -1,0 +1,10 @@
+REPLAY|checker=reviews/gpt6-q8-0e9bcff/q8_gram_independent.cpp|delivered_as=ym4_02c_independent_q8_audit.zip|zip_sha256=7304d2be96f7d5985791328b6113325307347dda23c87e4556ef834415e856f8|files_verbatim=1|manifest=PASS|json=0
+REPLAY_RUN|host=acer_windows|compiler=g++_16.2.0_mingw|flags=-O3_-std=c++17_-Wall_-Wextra_-Werror|build_exit=0|run_exit=0|exe_sha256=b31469df5c60469d76855e7ac65bc70a5a5a3e595e642ed2ce844a64dcb824de|same_bytes_as_its_receipt=1|at=2026-11-03T21:17Z|json=0
+READ|multiplication=checked_by_hand_against_ij=k_jk=i_ki=j|weights=17+2s_17-2s_5_equal_8+3*(1+1+1)+2s_at_1_and_at_-1_and_8+3*(1-1-1)_elsewhere|tree=U00_U01_U10_U11_V00_spans_the_six_sites|free_links=7_of_12|float=0|overflow=none_since_19^6*4*8^7_fits_int64|json=0
+RULE|c_two=+1|Z=8^6+3*3^6+2^-6=16917185/64|G=2*(1/8)*(512+81)=593/4|same_as_its_rows=1|json=0
+RULE|c_two=-1|Z=16917185/64|G=2*(-1/8)*(512+81)=-593/4|same_as_its_rows=1|json=0
+MUTATION|name=one_weight_sign_frozen|edit=17+2*sign_to_17+2|exit=2|json=0
+MUTATION|name=multiplication_sign_flipped|edit=sign<0_to_sign>0|exit=2|stopped_by=group_inverse_check|json=0
+MUTATION|name=trace_of_the_wrong_slice|edit=trace2(b)_to_trace2(a)|exit=2|json=0
+MUTATION|name=inverse_dropped_on_the_next_slice_link|edit=inv(U[next][x])_to_U[next][x]|exit=0|same_values=1|why=the_change_of_variables_b_to_b_inverse_with_w(g)=w(g^-1)_and_chi2(b)=chi2(b^-1)_maps_it_to_the_original_sum_so_this_lattice_cannot_tell_them_apart|tag=DERIVED|json=0
+SCOPE|one_finite_Q8_lattice_with_two_weights|role=independent_check_of_the_prediction_rows_YM4_02C_GRAM_LINK_and_YM4_02C_GRAM_LINK_RED|json=0
