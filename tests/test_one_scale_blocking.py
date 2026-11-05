@@ -16,7 +16,7 @@ import sys
 import time
 
 START_NS = time.perf_counter_ns()
-SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell", "twist_every_link", "flux_wrong_sign", "overlap_skips_next")
+SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell", "twist_every_link", "flux_wrong_sign", "overlap_skips_next", "visibility_ignores_omega_error")
 SABOTAGE = ""
 for argument in sys.argv[1:]:
     if not argument.startswith("sabotage=") or argument.split("=", 1)[1] not in SABOTAGE_NAMES:
@@ -1160,7 +1160,7 @@ def lines_with_V(lat, V_quats, position):
 
 
 def flat_filling_coefficient(bi):
-    """E_V of the flat b x b filling over chi(V_p') on (Z/b)^3, at noncommuting V. Each free link of the filling has degree 2, so the four points 1, i, j, k, a design of degree 2, carry the average."""
+    """E_V of the flat b x b filling over chi(V_p') on (Z/b)^3, at noncommuting V. Each free link of the filling has degree exactly 2, and on homogeneous polynomials of degree 2 the four points 1, i, j, k average as Haar does, so they carry the average."""
     lat = FiniteLattice((bi, bi, bi), (bi, bi, bi))
     v_x, v_y = (3, 4, 0, 0, 5), (5, 0, 12, 0, 13)
     multiset = tuple(sorted((lat.plaquette_keys.index(((s, r, 0), 0, 1)), 1) for s in range(bi) for r in range(bi)))
@@ -2110,8 +2110,10 @@ def level_bracket(pencil, top, wanted, shift):
     return low, high
 
 
-def certify_overlap(model, w, top_low, top_high, next_high, shift, label, slack=0):
-    """The share of w in the eigenspace of the top value, between a certified low and high, from <w, T^(2n) w>, with the other eigenvalues in [0, next_high], all three at scale 2^shift. Slack, in units of 10^-9, takes out what the ground holds of w in e = 0."""
+def certify_overlap(model, w, top_low, top_high, next_high, shift, label, leak=None, quiet=False):
+    """The share of w in the eigenspace of the top value, between a certified low and high, from <w, T^(2n) w>, with the other eigenvalues in [0, next_high], all three at scale 2^shift.
+    In e = 0 a value above the target sits there too, the ground. leak = (num, den, ground_high): the ground's weight in w is at most num/den of |w|^2, and its value at most
+    ground_high/2^shift, so <w, T^(2n) w> <= (num/den) |w|^2 ground_high^(2n) + share |w|^2 top_high^(2n) + |w|^2 next_high^(2n), and each n takes that first term off the low end."""
     norm = weighted(model, w, w)
     lows, highs = [], []
     moved = list(w)
@@ -2125,11 +2127,25 @@ def certify_overlap(model, w, top_low, top_high, next_high, shift, label, slack=
         rest = 0 if skip else ipow(next_high, 2 * n)
         numerator = a - rest * norm
         denominator = (ipow(top_high, 2 * n) - rest) * norm
-        lows.append((numerator * 1000000000) // denominator - slack)
+        if leak is None:
+            lows.append((numerator * 1000000000) // denominator)
+        else:
+            num, den, ground_high = leak
+            lows.append(((numerator * den - num * norm * ipow(ground_high, 2 * n)) * 1000000000) // (denominator * den))
         highs.append((a * 1000000000) // (ipow(top_low, 2 * n) * norm) + 1)
     low, high = max(lows), min(highs)
-    check("overlap_bracket_%s" % label, low <= high)
+    if not quiet:
+        check("overlap_bracket_%s" % label, low <= high)
+        check("overlap_bracket_narrow_%s" % label, high - low <= 2000)
     return low, high
+
+
+def exact_vector_visible(share_low, w_sq, error_num, error_den):
+    """The computed vector's part in the level, at least (share_low/10^9) |w|^2 as a square, exceeds error_num/error_den, the most the rational Omega's error can put there,
+    so the same construction on the exact Omega has a nonzero part in that level."""
+    if SABOTAGE == "visibility_ignores_omega_error":
+        error_num = 0
+    return share_low > 0 and share_low * w_sq * error_den > 1000000000 * error_num
 
 
 def section_flux():
@@ -2143,6 +2159,29 @@ def section_flux():
         averages.append(total)
     check("t2_is_a_design_of_degree_5", all(a[0] == 0 for a in averages[:5]) and averages[5] == (24, 1))
     say("YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=%s|json=0" % ",".join(show(a) for a in averages))
+    # The design as Lemma 9a uses it, on the 24 points themselves: each monomial in the four coordinates averages to its moment on S^3, through degree 5, and degree 6 has one apart from it.
+    apart = []
+    for degree in range(1, 7):
+        count = 0
+        for powers in itertools.product(range(degree + 1), repeat=4):
+            if sum(powers) != degree:
+                continue
+            total = (0, 1)
+            for q in T2_QUATS:
+                total = fadd(total, (ipow(q[0], powers[0]) * ipow(q[1], powers[1]) * ipow(q[2], powers[2]) * ipow(q[3], powers[3]), ipow(q[4], degree)))
+            top, bottom = 1, 1
+            if any(p % 2 for p in powers):
+                top = 0
+            else:
+                for p in powers:
+                    for k in range(1, p, 2):
+                        top *= k
+                for j in range(degree // 2):
+                    bottom *= 4 + 2 * j
+            count += frac(total[0], total[1] * 24) != frac(top, bottom)
+        apart.append(count)
+    check("t2_moments_on_s3_through_degree_5", apart[:5] == [0, 0, 0, 0, 0] and apart[5] > 0)
+    say("YM4_03_T2_MOMENTS|monomials_apart_from_S3,degree=1..6=%s|json=0" % ",".join(map(str, apart)))
     # Winding parity on the four-dimensional lattice, on exact quaternions, at every plane.
     for bi, side in ((2, 4), (3, 6)):
         pool = quaternion_pool(4040 + bi, 48)
@@ -2169,7 +2208,7 @@ def section_flux():
                 closed, _ = holonomy_steps(U, start, loop, sides, qmul, qinv, Q_ONE, b)
                 closed_t, _ = holonomy_steps(twisted, start, loop, sides, qmul, qinv, Q_ONE, b)
                 rows += 1
-                good += once_t == qmul(minus, once) and twice_t == twice and half_trace(closed_t) == half_trace(closed)
+                good += once_t == qmul(minus, once) and once_t != once and twice_t == twice and half_trace(closed_t) == half_trace(closed)
         check("winding_parity_b=%d" % bi, good == rows)
         say("YM4_03_WINDING_PARITY|b=%d|fine=%d^4|planes=%d|rows=%d|as_the_law_says=%d|json=0" % (bi, side, side, rows, good))
     if SABOTAGE == "twist_every_link":
@@ -2234,6 +2273,7 @@ def section_flux():
             results[e] = dict(dimension=len(kept), basis=kept)
         total_dimension = sum(r["dimension"] for r in results.values())
         check("flux_sectors_span_%s" % tag, total_dimension == model.m)
+        check("flux_every_sector_nonempty_%s" % tag, all(r["dimension"] > 0 for r in results.values()))
         shift = max(0, (32 if model.m > 60 else 44) - whole_top.bit_length())
         whole_top = whole_top << shift
         zero = (1,) * d
@@ -2257,7 +2297,7 @@ def section_flux():
             record["levels"] = levels
             check("flux_spectrum_at_least_minus_the_step_%s_%s" % (tag, e), count_above(pencil, -1, shift) == record["dimension"])
         ground = results[zero]["levels"][0]
-        check("flux_ground_in_e=0_%s" % tag, ground[2] == 1 and all(results[e]["levels"] is None or results[e]["levels"][0][1] <= ground[1] for e in results))
+        check("flux_ground_in_e=0_%s" % tag, ground[2] == 1 and all(results[e]["levels"] is None or e == zero or results[e]["levels"][0][1] <= ground[0] for e in results))
         check("flux_ground_is_perron_%s" % tag, ground[0] <= lam_high << shift and lam_low << shift <= ground[1])
         # The named coarse functions.
         coarse = tuple(s // bi for s, bi in zip(sides, b_space))
@@ -2266,7 +2306,7 @@ def section_flux():
         for mu in range(d):
             windings[mu] = holonomy_function(model, b_space, [(mu, 1, sides[mu])], character)
             check("flux_winding_function_invariant_%s_%d" % (tag, mu), windings[mu][1])
-        # Epsilon, the rational Perron vector's error: its residual over the gap, as squares, at 2^-200 of the unit.
+        # Epsilon, the rational Perron vector's error: its residual over the gap, as squares.
         rho_n = weighted(model, u, moved)
         rho_d = weighted(model, u, u)
         residual = [rho_d * m_ - rho_n * x for m_, x in zip(moved, u)]
@@ -2277,6 +2317,10 @@ def section_flux():
         first_low = results[zero]["levels"][1][0] if len(results[zero]["levels"]) > 1 else 1
         epsilon_ok = (residual_sq * ipow(ground[1], 128)) << (60 + 2 * shift) <= (gap * gap) * rho_d * rho_d * rho_d * ipow(max(first_low, 1), 128)
         check("flux_rational_omega_close_%s" % tag, epsilon_ok)
+        # sin^2(u, Omega) <= |S u - rho u|^2/(gap^2 |u|^2), with the residual at rho_d times that and gap at 2^shift: sin2_num/sin2_den. u lies in e = 0 (flux_perron_vector_even),
+        # so only e = 0's values enter, and they sit at or under the first excited level's high end. A vector orthogonal to u holds at most sin^2 of its |w|^2 along Omega.
+        sin2_num, sin2_den = residual_sq << (2 * shift), gap * gap * rho_d * rho_d * rho_d
+        norm_u = weighted(model, u, u)
         delta_rows = []
         for e, record in results.items():
             if record["levels"] is None:
@@ -2299,7 +2343,17 @@ def section_flux():
                 top_low, top_high, mult = record["levels"][0]
                 next_high = record["levels"][1][1] if len(record["levels"]) > 1 else 0
                 low, high = certify_overlap(model, vector, top_low, top_high, next_high, shift, "%s_%s" % (tag, e))
-                visible = low > 0
+                if tag == "Z2_2x1" and e == (1, -1):
+                    # By hand, with no power of T: in the chain basis S on e = 0 is [[1280, 1024], [256, 320]], S on this sector is 128 [[5, 4], [4, 5]], the inner product is [[5, 4], [4, 5]], and r = (sqrt(481) - 15)/32 is the ratio in Omega. The share 9 (1 + r)^2 / (2 (5 + 5 r^2 + 8 r)) increases with r.
+                    root = math.isqrt(481 << 200)
+                    closed = []
+                    for s_ in (root, root + 1):
+                        r_n, r_d = s_ - (15 << 100), 32 << 100
+                        closed.append((9 * (r_d + r_n) * (r_d + r_n) * 1000000000) // (2 * (5 * r_d * r_d + 5 * r_n * r_n + 8 * r_n * r_d)))
+                    check("overlap_closed_form_%s_%s" % (tag, e), low <= closed[0] and closed[1] + 1 <= high)
+                # F u = |u| (cos F Omega + sin F xi): the part in the level of F Omega is nonzero when that of F u exceeds |u| sin max|f|.
+                f_max = max(abs(f) for f in f_values)
+                visible = exact_vector_visible(low, weighted(model, vector, vector), norm_u * sin2_num * f_max * f_max, sin2_den)
                 read_row("lowest_state_visible_%s_e=%s" % (tag, ",".join(map(str, e))), visible, "share_e-9_in_[%d,%d]_of_multiplicity_%d" % (low, high, mult), "positive")
                 delta_rows.append((e, top_high, mult, low, high, "winding"))
             else:
@@ -2309,40 +2363,86 @@ def section_flux():
                     mu, nu = 0, 1
                     candidates.append(("commutator", [(mu, 1, sides[mu]), (nu, 1, sides[nu]), (mu, -1, sides[mu]), (nu, -1, sides[nu])]))
                 top_low, top_high, mult = record["levels"][1] if len(record["levels"]) > 1 else (0, 0, 0)
+                mult -= record["levels"][0][2]
                 next_high = record["levels"][2][1] if len(record["levels"]) > 2 else 0
                 found = None
+                leak = (sin2_num, sin2_den, ground[1])
+
+                def certified_beyond_the_error(vector, op_sq_num, op_sq_den, quiet=True, label_c=""):
+                    """w = |u|^2 v - <u, v> u with v = O u. With u = |u| (cos Omega + sin xi), the part in the level of O Omega is nonzero when |P w| > |u|^2 sin (|v| + |u| |O|),
+                    and (x + y)^2 <= 2 x^2 + 2 y^2 gives the square read here, with |O|^2 at most op_sq_num/op_sq_den."""
+                    along = weighted(model, u, vector)
+                    full = [norm_u * v - along * x for v, x in zip(vector, u)]
+                    full_sq = weighted(model, full, full)
+                    if full_sq == 0:
+                        return None
+                    centered = reduced(full)
+                    low, high = certify_overlap(model, centered, top_low, top_high, next_high, shift, label_c, leak=leak, quiet=quiet)
+                    v_sq = weighted(model, vector, vector)
+                    error_num = 2 * norm_u * norm_u * sin2_num * (v_sq * op_sq_den + norm_u * op_sq_num)
+                    error_den = sin2_den * op_sq_den
+                    return (low, high, centered) if exact_vector_visible(low, full_sq, error_num, error_den) else None
+
                 for label, path_c in candidates:
                     f_values, invariant = holonomy_function(model, b_space, path_c, character)
                     check("flux_even_function_invariant_%s_%s" % (tag, label), invariant)
                     vector = [f * x for f, x in zip(f_values, u)]
-                    along = weighted(model, u, vector)
-                    norm_u = weighted(model, u, u)
-                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
-                    if any(abs(c) >> 3000 for c in centered):
-                        found = (label, reduced(centered))
+                    f_max = max(abs(f) for f in f_values)
+                    reached = certified_beyond_the_error(vector, f_max * f_max, 1)
+                    if reached is not None:
+                        found = (label, reached[2])
                         break
                 read_row("first_excited_visible_single_insertion_%s" % tag, found is not None, found[0] if found else "only_constants_among_even_single_insertions", "a_contractible_or_even_coarse_F")
                 if found is None:
-                    # F T^b F Omega, with the first winding function, in e = 0.
-                    f_values = windings[0][0]
-                    vector = [f * x for f, x in zip(f_values, u)]
-                    for _ in range(b_space[0]):
-                        vector = model.apply_s(vector)
-                    vector = [f * x for f, x in zip(f_values, vector)]
-                    along = weighted(model, u, vector)
-                    norm_u = weighted(model, u, u)
-                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
-                    found = ("winding_T^b_winding", reduced(centered))
-                low, high = certify_overlap(model, found[1], top_low, top_high, next_high, shift, "%s_e=0" % tag, slack=1)
+                    # F T^b F Omega in e = 0, with the first winding function whose centered vector stands above u's own error: its size squared against 2^100 sin^2 theta, with sin^2 theta <= residual^2/gap^2.
+                    # With a transverse side of 1 the winding in the other direction has F S F = 2^(-L_0) S on e = 0, exactly, so its vector is a multiple of Omega and centering returns u's own residual, and the row takes the next direction.
+                    if sides[1] == 1:
+                        f_values = windings[0][0]
+                        scaled = all((f * x) << sides[0] == y for v in record["basis"] for f, x, y in zip(f_values, model.apply_s([f * c for f, c in zip(f_values, v)]), model.apply_s(v)))
+                        check("flux_winding_0_scales_S_on_e=0_%s" % tag, scaled)
+                    rejected = []
+                    for mu in range(d):
+                        f_values = windings[mu][0]
+                        vector = [f * x for f, x in zip(f_values, u)]
+                        for _ in range(b_space[0]):
+                            vector = model.apply_s(vector)
+                        vector = [f * x for f, x in zip(f_values, vector)]
+                        # |F T^b F| <= max|f|^2 ground^b.
+                        f_max = max(abs(f) for f in f_values)
+                        reached = certified_beyond_the_error(vector, ipow(f_max, 4) * ipow(ground[1], 2 * b_space[0]), 1 << (2 * b_space[0] * shift))
+                        if reached is not None:
+                            found = ("winding_%d_T^b_winding_%d" % (mu, mu), reached[2])
+                            break
+                        rejected.append(mu)
+                    check("flux_two_insertions_above_the_residual_%s" % tag, found is not None)
+                    if sides[1] == 1:
+                        # Negative control: the winding in direction 0 gives F T^b F Omega = 2^(-b L_0) T^b Omega, a multiple of Omega, so its part in the first excited level is exactly 0, and the certificate reads it not certified.
+                        check("flux_exact_zero_overlap_not_certified_%s" % tag, 0 in rejected)
+                    if found is None:
+                        continue
+                low, high = certify_overlap(model, found[1], top_low, top_high, next_high, shift, "%s_e=0" % tag, leak=leak)
                 read_row("first_excited_visible_%s" % tag, low > 0, "%s_share_e-9_in_[%d,%d]_of_multiplicity_%d" % (found[0], low, high, mult), "positive")
                 delta_rows.append((e, top_high, mult, low, high, found[0]))
         # Delta_full, read off the rows as the larger of the two ratios to the ground value.
         ground_low = ground[0]
         flux_top = max((row[1] for row in delta_rows if row[0] != zero), default=0)
         zero_top = max((row[1] for row in delta_rows if row[0] == zero), default=0)
-        full_top = max(flux_top, zero_top)
+        # Delta_full = min(Delta_0, Delta_flux) rests on the sectors being orthogonal and S keeping each: every cross entry of G and K vanishes, and with the span the sectors' spectra are the whole spectrum.
+        cross = True
+        bases = [r["basis"] for r in results.values()]
+        images = [[model.apply_s(v) for v in basis] for basis in bases]
+        for i in range(len(bases)):
+            for j in range(i):
+                for left in bases[i]:
+                    for right, right_image in zip(bases[j], images[j]):
+                        cross = cross and weighted(model, left, right) == 0 and weighted(model, left, right_image) == 0
         say("YM4_03_FLUX|%s|orbits=%d|sector_dimensions=%s|top_e=0_over_ground_ppm=%d|top_flux_over_ground_ppm=%d|lowest_of_the_two_gaps=%s|json=0" % (tag, model.m, ",".join("%s:%d" % ("".join("+" if x > 0 else "-" for x in e), r["dimension"]) for e, r in results.items()), zero_top * 1000000 // ground_low, flux_top * 1000000 // ground_low, "flux" if flux_top >= zero_top else "e=0"))
-        check("flux_full_gap_is_the_min_%s" % tag, full_top == max(zero_top, flux_top))
+        check("flux_full_gap_is_the_min_%s" % tag, cross and total_dimension == model.m)
+        # The same read on the whole orbit space, at most 128 orbits: above the second value sits the ground alone, and at the low end of the highest level below the ground, the ground and that level.
+        if model.m <= 128:
+            whole = pencil_on(model, [[1 if i == k else 0 for i in range(model.m)] for k in range(model.m)])
+            full_low = max(r["levels"][1 if e == zero else 0][0] for e, r in results.items() if r["levels"] is not None)
+            check("flux_second_value_on_the_whole_%s" % tag, count_above(whole, max(flux_top, zero_top), shift) == 1 and count_above(whole, full_low, shift) >= 2)
 
 
 def rank_keeps(basis, vector):

@@ -1,0 +1,201 @@
+YM4-03 recheck of section_flux at b577fa83ac5a3e84f27709cbd73b3c54afe605c5. Lane: read and run only on C:/tmp/ym4-03-wt, everything written under C:/tmp/opus55/ym4-03-recheck-flux-20261105/.
+Tags: MEASURED (a number from a named script in this folder), DERIVED (a derivation written here), NAMED, CANNOT_SEE. Own code: own/exactlib.py, own/z2_electric.py, own/z2_extras.py, own/q8_triples.py, own/q8_more.py, own/q8_count_and_t2.py, own/quaternion_parity.py. These share no code with the test: Z2 runs in the basis of closed chains with no gauge orbits, Q8 in the coordinates (A,P,Q) with a per-link convolution cross-read, spectra by characteristic polynomial (Hessenberg mod primes, CRT) with Yun's factorization and Descartes on Taylor shifts, shares by E = g(S)/g(lambda) on exact moments. Copies of the test (tools/flux_base.py, tools/flux_diag.py) are the test's own code and are named as such where read.
+Method fault of this lane, on record: one command ran bare python3 with an empty heredoc against the lane's rule, it sat in a REPL about 2 minutes, I stopped that task, checked by process list that no REPL of mine was left, and it touched no result.
+
+F1. HEAD AND RECEIPT. MEASURED.
+Ran: git rev-parse HEAD, python 3.13.14 on the worktree file with -I -B -X utf8, stdout to runs/full_win313.out, 306 s. cmp against tests/ONE_SCALE_BLOCKING_RECEIPT.txt with CR removed: equal. DONE checks=362 failed=0 prediction_misses=7. Worktree clean before and after. Owning gate: gh reads one-scale-blocking success at b577fa8, run 42064092543, 28m32s, on python of ubuntu-24.04.
+Could be wrong: the hosted run's python version was read from the runner image name, not from its log.
+
+F2. TWO OF THE FOUR e=0 TWO-INSERTION ROWS READ THE RESIDUAL OF u, AND THE EXACT VECTOR IS 0. MEASURED AND DERIVED. HIGH.
+Rows: first_excited_visible_Z2_2x1 and first_excited_visible_Z2_3x1, read=winding_T^b_winding_share_e-9_in_[999999998,1000000001], and the note's table, section 9, "1.00000 ... 1.00000".
+DERIVED: on spatial L_0 x 1 the plaquette boundaries hold no direction-0 link, since U_0(x) appears twice in each plaquette word. In the chain basis, W_0 moves e=0 chains by the direction-0 line, A is unchanged and each of the L_0 links takes the factor c_1/c_0 = 2/4. So F S F = 2^(-L_0) S on e=0, exactly, and F T^b F Omega = 2^(-b L_0) lambda_0^b Omega.
+MEASURED by own/z2_electric.py: INTERTWINER|2x1|mu=0|F_S_F_over_S=['1/4'], INTERTWINER|3x1|mu=0|['1/8'], exact integer matrices. With Omega at 6000 bits the centered vector's relative size squared reads 2^-7088 and 2^-5371.
+MEASURED by tools/intertwiner_on_test_objects.py, on the test's own Transfer and holonomy_function: F S F / S single ratio 1/4 on Z2_2x1 at mu=0 on 8 vectors, 1/8 on Z2_3x1 on 16 vectors, and more than one ratio at mu=1 and on 2x2, 3x2. The size of the test's centered vector against the iterations of u, log2 of |centered|^2/(|u|^4 |v|^2):
+  iterations      60     120     240     480
+  Z2_2x1        -479    -950   -1895   -3784
+  Z2_3x1        -362    -719   -1435   -2867
+  Z2_2x2          -3      -3      -3      -3
+  Z2_3x2          -2      -2      -2      -1
+MEASURED by tools/flux_diag.py at the test's 240 iterations: TWO_INSERTIONS|Z2_2x1|size=-1895|log2_sin2theta=-1895, Z2_3x1|-1435|-1435. So the vector certified on those two lattices has the size of the Perron residual, falls with the iterations, and is what u leaves of the first excited state. The certificate is right about that vector: it is the first excited state, so the share reads 1. If u were exact the vector would be 0, and certify_overlap would divide by a zero norm.
+The test holds no check of the size of this centered vector; the single-insertion branch has one (abs(c) >> 3000), the two-insertion branch has none.
+What stands: the first excited state of e=0 is reached on these lattices, by W_1. MEASURED by own code at b = b_space[0]: 2x1 F=W_1 share 1.000000000000000, forced by dim e=0 = 2, relative size squared 2^-4; 3x1 F=W_1 share 0.755676415560191, with 0.244323584439 on the next level of multiplicity 2, size 2^-4. So the conclusion of the row stands and its named vector and its 1.00000 at 3x1 are refuted.
+Could be wrong: the identity is on these two lattices and this weight. It needs c_1/c_0 per link, so it holds for any w on Z2 with transverse side 1 (DERIVED, not run at another weight).
+
+F3. THE CERTIFICATE ITSELF. SURVIVES, with one label refuted (F4). DERIVED and MEASURED.
+Scale: pencil_on and count_above read lambda at 2^shift, a is <w,S^(2n)w> times 2^(2n shift), top and next to the 2n carry the same scale. Inner product: weighted is sizes x diag, under which S = BA is self-adjoint. In T coordinates v_T = A^(1/2) v_S is an isometry from this to the sizes measure, and it carries S to T. MEASURED: K symmetric on all 20 sector pencils (flux_diag PENCIL rows), and A S symmetric on all sectors in the chain basis (z2_electric AS_symmetric=True).
+Bound: with E the projector on the group in (top_low, top_high], A/|w|^2 <= top^(2n) c^2 + next^(2n) (1 - c^2) needs |lambda_other| <= next, and the even power makes A/|w|^2 >= top_low^(2n) c^2 true with no sign condition. So T >= 0 enters only through |lambda_other| <= next_high.
+Where next_high = 0: exactly two rows, MEASURED by flux_diag OVERLAP rows. Z2_2x1_e=0: levels has 2 rows since dim e=0 = 2, no other eigenvalue exists. Q8_2x1_e=0: levels[2] = (0,0,2), count_above_0 = 2, so 78 others lie in (-2^-10, 0]; own characteristic polynomial reads x^78 times one quadratic, so they are exactly 0. T >= 0 is what the theorem gives from c_pi >= 0; the check reads lambda > -2^-shift, which is what its name says, and at next_high = 0 a negative eigenvalue at that floor would move the Q8 low by at most (1/113158287)^4 of the unit at n = 2, about 6 parts in 10^33, against the floor to 10^-9.
+Degenerate top and near eigenvalues: multiplicity = count_above(low), the group in one unit. MEASURED: Q8 e=-1,-1 reads 4, own polynomial reads root 19968 with multiplicity 4 exactly, 19968 = 20447232/2^10 at the bracket's high end, so an exact eigenvalue sits at high and the whole eigenspace is in (low, high]. The next level is the next one: count_above(next_high) <= multiplicity, so every other eigenvalue is at most next_high, and next_high <= top_low (DERIVED from level_bracket). No two distinct eigenvalues of a read level lie within a unit: tools/compare_levels.py reads every level bracket of the test against own exact roots, F16.
+Could be wrong: compare_levels takes the brackets and the scale from the test's diagnostics; the counts it reads are own.
+
+F4. "of_multiplicity_2" ON THE FIVE e=0 ROWS IS THE COUNT WITH THE GROUND. MEASURED. MEDIUM.
+levels[1][2] = count_above(low) counts the ground. Receipt: of_multiplicity_2 on Z2 2x1, 2x2, 3x1, 3x2, Q8 at e=0. Own characteristic polynomials: the first excited level of e=0 has multiplicity 1 on all five (FIRST_EXCITED rows, its_multiplicity=1; RATIO row on Q8). The note's table states no multiplicity for e=0, so only test and receipt carry it.
+
+F5. THE e=0 SLACK. SURVIVES AS A BOUND ON THE COMPUTED VECTOR. MEASURED.
+Inequality. Let w be orthogonal to u, u_hat = u/|u|, sin theta <= residual/gap on e=0, which holds u exactly. eps^2 = |<Omega,w>|^2/|w|^2 <= sin^2 theta. Then
+  c^2 >= (A/|w|^2 - N^(2n))/(T^(2n) - N^(2n)) - eps^2 (G^(2n) - N^(2n))/(T^(2n) - N^(2n)), with G, T, N upper ends for ground, level, next (T lower end in the second term).
+The second term against one unit of 10^-9 (about 2^-30), log2, n = 2, 4, 8, 16, 32, 64, from flux_diag SLACK_TERM rows:
+  Z2_2x1 -1879 -1864 -1832 -1770 -1643 -1392
+  Z2_2x2 -1620 -1607 -1580 -1526 -1417 -1200
+  Z2_3x1 -1424 -1412 -1388 -1340 -1245 -1054
+  Z2_3x2 -1384 -1372 -1349 -1302 -1210 -1025
+  Q8_2x1 -2298 -2278 -2240 -2163 -2009 -1703
+So the slack holds with at least 995 binary orders to spare at the largest n, and flux_rational_omega_close reads the same order: log2 LHS/RHS with its 2^60: -1332, -1140, -994, -965, -1643. The factor 1/(1 - (N/T)^(2n)), which the check leaves out, is below 2 here.
+
+F6. FROM THE COMPUTED VECTOR TO THE EXACT VECTOR. DERIVED and MEASURED.
+One insertion, e != 0: w = F u_hat, w* = F Omega. | |Ew|^2/|w|^2 - |Ew*|^2/|w*|^2 | <= 4 ||F||_inf |u_hat - Omega| / |w*|, with |u_hat - Omega| <= sqrt(2) sin theta. Numbers: ||F||_inf = 1 on Z2, |w*| = 1; ||F||_inf = 2 on Q8, |Fu|^2/|u|^2 reads at least 1. sin theta <= 2^-947, 2^-817, 2^-717, 2^-697, 2^-1158. So the difference is below 2^-690, under the printed grid; the e != 0 rows carry slack 0, and own exact digits (F9) sit inside each bracket away from an integer edge except the exact-1 rows, whose low is 999999999. Passes.
+One insertion, e=0, commutator on Q8: centered relative size reads 2^0 as the square, error below 2^-1150. Passes.
+Two insertions: y = (I - P_u) F S^b F u_hat, y* = (I - P_Omega) F S^b F Omega, |y - y*| <= 3 sqrt(2) ||F||^2 lambda_0^b sin theta (DERIVED, F = +-1 here). So the share passes to y* exactly when |y| is far above sin theta times the scale. Z2_2x2 and Z2_3x2: relative size squared 2^-3 and 2^-2 against sin^2 theta 2^-1634 and 2^-1395: passes, own digits agree (F9). Z2_2x1 and Z2_3x1: relative size squared equal to sin^2 theta: fails, y* = 0 (F2).
+The row in the prediction, 40, names "the error of the rational Omega bounded by its residual over the gap": the test reads that against the amplification in e=0, and reads no comparison of the vector's own size with it.
+
+F7. THE PERRON VECTOR. SURVIVES. MEASURED by flux_diag PERRON and EPSILON rows.
+Rounding is a function of the value alone, so equal coordinates stay equal, and the check reads u[perm[a]] == u[a] on all directions at s = 0, with planes_equal for the other planes. It ran at 3072 bits on one model only: rounds 0, 0, 0, 51, 0 on Z2_2x1, 2x2, 3x1, 3x2, Q8, last at iteration 239 on 3x2. Top bits 1091, 2940, 978, 3072, 2011. u lies in e=0 from its start, so the rate is lambda_1(0)/lambda_0. sin^2 theta bound: 2^-1895, 2^-1634, 2^-1435, 2^-1395, 2^-2317. The check needs about 72, 73, 74, 74, 70 iterations by these rates (DERIVED), so 240 holds with a factor above 3: mutant U01 (60 iterations) turns flux_rational_omega_close red, U02 (120) leaves every row byte for byte, F13.
+
+F8. SECTORS. SURVIVES, with one silent skip refuted as a read (F13). MEASURED and DERIVED.
+z: CENTER = 1 is element -1 of Q8 ((-2,0,0,0) at index 1) and the nontrivial element of Z2. Center of Q8 = {+-1}, z^2 = 1. The check flux_commutation reads diag, sizes and the kernel entry by entry, and the single-orbit flag; planes_equal reads s = 1 .. L_mu - 1 against s = 0, all planes. P_e on orbit vectors pushes delta_a through (I + e Z), the same as (Z f)(a) = f(perm a) since perm is an involution: MEASURED involution and commuting on Q8 by own code (INVOLUTION row), and on Z2 the chain labels partition by construction.
+Q8 at 2x1, own count with no orbit enumeration on Q8: own/q8_count_and_t2.py. Modulo the center, triples (A,P,Q) lie in F_2^2 with the symplectic form omega; conjugation by g translates the signs by (omega(g,A),omega(g,P),omega(g,Q)), a subspace W of F_2^3 of size 1, 2, 4 on 1, 21, 42 triples. Orbits over a triple: 8/|W|, total 8 + 84 + 84 = 176. Z_0 translates by (1,0,0), Z_1 by (0,1,1). Each character of (Z2)^2 trivial on the elements with translation in W takes cosets/|image|. Sum: e=++ 2 + 30 + 48 = 80, each other 2 + 18 + 12 = 32. Reads Q8_COUNT|orbits=176|sector_dimensions={(1,1):80,(1,-1):32,(-1,1):32,(-1,-1):32}, equal to the receipt. Second route: own/q8_triples.py, orbits by canonical form, disjoint sector basis: 80, 32, 32, 32, and the orbit matrix equals the per-link convolution over all 8^4 configurations, with the image gauge invariant.
+Z2: closed chains 8, 32, 16, 128, each homology class a quarter: 2, 8, 4, 32. Equal to the receipt. Every chain has one parity on all planes of a direction (planes_agree=True).
+"The sectors span" reads total_dimension == m, which also holds with Z = identity, so it reads the dimension count alone (mutants Z04, Z05 in F13).
+Could be wrong: the F_2 count is a derivation run as code; the second route enumerates orbits by a canonical form of my own, and both agree with the receipt.
+
+F9. OWN NUMBERS, DIGIT BY DIGIT, AGAINST THE RECEIPT AND THE NOTE'S TABLE. MEASURED: runs/z2_electric.out, runs/q8_triples.out.
+Own value exact to the digits shown. Receipt bracket in units of 10^-9. Every own value lies inside its bracket.
+  Z2 2x1 e=(1,-1)   0.955960752587553   [955960752,955960753]   note 0.95596
+  Z2 2x1 e=(-1,1)   1.000000000000000   [999999999,1000000001]  note 1.00000, exact: F Omega is the top vector of that sector
+  Z2 2x1 e=(-1,-1)  0.955960752587553   [955960752,955960753]   note 0.95596
+  Z2 2x2 e=(1,-1)   0.803319923640040   [803319923,803319924]   note 0.80332
+  Z2 2x2 e=(-1,1)   0.803319923640040   [803319923,803319924]   note 0.80332
+  Z2 2x2 e=(-1,-1)  0.701103425403012   [701103425,701103426]   note 0.70110
+  Z2 3x1 e=(1,-1)   0.930970119284299   [930970119,930970120]   note 0.93097
+  Z2 3x1 e=(-1,1)   1.000000000000000   [999999999,1000000001]  note 1.00000, exact as at 2x1
+  Z2 3x1 e=(-1,-1)  0.930970119284299   [930970119,930970120]   note 0.93097
+  Z2 3x2 e=(1,-1)   0.639897158626558   [639897156,639897170]   note 0.63990
+  Z2 3x2 e=(-1,1)   0.664432133076051   [664432130,664432162]   note 0.66443
+  Z2 3x2 e=(-1,-1)  0.501553844690715   [501553835,501553852]   note 0.50155
+  Q8 2x1 e=(1,-1)   0.658504914156132   [658504914,658504944]   note 0.65850
+  Q8 2x1 e=(-1,1)   0.999773739683522   [999773726,999773769]   note 0.99977
+  Q8 2x1 e=(-1,-1)  0.652162512495078   [652162512,652163535]   note 0.65216, multiplicity 4 exact
+  e=0, first excited:
+  Z2 2x2 W_0        0.787871539091074   [787871538,787871540]   note 0.78787
+  Z2 3x2 W_0        0.613315223208450   [613315218,613315251]   note 0.61332
+  Q8 commutator     0.041658961680944   [41658959,41658963]     note 0.04166
+  Z2 2x1 W_0        the exact vector is 0 (F2)                  note 1.00000 REFUTED
+  Z2 3x1 W_0        the exact vector is 0 (F2)                  note 1.00000 REFUTED
+  Z2 2x1 W_1        1.000000000000000, by dim e=0 = 2
+  Z2 3x1 W_1        0.755676415560191
+  Z2 3x2 W_1        0.773802652311855
+Ratios, own to 12 digits, receipt ppm, note:
+  Z2 2x1  flux 0.767071950134 767071 0.76707; e=0 0.065377708520 65377 0.06538
+  Z2 2x2  flux 0.448720286333 448720 0.44872; e=0 0.095314654486 95314 0.09531
+  Z2 3x1  flux 0.883213563379 883213 0.88321; e=0 0.126562814021 126562 0.12656
+  Z2 3x2  flux 0.513186062859 513186 0.51319; e=0 0.134496012820 134496 0.13450
+  Q8 2x1  flux 0.233526420212 233526 0.23353; e=0 0.035899248634 35899  0.03590
+So flux top over ground exceeds e=0 first excited over ground on all five: Delta_flux < Delta_0, Delta_full = Delta_flux, as the note says, at these weights. The largest flux top is e=(1,-1) on the four where it is unique, the flux along direction 1, whose line is shortest, and either of the two equal ones on 2x2.
+Exact on 2x1 by hand, chain basis: lambda_0 = 800 + 32 sqrt(481), lambda_1 = 800 - 32 sqrt(481), S on e=(1,-1) has 1152 and 128. Share 9(1+r)^2/(2(5+5r^2+8r)), r = (sqrt(481)-15)/32.
+On Q8, own factors: e=0 is x^78 times one quadratic, so T has rank 2 there; e=(1,-1) x^30 times one quadratic; e=(-1,-1) x^24 times the fourth power of one quadratic, roots 19968, 10752; e=(-1,1) carries 17 nonzero eigenvalues, top 93106.05, then 3328 with multiplicity 3. The zero level of e=0 holds 0.958341038319055 of the commutator's vector.
+Could be wrong: own code shares the definitions T = A^(1/2) B A^(1/2), w and z with the note. An error in those definitions would pass through both.
+
+F10. WINDING FUNCTIONS AND PARITY. SURVIVES. MEASURED: runs/quaternion_parity.out, own quaternions on Fractions, own generator, own walk.
+b=2 on 4^4, direction 0: rows 64, closes 64, once flips 64, twice same 64, contractible same 64 as group element, and a contractible loop with a backtrack 64. b=3 on 6^4: 96 of 96 on each. Directions 1, 2, 3 at b=2: 64 of 64. Coarse side 1: 2 of 2 at b=2, 3 of 3 at b=3. Broken twist on every link: once flips 0 of 64 at b=2, 0 of 96 at b=3 on coarse side 2, 0 of 2 at b=2 on coarse side 1, and 3 of 3 at b=3 on coarse side 1, 3 links: so the broken twist reads wrong parity at b=2 always, and at b=3 only on even coarse side, as row 38 says of even b. 594 of 780 pairs of own links do not commute.
+On orbits: holonomy_function reads every member of each orbit and flags a nonconstant value; the path runs from the origin; forward multiplies on the right, backward steps first and takes the inverse. charged reads f(perm_mu a) = e_mu f(a) for every mu and every a, all directions, at plane 0 with planes_equal for the rest. coarse_b is an unused argument, and the twist_every_link clause in twist_perm cannot run, since the section returns before the models under that sabotage (read of the code).
+Could be wrong: own links are drawn by my own generator, not the test's pool; the law is per configuration, so the pools need not agree.
+
+F11. THE Z2 MISSES AND THE ROWS AGAINST THE FROZEN TEXT, 34 TO 42.
+"With coarse side 1 on Z2 every even single coarse function is a constant": TRUE. DERIVED: coarse functions are the span of 1, W_0, W_1, W_0 W_1, and Z_0, Z_1 flip W_0, W_1. MEASURED: COARSE_SIDE_1 rows of runs/z2_extras.out read only the constant in e=0. The test itself reads one candidate, the commutator, and its read text generalizes from it; the derivation carries the row. It rests on b_space = sides. Row 40 does not freeze b_space, and F14 reads what a coarse side of 2 gives.
+Two-insertion vector in H': yes as a vector. F S^b F u is A^(-1/2) M(F) T^b M(F) A^(1/2) u, so it is M(F) T^b M(F) Omega in T coordinates; the order is forced with one F; b = b_space[0], so 2, 2, 3, 3, and b_space is per direction: only Z2 2x2 is section 1's uniform b; 2x1, 3x1, 3x2 run (2,1), (3,1), (3,2). The flux rows do not state this; coarse_space's row prints it.
+Clause by clause:
+  row 36 commutation: MET in substance, flux_commutation and flux_planes_equal, own read equal.
+  row 37 ground_in_e=0: MET. Its falsifier says at or above lambda_0; the check passes a top inside the ground's own bracket. Tops read at most 0.8833 of lambda_0, so nothing turns on it. Hold T8.
+  row 38 winding_parity: MET, F10; its broken form as frozen, F15.
+  row 39 coarse_sector_access: MET on the five. Empty sectors skip with no check, F13, hold T5.
+  row 40 lowest_state_visible, e != 0: all 15 rows right to read MET, F9.
+  row 40, e=0, single insertion: the 4 MISS rows are right to read MISS on coarse side 1. Q8's MET is right: commutator, contractible, even, share 0.0417.
+  rows first_excited_visible_Z2_*: outside row 40's frozen text, which names one F; the test files them beside the MISS with their F in the read. 2x2 and 3x2 are right to read MET. 2x1 and 3x1 are wrong to read MET as a read of F T^b F Omega at F = W_0, F2.
+  "the error of the rational Omega bounded by its residual over the gap": read by flux_rational_omega_close against the amplification, F5, and not against the vector's own size, F6.
+  "whole eigenspace when degenerate": F3. of_multiplicity_2 on e=0 is the cumulative count, F4.
+  row 41 scope: the note carries it.
+  row 42 sabotage names: F15.
+Pushed first: rows 34 to 42 at 3db4313 equal this head's by sha256 76e1d8f5..., and the test at 3db4313 and at 6c87200 holds no section_flux, MEASURED. That the first flux run came after the push rests on commit order, NAMED.
+Could be wrong: the frozen text does not say whether a two-insertion row belongs to it. I read it as outside, which is how the test's MISS rows read it too.
+
+F12. t2_is_a_design_of_degree_5. TRUE AS LEMMA 9a USES IT; THE READ CAN FAIL, AND READS REAL PARTS ALONE. MEASURED and DERIVED.
+Own: own/q8_count_and_t2.py, the 24 points as Fractions. Closed under the quaternion product: True, 24 elements. Every monomial in (w,x,y,z) against the exact S^3 moment prod (a_i-1)!!/(4*6*...*(k+2)): degree 0..5 apart 0 of 1, 4, 10, 20, 35, 56; degree 6 apart 20 of 84 (first (0,0,0,6): 3/32 against 5/64); degree 7 apart 0 of 120 by the antipodal pairing. So 2T is a design of strength exactly 5. Character sums n = 1..8: 0,0,0,0,0,24,0,24, the test's six equal.
+Lemma 9a item 4's steps: a polynomial of degree at most 5 in the entries is a sum of matrix elements of spins up to 5/2; the 2T average of D^j is the projector on 2T-invariants, whose trace is the average of chi_j, so 0 for j = 1/2..5/2; one free link at a time, each term has degree at most n = 4 in that link, the carried link U_0 inside U_0^-1 V included, since a plaquette holds at most one link of a coarse line and U^-1 is linear in U's entries for SU(2). DERIVED, no gap found.
+Mutants: D21 (one point replaced by 1) and D22 (index off by one) turn the check red. D23 moves the 16 half-integer points off 2T with their real parts kept and leaves every row byte for byte: the check reads the 24 real parts, and the group property it needs comes from make_groups at import (group_from raises on a product outside the list). The read can fail; it reads less than its name. Hold T10 adds the monomial read on the points themselves, MEASURED on the patched copy: YM4_03_T2_MOMENTS|...=0,0,0,0,0,20.
+
+F13. MUTATION OF section_flux. MEASURED: tools/mutants.py on tools/flux_base.py (the test at the head with the flux section alone, 163 checks, rows equal to the receipt's 33 flux rows), mutants/mutant_table.txt, mutants/results.tsv.
+86 mutants written, 72 run (14 that drop a check clause outright were left out as uninformative). Totals: 38 killed on a named check, 15 caught only by the workflow's cmp, 13 left every row byte for byte, 4 crashed (ZeroDivisionError: L01, L02, L03, P01, which the workflow reads as red through cmp and Traceback), 2 hit the 700 s limit (Z04, Z05: on the four Z2 lattices no check had turned red before the limit, inside Q8's 176-orbit sector).
+Killed, by family: certificate scales and powers C01, C02, C04, C05, C11, C12 and the top/next choice T01, T02, N01, N03, L04 on overlap_bracket; inner product I01, I02 on overlap_bracket; pencil P02 on flux_ground_is_perron and overlap_bracket; spectrum S02 on flux_spectrum; projector sign E01 on flux_ground_in_e=0 and 39 more; twist on transverse links Z02, noncentral z Z03 on flux_commutation; Perron U01 (60 iterations), U04 (256 bits) on flux_rational_omega_close, U03 (asymmetric rounding) on flux_perron_vector_even_Z2_3x2, the one model that rounds; epsilon O04 on flux_rational_omega_close; functions H01, H02, H03, H04, H05, H07, H08 on the invariance and winding_parity_on_orbits checks; centering and insertions F01, F02, F03, F04, F07 on overlap_bracket; quaternions W06 on winding_parity_b=2,3; 2T D21, D22; whole_top D07 on flux_ground_is_perron.
+Caught only by cmp, with the effect's size (largest bracket move in units of 10^-9, MET/MISS flips, missing rows, ppm move):
+  C03 denominator without rest: 13. C06 min of lows, max of highs: 29235217. C07 n = 2 alone: 29235217. C08 n = 64 alone: 3061. C09 slack ignored: 1. C10 slack 0.1: 99999999 and 1 flip. D08 coarser shift: 147006. D03 flux_top = min: ppm 772812, 2 gap labels. D04 wrong column: ppm 883142, 3 labels. D05 label swapped: 5 labels. F05 T^1 in place of T^b: 58976340. F06 winding in direction 1: 244323585, the 3x1 row from 1.00000 to 0.75568, which is F2's repair. H09 another even loop A P A^-1 P on Q8: 17442599, a different F, no fault. W05 one plane: row counts. Z06 every mu link twisted: 9 rows missing, 3 flips, the flux sectors of even sides empty.
+Byte for byte, effect 0: D02, D09, H06, N02, O01, O02, O03, S01, U02 (120 iterations: every row equal, the two residual rows of F2 included), W02, Z01, D23, W01.
+W01 replaces minus by 1 in the quaternion rows and stays byte for byte: the row compares the twisted holonomy with minus times the plain one, so with minus = 1 the twist is the identity and the row still reads 64 of 64 (hold T11).
+On the patched copy (holds T1 to T11), the targeted mutants read: see F18.
+Could be wrong: classification reads named checks on the flux section alone; checks of the earlier sections are not run on these mutants, and none of the mutated code is called there.
+
+F14. WHAT A COARSE SIDE OF 2 AND THE KERNEL OF T ADD. MEASURED: runs/z2_extras.out, runs/q8_more.out.
+Z2 2x2 at block factors (2,1), coarse sides (1,2): the even single function W_0(x1=0) W_0(x1=1) lies in e=0 and its share of the first excited state is 0.638525777891, with 0.329891236545 at the level of multiplicity 4 and 0.030536926849 below. Z2 3x2 at (3,1): 0.298637662706. So a single even insertion reaches e=0's first excited state on these two lattices at coarse side 2; the four MISS rows rest on coarse side 1, as the note says.
+Could be wrong: block factors (2,1) and (3,1) define a different coarse map from the rows' b_space = sides, so these shares belong to that map and to no row of the receipt.
+Q8 2x1, own factors: e=0 x^78 (x^2 - 3188736 x + 340163297280), e=(1,-1) x^30 (x^2 - 1105920 x + 278245933056), roots 718848 and 387072, e=(-1,-1) x^24 (x^2 - 30720 x + 214695936)^4, roots 19968 and 10752, e=(-1,1) x^15 (x^2 - 95488 x + 221773824)(x - 3328)^3 (x - 2304)^12. Rank of T: 2, 2, 17, 8, so 29 of 176. One power of T on the commutator's vector, centered against Omega, is the first excited state alone: share 1.000000000000000.
+
+F16. THE TEST'S LEVEL BRACKETS AGAINST OWN POLYNOMIALS. MEASURED: tools/compare_levels.py, runs/compare_levels.out.
+For all 44 level brackets in the 20 sectors, own eigenvalues counted exactly above high/2^shift equal the test's count before the level, and above low/2^shift equal the test's printed count: 44 of 44. Counts above 0: 20 of 20 (2, 2, 17, 8 on Q8). Smallest top over next among read sectors: 1.857142 on Q8 e=(1,-1), 718848/387072.
+
+F15. THE WORKFLOW'S NEW PINS AND THE THREE NEW SABOTAGES. MEASURED on a clone of the head in this folder (clone/, core.autocrlf=false), /tmp replaced by runs/: tools/workflow_lines.sh, runs/sab_head_A.txt, runs/sab_head_B.txt.
+Pins: rows 1-30 sha256 bcb1f24c...; rows 34-42 sha256 76e1d8f5..., equal to git show 3db4313 rows 34-42; FLUX-FIRST-READ.hbp 404cb4d7... and FIRST-COMPLETE-READ.hbp 618b4414... OK; reviews/opus55-ym4-03/SHA256SUMS OK; "362 checks" found in the note, once. Gate selftest exit 0, gate exit 0 on 104 code files.
+Sabotages, local python 3.13.14, full test each: twist_every_link exit 1, winding_parity_b=2 red, 2 red in all (b=2 and b=3); flux_wrong_sign exit 1, flux_ground_in_e=0_Z2_2x1 red, 41 red; overlap_skips_next exit 1, overlap_bracket_Z2_2x1_(1, -1) red, 14 red; unknown name exit 2; no Traceback. The hosted job at b577fa8 prints the same counts, 2, 41, 14 (runs/hosted_job.log, gh run 42064092543).
+overlap_skips_next: it fires on low <= high alone. Setting rest = 0 inflates low at small n by (next/top)^(2n)(1 - c^2), and the named check turns red when that exceeds the bracket's width at larger n. It is red on 14 of 20 rows and green on the 6 where c^2 = 1, next = 0, or the inflation is under the width (Z2_2x1 e=0 and e=(-1,1), Z2_3x1 e=0 and e=(-1,1), Q8 e=0 and e=(-1,1)). So it is a real test that a certificate erring high fails, and it reads nothing of one erring low: C06, C07, C08, C10, D08 pass it (F13). With hold T7 the same sabotage also turns overlap_closed_form_Z2_2x1_(1, -1) red, a value reached with no power of T, and hold W1 names that check (F19).
+Environment: the step needs bash, /tmp and a python3 on PATH, unpinned by the workflow (ubuntu-24.04's own); no hash seed, clock or locale enters a row; flux code reads SABOTAGE for its three names alone (grep), so the eight older sabotages cannot reach it. Outside the sabotage step, the pins and the receipt's cmp depend on LF bytes: my first clone on this machine took CRLF from the system gitconfig (core.autocrlf=true, no .gitattributes in the repo) and failed the row pins and SHA256SUMS; with autocrlf=false all passed. The hosted runner checks out LF.
+Could be wrong: these runs used python 3.13.14 on Windows; the hosted counts come from the job's log, where they are equal.
+
+F17. CHECKS THAT CANNOT TURN RED, AND A SILENT SKIP. DERIVED from the code and MEASURED by mutants.
+flux_full_gap_is_the_min: full_top = max(flux_top, zero_top), then check(full_top == max(zero_top, flux_top)). It cannot fail; D03 and D04 move the printed flux top by 772812 and 883142 ppm with it green. What the statement Delta_full = min(Delta_0, Delta_flux) needs is the sectors orthogonal, kept by S, and spanning; hold T3/T4 reads the cross entries of G and K, the span, and the second value on the whole orbit space at m <= 128.
+Empty sectors: a sector of dimension 0 gets levels None and every later loop skips it with no check, so z = identity or an identity orbit map (Z04, Z05) or a twist on every mu link (Z06) removes flux rows with 0 failed checks. flux_sectors_span reads the sum of dimensions, which holds then too. Row 39 says every sector. Hold T5.
+flux_ground_in_e=0 compares upper ends, so a flux top inside the ground's own bracket passes, against row 37's "at or above". Nothing turns on it at these values (largest flux top 0.8833 of lambda_0). Hold T8.
+The quaternion rows' minus: W01, F13. Hold T11.
+overlap_bracket alone: low <= high passes any certificate that errs low, C06, C07, C08, C10, D08. Hold T6 adds a width of at most 2000 units of 10^-9, against a widest bracket of 1023 at the head.
+The two-insertion rows: no check of the centered vector's size, F2. Hold T1.
+of_multiplicity on e=0: F4. Hold T2.
+A comment: "at 2^-200 of the unit" names a bound no line uses. Hold T9.
+Coverage under the 72 mutants (mutants/check_coverage.txt): 99 of 163 flux checks turned red at least once; never red: coarse_sector_access 15 of 15, flux_full_gap_is_the_min 5 of 5, flux_gap_positive 5 of 5, flux_sectors_span 4 of 5, flux_spectrum 16 of 20, and parts of the invariance families.
+Could be wrong: these are reads of this head's code; the mutants named beside each confirm them.
+
+F18. THE HOLDS ON A COPY. MEASURED: holds_run/flux_only_patched.py (tools/apply_holds.py), runs/flux_patched.out, mutants_patched/, mutants_d26_*.
+Flux section alone with T1 to T11: exit 0, 200 checks (163 + 37), 0 failed, rows equal to the receipt except the 5 e=0 rows and one added row:
+  first_excited_visible_Z2_2x1 read=winding_1_T^b_winding_1_share_e-9_in_[999999998,1000000001]_of_multiplicity_1
+  first_excited_visible_Z2_2x2 read=winding_0_T^b_winding_0_share_e-9_in_[787871538,787871540]_of_multiplicity_1
+  first_excited_visible_Z2_3x1 read=winding_1_T^b_winding_1_share_e-9_in_[755676414,755676416]_of_multiplicity_1, own 0.755676415560191
+  first_excited_visible_Z2_3x2 read=winding_0_T^b_winding_0_share_e-9_in_[613315218,613315251]_of_multiplicity_1
+  first_excited_visible_Q8_2x1 read=commutator_share_e-9_in_[41658959,41658963]_of_multiplicity_1
+  YM4_03_T2_MOMENTS|monomials_apart_from_S3,degree=1..6=0,0,0,0,0,20
+The 14 mutants the holds aim at, on the patched copy: C06, C07, C08, C10, D08 red on overlap_bracket_narrow; D03, D04 red on flux_second_value_on_the_whole (Z2, four lattices); Z04, Z05, Z06 red on flux_every_sector_nonempty and flux_winding_0_scales_S_on_e=0 on the Z2 lattices before the 420 s limit; W01 red on winding_parity_b=2 and b=3; D26 (the 16 half-integer points moved to (1/2, 5/6, 1/6, 1/6) with signs, real parts and unit norm kept) red on t2_moments_on_s3_through_degree_5, and byte for byte at the head. C03 moves one bracket by 13 units of 10^-9 and stays cmp only. D23 changes the character loop alone and stays byte for byte, as it reads real parts by design; the monomial read is on the points.
+The full test with the holds and the receipt it prints: F19.
+
+F19. THE HOLDS AS A WHOLE, AND THE DEFINITIONS AGAINST THE LATTICE. MEASURED.
+HOLDS.txt holds 30 blocks; tools/verify_holds.py reads them back, finds each OLD once on the head's file and once in sequence, applies them, and the result equals the patched test (holds_run/test_one_scale_blocking.py) and the receipt the patched test prints, byte for byte.
+Full patched test, python 3.13.14: exit 0, DONE checks=399 failed=0 prediction_misses=7, 324 s, runs/full_patched.out; its diff from the head's receipt is the 7 lines of holds H24 to H30. On the patched clone with every held file in place: rows 1-30 and 34-42 pins pass, "399 checks" found in the note and the README, gate exit 0 on 104 code files, and the three new sabotages: twist_every_link exit 1 on winding_parity_b=2 (2 red), flux_wrong_sign exit 1 on flux_ground_in_e=0_Z2_2x1 (48 red), overlap_skips_next exit 1 on overlap_closed_form_Z2_2x1_(1, -1) (16 red), unknown name exit 2, no Traceback. The eight older sabotages were not rerun on the patched copy: the flux code reads SABOTAGE for its three names alone, and the holds touch only the flux section.
+The definitions T = A^(1/2) B A^(1/2), z and the sectors, against the three-dimensional lattice with no transfer matrix: own/rust_brute (Rust 1.81, cargo clippy --release -D warnings exit 0, integers only), the sum over all configurations with time links at t = 0 set to 1, with and without the twist z on the plaquettes (mu, time) at the last time on the plane x_mu = 0, against |G|^(Vs (Nt-1)) sum_e chi_e(Z) Tr(S_e^Nt) from own sector matrices (own/brute_compare.py): Z2 2x1 at Nt = 2 and 3, Z2 3x1 and 2x2 at Nt = 2, Q8 2x1 at Nt = 2 over 8^10 = 1073741824 configurations: 20 of 20 equal, exact (runs/brute_compare.out). So the sector matrices own code reads, and through F9 and F16 the test's, are the lattice's transfer matrix in each flux sector.
+Could be wrong: the lattice sum takes the Wilson weight and the place of the twist from the note's definitions, as own code does; what it adds is the absence of any transfer matrix or orbit in the sum. The patched files are this lane's copy; an owner's application of the holds is read only by tools/verify_holds.py's equality.
+
+F20. COULD NOT CHECK, OR CHECKED NARROWER.
+The hosted run's python version: the job log does not print it; NAMED as ubuntu-24.04's.
+Q8 at sizes past 2x1, Z2 past 3x2, other weights: not run. The identity of F2 holds for any Z2 weight with transverse side 1 (DERIVED), not run at another.
+The eight older sabotages on the patched copy: not rerun (F19 says why).
+Z04 and Z05 on the head stopped at the 700 s limit inside Q8's 176-orbit sector; on the patched copy they turned a named check red on the Z2 lattices before the 420 s limit.
+Theorem 13's merged form, Theorem 14's reading, the small-volume bullet of 7a and Lemma 9a items 1 to 3: outside this lane's target; read only where the flux rows touch them (N8 on section 4's sentence, Lemma 9a item 4 in F12).
+GPT-6's comments on PR #29 were read (pr29-comments.txt in this folder, 2 comments, 0 token-like strings); its visibility gate asks what this lane read: winding loops reach every sector on these five, Delta_full = Delta_flux there, and the family statement stays OPEN.
+
+HOLD NAMES. The findings name holds by their working names; HOLDS.txt numbers them:
+  T1 = H1 two-insertion size check and W_1 where W_0 is a multiple of Omega (high)
+  T2 = H2 multiplicity of the e=0 level without the ground (medium)
+  T3, T4 = H3, H4 the tautology replaced by cross entries, span, and the whole-space second value (medium)
+  T5 = H5 every sector nonempty (medium)
+  T6 = H6 bracket width at most 2000 units of 10^-9 (medium)
+  T7 = H7 closed form on Z2 2x1 e=(1,-1) (medium)
+  T8 = H8 ground check at the falsifier's "at or above" (low)
+  T9 = H9 a comment naming a bound no line uses (low)
+  T10 = H10 2T monomials against S^3 through degree 5 (low); its comment was reworded after the full run, and the flux section's output reads byte for byte the same after it (runs/flux_patched2.out)
+  T11 = H11 the quaternion twist changes the holonomy (low)
+  N1 = H12 the note's e=0 shares and their F (high); N2 = H13 the flux row's block factors and weights; N3 = H14 Q8's margin and T's rank 2; N4 = H15 the status line's count, 399; N5 = H16 the flux section's mutation; N6 = H17 the first read's e=0 rows; N7 = H18 Proposition 7a item 2's representation; N8 = H19 "the level that sets Delta_full"; N9 = H23 2T as a design in the table
+  R1 = H20 README count; P1 = H21 a correction row after row 45; W1 = H22 the sabotage's named check
+  H24 to H30: the receipt's 7 lines as the patched test prints them.

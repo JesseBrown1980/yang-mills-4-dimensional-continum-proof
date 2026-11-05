@@ -1,0 +1,349 @@
+HOLD H1 | file=tests/test_one_scale_blocking.py | severity=high
+OLD<<<
+                if found is None:
+                    # F T^b F Omega, with the first winding function, in e = 0.
+                    f_values = windings[0][0]
+                    vector = [f * x for f, x in zip(f_values, u)]
+                    for _ in range(b_space[0]):
+                        vector = model.apply_s(vector)
+                    vector = [f * x for f, x in zip(f_values, vector)]
+                    along = weighted(model, u, vector)
+                    norm_u = weighted(model, u, u)
+                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                    found = ("winding_T^b_winding", reduced(centered))
+>>>
+NEW<<<
+                if found is None:
+                    # F T^b F Omega in e = 0, with the first winding function whose centered vector stands above u's own error: its size squared against 2^100 sin^2 theta, with sin^2 theta <= residual^2/gap^2.
+                    # With a transverse side of 1 the winding in the other direction has F S F = 2^(-L_0) S on e = 0, exactly, so its vector is a multiple of Omega and centering returns u's own residual, and the row takes the next direction.
+                    if sides[1] == 1:
+                        f_values = windings[0][0]
+                        scaled = all((f * x) << sides[0] == y for v in record["basis"] for f, x, y in zip(f_values, model.apply_s([f * c for f, c in zip(f_values, v)]), model.apply_s(v)))
+                        check("flux_winding_0_scales_S_on_e=0_%s" % tag, scaled)
+                    for mu in range(d):
+                        f_values = windings[mu][0]
+                        vector = [f * x for f, x in zip(f_values, u)]
+                        for _ in range(b_space[0]):
+                            vector = model.apply_s(vector)
+                        vector = [f * x for f, x in zip(f_values, vector)]
+                        along = weighted(model, u, vector)
+                        norm_u = weighted(model, u, u)
+                        centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                        if weighted(model, centered, centered) * gap * gap * rho_d * rho_d * rho_d >= ((residual_sq << (2 * shift)) * norm_u * norm_u * weighted(model, vector, vector)) << 100:
+                            found = ("winding_%d_T^b_winding_%d" % (mu, mu), reduced(centered))
+                            break
+                    check("flux_two_insertions_above_the_residual_%s" % tag, found is not None)
+                    if found is None:
+                        continue
+>>>
+REASON: Own electric-basis code and the test's objects read F S F = S/4 on Z2 2x1 and S/8 on Z2 3x1 on e = 0 for W_0, so F T^b F Omega is a multiple of Omega; the centered vector's relative size squared falls with u's iterations, -479, -950, -1895, -3784 on 2x1 and -362, -719, -1435, -2867 on 3x1, and stays -3 and -2 on 2x2 and 3x2; with W_1 the shares read 1.000000000000000 and 0.755676415560191.
+
+HOLD H2 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                top_low, top_high, mult = record["levels"][1] if len(record["levels"]) > 1 else (0, 0, 0)
+>>>
+NEW<<<
+                top_low, top_high, mult = record["levels"][1] if len(record["levels"]) > 1 else (0, 0, 0)
+                mult -= record["levels"][0][2]
+>>>
+REASON: levels holds count_above(low), which in e = 0 includes the ground: the five rows print of_multiplicity_2 where the characteristic polynomials read multiplicity 1, on all five lattices.
+
+HOLD H3 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        full_top = max(flux_top, zero_top)
+>>>
+NEW<<<
+        # Delta_full = min(Delta_0, Delta_flux) rests on the sectors being orthogonal and S keeping each: every cross entry of G and K vanishes, and with the span the sectors' spectra are the whole spectrum.
+        cross = True
+        bases = [r["basis"] for r in results.values()]
+        images = [[model.apply_s(v) for v in basis] for basis in bases]
+        for i in range(len(bases)):
+            for j in range(i):
+                for left in bases[i]:
+                    for right, right_image in zip(bases[j], images[j]):
+                        cross = cross and weighted(model, left, right) == 0 and weighted(model, left, right_image) == 0
+>>>
+REASON: flux_full_gap_is_the_min compares full_top with the expression it was assigned from, so it cannot fail; mutants D03 and D04 leave it green.
+
+HOLD H4 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        check("flux_full_gap_is_the_min_%s" % tag, full_top == max(zero_top, flux_top))
+>>>
+NEW<<<
+        check("flux_full_gap_is_the_min_%s" % tag, cross and total_dimension == model.m)
+        # The same read on the whole orbit space, at most 128 orbits: above the second value sits the ground alone, and at the low end of the highest level below the ground, the ground and that level.
+        if model.m <= 128:
+            whole = pencil_on(model, [[1 if i == k else 0 for i in range(model.m)] for k in range(model.m)])
+            full_low = max(r["levels"][1 if e == zero else 0][0] for e, r in results.items() if r["levels"] is not None)
+            check("flux_second_value_on_the_whole_%s" % tag, count_above(whole, max(flux_top, zero_top), shift) == 1 and count_above(whole, full_low, shift) >= 2)
+>>>
+REASON: The other half of the same check: it now reads the cross entries and the span, which is what the statement Delta_full = min(Delta_0, Delta_flux) needs, and the second value on the whole orbit space at m <= 128, which turns D03 and D04 red.
+
+HOLD H5 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        check("flux_sectors_span_%s" % tag, total_dimension == model.m)
+>>>
+NEW<<<
+        check("flux_sectors_span_%s" % tag, total_dimension == model.m)
+        check("flux_every_sector_nonempty_%s" % tag, all(r["dimension"] > 0 for r in results.values()))
+>>>
+REASON: An empty sector is skipped with no check, so z = identity or an identity orbit map (mutants Z04, Z05) leaves every flux row out and reads 0 failed, against row 39's every sector; the dimensions read 2, 8, 4, 32 and 80, 32, 32, 32.
+
+HOLD H6 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    check("overlap_bracket_%s" % label, low <= high)
+>>>
+NEW<<<
+    check("overlap_bracket_%s" % label, low <= high)
+    check("overlap_bracket_narrow_%s" % label, high - low <= 2000)
+>>>
+REASON: low <= high alone passes any deflated certificate: mutants C03, C06, C07, C08, D08 read no failed check; the widest bracket at this head is 1023 units of 10^-9, on Q8 at e = -1,-1.
+
+HOLD H7 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                low, high = certify_overlap(model, vector, top_low, top_high, next_high, shift, "%s_%s" % (tag, e))
+>>>
+NEW<<<
+                low, high = certify_overlap(model, vector, top_low, top_high, next_high, shift, "%s_%s" % (tag, e))
+                if tag == "Z2_2x1" and e == (1, -1):
+                    # By hand, with no power of T: in the chain basis S on e = 0 is [[1280, 1024], [256, 320]], S on this sector is 128 [[5, 4], [4, 5]], the inner product is [[5, 4], [4, 5]], and r = (sqrt(481) - 15)/32 is the ratio in Omega. The share 9 (1 + r)^2 / (2 (5 + 5 r^2 + 8 r)) increases with r.
+                    root = math.isqrt(481 << 200)
+                    closed = []
+                    for s_ in (root, root + 1):
+                        r_n, r_d = s_ - (15 << 100), 32 << 100
+                        closed.append((9 * (r_d + r_n) * (r_d + r_n) * 1000000000) // (2 * (5 * r_d * r_d + 5 * r_n * r_n + 8 * r_n * r_d)))
+                    check("overlap_closed_form_%s_%s" % (tag, e), low <= closed[0] and closed[1] + 1 <= high)
+>>>
+REASON: overlap_skips_next fires on low <= high alone, and no check reads the certificate against a value reached without T^(2n); the closed form reads 0.955960752587553 by own code, inside the receipt's [955960752,955960753].
+
+HOLD H8 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+        check("flux_ground_in_e=0_%s" % tag, ground[2] == 1 and all(results[e]["levels"] is None or results[e]["levels"][0][1] <= ground[1] for e in results))
+>>>
+NEW<<<
+        check("flux_ground_in_e=0_%s" % tag, ground[2] == 1 and all(results[e]["levels"] is None or e == zero or results[e]["levels"][0][1] <= ground[0] for e in results))
+>>>
+REASON: Row 37's falsifier is a sector's top at or above lambda_0; the check as written passes one in the ground's own bracket. The tops read at most 0.8833 of lambda_0, so the sharper form stays green.
+
+HOLD H9 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+        # Epsilon, the rational Perron vector's error: its residual over the gap, as squares, at 2^-200 of the unit.
+>>>
+NEW<<<
+        # Epsilon, the rational Perron vector's error: its residual over the gap, as squares.
+>>>
+REASON: No line of the test uses 2^-200; the bound read is the 2^-60 in the comment below, and the sin^2 bounds read 2^-1895, 2^-1634, 2^-1435, 2^-1395, 2^-2317.
+
+HOLD H10 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+    say("YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=%s|json=0" % ",".join(show(a) for a in averages))
+>>>
+NEW<<<
+    say("YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=%s|json=0" % ",".join(show(a) for a in averages))
+    # The design as Lemma 9a uses it, on the 24 points themselves: each monomial in the four coordinates averages to its moment on S^3, through degree 5, and degree 6 has one apart from it.
+    apart = []
+    for degree in range(1, 7):
+        count = 0
+        for powers in itertools.product(range(degree + 1), repeat=4):
+            if sum(powers) != degree:
+                continue
+            total = (0, 1)
+            for q in T2_QUATS:
+                total = fadd(total, (ipow(q[0], powers[0]) * ipow(q[1], powers[1]) * ipow(q[2], powers[2]) * ipow(q[3], powers[3]), ipow(q[4], degree)))
+            top, bottom = 1, 1
+            if any(p % 2 for p in powers):
+                top = 0
+            else:
+                for p in powers:
+                    for k in range(1, p, 2):
+                        top *= k
+                for j in range(degree // 2):
+                    bottom *= 4 + 2 * j
+            count += frac(total[0], total[1] * 24) != frac(top, bottom)
+        apart.append(count)
+    check("t2_moments_on_s3_through_degree_5", apart[:5] == [0, 0, 0, 0, 0] and apart[5] > 0)
+    say("YM4_03_T2_MOMENTS|monomials_apart_from_S3,degree=1..6=%s|json=0" % ",".join(map(str, apart)))
+>>>
+REASON: t2_is_a_design_of_degree_5 reads real parts alone: mutant D23, the 16 half-integer points moved off 2T with their real parts kept, reads it green. Own monomial read: 0 apart through degree 5, 20 of 84 at degree 6.
+
+HOLD H11 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+                good += once_t == qmul(minus, once) and twice_t == twice and half_trace(closed_t) == half_trace(closed)
+>>>
+NEW<<<
+                good += once_t == qmul(minus, once) and once_t != once and twice_t == twice and half_trace(closed_t) == half_trace(closed)
+>>>
+REASON: The row compares the twisted loop with minus times the plain one, so minus = 1 reads green with no twist at all: mutant W01 leaves every row byte for byte; once_t != once is false exactly then, since a unit quaternion is never 0.
+
+HOLD H12 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+In e = 0, the first excited eigenspace: 1.00000, 0.78787, 1.00000, 0.61332 on those Z2 lattices, by two insertions F T^b F Ω, and 0.04166 on Q8, by one commutator. With coarse side 1 on Z2 every even single coarse function is a constant, so the 4 rows asking for a single insertion read MISS and stay |
+>>>
+NEW<<<
+In e = 0, the first excited eigenspace, of multiplicity 1 on all five: 1.00000, 0.78787, 0.75568, 0.61332 on those Z2 lattices, by two insertions F T^b F Ω at b = b_space[0], with F the winding in direction 1 on 2×1 and 3×1 and in direction 0 on 2×2 and 3×2, and 0.04166 on Q8, by one commutator. At 2×1 the 1.00000 follows from e = 0 having dimension 2. With a transverse side of 1 the winding in direction 0 has F T^b F = 2^{−bL₀} T^b on e = 0, exactly, so its vector is a multiple of Ω, and each two-insertion row reads the size of its centered vector against the error of the rational Ω. With coarse side 1 on Z2 every even single coarse function is a constant, so the 4 rows asking for a single insertion read MISS and stay |
+>>>
+REASON: F2: F S F = S/4 and S/8 exact on e=0 on Z2 2x1, 3x1 for W_0, the certified vector's size squared 2^-1895 and 2^-1435 equals sin^2 theta and falls with u's iterations; own W_1 reads 1.000000000000000 and 0.755676415560191.
+
+HOLD H13 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| Electric flux on Z2 at spatial 2×1, 2×2, 3×1, 3×2 and Q8 at 2×1 |
+>>>
+NEW<<<
+| Electric flux on Z2 at spatial 2×1, 2×2, 3×1, 3×2 and Q8 at 2×1, with block factors per direction equal to the sides, so coarse side 1 in each direction, and w = 3, 1 on Z2 and w = 3 + χ on Q8 |
+>>>
+REASON: Section 1 states one b with sides bL_i; only Z2 2x2 fits it, the others run b_space (2,1), (3,1), (3,2), and the single-insertion MISS rests on coarse side 1, F11; the row states neither.
+
+HOLD H14 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+On Q8 the share of e = 0's first excited state in the commutator's vector is 0.0417, so that row's margin is the smallest, and its certificate is the one to read first.
+>>>
+NEW<<<
+On Q8 the share of e = 0's first excited state in the commutator's vector is 0.0417, so that row's margin is the smallest: its certificate reads [0.041658959, 0.041658963], and the second seat's exact projection 0.041658961680944. At w = 3 + χ, T on e = 0 has rank 2 there, x⁷⁸ times one quadratic, so the other 0.95834 of that vector lies in T's kernel, and T of that vector, centered, is the first excited state alone.
+>>>
+REASON: F9, F14: own characteristic polynomial x^78 times one quadratic on e=0, shares 0.041658961680944 and 0.958341038319055, and the centered T F Omega reads share 1.
+
+HOLD H15 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+MEASURED: 362 checks with 0 failed, and 7 reads missed on 3 rows of the prediction, kept below:
+>>>
+NEW<<<
+MEASURED: 399 checks with 0 failed, and 7 reads missed on 3 rows of the prediction, kept below:
+>>>
+REASON: The count after the test holds of this report, read on the patched copy; the workflow greps it.
+
+HOLD H16 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+Mutation of the flux section itself is OPEN.
+>>>
+NEW<<<
+The second seat's mutation of the flux section at `b577fa8` ran 72 mutants on the section alone: 38 killed on a named check, 15 caught only by the workflow's cmp, 13 left every row byte for byte, 4 crashed and 2 hit its time limit. With its holds, 12 of the 14 it aimed at turn a named check red; C03 moves one bracket by 13 units of 10⁻⁹ and stays with cmp, and D23, a change inside the loop of the character sums that keeps their real parts, stays byte for byte, while the monomial read catches the same change made to the 24 points.
+>>>
+REASON: This report's mutation of section_flux, table in mutants/.
+
+HOLD H17 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+its lower bounds read 0.994 and 0.967 where the narrower brackets here read 1.00000.
+>>>
+NEW<<<
+its lower bounds read 0.994 and 0.967 where the narrower brackets here read 1.00000, and its rows for e = 0 at 2×1 and 3×1 read the winding in direction 0, whose vector the table above replaces.
+>>>
+REASON: The first read's e=0 rows at 2x1 and 3x1 hold the same W_0 vector, F2; the file stays as pinned and this sentence says so beside it.
+
+HOLD H18 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+A coarse loop winding once in direction μ crosses the plane once, so it changes sign under Z_μ, for every b and every s. One winding twice, and a contractible one, keep their sign.
+>>>
+NEW<<<
+A coarse loop winding once in direction μ crosses the plane once, so its holonomy takes the factor z, and its trace in a representation with z = −1 changes sign under Z_μ, for every b and every s. One winding twice, and a contractible one, keep their holonomy.
+>>>
+REASON: Row 38 says fundamental; a spin-1 line, which section 6 holds at b >= 4, has z = 1 and keeps its sign; own quaternions read the group elements: 160 of 160 flip once, keep twice, keep contractible, F10.
+
+HOLD H19 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+with Theorem 13's bound reaching Δ_full exactly when these levels stay visible.
+>>>
+NEW<<<
+with Theorem 13's bound reaching Δ_full exactly when the level that sets Δ_full stays visible, which on these five is the top of e = (1, −1), with the top of e = (−1, 1) equal to it on 2×2.
+>>>
+REASON: Theorem 7, item 4, needs the lowest state alone: a sector below it can leave H' with lambda_1' unchanged, DERIVED; own ratios read e=(1,-1) largest on all five, F9.
+
+HOLD H20 | file=README.md | severity=medium
+OLD<<<
+MEASURED on 362 checks with 0 failed against a prediction pushed first
+>>>
+NEW<<<
+MEASURED on 399 checks with 0 failed against a prediction pushed first
+>>>
+REASON: The count after the test holds of this report.
+
+HOLD H21 | file=docs/PREDICTION-YM4-03.hbp | severity=medium
+OLD<<<
+YM4_03_ATTEMPT|run=receipt_after_the_attack|checks=362|failed=0|prediction_misses=7|the_second_seat's_test_holds_applied=1|their_rows_equal_its_patched_copy=117_of_117_lines|flux_brackets=at_a_binary_scale,one_unit_of_2^-shift|the_rows_above_stay_as_pushed=1|json=0
+>>>
+NEW<<<
+YM4_03_ATTEMPT|run=receipt_after_the_attack|checks=362|failed=0|prediction_misses=7|the_second_seat's_test_holds_applied=1|their_rows_equal_its_patched_copy=117_of_117_lines|flux_brackets=at_a_binary_scale,one_unit_of_2^-shift|the_rows_above_stay_as_pushed=1|json=0
+YM4_03_ATTEMPT|run=receipt_after_the_flux_recheck|checks=399|failed=0|prediction_misses=7|correction_beside_the_row_above=first_excited_visible_Z2_2x1_and_Z2_3x1_at_b577fa8_read_u's_residual,since_F_T^b_F=2^(-b*L_0)T^b_on_e=0_at_transverse_side_1|now=the_winding_in_direction_1,0.75568_on_3x1|of_multiplicity_2_on_e=0_at_b577fa8_counted_the_ground|read_by=the_second_seat|the_rows_above_stay_as_pushed=1|json=0
+>>>
+REASON: Retractions travel beside the claim: rows 34 to 42 and row 45 stay, the correction goes after them, and the pinned hashes cover rows 1 to 30 and 34 to 42 alone.
+
+HOLD H22 | file=.github/workflows/one-scale-blocking.yml | severity=medium
+OLD<<<
+          read_sabotage overlap_skips_next 'overlap_bracket_Z2_2x1_(1, -1)'
+>>>
+NEW<<<
+          read_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)'
+>>>
+REASON: At the head this sabotage fires on low <= high alone; with T7 it fires on the certificate against a closed form reached with no power of T, F15.
+
+HOLD H23 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| 2T as a design | Σ_{2T} χ_{n/2} = 0, 0, 0, 0, 0, 24 for n = 1, …, 6 |
+>>>
+NEW<<<
+| 2T as a design | Σ_{2T} χ_{n/2} = 0, 0, 0, 0, 0, 24 for n = 1, …, 6, and every monomial of degree at most 5 in the four coordinates averages to its moment on S³, with 20 of the 84 of degree 6 apart |
+>>>
+REASON: The character sums read real parts alone (mutant D23); the monomial read is what Lemma 9a's item 4 uses, own code and the patched test read 0 apart through degree 5.
+
+HOLD H24 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=0,0,0,0,0,24|json=0
+>>>
+NEW<<<
+YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=0,0,0,0,0,24|json=0
+YM4_03_T2_MOMENTS|monomials_apart_from_S3,degree=1..6=0,0,0,0,0,20|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H25 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_READ|row=first_excited_visible_Z2_2x1|result=MET|read=winding_T^b_winding_share_e-9_in_[999999998,1000000001]_of_multiplicity_2|predicted=positive|json=0
+>>>
+NEW<<<
+YM4_03_READ|row=first_excited_visible_Z2_2x1|result=MET|read=winding_1_T^b_winding_1_share_e-9_in_[999999998,1000000001]_of_multiplicity_1|predicted=positive|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H26 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_READ|row=first_excited_visible_Z2_2x2|result=MET|read=winding_T^b_winding_share_e-9_in_[787871538,787871540]_of_multiplicity_2|predicted=positive|json=0
+>>>
+NEW<<<
+YM4_03_READ|row=first_excited_visible_Z2_2x2|result=MET|read=winding_0_T^b_winding_0_share_e-9_in_[787871538,787871540]_of_multiplicity_1|predicted=positive|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H27 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_READ|row=first_excited_visible_Z2_3x1|result=MET|read=winding_T^b_winding_share_e-9_in_[999999998,1000000001]_of_multiplicity_2|predicted=positive|json=0
+>>>
+NEW<<<
+YM4_03_READ|row=first_excited_visible_Z2_3x1|result=MET|read=winding_1_T^b_winding_1_share_e-9_in_[755676414,755676416]_of_multiplicity_1|predicted=positive|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H28 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_READ|row=first_excited_visible_Z2_3x2|result=MET|read=winding_T^b_winding_share_e-9_in_[613315218,613315251]_of_multiplicity_2|predicted=positive|json=0
+>>>
+NEW<<<
+YM4_03_READ|row=first_excited_visible_Z2_3x2|result=MET|read=winding_0_T^b_winding_0_share_e-9_in_[613315218,613315251]_of_multiplicity_1|predicted=positive|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H29 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_READ|row=first_excited_visible_Q8_2x1|result=MET|read=commutator_share_e-9_in_[41658959,41658963]_of_multiplicity_2|predicted=positive|json=0
+>>>
+NEW<<<
+YM4_03_READ|row=first_excited_visible_Q8_2x1|result=MET|read=commutator_share_e-9_in_[41658959,41658963]_of_multiplicity_1|predicted=positive|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.
+
+HOLD H30 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_DONE|checks=362|failed=0|prediction_misses=7|misses=certified_range_at_least_1.8e-49,z2_nonlocal_perpendicular_d=3,z2_nonlocal_perpendicular_d=4,first_excited_visible_single_insertion_Z2_2x1,first_excited_visible_single_insertion_Z2_2x2,first_excited_visible_single_insertion_Z2_3x1,first_excited_visible_single_insertion_Z2_3x2|json=0
+>>>
+NEW<<<
+YM4_03_DONE|checks=399|failed=0|prediction_misses=7|misses=certified_range_at_least_1.8e-49,z2_nonlocal_perpendicular_d=3,z2_nonlocal_perpendicular_d=4,first_excited_visible_single_insertion_Z2_2x1,first_excited_visible_single_insertion_Z2_2x2,first_excited_visible_single_insertion_Z2_3x1,first_excited_visible_single_insertion_Z2_3x2|json=0
+>>>
+REASON: The receipt as the patched test prints it, byte for byte under cmp: runs/full_patched.out.

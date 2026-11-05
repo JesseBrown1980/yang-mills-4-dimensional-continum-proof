@@ -1,0 +1,419 @@
+HOLD H1 | file=tests/test_one_scale_blocking.py | severity=high
+OLD<<<
+                if found is None:
+                    # F T^b F Omega, with the first winding function, in e = 0.
+                    f_values = windings[0][0]
+                    vector = [f * x for f, x in zip(f_values, u)]
+                    for _ in range(b_space[0]):
+                        vector = model.apply_s(vector)
+                    vector = [f * x for f, x in zip(f_values, vector)]
+                    along = weighted(model, u, vector)
+                    norm_u = weighted(model, u, u)
+                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                    found = ("winding_T^b_winding", reduced(centered))
+>>>
+NEW<<<
+                if found is None:
+                    # F T^b F Omega in e = 0, with the first winding whose vector holds a part off Omega above 2^-200 of its whole, as squares.
+                    # On a spatial side 1, A leaves the winding across the other side alone, so F Omega is an exact eigenvector and F T^b F Omega a multiple of Omega: what stays off u there is the Perron walk's remainder.
+                    norm_u = weighted(model, u, u)
+                    for mu in range(d):
+                        f_values = windings[mu][0]
+                        vector = [f * x for f, x in zip(f_values, u)]
+                        for _ in range(b_space[0]):
+                            vector = model.apply_s(vector)
+                        vector = [f * x for f, x in zip(f_values, vector)]
+                        along = weighted(model, u, vector)
+                        centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                        if weighted(model, centered, centered) << 200 >= norm_u * norm_u * weighted(model, vector, vector):
+                            found = ("winding%d_T^b_winding%d" % (mu, mu), reduced(centered))
+                            break
+>>>
+REASON: MEASURED s05_instrument_e0.py on the test's own objects: with winding 0 the part off u reads 2^-1895, 2^-3784 on Z2 2x1 and 2^-1435, 2^-2867 on 3x1 at walks 240, 480, so the rows read the walk's remainder; A leaves U_0 alone on a side 1, so F T^b F Omega is exactly a multiple of Omega (DERIVED); patched copy rc=0, checks=362, failed=0, reads 2x1 [999999998,1000000001] and 3x1 [755676414,755676416], with the row's label naming the winding. The receipt must be regenerated.
+
+HOLD H1b | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+                levels.append((low, high, multiplicity))
+>>>
+NEW<<<
+                levels.append((low, high, multiplicity - wanted + 1))
+>>>
+REASON: MEASURED: count_above is cumulative, so all five e = 0 rows print of_multiplicity_2 with the ground counted; Z2 2x1's e = 0 has dimension 2, so the level has multiplicity 1. With this line they print 1 and the e != 0 rows stay, the 4 on Q8 included; wanted and ground[2] == 1 stay as they read.
+
+HOLD H1c | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+        check("flux_full_gap_is_the_min_%s" % tag, full_top == max(zero_top, flux_top))
+>>>
+NEW<<<
+        # The second value of T on all of PH, by inertia on all the orbits, against the largest of the sector levels: one value above that level's bracket, and at least two above its low end.
+        tops = [results[e]["levels"][0] for e in results if e != zero and results[e]["levels"]] + results[zero]["levels"][1:2]
+        full_low, full_high = max((level[1], level[0]) for level in tops)[::-1]
+        whole = pencil_on(model, [[int(i == j) for j in range(model.m)] for i in range(model.m)])
+        check("flux_full_gap_is_the_min_%s" % tag, count_above(whole, full_high, shift) == 1 and count_above(whole, full_low, shift) >= 2)
+>>>
+REASON: The check compares full_top = max(flux_top, zero_top) with max(zero_top, flux_top), so it cannot turn red; read at line 2343 to 2345. MEASURED private/test_patched2.py: rc=0, stdout equal to the copy with H1 and H1b, 303 s against 252; a mutant keeping only e = 0's level in tops fires this check on all five (runs/s12_mut.out).
+
+HOLD H2 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+In e = 0, the first excited eigenspace: 1.00000, 0.78787, 1.00000, 0.61332 on those Z2 lattices, by two insertions F T^b F Ω, and 0.04166 on Q8, by one commutator.
+>>>
+NEW<<<
+In e = 0, the first excited eigenspace's share of the vector with Ω taken out: 1.00000, 0.78787, 0.75568, 0.61332 on those Z2 lattices, by two insertions F T^b F Ω, and 0.04166 on Q8, by one commutator. F is the first winding whose vector holds a part off Ω: on Z2 at 2×1 and 3×1, A leaves the winding along the long side alone, so its F Ω is an exact eigenvector and its F T^b F Ω a multiple of Ω, and F there winds across the side 1. At 2×1 e = 0 has dimension 2, so the 1.00000 there is forced.
+>>>
+REASON: MEASURED with H1: receipt lines read 3x1 [755676414,755676416] in place of a walk's remainder, own code s03_flux.py reads 0.755676415; the numbers at 2x2, 3x2 and Q8 stay; test's centered vector removes u.
+
+HOLD H2b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+its lower bounds read 0.994 and 0.967 where the narrower brackets here read 1.00000.
+>>>
+NEW<<<
+its lower bounds read 0.994 and 0.967 where the narrower brackets here read 1.00000, the 0.967 on the vector at 2×1 that the row above replaces.
+>>>
+REASON: FLUX-FIRST-READ.hbp's first_excited_visible_Z2_2x1 reads [967483368,1007581034] on F along the long side, the vector of R08.
+
+HOLD H3 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+Each overlap is for that level on that lattice, and uniform visibility along a family stays OPEN, with Theorem 13's bound reaching Δ_full exactly when these levels stay visible.
+>>>
+NEW<<<
+Each overlap is for that level on that lattice, and visibility along a family stays OPEN. By Theorem 7, items 4 and 5, Theorem 13's bound reaches Δ_full at a spacing a when the one level that sets Δ_full there is visible in H′ at that a: a positive overlap with one vector of H′ at that a is enough, and its size may vary with a.
+>>>
+REASON: DERIVED: item 4 is about the lowest state alone, so the other sectors' levels may be hidden with m' = m; item 5's n -> infinity at fixed a takes any <e,v> != 0.
+
+HOLD H4 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+What Theorem 13 needs along a family is that these overlaps stay away from zero as a falls, OPEN. On Q8 the share of e = 0's first excited state in the commutator's vector is 0.0417,
+>>>
+NEW<<<
+What Theorem 13 needs along a family is that the level setting Δ_full keeps a positive overlap with one vector of H′ at each a, OPEN. On Q8 the share of e = 0's first excited state in the commutator's vector with Ω taken out is 0.0417,
+>>>
+REASON: DERIVED: item 5 at each a asks for <e,v> != 0 with its own C_v; a lower bound on overlaps across a is stronger than Theorem 13 asks for; the receipt's e = 0 shares are of the centered vector.
+
+HOLD H5 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+**Proposition 7a.** Let w > 0.
+>>>
+NEW<<<
+**Proposition 7a.** Let w > 0, with T ≥ 0 as above, so each logarithm below has a value, with log(λ₀/0) = ∞. Δ_full is the gap log(λ₀/λ₁) of T on PH, a times m.
+>>>
+REASON: MEASURED s04 NEGATIVE_T: Z2, w = 1, 3, circle of 3, the note's own case, has lambda_0 = 8, lambda_0(e = -1) = -1, so Delta_flux has no value at w > 0 alone; Delta_full stands undefined except by its min.
+
+HOLD H5b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+**Electric flux.** Let z be a central element of G with z² = 1, and let
+>>>
+NEW<<<
+**Electric flux.** Let z ≠ 1 be a central element of G with z² = 1, so some irreducible π has π(z) = −1, and let
+>>>
+REASON: DERIVED: z = 1 empties every sector e != 0 and item 3 fails there; Schur and Peter-Weyl give pi(z) = -1 for z != 1, which item 2 and item 3 use.
+
+HOLD H6 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+2. A coarse loop winding once in direction μ crosses the plane once, so it changes sign under Z_μ, for every b and every s. One winding twice, and a contractible one, keep their sign.
+>>>
+NEW<<<
+2. The holonomy of a coarse loop with winding number n in direction μ takes the factor zⁿ under Z_μ, from its net crossing of the plane, for every b and every s. So a character χ_π with π(z) = −1 changes sign on a loop winding once, and keeps it on one winding twice and on a contractible one, and a character with π(z) = 1, such as spin 1 for SU(2), keeps it on all of them.
+>>>
+REASON: MEASURED s04 WINDING rows at b = 2, 3, 4, 5: a once-winding loop with a detour crosses 3 times on some planes and takes the factor z on every plane; chi_1 keeps its value on every plane, which is why the thin tube's chi_1/2^2 lies in e = 0; prediction row 38 says fundamental.
+
+HOLD H7 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+Item 3: T^b and the projector on H′ commute, so an eigenvector of T decomposes along H′ and its complement. Conditional expectation gives ⟨h, M(Q*F) Ω⟩ = E[hΩ · F∘Q], and F runs over gauge-invariant functions while hΩ is gauge invariant.
+>>>
+NEW<<<
+Item 3: H′ lies in PH by Theorem 1. T^b and the projector Π on H′ commute, and so do T and Π, since T ≥ 0 makes T a function of T^b, so Π maps the eigenspace E_μ of μ in PH into itself. If E_μ is not orthogonal to H′, some h in E_μ has Πh ≠ 0, and T′Πh = μ^bΠh. Conversely an eigenvector of T′ at μ^b lies in E_μ, since T ≥ 0 makes the μ^b-eigenspace of T^b that of μ for T. For h in PH, conditional expectation gives ⟨h, M(Q*F) Ω⟩ = E[G · F∘Q] with G = E_Haar[h̄Ω | Q], and G is coarse gauge invariant by the extension in Theorem 4, since h̄Ω is gauge invariant, so F = Ḡ is allowed and the pairing reads E|G|². The two cases named are MEASURED, by the second seat.
+>>>
+REASON: DERIVED: the proof as left gives one direction, on an eigenvector of T^b, and leaves the coarse gauge invariance of E[hΩ|Q]; H4 of the first attack replaced the statement and left this text; MEASURED s04b.out: S = 36864 (T = 144), 18 dimensions, 6 in W and in H', 12 orthogonal.
+
+HOLD H7b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+3. For an eigenvalue μ of T on PH, μ^b lies in spec T′
+>>>
+NEW<<<
+3. For an eigenvalue μ > 0 of T on PH, μ^b lies in spec T′
+>>>
+REASON: DERIVED: T' is compact on an infinite-dimensional H' for continuous G, so 0 lies in spec T' at any rate, and the equivalence reads wrong at mu = 0 if ker T in PH is orthogonal to H'; SU(2) Wilson has every c_n > 0, and finite groups read eigenvalues.
+
+HOLD H8 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+passes the bound to the correlators, at every time side and so in the limit of Theorem 7, item 2. ∎
+>>>
+NEW<<<
+passes the bound to the correlators, with a constant added to a real f to make it positive, which leaves Cov(f, g) as it is, and a complex one split into real parts, at every time side and so in the limit of Theorem 7, item 2. ∎
+>>>
+REASON: DERIVED: the statement is on products of observables, the proof tilts by a positive f; F13 of the first attack names the constant, H5c left it out; MEASURED s06 at shifts 2, 3/2, 11/10: Cov identity on all 276 pairs.
+
+HOLD H8b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+By item 4 that bounds m exactly when the lowest state is visible in H′.
+>>>
+NEW<<<
+By item 4, m′ = m when the lowest state is visible in H′, where this is a bound on m, and m′ > m otherwise.
+>>>
+REASON: DERIVED: item 4's equality is exact, and a bound can hold on m with the state hidden, when kappa/(ba) sits below m: GPT-6's (1, 0.99, 0.5) with small kappa.
+
+HOLD H8c | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+So a lower bound on m′ is a bound on H′, and by item 4 it bounds the gap m of the whole gauge-invariant space exactly when the lowest state is visible in H′.
+>>>
+NEW<<<
+So a lower bound on m′ is a bound on H′, and by item 4 m′ = m, so it bounds the gap of the whole gauge-invariant space, when the lowest state is visible in H′, with m′ > m otherwise.
+>>>
+REASON: The same step as H8b; the PR body's sentence follows it, H25.
+
+HOLD H9 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+At b = 4, n = 16 the tube enters beside the flat fillings, and at b ≥ 5 it comes first, at n = 4b, DERIVED from the count above.
+>>>
+NEW<<<
+At b = 4, n = 16 the tube enters beside the flat fillings, and at b ≥ 5 it comes first, at n = 4b: E_V[X^{4b}]/(4b)! = κ + 2^{−8b} · 2(d − 1)(d − 2) Σ_ℓ χ_{1/2}(V_ℓ)² over the coarse lines ℓ in directions with L_μ = 1. DERIVED from the count above: a slice of 4 edges is a square at b ≥ 5, free cross links keep one square along the line, it closes on L_μ = 1 alone, each line has 2(d − 1)(d − 2) squares, and all the terms have one sign. The second seat's search reads exactly those sets on (ℤ/5)³, (ℤ/6)³, (ℤ/7)³, (ℤ/5) × (ℤ/10)² and (ℤ/5)⁴, 4 per line at d = 3 and 12 at d = 4.
+>>>
+REASON: "Comes first" needs the coefficient of the whole order, since one tube's value leaves the others open; F04 has the sum; MEASURED rust/cover, runs/s02_cover_a.out and _b.out, and own merge, runs/s01_merge.out, on the value.
+
+HOLD H10 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+So item 2 and the flow β′/4 = (β/4)^{b²} are statements at b = 2, 3.
+>>>
+NEW<<<
+So on a lattice with d ≥ 3 and a side L_μ = 1, item 2 and the flow β′/4 = (β/4)^{b²} stop at b = 3. With every L_i ≥ 2 a term that moves with V holds a closed coarse loop of coarse links whose fine links all lie in nontrivial plaquettes, since by (b) and the extension in Theorem 4 it is a coarse gauge-invariant function of those links, and on a forest that is a constant. A winding loop has at least two sets of slices, and two μ-links of a contractible loop share theirs, so E_V[X^n] is independent of V for n < min(b², 8b), and item 2 holds through b = 7, DERIVED by the second seat. Its search reads b² with the flat filling alone at b = 4, 5, 6 on (ℤ/2b)³, and the tube over one line's b slices with both ends capped, 4b + 2 plaquettes, reads 2^{2−n_p}, constant in V.
+>>>
+REASON: The tube needs a side L_mu = 1 for 4b; on every L_i >= 2 MEASURED: 16 at b = 4 flat alone, 22 at b = 5 capped box with E_V constant (runs/s01b.out), b^2 with one flat set for a coarse plaquette target at b = 4, 5, 6 (runs/s02_cover_c.out); the bound and the classification DERIVED, R05. FABLE5's call to carry it as a new item.
+
+HOLD H11 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+So that expansion is Δ₀ of section 4, in e = 0, and ΔE is Δ_flux, with its size of order exp(−S/g(L)), van Baal's review, eq. 12.
+>>>
+NEW<<<
+So that expansion is the lightest A₁⁺⁺ level of e = 0, and Δ₀ of section 4 lies at or below it: Lüscher's Table 4, p. 512, reads E⁺ and T₂⁺ at 0.86 of M(A₁⁺) at z = 1, with the ratios "practically independent of z" for z ≤ 1 (p. 511), and Koller and van Baal, NPB 273, p. 400, write "In weak coupling the smallest mass is a 2+ state". And ΔE is Δ_flux on the cubic T³, with log ΔE led by −S/g(L) as g(L) → 0, van Baal's review, eq. 12.
+>>>
+REASON: MEASURED on page images: Lüscher pp. 511-512, Koller-van Baal p. 400; Δ₀ is the second value of e = 0 in any cubic channel, and the note's own quotation "in no way require M_L(0⁺) to be the mass gap" says so; eq. 12's factor exp(+eps_1 T/g^p) makes ΔE above every constant times exp(−S/g).
+
+HOLD H11b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+this expansion is the nearest statement to target 2 of the README, in its sector e = 0.
+>>>
+NEW<<<
+this expansion is the nearest statement to target 2 of the README, in its sector e = 0 and its channel A₁⁺⁺.
+>>>
+REASON: Same read as H11.
+
+HOLD H12 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Theorem 13 then reads m ≥ log(4/3)/ℓ₀, below Theorem 14's value.
+>>>
+NEW<<<
+Theorem 13 then reads m′ ≥ log(4/3)/ℓ₀, and on a circle H′ = PH, since PH is the class functions of the holonomy, coarse by Proposition 2, and Ω > 0, so m ≥ log(4/3)/ℓ₀, below Theorem 14's value.
+>>>
+REASON: DERIVED: Theorem 13 concludes on m'; F15 of the first attack has H' = PH on a circle, and the paragraph uses it unsaid.
+
+HOLD H13a | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+and Z3 at 2×1 with b_time = 3 |
+>>>
+NEW<<<
+and Z3 at 2×1 with b_time = 3, with the spatial block 2×1 on all but Z2 at 2×2 |
+>>>
+REASON: test:H18's sentence, lost in the merge with text:H28; read: s08_holds_applied.py; test line 1491 ff. uses b_space; F11.
+
+HOLD H13b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| Electric flux on Z2 at spatial 2×1, 2×2, 3×1, 3×2 and Q8 at 2×1 |
+>>>
+NEW<<<
+| Electric flux on Z2 at spatial 2×1, 2×2, 3×1, 3×2 and Q8 at 2×1, with the spatial block equal to those sides, so coarse side 1×1, and a fine side 1 on three of them, off section 1's uniform b, where a plaquette word holds a μ-link twice |
+>>>
+REASON: Read at test line 2178: b_space = sides; Lemma 9a's "fine sides at least 2" does not bind these models, and the word on a side 1 is read here, runs/s03_flux_*.out.
+
+HOLD H13c | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+a positive weight of positive character coefficients in Theorem 7
+>>>
+NEW<<<
+a positive weight with every character coefficient c_π ≥ 0 in Theorem 7
+>>>
+REASON: Section 4 states c_π ≥ 0, and Q8 and S3 at w = 3 + χ have c = 0 on some π and are read.
+
+HOLD H13d | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| 4 at b = 2 and 9 at b = 3 on every lattice read. b·min(b, 4) at b ≥ 4 stays DERIVED |
+>>>
+NEW<<<
+| 4 at b = 2 and 9 at b = 3 on every lattice read. b·min(b, 4) at b ≥ 4 stays DERIVED in this test, and the second seat's separate search reads it at b = 4, 5, 6, 7 on (ℤ/b)³ and at b = 4, 5 on (ℤ/b)⁴ |
+>>>
+REASON: MEASURED rust/cover: 16, 20, 24, 28 and 16, 20, each set reached once, runs/s02_cover_a.out, _b.out.
+
+HOLD H14a | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+[The second seat's attack at `6c87200`](../reviews/opus55-ym4-03/) refuted no theorem's core. It confirmed Theorem 9 and refuted two clauses of Theorem 7, item 3, and the reach of Theorem 13's proof, and those repairs and its other holds are applied here.
+>>>
+NEW<<<
+[The second seat's attack at `6c87200`](../reviews/opus55-ym4-03/) confirmed Theorem 9 and the core of each theorem it read, and refuted two clauses of Theorem 7, item 3, and the reach of Theorem 13's proof, and those repairs and its other holds are applied here.
+>>>
+REASON: The operator's rule; same content in the positive form; first attack's REPORT rows "what survives".
+
+HOLD H14b | file=README.md | severity=low
+OLD<<<
+[The second seat's attack](reviews/opus55-ym4-03/) refuted no theorem's core, and its holds are applied.
+>>>
+NEW<<<
+[The second seat's attack](reviews/opus55-ym4-03/) confirmed the core of each theorem it read, with two clauses of Theorem 7, item 3, and the reach of Theorem 13's proof repaired, and its holds are applied.
+>>>
+REASON: The operator's rule, as H14a.
+
+HOLD H14c | file=PR29-BODY | severity=low
+OLD<<<
+refuted no theorem's core. It confirmed Theorem 9, with b = 3 read on lattices for the first time.
+>>>
+NEW<<<
+confirmed the core of each theorem it read, and Theorem 9 with b = 3 read on lattices for the first time.
+>>>
+REASON: The operator's rule, as H14a.
+
+HOLD H15a | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+and the block-by-block integration of Theorem 8 has no closed block to run on.
+>>>
+NEW<<<
+and the blocks of Theorem 8 join through those off links into one.
+>>>
+REASON: The operator's rule; this sentence came from the first text lane's own H5, which is corrected here.
+
+HOLD H15b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Γ_s has no self-loops, since sides are at least 2.
+>>>
+NEW<<<
+Each edge of Γ_s joins two different vertices, since sides are at least 2.
+>>>
+REASON: The operator's rule; same content.
+
+HOLD H15c | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+and b = 3 has no 2-cycles, since its sides are multiples of 3.
+>>>
+NEW<<<
+and at b = 3 every cycle has at least 3 edges, since its sides are multiples of 3.
+>>>
+REASON: The operator's rule; same content.
+
+HOLD H15d | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| The count in Theorem 9, by search in d = 2, 3, 4, in no row of the prediction |
+>>>
+NEW<<<
+| The count in Theorem 9, by search in d = 2, 3, 4, a read added after the prediction |
+>>>
+REASON: The operator's rule; same content.
+
+HOLD H15e | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+read after the first complete read and in no row of the prediction, and automatic
+>>>
+NEW<<<
+a read added after the first complete read and the prediction, and automatic
+>>>
+REASON: The operator's rule; same content.
+
+HOLD H16 | file=docs/PREDICTION-YM4-03.hbp | severity=medium
+OLD<<<
+YM4_03_ATTEMPT|run=receipt_after_the_attack|checks=362|failed=0|prediction_misses=7|the_second_seat's_test_holds_applied=1|their_rows_equal_its_patched_copy=117_of_117_lines|flux_brackets=at_a_binary_scale,one_unit_of_2^-shift|the_rows_above_stay_as_pushed=1|json=0
+>>>
+NEW<<<
+YM4_03_ATTEMPT|run=receipt_after_the_attack|checks=362|failed=0|prediction_misses=7|the_second_seat's_test_holds_applied=1|their_rows_equal_its_patched_copy=117_of_117_lines|flux_brackets=at_a_binary_scale,one_unit_of_2^-shift|the_rows_above_stay_as_pushed=1|json=0
+YM4_03_ATTEMPT|correction_beside_the_receipt_above=first_excited_visible_Z2_2x1_and_3x1_read_F_T^b_F_Omega_with_F_along_the_long_side,an_exact_multiple_of_Omega_on_a_spatial_side_1,so_their_1.00000_read_the_Perron_walk's_remainder_at_2^-1895_and_2^-1435_of_the_square_norm|read_by=the_second_seat|now=F_the_first_winding_with_a_part_off_Omega|reads=1.00000_forced_at_2x1,0.75568_at_3x1|both_rows_stay_MET|json=0
+>>>
+REASON: MEASURED R08; the row goes at the end, so every earlier row stays a byte prefix; the pins cover rows 1 to 30 and 34 to 42.
+
+HOLD H17 | file=reviews/opus55-ym4-03/HOLDS-APPLIED.hbp | severity=low
+OLD<<<
+YM4_03_HOLDS_APPLIED_DONE|rows=98|json=0
+>>>
+NEW<<<
+YM4_03_HOLDS_APPLIED_DONE|rows=98|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H19|read_at=b577fa8|applied_with_an_addition=and_from_GPT-6's_reading_where_named|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H20|read_at=b577fa8|applied_with_an_addition=the_form_of_the_bound,E_plus_minus,and_Theorem_2,from_GPT-6's_comment|without=after_this_head|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H40|read_at=b577fa8|applied_with_an_addition=the_flux_read's_pin_and_the_SHA256SUMS_check|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=test|hold=H18|read_at=b577fa8|lost_in_the_merge=The_spatial_block_is_2x1_on_all_but_Z2_at_2x2|read_by=the_second_seat|json=0
+>>>
+REASON: MEASURED s08_holds_applied.py: 52 of 55 applied_as_held rows hold NEW byte for byte, these three carry more; the corrections go beside the rows.
+
+HOLD H17b | file=reviews/opus55-ym4-03/SHA256SUMS | severity=low
+OLD<<<
+ff557c9f71227c87d264ecc7861eaa42497c652991d1e6595b9d3869f2e9535f  HOLDS-APPLIED.hbp
+>>>
+NEW<<<
+3f9eb4ed6bca642e9d1dbd5d81f3c2e685cccc59a7b26bc208a4fc3860361390  HOLDS-APPLIED.hbp
+>>>
+REASON: The workflow checks SHA256SUMS strictly; this is the sha256 of the file after H17 alone.
+
+HOLD H18 | file=README.md | severity=low
+OLD<<<
+one blocking gives λ₁/λ₀ ≤ (4 − √15)^{1/b} on circles of length L ∈ bℕ,
+>>>
+NEW<<<
+one blocking gives λ₁/λ₀ ≤ (4 − √15)^{1/b} on PH, on circles of length L ∈ bℕ,
+>>>
+REASON: Theorem 14 is on PH; on H the ratio is t_2, 0.9078 at β = 16, b = 8, F14 of the first attack; proofs:H14 applied to the note and left the row.
+
+HOLD H19 | file=docs/PROOF_OBLIGATIONS.md | severity=low
+OLD<<<
+The induced action in d = 4 is explicit at its first order in β, b = 2, 3, DERIVED, read at b = 2, with a certified truncation
+>>>
+NEW<<<
+The induced action in d = 4 is explicit at its first order in β, b = 2, 3, DERIVED, read at b = 2 on lattices and at b = 3 on the flat filling, with a certified truncation
+>>>
+REASON: test:H7 landed: leading_coefficient_b=3 reads the flat filling on (ℤ/3)³, receipt line 60.
+
+HOLD H20 | file=PR29-BODY | severity=medium
+OLD<<<
+**Open:** this head's hosted checks, GPT-6's reading, and mutation of the flux section. This stays a draft until they read.
+>>>
+NEW<<<
+**Hosted at `b577fa8`:** all checks success, the one-scale-blocking job from 16:24:26Z to 16:52:58Z, with its 11 sabotages among its steps. **Open:** GPT-6's reading, and mutation of the flux section. This stays a draft until they read.
+>>>
+REASON: MEASURED gh api commits/b577fa8/check-runs and gh run view 42064092543; any later push reopens it.
+
+HOLD H21 | file=PR29-BODY | severity=medium
+OLD<<<
+and at b ≥ 5 it comes first, so the flow is a statement at b = 2, 3.
+>>>
+NEW<<<
+and at b ≥ 5 it comes first, so on such a lattice the flow stops at b = 3. With every L_i ≥ 2 the first dependence sits at min(b², 8b), DERIVED by the second seat's recheck, with item 2 through b = 7.
+>>>
+REASON: As H10.
+
+HOLD H22 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+Each free link of the filling has degree 2, so the four points 1, i, j, k, a design of degree 2, carry the average.
+>>>
+NEW<<<
+Each free link of the filling has degree exactly 2, and on homogeneous polynomials of degree 2 the four points 1, i, j, k average as Haar does, so they carry the average.
+>>>
+REASON: MEASURED s09: they sum x_0 to 1 of 4 against Haar 0, so "design of degree 2" reads wide; x_a x_b averages delta_ab/4 on them as on Haar.
+
+HOLD H23 | file=PR29-BODY | severity=medium
+OLD<<<
+and the first excited eigenspace of e = 0 reads 0.04166 on Q8 by one commutator, and 0.61332 to 1.00000 on Z2 by two insertions F T^b F Ω.
+>>>
+NEW<<<
+and the first excited eigenspace of e = 0, in the vector with Ω taken out, reads 0.04166 on Q8 by one commutator, and 1.00000, 0.78787, 0.75568, 0.61332 on Z2 by two insertions F T^b F Ω, with F the first winding that moves the vector off Ω: on a spatial side 1 the winding along the long side gives a multiple of Ω.
+>>>
+REASON: As H1, H2.
+
+HOLD H24 | file=PR29-BODY | severity=low
+OLD<<<
+so one insertion cannot reach e = 0's first excited state there, against the row's CONJECTURE.
+>>>
+NEW<<<
+so one insertion reads Ω alone in e = 0 there, against the row's CONJECTURE.
+>>>
+REASON: The operator's rule; same content.
+
+HOLD H25 | file=PR29-BODY | severity=low
+OLD<<<
+So a lower bound on the gap m′ on H′ bounds the gap m of the whole gauge-invariant space exactly when the lowest state is visible in H′,
+>>>
+NEW<<<
+So a lower bound on the gap m′ on H′ bounds the gap m of the whole gauge-invariant space when the lowest state is visible in H′, where m′ = m,
+>>>
+REASON: As H8b.

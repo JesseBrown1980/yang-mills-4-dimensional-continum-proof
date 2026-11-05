@@ -98,3 +98,7 @@ YM4_03_HOLD|lane=text|hold=H45|file=PR29-BODY|severity=medium|state=merged|with=
 YM4_03_HOLD|lane=text|hold=H46|file=PR29-BODY|severity=high|state=merged|with=the_PR_body|json=0
 YM4_03_HOLD|lane=text|hold=H47|file=PR29-BODY|severity=low|state=merged|with=the_PR_body|json=0
 YM4_03_HOLDS_APPLIED_DONE|rows=98|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H19|read_at=b577fa8|applied_with_an_addition=and_from_GPT-6's_reading_where_named|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H20|read_at=b577fa8|applied_with_an_addition=the_form_of_the_bound,E_plus_minus,and_Theorem_2,from_GPT-6's_comment|without=after_this_head|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=text|hold=H40|read_at=b577fa8|applied_with_an_addition=the_flux_read's_pin_and_the_SHA256SUMS_check|read_by=the_second_seat|json=0
+YM4_03_HOLD_CORRECTION|lane=test|hold=H18|read_at=b577fa8|lost_in_the_merge=The_spatial_block_is_2x1_on_all_but_Z2_at_2x2|read_by=the_second_seat|json=0
