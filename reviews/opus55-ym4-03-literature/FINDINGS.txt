@@ -335,3 +335,113 @@ CORRECTIONS AND LOCATIONS, BESIDE THE ENTRIES ABOVE (nothing above was rewritten
  Item 1.B, Jaffe-Witten p.12, the full sentence: "New ideas are needed to prove the existence of a mass gap that is uniform in the volume of space-time. Such a result presumably would enable the study of the limit as T4 -> R4."
  Vantage: all quotes come from pdftotext or TeX source of the named copy; page images were read where the entries say so. WebFetch summaries were used only for abstract pages and access state. Math glyphs in pdftotext output are lossy; where a formula is load-bearing and no image check is noted, read the page before citing.
  Triplet: recall :4796 q=Balaban count=0 and q="Yang-Mills block averaging" count=0 (count=0 is not absence). aoom_find_files over C:/tmp, C:/Users/acer, D:/ by name found no Balaban or Luscher 1983 copy, stopped by its 150 s budget (timed_out=1, files_scanned=550125), so incomplete. Fabric council not asked; firing a query was held under E=0 and this is a literature task.
+
+
+SECOND PASS, COORDINATOR'S LEADS -- written 2026-11-05 (text above left as it stands)
+=====================================================================================
+ROUTES, plain fetch only, stopped at first block:
+ ADS scans: articles.adsabs.harvard.edu/pdf/1983NuPhB.219..233L -> 403 AccessDenied; /pdf/1987CMaPh.109..249B -> 403 AccessDenied. CANNOT_SEE. (S3-style denial; it can also mean no scan is held. Not distinguished.)
+ ADS abstract service: ui.adsabs.harvard.edu/abs/1983NuPhB.219..233L/abstract -> 405, page title "Human Verification" (AWS WAF). Stopped. CANNOT_SEE.
+ CDS: search by report number BUTP-23/1982 -> Anubis bot-check, by curl earlier and WebFetch now. Searches with cds.cern.ch as the allowed domain returned no CDS record. No record id in hand. Stopped. CANNOT_SEE.
+ Deep Blue (institutional copies of CMP 102, 255 and 102, 277 are listed by search): item page 403 to WebFetch; handle path returns the 1959 B app shell, no PDF; API Cloudflare 403 earlier. Stopped. CANNOT_SEE.
+ Project Euclid, user-agent changes, browsers, archive copies: not touched.
+ OPENED by plain fetch: Luscher's own page luscher.web.cern.ch/luscher/ (200). It lists lectures/LesHouches88.pdf, LesHouches97.pdf, Erice00.pdf, Paris02.pdf, LesHouches09.pdf. Read 88 and 97.
+
+A. LUSCHER'S STATED FORM OF THE GAP ON THE TORUS (MEASURED, read on page images)
+ M. Luscher, "Selected Topics in Lattice Field Theory", Les Houches XLIX (1988), Course 8, Elsevier 1989, scan on his page, sec. 4.4 "The case of (pure) non-Abelian gauge theories", book p.507-513 = PDF p.57-63. Refs [62] = NPB 219 (1983) 233, [63] = NPB 232 (1984) 445 (PDF p.77). The 1983 paper's body stays CANNOT_SEE; this is his own later statement of it.
+ p.510: "it is possible to show that all eigenvalues of H can be expanded in a power series of gbar^{2/3}, where gbar is a renormalized 'running' gauge coupling at scale L. For example, for the mass M(A1++) of the lightest glueball with quantum numbers A1++ (and electric flux e = 0), we have the asymptotic expansion
+     M(A1++) ~ (1/L) sum_{k=1}^infinity eps_k [gbar(L)]^{2k/3},   (4.36)
+   where the coefficients eps_k are numerically known, for the SU(2) theory, up to one-loop order (i.e. for k <= 4) [62,63]."
+ p.510, the reason: potential energy of the constant modes "proportional to - sum_{k,l} tr{[c_k,c_l][c_k,c_l]}, (4.37) i.e. there is no term proportional to tr{c_k^2}. Thus, the situation is exactly as in a purely anharmonic oscillator, where the level splitting is proportional to g^{2/3}".
+ p.510, scope: "the expansion is actually only valid when L is small compared to the dynamically generated length scale Lambda^-1"; gbar^2 ~ -[2 beta_1 ln Lambda L]^-1 as L -> 0, beta_1 = (11/48 pi^2) N (4.38). "for L ~ Lambda^-1, the coupling is presumably of order 1 and the perturbation series (4.36) is then not applicable." p.510-511: "perturbation theory in this model tells us nothing about the approach to the infinite volume limit".
+ p.511: z = M(A1++) L (4.39). "already at z = 1 there is an interesting non-perturbative phenomenon happening, which invalidates the perturbative analysis. Thus, the range where perturbation theory applies is 0 <= z <= 1 (4.40)."
+ p.512: Table 4, SU(2) at z = 1, M/M(A1+): A1+ 1.00, E+ 0.86, T2+ 0.86, A1+ 1.65, E+ 1.56, T2+ 1.57.
+ ELECTRIC FLUX, p.508-509: U_z built from non-periodic Lambda_z (4.28)-(4.32), z in Z_N^3, commutes with T: "the Hilbert space H accordingly divides into N^3 sectors". "The ground state |0> of the theory can be shown to have quantum numbers A1++ and e = 0 (recall that for L < infinity, the spectrum of the Hamilton operator H is discrete and the ground state is unique)." "States with |e| = 1 can be generated from the vacuum by acting with a Wilson loop which winds around the torus once in a space-like direction."
+ p.509: "the ground state energy DeltaE in the sectors with |e| = 1 ... is considered to be the energy of a flux tube of length L." Strong coupling only: "Munster [59] has been able to prove that DeltaE = sigma L + O(1) as L -> infinity (4.34)"; "most lattice gauge theorists take eq. (4.34) for granted, even at smaller values of g0, where Munster's proof does not apply." [59] = NPB 180 [FS2] (1981) 23.
+ p.512: "the energy spectrum in the sectors with e != 0 is actually exactly the same, to all orders of perturbation theory, as in the zero flux sector [62]. In particular, the flux tube energy DeltaE vanishes to all orders of gbar." "At a non-perturbative level, tunneling between the classical vacua C_z V_0 sets in and the degeneracy of the electric flux sectors is lifted."
+     DeltaE / M(A1+) = 0.00767 z^{3/2} exp(-42.6169 z^{-3/2} + 34.2001 z^{-1/2}) (1 + O(z^{1/4})),   (4.41)   credited to van Baal and Koller.
+ p.513: "which gives DeltaE/M(A1+) = 0.1 at z = 1.34 ... at (say) z >= 1.5, the semi-classical formula (4.41) can no longer be trusted."
+ WHAT HE CALLS RIGOROUS, in these pages: the word occurs once, p.513: "van Baal and Koller thought of a better although not equally rigorous method" (the torons effective Hamiltonian). His terms for (4.36) are "asymptotic expansion" and "perturbation theory"; for (4.34) "prove", at strong coupling; for (4.41) "semi-classical". Nothing in these pages claims a nonperturbative theorem for the gap at small L. What the 1983 paper itself calls rigorous: CANNOT_SEE.
+ Luscher, "Advanced lattice QCD", Les Houches 1997 (his page, also hep-lat/9802029), sec. 7, MEASURED: p.36: "the energy levels are separated by large gaps that increase proportionally to 1/L." p.36: "perturbation theory is much more complicated if periodic boundary conditions are imposed due to the appearance of physical zero modes in the gluon action [65-72]"; [66] = PLB 118 (1982) 391 and NPB 219 (1983) 233. p.37: "QCD is perturbatively soluble at sufficiently small L".
+ ARITHMETIC CHECK, mine, MEASURED by a run: from Koller-van Baal S = 12.4637, T = 3.9186, eps = 4.116719735, B = 0.2063, lambda = 0.6997, and (29), I get S c^{3/2} = 42.6169; first-order z-shift of S/g plus eps T c^{1/2} = 9.8970 + 24.3030 = 34.2001; 2 lambda B^2 / c^{5/2} = 0.007674. All three match (4.41). (4.41) at z = 1.34 evaluates to 0.094, his "0.1".
+
+B. BALABAN: primary bodies STILL CANNOT_SEE. New second-hand statements (MEASURED that the author says it; NAMED as to Balaban's text)
+ Main theorem in d = 4, what it bounds:
+   Faria da Veiga, O'Carroll arXiv:2205.07376v2 p.3: "The starting point is the Wilson plaquette action partition function ... For small gauge coupling 0 < g << 1, stability bounds ... for the corresponding model partition function have been proved in the seminal work of Balaban (see [16, 17] and Refs. therein), using renormalization group (RG) methods and the heavy machinery of multiscale analysis." [16] = CMP 102, 255; [17] = CMP 122, 355. Same p.3: "It is expected that partition function stability bounds of Refs. [16, 17] lead to bounds on YM gauge field correlations." and "in the case of gauge fields, this question, as well as ... the verification of the whole set of Osterwalder-Schrader-Seiler (OSS) axioms ... have never been completely analyzed up to now."
+   Magnen-Rivasseau-Seneor, mp_arc 92-41, "Rigorous results on the ultraviolet limit of non-Abelian gauge theories", intro: "in a finite volume on the lattice ... the resulting effective action on the unit lattice remains bounded ... should follow, at least for subsequences." "Our conclusion, after many years of efforts, is the same as Balaban's, namely that the ultraviolet limit of Yang-Mills can be done constructively, although not easily."
+   Jaffe, ETH-Juerg.pdf (arthurjaffe.com) slide PDF p.50: "d = 4 breakthrough: Balaban's analysis of asymptotic freedom and large fields for lattice gauge fields". Jaffe's publication list p.7: Constructive Gauge Theory, with T. Balaban, entry [101], no hyperlink in the list; the list's hyperlinks start at p.11.
+   So: action = Wilson; volume = finite, torus in d = 3; object = partition function and effective action; coupling small. Exact statement, constants, and his d = 4 boundary condition: CANNOT_SEE.
+ Averaging and gauge fixing:
+   Dimock arXiv:1410.2798 "Covariant Axial Gauge" p.1: Balaban's axial gauge "realized by setting the field to zero on certain trees"; "When he came to applying these methods to pure Yang Mills in d = 3, 4 [8], [9] Balaban found that this was a significant obstacle. Instead he developed a covariant axial gauge in which he averaged over various trees to regain the covariance. However details about taking over the results of [5], [6], [7] were absent. Furthermore in the Yang-Mills papers he used an exponential gauge fixing rather than the original delta function gauge fixing." [8], [9] = CMP 109, 116.
+   p.17: "a simpler version of an analysis by Balaban in [7]. There he treats a multi-scale non-abelian problem while here it is single scale and abelian." [7] = CMP 99, 389.
+   BESIDE ITEM 1.C: my line there said a gauge-fixing delta inside the block. That holds for Dimock's abelian form. For Balaban's Yang-Mills papers Dimock says exponential gauge fixing, averaged over trees. Whether the block-average constraint itself is sharp in CMP 109 remains CANNOT_SEE; Goswami's delta(Ubar V^-1) stays the nearest statement, for sigma models.
+ NOT BALABAN, A RELATED BOUND AT FIXED LATTICE, MEASURED: Faria da Veiga, O'Carroll, arXiv:2205.07376v2, finite lattice aZ^d, d = 2, 3, 4, a in (0,1], L even, U(N) and SU(N), free or periodic, weight exp(-(a^{d-4}/g^2) sum A_p), g^2 in (0, g_0^2]. Abstract: "using scaled fields, defined with an a-dependent noncanonical scaling, we show thermodynamic and UV stable (TUV) stability bounds for a scaled partition function, with bound constants independent of L, a and g."; Eq.(22)-(23) p.9: Z_s = [a^{d-4}/g^2]^{N r/2} Z_u(a), exp(c_l N r) <= Z_s <= exp(c_u N r), r = (d-1)L^d, N = Lie algebra dimension. Theorem 1 eq.(71)-(72) p.28. No RG: Weyl integration, random-matrix integrals.
+   READING, mine: this exponent is per lattice site, r ~ L^d. At fixed physical volume, L = L_phys/a, it grows as a falls. Dimock's analogues bound the ratio to the free field per physical volume (225) or by a constant (42). So a per-site Z bound is cheap and carries no locality. The RG content of Balaban sits in the effective action, and whether his d = 4 constant is per physical volume needs Theorem 1. Mitter says "per unit volume". CONJECTURE until read.
+
+C. DIMOCK: list from the arXiv API (au:Dimock_J), 2011 to 2024: I, II, III; 1410.2798; 1502.02946; 1512.04373; 1712.10029; 2009.01156; 2204.07201 (overview); then Gross-Neveu 2303.07916, 2406.16799. No later part of the Balaban series and no nonabelian paper listed. Grep for non-abelian/Yang-Mills: 2204.07201 p.2 citation sentence only; 1502.02946 and 1512.04373 count 0; 1410.2798 p.1 and p.17 as quoted in B. MEASURED, scope is that listing.
+
+D. BESIDE EARLIER ENTRIES
+ ITEM 2, "WHICH GAP" CONJECTURE: the sector structure is now MEASURED from Luscher p.508-509, and DeltaE vanishing to all orders and (4.41) from p.512. Still mine: the statement that the repo's T on its invariant space has this as its lowest gap at small g, until checked on the repo's definitions. Falsifier stands.
+ ITEM 2, review eq.(12): I transcribed it with glyphs lost. Page image reads DeltaE = 2 L^-1 lambda B^2 g^{5/3}(L) exp[-S/g(L) + eps_1 T / g^{2/3}(L)] {1 + f(g(L))}, lambda = 0.6997. Koller-van Baal 1986 eq.(26) has T eps g^{-1/3}, and only g^{-1/3} reproduces 34.2001 above. Treat the review's g^{2/3} there as a misprint; use the 1986 form.
+ ITEM 2, KvB eq.(31) p.11: "We can strictly trust eq. (31) only for z << 1." "the tunneling sets in between z = 1.1 and z = 1.3".
+ ITEM 2, the 2.27 vs 4.1167 note stands; Luscher's eps_k in (4.36) and KvB's eq.(29) are the gap coefficients, the review's "m0 = L^-1 eps_1 g^{2/3}" uses 4.1167 loosely or by misprint.
+
+
+THIRD PASS, TWO LINKS RELAYED FROM PR #28 issuecomment-6658407383 -- written 2026-11-05 (text above left as it stands)
+======================================================================================================================
+FETCHES, one plain curl each, default client, stopped there:
+ Balaban CMP 102, 255, deepblue.lib.umich.edu/bitstream/handle/2027.42/46460/220_2005_Article_BF01229380.pdf?sequence=1 -> HTTP 200, 1959 B, text/html, the Deep Blue app shell, with no PDF bytes. CANNOT_SEE. dl/deepblue-cmp102-255.
+ Luscher NPB 219, infomall.org/sites/dsc/jpac/QCDRef/1980s/...Luscher - 1983.pdf -> curl (35) schannel SEC_E_CERT_EXPIRED, the site's TLS certificate has expired, 0 bytes. CANNOT_SEE. dl/infomall-luscher83.
+ NOT DONE: curl -k, an http:// retry, or any second client. The first two turn off certificate checking and the instruction was one plain fetch. Script execution in the Deep Blue shell, its API, or a browser: not done.
+ So neither primary was read. Items 1 and 2 of the request cannot be answered from the primaries, and nothing below quotes them.
+
+WHAT THE RELAYING COMMENT SAYS (MEASURED that it says it; NAMED for the papers; its own header: "bibliographic/scope check only, NOT proof or PR acceptance"; posted under the operator's account, relaying GPT-6; the coordinator notes GPT-6's page-image check did not complete):
+ CMP 102, 255: "Its Theorem 1 bounds renormalized densities P_k for three-dimensional Wilson pure gauge with compact semisimple Lie group. It is an ultraviolet-stability result".
+ NPB 219: "Discusses finite-volume central/electric-flux sectors and perturbative one-loop effective Hamiltonian, not a proven scale-uniform continuum gap."
+
+1. BALABAN 1985, THE FIVE QUESTIONS
+ Theorem 1 as written: CANNOT_SEE. Nearest: the comment's one line above, NAMED.
+ Volume and boundary conditions: CANNOT_SEE in the paper. Jaffe-Witten p.11, MEASURED: "a three-dimensional lattice with periodic boundary conditions, approximating a space-time torus".
+ Action: abstract, MEASURED: "We consider only the Wilson lattice approximation for pure Yang-Mills field theories."
+ Group: "compact semisimple Lie group", NAMED via the comment only.
+ What P_k bound: CANNOT_SEE. Jaffe-Witten p.11, MEASURED: "many interesting properties of the effective action", "estimates are uniform in the lattice spacing".
+ Averaging as this paper uses it, sharp or soft: CANNOT_SEE. Unchanged from 1.C and the second pass. Second-hand: CMP 102, 277 abstract says "fixed averages", which reads as sharp (my reading); Dimock 1410.2798 p.1 says the Yang-Mills papers [CMP 109, 116] used exponential gauge fixing, averaged over trees. That paper's list does not place CMP 102, 255.
+ Does it state what stays open: CANNOT_SEE.
+
+2. LUSCHER 1983: BODY CANNOT_SEE. ANSWERED FROM HIS OWN 1988 LECTURES (book p.508-513, read on page images, second-pass section A), WHICH CITE THE 1983 PAPER AS [62]. MEASURED as his 1988 statement. Whether the 1983 text says the same in these terms: CANNOT_SEE.
+ Gap's form: (4.36), M(A1++) ~ (1/L) sum_{k>=1} eps_k [gbar(L)]^{2k/3}, "asymptotic expansion". Abstract of 1983, MEASURED: "worked out to one-loop order".
+ Sectors: Z_N^3 electric flux, (4.27)-(4.33), "the Hilbert space H accordingly divides into N^3 sectors"; ground state A1++, e = 0; M(A1++) is stated for e = 0. Central twist: U_z built from non-periodic Lambda_z, "this is actually not the case [a gauge transformation], because Lambda_z(x) is not periodic".
+ Order: "up to one-loop order (i.e. for k <= 4) [62,63]".
+ Range: p.510 "only valid when L is small compared to the dynamically generated length scale Lambda^-1"; (4.38) gbar^2 ~ -[2 beta_1 ln Lambda L]^-1; (4.40) 0 <= z <= 1.
+ Rigorous vs perturbative: the word appears once in those pages, p.513 "not equally rigorous", about the torons Hamiltonian. (4.36) he names perturbation theory and asymptotic expansion; (4.41) semi-classical; (4.34) "prove", Munster, at strong coupling only.
+ AGAINST MY CONJECTURE ON ODD FLUX (item 2): the statements it rested on are his.
+   States with |e| = 1 are in H: p.509, "generated from the vacuum by acting with a Wilson loop which winds around the torus once in a space-like direction".
+   Same spectrum to all orders: p.512, "exactly the same, to all orders of perturbation theory", "the flux tube energy DeltaE vanishes to all orders of gbar".
+   Form: (4.41), with exponent -42.6169 z^{-3/2} = -S/g at leading order, by my arithmetic from S = 12.4637 and eq.(29).
+   DeltaE < M(A1+) at small z: (4.41) gives 0.094 at z = 1.34, and smaller below.
+   So at small z the lowest gap of H on all of his H is DeltaE, in |e| = 1, and M(A1+) is the gap inside e = 0. That sentence is my one-line deduction from his statements; it does not appear in those words.
+   Remaining CONJECTURE: that the repo's T on its invariant space is his T on his H, with the same sector content. Falsifier stands: exact T split by the Z2^3 twist at large beta.
+ AGAINST KOLLER-VAN BAAL eq.(29): same form. (4.36) with eps_1 = 2.2696390, eps_2 = -0.7975278 is eq.(29); KvB p.10: "The coefficients in eq. (29) and (30) were first evaluated in ref. [6]" = Luscher-Munster. Mine: 6.3863588 - 4.116719735 = 2.269639065. No conflict found. KvB eq.(26) has the exponent with T eps g^{-1/3}, and that form plus their constants reproduces (4.41)'s 42.6169, 34.2001 and 0.00767.
+
+3. WHICH SENTENCES OF docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md SECTION 7a CHANGE (note at commit 6c87200 as checked out in C:/tmp/ym4-03-wt; the repo was only read)
+ FROM THE TWO LINKED SOURCES THEMSELVES: none, from this seat. I read neither.
+ FROM THE COMMENT'S ONE-LINE SUMMARIES, IF RIGHT: none changes. CMP 102, 255 is d = 3, so it adds a d = 3 line beside the Balaban bullet, and its "bounds renormalized densities" agrees with "on partition functions and effective actions". NAMED until read.
+ FROM WHAT THIS SEAT DID READ IN THE SECOND PASS, three proposed edits, for FABLE5 to weigh:
+  a. Opening line, "so what follows on them comes from abstracts and other authors": add Luscher's own 1988 lectures. Its CANNOT_SEE clause stays true here.
+  b. Small volume, "the stated form at small physical volume is M(0+)L = ...": true as written; add that it is the e = 0 sector, with Luscher's stated range 0 <= z <= 1 (4.40).
+  c. Small volume, "This is the closest published statement to target 2 of the README": needs the sector said. On a periodic lattice the |e| = 1 levels are in the invariant space and lie lower at small z, by (4.41). So target 2's "gap" must name e = 0 or the whole invariant space. On the whole space the closest published form is (4.41), exponentially small in 1/g, semiclassical, and "strictly" trusted "only for z << 1" (KvB p.11).
+  Unchanged: "A rigorous theorem giving a positive physical gap at fixed small volume, uniform as the spacing falls: none located, on a small search, so OPEN." Decimation, Strong coupling, Tomboulis, Finite groups: no change. Balaban bullet: its last sentence stands; Faria da Veiga-O'Carroll p.3 and the comment agree with it; Dimock 1410.2798's exponential gauge fixing is an addition beside it, about gauge fixing, not the theorem.
+
+4. WHAT CMP 109 AND CMP 122 WOULD STILL HAVE TO SUPPLY (none of this is in any source I opened; each line is a question, CANNOT_SEE, and the abstracts do not answer it)
+  1. Theorem 1's exact inequality: upper and lower; relative to the free theory or not; the constants' dependence on volume, on k, on L. In particular whether the exponent is per physical volume (Mitter's wording) or per site. Faria da Veiga-O'Carroll already reach a per-site Z bound without RG, so only the per-physical-volume form or the effective-action bound carries content (my reading).
+  2. Which paper states Theorem 1. CMP 122 II's abstract names it; CMP 119 or 122 I may hold it.
+  3. Volume and boundary conditions in d = 4, and the largest physical volume allowed. The analysis is weak-coupling: "in the weak coupling regime" (Mitter), "0 < g << 1" (Faria da Veiga-O'Carroll), and MRS decline to lift the cutoff "since this would lead to large values of the coupling constant". Whether a fixed finite volume of any size is covered, or only one where the coupling stays small at that scale, decides target 2.
+  4. The starting action and group in d = 4: exact Wilson, or Wilson-like with corrections (Goswami cites "Eq. 0.32" of CMP 109 for a Wilson-like form, on chiral models); SU(2) in the scope or not.
+  5. The block factor. The expositions take L odd (Dimock I eq.16; Goswami sec.1.3) and "sufficiently large" (Dimock III Theorem 1). If Balaban's theorem needs that, b = 2 of issue #3 and the note is outside its stated scope, and nothing can be imported directly.
+  6. The averaging in d = 4: Q as used from CMP 98, its domain, sharp or soft on the block average; the exponential gauge fixing and tree average Dimock reports.
+  7. The coupling flow: the recursion for g_k, the two-loop initial condition, the allowed range of g_0 and of the number of steps.
+  8. What the densities bound: small-field regions, large-field regions, the R operation's bound, uniformity in k.
+  9. Observables: any statement on gauge-invariant expectations, and any statement of what stays open. MRS and Faria da Veiga-O'Carroll say it was not completed; his own words are what is needed.
+  10. Any statement on a gap. I expect none, CONJECTURE; falsifier is a sentence in those papers.
+
+CORRECTION BESIDE THE SECOND AND THIRD PASS: the KvB sentences "We can strictly trust eq. (31) only for z << 1" and "the tunneling sets in between z = 1.1 and z = 1.3" are at PDF p.10 (book p.396), where those passes wrote p.11. Eq.(26) is at PDF p.9 (book p.395).

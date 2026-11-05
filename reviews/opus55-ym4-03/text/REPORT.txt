@@ -1,0 +1,148 @@
+**Head checked:** `git -C C:/tmp/ym4-03-wt rev-parse HEAD` printed 6c8720093908f6f6919c2921209a62b6b6d56153, and the worktree stayed clean through every run. PR #29's head moved to 3db4313 while this lane ran: one `[skip ci]` commit appending 9 flux rows, whose message says the attack lanes stay on 6c87200. All OLD texts were checked at 6c87200 and against the saved PR body.
+
+## What I ran
+All integer or exact rational, except sympy for one exact factorization and fixed-point iterations where tagged.
+- **Full test:** in WSL, on Python 3.12.3 (the version ubuntu-24.04 ships).
+- **Own arithmetic, sharing no code with the test:** `own_numbers.py`, `own_z2.py` (two routes), `own_coarse_space.py`, `own_second_value.py`, `own_q8_and_stream.py`.
+- **Harnesses:** check names, and a mutation on the character flow.
+- **Workflow:** its pin and cmp lines on copies.
+- **Test holds:** H38 and H39 on a copy, plus the no-float gate on a local clone.
+- **Read:** the literature report, PR #28's files, issue #3, and the hosted logs through gh.
+- **Triplet:** recall count=0 on both queries, which is not absence; fabric health ok; council not asked.
+
+## What survives
+All MEASURED unless tagged.
+- **Receipt and gate:** my run is byte-equal to the receipt (sha 63127fa0, 181 checks, 0 failed). Both hosted runs at 6c87200 succeeded, and each of the 8 sabotages exits 1 on its named check.
+- **The 30-row pin:** byte-equal to 7e6b111, and the sha matches the workflow.
+- **Order of events:** the prediction was on GitHub at 11:45:04Z; the test's birth in this worktree is 11:53:28Z.
+- **Note's numbers, by my own code:**
+  - δ on all 7 β, and 8.8e-9
+  - β⁴/6, and 64/3 at the tetrahedron
+  - 3u¹⁰ by two routes in d = 3 and one in d = 4
+  - the parallel counts through u¹²
+  - the dimensions, and the Q8 ratios
+- **PR #28:** every attribution is in its own text, and its fractions reproduce exactly.
+- **Literature digits and quotations:** they match the filed report verbatim.
+- **My own failed refutation:** H′ starts at Ω and the test's W starts at 1, so I expected them to differ. They are equal on all 5 cases (rank mod p reaching dim W proves equality). The dimensions stand.
+- **Lowest state:** visible on all 5, including Q8, which the receipt marks `not_read` (54534 ppm on W and on the whole). That Q8 value comes from fixed-point iteration, read to ppm with no bracket.
+- **Theorem 7's condition:** E[hΩ|Q] ≠ 0 on all 5 in the same run.
+- **Workflow:** a moved receipt row turns cmp red; a moved row 1–30 turns the pin red.
+- **Other reads that held:**
+  - closed loops really are noncommuting: 1885 and 2015 of 2016 pairs differ
+  - 2T stays within degree 5, by the test's assert
+  - new text: u¹⁴ reads coefficient 4, by route B
+
+## What is refuted or narrower
+1. **The count (MEASURED):** the status line says "179 checks with none failed"; the receipt says 181. Prediction row 31 says the first read had 179 with failed=1, and the file it names says 175.
+2. **"3 rows missed" (MEASURED):** it is 3 reads on 2 rows.
+3. **"All on values I wrote by hand" (MEASURED):** row 25 is a LAW tagged DERIVED whose registered falsifier fired. The test wires it through `read_row`, and Proposition 11 was corrected after the run.
+4. **"m ≥ 0.516 g" in the README and PR (MEASURED):**
+   - The bound's value is 0.515859 g, rounded up as a lower bound.
+   - It holds on perfect squares, which is all the grid has; off the squares it falls to 0.3439 g.
+   - The note's limit form stands.
+5. **"Leaves the Wilson form" in the README (DERIVED):** it sits under SU(2) sentences, but the evidence is Z2 and Q8 winding loops on a 1×1×1 coarse lattice. Issue #3 bars that substitution.
+6. **Theorem 13, §4, §7 and the Scope (DERIVED from Theorem 7 item 4):** they read wider than H′. GPT-6 raises the same point in its comment at 12:53Z.
+7. **§7a says more than the report:**
+   - "the matched theorem is on partition functions and effective actions": the report holds Theorem 1's text as CANNOT_SEE
+   - "closest published statement": this appears nowhere in the report
+   - Decimation drops the infinite-volume spin setting
+   - Small volume drops the flux levels
+   - Tomboulis drops the reply at 0712.2620
+8. **Narrowings, rows against test:**
+   - `two_dimensions_closes`: Q8 and 2T at b = 3 are not run.
+   - `integral_identity`: one loop, on Z3 and S3; the "family" is not run.
+   - `coarse_space`: the eigenvalue clause is read by inequalities that hold on every subspace.
+   - `su2_character_truncation`: direct evaluation stops at m = 1.
+   - `circle_spectrum`: skips 2T at L′ = 2.
+   - `first_dependence`: orders 1 and 3 are empty after the filter.
+   - b = 3's coefficient is read on no lattice.
+9. **Conditions that cannot fail:**
+   - `su2_m_over_g_bound` and `su2_exact_m_over_g_at_l=4/g` use a literal True.
+   - `leading_coefficient` compares a fraction with itself.
+   - Q8's `top_equal` and `counts` cannot go red.
+   - `character_flow` keeps only m = 9: with `convolution_power` wrong at m = 2, 0 checks fail (MEASURED).
+10. **Second values, core count, gauge-fixed checks and the PR #28 read row:** in no prediction row. The second values and the PR #28 row also appear after the first read.
+11. **Small items:**
+    - 0.0716 lies outside tanh β < 1/14
+    - 1.35e-52 is an upper bound rounded down (exact 1.359e-52)
+    - "ρ is a product over no local cells" has no proof and is false at constant w
+    - "every configuration" means 6, 4 and 6 read
+12. **Workflow gap:** the note and the first read are triggers that no step opens, which is how 179 passed. Row 31 is also free of the pin, by design.
+13. **Caveat for whoever reads u¹⁴ next, no hold:** the test's `count_surfaces` is exact at its budgets, but past them it counts closed cubes in part. At size 14 it reads 28, my route A 24, and route B 20. Route B's 20 is the correct one.
+
+## Every hold
+47 blocks: 10 high, 21 medium, 16 low. Each OLD was found exactly once, with no overlaps (`validate_holds.out`).
+
+**Note, `docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md`:**
+- H1 high: status count, 181 with 3 reads on 2 rows, and DERIVED/MEASURED/CONJECTURE/OPEN stated.
+- H2 medium: PR #28 relation, its order first and its scope.
+- H3 high: Scope, hypotheses, and H′ with visibility OPEN; d = 4 mass gap and continuum OPEN.
+- H4 medium: §4 closing sentence, coarse gap against m.
+- H5 medium: "product over no local cells" replaced with what is held and what is OPEN.
+- H6 low: "with no other term" replaced with "exactly".
+- H7 medium: what the truncation test brackets.
+- H8 low: 1.36e-52, and the range up to β = 1.2e-9.
+- H9 low: boundary is a union of whole lines.
+- H10 high: Z2 at u¹⁰ and u¹⁴, two points; SU(2) next term OPEN.
+- H11 medium: Theorem 13 title, gap on H′.
+- H12 medium: Theorem 13 conclusion, m′.
+- H13 medium: "uniform bound on H′", visibility OPEN.
+- H14 low: UH in d = 2, with the row sum.
+- H15 low: arcsinh step for n = 3 at β < 2.
+- H16 high: Theorem 14 reading, 4 ≤ bag < 6, 0.3439 g, tending to 0.5158 g.
+- H17 low: "bounds fail" replaced with the range and values.
+- H18 medium: "sharp map" replaced with line map.
+- H19 low: §7a tags.
+- H20 high: Balaban bullet, CANNOT_SEE stated, GPT-6's reading NAMED.
+- H21 medium: Decimation setting.
+- H22 high: Small volume, flux levels, count 0, "nearest among sources opened".
+- H23 low: 0.07155.
+- H24 medium: Tomboulis, with the reply.
+- H25 low: table, distinct V.
+- H26 medium: table, first dependence at b = 2 with empty orders.
+- H27 low: table, count in no prediction row.
+- H28 high: table, W defined; Q8 stated; second value read after the first read.
+- H29 medium: table, perfect squares; 0.3439 off them.
+- H30 low: table, walls as read.
+- H31 medium: first read at 175, plus a paragraph of narrowings.
+
+**Other repo files:**
+- H32 low, `README.md`: heading date.
+- H33 medium, `docs/PREDICTION-YM4-03.hbp`: correction row beside row 31.
+- H34 high, `README.md`: the YM4-03 row rewritten with each scope and tag.
+- H35 medium, `docs/PROOF_OBLIGATIONS.md`: row, what is explicit in d = 4.
+- H36 low, `docs/PROOF_OBLIGATIONS.md`: updated date.
+- H37 low, `docs/PROOF_OBLIGATIONS.md`: next task, a sentence the merge makes stale.
+- H38 medium, `tests/test_one_scale_blocking.py`: character flow condition.
+- H39 medium, `tests/test_one_scale_blocking.py`: the two literal-True rows read by brackets.
+- H40 medium, `.github/workflows/one-scale-blocking.yml`: step for the note's count and the first read's pin.
+
+A copy of the test with H38 and H39 reproduces the receipt byte for byte, and the gate on a clone reads failed=0.
+
+**PR #29 body** (file=PR29-BODY, saved in my folder):
+- H41 medium: coarse gap and visibility as read.
+- H42 medium: Read line.
+- H43 low: misses, the second a DERIVED law.
+- H44 high: m bound, and Theorem 5 of YM4-02e named.
+- H45 medium: leading order; read at b = 2; count at b = 3.
+- H46 high: Wilson form by group.
+- H47 low: "no other term".
+
+## What I could not check
+- **CANNOT_SEE, not opened:**
+  - The bodies of Balaban's papers and Lüscher 1983. Every literature "MEASURED" is the report's, which I did not re-audit.
+  - The operator's pasted routes and GPT-6's mirrors, left to the literature lane.
+  - The scispace copy, left unopened as the report left typeset.io copies.
+- **CANNOT_SEE, absent from the tree:**
+  - the test as first written, so 2 of the 6 checks added since the first read are unidentified
+  - any draft outside this worktree before 11:45Z
+  - whether FABLE5 had read PR #28 before 7e6b111
+- **NOT_MEASURED here:** the theorems as proofs, including Theorem 9's (a) to (d), and test mutation. Those belong to the other lanes.
+
+No token or key was seen, and none was searched for. Everything I started has ended, and E: and F: were not opened.
+
+Files are in C:/tmp/opus55/ym4-03-attack-text-20261105/:
+- FINDINGS.txt
+- HOLDS.txt
+- PR29-BODY.txt
+- validate_holds.out

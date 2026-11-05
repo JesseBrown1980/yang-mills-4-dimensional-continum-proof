@@ -10,6 +10,8 @@ on:
       - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
       - 'docs/PREDICTION-YM4-03.hbp'
       - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp'
+      - 'reviews/opus55-ym4-03/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -20,6 +22,8 @@ on:
       - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
       - 'docs/PREDICTION-YM4-03.hbp'
       - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp'
+      - 'reviews/opus55-ym4-03/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -38,6 +42,16 @@ jobs:
           set -euo pipefail
           got=$(head -n 30 docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)
           test "$got" = bcb1f24c0a6dd0e7942a9d4b5743145bf1536ec70854f65ff8e4854ff2c46a55
+          flux=$(sed -n 34,42p docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)
+          test "$flux" = 76e1d8f53e1519c82909004061c0587db59bf536902b6feb8610a2b2e7d82577
+      - name: The note names the receipt's count, and the first complete read stays on file
+        run: |
+          set -euo pipefail
+          n=$(sed -n 's/^YM4_03_DONE|checks=\([0-9]*\)|.*/\1/p' tests/ONE_SCALE_BLOCKING_RECEIPT.txt)
+          grep -qF "$n checks" docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md
+          echo "618b4414384b76e8e66a5c5cc482f962bcdb9f1c1b00c81ed4a2aa4311cf458c  reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp" | sha256sum -c -
+          echo "404cb4d79a5a77dbf26f9e50871ace546c0b80a5cd287dc950069ac6764d8c0a  reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp" | sha256sum -c -
+          cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS
       - name: The gate reads this tree
         run: |
           set -euo pipefail
@@ -70,6 +84,9 @@ jobs:
           read_sabotage wrong_first_coefficient 'first_dependence_(2,2,2,2)_position=0'
           read_sabotage extra_plaquette_factor 'brute_equals_elimination_S3'
           read_sabotage wrong_block_shell 'walls_Z2_4x2x2'
+          read_sabotage twist_every_link 'winding_parity_b=2'
+          read_sabotage flux_wrong_sign 'flux_ground_in_e=0_Z2_2x1'
+          read_sabotage overlap_skips_next 'overlap_bracket_Z2_2x1_(1, -1)'
       - name: An unknown sabotage name exits 2
         run: |
           set -euo pipefail

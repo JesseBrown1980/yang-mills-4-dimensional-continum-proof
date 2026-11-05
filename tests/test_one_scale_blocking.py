@@ -16,7 +16,7 @@ import sys
 import time
 
 START_NS = time.perf_counter_ns()
-SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell")
+SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell", "twist_every_link", "flux_wrong_sign", "overlap_skips_next")
 SABOTAGE = ""
 for argument in sys.argv[1:]:
     if not argument.startswith("sabotage=") or argument.split("=", 1)[1] not in SABOTAGE_NAMES:
@@ -326,7 +326,7 @@ def section_loops():
                     rows += 1
                     good += coarse_hol == fine_hol
                     routes += mat_reduce(mat_from_quat(fine_hol)) == mat_reduce(fine_mat)
-                    noncommuting += (coarse_hol[1], coarse_hol[2], coarse_hol[3]) != (0, 0, 0)
+                    noncommuting += qmul(coarse_hol, V[(x_c, word[0][0])]) != qmul(V[(x_c, word[0][0])], coarse_hol)
             check("closed_loops_%s_%s" % (name, family), good == rows)
             check("two_routes_%s_%s" % (name, family), routes == rows)
             say("YM4_03_LOOPS|%s|family=%s|rows=%d|equal=%d|routes_equal=%d|json=0" % (name, family, rows, good, routes))
@@ -687,20 +687,22 @@ def section_pushforward():
         w = weight_three_plus(name)
         lat = FiniteLattice(sides, b)
         raw, total = brute_density(lat, g, w)
-        check("normalization_%s" % name, sum(raw.values()) == total)
         coarse_count = len(lat.coarse_links)
         equal = rows = 0
+        eliminated = {}
         for V in itertools.product(range(g.n), repeat=coarse_count):
             if rows >= 40 and name == "S3":
                 break
             rows += 1
-            equal += raw_density(lat, g, w, V, extra=(SABOTAGE == "extra_plaquette_factor")) == raw.get(V, 0)
+            eliminated[V] = raw_density(lat, g, w, V, extra=(SABOTAGE == "extra_plaquette_factor"))
+            equal += eliminated[V] == raw.get(V, 0)
+        check("normalization_%s" % name, sum(eliminated.values()) == total)
         check("brute_equals_elimination_%s" % name, equal == rows)
         check("gauge_fixed_equals_brute_%s" % name, all(raw_fixed(lat, g, w, V) == value for V, value in itertools.islice(raw.items(), 0, 40)))
         # F: a noncommuting coarse Wilson loop, and a function that is gauge-variant.
         left_loop = 0
         right_loop = 0
-        for V, value in raw.items():
+        for V, value in eliminated.items():
             loop = lat.word_value(lat.coarse_plaquettes[0], V, g)
             f_value = w[loop]
             left_loop += f_value * value
@@ -806,7 +808,7 @@ def real_characters(name):
 
 def section_two_dimensions():
     stamp("two_dimensions")
-    cases = [("Z3", (2, 2), (2, 2), 81), ("S3", (2, 2), (2, 2), 60), ("Q8", (2, 2), (2, 2), 40), ("2T", (2, 2), (2, 2), 12), ("Z3", (3, 3), (3, 3), 81), ("S3", (3, 3), (3, 3), 8), ("Z3", (4, 2), (2, 2), 40), ("S3", (4, 2), (2, 2), 6)]
+    cases = [("Z3", (2, 2), (2, 2), 81), ("S3", (2, 2), (2, 2), 60), ("Q8", (2, 2), (2, 2), 40), ("2T", (2, 2), (2, 2), 12), ("Z3", (3, 3), (3, 3), 81), ("S3", (3, 3), (3, 3), 8), ("Z3", (4, 2), (2, 2), 40), ("S3", (4, 2), (2, 2), 6), ("Z3", (4, 4), (2, 2), 12), ("S3", (4, 4), (2, 2), 6)]
     for name, sides, b, limit in cases:
         g = GROUPS[name]
         w = weight_three_plus(name)
@@ -839,7 +841,7 @@ def section_two_dimensions():
             for m in (2, 4, 9):
                 power = convolution_power(g, w, m)
                 got = frac(sum(power[i] * values[g.inverse[i]] for i in range(g.n)), ipow(g.n, m - 1) * g.n * dimension)
-                good = good and got == (ipow(base[0], m), ipow(base[1], m)) or got == frac(ipow(base[0], m), ipow(base[1], m))
+                good = good and got == frac(ipow(base[0], m), ipow(base[1], m))
             check("character_flow_%s_%s" % (name, label), good)
             say("YM4_03_CHARACTER_FLOW|group=%s|character=%s|dimension=%d|c=%s|c_at_m=2,4,9_equals_c^m=%d|json=0" % (name, label, dimension, show(base), good))
     # No term beyond the plaquette in d = 2: the four-point ratio on links in no common coarse plaquette.
@@ -915,7 +917,7 @@ def section_three_dimensions():
 T2_QUATS = [quat_norm((e[0], e[1], e[2], e[3], 2)) for e in T2_ELEMENTS]
 
 
-def term_for_component(lat, multiset, line_values):
+def term_for_component(lat, multiset, line_values, points=None):
     """E[prod a_p^m] over the off links the set touches, by 2T within its degree, with the lines carrying V at a chosen position.
     Gauge at the sites of the set with no coarse site or line fixes one link per spanning step, so the sum stays small."""
     used = {}
@@ -983,7 +985,7 @@ def term_for_component(lat, multiset, line_values):
         values[link] = Q_ONE
     total = (0, 1)
     count = 0
-    for assignment in itertools.product(T2_QUATS, repeat=len(variables)):
+    for assignment in itertools.product(points or T2_QUATS, repeat=len(variables)):
         for link, q in zip(variables, assignment):
             values[link] = q
         product = (1, 1)
@@ -1157,12 +1159,23 @@ def lines_with_V(lat, V_quats, position):
     return values
 
 
+def flat_filling_coefficient(bi):
+    """E_V of the flat b x b filling over chi(V_p') on (Z/b)^3, at noncommuting V. Each free link of the filling has degree 2, so the four points 1, i, j, k, a design of degree 2, carry the average."""
+    lat = FiniteLattice((bi, bi, bi), (bi, bi, bi))
+    v_x, v_y = (3, 4, 0, 0, 5), (5, 0, 12, 0, 13)
+    multiset = tuple(sorted((lat.plaquette_keys.index(((s, r, 0), 0, 1)), 1) for s in range(bi) for r in range(bi)))
+    term = term_for_component(lat, multiset, lines_with_V(lat, [v_x, v_y, Q_ONE], 0), [(1, 0, 0, 0, 1), (0, 1, 0, 0, 1), (0, 0, 1, 0, 1), (0, 0, 0, 1, 1)])
+    chi = fmul((2, 1), half_trace(qmul(qmul(qmul(v_x, v_y), qinv(v_x)), qinv(v_y))))
+    return frac(term[0] * chi[1], term[1] * chi[0])
+
+
 def section_first_dependence():
     stamp("first_dependence")
     coefficient = (1, 64) if SABOTAGE == "wrong_first_coefficient" else (1, 128)
-    read_row("leading_coefficient_b=2", (1, 128) == frac(ipow(2, 1), ipow(2, 8)), show(frac(2, 256)), "1/128")
-    read_row("leading_coefficient_b=3", (1, 131072) == frac(2, ipow(2, 18)), show(frac(2, ipow(2, 18))), "1/131072")
-    pool = quaternion_pool(2026, 12)
+    read_b2, read_b3 = flat_filling_coefficient(2), flat_filling_coefficient(3)
+    read_row("leading_coefficient_b=2", (1, 128) == read_b2, show(read_b2), "1/128")
+    read_row("leading_coefficient_b=3", (1, 131072) == read_b3, show(read_b3), "1/131072")
+    pool = [q for q in quaternion_pool(2026, 40) if (q[1], q[2], q[3]) != (0, 0, 0)][:12]
     for sides in ((2, 2, 2, 2), (4, 2, 2, 2)):
         lat = FiniteLattice(sides, (2, 2, 2, 2))
         count = len(lat.coarse_links)
@@ -1354,6 +1367,7 @@ class Transfer:
         configs = list(itertools.product(range(n), repeat=count))
         self.configs = configs
         index = {c: i for i, c in enumerate(configs)}
+        self.index = index
         parent = list(range(len(configs)))
 
         def find(i):
@@ -1483,6 +1497,16 @@ def section_coarse_space():
             w = [3, 1]
         model = Transfer(name, sides, w)
         g = model.g
+        # The transfer model against the lattice's own plaquette words, and its time kernel's symmetry in the orbit measure.
+        word_lattice = FiniteLattice(sides, b_space)
+        same_plaquettes = True
+        for rep, value in zip(model.reps, model.diag):
+            product = 1
+            for word in word_lattice.plaquettes:
+                product *= w[word_lattice.word_value(word, rep, g)]
+            same_plaquettes = same_plaquettes and product == value
+        check("transfer_plaquettes_match_lattice_%s_%s" % (name, "x".join(map(str, sides))), same_plaquettes)
+        check("transfer_kernel_symmetric_%s_%s" % (name, "x".join(map(str, sides))), all(model.sizes[a] * model.kernel[a][c] == model.sizes[c] * model.kernel[c][a] for a in range(model.m) for c in range(a)))
         coarse_sides = tuple(s // bi for s, bi in zip(sides, b_space))
         coarse_keys = []
         for x_c in sites_of(coarse_sides):
@@ -1558,7 +1582,7 @@ def section_coarse_space():
 
         unit_vectors = [[1 if i == k else 0 for i in range(model.m)] for k in range(model.m)]
         small_enough = model.m <= 60
-        part_g, part_k = pencil(kept, b_time) if small_enough else (None, None)
+        part_g, part_k = pencil(kept, b_time)
         whole_g, whole_k = pencil(unit_vectors, b_time) if small_enough else (None, None)
 
         def above(big_g, big_k, t_n, t_d):
@@ -1594,8 +1618,8 @@ def section_coarse_space():
         if small_enough:
             top_equal = above(part_g, part_k, lo_n, lo_d) >= 1 and above(part_g, part_k, hi_n, hi_d) == 0 and above(whole_g, whole_k, lo_n, lo_d) >= 1 and above(whole_g, whole_k, hi_n, hi_d) == 0
         else:
-            # The vector lies in W by closure, so its bracket holds the top of W and of the whole space, by Perron-Frobenius on the positive matrix.
-            top_equal = rational_basis_add([list(r) for r in basis], list(pivots), [1] * model.m) is False
+            # The whole space's top lies in the bracket by Collatz-Wielandt on the positive matrix S^b, and the pencil on W reads W's top in the same bracket.
+            top_equal = above(part_g, part_k, lo_n, lo_d) >= 1 and above(part_g, part_k, hi_n, hi_d) == 0
         check("coarse_space_top_equal_%s_%s" % (name, "x".join(map(str, sides))), top_equal)
         # The next value: at thresholds running down from the top, W never holds more eigenvalues above t than the whole space.
         counts_ok = True
@@ -1622,14 +1646,14 @@ def section_coarse_space():
 
             value_part = second_value(part_g, part_k)
             value_whole = second_value(whole_g, whole_k)
-            # Inclusion: the second value on W is at most the one on the whole space, within the bisection's step.
-            check("coarse_space_second_value_%s_%s" % (name, "x".join(map(str, sides))), value_part <= value_whole + (lo_n >> 46))
+            # The note's table reads the second value on W equal to the whole space's: within the bisection's step, on each case read.
+            check("coarse_space_second_value_%s_%s" % (name, "x".join(map(str, sides))), abs(value_part - value_whole) <= (lo_n >> 46))
             second_part = "%d" % (value_part * 1000000 // lo_n)
             second_whole = "%d" % (value_whole * 1000000 // lo_n)
         say("YM4_03_COARSE_SPACE|group=%s|spatial=%s|b_space=%s|b_time=%d|orbits=%d|coarse_functions=%d|dim_W=%d|closed=%d|top_equal=%d|above_t_W/whole_at_(3/4)^k=%s|second_over_top_ppm_on_W=%s|second_over_top_ppm_on_the_whole=%s|json=0" % (name, "x".join(map(str, sides)), "x".join(map(str, b_space)), b_time, model.m, len(indicators), rank, closed, top_equal, ",".join(visible), second_part, second_whole))
-        # Reflection positivity of coarse slice observables: Tr(M_i T^(2b) M_j T^(2b)) has no negative eigenvalue.
+        # Reflection positivity of coarse slice observables through a link plane: Tr(M_i T^(2b+1) M_j T^(2b+1)) has no negative eigenvalue when T is positive. At an even power the Gram is positive for every symmetric T.
         if name in ("Z3", "S3", "Q8") and model.m <= 200:
-            two = 2 * b_time
+            two = 2 * b_time + 1
             images = []
             for indicator in indicators:
                 moved = indicator
@@ -1801,8 +1825,14 @@ def section_su2_two_dimensions():
         if beta == 4096:
             read_row("su2_delta_as_beta_grows_near_0.0099", 9000 <= delta_lo * 1000000 >> BITS and (delta_hi * 1000000 >> BITS) <= 10800, "%d_ppm" % (delta_hi * 1000000 >> BITS), "near_9900_ppm")
     # The exact gap on the shortest circle against the bound: log(1/t2^L)/... reads at L = b.
-    read_row("su2_m_over_g_bound", True, "2063437/4_ppm_of_g=515859", "0.516")
-    read_row("su2_exact_m_over_g_at_l=4/g", True, "3*4/8=3/2", "1.5")
+    # log(1/(4 - sqrt 15)) = log(4 + sqrt 15), read between 2.063437 and 2.063438 by the exponential's bracket.
+    four_plus_root = (4 << BITS) + math.isqrt(15 << (2 * BITS))
+    constant_ok = exp_bracket(2063437, 1000000)[1] <= four_plus_root and four_plus_root + 1 <= exp_bracket(2063438, 1000000)[0]
+    read_row("su2_m_over_g_bound", constant_ok, "2063437/4_ppm_of_g=515859", "0.516")
+    # The exact m/g at l = 4/g is -beta log t_2. At the last beta of the grid, read between 149/100 and 151/100.
+    t2_power = power_bracket(t[2][0], t[2][1], beta)
+    exact_ok = exp_bracket(-151, 100)[1] <= t2_power[0] and t2_power[1] <= exp_bracket(-149, 100)[0]
+    read_row("su2_exact_m_over_g_at_l=4/g", exact_ok, "3*4/8=3/2", "1.5")
     # The truncation and the expansion itself: at m = 1 the series against e^(beta cos theta)/((2/beta) I_1), at rational cos theta.
     for beta in (1, 4):
         i1 = bessel_bracket(1, beta)
@@ -1961,6 +1991,7 @@ def section_z2_surfaces():
         below = sum(v for k, v in counts.items() if k < 8)
         check("z2_perpendicular_leading_d=%d" % d, coefficient_8 == 1 and below == 0 and single.get(4, 0) == 1)
         read_row("z2_nonlocal_perpendicular_d=%d" % d, coefficient_10 == 2, "%d_at_u^10" % coefficient_10, "2_at_u^10")
+        check("z2_perpendicular_three_at_u^10_d=%d" % d, coefficient_10 == 3)
         say("YM4_03_Z2_PERPENDICULAR|d=%d|fine=8^%d|surfaces_by_size=%s|single_filling_by_size=%s|json=0" % (d, d, ",".join("%d:%d" % (k, counts[k]) for k in sorted(counts)), ",".join("%d:%d" % (k, single[k]) for k in sorted(single))))
     d = 3
     sides = (12, 12, 12)
@@ -1976,12 +2007,355 @@ def section_z2_surfaces():
     term_12 = counts.get(12, 0) - 2 * a4 * a8
     term_10 = counts.get(10, 0)
     read_row("z2_nonlocal_parallel", term_8 == 0 and term_10 == 0 and term_12 == 0, "u^8:%d,u^10:%d,u^12:%d" % (term_8, term_10, term_12), "0,0,0")
+    check("z2_parallel_vanishes_through_u^12", term_8 == 0 and term_10 == 0 and term_12 == 0)
     say("YM4_03_Z2_PARALLEL|d=3|fine=12^3|surfaces_by_size=%s|single_filling_by_size=%s|json=0" % (",".join("%d:%d" % (k, counts[k]) for k in sorted(counts)), ",".join("%d:%d" % (k, single[k]) for k in sorted(single))))
+
+
+# ---- Electric flux: the center twist, its sectors, and what coarse observables reach in them.
+
+CENTER = {"Z2": 1, "Q8": 1}
+
+
+def fundamental_character(name):
+    if name == "Z2":
+        return [1, -1]
+    if name == "Q8":
+        return [e[0] for e in Q8_ELEMENTS]
+    raise ValueError(name)
+
+
+def twist_perm(model, mu, s):
+    """The action of Z_mu on orbits: z times U_mu on the plane x_mu = s. The check that an orbit goes to one orbit is in the caller."""
+    g = model.g
+    z = CENTER[model.name]
+    links = [link for (x, nu), link in model.links.items() if nu == mu and (x[mu] == s or SABOTAGE == "twist_every_link")]
+    perm = []
+    single = True
+    for members in model.orbits:
+        images = set()
+        for i in members:
+            moved = list(model.configs[i])
+            for link in links:
+                moved[link] = g.table[z][moved[link]]
+            images.add(model.orbit_of[model.index[tuple(moved)]])
+        single = single and len(images) == 1
+        perm.append(min(images))
+    return perm, single
+
+
+def holonomy_function(model, coarse_b, path, character):
+    """character(holonomy of the fine path), as a value per orbit, and whether it is constant on each orbit. path is a list of (mu, sign, count) steps from the origin."""
+    g = model.g
+    sides = model.sides
+    values = []
+    invariant = True
+    for members in model.orbits:
+        seen = set()
+        for i in members:
+            c = model.configs[i]
+            x = (0,) * model.d
+            out = g.identity
+            for mu, sign, count in path:
+                for _ in range(count):
+                    if sign > 0:
+                        out = g.table[out][c[model.links[(x, mu)]]]
+                        x = add(x, mu, sides)
+                    else:
+                        x = add(x, mu, sides, -1)
+                        out = g.table[out][g.inverse[c[model.links[(x, mu)]]]]
+            seen.add(character[out])
+        invariant = invariant and len(seen) == 1
+        values.append(min(seen))
+    return values, invariant
+
+
+def weighted(model, a, c):
+    return sum(s * d * x * y for s, d, x, y in zip(model.sizes, model.diag, a, c))
+
+
+def reduced(vector):
+    g0 = 0
+    for x in vector:
+        g0 = math.gcd(g0, x)
+    return [x // g0 for x in vector] if g0 > 1 else list(vector)
+
+
+def pencil_on(model, basis):
+    images = [model.apply_s(v) for v in basis]
+    size = len(basis)
+    big_g = [[weighted(model, basis[i], basis[j]) for j in range(size)] for i in range(size)]
+    big_k = [[weighted(model, basis[i], images[j]) for j in range(size)] for i in range(size)]
+    return big_g, big_k
+
+
+def count_above(pencil, value, shift):
+    """How many eigenvalues of the pencil lie above value / 2^shift."""
+    big_g, big_k = pencil
+    size = len(big_g)
+    rows = [[(big_k[i][j] << shift) - value * big_g[i][j] for j in range(size)] for i in range(size)]
+    return inertia_positive(rows)[0]
+
+
+def level_bracket(pencil, top, wanted, shift):
+    """(low, high) at scale 2^shift, with at least `wanted` eigenvalues above low and fewer above high, one unit apart."""
+    low, high = 0, top
+    if count_above(pencil, low, shift) < wanted:
+        return 0, 0
+    while high - low > 1:
+        middle = (low + high) // 2
+        if count_above(pencil, middle, shift) >= wanted:
+            low = middle
+        else:
+            high = middle
+    return low, high
+
+
+def certify_overlap(model, w, top_low, top_high, next_high, shift, label, slack=0):
+    """The share of w in the eigenspace of the top value, between a certified low and high, from <w, T^(2n) w>, with the other eigenvalues in [0, next_high], all three at scale 2^shift. Slack, in units of 10^-9, takes out what the ground holds of w in e = 0."""
+    norm = weighted(model, w, w)
+    lows, highs = [], []
+    moved = list(w)
+    done = 0
+    for n in (2, 4, 8, 16, 32, 64):
+        while done < n:
+            moved = model.apply_s(moved)
+            done += 1
+        a = weighted(model, moved, moved) << (2 * n * shift)
+        skip = SABOTAGE == "overlap_skips_next"
+        rest = 0 if skip else ipow(next_high, 2 * n)
+        numerator = a - rest * norm
+        denominator = (ipow(top_high, 2 * n) - rest) * norm
+        lows.append((numerator * 1000000000) // denominator - slack)
+        highs.append((a * 1000000000) // (ipow(top_low, 2 * n) * norm) + 1)
+    low, high = max(lows), min(highs)
+    check("overlap_bracket_%s" % label, low <= high)
+    return low, high
+
+
+def section_flux():
+    stamp("electric_flux")
+    averages = []
+    for n in range(1, 7):
+        total = (0, 1)
+        for q in T2_QUATS:
+            cos_theta = half_trace(q)
+            total = fadd(total, chebyshev_u(n, cos_theta[0], cos_theta[1]))
+        averages.append(total)
+    check("t2_is_a_design_of_degree_5", all(a[0] == 0 for a in averages[:5]) and averages[5] == (24, 1))
+    say("YM4_03_T2_DESIGN|sum_of_chi_n/2_over_the_24_elements,n=1..6=%s|json=0" % ",".join(show(a) for a in averages))
+    # Winding parity on the four-dimensional lattice, on exact quaternions, at every plane.
+    for bi, side in ((2, 4), (3, 6)):
+        pool = quaternion_pool(4040 + bi, 48)
+        stream = Stream(5050 + bi)
+        sides = (side,) * 4
+        sites = sites_of(sides)
+        U = {(x, mu): pool[stream.next(48)] for x in sites for mu in range(4)}
+        minus = (-1, 0, 0, 0, 1)
+        b = (bi,) * 4
+        good = rows = 0
+        for s in range(side):
+            twisted = dict(U)
+            for (x, mu), value in U.items():
+                if mu == 0 and (x[0] == s or SABOTAGE == "twist_every_link"):
+                    twisted[(x, mu)] = qmul(minus, value)
+            for start_c in sites_of((2, 2, 2, 2)):
+                start = tuple(c * bi for c in start_c)
+                # Once around in direction 0, twice around, and a contractible coarse loop.
+                once, _ = holonomy_steps(U, start, ((0, 1), (0, 1)), sides, qmul, qinv, Q_ONE, b)
+                once_t, _ = holonomy_steps(twisted, start, ((0, 1), (0, 1)), sides, qmul, qinv, Q_ONE, b)
+                twice_t, _ = holonomy_steps(twisted, start, ((0, 1), (0, 1), (0, 1), (0, 1)), sides, qmul, qinv, Q_ONE, b)
+                twice, _ = holonomy_steps(U, start, ((0, 1), (0, 1), (0, 1), (0, 1)), sides, qmul, qinv, Q_ONE, b)
+                loop = ((0, 1), (1, 1), (0, -1), (1, -1))
+                closed, _ = holonomy_steps(U, start, loop, sides, qmul, qinv, Q_ONE, b)
+                closed_t, _ = holonomy_steps(twisted, start, loop, sides, qmul, qinv, Q_ONE, b)
+                rows += 1
+                good += once_t == qmul(minus, once) and twice_t == twice and half_trace(closed_t) == half_trace(closed)
+        check("winding_parity_b=%d" % bi, good == rows)
+        say("YM4_03_WINDING_PARITY|b=%d|fine=%d^4|planes=%d|rows=%d|as_the_law_says=%d|json=0" % (bi, side, side, rows, good))
+    if SABOTAGE == "twist_every_link":
+        return
+    # The sectors on small spatial lattices.
+    for name, sides, b_space in (("Z2", (2, 1), (2, 1)), ("Z2", (2, 2), (2, 2)), ("Z2", (3, 1), (3, 1)), ("Z2", (3, 2), (3, 2)), ("Q8", (2, 1), (2, 1))):
+        tag = "%s_%s" % (name, "x".join(map(str, sides)))
+        w = [3, 1] if name == "Z2" else weight_three_plus(name)
+        model = Transfer(name, sides, w)
+        d = len(sides)
+        perms = []
+        commute = True
+        planes_equal = True
+        single_orbit = True
+        for mu in range(d):
+            perm, single = twist_perm(model, mu, 0)
+            single_orbit = single_orbit and single
+            for s in range(1, sides[mu]):
+                other, single_s = twist_perm(model, mu, s)
+                single_orbit = single_orbit and single_s
+                planes_equal = planes_equal and other == perm
+            perms.append(perm)
+            commute = commute and all(model.diag[perm[a]] == model.diag[a] and model.sizes[perm[a]] == model.sizes[a] for a in range(model.m))
+            commute = commute and all(model.kernel[perm[a]][perm[c]] == model.kernel[a][c] for a in range(model.m) for c in range(model.m))
+        check("flux_commutation_%s" % tag, commute and single_orbit)
+        check("flux_planes_equal_%s" % tag, planes_equal)
+        # The rational Perron vector, with the bits held down the same way at every coordinate, so its symmetry stays exact.
+        u = [1] * model.m
+        for _ in range(240):
+            u = reduced(model.apply_s(u))
+            top_bits = max(x.bit_length() for x in u)
+            if top_bits > 3072:
+                u = [(x >> (top_bits - 3072)) + 1 for x in u]
+        check("flux_perron_vector_even_%s" % tag, all(u[perm[a]] == u[a] for perm in perms for a in range(model.m)))
+        moved = model.apply_s(u)
+        ratio_high = max(((m_ << 64) // x) + 1 for m_, x in zip(moved, u))
+        ratio_low = min((m_ << 64) // x for m_, x in zip(moved, u))
+        lam_low, lam_high = ratio_low >> 64, (ratio_high >> 64) + 1
+        # Sectors.
+        sector_rows = []
+        whole_top = lam_high
+        results = {}
+        for e in itertools.product((1, -1), repeat=d):
+            basis, pivots, kept = [], [], []
+            for k in range(model.m):
+                vector = [0] * model.m
+                terms = [(k, 1)]
+                for mu in range(d):
+                    sign = e[mu]
+                    if SABOTAGE == "flux_wrong_sign" and mu == 0:
+                        sign = -sign
+                    next_terms = {}
+                    for a, coefficient in terms:
+                        next_terms[a] = next_terms.get(a, 0) + coefficient
+                        image = perms[mu][a]
+                        next_terms[image] = next_terms.get(image, 0) + sign * coefficient
+                    terms = list(next_terms.items())
+                for a, coefficient in terms:
+                    vector[a] += coefficient
+                if any(vector) and rational_basis_add(basis, pivots, vector):
+                    kept.append(reduced(vector))
+            results[e] = dict(dimension=len(kept), basis=kept)
+        total_dimension = sum(r["dimension"] for r in results.values())
+        check("flux_sectors_span_%s" % tag, total_dimension == model.m)
+        shift = max(0, (32 if model.m > 60 else 44) - whole_top.bit_length())
+        whole_top = whole_top << shift
+        zero = (1,) * d
+        for e, record in results.items():
+            if record["dimension"] == 0:
+                record["levels"] = None
+                continue
+            pencil = pencil_on(model, record["basis"])
+            record["pencil"] = pencil
+            levels = []
+            if e == zero:
+                needed = 3
+            else:
+                needed = 2
+            wanted = 1
+            while len(levels) < needed and wanted <= record["dimension"]:
+                low, high = level_bracket(pencil, whole_top, wanted, shift)
+                multiplicity = count_above(pencil, low, shift)
+                levels.append((low, high, multiplicity))
+                wanted = multiplicity + 1
+            record["levels"] = levels
+            check("flux_spectrum_at_least_minus_the_step_%s_%s" % (tag, e), count_above(pencil, -1, shift) == record["dimension"])
+        ground = results[zero]["levels"][0]
+        check("flux_ground_in_e=0_%s" % tag, ground[2] == 1 and all(results[e]["levels"] is None or results[e]["levels"][0][1] <= ground[1] for e in results))
+        check("flux_ground_is_perron_%s" % tag, ground[0] <= lam_high << shift and lam_low << shift <= ground[1])
+        # The named coarse functions.
+        coarse = tuple(s // bi for s, bi in zip(sides, b_space))
+        character = fundamental_character(name)
+        windings = {}
+        for mu in range(d):
+            windings[mu] = holonomy_function(model, b_space, [(mu, 1, sides[mu])], character)
+            check("flux_winding_function_invariant_%s_%d" % (tag, mu), windings[mu][1])
+        # Epsilon, the rational Perron vector's error: its residual over the gap, as squares, at 2^-200 of the unit.
+        rho_n = weighted(model, u, moved)
+        rho_d = weighted(model, u, u)
+        residual = [rho_d * m_ - rho_n * x for m_, x in zip(moved, u)]
+        residual_sq = weighted(model, residual, residual)
+        gap = (rho_n << shift) // rho_d - results[zero]["levels"][1][1] if len(results[zero]["levels"]) > 1 else (rho_n << shift) // rho_d
+        check("flux_gap_positive_%s" % tag, gap > 0)
+        # delta^2 <= residual^2/gap^2. In e = 0 the certificate multiplies what is left of Omega by (ground/first)^128, so that product has to stay below 2^-60.
+        first_low = results[zero]["levels"][1][0] if len(results[zero]["levels"]) > 1 else 1
+        epsilon_ok = (residual_sq * ipow(ground[1], 128)) << (60 + 2 * shift) <= (gap * gap) * rho_d * rho_d * rho_d * ipow(max(first_low, 1), 128)
+        check("flux_rational_omega_close_%s" % tag, epsilon_ok)
+        delta_rows = []
+        for e, record in results.items():
+            if record["levels"] is None:
+                continue
+            path = []
+            for mu in range(d):
+                if e[mu] < 0:
+                    path.append((mu, 1, sides[mu]))
+            if path:
+                f_values, invariant = holonomy_function(model, b_space, path, character)
+                check("flux_function_invariant_%s_%s" % (tag, e), invariant)
+                charged = all(f_values[perms[mu][a]] == (e[mu] * f_values[a]) for mu in range(d) for a in range(model.m))
+                check("winding_parity_on_orbits_%s_%s" % (tag, e), charged)
+                access = any(f_values)
+                check("coarse_sector_access_%s_%s" % (tag, e), access)
+                # P_e(F) nonzero, read through the sector's own basis: F lies in the sector.
+                in_sector = rank_keeps(record["basis"], f_values)
+                check("coarse_function_in_sector_%s_%s" % (tag, e), in_sector)
+                vector = [f * x for f, x in zip(f_values, u)]
+                top_low, top_high, mult = record["levels"][0]
+                next_high = record["levels"][1][1] if len(record["levels"]) > 1 else 0
+                low, high = certify_overlap(model, vector, top_low, top_high, next_high, shift, "%s_%s" % (tag, e))
+                visible = low > 0
+                read_row("lowest_state_visible_%s_e=%s" % (tag, ",".join(map(str, e))), visible, "share_e-9_in_[%d,%d]_of_multiplicity_%d" % (low, high, mult), "positive")
+                delta_rows.append((e, top_high, mult, low, high, "winding"))
+            else:
+                # e = 0: a contractible or even coarse function, with Omega taken out; failing that, two insertions.
+                candidates = []
+                if d >= 2:
+                    mu, nu = 0, 1
+                    candidates.append(("commutator", [(mu, 1, sides[mu]), (nu, 1, sides[nu]), (mu, -1, sides[mu]), (nu, -1, sides[nu])]))
+                top_low, top_high, mult = record["levels"][1] if len(record["levels"]) > 1 else (0, 0, 0)
+                next_high = record["levels"][2][1] if len(record["levels"]) > 2 else 0
+                found = None
+                for label, path_c in candidates:
+                    f_values, invariant = holonomy_function(model, b_space, path_c, character)
+                    check("flux_even_function_invariant_%s_%s" % (tag, label), invariant)
+                    vector = [f * x for f, x in zip(f_values, u)]
+                    along = weighted(model, u, vector)
+                    norm_u = weighted(model, u, u)
+                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                    if any(abs(c) >> 3000 for c in centered):
+                        found = (label, reduced(centered))
+                        break
+                read_row("first_excited_visible_single_insertion_%s" % tag, found is not None, found[0] if found else "only_constants_among_even_single_insertions", "a_contractible_or_even_coarse_F")
+                if found is None:
+                    # F T^b F Omega, with the first winding function, in e = 0.
+                    f_values = windings[0][0]
+                    vector = [f * x for f, x in zip(f_values, u)]
+                    for _ in range(b_space[0]):
+                        vector = model.apply_s(vector)
+                    vector = [f * x for f, x in zip(f_values, vector)]
+                    along = weighted(model, u, vector)
+                    norm_u = weighted(model, u, u)
+                    centered = [norm_u * v - along * x for v, x in zip(vector, u)]
+                    found = ("winding_T^b_winding", reduced(centered))
+                low, high = certify_overlap(model, found[1], top_low, top_high, next_high, shift, "%s_e=0" % tag, slack=1)
+                read_row("first_excited_visible_%s" % tag, low > 0, "%s_share_e-9_in_[%d,%d]_of_multiplicity_%d" % (found[0], low, high, mult), "positive")
+                delta_rows.append((e, top_high, mult, low, high, found[0]))
+        # Delta_full, read off the rows as the larger of the two ratios to the ground value.
+        ground_low = ground[0]
+        flux_top = max((row[1] for row in delta_rows if row[0] != zero), default=0)
+        zero_top = max((row[1] for row in delta_rows if row[0] == zero), default=0)
+        full_top = max(flux_top, zero_top)
+        say("YM4_03_FLUX|%s|orbits=%d|sector_dimensions=%s|top_e=0_over_ground_ppm=%d|top_flux_over_ground_ppm=%d|lowest_of_the_two_gaps=%s|json=0" % (tag, model.m, ",".join("%s:%d" % ("".join("+" if x > 0 else "-" for x in e), r["dimension"]) for e, r in results.items()), zero_top * 1000000 // ground_low, flux_top * 1000000 // ground_low, "flux" if flux_top >= zero_top else "e=0"))
+        check("flux_full_gap_is_the_min_%s" % tag, full_top == max(zero_top, flux_top))
+
+
+def rank_keeps(basis, vector):
+    """True when vector lies in the span of basis, exactly."""
+    rows, pivots = [], []
+    for row in basis:
+        rational_basis_add(rows, pivots, row)
+    return not rational_basis_add(rows, pivots, vector)
 
 
 def section_walls():
     stamp("walls")
-    for name, sides, b, trials in (("Z2", (2, 2, 2), (2, 2, 2), 6), ("Z2", (4, 2, 2), (2, 2, 2), 4), ("S3", (2, 2), (2, 2), 6)):
+    for name, sides, b, trials in (("Z2", (2, 2, 2), (2, 2, 2), 6), ("Z2", (4, 2, 2), (2, 2, 2), 4), ("S3", (2, 2), (2, 2), 6), ("S3", (4, 2), (2, 2), 4), ("Z2", (2, 4, 2), (2, 2, 2), 4), ("Z2", (2, 2, 4), (2, 2, 2), 4)):
         g = GROUPS[name]
         w = [3, 1] if name == "Z2" else weight_three_plus(name)
         lat = FiniteLattice(sides, b)
@@ -2073,6 +2447,7 @@ def main():
     section_su2_two_dimensions()
     section_z2_surfaces()
     section_walls()
+    section_flux()
     stamp("done")
     say("YM4_03_DONE|checks=%d|failed=%d|prediction_misses=%d|misses=%s|json=0" % (CHECKS[0], len(FAILS), len(MISSES), ",".join(MISSES) if MISSES else "none"))
     return 1 if FAILS else 0

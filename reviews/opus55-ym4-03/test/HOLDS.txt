@@ -1,0 +1,334 @@
+HOLD H1 | file=tests/test_one_scale_blocking.py | severity=high
+OLD<<<
+    cases = [("Z3", (2, 2), (2, 2), 81), ("S3", (2, 2), (2, 2), 60), ("Q8", (2, 2), (2, 2), 40), ("2T", (2, 2), (2, 2), 12), ("Z3", (3, 3), (3, 3), 81), ("S3", (3, 3), (3, 3), 8), ("Z3", (4, 2), (2, 2), 40), ("S3", (4, 2), (2, 2), 6)]
+>>>
+NEW<<<
+    cases = [("Z3", (2, 2), (2, 2), 81), ("S3", (2, 2), (2, 2), 60), ("Q8", (2, 2), (2, 2), 40), ("2T", (2, 2), (2, 2), 12), ("Z3", (3, 3), (3, 3), 81), ("S3", (3, 3), (3, 3), 8), ("Z3", (4, 2), (2, 2), 40), ("S3", (4, 2), (2, 2), 6), ("Z3", (4, 4), (2, 2), 12), ("S3", (4, 4), (2, 2), 6)]
+>>>
+REASON: Every coarse plaquette read so far has coarse side 1 in nu, so x'+nu = x': mutant m07, third coarse link at x' in place of x'+nu, exits 0 with the receipt byte for byte. With 4x4 read, m07 fires two_dimensions_closes on Z3 and S3 there, and the true code passes on all 12 and 6 V. Two rows join the receipt, which must be regenerated.
+
+HOLD H2 | file=tests/test_one_scale_blocking.py | severity=high
+OLD<<<
+            # The vector lies in W by closure, so its bracket holds the top of W and of the whole space, by Perron-Frobenius on the positive matrix.
+            top_equal = rational_basis_add([list(r) for r in basis], list(pivots), [1] * model.m) is False
+>>>
+NEW<<<
+            # The whole space's top lies in the bracket by Collatz-Wielandt on the positive matrix S^b, and the pencil on W reads W's top in the same bracket.
+            top_equal = above(part_g, part_k, lo_n, lo_d) >= 1 and above(part_g, part_k, hi_n, hi_d) == 0
+>>>
+REASON: The old line asks whether the seed vector [1]*m lies in the span it seeded, so it cannot fail (m70 replacing it by True leaves the receipt unchanged). m49, the bracket of S^(b+1), fires top_equal on the 4 small models with the old line, and on all 5 with the new one, which reads the top of W on Q8.
+
+HOLD H3 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                good = good and got == (ipow(base[0], m), ipow(base[1], m)) or got == frac(ipow(base[0], m), ipow(base[1], m))
+>>>
+NEW<<<
+                good = good and got == frac(ipow(base[0], m), ipow(base[1], m))
+>>>
+REASON: Precedence: the line reads (good and x) or y, so a failure at m = 2 or 4 is reset by m = 9. Mutant m69, wrong power at m = 2, 4, exits 0 with the receipt unchanged; with this line it fires character_flow on S3 trivial, S3 two, Q8 trivial and Q8 fund.
+
+HOLD H4 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        check("normalization_%s" % name, sum(raw.values()) == total)
+        coarse_count = len(lat.coarse_links)
+        equal = rows = 0
+        for V in itertools.product(range(g.n), repeat=coarse_count):
+            if rows >= 40 and name == "S3":
+                break
+            rows += 1
+            equal += raw_density(lat, g, w, V, extra=(SABOTAGE == "extra_plaquette_factor")) == raw.get(V, 0)
+        check("brute_equals_elimination_%s" % name, equal == rows)
+>>>
+NEW<<<
+        coarse_count = len(lat.coarse_links)
+        equal = rows = 0
+        eliminated = {}
+        for V in itertools.product(range(g.n), repeat=coarse_count):
+            if rows >= 40 and name == "S3":
+                break
+            rows += 1
+            eliminated[V] = raw_density(lat, g, w, V, extra=(SABOTAGE == "extra_plaquette_factor"))
+            equal += eliminated[V] == raw.get(V, 0)
+        check("normalization_%s" % name, sum(eliminated.values()) == total)
+        check("brute_equals_elimination_%s" % name, equal == rows)
+>>>
+REASON: normalization compared two running sums of one loop in brute_density, so it cannot fail. Now the elimination route's sum over all V meets the brute total. Receipt unchanged on a copy.
+
+HOLD H5 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        for V, value in raw.items():
+            loop = lat.word_value(lat.coarse_plaquettes[0], V, g)
+>>>
+NEW<<<
+        for V, value in eliminated.items():
+            loop = lat.word_value(lat.coarse_plaquettes[0], V, g)
+>>>
+REASON: integral_identity_loop and _variant compared a sum over raw with the same sum regrouped from the same brute loop. With the elimination values on the left, two routes meet. Needs H4. Receipt unchanged on a copy.
+
+HOLD H6 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    read_row("su2_m_over_g_bound", True, "2063437/4_ppm_of_g=515859", "0.516")
+    read_row("su2_exact_m_over_g_at_l=4/g", True, "3*4/8=3/2", "1.5")
+>>>
+NEW<<<
+    # log(1/(4 - sqrt 15)) = log(4 + sqrt 15), read between 2.063437 and 2.063438 by the exponential's bracket.
+    four_plus_root = (4 << BITS) + math.isqrt(15 << (2 * BITS))
+    constant_ok = exp_bracket(2063437, 1000000)[1] <= four_plus_root and four_plus_root + 1 <= exp_bracket(2063438, 1000000)[0]
+    read_row("su2_m_over_g_bound", constant_ok, "2063437/4_ppm_of_g=515859", "0.516")
+    # The exact m/g at l = 4/g is -beta log t_2. At the last beta of the grid, read between 149/100 and 151/100.
+    t2_power = power_bracket(t[2][0], t[2][1], beta)
+    exact_ok = exp_bracket(-151, 100)[1] <= t2_power[0] and t2_power[1] <= exp_bracket(-149, 100)[0]
+    read_row("su2_exact_m_over_g_at_l=4/g", exact_ok, "3*4/8=3/2", "1.5")
+>>>
+REASON: Both rows pass the literal True and print a literal string, so they print MET whatever the code computes (m67 with another number exits 0). The new lines read each value from the Bessel and exponential brackets; receipt unchanged on a copy.
+
+HOLD H7 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+def section_first_dependence():
+    stamp("first_dependence")
+    coefficient = (1, 64) if SABOTAGE == "wrong_first_coefficient" else (1, 128)
+    read_row("leading_coefficient_b=2", (1, 128) == frac(ipow(2, 1), ipow(2, 8)), show(frac(2, 256)), "1/128")
+    read_row("leading_coefficient_b=3", (1, 131072) == frac(2, ipow(2, 18)), show(frac(2, ipow(2, 18))), "1/131072")
+>>>
+NEW<<<
+def flat_filling_coefficient(bi):
+    """E_V of the flat b x b filling over chi(V_p') on (Z/b)^3, at noncommuting V. Each free link of the filling has degree 2, so the four points 1, i, j, k, a design of degree 2, carry the average."""
+    lat = FiniteLattice((bi, bi, bi), (bi, bi, bi))
+    v_x, v_y = (3, 4, 0, 0, 5), (5, 0, 12, 0, 13)
+    multiset = tuple(sorted((lat.plaquette_keys.index(((s, r, 0), 0, 1)), 1) for s in range(bi) for r in range(bi)))
+    term = term_for_component(lat, multiset, lines_with_V(lat, [v_x, v_y, Q_ONE], 0), [(1, 0, 0, 0, 1), (0, 1, 0, 0, 1), (0, 0, 1, 0, 1), (0, 0, 0, 1, 1)])
+    chi = fmul((2, 1), half_trace(qmul(qmul(qmul(v_x, v_y), qinv(v_x)), qinv(v_y))))
+    return frac(term[0] * chi[1], term[1] * chi[0])
+
+
+def section_first_dependence():
+    stamp("first_dependence")
+    coefficient = (1, 64) if SABOTAGE == "wrong_first_coefficient" else (1, 128)
+    read_b2, read_b3 = flat_filling_coefficient(2), flat_filling_coefficient(3)
+    read_row("leading_coefficient_b=2", (1, 128) == read_b2, show(read_b2), "1/128")
+    read_row("leading_coefficient_b=3", (1, 131072) == read_b3, show(read_b3), "1/131072")
+>>>
+REASON: The two rows compared a formula with itself, and no lattice read touched b = 3. The new function reads each from the plaquette words; own/wick_sets.py reads the same 1/131072 by S^3 moments. Receipt unchanged on a copy.
+
+HOLD H8 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        part_g, part_k = pencil(kept, b_time) if small_enough else (None, None)
+>>>
+NEW<<<
+        part_g, part_k = pencil(kept, b_time)
+>>>
+REASON: Needed by H2: the pencil on W is read on Q8 as well.
+
+HOLD H9 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+            # Inclusion: the second value on W is at most the one on the whole space, within the bisection's step.
+            check("coarse_space_second_value_%s_%s" % (name, "x".join(map(str, sides))), value_part <= value_whole + (lo_n >> 46))
+>>>
+NEW<<<
+            # The note's table reads the second value on W equal to the whole space's: within the bisection's step, on each case read.
+            check("coarse_space_second_value_%s_%s" % (name, "x".join(map(str, sides))), abs(value_part - value_whole) <= (lo_n >> 46))
+>>>
+REASON: The check was the one-sided inclusion, true of any subspace by Courant-Fischer, while the table claims equality, read only by eye from printed ppm. m83, W with no coarse multiplication, reads 9084 ppm on W against 201350 on the whole on Z2 at 2x2 and passes the old check; the new one fires on 3 cases. The true code passes on the four cases read.
+
+HOLD H10 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    for name, sides, b, trials in (("Z2", (2, 2, 2), (2, 2, 2), 6), ("Z2", (4, 2, 2), (2, 2, 2), 4), ("S3", (2, 2), (2, 2), 6)):
+>>>
+NEW<<<
+    for name, sides, b, trials in (("Z2", (2, 2, 2), (2, 2, 2), 6), ("Z2", (4, 2, 2), (2, 2, 2), 4), ("S3", (2, 2), (2, 2), 6), ("S3", (4, 2), (2, 2), 4), ("Z2", (2, 4, 2), (2, 2, 2), 4), ("Z2", (2, 2, 4), (2, 2, 2), 4)):
+>>>
+REASON: Two of the three cases have blocks=1, so their product over blocks is one factor and their crossing count is 0 by the floor. S3 is read only there, and only direction 0 ever separates blocks: m47, the last wall plane missing, fires no check. S3 on 4x2 and Z2 on 2x4x2 and 2x2x4 each have 2 blocks, and with them m47 fires. Three rows join the receipt, which must be regenerated.
+
+HOLD H11 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        read_row("z2_nonlocal_perpendicular_d=%d" % d, coefficient_10 == 2, "%d_at_u^10" % coefficient_10, "2_at_u^10")
+>>>
+NEW<<<
+        read_row("z2_nonlocal_perpendicular_d=%d" % d, coefficient_10 == 2, "%d_at_u^10" % coefficient_10, "2_at_u^10")
+        check("z2_perpendicular_three_at_u^10_d=%d" % d, coefficient_10 == 3)
+>>>
+REASON: The note's law is 3 u^10, but the only read prints MISS against the 2 pushed, and no value of it can exit 1: m40 and m41 change the count and exit 0. The docstring's own rule makes a law a check. Own/z2_polycube.py and z2_bfs.py read the same 3. Adds 2 checks, so the receipt's DONE row changes.
+
+HOLD H12 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    read_row("z2_nonlocal_parallel", term_8 == 0 and term_10 == 0 and term_12 == 0, "u^8:%d,u^10:%d,u^12:%d" % (term_8, term_10, term_12), "0,0,0")
+>>>
+NEW<<<
+    read_row("z2_nonlocal_parallel", term_8 == 0 and term_10 == 0 and term_12 == 0, "u^8:%d,u^10:%d,u^12:%d" % (term_8, term_10, term_12), "0,0,0")
+    check("z2_parallel_vanishes_through_u^12", term_8 == 0 and term_10 == 0 and term_12 == 0)
+>>>
+REASON: Proposition 11's parallel law is read only by read_row, so m42, the cross term without its 2, prints MISS and exits 0. Adds 1 check, so the receipt's DONE row changes.
+
+HOLD H13 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    pool = quaternion_pool(2026, 12)
+    for sides in ((2, 2, 2, 2), (4, 2, 2, 2)):
+>>>
+NEW<<<
+    pool = [q for q in quaternion_pool(2026, 40) if (q[1], q[2], q[3]) != (0, 0, 0)][:12]
+    for sides in ((2, 2, 2, 2), (4, 2, 2, 2)):
+>>>
+REASON: 5 of the 12 pool elements are -1, central. On (Z/2)^4 V_3 = -1 at both V_a and V_b, so 3 of the 6 coarse plaquettes read chi = 2 at every V, and V_b moves one plaquette alone (chi row 2,2,2,8/9,2,2). With non-central V every coarse plaquette moves. The four FIRST_DEPENDENCE rows change value; own/wick_first_dependence.py reads the new values.
+
+HOLD H14 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        model = Transfer(name, sides, w)
+        g = model.g
+        coarse_sides = tuple(s // bi for s, bi in zip(sides, b_space))
+>>>
+NEW<<<
+        model = Transfer(name, sides, w)
+        g = model.g
+        # The transfer model against the lattice's own plaquette words, and its time kernel's symmetry in the orbit measure.
+        word_lattice = FiniteLattice(sides, b_space)
+        same_plaquettes = True
+        for rep, value in zip(model.reps, model.diag):
+            product = 1
+            for word in word_lattice.plaquettes:
+                product *= w[word_lattice.word_value(word, rep, g)]
+            same_plaquettes = same_plaquettes and product == value
+        check("transfer_plaquettes_match_lattice_%s_%s" % (name, "x".join(map(str, sides))), same_plaquettes)
+        check("transfer_kernel_symmetric_%s_%s" % (name, "x".join(map(str, sides))), all(model.sizes[a] * model.kernel[a][c] == model.sizes[c] * model.kernel[c][a] for a in range(model.m) for c in range(a)))
+        coarse_sides = tuple(s // bi for s, bi in zip(sides, b_space))
+>>>
+REASON: No check ties Transfer to the model: m52, plaquette weight without inverses, and m54, A = 1 on Q8, exit 0, and m53 fires only the S3 Gram. These two checks fire on them. Adds 10 checks, so the receipt's DONE row changes.
+
+HOLD H15 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+        # Reflection positivity of coarse slice observables: Tr(M_i T^(2b) M_j T^(2b)) has no negative eigenvalue.
+        if name in ("Z3", "S3", "Q8") and model.m <= 200:
+            two = 2 * b_time
+>>>
+NEW<<<
+        # Reflection positivity of coarse slice observables through a link plane: Tr(M_i T^(2b+1) M_j T^(2b+1)) has no negative eigenvalue when T is positive. At an even power the Gram is positive for every symmetric T.
+        if name in ("Z3", "S3", "Q8") and model.m <= 200:
+            two = 2 * b_time + 1
+>>>
+REASON: T^(2b) = (T^b)^2 is positive for every symmetric T, so the check reads no positivity of w: m78, w = 3 - chi with T not positive, leaves every Gram row unchanged. At the odd power the true rows stay byte for byte (m56), and m78 reads negative=6, 8 and 6 on S3, Q8 and Z3 and fires all three checks.
+
+HOLD H16 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| SU(2) in d = 2 at β = 1 to 4096 | δ from 0.0049 to 0.0133, below 1/8, and m/g at least 0.5158 on the bound's own terms |
+>>>
+NEW<<<
+| SU(2) in d = 2 at β = 1, 4, 16, 64, 256, 1024, 4096, where 2√β is an integer | δ from 0.0049 to 0.0133, below 1/8, and m/g at least 0.5158 on the bound's own terms. Off this grid, at b = ⌈2√β⌉, the second seat's separate code reads the same bound at 0.486 at β = 2, 0.447 at β = 3, 0.466 at β = 10 and 0.510 at β = 1000 |
+>>>
+REASON: The grid holds perfect squares alone, so b_a_g is exactly 4 and the row is 2063437/4 on every line. own/bessel_cf.out reads the other values; the limit 0.516 as a falls stands.
+
+HOLD H17 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| Walls, on Z2 and S3 | A product over blocks on every configuration |
+>>>
+NEW<<<
+| Walls, on Z2 at 2×2×2 and 4×2×2 and S3 at 2×2 | On the 6, 4 and 6 wall configurations read, each interior group lies in one block, and the whole sum equals the product over groups. The blocks number 1, 2 and 1, so the product has two factors on Z2 at 4×2×2 alone, and direction 0 alone separates blocks |
+>>>
+REASON: Receipt rows blocks=1,2,1. m47, the last wall plane missing, fires no check; m46, walls off by one, fires walls_Z2_4x2x2 alone. If H10 lands, the row gains S3 at 4×2 and Z2 at 2×4×2 and 2×2×4, and its last clause goes.
+
+HOLD H18 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| The coarse space on Z2, S3, Z3, Q8 | Closed, top value equal, and the second value on W equal to the whole space's on each case read, so the lowest state is visible there. W has dimension 20 of 32, 33 of 49, 80 of 176, and all of them on the two smallest |
+>>>
+NEW<<<
+| The coarse space on Z2, S3, Z3, Q8, with W built from the constant 1 by S^b and the coarse multiplications, closed as built | W has dimension 20 of 32 on Z2 at 2×2, 33 of 49 on S3, 80 of 176 on Q8, and all of them on Z2 and Z3 at 2×1. Top value of W and of the whole space in one bracket 2 ppm wide on the four cases of at most 60 orbits. Second value on W equal to the whole space's at 1 ppm on those four, where W is a proper subspace on Z2 at 2×2 and S3, so the lowest state is visible there. On Q8 the top comes from closure and Perron-Frobenius, and the second value is unread by the test. The spatial block is 2×1 on all but Z2 at 2×2. H′ of section 4 starts from Ω: the second seat's separate construction reads dim H′ = dim W on these five and on Z3 at 2×2, 162 of 243, with the constant 1 inside H′ at 2⁻²⁰⁰⁰ of its norm, and second over top equal on the whole space, W and H′ at 1 ppb: 0.588399, 0.201350, 0.168074, 0.057545, 0.054535 on Q8, and 0.023308 on Z3 at 2×2 |
+>>>
+REASON: closed=1 holds by construction; top_equal on Q8 asks whether the seed lies in its own span; second value on Q8 prints not_read; W starts from 1 where H' starts from Omega. own/coarse_own_*.out read dim H' = dim W and the second value on H'. If H2 lands, Q8's top is read too.
+
+HOLD H19 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| The first dependence, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with V on either fine link | Independent of V below order 4, and at order 4 equal to the law, by SU(2) averages from 2T within degree 5 |
+>>>
+NEW<<<
+| The first dependence, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with V on either fine link | Independent of V below order 4, and at order 4 equal to the law at two V, by SU(2) averages from 2T. The terms that move with V are the flat fillings, with degree 2 on each free link, so these rows read the same with Q8 or the four points 1, i, j, k in place of 2T. On (ℤ/2)⁴ V_3 = −1 at both V, so 3 of the 6 coarse plaquettes read χ = 2. The second seat's S³ moments equal the test's 2T terms one by one, degree 4 included, on all 1,599 and 6,330 terms at V = 1 and V_a |
+>>>
+REASON: m28 and m29, averages from Q8 and from four points, exit 0 with the receipt byte for byte, and the chi rows read 2,2,2,8/9,2,2 at V_b. own/termwise.out reads every term. If H13 lands, the sentence on V_3 goes.
+
+HOLD H20 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| Two dimensions closes, on Z3, S3, Q8, 2T at b = 2, Z3, S3 at b = 3, and on 4×2 | Every V read equals the closed form |
+>>>
+NEW<<<
+| Two dimensions closes, on Z3, S3, Q8, 2T at b = 2, Z3, S3 at b = 3, and on 4×2 | Every V read equals the closed form. Every coarse plaquette read has coarse side 1 in its second direction, and on Z3 at 2×2 and 3×3 its word is 1 at every V. Distinct V read, of all V: 9 of 9 on Z3 at 2×2 and 3×3, 32 of 36 on S3, 32 of 64 on Q8, 12 of 576 on 2T, 7 of 36 on S3 at 3×3, 30 of 81 on Z3 and 6 of 1296 on S3 at 4×2 |
+>>>
+REASON: V_read counts draws with repeats (own/dump_pool.out). m07 survives since x'+nu = x' on every coarse plaquette read (F07). If H1 lands, the row gains 4×4, 12 of 6561 on Z3 and 6 of 1679616 on S3, and the second sentence goes.
+
+HOLD H21 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+The test reads the first dependence on (ℤ/2)⁴, with SU(2) averages from 2T, within its design degree.
+>>>
+NEW<<<
+The test reads the first dependence at b = 2, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with SU(2) averages from 2T. Its row for b = 3 evaluates the formula. The second seat's separate S³ moments read the law at b = 2 on 13 shapes from 2² to 4×2³ and 6×4×2 over every even multiset, on 4³ and 4⁴ over every even set, and at b = 3 on 8 shapes from 3² to 3⁴ and 6×3³ over every even set, where the flat fillings alone move with V. Repeated plaquettes at b = 3 rest on the proof. At b = 4 on (ℤ/4)³ a tube around the line meets the same count and reads 2⁻³²χ(V_μ)², beside the flat filling's 2⁻³¹χ(V_p′).
+>>>
+REASON: L1164 compares a formula with itself. own/wick_2222.out, wick_4222.out, wick_442.out, wick_sets_*.out, wick_tube_b4.out. If H7 lands, the second sentence reads: its row for b = 3 reads the flat filling on (ℤ/3)³.
+
+HOLD H22 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+def term_for_component(lat, multiset, line_values):
+>>>
+NEW<<<
+def term_for_component(lat, multiset, line_values, points=None):
+>>>
+REASON: Lets the flat filling at b = 3 use a design of degree 2, for H7.
+
+HOLD H23 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+    for assignment in itertools.product(T2_QUATS, repeat=len(variables)):
+>>>
+NEW<<<
+    for assignment in itertools.product(points or T2_QUATS, repeat=len(variables)):
+>>>
+REASON: Lets the flat filling at b = 3 use a design of degree 2, for H7.
+
+HOLD H24 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+                    noncommuting += (coarse_hol[1], coarse_hol[2], coarse_hol[3]) != (0, 0, 0)
+>>>
+NEW<<<
+                    noncommuting += qmul(coarse_hol, V[(x_c, word[0][0])]) != qmul(V[(x_c, word[0][0])], coarse_hol)
+>>>
+REASON: The line counted holonomies with nonzero imaginary part, which an abelian configuration has: m106, every pool quaternion in one U(1), leaves closed_loops_noncommuting green. The new line reads a holonomy against a coarse link. With it m106 fires that check. Receipt unchanged on a copy.
+
+HOLD H25 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+and read in section 9: 179 checks with none failed, and 3 rows of the prediction missed
+>>>
+NEW<<<
+and read in section 9: 181 checks with none failed, and 3 rows of the prediction missed
+>>>
+REASON: The receipt's last row reads checks=181, as do the commit message and row 32 of the prediction. With every test hold here the receipt reads 199 (holds_test/patched_final3.out), and this number follows it.
+
+HOLD H26 | file=docs/PREDICTION-YM4-03.hbp | severity=low
+OLD<<<
+kept_in=reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp|json=0
+>>>
+NEW<<<
+kept_in=reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp|json=0
+YM4_03_ATTEMPT|correction_beside_the_row_above=the_row_says_checks=179_and_the_file_it_names_ends_checks=175|read_by=the_second_seat|json=0
+>>>
+REASON: The file row 31 names ends YM4_03_DONE|checks=175|failed=1, against checks=179 in the row. The row stays and the correction goes beside it; both sit after the pinned 30 rows.
+
+HOLD H27 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| Closed loops: plaquette, 1×2, hexagon, winding, at each b | 736 rows at each b equal as group elements, on two routes |
+>>>
+NEW<<<
+| Closed loops: plaquette, 1×2, hexagon, winding, at each b | 736 rows at each b equal as group elements. One walk of the path, read in quaternions and in 2×2 matrices, agrees on every row |
+>>>
+REASON: Both routes call holonomy_steps. m103, the wrong link on a backward step in that function, fires 6 closed_loops checks and no two_routes check.
+
+HOLD H28 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+ρ(V) ∝ Σ_M u^{|M|} ∏ V^{∂M} over plaquette sets M whose boundary lies on line links.
+>>>
+NEW<<<
+ρ(V) ∝ Σ_M u^{|M|} ∏ V^{∂M} over plaquette sets M whose boundary is a union of whole coarse lines, with V^{∂M} the product of V_ℓ over those lines.
+>>>
+REASON: A set with boundary on part of a line sums to zero over the line's parameter, and the test's allowed_totals and own/z2_gray.py keep whole lines alone; with that reading the Gray walk reproduces the test's exact ratio on 4x2x2 and the link sum on the open box.
+
+HOLD H29 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+- **Theorem 7, item 3** uses that T^b and the projector on H′ commute, which needs H′ invariant under T^b and T^b self-adjoint.
+>>>
+NEW<<<
+- **Theorem 7, item 3** uses that T^b and the projector on H′ commute, which needs H′ invariant under T^b and T^b self-adjoint. The test's W starts from the constant 1, and H′ from Ω. Whether they agree beyond the cases the second seat read is OPEN.
+>>>
+REASON: The table's sentence on visibility reads W, and Theorem 7 states it on H'. own/coarse_own_*.out read W = H' on the cases named in H18.

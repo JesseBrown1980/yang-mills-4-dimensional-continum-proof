@@ -74,3 +74,30 @@ ATTEMPTED, FAILED OR REFUSED, NOT OPENED:
  sciencedirect.com Luscher: HTTP 403 to WebFetch. lib-extopc.kek.jp/preprints/PDF/: Request Rejected. www-lib.kek.jp: DNS failure. cds.cern.ch search: bot page.
  claymath.org ymreport.pdf (Douglas report): 404 at guessed URL; not chased.
  Dobrushin-Shlosman 1985 primary, Migdal 1975 primary, Seiler LNP 159: not attempted beyond search; NAMED only.
+SECOND PASS, 2026-11-05:
+https://luscher.web.cern.ch/luscher/ | dl/luscher-page | Luscher's page, lecture list | opened
+https://luscher.web.cern.ch/luscher/lectures/LesHouches88.pdf | dl/luscher-lh88 | Luscher, Selected Topics in Lattice Field Theory, Les Houches 1988, scan | opened, page images PDF p.1, 3, 57-63, 77
+https://luscher.web.cern.ch/luscher/lectures/LesHouches97.pdf | dl/luscher-lh97 | Luscher, Advanced lattice QCD | opened, PDF text
+https://arxiv.org/abs/2205.07376 | dl/fvo2205 | Faria da Veiga, O'Carroll, stability bounds | opened
+https://arxiv.org/abs/2005.00899 | dl/fvo2005 | O'Carroll, Faria da Veiga, periodic case | opened, grep
+https://arxiv.org/abs/1910.03140 | dl/a1910 | Faria da Veiga, O'Carroll, scalar QCD | opened, grep
+https://web.ma.utexas.edu/mp_arc/e/92-41.tex | dl/mp9241 | Magnen, Rivasseau, Seneor, Rigorous results on the ultraviolet limit | opened
+https://arxiv.org/abs/1410.2798 | dl/dim1410 | Dimock, Covariant Axial Gauge | opened
+https://arxiv.org/abs/2204.07201 | dl/dim2204 | Dimock, Stability for QED in d=3: an overview | opened, grep
+https://arxiv.org/abs/1502.02946 | dl/dim1502 | Dimock, scalar QED | grep
+https://arxiv.org/abs/1512.04373 | dl/dim1512 | Dimock, UV regularity QED | grep
+https://export.arxiv.org/api/query?search_query=au:Dimock_J and abs:Balaban | dl/arxiv-api | arXiv listings | opened
+https://www.arthurjaffe.com/Assets/pdf/References2024.pdf | dl/jaffe-refs | Jaffe publication list | opened
+https://www.arthurjaffe.com/Assets/pdf/ETH-Juerg.pdf | dl/jaffe-eth | Jaffe slides | opened, grep
+https://arxiv.org/abs/hep-th/0312015 | dl/seiler-0312015 | Seiler, case against asymptotic freedom | opened, grep for Balaban count 0
+ATTEMPTED, SECOND PASS, NOT OPENED:
+ articles.adsabs.harvard.edu/pdf/1983NuPhB.219..233L and /pdf/1987CMaPh.109..249B: 403 AccessDenied. dl/ads-luscher, dl/ads-balaban hold the error bodies.
+ ui.adsabs.harvard.edu/abs/1983NuPhB.219..233L/abstract: 405 Human Verification. dl/ads-ui.
+ cds.cern.ch/search?p=reportnumber:BUTP-23/1982: Anubis bot page, WebFetch.
+ deepblue.lib.umich.edu/items/908824f3-d890-48da-b5c5-ba6447f3ae3b: 403. Handle path for BF01229381: app shell. dl/deepblue-handle.
+ www.mat.uniroma2.it/~tanimoto/romatre250505.pdf: 404.
+THIRD PASS, 2026-11-05:
+ https://deepblue.lib.umich.edu/bitstream/handle/2027.42/46460/220_2005_Article_BF01229380.pdf?sequence=1 | dl/deepblue-cmp102-255 | one plain fetch: HTTP 200, 1959 B app shell, no PDF | NOT OPENED, CANNOT_SEE
+ https://infomall.org/sites/dsc/jpac/QCDRef/1980s/SOME%20ANALYTIC%20RESULTS%20CONCERNING%20THE%20MASS%20SPECTRUM%20OF%20YANG-MILLS%20GAUGE%20THEORIES%20ON%20A%20TORUS%20-%20Luscher%20-%201983.pdf | dl/infomall-luscher83 | one plain fetch: curl (35) SEC_E_CERT_EXPIRED, 0 bytes | NOT OPENED, CANNOT_SEE
+ https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28#issuecomment-6658407383 | not saved | comment text read through gh api, as data | opened
+ C:/tmp/ym4-03-wt/docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md section 7a | not copied | read only | opened

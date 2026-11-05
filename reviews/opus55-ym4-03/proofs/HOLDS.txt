@@ -1,0 +1,201 @@
+HOLD H1 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+179 checks with none failed
+>>>
+NEW<<<
+181 checks with none failed
+>>>
+REASON: receipt row YM4_03_DONE and this lane's run of the test read checks=181, failed=0, and README says 181; 179 is the first complete read, which had failed=1 (prediction row 31).
+
+HOLD H2 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+the bound reads 1.35 × 10⁻⁵²
+>>>
+NEW<<<
+the bound reads 1.359 × 10⁻⁵², the receipt's 135 being its floor in units of 10⁻⁵⁴,
+>>>
+REASON: exact interval 1.358954e-52 to 1.358955e-52 (s06_numbers.py, runs/s06.raw); 1.35e-52 sits below the value of an upper bound.
+
+HOLD H3 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+, with T positive for w of positive character coefficients.
+>>>
+NEW<<<
+. Here w is continuous with 0 < m ≤ w ≤ M, as there, and every character coefficient satisfies c_π ≥ 0, which gives T ≥ 0, and Theorem 7 uses this. Z2 with w = 1, 3 has c_1 = −1, and at b = 3 on a circle of 3 it reads T = 8, −1 on PH and T³ = 512, −1.
+>>>
+REASON: section 1 allows bounded measurable w, and Theorem 7 states T' positive; MEASURED negative eigenvalue of T^3 on Z2 (s09, runs/s09.raw), and S3 with w = 3 + chi has eigenvalue 0 (runs/s03_S3_2x1.out), so the condition is T >= 0.
+
+HOLD H4 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+3. An eigenfunction h of T with eigenvalue μ gives μ^b in spec T′ exactly when h is not orthogonal to H′, and a sufficient condition is E_Haar[hΩ | Q] ≠ 0.
+>>>
+NEW<<<
+3. For an eigenvalue μ of T on PH, μ^b lies in spec T′ exactly when the eigenspace of μ in PH is not orthogonal to H′. An eigenfunction h in PH with E_Haar[hΩ | Q] ≠ 0 is not orthogonal to H′. Z2 on 2×2 at b = 2, w = 3, 1, has an eigenvalue with 6 dimensions in H′ and 12 orthogonal to it, and Q8 on a circle of 2 has an eigenfunction outside PH with E_Haar[hΩ | Q] ≠ 0.
+>>>
+REASON: both clauses fail as written: runs/s03_Z2_2x2.out, eigenvalue 20736 of S^2 with multiplicity 6 on H' and 12 on the complement; runs/s09.raw, Q8, h = D00(U0)D01(U1), eigenfunction with mu = 1/4, E[h|Q] nonzero at 4 of 8 V, gauge average of h zero on all 64 configurations.
+
+HOLD H5a | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+then every gauge-invariant slice correlator of ν has connected part at most a constant times e^{−κ|t|}, and by Theorem 7, item 5, m ≥ κ/(ba) on H′.
+>>>
+NEW<<<
+then for f and g products of gauge-invariant slice observables on finite sets of slices, at distance t on the time circle, the connected part of ⟨f g⟩_ν is at most a constant times e^{−κt}, with the constant free of the time side, and by Theorem 7, items 2 and 5, m ≥ κ/(ba) on H′.
+>>>
+REASON: item 5 asks for every vector of H', and those hold several slices; DERIVED, F13, with F12's measured dimensions showing two-slice correlators read a proper subspace.
+
+HOLD H5b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+*Proof.* Tilt ν by a bounded positive f supported on a slice.
+>>>
+NEW<<<
+*Proof.* Tilt ν by a bounded positive f supported on finitely many slices, which the vectors of H′ need: two-slice correlators read the span of T′ⁿ M(F)Ω, of dimension 14 of 20 on Z2 at 2×2, 6 of 8 on Z2 at 2×1, 21 of 27 on Z3 at 2×1 and 29 of 33 on S3 at 2×1.
+>>>
+REASON: MEASURED, s08_thm7_krylov.py, runs/s08.raw, each at 2 primes; on Z3 at 2×1 the eigenvalues 46656 and 64 lie on H' and outside that span (runs/s08b.raw). The tilt on finitely many slices keeps b_a = 0 off the support, read exactly on a nonlocal rho in s10_thm13_exact.py.
+
+HOLD H5c | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+so D_ja ≤ e^{−κ d(j,a)}/(1 − c_κ). ∎
+>>>
+NEW<<<
+so D_ja ≤ e^{−κ d(j,a)}/(1 − c_κ). With b_a ≤ 1, the sums over a in the support of f and j in the support of g give the constant, and Cov(f, g) = ν(f)(ν^f(g) − ν(g)) passes the bound to the correlators, at every time side and so in the limit of Theorem 7, item 2. ∎
+>>>
+REASON: the proof stops before the correlator and the limit that item 5 reads; DERIVED, F13.
+
+HOLD H5d | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+and let d(i, j) be the distance between the time coordinates of i and j.
+>>>
+NEW<<<
+and let d(i, j) be the distance on the time circle between the time coordinates of i and j, a time link taking the coordinate of its base.
+>>>
+REASON: the row sum and the triangle inequality need a coordinate for a time link, and the time side is periodic; DERIVED, F13.
+
+HOLD H6 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+With b² ≥ 4β and arcsinh(y) ≥ y arcsinh(1) on [0, 1], the term n = 2 is at most
+>>>
+NEW<<<
+With b² ≥ 4β, β ≥ 1 and β arcsinh(ν/β) increasing in β, since arcsinh(y) ≥ y/√(1 + y²), we have b² arcsinh(ν/β) ≥ 4 arcsinh ν, so the term n = 2 is at most
+>>>
+REASON: at 1 ≤ β < 2 the n = 3 term has y = 2/β above 1, off [0, 1], and its value needs this step; the values hold: n = 2 below 0.118, n = 3 below 0.001, exact surds in runs/s06.raw, monotone read at β = 1..39.
+
+HOLD H7 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+With β = 4/(g²a²) this reads, at b = ⌈2√β⌉ and ba → 4/g, m ≥ (log(1/(4 − √15))/4) g, about 0.516 g, uniformly as a → 0.
+>>>
+NEW<<<
+With β = 4/(g²a²) this reads m ≥ log(1/(4 − √15))/(ba) on those circles. Along a = 4/(gb), b = 2, 3, …, where β = b²/4 and ba = 4/g, on circles of length 4k/g, k ∈ ℕ, it reads m ≥ (log(1/(4 − √15))/4) g, about 0.516 g, at every b. At b = ⌈2√β⌉ off that family the constant reads about 0.346 g at β = 101/100 and about 0.500 g at β = 1025/4, and it tends to 0.516 g as a → 0.
+>>>
+REASON: MEASURED, s06 TRAJ rows: 515859 ppm of g exactly where 2√β is an integer, 345621 at β = 101/100, 500471 at β = 1025/4; L in bℕ pins a at fixed physical length.
+
+HOLD H8 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+UH holds in d = 2, by Theorem 14. For d ≥ 3 three things are recorded:
+>>>
+NEW<<<
+UH holds in d = 2, at ℓ₀ ≥ 4/g along a = ℓ₀/b with β ≥ 1: the proof of Theorem 14 gives ε′ ≤ δ < 1/8 for the coarse weight, a coarse link lies in at most two coarse plaquettes, each with three other link slots and each one factor of w^(b²), and links of one plaquette lie at time distance at most 1, so c_κ ≤ 6ε′e^κ < 1 for κ < log(4/3). Theorem 13 then reads m ≥ log(4/3)/ℓ₀, below Theorem 14's value. For d ≥ 3 three things are recorded:
+>>>
+REASON: Theorem 14's conclusion is on T on a circle, with time links projected by P; UH is on the conditional laws of ν, time links included, and what gives it is the bound in the proof; DERIVED, F15.
+
+HOLD H9a | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+so the configuration space stays one fixed G^{N′} and only the density ρ_a moves as a falls.
+>>>
+NEW<<<
+so each slice's configuration space stays one fixed G^{N′_ℓ}, the time side grows with the limit of Theorem 7, item 2, and only the density ρ_a moves as a falls.
+>>>
+REASON: Theorem 13 asks for uniformity in the time side, and N′ grows with it; DERIVED, F15.
+
+HOLD H9b | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+with c_κ(ρ_a) ≤ c along the family (a → 0, β following a).
+>>>
+NEW<<<
+with c_κ(ρ_a) ≤ c along the family (a → 0, β following a), uniformly in the time side.
+>>>
+REASON: Theorem 13's hypothesis reads "uniformly in the time side"; UH should carry it; DERIVED, F15.
+
+HOLD H10 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+over plaquette sets M whose boundary lies on line links.
+>>>
+NEW<<<
+over plaquette sets M whose boundary is a union of whole coarse lines, with the product over those lines, since a line with one of its two fine links in ∂M averages to 0.
+>>>
+REASON: DERIVED: at b = 2, E over the free first link of U_0 or of U_0 V is 0; the test's enumeration has the exact target, so its rows stand.
+
+HOLD H11 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Every plaquette then lies in one closed block, so the density on the wall links is Z⁻¹ ∏_{blocks} Z_block(walls), a finite-range form in every d,
+>>>
+NEW<<<
+Every plaquette holding an interior link then lies in one closed block, and for d ≥ 3 a plaquette with all four links on walls, 12 of 24 on (ℤ/2)³, is a function of the walls alone, so the density on the wall links is Z⁻¹ ∏_{wall p} w(U_p) ∏_{blocks} Z_block(walls), a finite-range form in every d,
+>>>
+REASON: DERIVED and counted in s11_counts.py; such a plaquette lies in two closed blocks; the test's section_walls holds them in `constant` and compares the interior product alone.
+
+HOLD H12a | file=README.md | severity=medium
+OLD<<<
+In d ≥ 3 the first dependence on V is exact, β′/4 = (β/4)^{b²},
+>>>
+NEW<<<
+In d ≥ 3 at b = 2, 3 the first dependence on V is exact, β′/4 = (β/4)^{b²},
+>>>
+REASON: Theorem 9 item 2 is b = 2, 3; the tube term 2^(-8b) χ_{1/2}(V_μ)² MEASURED exactly at b = 2..6 (s04_tube.py), and it enters at n = 4b < b² for b ≥ 5, DERIVED, F04.
+
+HOLD H12b | file=README.md | severity=low
+OLD<<<
+and one blocking gives a bound uniform as the spacing falls, m ≥ 0.516 g.
+>>>
+NEW<<<
+and one blocking gives m ≥ 0.516 g at every b along a = 4/(gb), on circles of length 4k/g.
+>>>
+REASON: same as H7: MEASURED constant falls off that family at b = ⌈2√β⌉.
+
+HOLD H13 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+So log(ρ(V)/ρ(V′)) = 2^{1−2b²} β^{b²} Σ_{p′}(χ_{1/2}(V_{p′}) − χ_{1/2}(V′_{p′})) + O(β^{b²+1}).
+>>>
+NEW<<<
+So at b = 2, 3, log(ρ(V)/ρ(V′)) = 2^{1−2b²} β^{b²} Σ_{p′}(χ_{1/2}(V_{p′}) − χ_{1/2}(V′_{p′})) + O(β^{b²+1}).
+>>>
+REASON: the sentence follows item 2 alone and reads for every b as printed; at b ≥ 5, d ≥ 3, L_μ = 1 the dependence starts at 4b < b², F04.
+
+HOLD H14 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Then on every spatial circle of length L ∈ bℕ,
+>>>
+NEW<<<
+Then on PH, on every spatial circle of length L ∈ bℕ,
+>>>
+REASON: on H the ratio is t_2, one link in spin 1/2: at β = 16, b = 8 it reads 0.9078 (s11_counts.py) against (4 − √15)^(1/8) about 0.773, so the statement is on PH, where it reads t_2^L.
+
+HOLD H15 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| SU(2) in d = 2 at β = 1 to 4096 |
+>>>
+NEW<<<
+| SU(2) in d = 2 at β = 4^k, k = 0 to 6, where 2√β is an integer |
+>>>
+REASON: the row's 0.5158 holds where 2√β is an integer; receipt rows are β = 1, 4, 16, 64, 256, 1024, 4096; off that grid the constant falls, s06 TRAJ rows.
+
+HOLD H16a | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    read_row("su2_m_over_g_bound", True, "2063437/4_ppm_of_g=515859", "0.516")
+>>>
+NEW<<<
+    # log(4 + sqrt 15) = log(1/(4 - sqrt 15)) lies between these parts per million, read in integers at this scale.
+    root = (4 << BITS) + math.isqrt(15 << (2 * BITS))
+    log_read = exp_bracket(2063437, 1000000)[1] <= root and root + 1 < exp_bracket(2063438, 1000000)[0]
+    read_row("su2_m_over_g_bound", log_read and 2063437 // 4 == 515859, "2063437/4_ppm_of_g=515859", "0.516")
+>>>
+REASON: the row is hard-coded True with a literal read, so it cannot turn red; with this change it reads MET, a mutated bound reads MISS, and the section's stdout stays byte-equal (s12_patch_test_copy.py, runs/s12_*_section.out).
+
+HOLD H16b | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    read_row("su2_exact_m_over_g_at_l=4/g", True, "3*4/8=3/2", "1.5")
+>>>
+NEW<<<
+    # The exact ratio at beta = 4096, the last beta of the loop above: L = b = 128, a g = 1/32, so m/g = 4096 log(1/t_2), between 149/100 and 151/100.
+    read_row("su2_exact_m_over_g_at_l=4/g", t[2][0] >= exp_bracket(-151, 409600)[1] and t[2][1] <= exp_bracket(-149, 409600)[0], "3*4/8=3/2", "1.5")
+>>>
+REASON: the row is hard-coded True with a literal read; with this change it reads the bracket on t_2 at beta = 4096, MET, a mutated bound reads MISS, and the section's stdout stays byte-equal.
