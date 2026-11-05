@@ -1,0 +1,215 @@
+FINDINGS | lane=opus55 second seat for ACER-CLAUDE-FABLE5 | target=claims 1-4 of the e = 0 overlap certificate correction | repo=JesseBrown1980/yang-mills-4-dimensional-continum-proof PR #29
+head=2184b54f44c39079f4873562c8874da3836736e1 (git -C C:/tmp/ym4-03-wt rev-parse HEAD, read at start; worktree clean, 0 lines of status)
+vantage: seat=opus55 host=acer toolchain=Python 3.13.14 (Windows, Git Bash) lane=local frozen checkout, read and run only; my own code lives in this folder only
+tags: MEASURED = a number from a named run in this folder; DERIVED = by hand, written below; NAMED = stated by someone, not run here; CANNOT_SEE / NOT_MEASURED = no measurement, reason given
+
+======================================================================
+A. WHAT I RAN (all MEASURED, outputs in runs/, mutants/, variants/)
+======================================================================
+A1. The full test at the head: 183 s, 401 checks, 0 failed, 7 misses, exit 0; stdout equals tests/ONE_SCALE_BLOCKING_RECEIPT.txt byte for byte
+    (sha256 d89c17ca00e19b1a12ee69d7d5d323ddb92b94118e5d2de97f7f50299b72ffdc both). Test file sha256 2815030ef8e1f8577860a625de06d89078b1a3e728e23181a78bacd83f51b94b.
+    CORRECTION BESIDE A1 (MEASURED later in this lane): Windows Python writes stdout with CRLF line ends (full_run.out holds 152 CR bytes); the
+    comparison above went through MSYS sed, which dropped them. Stated exactly: the run's stdout with CRLF taken to LF (runs/full_run.lf) equals the
+    receipt byte for byte, sha256 d89c17ca... both. The same holds for A3's rows, read through grep (runs/instr_rows.txt holds 0 CR bytes).
+A2. The sabotage visibility_ignores_omega_error, full test: exit 1, exactly 2 failed checks, flux_exact_zero_overlap_not_certified_Z2_2x1 and _Z2_3x1;
+    the rows first_excited_visible_Z2_2x1 and _3x1 then read winding_0 with share [999999999,1000000001]. No Traceback. (runs/sabotage_visibility.out)
+A3. An instrumented copy of the flux section (author_copy/instrumented_flux.py, made by tools/make_instrumented.py: dump lines only, main runs section_flux):
+    202 checks, 0 failed; its 30 flux rows equal the receipt's 30 flux rows byte for byte; it dumps u, S, perms, levels, sin2, every candidate vector and decision.
+A4. My own model (tools/own_model.py) and exact spectral tools (tools/own_exact.py: Krylov minimal polynomials, Sturm isolation, dyadic interval
+    arithmetic at 2^-8192, spectral projectors P_alpha = q_alpha(S)/q_alpha(alpha)), sharing no code with the test. tools/verify_truth.py compares.
+A5. tools/tight_control.py: a constructed zero-part vector through the test's own certify_overlap and exact_vector_visible.
+A6. tools/fuzz_cert.py: 9000 exact diagonal cases through the test's own certify_overlap and exact_vector_visible (seeds 1, 2, 3).
+A7. Mutants of the flux-only copy: m1 drops the factor 2 of the e = 0 error term; m2 divides that term by 512; m3 by 1024.
+A8. Variants through the flux-only copy: Z2 at 4x1 and 5x1 with w = 3, 1 (all checks); Z2 at 2x1 and 3x1 with w = 1, 3 (indefinite S).
+A9. The no-float gate (selftest and scan) on a local clone of the head with my proposed holds overlaid, and on the head itself.
+A10. GPT-6's comment 6667904991 read as data (runs: gpt6_review_6667904991.txt, 2703 bytes, 0 token-shaped strings).
+
+======================================================================
+B. SAME OPERATOR, SAME u (MEASURED, verify_truth step=operator/twists/perron)
+======================================================================
+On Z2 2x1, Z2 3x1, Q8 2x1, Z2 2x2, and the variants Z2 4x1, 5x1: my orbits (labelled by their smallest configuration), my S = B A and my weights
+|orbit| A equal the test's entry by entry (same_S=1, same_weights=1); W S is symmetric exactly (S self-adjoint in the weighted product); my twist maps
+equal the test's and are involutions, equal on every plane; my own Perron walk by the stated rule gives the test's u exactly (own_u_equals_test_u=1),
+u even under every twist. u bits: 1091 (2x1), 978 (3x1), 2011 (Q8), 2940 (2x2): the 3072-bit truncation never ran on these four.
+Sector dimensions equal the test's: 2,2,2,2 / 4,4,4,4 / 80,32,32,32. My exact minimal polynomial of each sector annihilates every basis vector.
+Distinct eigenvalues per sector: Z2 2x1 2,2,2,2; Z2 3x1 3,3,3,3; Q8 3,3,5,3 (e = 0 is {0, lambda1, lambda0}: 78 eigenvalues exactly 0).
+Every level window the test uses holds exactly the eigenvalue it names, and the counts above each low end agree with the test's multiplicities.
+The ground lies in e = 0 and every other sector's eigenvalues lie at or below the ground window's low end.
+
+======================================================================
+C. CLAIM 1: sin^2(u, Omega) <= |r|^2 2^(2 shift) / (gap^2 <u,u>^3)            verdict: SURVIVES (DERIVED + MEASURED)
+======================================================================
+Derivation (mine). Weighted product <x,y> = sum |orbit| A x y; S self-adjoint there; e = 0 eigen-decomposition u = c0 Omega + sum_{j>0} cj psi_j.
+For any real mu, |S u - mu u|^2 = sum_j cj^2 (lambda_j - mu)^2 >= (sum_{j>0} cj^2) min_{j>0} (lambda_j - mu)^2.
+Take mu = rho = <u,Su>/<u,u>. If rho > lambda_1 >= every lambda_j (j>0), then |lambda_j - rho| >= rho - lambda_1 for every j > 0 (negative
+lambda_j only increase it), so sin^2 = sum_{j>0} cj^2 / |u|^2 <= |Su - rho u|^2 / ((rho - lambda_1)^2 |u|^2).
+r = <u,u> S u - <u,Su> u = <u,u> (S u - rho u), so |Su - rho u|^2 = |r|^2 / <u,u>^2. gap = floor(rho 2^s) - high_1 <= (rho - lambda_1) 2^s, so with
+gap > 0: sin^2 <= |r|^2 2^(2s) / (gap^2 <u,u>^3). Equal to sin2_num/sin2_den in the code.
+Hidden assumptions, named, and where each is met:
+ - rho > lambda_1: needed (the j > 0 bound uses the sign). Met by check flux_gap_positive (gap > 0 implies floor(rho 2^s) > high_1 >= lambda_1 2^s).
+ - every e = 0 value other than lambda_0 at most high_1: met by construction of level_bracket(wanted = 2) with ground multiplicity 1 (checked);
+   MEASURED: my roots place exactly one e = 0 eigenvalue above high_1 on every model.
+ - eigenvalues outside e = 0: none enter, because u is exactly twist-invariant (checked flux_perron_vector_even; MEASURED u_even=1) and S commutes
+   with the twists, so u, S u and r lie in e = 0.
+ - S self-adjoint in the weighted product: needs w a class function with w(g) = w(g^-1); MEASURED W S symmetric exactly on every model.
+ - T >= 0: not used by claim 1.
+ - scales: rho_n << shift // rho_d and high_1 both at 2^shift; integer floors go the safe way (gap smaller, bound larger).
+MEASURED (verify_truth step=u_error): true sin^2(u, Omega) by exact projectors against the test's bound, and the true scaled gap against the test's:
+  Z2 2x1  true 2^-1896..2^-1895   bound in [2^-1895, 2^-1894)  bound/true in [1,2)  gap 12057086290172 <= true 12057086290172.230
+  Z2 3x1  true 2^-1436..2^-1435   bound in [2^-1435, 2^-1434)  bound/true in [1,2)  gap 12147613257620 <= true 12147613257620.225
+  Q8 2x1  true 2^-2318..2^-2317   bound in [2^-2317, 2^-2316)  bound/true in [1,2)  gap 3038949090    <= true 3038949091.061
+  Z2 2x2  true 2^-1635..2^-1634   bound in [2^-1635, 2^-1634)  bound/true in [1,2)  gap 9536401216867 <= true 9536401216868.194
+  Z2 4x1 (variant) true 2^-1170..2^-1169, bound in [2^-1170, 2^-1169), gap 12620776291825 <= true 12620776291826.636
+ The bound sits within a factor 2 of the truth on every model: the error of u lies along lambda_1 and rho is within 2^-1000 of lambda_0.
+Falsifier: one model where my exact sin^2(u, Omega) exceeds sin2_num/sin2_den, or the test's gap exceeds the true scaled rho - lambda_1.
+
+======================================================================
+D. CLAIM 2: weight of w along Omega <= sin^2 |w|^2 for w orthogonal to u; the low end with that term off is valid      verdict: SURVIVES
+======================================================================
+Derivation (mine). Write Omega = cos(theta) u/|u| + sin(theta) eta, eta unit and orthogonal to u. For <w,u> = 0: <w,Omega> = sin(theta) <w,eta>,
+so <w,Omega>^2 <= sin^2 |w|^2. In <w, S^(2n) w> = |w|^2 (g0 L0^(2n) + s sum_target + rest) at scale 2^(2n shift): g0 L0^(2n) <= (num/den) G^(2n)
+with G = ground high end, target values <= top_high = H, rest |L| <= next_high = N, and rest weight <= 1 - s - g0 <= 1 - s. Hence
+s >= (a - N^(2n) |w|^2 - (num/den) |w|^2 G^(2n)) / ((H^(2n) - N^(2n)) |w|^2), the code's low end before its floor; the floor and the max over n keep it
+a lower bound. The high end a / (top_low^(2n) |w|^2) needs only nonnegative terms and target values > top_low.
+Hidden assumptions: w exactly orthogonal to u in the same product (MEASURED orthogonal_to_u=1; reduced() divides by a positive gcd exactly);
+w in e = 0, so O must map e = 0 to e = 0 (the two-insertion F_mu S^b F_mu does; the commutator must be even under every twist, which the test does
+not check: MEASURED even_under_every_twist=1 for Q8's commutator, and it holds for any central twist since the loop crosses each plane once each way);
+rest |L| <= N: needs L >= -N, which S >= 0 gives; the test checks L > -1 at scale 2^shift per sector, and next_high = 0 occurs on Z2 2x1 e = 0
+(no rest) and Q8 e = 0 (rest exactly 0, MEASURED minimal polynomial t (t - lambda1)(t - lambda0)).
+MEASURED true ground weight of every centered vector the test certifies or rejects, against its bound:
+  Z2 2x1 winding_0 2^-1896..2^-1895, winding_1 2^-1896..2^-1895; Z2 3x1 both 2^-1436..2^-1435; Q8 commutator 2^-2322..2^-2321; Z2 2x2 2^-1635..2^-1634;
+  all at most sin2_num/sin2_den (exact comparison). The bound is nearly met on Z2: claim 2's inequality is close to equality on these vectors.
+MEASURED fuzz part A (9000 diagonal cases, ground weight set to its worst case num/den = w0^2/|w|^2, rest values at +-N often): 0 low ends above
+the truth, 0 high ends below it; the smallest true-minus-low is 0 units (an exact share hits the floor).
+Falsifier: a vector w with <w,u> = 0 whose exact ground weight exceeds sin2_num/sin2_den |w|^2, or a printed low end above an exact share.
+
+======================================================================
+E. CLAIM 3: visibility past u's error                                       verdict: SURVIVES (DERIVED + MEASURED); the factor 2 is load-bearing
+======================================================================
+Derivation (mine), e = 0. u = |u|(cos Omega + sin xi), xi unit in e = 0 orthogonal to Omega; P the orthogonal spectral projector of the target
+level, P Omega = 0. Suppose P O Omega = 0. Then P v = P O u = |u| sin P O xi, |P v| <= |u| |sin| |O|; P u = |u| sin P xi, |P u| <= |u| |sin|;
+|<u,v>| <= |u||v| (Cauchy-Schwarz). So |P w| = | |u|^2 P v - <u,v> P u | <= |u|^2 |sin| (|u||O| + |v|), and (x+y)^2 <= 2x^2 + 2y^2 gives
+|P w|^2 <= 2 |u|^4 sin^2 (|v|^2 + |u|^2 |O|^2). Contrapositive: a larger |P w|^2 forces P O Omega != 0. The code's error_num/error_den is this with
+sin^2 <= sin2_num/sin2_den and |O|^2 <= op_sq; |P w|^2 >= (share_low/10^9)|w|^2 with share_low a floor, compared with a strict >.
+e != 0: F u = |u|(cos F Omega + sin F xi); if P F Omega = 0 then |P F u| <= |u| |sin| |F| <= |u| |sin| max|f|. Same contrapositive.
+Hidden assumptions, named, and where each is met:
+ - |F| for a multiplication operator = max over orbits of |f|, because the metric |orbit| A is diagonal and positive (MEASURED W > 0 on all models).
+ - |F S^b F| <= max|f|^2 |S|^b with |S| = lambda_0: S self-adjoint with positive entries, so its spectral radius is the Perron root, the global top,
+   which the test places in e = 0 (Perron-Frobenius; T >= 0 not needed here). The bound uses ground[1] >= lambda_0 2^shift.
+ - Only |O restricted to e = 0| is needed (xi lies in e = 0). The test's whole-space bound is larger by 2^(b L0) on the winding-0 control.
+ - O must map e = 0 into e = 0 (D above), F u must lie in sector e exactly (MEASURED f_charged=1 and same_vector=1 on all 15 + 3 variant rows).
+MEASURED, every row of the receipt on my exact projectors (verify_truth step=flux_row and e0_candidate). True share of the test's own vector in the
+test's level, then the bracket printed, then the true part of the exact vector (|P F Omega|^2 or |P O Omega|^2 with |Omega| = 1):
+  Z2 2x1 e=(1,-1)  0.955960752587553 in [955960752,955960753]  |PFOmega|^2 0.955960752587   e=(-1,1) 0.999999999999 in [999999999,1000000001]  1.0
+         e=(-1,-1) 0.955960752587553 in [955960752,955960753]  0.955960752587
+         e=0 winding_1 0.999999999999 in [999999999,1000000001]; exact centered share 1.0 (e = 0 has dimension 2); |POOmega|^2 = 72326892094.80 > 0
+  Z2 3x1 e=(1,-1) and (-1,-1) 0.930970119284299 in [930970119,930970120]; e=(-1,1) 0.999999999999 in [999999999,1000000001]
+         e=0 winding_1 0.755676415560191 in [755676415,755676416]; exact centered share 0.755676415560; |POOmega|^2 = 4.4378e26 > 0
+  Q8 2x1 e=(1,-1) 0.658504914156132 in [658504914,658504944]  share of F Omega 0.658504914156
+         e=(-1,1) 0.999773739683522 in [999773726,999773769]  0.999773739683
+         e=(-1,-1) 0.652162512495078 in [652162512,652163535]  0.652162512495 (multiplicity 4, one distinct value, 4 counted above the low end)
+         e=0 commutator 0.041658961680944 in [41658960,41658963]; exact centered share 0.041658961680; |POOmega|^2 = 0.145595509085 > 0
+  Z2 2x2 e=(1,-1),(-1,1) 0.803319923640040 in [803319923,803319924]; e=(-1,-1) 0.701103425403012 in [701103425,701103426];
+         e=0 winding_0 0.787871539091074 in [787871539,787871540]; exact centered share 0.787871539091
+ Every printed low end lies below the truth and every high end above it (low_at_most_true=1, high_at_least_true=1 on all 19 rows read).
+ Every MET visibility row has true part > 0 (truth_visible=1); certified |P w|^2 over the error term: 2^1887 to 2^2316 on the positive rows.
+ The note's 5-digit values agree: 0.95596, 1.00000, 0.93097, 0.65850, 0.99977, 0.65216, 1.00000, 0.78787, 0.75568, 0.04166; ratios
+ lambda1(0)/lambda0 = 0.065377708, 0.126562814, 0.035899248, 0.095314654 and top flux/lambda0 = 0.767071950, 0.883213563, 0.233526420, 0.448720286.
+Sharpness, MEASURED (runs/tight_control.hbp, through the test's own certify_overlap and exact_vector_visible, on the test's own u and model):
+  O'' = 2^(b shift + 1) S^b - (G^b + H^b) is a polynomial in S, so its part in the first excited level is exactly 0. With |O''| on e = 0 bounded by
+  max(G^b - H^b, G^b + H^b - 2 top_low^b, G^b + H^b with more levels): certified |P w|^2 / error = 0.999999998 on Z2 2x1 and 0.995945412 on 3x1.
+  Decision as derived: NOT_CERTIFIED on both. With the factor 2 dropped: CERTIFIED on both, a certification of an exactly zero part.
+  Fuzz part B (9000 diagonal worst cases, u = (p, q, 0..), O = diag(A, -A, ...)): 0 false certifications; largest true |P w|^2 / error
+  0.999999999997; with the factor 2 dropped all 9000 certify. So the error term is the right one and cannot lose its factor 2.
+Falsifier: any O mapping e = 0 into itself with P O Omega = 0 exactly whose computed w the test certifies; or a MET row whose exact part is 0.
+
+======================================================================
+F. CLAIM 4: the negative control                                             verdict: SURVIVES (DERIVED + MEASURED); its margin is wide
+======================================================================
+Derivation (mine). Z2 on L0 x 1: the U_1 links are self-loops, each plaquette is s_x + s_(x+1) with s_x = U_1(x), so A does not see U_0; the orbit
+space is (Polyakov P, s_0..s_(L0-1)); B factorizes into the L0-fold convolution on P (eigenvalues 4^L0 on functions even in P, 2^L0 on chi(P)
+for w = 3, 1) times the s kernel. F_0 = chi(P) maps e = 0 to the sector (-1,1) where S = 2^L0 S_s against 4^L0 S_s on e = 0, so F_0 S F_0 = 2^-L0 S
+on e = 0; F_0^2 = 1, so F_0 S^b F_0 = 2^(-b L0) S^b there and F_0 S^b F_0 Omega = 2^(-b L0) lambda0^b Omega: part 0 in every other level.
+For other weights the factor is ((w0 - w1)/(w0 + w1))^L0; the test's check flux_winding_0_scales_S_on_e=0 hard-codes 2^L0, which holds for w = 3, 1.
+MEASURED on my own matrices: F0 S F0 = 2^-L0 S on every e = 0 basis vector and F0 S^b F0 u = 2^(-b L0) S^b u exactly, on Z2 2x1, 3x1 and 4x1.
+MEASURED: the test rejects winding_0 on 2x1 and 3x1 (test_accepted=0; check flux_exact_zero_overlap_not_certified passes), and the sabotage
+visibility_ignores_omega_error turns exactly those two checks red (A2). The rejected vector is u's own error: relative size 2^-1896..2^-1895 (2x1),
+2^-1436..2^-1435 (3x1); its true share in the first excited level is 0.999999999999 on both, which is why it certified before the correction.
+Margin, MEASURED: certified |P w|^2 over the test's error term is 2^-10..2^-9 (2x1), 2^-20..2^-19 (3x1), 2^-34..2^-33 (4x1 variant); over the same
+bound with the true sin^2 and the true norm of O on e = 0 it is 2^-3..2^-2 on all three. The gap comes from the whole-space |O| = lambda0^b against
+2^(-b L0) lambda0^b on e = 0. Consequence, MEASURED: mutant m1 (factor 2 dropped) passes all 202 flux checks with every row byte for byte; m2 (error
+term / 512) passes; m3 (/ 1024) fails flux_exact_zero_overlap_not_certified_Z2_2x1 only. The control turns red only for an error term cut by more
+than about 2^9.5 on 2x1 and 2^19.5 on 3x1, while the derived term is sharp to 2 parts in 10^9 (E). Holds H1 to H8 add the sharp control.
+Falsifier: the test accepting winding_0 on 2x1 or 3x1 with the error term intact; or F0 S F0 != 2^-L0 S on one e = 0 vector.
+
+======================================================================
+G. WHAT I TRIED TO BREAK IT, AND HOW HARD (MEASURED)
+======================================================================
+ 1. The worst-case zero-part vector of claim 3 on the test's own model and u (tight_control): rejected at 0.999999998 of the error term. No break.
+ 2. 9000 exact diagonal cases for the share bracket (rest values at +-N, ground weight at its worst case) and 9000 for visibility: 0 breaks.
+ 3. Larger lattices through the whole flux section: Z2 4x1 and 5x1 with w = 3, 1: 86 checks, 0 failed; Z2 4x1 on my exact projectors: same operator,
+    same u, every bracket holds its truth (e != 0 shares 0.919143263669, 0.999999999999, 0.919143263669; e = 0 winding_1 0.582049578828),
+    negative control rejected at 2^-34. Z2 5x1 on my projectors: see FINDINGS-ADDENDUM below if it finished.
+ 4. An indefinite variant, Z2 2x1 and 3x1 with w = 1, 3 (per-link Fourier 4, -2): the test's flux_spectrum_at_least_minus_the_step fails on
+    (1,-1) and (-1,-1), then certify_overlap raises ZeroDivisionError (exit 1, Traceback). The S >= 0 guard is load-bearing and fires.
+ 5. Integer directions: every floor (gap, lows, share_low) and the +1 on highs go the safe way; reduced() is an exact positive division; the u
+    truncation changes u, and everything after it is computed exactly from the final u. DERIVED.
+ Not tried: u from fewer Perron steps through the whole pipeline (the derivation fixes the ratio below 1 for any u: the control's |P w|^2 and the
+ error term both scale with sin^2); weights other than 3, 1 on Z2 with S >= 0, where the scaling check hard-codes 2^L0; Q8 at 3x1 (8^6 configs).
+
+======================================================================
+H. OTHER FINDINGS
+======================================================================
+ - Stale comment, MEASURED: test line 2397 says the two-insertion vector's "size squared against 2^100 sin^2 theta"; no line at 2184b54 compares
+   against 2^100 (the only "<< 100" are the closed form's 15 << 100 and 32 << 100). The comparison came from the recheck lane's H1 and was replaced
+   by certified_beyond_the_error. Hold H9.
+ - The e = 0 single-insertion candidate is not checked to be even under every twist; it is (MEASURED on Q8, DERIVED for any central twist). Noted.
+ - Method faults of this lane, on record: one python run read its script from a stdin heredoc (a 3-line text patch of my own tool, not a REPL);
+   one git stash/pop in my gate clone ran without core.autocrlf=false (the gate had already read the LF files; the patched/ copies stay LF).
+
+======================================================================
+I. HOLDS (HOLDS.txt), and what applying them measured
+======================================================================
+ H1 medium test  a sharp negative control: O = 2^(b shift + 1) S^b - (G^b + H^b) on Z2 2x1 and 3x1, check flux_sharp_zero_overlap_not_certified
+ H2 medium test  sabotage name visibility_error_halved
+ H3 medium test  the sabotage halves error_num in exact_vector_visible
+ H4 medium workflow  read_sabotage visibility_error_halved 'flux_sharp_zero_overlap_not_certified_Z2_2x1'
+ H5 medium receipt   DONE line 401 -> 403 checks
+ H6 medium note      count 401 -> 403 (the workflow greps the note for the receipt's count)
+ H7 medium README    count 401 -> 403
+ H8 medium note s9   both controls' measured margins and the sharp control with its sabotage
+ H9 low    test      the stale "2^100" comment at line 2397
+ Applied by tools/apply_holds.py to copies (patched/): each OLD occurs exactly once (9 of 9). MEASURED on the patched copy:
+  - full run: 403 checks, 0 failed, 7 misses, exit 0; stdout with CRLF taken to LF equals the patched receipt byte for byte
+    (sha256 aae6735ac4740c7941fde4756bb0168adfc0191fa0c0bcc7e91d284b112539f1 both).
+  - no-float gate on a local clone of the head with the patched files overlaid: selftest 0 failed; scan code_files=104, listed_findings=162,
+    failed=0, exit 0; its output equals the gate's output on the unpatched head byte for byte.
+  - sabotage runs on the patched copy: see FINDINGS-ADDENDUM below.
+
+======================================================================
+FINDINGS-ADDENDUM (MEASURED after the sections above were written)
+======================================================================
+ - Patched copy, full run with sabotage=visibility_error_halved: exit 1, exactly 2 failed checks, flux_sharp_zero_overlap_not_certified_Z2_2x1 and
+   _Z2_3x1; the existing control flux_exact_zero_overlap_not_certified stays green; 0 Traceback (runs/patched_sab_halved.out).
+ - Patched flux-only copy (patched_flux_only.py), the other flux sabotages: flux_wrong_sign exit 1, 52 failed, named check present, 0 Traceback
+   (the sharp control also red); overlap_skips_next exit 1, 16 failed, named present, 0 Traceback; visibility_ignores_omega_error exit 1, 4 failed
+   (the 2 old plus the 2 sharp), named present, 0 Traceback; twist_every_link exit 1, 2 failed, named present, 0 Traceback.
+   The 8 sabotages outside the flux section reach no changed line (DERIVED: H1 sits inside section_flux after the existing control, H3 inside
+   exact_vector_visible); their full runs on the patched copy are NOT_MEASURED, reason BUDGET.
+ - Z2 5x1 variant on my exact projectors: same S, same u (2016 bits), true sin^2 2^-1006..2^-1005 under its bound, gap 3267156380 <= true
+   3267156381.098; e != 0 shares 0.913741484553 in [913741482,913741487], 0.999999999999 in [999999980,1000000011], 0.913741484553 in
+   [913741372,913741487]; e = 0 winding_1 0.448541411570 in [448541404,448541420]; negative control rejected at 2^-52..2^-51 of the error term,
+   2^-3..2^-2 against the bound with true quantities; F0 S F0 = 2^-5 S on e = 0 exactly. The old control's margin falls as 2^-(2 b L0) with the lattice.
+ - Z2 3x2 on my exact projectors: NOT_MEASURED, reason BUDGET (my Sturm refinement at 8192 bits on u's degree-32 minimal polynomial ran past
+   30 minutes and I stopped it); the earlier recheck lane read its shares inside the receipt's brackets (NAMED, their run).
+
+======================================================================
+J. COULD NOT CHECK
+======================================================================
+ - The hosted owning gate (one-scale-blocking.yml on GitHub) at 2184b54: not read by this lane (read-only local work); my runs are SCOPED evidence.
+ - The patched copy under the 8 non-flux sabotages (BUDGET); Z2 3x2 exact truth (BUDGET); Q8 at 3x1 or larger (8^6 configurations, BUDGET).
+ - Z2 weights other than 3, 1 with S >= 0 through the whole section: the check flux_winding_0_scales_S_on_e=0 hard-codes 2^L0, so such a variant
+   turns that check red by construction; the certificate rows themselves were not read there.
+ - GPT-6's statements about the earlier head are NAMED (its comment); I did not rerun its b577fa8 inspection.
+ - Method fault, on record beside section H: one command of mine ended in a stray bare "python3 -" (reading stdin); it waited, I stopped it
+   with TaskStop within two minutes, and the process list afterwards holds no such process. It read and wrote nothing.

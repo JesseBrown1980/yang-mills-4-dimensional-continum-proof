@@ -1,0 +1,177 @@
+HOLD H1 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                for label, path_c in candidates:
+>>>
+NEW<<<
+                # An exact zero on every lattice: O = 2^(shift+1) S - ground_low keeps Omega an eigenvector, so the part of O Omega in the first excited level is 0, and on e = 0, whose
+                # spectrum lies in [-2^-shift, ground_high/2^shift] with ground_high = ground_low + 1, |O| <= ground_low + 2. Its centered vector is u's own residual, whose computed part
+                # stands near (1 - lambda_1/lambda_0)^2 of the error: the certificate rejects it by that margin, and an error short by a factor 2 certifies it.
+                halfway = [(m_ << (shift + 1)) - ground[0] * x for m_, x in zip(moved, u)]
+                check("flux_exact_zero_residual_rejected_%s" % tag, ground[1] == ground[0] + 1 and certified_beyond_the_error(halfway, ipow(ground[0] + 2, 2), 1) is None)
+                for label, path_c in candidates:
+>>>
+REASON: MEASURED (diag at the head, own exact Z2 2x1 code): the one exact-zero control stands 2^-9 (2x1) and 2^-19 (3x1) under its error, so error mutants C11 C12 C13 C14 C17 C18 C23 leave all 401 checks and the receipt byte for byte; this control stands at 873518, 818455, 762892, 749097, 929490 ppm of its error (= (1-t)^2), rejected, and turns red under each of them, on all 5 lattices and on 4 for C17 (runs/PM.hbp).
+
+HOLD H2 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+                leak = (sin2_num, sin2_den, ground[1])
+>>>
+NEW<<<
+                leak = (sin2_num, sin2_den, ground[1])
+                # The leak term at work: u_4, four steps of S from the constant, holds Omega at a sin^2 far above u's, and its residual r_4 is orthogonal to u_4. With the term taken
+                # off at every power, the certified share of r_4 in the first excited level is at most 1; the same moments with no term read a share above 1.
+                u_4 = [1] * model.m
+                for _ in range(4):
+                    u_4 = reduced(model.apply_s(u_4))
+                s_4 = model.apply_s(u_4)
+                n_4, d_4 = weighted(model, u_4, s_4), weighted(model, u_4, u_4)
+                r_4 = [d_4 * m_ - n_4 * x for m_, x in zip(s_4, u_4)]
+                gap_4 = (n_4 << shift) // d_4 - top_high
+                held = False
+                if gap_4 > 0:
+                    leak_4 = (weighted(model, r_4, r_4) << (2 * shift), gap_4 * gap_4 * d_4 * d_4 * d_4, ground[1])
+                    low_4 = certify_overlap(model, reduced(r_4), top_low, top_high, next_high, shift, "", leak=leak_4, quiet=True)[0]
+                    bare_4 = certify_overlap(model, reduced(r_4), top_low, top_high, next_high, shift, "", quiet=True)[0]
+                    held = low_4 <= 1000000000 < bare_4
+                check("flux_leak_term_holds_the_share_%s" % tag, held)
+>>>
+REASON: MEASURED: at the head the leak term reaches at most 2^-995 units of 1e-9 (flux_rational_omega_close keeps it under one unit, DERIVED), so C01 C02 C04 C05 C06 leave every row byte for byte; at u_4 it reaches 2^371..2^593 units, the share reads 999999937..999999999 with it and a 112..179-digit low without it, and each of those mutants turns this check red.
+
+HOLD H3 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                    v_sq = weighted(model, vector, vector)
+>>>
+NEW<<<
+                    v_sq = weighted(model, vector, vector)
+                    # |O u| <= |O| |u|, the bound the error rests on, read on the vector itself.
+                    check("flux_operator_bound_covers_O_u_%s" % tag, v_sq * op_sq_den <= norm_u * op_sq_num)
+>>>
+REASON: MEASURED: an |O|^2 bound set low in the call (C24 single insertion at 1 for Q8's max|f| = 2, C26 power b for 2b, C27 a factor 4) leaves all 401 checks and the receipt byte for byte: with the |O|^2 term shrunk, the |v|^2 term alone keeps the direction-0 control under its error (about 0.5 of it for C26, DERIVED from the 1928 ppm). On the 12 calls at the head |O u|^2 stays under the bound, and each of the three turns this check red: 1 row for C24 (Q8), 6 for C26, 2 for C27 (runs/PM.hbp).
+
+HOLD H4 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+"overlap_skips_next", "visibility_ignores_omega_error")
+>>>
+NEW<<<
+"overlap_skips_next", "visibility_ignores_omega_error", "visibility_error_halved", "visibility_error_inflated", "overlap_one_power")
+>>>
+REASON: The three sabotages of H5 and H7 need their names; an unknown name still exits 2.
+
+HOLD H5 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    if SABOTAGE == "visibility_ignores_omega_error":
+        error_num = 0
+>>>
+NEW<<<
+    if SABOTAGE == "visibility_ignores_omega_error":
+        error_num = 0
+    if SABOTAGE == "visibility_error_halved":
+        error_den *= 2
+    if SABOTAGE == "visibility_error_inflated":
+        error_num <<= 4096
+>>>
+REASON: MEASURED on the patched copy: halved turns exactly the 5 rows of H1 red and leaves the two first controls green; inflated turns flux_two_insertions_above_the_residual red on all 4 Z2 lattices and Q8, a check no line at the head shows able to fail (0 red rows over all 13 head runs).
+
+HOLD H6 | file=.github/workflows/one-scale-blocking.yml | severity=medium
+OLD<<<
+          read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'
+>>>
+NEW<<<
+          read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'
+          read_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'
+          read_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'
+          read_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'
+>>>
+REASON: MEASURED on the patched copy, full runs: each line exits 1 with its named row and no Traceback (5, 6 and 16 FAILED rows); they show H1, the two-insertion check and the narrow check able to fail (C33, C35 vacuous: caught by these lines alone).
+
+HOLD H7 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+    for n in (2, 4, 8, 16, 32, 64):
+>>>
+NEW<<<
+    for n in ((2,) if SABOTAGE == "overlap_one_power" else (2, 4, 8, 16, 32, 64)):
+>>>
+REASON: MEASURED: overlap_bracket_narrow turns red under no sabotage at the head (0 rows over 13 runs); with n = 2 alone it turns red on 15 rows, among them Z2_2x1_(1, -1) at [955960752, 955967465], width 6713 units of 1e-9; C35 (the narrow check made vacuous) is caught by the line of H6 (runs/PM.hbp).
+
+HOLD H8 | file=.github/workflows/one-scale-blocking.yml | severity=low
+OLD<<<
+          read_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)'
+>>>
+NEW<<<
+          read_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)'
+          read_sabotage overlap_skips_next 'overlap_bracket_Z2_2x1_(1, -1)'
+>>>
+REASON: MEASURED: this sabotage turns overlap_bracket_Z2_2x1_(1, -1) red among its 16 rows, but since the named check moved to the closed form no line reads it, and C36 (low <= high made vacuous) passes every line at the head; with this line it is caught.
+
+HOLD H9 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_DONE|checks=401|failed=0|
+>>>
+NEW<<<
+YM4_03_DONE|checks=423|failed=0|
+>>>
+REASON: MEASURED: the copy patched with H1-H8 prints the receipt byte for byte apart from this count, 22 checks more (5 of H1, 5 of H2, 12 of H3), 0 failed, 7 misses (runs/PB/patched_full.out).
+
+HOLD H10 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+MEASURED: 401 checks with 0 failed
+>>>
+NEW<<<
+MEASURED: 423 checks with 0 failed
+>>>
+REASON: The workflow's note step greps the receipt's count in the note; with H9 the count is 423.
+
+HOLD H11 | file=README.md | severity=low
+OLD<<<
+MEASURED on 401 checks with 0 failed
+>>>
+NEW<<<
+MEASURED on 423 checks with 0 failed
+>>>
+REASON: The README's map carries the receipt's count; with H9 it is 423.
+
+HOLD H12 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+reads not certified: that is the negative control, and the sabotage `visibility_ignores_omega_error`, which drops the error term, turns it red.
+>>>
+NEW<<<
+reads not certified: that is the negative control, and the sabotage `visibility_ignores_omega_error`, which drops the error term, turns it red. That control stands at 2⁻⁹ of its error on 2×1 and 2⁻¹⁹ on 3×1, so it turns red when the error is dropped or cut by a factor above about 519 and 2¹⁹; with the factor 2 dropped, the \|u\|²\|O\|² term dropped, both, sin² read a quarter low, \|w\|² four times high, or the \|O\|² bound set low, every row reads byte for byte, as the second seat's mutation at `2184b54` read. On all five lattices a second exact zero stands near its line: O = 2^{shift+1} S − ⌊2^{shift} λ₀⌋ keeps Ω an eigenvector, so its part in the first excited level is 0, and its centered vector, u's own residual, stands at 0.87351, 0.81845, 0.76289, 0.74909 and 0.92949 of the error, (1 − λ₁/λ₀)² to five digits; it reads rejected, and the sabotage `visibility_error_halved` turns it red with the first control green. u after four steps of S reads its residual's certified share at most 1 with the ground's term taken off and above 1 read bare, and on all 12 calls \|O u\|² stays at or under the \|O\|² bound times \|u\|². The sabotages `visibility_error_inflated` and `overlap_one_power` turn the two-insertion rows and the narrow-bracket rows red.
+>>>
+REASON: The note's account of the control as it stands, with the measured margins of the control at the head (diag 1928 ppm, 1 ppm) and of H1 (diag/DIAG_PATCHED.hbp), and what H1-H8 add; every number is from runs in this lane. Pipes inside the cell are escaped as the note does elsewhere (H15, H16).
+
+HOLD H13 | file=docs/PREDICTION-YM4-03.hbp | severity=low
+OLD<<<
+read_by=the_second_seat's_recheck,flux_and_proofs_lanes|the_rows_above_stay_as_pushed=1|json=0
+>>>
+NEW<<<
+read_by=the_second_seat's_recheck,flux_and_proofs_lanes|the_rows_above_stay_as_pushed=1|json=0
+YM4_03_ATTEMPT|run=receipt_after_the_certificate_mutation|checks=423|failed=0|prediction_misses=7|added=flux_exact_zero_residual_rejected_on_5,flux_leak_term_holds_the_share_on_5,flux_operator_bound_covers_O_u_on_12_calls|first_control_part_over_error=2^-9_at_2x1,2^-19_at_3x1|residual_control_part_over_error_ppm=873518,818455,762892,749097,929490|read_by=the_second_seat's_mutation_of_2184b54|the_rows_above_stay_as_pushed=1|json=0
+>>>
+REASON: The receipt's count moves 401 -> 423 with H9; the prediction file records each receipt beside the rows as pushed (rows 1-30 and 34-42 stay byte for byte, pins rc=0 on the patched clone).
+
+HOLD H14 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+while the monomial read catches the same change made to the 24 points.
+>>>
+NEW<<<
+while the monomial read catches the same change made to the 24 points. The second seat's mutation of the corrected certificate at `2184b54` ran 36 mutants of its new and changed lines, each through the test's full output, read with section_flux alone after that read equalled four full runs byte for byte, and through the sabotage `visibility_ignores_omega_error`: 8 killed on a named check, 1 caught only by cmp, 1 only by that sabotage line, and 26 left every row byte for byte with every line passing. Of the 26, 18 move a bound the certificate rests on: the leak term (5), the visibility error (7), the |O|² bound (3), and the two-insertion, narrow and bracket checks made vacuous (3); with its holds each of the 18 turns a named check or a sabotage line red. The other 8 leave every row byte for byte for a measured reason: three move the leak, which stands at most 2⁻⁹⁹⁵ units of 10⁻⁹; two run the same program on these inputs; one enlarges the error, and the accepted rows stand 2¹³⁷⁹ or more above it; two move the e ≠ 0 error, whose rows stand 2¹³⁹⁴ or more above it, and an exact zero for e ≠ 0 within this test stays OPEN.
+>>>
+REASON: The mutation lane's count beside the two earlier ones, from runs/TABLE.hbp (KILLED_NAMED=8, CMP_ONLY=1, SAB_STEP_ONLY=1, SURVIVED=26) and runs/PM.hbp (18 of 18 caught with the holds).
+
+HOLD H15 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+squared over the gap squared and |u|².
+>>>
+NEW<<<
+squared over the gap squared and \|u\|².
+>>>
+REASON: MEASURED: the section 9 row at line 248 holds 9 raw pipes against the header's 3 (3 at b577fa8); GitHub's GFM renderer (POST /markdown, render/row248_head.html) returns 2 cells and drops all text after this first raw pipe: 0 hits for negative control and for visibility_ignores_omega_error. The note escapes pipes as \| in 257 places.
+
+HOLD H16 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+with |F T^b F| at most max|f|² λ₀^b.
+>>>
+NEW<<<
+with \|F T^b F\| at most max\|f\|² λ₀^b.
+>>>
+REASON: The other raw pipes of the same row (H15); with both escaped, the row renders as 2 cells with its whole text (render/row248_patched.html).

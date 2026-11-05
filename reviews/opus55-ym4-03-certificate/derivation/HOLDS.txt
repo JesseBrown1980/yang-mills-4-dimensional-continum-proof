@@ -1,0 +1,97 @@
+HOLD H1 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                        check("flux_exact_zero_overlap_not_certified_%s" % tag, 0 in rejected)
+>>>
+NEW<<<
+                        check("flux_exact_zero_overlap_not_certified_%s" % tag, 0 in rejected)
+                        # A sharper control: O = 2^(b shift + 1) S^b - (G^b + H^b), with G and H the high ends of the ground and first excited windows, is a polynomial
+                        # in S, so O Omega is a multiple of Omega and its part in the first excited level is exactly 0. On e = 0 it acts as 2 L^b - G^b - H^b on the level L,
+                        # so |O| there is at most the largest of G^b - H^b, G^b + H^b - 2 top_low^b and, with more levels, G^b + H^b + 2. The certified part of its computed
+                        # vector reads 999999998 parts in 10^9 of the error term on 2x1 and 995945412 on 3x1, so an error term cut to half of the derived one certifies it.
+                        b_c = b_space[0]
+                        g_b, h_b = ipow(ground[1], b_c), ipow(top_high, b_c)
+                        sharp = list(u)
+                        for _ in range(b_c):
+                            sharp = model.apply_s(sharp)
+                        sharp = [(y << (b_c * shift + 1)) - (g_b + h_b) * x for x, y in zip(u, sharp)]
+                        op_c = max(g_b - h_b, g_b + h_b - 2 * ipow(top_low, b_c), g_b + h_b + 2 if next_high else 0)
+                        check("flux_sharp_zero_overlap_not_certified_%s" % tag, certified_beyond_the_error(sharp, op_c * op_c, 1) is None)
+>>>
+REASON: the existing control's certified part reads 2^-10..2^-9 (2x1) and 2^-20..2^-19 (3x1) of the error term, so a mutant dropping the factor 2 of (x+y)^2 <= 2x^2+2y^2 passes all 202 flux checks with every row byte for byte (mutants/m1), and the error term divided by 512 also passes (m2); this O, run through the test's own certify_overlap and exact_vector_visible, reads 0.999999998 (2x1) and 0.995945412 (3x1), NOT_CERTIFIED as derived, and CERTIFIED with the factor 2 dropped (runs/tight_control.hbp); 9000 diagonal worst cases read up to 0.999999999997 with 0 false certifications, and all 9000 certify with the factor 2 dropped (runs/fuzz_cert.hbp)
+
+HOLD H2 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+"overlap_skips_next", "visibility_ignores_omega_error")
+>>>
+NEW<<<
+"overlap_skips_next", "visibility_ignores_omega_error", "visibility_error_halved")
+>>>
+REASON: the sabotage that halves the e = 0 and e != 0 visibility error terms, so the factor 2 that H1's control measures has a named check that turns red; MEASURED on the patched copy (runs/patched_*)
+
+HOLD H3 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    if SABOTAGE == "visibility_ignores_omega_error":
+        error_num = 0
+>>>
+NEW<<<
+    if SABOTAGE == "visibility_ignores_omega_error":
+        error_num = 0
+    if SABOTAGE == "visibility_error_halved":
+        error_num = error_num // 2
+>>>
+REASON: H2's sabotage itself; on the patched copy it exits 1 on flux_sharp_zero_overlap_not_certified_Z2_2x1 and _Z2_3x1 while the existing control stays green (runs/patched_*)
+
+HOLD H4 | file=.github/workflows/one-scale-blocking.yml | severity=medium
+OLD<<<
+          read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'
+>>>
+NEW<<<
+          read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'
+          read_sabotage visibility_error_halved 'flux_sharp_zero_overlap_not_certified_Z2_2x1'
+>>>
+REASON: the owning gate reads H2's sabotage on its named check, as it reads the other twelve
+
+HOLD H5 | file=tests/ONE_SCALE_BLOCKING_RECEIPT.txt | severity=medium
+OLD<<<
+YM4_03_DONE|checks=401|failed=0|
+>>>
+NEW<<<
+YM4_03_DONE|checks=403|failed=0|
+>>>
+REASON: H1 adds one check on each of Z2 2x1 and 3x1 and prints nothing when they pass; the patched copy's full run equals the patched receipt byte for byte at 403 checks (runs/patched_*)
+
+HOLD H6 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+401 checks with 0 failed, and 7 reads missed
+>>>
+NEW<<<
+403 checks with 0 failed, and 7 reads missed
+>>>
+REASON: the workflow greps the note for the receipt's count; with H5 that count is 403
+
+HOLD H7 | file=README.md | severity=medium
+OLD<<<
+401 checks with 0 failed against a prediction pushed first
+>>>
+NEW<<<
+403 checks with 0 failed against a prediction pushed first
+>>>
+REASON: the README table names the receipt's count; with H5 it is 403
+
+HOLD H8 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+These two corrections are GPT-6's, from its review of `b577fa8`.
+>>>
+NEW<<<
+These two corrections are GPT-6's, from its review of `b577fa8`. The certified part of that control's computed vector reads between 2⁻¹⁰ and 2⁻⁹ of the error term on 2×1 and between 2⁻²⁰ and 2⁻¹⁹ on 3×1. A sharper control on the same two lattices takes O = 2^{b·shift+1} T^b − (G^b + H^b), with G and H the high ends of the ground and first excited windows: a polynomial in T, so its part in the first excited level is exactly 0, and the certified part of its computed vector reads 0.999999998 of the error term on 2×1 and 0.995945 on 3×1. It reads not certified, and the sabotage `visibility_error_halved`, which halves the error term, turns it red.
+>>>
+REASON: the note states the control and its sabotage; these are the measured margins of both controls (runs/truth_Z2_2x1.hbp, runs/truth_Z2_3x1.hbp, runs/tight_control.hbp) and the control H1 adds
+
+HOLD H9 | file=tests/test_one_scale_blocking.py | severity=low
+OLD<<<
+                    # F T^b F Omega in e = 0, with the first winding function whose centered vector stands above u's own error: its size squared against 2^100 sin^2 theta, with sin^2 theta <= residual^2/gap^2.
+>>>
+NEW<<<
+                    # F T^b F Omega in e = 0, with the first winding function whose computed vector's certified part in the first excited level exceeds the most u's error can put there (certified_beyond_the_error), with sin^2 theta <= residual^2/gap^2.
+>>>
+REASON: no line at 2184b54 compares against 2^100 (grep: the only "<< 100" are the closed form's 15 << 100 and 32 << 100); the comparison came from the recheck lane's H1 and was replaced by certified_beyond_the_error, and the comment stayed

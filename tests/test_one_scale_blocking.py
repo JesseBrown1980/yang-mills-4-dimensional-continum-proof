@@ -16,7 +16,7 @@ import sys
 import time
 
 START_NS = time.perf_counter_ns()
-SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell", "twist_every_link", "flux_wrong_sign", "overlap_skips_next", "visibility_ignores_omega_error")
+SABOTAGE_NAMES = ("reversed_order", "shifted_endpoint", "dropped_inverse", "theta_no_inverse", "wrong_convolution_power", "wrong_first_coefficient", "extra_plaquette_factor", "wrong_block_shell", "twist_every_link", "flux_wrong_sign", "overlap_skips_next", "visibility_ignores_omega_error", "visibility_error_halved", "visibility_error_inflated", "overlap_one_power")
 SABOTAGE = ""
 for argument in sys.argv[1:]:
     if not argument.startswith("sabotage=") or argument.split("=", 1)[1] not in SABOTAGE_NAMES:
@@ -2118,7 +2118,7 @@ def certify_overlap(model, w, top_low, top_high, next_high, shift, label, leak=N
     lows, highs = [], []
     moved = list(w)
     done = 0
-    for n in (2, 4, 8, 16, 32, 64):
+    for n in ((2,) if SABOTAGE == "overlap_one_power" else (2, 4, 8, 16, 32, 64)):
         while done < n:
             moved = model.apply_s(moved)
             done += 1
@@ -2145,6 +2145,10 @@ def exact_vector_visible(share_low, w_sq, error_num, error_den):
     so the same construction on the exact Omega has a nonzero part in that level."""
     if SABOTAGE == "visibility_ignores_omega_error":
         error_num = 0
+    if SABOTAGE == "visibility_error_halved":
+        error_den *= 2
+    if SABOTAGE == "visibility_error_inflated":
+        error_num <<= 4096
     return share_low > 0 and share_low * w_sq * error_den > 1000000000 * error_num
 
 
@@ -2367,6 +2371,22 @@ def section_flux():
                 next_high = record["levels"][2][1] if len(record["levels"]) > 2 else 0
                 found = None
                 leak = (sin2_num, sin2_den, ground[1])
+                # The leak term at work: u_4, four steps of S from the constant, holds Omega at a sin^2 far above u's, and its residual r_4 is orthogonal to u_4. With the term taken
+                # off at every power, the certified share of r_4 in the first excited level is at most 1; the same moments with no term read a share above 1.
+                u_4 = [1] * model.m
+                for _ in range(4):
+                    u_4 = reduced(model.apply_s(u_4))
+                s_4 = model.apply_s(u_4)
+                n_4, d_4 = weighted(model, u_4, s_4), weighted(model, u_4, u_4)
+                r_4 = [d_4 * m_ - n_4 * x for m_, x in zip(s_4, u_4)]
+                gap_4 = (n_4 << shift) // d_4 - top_high
+                held = False
+                if gap_4 > 0:
+                    leak_4 = (weighted(model, r_4, r_4) << (2 * shift), gap_4 * gap_4 * d_4 * d_4 * d_4, ground[1])
+                    low_4 = certify_overlap(model, reduced(r_4), top_low, top_high, next_high, shift, "", leak=leak_4, quiet=True)[0]
+                    bare_4 = certify_overlap(model, reduced(r_4), top_low, top_high, next_high, shift, "", quiet=True)[0]
+                    held = low_4 <= 1000000000 < bare_4
+                check("flux_leak_term_holds_the_share_%s" % tag, held)
 
                 def certified_beyond_the_error(vector, op_sq_num, op_sq_den, quiet=True, label_c=""):
                     """w = |u|^2 v - <u, v> u with v = O u. With u = |u| (cos Omega + sin xi), the part in the level of O Omega is nonzero when |P w| > |u|^2 sin (|v| + |u| |O|),
@@ -2379,10 +2399,17 @@ def section_flux():
                     centered = reduced(full)
                     low, high = certify_overlap(model, centered, top_low, top_high, next_high, shift, label_c, leak=leak, quiet=quiet)
                     v_sq = weighted(model, vector, vector)
+                    # |O u| <= |O| |u|, the bound the error rests on, read on the vector itself.
+                    check("flux_operator_bound_covers_O_u_%s" % tag, v_sq * op_sq_den <= norm_u * op_sq_num)
                     error_num = 2 * norm_u * norm_u * sin2_num * (v_sq * op_sq_den + norm_u * op_sq_num)
                     error_den = sin2_den * op_sq_den
                     return (low, high, centered) if exact_vector_visible(low, full_sq, error_num, error_den) else None
 
+                # An exact zero on every lattice: O = 2^(shift+1) S - ground_low keeps Omega an eigenvector, so the part of O Omega in the first excited level is 0, and on e = 0, whose
+                # spectrum lies in [-2^-shift, ground_high/2^shift] with ground_high = ground_low + 1, |O| <= ground_low + 2. Its centered vector is u's own residual, whose computed part
+                # stands near (1 - lambda_1/lambda_0)^2 of the error: the certificate rejects it by that margin, and an error short by a factor 2 certifies it.
+                halfway = [(m_ << (shift + 1)) - ground[0] * x for m_, x in zip(moved, u)]
+                check("flux_exact_zero_residual_rejected_%s" % tag, ground[1] == ground[0] + 1 and certified_beyond_the_error(halfway, ipow(ground[0] + 2, 2), 1) is None)
                 for label, path_c in candidates:
                     f_values, invariant = holonomy_function(model, b_space, path_c, character)
                     check("flux_even_function_invariant_%s_%s" % (tag, label), invariant)
@@ -2394,7 +2421,7 @@ def section_flux():
                         break
                 read_row("first_excited_visible_single_insertion_%s" % tag, found is not None, found[0] if found else "only_constants_among_even_single_insertions", "a_contractible_or_even_coarse_F")
                 if found is None:
-                    # F T^b F Omega in e = 0, with the first winding function whose centered vector stands above u's own error: its size squared against 2^100 sin^2 theta, with sin^2 theta <= residual^2/gap^2.
+                    # F T^b F Omega in e = 0, with the first winding function whose computed vector's certified part in the first excited level exceeds the most u's error can put there (certified_beyond_the_error), with sin^2 theta <= residual^2/gap^2.
                     # With a transverse side of 1 the winding in the other direction has F S F = 2^(-L_0) S on e = 0, exactly, so its vector is a multiple of Omega and centering returns u's own residual, and the row takes the next direction.
                     if sides[1] == 1:
                         f_values = windings[0][0]
