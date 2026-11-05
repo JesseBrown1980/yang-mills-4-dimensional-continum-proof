@@ -1,0 +1,58 @@
+name: YM4-03 exact factor-two continuous SU2 one-scale block
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tests/test_one_scale_block_gpt6.py"
+      - "tests/YM4_03_ONE_SCALE_GPT6.hbp"
+      - "docs/PREDICTION-YM4-03-GPT6.hbp"
+      - "docs/NOTE-YM4-03-GPT6-ONE-SCALE.md"
+      - ".github/workflows/ym4-03-gpt6-block.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tests/test_one_scale_block_gpt6.py"
+      - "tests/YM4_03_ONE_SCALE_GPT6.hbp"
+      - "docs/PREDICTION-YM4-03-GPT6.hbp"
+      - "docs/NOTE-YM4-03-GPT6-ONE-SCALE.md"
+      - ".github/workflows/ym4-03-gpt6-block.yml"
+permissions:
+  contents: read
+jobs:
+  exact-su2:
+    name: SU2 gauge block, Q8 convolution, Wilson Haar tail and negative controls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact PR head and original prediction
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Verify prediction preceded checker and remains unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e fae9a7f53053466b5a4f1fd6ad8c57d0811b745b:docs/PREDICTION-YM4-03-GPT6.hbp
+          git diff --exit-code fae9a7f53053466b5a4f1fd6ad8c57d0811b745b HEAD -- docs/PREDICTION-YM4-03-GPT6.hbp
+          ! git cat-file -e fae9a7f53053466b5a4f1fd6ad8c57d0811b745b:tests/test_one_scale_block_gpt6.py
+      - name: Run the rational SU2 and Wilson character tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_one_scale_block_gpt6.py > one-scale.hbp
+          cmp one-scale.hbp tests/YM4_03_ONE_SCALE_GPT6.hbp
+          grep -Fx "YM4_03_DONE|result=PASS|json=0" one-scale.hbp
+      - name: All four deliberate defects must be rejected
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in swap_order wrong_endpoint drop_inverse_loop wrong_convolution; do
+            if python3 -I -X utf8 tests/test_one_scale_block_gpt6.py "sabotage=$fault" > broken.hbp; then
+              echo "CONTROL_SURVIVED|fault=$fault|json=0"
+              exit 1
+            else
+              rc=$?
+            fi
+            test "$rc" -eq 2
+            grep -Fx "YM4_03_SABOTAGE|name=$fault|result=REJECTED|json=0" broken.hbp
+          done
