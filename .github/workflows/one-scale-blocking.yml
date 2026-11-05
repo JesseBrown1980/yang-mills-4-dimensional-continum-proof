@@ -1,0 +1,78 @@
+# YM4-03: exact rows against the receipt, and each sabotage must exit 1 on its named check.
+name: YM4-03 one-scale blocking
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_one_scale_blocking.py'
+      - 'tests/ONE_SCALE_BLOCKING_RECEIPT.txt'
+      - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
+      - 'docs/PREDICTION-YM4-03.hbp'
+      - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/one-scale-blocking.yml'
+  pull_request:
+    paths:
+      - 'tests/test_one_scale_blocking.py'
+      - 'tests/ONE_SCALE_BLOCKING_RECEIPT.txt'
+      - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
+      - 'docs/PREDICTION-YM4-03.hbp'
+      - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/one-scale-blocking.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  one-scale-blocking:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: The 30 rows of the prediction as pushed at 7e6b111 stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 30 docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = bcb1f24c0a6dd0e7942a9d4b5743145bf1536ec70854f65ff8e4854ff2c46a55
+      - name: The gate reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Every row against the recorded receipt
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 tests/test_one_scale_blocking.py > /tmp/blocking.out 2> /tmp/blocking.err
+          cat /tmp/blocking.err
+          cmp /tmp/blocking.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt
+          grep -q '|failed=0|' /tmp/blocking.out
+          if grep -q '^FAILED' /tmp/blocking.out; then echo "a check failed"; exit 1; fi
+      - name: Each sabotage exits 1 on its named check, with no crash
+        run: |
+          set -euo pipefail
+          read_sabotage() {
+            rc=0
+            python3 -I -X utf8 tests/test_one_scale_blocking.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -qF "FAILED|check=$2|json=0" "/tmp/sab-$1.out"
+            if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi
+            echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"
+          }
+          read_sabotage reversed_order 'covariance_b=2'
+          read_sabotage shifted_endpoint 'covariance_b=2'
+          read_sabotage dropped_inverse 'covariance_b=2'
+          read_sabotage theta_no_inverse 'reflection_map_b=2_c=0'
+          read_sabotage wrong_convolution_power 'two_dimensions_closes_S3_b=2_2x2'
+          read_sabotage wrong_first_coefficient 'first_dependence_(2,2,2,2)_position=0'
+          read_sabotage extra_plaquette_factor 'brute_equals_elimination_S3'
+          read_sabotage wrong_block_shell 'walls_Z2_4x2x2'
+      - name: An unknown sabotage name exits 2
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_one_scale_blocking.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2

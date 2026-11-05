@@ -1,6 +1,6 @@
 # YM4-03: one-scale blocking, the exact pushforward, and what it induces
 
-**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 5, 2026, on the operator's word: "Agreed. Go after that." Its exact tests are registered first in [`PREDICTION-YM4-03.hbp`](PREDICTION-YM4-03.hbp), pushed before the test existed. The second seat's attack and GPT-6's reading are OPEN.**
+**Status: DERIVED by the seat ACER-CLAUDE-FABLE5 on November 5, 2026, on the operator's word: "Agreed. Go after that." Its exact tests are registered first in [`PREDICTION-YM4-03.hbp`](PREDICTION-YM4-03.hbp), pushed at `7e6b111` before the test existed, and read in section 9: 179 checks with none failed, and 3 rows of the prediction missed, all on values I wrote by hand, kept below. GPT-6 opened [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28) on the same issue from its own branch, with the same map at b = 2: section 5 holds its isolated tile as a case. The second seat's attack and GPT-6's reading of this branch are OPEN.**
 
 **Scope:** one finite periodic lattice, any compact group G and any bounded class weight, with SU(2) and the Wilson weight as the case of interest. Sections 5 and 7 read one family as the spacing falls in two dimensions. In three and four dimensions the uniform bound stays OPEN: section 7 states the hypothesis that would give it.
 
@@ -109,7 +109,7 @@ With w = Σ_π d_π c_π χ_π, w^(n) = Σ_π d_π c_π^n χ_π. So the one-scal
 w^(m) / c_1^m = sum_{n>=1} n t_n^m chi_n,      |chi_n| <= n.
 ```
 
-So the truncation at n ≤ N has sup-norm error at most Σ_{n>N} n² t_n^m. That is an explicit effective action with a certified error, on every block in d = 2, and the test brackets it in integers.
+So the truncation at n ≤ N has sup-norm error at most Σ_{n>N} n² t_n^m. That is an explicit effective action with a certified error, on every block in d = 2, and the test brackets it in integers. GPT-6's isolated 2×2 tile in [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28), W(V) = Σ (n + 1)(f_n/f_0)⁴ χ_n, is this form at m = 4, with its f_n/f_0 = t_{n+1}. Its bound 25/671741424 on β ≤ 1 for the cut at its n ≤ 2 stands above the 8.8 × 10⁻⁹ read here at β = 1.
 
 ## 6. Three and four dimensions: what the blocking induces
 
@@ -143,11 +143,15 @@ For item 2 take b = 2, 3 and |M| = b². Then every plaquette has multiplicity on
    <= 2 (beta N_p)^{b^2+1} exp(beta N_p) / (b^2+1)!.
 ```
 
-On the block (ℤ/2)⁴ → (ℤ/1)⁴, with N_p = 96 and six coarse plaquettes, this resolves the leading term at β = 10⁻¹²: the bound is below 2 × 10⁻⁵² and the leading term's range reaches 1.9 × 10⁻⁴⁹. The remainder is crude, so the range of β is narrow.
+On the block (ℤ/2)⁴ → (ℤ/1)⁴, with N_p = 96 and six coarse plaquettes, this resolves the leading term at β = 10⁻¹²: the bound reads 1.35 × 10⁻⁵² and the leading term's range over V is β⁴/6, or 1.67 × 10⁻⁴⁹. The remainder is crude, so the range of β is narrow.
 
-**Proposition 11 (a nonlocal term, for Z2).** For Z2 with w = 1 + uσ, in d ≥ 3 at b = 2, ρ(V) ∝ Σ_M u^{|M|} ∏ V^{∂M} over plaquette sets M whose boundary lies on line links. Let P, Q be two coarse plaquettes with fillings of 4 plaquettes each. If they are perpendicular and share a coarse link, then in log ρ the coefficient of W_P W_Q is 2u¹⁰ + O(u¹²), from the two fine cubes at that link that hold one plaquette of each filling, on a lattice with sides large enough that no surface wraps. If they are parallel at coarse distance 1, that coefficient vanishes through u¹². So the blocked action leaves the Wilson form at finite order, and its range grows with the order.
+The range: for V_i = cos α_i + n_i sin α_i, χ_{1/2}(V_1 V_2 V_1⁻¹ V_2⁻¹) = 2 − 4 sin²α_1 sin²α_2 sin²φ_12, so Σ_{p′}(χ(1) − χ(V_{p′})) is at most 4 Σ_{i<j} sin²φ_ij. For four unit vectors in ℝ³ the frame bound Σ_{i,j} cos²φ_ij ≥ 16/3 gives Σ_{i<j} sin²φ_ij ≤ 16/3, reached at the tetrahedron, so the difference is at most 64/3 and the range is (β⁴/128)(64/3) = β⁴/6. The test reads 1.655 × 10⁻⁴⁹ at a rational V. **I wrote 1.9 × 10⁻⁴⁹ at first, from the count 6 × 4 = 24, and the row as pushed, at least 1.8 × 10⁻⁴⁹, stays a miss.**
 
-*Derivation.* A cube adds a closed surface, and M = P △ Q △ ∂C has 4 + 4 + 6 − 2·2 = 10 plaquettes. Disjoint fillings give u⁸ and cancel in the logarithm against the square of the single term u⁴. The parallel pair needs a tube of two cubes: 4 + 4 + 10 − 2·2 = 14 plaquettes. ∎
+**Proposition 11 (a nonlocal term, for Z2).** For Z2 with w = 1 + uσ, in d ≥ 3 at b = 2, ρ(V) ∝ Σ_M u^{|M|} ∏ V^{∂M} over plaquette sets M whose boundary lies on line links. Let P, Q be two coarse plaquettes with fillings of 4 plaquettes each. If they are perpendicular and share a coarse link, then in log ρ the coefficient of W_P W_Q is 3u¹⁰ + O(u¹²), from the two fine cubes at that link that hold one plaquette of each filling, taken alone or together, on a lattice with sides large enough that no surface wraps. If they are parallel at coarse distance 1, that coefficient vanishes through u¹². So the blocked action leaves the Wilson form at finite order, and its range grows with the order.
+
+*Derivation.* A cube adds a closed surface, and M = P △ Q △ ∂C has 4 + 4 + 6 − 2·2 = 10 plaquettes, and with both cubes M = P △ Q △ ∂(C₁ ∪ C₂) has 4 + 4 + 10 − 2·4 = 10. Disjoint fillings give u⁸ and cancel in the logarithm against the square of the single term u⁴. The parallel pair needs a tube of two cubes: 4 + 4 + 10 − 2·2 = 14 plaquettes. ∎
+
+The test enumerates every surface with that boundary, on 8³ and 8⁴: 1 at size 8 and 3 at size 10, and for the parallel pair on 12³, 1 at size 8 and 16 at size 12, against 8 bumps per filling, so the logarithm's coefficient reads 0 through u¹². **I wrote 2u¹⁰ at first, with the two cubes alone, and that row of the prediction stays a miss on both lattices.**
 
 **Proposition 12 (walls).** Freeze instead every link on the codimension-one walls between blocks. Every plaquette then lies in one closed block, so the density on the wall links is Z⁻¹ ∏_{blocks} Z_block(walls), a finite-range form in every d, at the cost of many more coarse variables. In d = 2 the walls are the lines, and this is Theorem 8.
 
@@ -183,7 +187,18 @@ UH holds in d = 2, by Theorem 14. For d ≥ 3 three things are recorded:
 
 - **The obstruction moves.** Section 4 of YM4-02e has the supremum over fine configurations growing like βL³/(ta²) for the Gaussian. Here the supremum runs over the fixed coarse configurations with the fine fluctuations integrated.
 - **Range.** C_ij at large time separation is a long-range term of ρ_a, and bounding it is a clustering estimate. So UH needs a localization of ρ_a, which is YM4-04.
-- **Thin lines.** Lines have codimension d − 1. In d = 4 their capacity vanishes in the continuum, so conditioning on them leaves the off links' fluctuations long-ranged, and a Wilson line of fixed length loses its overlap as a falls, CONJECTURE. Block averages, as in Balaban's work, NAMED, condition on a set that fills space, and their conditional fluctuations are expected to decay at the block scale, CONJECTURE. So the sharp map B here serves the exact identities, and YM4-04 will likely need an average in its place: which one, and with which positivity, is OPEN.
+- **Thin lines.** Lines have codimension d − 1. In d = 4 their capacity vanishes in the continuum, so conditioning on them leaves the off links' fluctuations long-ranged, and a Wilson line of fixed length loses its overlap as a falls, CONJECTURE. Block averages condition on a set that fills space. For an abelian gauge field in d = 3, Dimock states exponential decay of the conditional covariance at the block scale (arXiv:1712.10029, eq. 306, 308), crediting the method to Balaban, and for scalars likewise (arXiv:1108.1335). So the sharp map B here serves the exact identities, and YM4-04 will likely need an average in its place, CONJECTURE: which one, and with which positivity, is OPEN.
+
+## 7a. What the literature holds, as the second seat matched it
+
+[Its report and sources are filed](../reviews/opus55-ym4-03-literature/). The bodies of Balaban's papers and of Lüscher 1983 are CANNOT_SEE from this seat, so what follows on them comes from abstracts and other authors.
+
+- **Balaban:** CMP 122, 355, abstract: "This allows us to complete the proof of the ultraviolet stability of four-dimensional pure gauge field theories, as formulated in Theorem 1." Magnen, Rivasseau and Sénéor describe that result as the effective action on the unit lattice staying bounded in finite volume as the spacing falls, with the ultraviolet limit of gauge-invariant observables to follow through a subsequence and uniqueness open. So the matched theorem is on partition functions and effective actions.
+- **Decimation:** van Enter, Fernández and Sokal, hep-lat/9210032, Theorem 4.2: decimation with b = 2 on the Ising model is non-quasilocal at low temperature. Their Theorem 4.6 finds even-b block averaging pathological there too.
+- **Small volume:** the stated form at small physical volume is M(0⁺)L = 2.2696390 g^{2/3} − 0.7975278 g^{4/3} + O(g²), Koller and van Baal, NPB 273, eq. 29, as an expansion of an effective Hamiltonian. A rigorous theorem giving a positive physical gap at fixed small volume, uniform as the spacing falls: none located, on a small search, so OPEN. This is the closest published statement to target 2 of the README.
+- **Strong coupling:** Shen, Zhu and Zhu, arXiv:2204.12737, hold exponential decay at |β| < 1/(16(d − 1)) in their normalization, which the second seat converts, for SU(2) in d = 4, to β_W < 1/12. Theorem 5 of YM4-02e reads β < 0.0716 on (ℤ/L)³.
+- **Tomboulis,** arXiv:0707.2179, decimation with reflection positivity: unpublished, and disputed by Ito and Seiler, arXiv:0711.4930, 0803.3019, 0901.4246, with no accepted repair located.
+- **Finite groups:** on 8⁴ with the Wilson action, Hartung et al., arXiv:2201.09625, Table IV, read the freezing transition at β = 1.15(15), 2.15(15), 3.20(10) and 5.70(20) for Q8, 2T, 2O and 2I.
 
 ## 8. What could fail
 
@@ -194,4 +209,19 @@ UH holds in d = 2, by Theorem 14. For d ≥ 3 three things are recorded:
 
 ## 9. The test
 
-[`tests/test_one_scale_blocking.py`](../tests/test_one_scale_blocking.py) runs the rows named in the prediction, integers only, and its output is [`tests/ONE_SCALE_BLOCKING_RECEIPT.txt`](../tests/ONE_SCALE_BLOCKING_RECEIPT.txt).
+[`tests/test_one_scale_blocking.py`](../tests/test_one_scale_blocking.py) runs the rows named in the prediction, integers only, and its output is [`tests/ONE_SCALE_BLOCKING_RECEIPT.txt`](../tests/ONE_SCALE_BLOCKING_RECEIPT.txt). [`one-scale-blocking.yml`](../.github/workflows/one-scale-blocking.yml) is its owning gate. It reads:
+
+| Law | Read |
+|---|---|
+| Covariance, 64 coarse links at each of b = 2, 3 | All equal, and reversed order, a shifted endpoint and a dropped inverse each differ on 40 or more links |
+| Closed loops: plaquette, 1×2, hexagon, winding, at each b | 736 rows at each b equal as group elements, on two routes |
+| Reflection map at c′ = 0, −1, each b | All equal, and the dropped inverse differs on at least 15 links |
+| Two dimensions closes, on Z3, S3, Q8, 2T at b = 2, Z3, S3 at b = 3, and on 4×2 | Every V read equals the closed form |
+| The first dependence, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with V on either fine link | Independent of V below order 4, and at order 4 equal to the law, by SU(2) averages from 2T within degree 5 |
+| The count in Theorem 9, by search in d = 2, 3, 4 | 4 at b = 2 and 9 at b = 3 on every lattice read |
+| The coarse space on Z2, S3, Z3, Q8 | Closed, top value equal, and the second value on W equal to the whole space's on each case read, so the lowest state is visible there. W has dimension 20 of 32, 33 of 49, 80 of 176, and all of them on the two smallest |
+| T^b against the coarse T on a circle, Z2, Z3, S3, Q8, 2T | Equal as matrices |
+| SU(2) in d = 2 at β = 1 to 4096 | δ from 0.0049 to 0.0133, below 1/8, and m/g at least 0.5158 on the bound's own terms |
+| Walls, on Z2 and S3 | A product over blocks on every configuration |
+
+The first complete read had one failed check, the sum rule at β = 4: my tolerance missed the tail the sum cuts at n = 60, at 2⁻⁴⁰⁰ of the unit. [That read stays on file](../reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp).
