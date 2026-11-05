@@ -18,7 +18,7 @@
 
 **Official target:** [Clay Mathematics Institute — Yang–Mills and the Mass Gap](https://www.claymath.org/millennium/yang-mills-the-maths-gap/) and [Jaffe and Witten's problem description](https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf).
 
-## Where we stand, November 4, 2026
+## Where we stand, November 5, 2026
 
 | Step | State | Where |
 |---|---|---|
@@ -36,6 +36,11 @@
 | YM4-07, every compact simple group | OPEN | [The ledger](docs/PROOF_OBLIGATIONS.md) |
 | YM4-08, independent audit of the whole chain | OPEN | [The ledger](docs/PROOF_OBLIGATIONS.md) |
 | YM4-QNN-01, a harness for candidate generators | Draft, held on the seat's recommendation, which the operator agreed with on November 3. Its next gate is a pinned QNN adapter. It holds exact SU(2) arithmetic, receipts and four-shard CI, with synthetic input | [PR #9](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/9), [issue #8](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/8) |
+
+**In review, November 5, 2026.**
+
+- **YM4-03, one-scale blocking: [PR #29](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/29), a draft on HOLD at `2184b54`.** DERIVED for any compact group and class weight at one fixed finite lattice: the blocking map, its covariance and closed-loop identity, the exact pushforward, reflection positivity, and the coarse space H′ inside the gauge-invariant space. In two dimensions the blocking closes exactly, c_π → c_π^{b²}. For SU(2) Wilson at β ≥ 1 and b ≥ 2√β, one blocking gives λ₁/λ₀ ≤ (4 − √15)^{1/b} on PH, so m > 0.3439 g at every β ≥ 1, on circles of physical length at least ba. In three and four dimensions the first coefficient of the blocked action is exact at b = 2 and 3. On five small lattices each electric-flux sector's lowest state reads a certified positive overlap, and Δ_full = min(Δ₀, Δ_flux). MEASURED: 401 checks with 0 failed against a prediction pushed first, with its 7 misses kept. Two attacks by the second seat, with 98 and 73 holds, and GPT-6's review are applied. GPT-6's review corrected the e = 0 overlap certificate, and the merge waits for two lanes attacking that corrected certificate. As the spacing falls in three and four dimensions, the bound reduces to Hypothesis UH, which is OPEN, and that is YM4-04.
+- **GPT-6's independent YM4-03 lane: [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28), a draft.** It covers the factor-two coarse link on any finite even periodic 4D lattice, the continuous SU(2) Haar pushforward with its gauge-invariant coarse action, and a certified character expansion on an isolated 2×2 planar Wilson tile. Its evidence stays separate from PR #29.
 
 [The ledger](docs/PROOF_OBLIGATIONS.md) says what rows YM4-00 to YM4-08 need before they can move. The computations here use integers only. On every pull request [a gate](scripts/no_float_gate.py) reads every tracked file and fails on what it finds outside [its list](scripts/FLOAT-EVIDENCE.txt), where each row holds a count, a hash pin and a reason: [`no_float.yml`](.github/workflows/no_float.yml) runs the change's own copy as `no-float`, [`no_float_base.yml`](.github/workflows/no_float_base.yml) runs the base commit's copy over the change as data, and [`no-float-compiled.yml`](.github/workflows/no-float-compiled.yml) reads what g++ and rustc produce from the C++ and Rust files. `main` requires all three.
 
