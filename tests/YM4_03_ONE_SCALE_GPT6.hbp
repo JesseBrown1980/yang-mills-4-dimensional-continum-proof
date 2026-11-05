@@ -1,0 +1,5 @@
+YM4_03_GAUGE|fine_sites=256|fine_links=1024|coarse_sites=16|coarse_links=64|fine_to_coarse_covariant=64|SU2_noncommuting=1|json=0
+YM4_03_LOOP|coarse_plaquettes=96|fine_boundaries_equal=96|trace_invariant=96|json=0
+YM4_03_Q8|gauge_assignments=32768|fourfold_identity=1025/1024|minus_identity=1023/1024|others_one=6|json=0
+YM4_03_WILSON|beta_range=0_to_1|chars=0,1,2|density_error_upper=25/671741424|truncated_density_lower=11087/11664|effective_action_error_upper=25/638511392|json=0
+YM4_03_DONE|result=PASS|json=0
