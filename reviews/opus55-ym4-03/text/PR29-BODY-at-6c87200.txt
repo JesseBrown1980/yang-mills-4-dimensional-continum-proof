@@ -1,0 +1,24 @@
+The operator's word: *"Agreed. Go after that."* YM4-03, [issue #3](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/issues/3): one-scale blocking of the finite Wilson lattice. [The note](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/fable5-ym4-03-one-scale-blocking-20261105/docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md) holds every proof. The prediction went out at `7e6b111` before the test existed.
+
+**Read:** 181 checks, 0 failed, 3 rows of the prediction missed on hand values, which stay. Each of the 8 sabotages exits 1 on a named check.
+
+**DERIVED, at one fixed lattice, for any compact group and class weight:**
+- The map, with b = 2 and 3: covariance, closed loops as group elements, the Haar pushforward and the exact integral identity. The Peter-Weyl coefficients of the blocked density are the fine expectations of Wilson networks along the coarse lines.
+- Reflection positivity carries over, and coarse slice observables span a T^b-invariant space H′ inside the gauge-invariant space. So a coarse gap bounds the physical gap on everything coarse observables see, and the only loss is a state whose conditional expectation on the coarse variables vanishes. On every case read here the lowest state is visible.
+
+**Two dimensions, exact.** Z ρ(V) = ∏ w^(b²)(V_p′), so c_π → c_π^{b²} with no other term. GPT-6's isolated tile in #28 is this form at m = 4. For SU(2) Wilson at β ≥ 1 and b ≥ 2√β, Theorem 5 on the coarse circle gives λ₁/λ₀ ≤ (4 − √15)^{1/b} at every L in bℕ: with β = 4/(g²a²), m ≥ 0.516 g uniformly as a falls. The fine-lattice bound there tends to 1. This rests on Amos's bound, NAMED, and is read in integers on a grid of β.
+
+**Three and four dimensions.** For SU(2), any d and L_i, E_V[X^n] is independent of V below n = b·min(b, 4), by a count on slices. For b = 2, 3 the first term is 2^{1−2b²} β^{b²} Σ χ_{1/2}(V_p′), so β′/4 = (β/4)^{b²}. On (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³ that reads exactly, with SU(2) averages from 2T within its degree. A certified truncation holds on the block (ℤ/2)⁴ at β = 10⁻¹², and the crude remainder keeps that range narrow. The blocked action leaves the Wilson form: Q8 at d = 3 takes different values on V with the same commutators, and in Z2 the coefficient of W_P W_Q for perpendicular coarse plaquettes is 3u¹⁰.
+
+**The misses, both my hand counts.** The four-dimensional range is β⁴/6, by the frame bound at the tetrahedron, against my count of 24 plaquette units. The Z2 count at u¹⁰ is 3 against my 2, since the two cubes also count together.
+
+**As the spacing falls in d ≥ 3: OPEN.** Theorem 13 reduces the uniform bound on H′ to a weighted coarse influence bound on a fixed coarse lattice, Hypothesis UH. Bounding its long-range terms is a localization estimate, YM4-04. Thin lines probably cannot supply it, CONJECTURE, so YM4-04 will likely need a block average in place of this map.
+
+**[The second seat's literature match](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/tree/fable5-ym4-03-one-scale-blocking-20261105/reviews/opus55-ym4-03-literature)** is filed. The bodies of Balaban's papers and Lüscher 1983 were out of its reach, and those leads are still running. A rigorous theorem with a positive physical gap at fixed small volume, uniform as the spacing falls: none located, on a small search.
+
+**Open:** the second seat's attack on this head and GPT-6's reading. This stays a draft until they read.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+https://claude.ai/code/session_015mpUd8qRbenCGAkrxkEK5E
+

@@ -1,0 +1,125 @@
+HEAD: `6c8720093908f6f6919c2921209a62b6b6d56153` at the start and at the end. The worktree is clean and no lane process is left running. PR #29 has since moved to `3db4313`, which only adds 9 prediction rows, so every OLD still applies there.
+
+No theorem was refuted. What fails is what the test and the note's table claim to read. Files are in `C:/tmp/opus55/ym4-03-attack-test-20261105/`, including `FINDINGS.txt` and `HOLDS.txt`; relative paths below start there.
+
+**RAN**
+- **Receipt:** byte for byte on a copy under python 3.12.3 (WSL, 105 s) and 3.13.14. Hosted run not read.
+- **Workflow steps on a copy:**
+  - The 30-row hash equals `git show 7e6b111`, a commit that holds no test file.
+  - Gate selftest exit 0.
+  - The gate on a clone exits 0. My first try on an export with no `.git` was a traceback, a fault of my method.
+  - All 8 sabotages exit 1 on their named checks; an unknown name exits 2.
+- **Mutation:** 95 mutants of a copy (`runs/mutant_table.txt`).
+- **Coverage:** 110 of 181 checks ever turned red under the mutants and sabotages; 71 never did (`runs/check_coverage.txt`).
+- **Separate exact code (`own/`):**
+  - S³ moments with pair contraction on quaternion words, selftest 17/17.
+  - Term-by-term comparison with the test's functions.
+  - Z2 Gray walk, cube sets, local moves, and an open box with direct link sums.
+  - Backward continued-fraction Bessel brackets.
+  - A separate W and H′ construction over two primes and fixed point.
+  - Rust 1.81 direct sums (clippy -D warnings clean).
+  - Covering-count walk plus brute subsets.
+- **Holds:** all test holds together on a copy, with overlaid mutants and the sabotages.
+
+**SURVIVES** (MEASURED unless tagged)
+- **Theorem 9, b=2 (first dependence):**
+  - `E_V[X⁴]/4!` on (ℤ/2)⁴ reads 9205/128 at V=1.
+  - The differences −121/3042 and −25/252 match the receipt at V_a, and the law holds at every V read.
+  - Every even multiset agrees on 13 shapes, and every even set on 4³ and 4⁴.
+- **Theorem 9, b=3:** the law `2⁻¹⁷Σχ` holds on 8 shapes over every even set, with only flat fillings moving. The test's own row does not read this. Repeated plaquettes at b=3 rest on the proof.
+- **Test machinery, term by term:**
+  - `term_for_multiset` equals S³ moments on all 1,599 and 6,330 terms at V=1 and V_a, degree 4 included.
+  - `surviving_multisets` equals exhaustion on 16 of 16 lists.
+  - The fixed links form a forest, and the second stage ran 0 times.
+- **Pruning (DERIVED and MEASURED):** `count_surfaces` and `search_cover` drop nothing within the budgets used. The separate walk and brute subsets give the same 4 and 9 counts.
+- **Proposition 11:**
+  - Perpendicular reads 3u¹⁰ + 6u¹² + 35u¹⁴ on sides 6 and 7.
+  - Parallel reads 0 through u¹², then 4u¹⁴.
+  - On d=4 at L=6 the counts are 8:1, 10:3.
+  - At u=1/1000 the open-box direct link sum gives (R−1)/u¹⁰ = 24.0002 against 24.
+  - The test's `z2_exact_small` ratio is reproduced by surfaces and by a link sum.
+- **Numbers:**
+  - δ and t₂^(b²) match the receipt digit for digit at all 7 β.
+  - The m=2 SU(2) convolution matches the closed integral at 20 points.
+  - Corollary 10's numbers match.
+  - Q8 on 2×2×1: all six raw values match by Rust with no gauge fixing.
+  - S3 on 4×4 closes on 12 of 12 V, also in Rust.
+- **Coarse space:**
+  - dim W = 8, 20, 27, 33, 80, as the receipt.
+  - dim H′ = dim W on all five, and on Z3 at 2×2 (162 of 243).
+  - The second value is equal on the whole space, W and H′, including Q8 at 54534588 ppb, which the test does not read.
+- **Hand:** Theorem 9 (a) to (d), item 2, and Theorem 14's arithmetic: no error found.
+
+**REFUTED: claims about what is read**
+- **Rows and checks that cannot fail (DERIVED and MEASURED):**
+  - L1804-5 are literal True rows.
+  - L1163-4 compare a formula with itself, so b=3 is read on no lattice.
+  - L690 and L723-4 are tautologies of one loop.
+  - L1541 is closed by construction.
+  - L1598 (Q8 `top_equal`) asks whether the seed lies in its own span.
+- **L842, precedence:** only m=9 decides. A wrong power at m=2 and 4 exits 0 byte for byte.
+- **L1660, Gram:** T^(2b) is positive for every symmetric T. With w = 3−χ the rows do not move. At an odd power they read negative = 6, 8, 6.
+- **m07 (wrong third coarse link) survives the whole gate.** Every coarse plaquette read has coarse side 1 in ν. On 4×4 the closed form moves by up to 7.6% on Z3 and 0.9% on S3.
+- **"2T within degree 5":**
+  - The rows do not change with Q8 or with the four points 1, i, j, k.
+  - The multinomial and `single_power` can be wrong with the V differences unchanged; the sizes are in F06 of `FINDINGS.txt`.
+  - V₃ = −1 at both V on (ℤ/2)⁴.
+- **Table and status text:**
+  - "β = 1 to 4096 … m/g at least 0.5158": at β=2 and β=3 the bound gives 0.486 and 0.447.
+  - "Walls on S3": one block only.
+  - "Two routes": one walk read in two forms.
+  - Status line says 179 checks, the receipt 181.
+  - Prediction row 31 says 179, the kept file 175.
+  - "Equal" second value: no check tests equality, and m83 prints 9084 against 201350 and passes.
+
+**Mutation totals:** 42 killed on a named check, 16 caught only by the workflow's cmp, 32 survived, 3 crashed, 2 hit my 1500 s cut after red rows (`mutants/results.tsv`). Each survivor's size is in F06 of `FINDINGS.txt`.
+
+**HOLDS** (29; each OLD checked once against the worktree)
+
+With all test holds applied on a copy: exit 0, 199 checks, failed 0, gate 0, each sabotage on its named check.
+
+- H1 test high: add 4×4 cases to `cases`; fires on m07.
+- H2 test high: Q8 `top_equal` reads the pencil on W against the bracket.
+- H3 test medium: fix L842 precedence.
+- H4 test medium: normalization meets the elimination route's sum.
+- H5 test medium: integral identity uses the elimination values.
+- H6 test medium: the two literal rows read their values from brackets.
+- H7 test medium: leading-coefficient rows read flat fillings on (ℤ/b)³, b=3 included.
+- H8 test medium: compute the pencil on Q8 as well (needed by H2).
+- H9 test medium: second-value check becomes equality.
+- H10 test medium: walls on S3 at 4×2, Z2 at 2×4×2 and 2×2×4.
+- H11 test medium: check for 3 at u¹⁰.
+- H12 test medium: check for the parallel zero.
+- H13 test medium: first-dependence V drawn from non-central elements; new values match S³ moments.
+- H14 test medium: Transfer's plaquettes against the lattice words, and kernel symmetry.
+- H15 test medium: Gram at odd power 2b+1.
+- H16 note medium: SU(2) row scoped to the grid, off-grid values added.
+- H17 note medium: walls row states blocks and configurations.
+- H18 note medium: coarse row states W, scope and H′ values.
+- H19 note medium: first-dependence row states degree 2, V₃ and the term-by-term read.
+- H20 note medium: two-dimensions row states coarse sides and distinct V.
+- H21 note medium: section 8 states what reads b=2, b=3 and the b=4 tube.
+- H22 test low: `points` argument on `term_for_component`.
+- H23 test low: use `points` in its loop.
+- H24 test low: noncommuting check reads a commutator.
+- H25 note low: 179 to 181.
+- H26 prediction low: correction beside row 31 (175), the row kept.
+- H27 note low: loops row, one walk in two forms.
+- H28 note low: Proposition 11, "whole coarse lines".
+- H29 note low: section 8 states W against H′, OPEN beyond the cases read.
+
+H1, H10, H11, H12, H13 and H14 change the receipt, so it must be regenerated; the 199-check output is `holds_test/patched_final3.out`.
+
+**COULD NOT CHECK**
+- The hosted run and the owning gate.
+- Multisets with repeated plaquettes at b=3, by moments.
+- The count on (ℤ/4)³ at b=4, budget 16: my walk hit a MemoryError, CANNOT_SEE. The flat filling and the tube at that size are read directly.
+- An exact rank of H′, which needs ℚ(λ₀); it is read by fixed point with a gap (2⁻⁴⁴ against 2⁻³⁹⁷⁰ of norm squared). W = H′ past six cases is OPEN.
+- The Z2 logarithm series in d=4 (counts only, through size 10), and exact sums on periodic lattices with sides 4 and up in three directions.
+- S3 at spatial 2×2, for budget.
+- Theorems 7 and 13 line by line (only item 4's visibility is read, by the H′ values above); GPT-6's test in PR #28 not run, only its note read.
+
+**METHOD NOTES** (recorded in `FINDINGS.txt`)
+- My first S3 run printed dim 44. That was rounding noise raised to full size by my own code. With a floor it reads 33, and the retraction is kept in the file.
+- I once ran a bare `python3 -` by mistake and stopped it. It wrote nothing and left no process.
+- I ran `git fetch` once on the worktree's repository. It moved a remote-tracking ref and FETCH_HEAD; HEAD and the files were untouched.

@@ -1,0 +1,103 @@
+SOURCES OPENED (URL | local copy | what it is | status) -- ym4-03 literature 2026-11-05
+https://arxiv.org/abs/1108.1335 | dl/dimock1 | Dimock, RG according to Balaban I (v2 21 Dec 2012) | opened, PDF text
+https://arxiv.org/abs/1212.5562 | dl/dimock2 | Dimock, RG according to Balaban II (v2 2 Apr 2013) | opened, PDF text
+https://arxiv.org/abs/1304.0705 | dl/dimock3 | Dimock, RG according to Balaban III (v1 2 Apr 2013) | opened, PDF text
+https://arxiv.org/abs/1712.10029 | dl/dimock-qed-a | Dimock, Multiscale block averaging for QED in d=3 | opened, PDF text
+https://arxiv.org/abs/2009.01156 | dl/dimock-qed-b | Dimock, Ultraviolet stability for QED in d=3 | opened, PDF text
+https://arxiv.org/abs/math-ph/0505008 | dl/mitter-0505008 | Mitter, The Exact Renormalization Group (survey) | opened, PDF text
+https://arxiv.org/abs/math-ph/0006017 | dl/mathph-0006017 | Rivasseau, Constructive Field Theory and Applications: Perspectives and Open Problems | opened, PDF text
+https://web.ma.utexas.edu/mp_arc/e/92-38.tex | dl/mparc-92-38 | Magnen-Rivasseau-Seneor, Construction of YM4 with an infrared cutoff, preprint TeX source, A 144 01 92 Feb 1992 | opened, full source
+https://inspirehep.net/api/literature?q=a%20T.Balaban.1 | dl/inspire-json | INSPIRE metadata + Springer-sourced abstracts of all Balaban CMP papers | opened
+https://link.springer.com/article/10.1007/BF01211042 | not saved | publisher page, Averaging operations, abstract, paywall message read through WebFetch | opened (abstract only)
+https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf | dl/jaffe-witten | Jaffe-Witten, Quantum Yang-Mills Theory (Clay problem description) | opened, PDF text
+https://arxiv.org/abs/1602.01222 | dl/chatterjee-1602 | Chatterjee, The leading term of the Yang-Mills free energy | opened, PDF text
+https://arxiv.org/abs/1803.01950 | dl/chatterjee-1803 | Chatterjee, Yang-Mills for probabilists | opened, PDF text
+https://arxiv.org/abs/math-ph/0210020 | dl/mathph-0210020 | Dimock, Quantum Electrodynamics on the 3-torus I | opened, PDF text
+https://arxiv.org/abs/2204.08252 | dl/a2204-08252 | Goswami, Variational problem and background field in the RG method for non-linear sigma models | opened, PDF text
+https://api.unpaywall.org/v2/10.1007/BF01215223 | dl/unpaywall | OA status record | opened
+https://www.lorentz.leidenuniv.nl/research/vanbaal/DECEASED/HOME/JOUR/NPB273_387.pdf | dl/koller-npb273 | Koller and van Baal, NPB 273 (1986) 387, memorial page copy | opened, PDF text
+https://www.lorentz.leidenuniv.nl/research/vanbaal/DECEASED/HOME/JOUR/NPB302_1.pdf | dl/koller-npb302 | Koller and van Baal, NPB 302 (1988) 1 | opened, PDF text
+https://ilorentz.org/research/vanbaal/DECEASED/HOME/publ.html | dl/vanbaal-publ | van Baal publication list | opened
+https://arxiv.org/abs/hep-ph/0008206 | dl/vanbaal-review | van Baal, QCD in a finite volume | opened, PDF text
+https://arxiv.org/abs/hep-lat/9210032 | dl/vefs | van Enter, Fernandez, Sokal | opened, PDF text (arXiv form)
+https://arxiv.org/abs/math-ph/0303013 | dl/bgm | Brydges, Guadagni, Mitter, Finite range decomposition | opened, PDF text
+https://arxiv.org/abs/2506.00284 | not saved | Jacobsen SU(3) claim, abstract page, v2 withdrawn per arXiv note | opened, abstract only
+https://arxiv.org/abs/2603.15770 | not saved | Douglas et al, Formalization of QFT, abstract page | opened, abstract only
+LOCATED BY INTERNET ARCHIVE CDX, NOT OPENED (a download of one capture was denied by the harness as walled content from a copy; the same paths on projecteuclid.org are what a person in a browser would open):
+ CMP 98:   projecteuclid.org/journals/communications-in-mathematical-physics/volume-98/issue-1/Averaging-operations-for-lattice-gauge-theories/cmp/1103942283.pdf
+ CMP 99a:  .../volume-99/issue-1/Spaces-of-regular-gauge-field-configurations-on-a-lattice-and/cmp/1103942611.pdf
+ CMP 99b:  .../volume-99/issue-3/Propagators-for-lattice-gauge-theories-in-a-background-field/cmp/1103942769.pdf
+ CMP 95:   .../volume-95/issue-1/Propagators-and-renormalization-transformations-for-lattice-gauge-theories-I/cmp/1103941451.pdf
+ CMP 96:   .../volume-96/issue-2/Propagators-and-renormalization-transformations-for-lattice-gauge-theories-II/cmp/1103941783.pdf
+ CMP 102a: .../volume-102/issue-2/Ultraviolet-stability-of-three-dimensional-lattice-pure-gauge-field-theories/cmp/1104114382.pdf
+ CMP 102b: .../volume-102/issue-2/The-variational-problem-and-background-fields-in-renormalization-group-method/cmp/1104114383.pdf
+ CMP 109:  .../volume-109/issue-2/Renormalization-group-approach-to-lattice-gauge-field-theories-I-Generation/cmp/1104116842.pdf
+ CMP 116:  .../volume-116/issue-1/Renormalization-group-approach-to-lattice-gauge-field-theories-II-Cluster/cmp/1104161193.pdf
+ CMP 119:  .../volume-119/issue-2/Convergent-renormalization-expansions-for-lattice-gauge-theories/cmp/1104162401.pdf
+ CMP 122a: .../volume-122/issue-2/Large-field-renormalization-I-The-basic-step-of-the-bf/cmp/1104178393.pdf
+ CMP 122b: .../volume-122/issue-3/Large-field-renormalization-II-Localization-exponentiation-and-bounds-for-the/cmp/1104178467.pdf
+ CMP 122c: .../volume-122/issue-2/Block-renormalization-group-for-Euclidean-fermions/cmp/1104178395.pdf
+ CMP 155:  .../volume-155/issue-2/Construction-of-rm-YM_4-with-an-infrared-cutoff/cmp/1104253284.pdf
+SEARCH-SURFACED, DELIBERATELY NOT OPENED: springerlink.bibliotecabuap.elogim.com (a university library proxy); typeset.io copies. Not the operator's licence.
+https://web.ma.utexas.edu/mp_arc/a/92-186 and e/92-186.tex.mpmix | dl/mo-9286 | Martinelli-Olivieri I, preprint TeX | opened
+https://web.ma.utexas.edu/mp_arc/a/93-21 and e/93-21.tex.mpmix | dl/mo-9221 | Martinelli-Olivieri II, preprint TeX | opened
+https://web.ma.utexas.edu/mp_arc/a/93-154 | dl/mp93154 | Martinelli-Olivieri-Schonmann, abstract | opened, abstract only
+https://www.math.ucla.edu/~lchayes/lchayes_website_folder/old_publications_folder/ac_gibbs.pdf | dl/chayes | Alexander-Chayes, CMP 189, author page | opened, PDF text
+https://arxiv.org/abs/2505.16585 | dl/cns | Cao, Nissim, Sheffield | opened, PDF text
+https://arxiv.org/abs/1811.09770 | dl/chatterjee-1811 | Chatterjee, Wilson loops in Ising lattice gauge theory | opened, PDF text and page image
+https://arxiv.org/abs/2204.12737 | dl/szz | Shen, Zhu, Zhu v1 | opened, PDF text
+https://arxiv.org/abs/0707.2179 | dl/tomboulis | Tomboulis | opened, PDF text and page images p.5, p.11
+https://arxiv.org/abs/0711.4930 | dl/ito-seiler | Ito, Seiler | opened
+https://arxiv.org/abs/0712.2620 | dl/tomb-reply | Tomboulis reply | opened
+https://arxiv.org/abs/0803.3019 | dl/ito-seiler2 | Ito, Seiler further discussion | opened
+https://arxiv.org/abs/0901.4246 | dl/ito-seiler3 | Ito, Seiler PoS Confinement8 034 | opened
+https://arxiv.org/abs/0710.1894 | dl/tomb-pos | Tomboulis PoS | downloaded, not read closely
+https://arxiv.org/abs/0805.2742 | dl/kanazawa1 | Kanazawa | opened, abstract read
+https://arxiv.org/abs/1010.1942 | dl/ogilvie | Ogilvie review | opened, page image p.13
+https://arxiv.org/abs/hep-lat/0609047 | dl/hep0609047 | Tomboulis-Velytsky, RG decimation study | opened, abstract read
+https://arxiv.org/abs/cond-mat/9506060 | dl/kushnir | Kushnir, Rosenstein | opened, grep
+https://arxiv.org/abs/hep-lat/9506030 | dl/hasenfratz95 | DeGrand et al, classically perfect FP action | opened, page image p.6
+https://arxiv.org/abs/2201.09625 | dl/hartung | Hartung et al | opened, page images p.8, p.9
+https://arxiv.org/abs/2202.10375 | dl/adhikari-cao | Adhikari, Cao | opened, page image p.5
+https://inspirehep.net/literature/183485 | INSPIRE API | Luscher 1983 abstract | opened (abstract, source Elsevier)
+https://inspirehep.net/literature/191526 | INSPIRE API | Luscher-Munster 1984 abstract | opened
+https://inspirehep.net/literature/153202 | INSPIRE API | Petcher-Weingarten abstract | opened
+https://inspirehep.net/literature/10748 | INSPIRE API | Bhanot-Rebbi abstract | opened
+https://inspirehep.net/literature/144256 | INSPIRE API | Rebbi 1980 abstract | opened
+https://inspirehep.net/literature/12852 | INSPIRE API | Tomboulis PRL 1983 abstract | opened
+https://inspirehep.net/literature/114814 | INSPIRE API | Kadanoff 1976 abstract | opened
+https://inspirehep.net/literature/9533, 181400 | INSPIRE API | Gawedzki-Kupiainen abstracts | opened
+ATTEMPTED, FAILED OR REFUSED, NOT OPENED:
+ projecteuclid.org: WebFetch empty; plain curl Incapsula page; browser identity retry denied by harness (bot check circumvention).
+ web.archive.org capture of Euclid PDF for CMP 109: denied by harness (walled content from a copy). Landing page capture of 2020 was read.
+ deepblue.lib.umich.edu: bitstream URL returned the app shell; REST API returned a Cloudflare challenge, 403. Stopped.
+ sciencedirect.com Luscher: HTTP 403 to WebFetch. lib-extopc.kek.jp/preprints/PDF/: Request Rejected. www-lib.kek.jp: DNS failure. cds.cern.ch search: bot page.
+ claymath.org ymreport.pdf (Douglas report): 404 at guessed URL; not chased.
+ Dobrushin-Shlosman 1985 primary, Migdal 1975 primary, Seiler LNP 159: not attempted beyond search; NAMED only.
+SECOND PASS, 2026-11-05:
+https://luscher.web.cern.ch/luscher/ | dl/luscher-page | Luscher's page, lecture list | opened
+https://luscher.web.cern.ch/luscher/lectures/LesHouches88.pdf | dl/luscher-lh88 | Luscher, Selected Topics in Lattice Field Theory, Les Houches 1988, scan | opened, page images PDF p.1, 3, 57-63, 77
+https://luscher.web.cern.ch/luscher/lectures/LesHouches97.pdf | dl/luscher-lh97 | Luscher, Advanced lattice QCD | opened, PDF text
+https://arxiv.org/abs/2205.07376 | dl/fvo2205 | Faria da Veiga, O'Carroll, stability bounds | opened
+https://arxiv.org/abs/2005.00899 | dl/fvo2005 | O'Carroll, Faria da Veiga, periodic case | opened, grep
+https://arxiv.org/abs/1910.03140 | dl/a1910 | Faria da Veiga, O'Carroll, scalar QCD | opened, grep
+https://web.ma.utexas.edu/mp_arc/e/92-41.tex | dl/mp9241 | Magnen, Rivasseau, Seneor, Rigorous results on the ultraviolet limit | opened
+https://arxiv.org/abs/1410.2798 | dl/dim1410 | Dimock, Covariant Axial Gauge | opened
+https://arxiv.org/abs/2204.07201 | dl/dim2204 | Dimock, Stability for QED in d=3: an overview | opened, grep
+https://arxiv.org/abs/1502.02946 | dl/dim1502 | Dimock, scalar QED | grep
+https://arxiv.org/abs/1512.04373 | dl/dim1512 | Dimock, UV regularity QED | grep
+https://export.arxiv.org/api/query?search_query=au:Dimock_J and abs:Balaban | dl/arxiv-api | arXiv listings | opened
+https://www.arthurjaffe.com/Assets/pdf/References2024.pdf | dl/jaffe-refs | Jaffe publication list | opened
+https://www.arthurjaffe.com/Assets/pdf/ETH-Juerg.pdf | dl/jaffe-eth | Jaffe slides | opened, grep
+https://arxiv.org/abs/hep-th/0312015 | dl/seiler-0312015 | Seiler, case against asymptotic freedom | opened, grep for Balaban count 0
+ATTEMPTED, SECOND PASS, NOT OPENED:
+ articles.adsabs.harvard.edu/pdf/1983NuPhB.219..233L and /pdf/1987CMaPh.109..249B: 403 AccessDenied. dl/ads-luscher, dl/ads-balaban hold the error bodies.
+ ui.adsabs.harvard.edu/abs/1983NuPhB.219..233L/abstract: 405 Human Verification. dl/ads-ui.
+ cds.cern.ch/search?p=reportnumber:BUTP-23/1982: Anubis bot page, WebFetch.
+ deepblue.lib.umich.edu/items/908824f3-d890-48da-b5c5-ba6447f3ae3b: 403. Handle path for BF01229381: app shell. dl/deepblue-handle.
+ www.mat.uniroma2.it/~tanimoto/romatre250505.pdf: 404.
+THIRD PASS, 2026-11-05:
+ https://deepblue.lib.umich.edu/bitstream/handle/2027.42/46460/220_2005_Article_BF01229380.pdf?sequence=1 | dl/deepblue-cmp102-255 | one plain fetch: HTTP 200, 1959 B app shell, no PDF | NOT OPENED, CANNOT_SEE
+ https://infomall.org/sites/dsc/jpac/QCDRef/1980s/SOME%20ANALYTIC%20RESULTS%20CONCERNING%20THE%20MASS%20SPECTRUM%20OF%20YANG-MILLS%20GAUGE%20THEORIES%20ON%20A%20TORUS%20-%20Luscher%20-%201983.pdf | dl/infomall-luscher83 | one plain fetch: curl (35) SEC_E_CERT_EXPIRED, 0 bytes | NOT OPENED, CANNOT_SEE
+ https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28#issuecomment-6658407383 | not saved | comment text read through gh api, as data | opened
+ C:/tmp/ym4-03-wt/docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md section 7a | not copied | read only | opened

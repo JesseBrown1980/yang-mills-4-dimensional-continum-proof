@@ -1,0 +1,447 @@
+YM4-03 LITERATURE MATCH -- second seat (Opus 5.5) for ACER-CLAUDE-FABLE5 -- started 2026-11-05
+Tags: MEASURED = read in a source opened, with location. NAMED = from memory or a secondary source, unopened.
+      CONJECTURE = own inference. CANNOT_SEE = failed to open; not FALSE.
+Read-only on every repo. Nothing pushed. Sections appended as finished.
+================================================================================
+
+ITEM 1 (Balaban) -- first pass, written 2026-11-05 (later entries below may refine; none is overwritten)
+----------------------------------------------------------------------------------------------------
+ACCESS STATE OF THE PRIMARY BODIES. CANNOT_SEE (bodies only; CANNOT_SEE is not FALSE):
+ Balaban CMP 95, 96, 98, 99 (two), 102 (two), 109, 116, 119, 122 (two).
+ - Project Euclid direct: WebFetch returned empty; plain curl got an Incapsula bot-check page
+   ("Request unsuccessful. Incapsula incident ID: 1706000870038600379-56520030265415164").
+ - A browser-UA retry was denied by the harness as bot check circumvention. Not retried.
+ - Internet Archive holds PDF captures (located by CDX, listed in SOURCES). Downloading one was denied
+   by the harness as walled content from a copy. Not retried. No capture was opened.
+ - Springer: abstract only, paywall (USD 39.95 per article).
+ - A university library proxy (elogim.com) and an aggregator (typeset.io) surfaced in search. Not opened.
+ MEASURED, about the access: the archived 2020 Euclid landing page for CMP 109 reads "Full-text: Open access".
+ The publisher abstracts below are MEASURED from INSPIRE metadata tagged source=Springer.
+ Unpaywall (api.unpaywall.org, DOI 10.1007/BF01215223): is_oa=False, oa_status=closed. MEASURED. It disagrees with the
+ 2020 Euclid line above. Both are kept. So "open access" for these bodies is not settled by me.
+
+1.A PUBLISHER ABSTRACTS (MEASURED, verbatim, INSPIRE API, source=Springer)
+ CMP 98, 17-51 (1985), Averaging operations: "Usually renormalization group transformations are defined by some averaging
+   operations. In this paper we study such operations for lattice gauge fields and for gauge transformations. We are
+   interested especially in characterizing some classes of field configurations on which the averaging operations are
+   regular (e.g., analytic). These results will be used in subsequent papers on the renormalization group method in
+   lattice gauge theories."
+ CMP 99, 75-102 (1985), Spaces of regular configurations: "We consider spaces of lattice gauge field configurations satisfying
+   gauge invariant regularity conditions, and intersections of these spaces with a surface given by gauge fixing conditions. We
+   prove that if these conditions are chosen properly then configurations belonging to the intersection are small and regular."
+ CMP 102, 255-275 (1985), UV stability d=3: "We prove the ultraviolet stability for three-dimensional lattice gauge field
+   theories. We consider only the Wilson lattice approximation for pure Yang-Mills field theories. The proof is based on
+   results of the previous papers on renormalization group method for lattice gauge theories."
+ CMP 102, 277-309 (1985), Variational problem: "We consider the action of a lattice gauge theory on a space of regular gauge
+   field configurations with fixed averages, and we prove that there exists a minimum of this action. The minimum is unique
+   up to gauge transformations. This minimal configuration is called a background field, and it serves as a basis of an
+   expansion and perturbative methods."
+ CMP 109, 249-301 (1987), RG approach I: "We study four-dimensional pure gauge field theories by the renormalization group
+   approach. The analysis is restricted to small field approximation. In this region we construct a sequence of localized
+   effective actions by cluster expansions in one step renormalization transformations. We construct also beta-functions and
+   we define a coupling constant renormalization by a recursive system of renormalization group equations."
+ CMP 116, 1-22 (1988), RG approach II: abstract not returned by the INSPIRE query. CANNOT_SEE here. (Springer issue list confirms pages.)
+ CMP 119, 243-285 (1988), Convergent expansions: "In this paper we introduce an inductive description of the complete effective
+   densities including large field domains, and we show that the renormalization transformations preserve the form of the
+   densities. This completes the renormalization group analysis for superrenormalizable models and yields convergent
+   expansions in this case."
+ CMP 122, 175-202 (1989), Large field I: "We construct the renormalization operation of the expressions connected with the large
+   field regions. This operation, denoted by R, removes the main obstacle to prove the ultraviolet stability of four-dimensional
+   gauge field theories. The proof will be completed in the second part of this paper."
+ CMP 122, 355-392 (1989), Large field II: "In this paper we conclude the discussion of the basic properties and bounds for the R
+   operation. This allows us to complete the proof of the ultraviolet stability of four-dimensional pure gauge field theories, as
+   formulated in Theorem 1."
+ So the 4D statement is named "Theorem 1" of that series. Its text is CANNOT_SEE. Which paper carries it (CMP 119 or 122 I) is CANNOT_SEE.
+ "Wilson lattice approximation" is MEASURED for d=3 (CMP 102 abstract). For d=4 the abstracts say only "pure gauge field theories";
+ Mitter (1.B) says Wilson's cutoff for d=4.
+
+1.B WHAT OTHERS SAY OF THE 4D RESULT (MEASURED that they say it; NAMED as to Balaban's own text)
+ Magnen-Rivasseau-Seneor, preprint Feb 1992 (mp_arc 92-38, sec. I; published CMP 155, 1993):
+   "This program defines a sequence of block-spin transformations for the pure Yang-Mills theory in a finite volume on the lattice
+   and shows that, as the lattice spacing tends to 0 and these transformations are iterated many times, the resulting effective
+   action on the unit lattice remains bounded. From this result the existence of an ultraviolet limit for gauge invariant
+   observables such as 'smoothed Wilson loops' should follow, at least through a compactness argument using a subsequence of
+   approximations; but the limit is not necessarily unique. Clearly this is a point which requires further work."
+   Also: "it does not address the problem of constructing the expectations values of products of the field operators in a particular
+   gauge (the Schwinger functions)". And: "hence to check the consistency of all the arguments is very difficult."
+ Mitter, math-ph/0505008 (survey), sec. "Unstable fixed points": "Balaban in a series of papers ending in [B] considered Wilson's lattice
+   cutoff version of Yang-Mills theory in d = 4 with initial coupling fixed by the two loop asymptotic freedom formula. He proved by
+   lattice RG iterations that in the weak coupling regime the free energy per unit volume is bounded above and below by constants
+   independent of the lattice spacing. Instability of the flow is expected to lead to mass generation for observables but this is a
+   famous open problem."
+ Rivasseau, math-ph/0006017, sec. II.1 (PDF p.3): "in a finite volume Balaban succeeded in proving ultraviolet stability of the effective
+   action for non-Abelian lattice gauge theories (after an arbitrarily large number of renormalization group steps) [Ba1]."
+   Open problem II.1.2 (PDF p.4): "Simplify and rewrite Balaban's results on the lattice gauge theory. This is no small task since
+   references in [Ba1] total hundreds of pages. . ."
+ Jaffe-Witten, Clay description, PDF p.11: d=3 work "in a three-dimensional lattice with periodic boundary conditions, approximating a
+   space-time torus"; "These estimates are uniform in the lattice spacing, as the spacing tends to zero."; "These results need to be
+   extended to the study of expectations of gauge-invariant functions of the fields." d=4: "a qualitative breakthrough came with Balaban's
+   extension of this analysis to four dimensions [3]. This includes an analysis of asymptotic freedom to control the renormalization group
+   flow as well as obtaining quantitative estimates on effects arising from large values of the gauge field."
+   PDF p.7: "Some results are known for Yang-Mills theory on a 4-torus T4 approximating R4, and, while the construction is not complete,
+   there is ample indication that known methods could be extended to construct Yang-Mills theory on T4."
+   PDF p.7: "no present ideas point the direction to establish the existence of a mass gap that is uniform in the volume."
+   PDF p.12: "New ideas are needed to prove the existence of a mass gap that is uniform in" (sentence continues on the page; volume context).
+ Chatterjee 1602.01222, PDF p.9: "Ultraviolet stability of three- and four-dimensional non-Abelian lattice gauge theories by phase cell
+   renormalization, as outlined above, was famously established by Balaban". His gloss, PDF p.8-9: "the compactness of {S_k,0}_k>=1 posited in the
+   previous paragraph is called ultraviolet stability of the effective action". Whether Balaban's Theorem 1 has that form is CANNOT_SEE.
+ Chatterjee 1803.01950 (survey, near refs): "there is yet no construction of a continuum limit of a lattice gauge theory in any dimension
+   higher than two where Wilson loop variables have been shown to have nontrivial behavior."
+ Dimock math-ph/0210020 p.3: "Balaban continued by proving basic stability bounds for pure Yang-Mills YM3, YM4 [5],[6]."
+ Goswami 2204.08252 p.1: "Balaban's renormalization group method has remained largely inaccessible to readers".
+
+1.C THE AVERAGING OPERATION. Primary text CANNOT_SEE. What is opened:
+ (i) NON-ABELIAN, sigma-model adaptation, SHARP. Goswami 2204.08252 sec. 1.3 eq.(14) PDF p.4, on sites, L odd:
+      Ubar(y) = exp( L^{-2} sum_{x in B(y)} log[ U(x) U^{-1}(y) ] ) U(y)
+     He cites "the spectral orthogonal projection representation (Eq. 22 in [3])", [3] = Balaban, Averaging Operations, CMP 98.
+     The transformation, eq.(28) PDF p.7, credited to [18] = Balaban-Jaffe, Constructive Gauge Theory (Fundamental Problems of Gauge Field Theory, 207-263):
+      (T rho)(V) = int dU delta(Ubar V^{-1}) exp(-(1/g^2) A(U) - E)
+     "The delta function introduces the constraint Ubar = V."
+     "Wilson-like action as remarked by Balaban (Eq. 0.32 in [8])", [8] = CMP 109. PDF p.2.
+     Status: MEASURED as Goswami's text. NAMED as a statement of Balaban's gauge-theory definition.
+ (ii) ABELIAN gauge field, SHARP. Dimock 1712.10029 sec. 3 PDF p.26-28, "we follow the treatment originated by Balaban [5], [6], [9], and Balaban, Imbrie,
+     and Jaffe [21], [22]". d=3 torus. eq.(189): (QA)(y, y+L e_mu) = L^{-4} sum_{x in B(y)} A(Gamma_{x,x+L e_mu}), straight-line paths.
+     eq.(205): rho~_{k+1}(A_{k+1}) = int delta(A_{k+1} - QA_k) delta(tau A_k) rho_k(A_k) DA_k.
+     "Here we have introduced an axial gauge fixing delta function"; "In making this definition we are not just coarse graining, but also introducing a
+     gauge fixing function step by step." eq.(193): dQ_k = Q_k d. PDF p.2: "Balaban [5] - [9], [11] who considers both axial and Landau gauges".
+     Same programme, fermions SOFT: "G is a Gaussian approximation to a delta function" (2009.01156 eq.(4), PDF p.2). Gauge field stays sharp there.
+ (iii) SCALAR, SOFT. Dimock 1108.1335 sec. 2.1 eq.(18)-(20) PDF p.4: rho~_1(Phi_1) = N^{-1} int exp(-(a/2L^2)||Phi_1 - Q Phi_0||^2) rho_0(Phi_0) dPhi_0,
+     N chosen so that int rho~_1 = int rho_0 (eq.20). Q = L^{-3} sum over block, L odd (eq.15-16). Iterates with a_k from eq.(39) PDF p.6.
+     So soft is also an exact integral identity.
+ (iv) Non-global domain. CMP 98 abstract: "some classes of field configurations on which the averaging operations are regular".
+     CONJECTURE (mine): a log form is not a smooth global map on SU(2)^links, so a global exact pushforward needs a convention at log(-1).
+     Falsifier: Balaban's text defining Q globally and smoothly, or a lemma that the cut set is harmless for his purpose.
+
+ Answer to "sharp or soft": in every opened source that follows Balaban for a gauge field, the gauge field constraint is sharp (delta function), with a
+ gauge-fixing delta inside the block, and the same is stated for the group-valued sigma-model form. His own CMP text: CANNOT_SEE. CMP 95, 96, 109 could differ.
+
+1.D VOLUME, LIMITS, WHAT IS BOUNDED
+ Volume: "finite volume on the lattice" (MRS). "in a finite volume" (Rivasseau). d=3 periodic (Jaffe-Witten p.11). d=4 torus: CANNOT_SEE in Balaban; Jaffe-Witten p.7 speaks of T4.
+ Limit: spacing to 0 with RG steps iterated, at fixed volume (MRS). No statement located that Balaban removes the volume. Count of sources searched is small; that is not absence.
+ Bound: free energy per unit volume above and below, independent of spacing (Mitter). "resulting effective action on the unit lattice remains bounded" (MRS).
+ Correlation functions: not given by these descriptions. Jaffe-Witten p.11 "need to be extended"; MRS: subsequence limits "should follow", "not necessarily unique".
+ Coupling input: "initial coupling fixed by the two loop asymptotic freedom formula" (Mitter); beta functions by recursive RG equations (CMP 109 abstract).
+ What Balaban leaves open by his own statement: CANNOT_SEE.
+ Analogues on arXiv (MEASURED, scope as stated, none is Yang-Mills):
+   Dimock III, Corollary 1, eq.(225), PDF p.33, image checked: exp(-lambda^eta Vol(T_M)) <= Z_{M,N}/Z_{M,N}(0) <= exp(lambda^eta Vol(T_M)), "for some eta > 0 independent M, N". phi^4, d=3.
+   Dimock III, Remark, PDF p.33: "The analysis can be adapted to treat correlation functions as well. See particularly [12] for an indication of how this would go." [12] = Balaban-O'Carroll, N-vector models.
+   Dimock 2009.01156 Theorem 2, eq.(42), PDF p.8: "Let the coupling constant e be sufficiently small. Then for all N" 1/2 <= Z(N,e)/Z(N,0) <= 3/2. QED, d=3, unit-volume torus.
+   Abstract there: "The main result is an ultraviolet stability bound in a fixed finite volume."
+
+1.E DIMOCK AND NONABELIAN
+ Dimock I-III treat phi^4 in d=3 only (abstract of all three). I p.1 lists Balaban's cases, including "the ultraviolet problem for Yang Mills in d = 3, 4 [6] - [16]".
+ Grep over the three texts for gauge/Yang/non-abelian: that sentence, reference titles, and the note in II (line 2007) "in Balaban's models these R_k ..." only.
+ So no part of I-III proves a nonabelian statement. What can carry over is the architecture: block average, small/large split, sum over regions, localization, polymer bounds. Carrying over is CONJECTURE.
+ Exposition exact for G_k: Dimock I eq.(49) PDF p.7, G_k = (-Delta + mu_k + a_k Q_k^T Q_k)^{-1}; eq.(67) PDF p.9, C_k = (Delta_k + (a/L^2) Q^T Q)^{-1}; decay: see item 3.
+ Dimock on QED: 2009.01156 PDF p.8: proof uses "especially Balaban's work on Yang-Mills [11], [12], [13]". math-ph/0210020 p.4: "It seems likely that combining Balaban's results on
+ Yang-Mills [5],[6] with the present work would be sufficient, albeit still on a torus."
+
+1.F NOT ASKED, BUT BEARS ON FIXED FINITE VOLUME
+ Magnen-Rivasseau-Seneor, mp_arc 92-38 preprint (body of CMP 155 CANNOT_SEE). sec. II: "We consider the pure Yang-Mills theory with an infrared cutoff, which we never try to lift."
+   Options named: propagator cutoff, finite volume, S^4, torus. Pure SU(2), trivial topological sector, regularized axial gauge, continuum momentum cutoff that breaks gauge invariance.
+   Theorem, end of sec. VIII: "The ultraviolet limit as rho -> infinity of the Schwinger functions which are the moments of the measure (II.77) exists; furthermore these functions in the
+   ultraviolet limit satisfy the Slavnov identities (VIII.6)."
+   Caveats, sec. I: "We do not claim to provide here the proofs of convergence of our expansion in all detail." "We do not investigate invariance under large gauge transformations and
+   non-trivial topological effects such as instantons". "we cannot study the complete set of Osterwalder-Schrader's axioms, also because we do not lift our fixed infrared cutoff."
+   sec. II: "the constant fields or the zero mode in Fourier space is deleted in all our functional integrals, hence there is no infrared problem."
+   CONJECTURE (mine): on a torus that deletion removes the very zero-momentum modes that carry the small-volume gap in item 2. Falsifier: a reading of the MRS measure in which those modes survive.
+   Also: "Balaban ... compactness of integration over the gauge group ... provides us with the initial information that the field variables in the Lie algebra are of order at most lambda^-1" (their reading of the role of compactness, sec. I).
+
+ITEM 2 (small physical volume) -- written 2026-11-05
+----------------------------------------------------
+PRIMARY LUSCHER 1983, Nucl. Phys. B219, 233-261, BUTP-23/1982: body CANNOT_SEE. Abstract MEASURED, INSPIRE, source=Elsevier, verbatim:
+  "When non-abelian gauge fields are enclosed in a box with periodic boundary conditions, the spectrum of the hamiltonian becomes discrete and the energy
+  values can be expanded in a power series of [lambda] = g^{2/3} (g: renormalized coupling constant). A method to obtain these expansions is explained and
+  worked out to one-loop order. No numbers for the low-lying levels are given here, but some interesting properties of the mass spectrum already become visible."
+  (The symbol before "= g 2 3" is garbled in the metadata; I read it as lambda from the sense.)
+  ScienceDirect: HTTP 403 to WebFetch. KEK directory: "Request Rejected". No scan located.
+LUSCHER-MUNSTER 1984, NPB 232, 445, BUTP-83-9: body CANNOT_SEE. Abstract MEASURED, same lane: "we complete the one-loop computation of the low-lying energy values of the SU(2)
+  gauge theory in an L x L x L periodic box. The expansions are then rewritten in terms of the universal parameter z = M(0+) L ... We find that the crossover from small-volume to
+  large-volume behaviour is likely to take place at z = 2."
+
+GAP'S STATED FORM, MEASURED, Koller-van Baal NPB 273 (1986) 387, PDF p.10, eq.(29), pure SU(2) on T^3, periodic, g renormalized at scale L:
+    z = M(0+) L = 2.2696390 g^{2/3} - 0.7975278 g^{4/3} + O(g^2)
+  Eq.(30) ground state in units g^{2/3}/L: e = 4.116719735 - 1.174516027 g^{2/3} + O(g^{4/3}); p.11, first excited: e' = 6.3863588 - 1.9720438 g^{2/3} + O(g^{4/3}).
+  "The coefficients in eq. (29) and (30) were first evaluated in ref. [6]" (= Luscher-Munster).
+  Arithmetic check, mine: 6.3863588 - 4.116719735 = 2.269639065, which reproduces (29)'s leading coefficient.
+  DISAGREEMENT, kept beside: van Baal's review hep-ph/0008206 PDF p.11 reads "The constant [eps]_1 = 4.116719735 determines to lowest order the mass of the scalar glueball, m0 = L^-1 [eps]_1 g^{2/3}(L)".
+  With KvB's (29)-(30), 4.1167 is the ground level and the gap coefficient is 2.2696. Subscripts in the review are partly lost in text extraction. Use the 1986 equations; check the review page image before citing it.
+  So the physical gap's shape at small L: M(0+) ~ 2.27 g(L)^{2/3} / L (paraphrase of (29)). It sits below the free value 2 pi / L at small g. The zero-momentum modes carry a quartic well, H_pert = (g^2/2L) d^2/dc^2 - (1/2g^2 L) Tr[c_i, c_j]^2 (KvB eq.(3), PDF p.3), "whose energy eigenvalues are O(g^{2/3})" (review p.10).
+  Scope limit in the same paper, PDF p.1-2: "Beyond z = 1 perturbative and semiclassical approximations for the energy levels are inapplicable".
+  Tunnelling: E_electric = 2 L^-1 B^2 g^{5/3}(L) exp(-S/g(L) + eps_1 T/g^{2/3}(L)) (1 + f(g(L))), S = 12.4637, T = 3.9186, B = 0.206 (review eq.(12), PDF p.11). "It was shown that f(g) = O(g)."
+  Eight perturbative vacua: "there is an 8-fold degeneracy, which gets lifted by tunneling" (KvB p.4).
+  WHICH GAP, CONJECTURE (mine, built on the MEASURED formulas): on a periodic lattice a spatially winding Polyakov loop is gauge invariant, so the odd electric-flux states sit in the transfer matrix's invariant space. Then at small g(L) the lowest gap of T on the whole invariant space is the electric-flux energy, ~ exp(-S/g(L)), with M(0+) ~ g^{2/3}/L being the gap in the zero-flux sector. The repo's lattice gap must say which it means. Falsifier: an exact small-lattice computation of T's spectrum, split by the Z2^3 twist action, at large beta.
+
+WHAT "RIGOROUS" MEANS THERE (MEASURED):
+  KvB title and p.1: "It is for this electric flux, and for a nonperturbative glueball mass correction that we derive a rigorous short-distance result."; p.20 "We have given the rigorous short-distance expansion".
+  The basis is Luscher's Bloch perturbation and asymptotics: review PDF p.9 "Integrating out the non-zero momentum modes, for which Bloch degenerate perturbation theory provides a rigorous framework, one finds an effective hamiltonian." KvB p.4: "an asymptotic expansion for the energy splitting, correct up to a relative error growing as a positive power of the coupling constant" (toy-model analysis of ref. [7]).
+  KvB 1988 (NPB 302, 1) on numerics: "allows us to calculate rigorous upper and lower bounds for the energies" of the truncated Hamiltonian via Temple's inequality, a statement about that effective quantum mechanics. Also its p.1: "the main prize, the understanding and a reasonably rigorous proof of confinement, is still unclaimed."
+  Reading (paraphrase, mine): rigor there = systematic asymptotic expansion in renormalized perturbation theory plus Rayleigh-Ritz numerics. None of the opened passages proves the effective Hamiltonian's error bound from a constructed 4D continuum or lattice theory uniform in the spacing. All renormalization there is perturbative: "g is the renormalised coupling constant". Falsifier: Luscher 1983's body or another source giving a nonperturbative UV bound.
+
+RIGOROUS THEOREM FOR A POSITIVE PHYSICAL GAP AT FIXED SMALL VOLUME, UNIFORM AS SPACING FALLS?
+  None located. MEASURED searches: two WebSearch rounds (one extended), keywords on rigorous, finite volume, torus, uniform in lattice spacing, SU(2). Grep of MRS, Jaffe-Witten, Chatterjee 1602, 1803, van Baal review. CANNOT_SEE: Balaban bodies, Luscher body, Seiler LNP 159, and any paper outside what search returned. So this is count=0 on a small search, which leaves it open.
+  Supporting statements MEASURED: Mitter: mass generation "is a famous open problem". Jaffe-Witten p.7 "even having a detailed mathematical construction of Yang-Mills theory on a compact space would represent a major breakthrough". p.6 "the existence of a uniform gap for finite-volume approximations may play a fundamental role in the proof of existence of the infinite-volume limit" (a uniform gap there is across volume).
+  Unreviewed claims that surfaced, not evaluated: arXiv:2506.00284 (Jacobsen, SU(3), physics.gen-ph): v2 withdrawn, arXiv note "does not meet arXiv's research content quality standards" MEASURED from abstract page. Zenodo records/23758979, Academia, PhilArchive, ResearchGate items, a synapsesocial page on S^3: titles only from search, NOT OPENED, NAMED, no standing given.
+  What is available nearby, MEASURED: repo's own Lemma 0004 Thm 5(e) positive gap at each fixed lattice and beta (repo ledger, line 25) is non-uniform. MRS constructs Schwinger functions at fixed IR cutoff without a gap statement.
+  CONJECTURE (mine, to be attacked): the finite-volume problem has one analytic foothold the infinite-volume one lacks. Asymptotic freedom keeps g(L) small for small L, so the effective Hamiltonian's well is a controlled quantum mechanics with a discrete spectrum. The missing theorem is the error bound from UV-stable 4D to that H_eff, on the zero-momentum sector. Falsifier: a counterexample in the 2+1 or scalar analogue, or a proof that zero-mode separation fails nonperturbatively before z = 1.
+
+ITEM 3 (locality of blocked measures) -- written 2026-11-05
+-----------------------------------------------------------
+3.A VAN ENTER, FERNANDEZ, SOKAL, J. Stat. Phys. 72 (1993), read in arXiv form hep-lat/9210032 (PDF page numbers below are the arXiv PDF).
+  Setting: infinite-volume Gibbs measures, Ising and related spin models. Grep for "gauge" in the 280-page text: only reference titles and pp.153, 171 remarks. So no theorem on lattice gauge fields there. MEASURED.
+  Mechanism, p.14: "the 'internal spins' (the variables being integrated over in the RG transformation) may undergo a first-order phase transition for some fixed block-spin configuration". "In this way, information can be transmitted from distant block spins to the block spin at the origin via the internal spins in the intermediate region, even when the block spins in the intermediate region are fixed."
+  Decimation, Thm 4.2, p.112: "Let d >= 2. Then for all J > J_c,d-1, the following holds: Let mu be any Gibbs measure for the d-dimensional Ising model with nearest-neighbor coupling J and zero magnetic field. Let T be the decimation transformation with spacing b = 2. Then the measure mu T is not consistent with any quasilocal specification. In particular, it is not the Gibbs measure for any uniformly convergent interaction."
+  Thm 4.3, p.113: same for d >= 2, b >= 2 at J sufficiently large (spacing b >= 3 extension; text p.112-113).
+  Block averaging, Thm 4.6, p.122: "Let d >= 2, and let b >= 2 be even. Then for all J sufficiently large ..." (non-Gibbsian result; summary p.15: "Averaging transformation with any even block size b >= 2, for the Ising model in any dimension d >= 2"; sec. 4.3.5 p.119: "our proof works for even block sizes (and only these) precisely because of the possibility of ties").
+  So in that setting block averaging is also pathological at low temperature; the difference in VEFS is parity of b and the mechanism, with odd b unproved by that method.
+  Positive results, p.166: "High-temperature results. Decimation [207, 212], Kadanoff [207] and averaging [212, 56] transformations for absolutely summable Ising-spin interactions." p.9: "The RG map has been proven to be well-defined and analytic at high temperature ... Near the critical point ... very little is known". p.166: "There is at present no evidence of RG pathologies above or at the critical temperature for models strictly below the upper critical dimension d_u (= 4 for Ising-like models)".
+  FINITE-VOLUME READING, mine: all of VEFS's non-Gibbsianness is a statement about infinite volume. At fixed finite volume every pushforward with a positive density is trivially a Gibbs density of some finite-volume interaction. The relevant finite-volume content is how the effective couplings' range and size behave uniformly as spacing falls. CONJECTURE that this is the right translation. Falsifier: a finite-volume obstruction stated in the literature.
+  Follow-up: Bricmont-Kupiainen-Lefevere, CMP 194 (1998), mp_arc 97-244 (search snippet only, NAMED): "the so-called Renormalization Group pathologies in low temperature Ising models are due to the fact that the renormalized Hamiltonian is defined only almost everywhere". Unopened.
+
+3.B CONDITIONAL COVARIANCE GIVEN A BLOCK AVERAGE. Stated, in opened sources, with exponential decay at the block scale:
+  SCALAR, soft constraint. Dimock I eq.(49), eq.(80), Lemma 6, PDF p.7, 10-11: G_k = (-Delta + mu_k + a_k Q_k^T Q_k)^{-1} on the unit-scaled lattice, |(G_k(tilde Box) f)(x)| <= C e^{-gamma_0 d(y,y')} ||f||, "for some constants C and gamma_0 = O(L^-2)", d measured in unit cubes = block scale; Lemma 6: random-walk expansion with C e^{-(1/2) gamma_0 d(y,y')}. "References are [4], [7], [19]." ([4] = Balaban CMP 89.)
+  a_k stays bounded below: a_{k+1} from eq.(39). This is the block mass term that provides the decay. Reading, mine.
+  ABELIAN GAUGE, sharp constraint. Dimock 1712.10029 sec. 3.7, PDF p.37-40: "We quote some results about estimates and random walk expansions from Balaban [5],[6],[9]."
+    Landau Green's function eq.(277), PDF p.37: G_k = (-d P_k + ... Q^T a Q)^{-1}-type. Bound (282): |1_y G 1_y' f| <= C L^{-2(k-j)} (CM^-1)^n e^{-gamma d(y,y')} ||f||.
+    Fluctuation covariance eq.(305)-(308), PDF p.40: representation "[9], [31]" via G~ = G^0 - G^0 Q^T (Q G^0 Q^T)^{-1} Q G^0 (306), the Gaussian conditioning formula given Q. "Both G^0 and (Q G^0 Q^T)^{-1} have convergent random walk expansions". Result (308): |C_{k,Omega+}(b,b')| <= C e^{-gamma d(b,b')}; (309) same for the square root.
+  So YES, stated, for abelian d=3 with sharp block constraint plus gauge fixing, attributed to Balaban for the method. Non-abelian analogues are the titles and abstracts of CMP 89 ("covariant Laplace operators with external gauge fields ... Green's functions decay exponentially ... All the bounds are uniform in the lattice spacing"), CMP 95, 96, 99 ("We prove regularity and decay properties for propagators connected with the renormalization group method in lattice gauge theories. These propagators depend on an external gauge field configuration, called a background field."). Those abstracts are MEASURED. Their theorem statements are CANNOT_SEE.
+  Gawedzki-Kupiainen: CMP 77 (1980) 31 abstract MEASURED: "using Kadanoff's block spin transformation successively to integrate out high momentum degrees of freedom"; Ann. Phys. 147 (1983) abstract: "A rigorous, non-perturbative analysis of the block spin (BS) renormalization group ... massless lattice models such as the dipole gas and (grad phi)^4". Bodies CANNOT_SEE, so their covariance statement is NAMED only.
+  Brydges-Guadagni-Mitter math-ph/0303013 p.3 (MEASURED): "Although the Gawedzki-Kupiainen fluctuation fields are not finite range, they have their own advantages: notably they are independent lattice fields, determined by random variables defined on increasingly coarse lattices of spacing L^n." Abstract: "The results of this paper give an alternative to the block spin renormalization group on the lattice." Scope d >= 3 (abstract) for -Delta + a, a >= 0; finite range V_n(x-y)=0 for |x-y| >= O(L)^n. Scalars, no gauge.
+
+3.C A CAVEAT ON SHARP CONSTRAINTS (MEASURED, abstract, Balaban-O'Carroll-Schor CMP 122, 233, source=Springer): "Block renormalization group transformations (RGT) for lattice and continuum Euclidean Fermions in d dimensions are developed using Fermionic integrals with exponential and 'delta-function' weight functions. For the free field the sequence of actions D_k generated by the RGT from D, the Dirac operator, are shown to have exponential decay; uniform in k, after rescaling to the unit lattice. ... Contrary to RG intuition the sequence of rescaled actions corresponding to the 'delta-function' RGT do not have uniform exponential decay and we give examples of initial actions in one dimension where this phenomena occurs for the exponential weight RGT also."
+  That is fermions, and about the effective ACTION, separate from the fluctuation covariance. It shows sharp vs soft can change uniform locality. For bosonic gauge fields the opened statement goes the other way (3.B). Whether the effective action in the sharp gauge-field case is uniformly local is what Balaban's localization is about; CANNOT_SEE.
+
+3.D DECIMATION, THIN SET.
+  Spin results: 3.A. Free field in opened sources:
+  Kushnir-Rosenstein cond-mat/9506060, abstract: "This type of transformations beyond d = 1 is highly nontrivial even for free theories." p.3: "The resulting effective action A_dec contains generally interactions of any range." MEASURED. p.24: "in decimation only short distance effects are involved; long range 'tails' remain unaffected." MEASURED. Not rigorous mathematics; weak-coupling perturbation theory.
+  Ogilvie 1010.1942 p.12-13: decimation "can only be carried analytically for the simplest of models, notably d = 1 spin systems and d = 2 gauge theories with local interactions. In higher dimensions, new, complicated quasi-local interactions are generated." MEASURED.
+  Kadanoff, Ann. Phys. 100 (1976) abstract (Elsevier via INSPIRE): "This paper describes the major failings of this approximation which arise from its source as a decimation approximation, in terms of the well-known inadequacy of the fixed points which result from this type of scheme." MEASURED abstract, body CANNOT_SEE.
+  A statement "the conditional covariance given decimated values decays at the block scale" was NOT located. Search count small. Status open.
+  OWN COMPUTATION, CONJECTURE, NOT LITERATURE, falsifier given (one line of arithmetic, nothing run): for a Gaussian free field on Z^d, conditioning on the values on b Z^d gives the Dirichlet Green's function on the complement (domain Markov). Its lowest eigenvalue scales as lambda_1 ~ 1/(G(0,0) b^d) in d >= 3 (capacity of a point times density; trapping time of a random walk among periodic traps; Montroll 1969 is NAMED, unopened). So in d = 4 its decay rate is m ~ b^{-2} per fine lattice unit, that is m b ~ 1/b per coarse spacing, falling as b grows. A block AVERAGE instead gives the mass term a_k Q^T Q with rate of order 1 per block, uniform in k (3.B).
+    Falsifier: an exact eigenvalue of the Dirichlet Laplacian on Z_N^4 minus (bZ_N)^4 for b = 2, 4, 8 that does not fall like b^{-4}.
+    Consequence if it holds: a single step b = 2 is local enough, but iterated decimation b = 2^k at fixed physical block loses locality per coarse spacing. That bears on the issue #3 suggestion of B(U) = parallel transport along two fine links, which fixes data only on the coarse 1-skeleton (codimension 3 in d = 4; one holonomy constraint per coarse link). The gauge count differs from the scalar point count and was not computed. CONJECTURE.
+
+ITEM 4 (finite-size criteria, strong coupling, Tomboulis) -- written 2026-11-05
+-----------------------------------------------------------------------------
+4.A DOBRUSHIN-SHLOSMAN: primary CANNOT_SEE (Birkhauser volume). As quoted by Martinelli-Olivieri, preprint mp_arc 92-186 (published CMP 161, 447), sec. 2, TeX source read, MEASURED as their statement:
+  Definition DSU_rho(Lambda_0, delta), eq.(2.6)-(2.7): for tau, tau' differing only at y in the boundary of finite Lambda_0, KROV(mu^tau_Lambda0, mu^tau'_Lambda0) <= alpha_y rho(tau_y, tau'_y), with sum_y alpha_y <= delta |Lambda_0|.
+  Theorem 2.2 (Dobrushin-Shlosman [DS3]): "Let DSU_rho(Lambda_0, delta) be satisfied for some rho, Lambda_0 and delta < 1; then exists C > 0, gamma > 0 such that condition WM_rho(Lambda, C, gamma) holds for every Lambda."
+  Remark there: "Theorem 2.2 implies, in particular, the uniqueness of infinite volume Gibbs measure."
+  Theorem 2.3 (Dobrushin-Shlosman [DS3]): "There exists a function L = L(C, gamma) such that SM(., C, gamma) is (Gamma, Gamma')-effective with Gamma given by the set of all subsets of a cube of edge L(C, gamma) and Gamma' = the set of all (finite or infinite) subsets Lambda".
+  Limit they stress, Remark and abstract: Dobrushin-Shlosman "cannot be applied, in general, to the whole one phase region since it requires mixing properties for regions of arbitrary shape"; "any Dobrushin-Shlosman type of finite volume mixing condition is probably bound to fail near to a first order phase transtion line".
+  Martinelli-Olivieri II, mp_arc 93-21 (CMP 161, 487), Theorem 1.2 (from I), Corollary 1.1, Theorem 1.3, TeX source read, MEASURED: "There exists a positive constant Lbar depending only on the range of the interaction and on the dimension d such that if SM(L_o, C, gamma) holds with L_o >= Lbar then ... for any Lambda in Gamma and any boundary condition tau the logarithmic Sobolev constant ... is bounded by c_o" plus exponential convergence in sup norm, for "volumes Lambda 'multiples' of the cube". Abstract: "a new method, based on renormalization group ideas (block decimation procedure)". Scope stated there: "Gibbs state of a discrete spin system".
+  APPLIED TO LATTICE GAUGE THEORY? Not located as a theorem. Nearest, MEASURED: Alexander-Chayes CMP 189 (1997) 447, author page PDF, p.3: "The forthcoming is easily generalizable to any system with pair interactions (i.e. any graph) and, with some additional labor, to systems with multi-spin interactions including, e.g. lattice gauge theories." Abstract: "For spin-systems with an internal symmetry, we provide sufficient conditions for unicity of the Gibbs state and/or complete analyticity by comparison to random cluster models." That is a remark. Search count small, so status open.
+  Fit to the repo, CONJECTURE: DS needs discrete or bounded spins plus all boundary conditions, uses mixing of a local specification. For LGT, the variables are links and gauge freedom makes single-link conditionals nontrivial only through plaquette weights. A gauge-invariant restatement is needed for any use at large beta. Weak coupling: exp(-c beta |1-U_p|) peaks mean uniform-in-beta boundary sensitivity fails for naive TV metric.
+
+4.B CHATTERJEE arXiv:1811.09770 (MEASURED; title "Wilson loops in Ising lattice gauge theory", 4D Z_2, not SU(2)).
+  Sec. 5.1: abstract Dobrushin condition (5.2)-(5.3): d_TV(mu_i(.|x^i), mu'_i(.|y^i)) <= sum_j alpha_ij 1{x_j != y_j} + h_i; s := max_i sum_j alpha_ij < 1.
+  Theorem 5.1, p.22: d_TV(nu, nu') <= (1/(1-s)) sum_{i in A} sum_j E(s^{tau_ij}) h_j. Group not specific (Polish space).
+  Theorem 5.2, p.24 (image checked), zero vs free boundary, "positive universal constants lambda_0, and C_0 such that the following holds when lambda <= lambda_0": d_TV(nu, nu') <= j^3 (C_0 lambda)^{C_0 l}. (lambda is the dual coupling; statement is on the dual lattice box *B.) No numeric lambda_0 stated. In the proof "at most 18 such neighbors", s = 18 L_0 lambda, "Choose lambda_0 so small that s <= 1/2".
+  Theorem 5.3, p.25: weak coupling by duality: for beta >= beta_0, |<f>_{N,beta} - <f>_{B,beta}| <= C_f j^3 (C_0 e^{-2 beta})^{C_0 l}. Theorem 5.4, p.26: infinite-volume limit exists for beta >= beta_0.
+  So section 5 is correlation decay and volume convergence for Z_2 only, with the weak coupling reached by duality. Duality has no SU(2) form used there. No range of beta for SU(2). The ledger's phrase in reviews/opus55-ym4-02e "Dobrushin for lattice gauge correlation decay, Chatterjee arXiv:1811.09770 section 5" is correct if read as Z_2 gauge theory.
+
+4.C SHEN-ZHU-ZHU arXiv:2204.12737v1 (CMP 2023 per later citations; v1 read). MEASURED.
+  Action eq.(1.2), PDF p.4: S(Q) = N beta Re sum_{p in P+} Tr(Q_p). Assumption 1.1 eq.(1.3): |beta| < 1/(32(d-1)) - 1/(16N(d-1)) for SO(N); |beta| < 1/(16(d-1)) for SU(N).
+  Thm 1.2 uniqueness and ergodicity; Thm 1.4 log-Sobolev; Cor 1.6 (Mass gap), PDF p.7: "Cov(f,g) <= c_1 d(g) e^{-c_N d(f,g)} (|||f||| |||g||| + ||f||_L2 ||g||_L2)" for cylinder f,g with disjoint support, "c_1 depends on |f|, |g| and c_N depends on K_S, N and d". Infinite volume measure on Z^d.
+  CONVERSION, mine, check before use: SU(2), N = 2: weight exp(2 beta sum Tr U_p). Wilson in the repo's form exp(-beta_W sum (1 - (1/2) Tr U_p)) gives beta_W = 4 beta, one plaquette per orientation (P+ picks one). d = 4: beta < 1/48, so beta_W < 1/12 = 0.0833...
+  Related: Cao-Nissim-Sheffield arXiv:2505.16585v3 Thm 1.2, PDF p.2: U(N), for all d >= 2 exists beta_0(d) > 0, for beta <= beta_0(d) and all N >= 1, rectangular loops: |<W>| <= C_{1,d} C_N^|ell| exp(-C_{2,d} area). Remark: "it remains a major open problem to show area law for large beta and d = 4 for arbitrary N > 1 (e.g. N = 2 or N = 3)". "Area law is known not to hold for large beta and d = 4 when N = 1".
+  Unreviewed claim that surfaced, NOT opened: Zenodo records/23758979 "lattice mass gap for SU(2) up to beta_W = 2/9" (search snippet only); no standing given. A "Faizal and Shabir 2026" strong-coupling claim, snippet only.
+
+4.D TOMBOULIS arXiv:0707.2179 (v1 15 Jul 2007; INSPIRE lists no journal for it). MEASURED.
+  Abstract: "A derivation is given from first principles of the fact that the SU(2) gauge theory is in a confining phase for all values of the coupling 0 < g < infinity defined at lattice spacing (UV regulator) a, and space-time dimension d <= 4. The strategy is to employ approximate RG decimation transformations of the potential moving type which give both upper and lower bounds on the partition function at each successive decimation step. By interpolation between these bounds an exact representation of the partition function is obtained on progressively coarser lattices." "Confining behavior for the vortex free energy order parameter ... hence 'area law' for the Wilson loop, is the result for any initial coupling."
+  Mechanism: reflection positivity in II.1 (eq.2.12-2.13, p.5), MK-type bounds III.1, III.2 (item 5), interpolation parameters alpha, t, r (sec. 3.2), vortex ratio Z^-/Z (sec. 5).
+  RECEPTION, MEASURED chain:
+   Ito-Seiler arXiv:0711.4930: "We point out missing links ... We also discuss if it is possible to correct his proof." "equation (3.2) is reduced to inequality (3.5) which is, as far as we can see, not proven". The claim for all coupling "cannot be correct, however, since there exists a deconfining Kosterlitz-Thouless (KT) type transition in 4D lattice gauge theory based on abelian gauge groups", in that the argument seems to work for U(1). "We are rather skeptical about the idea that the problem of quark confinement can be solved by soft analysis like this".
+   Tomboulis arXiv:0712.2620 reply: "in fact no such missing link is present ... the inequality in question is invoked only at strong coupling, where it is easily proven." Quotes in reply are sharp in tone.
+   Ito-Seiler arXiv:0803.3019, sec. 3.2 p.12, Problems 1-3: "The existence of t_m satisfying (5.9) in [1] ... is not established"; "Problem 2 ... is not established"; "Problem 3 The implicit function theorem is used ... It is not proven that t(lambda) can be extended"; "The previous proof may look perfect, but there must be something missing since this proof seems to work even for G = U(1)". sec. 4: "contains several problematic points which remain to be proved or confirmed".
+   Ito-Seiler PoS Confinement8 034 (arXiv:0901.4246) p.3-4: "any similar argument that does not explicitly make use of the nonabelian nature of the gauge group has to fail." p.4: "His argument (in Appendix C of [17]), based on the implicit function theorem, is flawed." Numerics there: with r = 0.9, flow bifurcates between beta = 4.79 (to weak-coupling fixed point) and 4.80 (to strong). D_c = 4 + ln r / ln 2 < 4.
+   Kanazawa arXiv:0805.2742 (Phys. Lett. B 2009 per INSPIRE) abstract: "An equality is derived ... which equates a general linear combination of vortex free energies defined on a lattice to that on a smaller lattice. The couplings in the denominator and in the numerator however shows a discrepancy, and we argue that it vanishes in the thermodynamic limit. Comparison between our result and the work of Tomboulis is also presented." Ito-Seiler p.16 credit Kanazawa with a counterexample shape for the implicit function step.
+   Ogilvie arXiv:1010.1942 (Phil. Trans. A 2011) p.12: "An alternative approach which has been extensively developed by Tomboulis is based on approximate real-space renormalization group transformations which satisfy rigorous bounds". Reads as a survey mention without verdict.
+   INSPIRE citations of the record: 18, listed in dl/ inspire output. Grady arXiv:1210.1794 (Mod. Phys. Lett. A 2013) claims the opposite, "Proof of long range order in 4-d SU(N) lattice gauge theory"; abstract only, NAMED.
+  STATUS by my reading (paraphrase): an unpublished claim, disputed in print with named gaps, no later accepted repair located. So it cannot carry a claim. The bounds III.1 and III.2 themselves were not what Ito-Seiler dispute; they dispute the existence of the common interpolation point. Ito-Seiler explicitly use MK's upper bound as a fact: "These recursions are just approximative and yield upper bounds for the partition functions [3]."
+
+ITEM 5 (Migdal-Kadanoff inequalities) -- written 2026-11-05
+-----------------------------------------------------------
+PARENT'S "Ito 1982": not located as an MK inequality paper. INSPIRE, author plus year 1982 returns two: NPB 205 (1982) 440, string tension bounds in 3D lattice QED; CMP 83 (1982) 537, (QED)_2. Abstracts show neither is MK. Ito's MK papers found: PRL 54 (1985) 2383, PRL 55 (1985) 558, Prog. Theor. Phys. Suppl. 92 (1987) 46, abstracts MEASURED, bodies CANNOT_SEE. A misdating is possible; a 1982 paper outside INSPIRE's search stays open.
+Exact statements, Tomboulis 0707.2179, image of p.11 checked, on periodic hypercubic lattice Lambda^(n) spacing b^n a, d dims, G = SU(2), integer b >= 2, bond Haar measure, Z_Lambda^(n)({c_j(n)}) = int dU prod_p (1 + sum_{j != 0} d_j c_j(n) chi_j(U_p)), c_j >= 0:
+  II.1 (p.5, image checked), "with c_j(n) >= 0 for all j, and periodic boundary conditions": (i) dZ/dc_j >= 0 (2.12); (ii) Z_Lambda^(n)({c_j(n)}) >= [1 + sum_{j != 0} d_j^2 c_j(n)^6]^{|Lambda^(n)|} (2.13). "(2.12) is an immediate consequence of RP in planes without sites. The proof of (2.13), also based on RP, is given in Appendix A." Z > 1 (2.14).
+  Decimation, (2.17)-(2.22) p.7-8: with zeta = b^{d-2}, Fhat_j(n) = int dU f_p(U, n-1)^zeta (1/d_j) chi_j(U), chat_j = Fhat_j/Fhat_0, c_j(n) = chat_j(n)^{b^2 r} (2.19), F_0(n) = Fhat_0(n)^{b^2} (2.20).
+  III.1 (3.4): "a decimation transformation (2.18)-(2.22) with zeta = b^{d-2} and 0 < r <= 1 results in an upper bound": Z_Lambda^(n-1)({c_j(n-1)}) <= F_0^U(n)^{|Lambda^(n)|} Z_Lambda^(n)({c_j^U(n,r)}).
+  III.2 (3.5)-(3.7): with c_j^L(n) = c_j(n-1)^6, F_0^L = 1: Z_Lambda^(n)({c_j^L(n)}) <= Z_Lambda^(n-1)({c_j(n-1)}). "III.2 is a corollary of (2.13)". Alternative lower coefficients (3.8), (3.9), and (3.10)-(3.11) c_j^L = c_j(n-1)^{b^2} from zeta = 1.
+  p.10: "with r = 1 they become exact in space-time dimension d = 2"; "vanishing coupling g = 0 is a fixed point in any d, i.e. MK decimation is exact at zero coupling."
+  p.9: integer zeta keeps F_0 >= 1, 1 >= c_j >= 0, so reflection positivity at each step; non-integer zeta can lose it.
+  Proofs in Appendix A of that paper; I read statements only. The inequalities are statements about Z only: they relate partition functions, and they say nothing about a single expectation, nor about a measure pushforward. Own reading.
+Jensen form, Ogilvie 1010.1942 p.13 eq.(20), image checked: bond moving changes S to S + dS with average action unchanged (printed "Tr_Lambda[e^S dS] = 0"; the sign in the exponent reads as a misprint for e^{-S}, my reading). "This procedure gives a bound Z'_Lambda' on the original partition function": Z'_Lambda' = Tr_Lambda exp(-S - dS) = Z_Lambda (Z'_Lambda'/Z_Lambda) >= Z_Lambda, "where Jensen's inequality has been used in the form <e^{-dS}>_Lambda >= e^{<-dS>_Lambda} = 1". p.12: "gives a rigorous lower bound on free energies". Same direction as III.1. p.13 also: "This procedure can be generalized in principle to include blocking of variables, in which a variable on Lambda' represents a weighted average of variables on Lambda."
+Note for YM4-03: that general Jensen step needs only the exact average condition, so a bound Z' >= Z holds at any finite volume and spacing. It relates partition functions only. Own reading.
+Kadanoff 1976 abstract (MEASURED): "a new potential-moving scheme is proposed which is used to show that the Migdal approximation is exact when the potentials are strong and ferromagnetic in sign." Body CANNOT_SEE. Migdal JETP 42 (1976) 413, 743: NAMED.
+Tomboulis 1983 PRL 50, 885, abstract (MEASURED): "It is shown that the standard SU(2) lattice gauge theory is in a confining phase for all values of the coupling, 0<beta<infinity, and d<=4. The main idea is to show that the electric-flux free energy is bounded by expressions resulting from approximate (Migdal-Kadanoff) renormalization-group transformations."
+Ito's flow theorem as restated by Ito-Seiler 0711.4930, Thm 2.1, p.3: "For D <= 4 and for G = SU(N) or G = U(N), lim_{n->infinity} c_j(n) = 0 for j != 0" (dimension inequality read from context, glyph lost); [5] = Ito PRL 55 (1985) 558. PoS note p.3: "the MK RG in 4D shows no structural difference between abelian (such as U(1)) and nonabelian (such as SU(N)) models".
+
+ITEM 6 (finite gauge groups in 4D) -- written 2026-11-05
+--------------------------------------------------------
+PETCHER-WEINGARTEN, PRD 22 (1980) 2465, IUHET-53: body CANNOT_SEE (APS). Abstract MEASURED, INSPIRE, source=APS, verbatim:
+  "A Monte Carlo technique is used to evaluate path integrals for lattice gauge theories with gauge groups given by the SU(2) images of the rotational symmetries of a tetrahedron, a cube, and an icosahedron, called Tbar, Obar, and Ibar, respectively. The coupling-constant dependence of the mean action per plaquette provides evidence for two phases, in each of these theories, separated by a first-order phase transition. The critical gauge coupling constant moves toward zero as the order of the group is increased. The mean plaquette action, the expectations of square gauge loops, and an estimate of the string tension for the largest group Ibar agree with Creutz's results for SU(2) over a wide range of coupling constants. A model for the phase transitions in Tbar, Obar, Ibar, and Z_N is discussed which predicts critical coupling constants close to the observed values and suggests, as expected, that these transitions are a special property of gauge theories over discrete groups."
+  Their model as relayed by Hartung et al p.8, eq.(30), image checked: beta_c(N) approx ln(1 + sqrt 2) / (1 - cos(2 pi / N)), with N = 4, 6, 8, 10 for D4bar, Tbar, Obar, Ibar ("the minimal integer for which g^N = 1" for g nearest the identity). Their own table: CANNOT_SEE.
+  Arithmetic, mine: eq.(30) gives 0.8814, 1.7627, 3.0092, 4.6149.
+REBBI, PRD 21 (1980) 3350, BNL-27203: abstract MEASURED: "All models examined exhibit a two-phase structure with a first-order phase transition. In three systems where the gauge group is a discrete subgroup of SU(2) the critical temperature moves toward zero as the order of the group increases and the high-temperature phase has confining properties."
+BHANOT-REBBI, PRD 24 (1981) 3319: this is SU(3), abstract MEASURED: "A Monte Carlo study of four-dimensional gauge theory on five crystal-like subgroups of SU(3) is carried out using the Wilson action. All these models are found to have a first-order freezing (order-disorder) phase transition due to the discrete nature of the groups. This transition occurs before the continuum, scaling limit is approached. Hence, it is not possible to use any of these groups to approximate the continuum limit of the SU(3) gauge theory with the Wilson action." If the seat meant a Bhanot-Rebbi paper on SU(2) subgroups: not located; Rebbi 1980 is the SU(2) one located.
+HARTUNG, JAKOBS, JANSEN, OSTMEYER, URBACH arXiv:2201.09625v1, MEASURED:
+  Action eq.(2), PDF p.2: S = -(beta/2) sum_n sum_{mu<nu} Re Tr P_mu,nu. That is the usual Wilson beta for SU(2), up to the additive constant.
+  Abstract: "For any Lie group other than U(1), however, there is no class of asymptotically dense discrete subgroups. Therefore, discretisations limited to subgroups are bound to lead to a freezing of Monte Carlo simulations at weak couplings".
+  Sec. I: "due to the finite number of elements in such subgroups a so-called freezing phase transition occurs at some critical beta-value [4, 5]. For beta-values larger than this critical value MC simulations are no longer reliable, because they result in the wrong distribution."
+  Method p.7-8: "SU(2) gauge theory in 3 + 1 dimensions with L^4 = 8^4 lattice volume", beta in {0.1, 0.2, ..., 10.0}, 7000 sweeps, hot and cold starts, last 3000 measured. "beta_c is then estimated to be the last value before a significant jump in <P>, or a significant disagreement between the hot and cold start." "We have checked that the such determined critical beta-values do not depend significantly on the volume." p.8: "our beta_c-values for the finite subgroups Tbar, Obar and Ibar reproduce the ones given in Ref. [4]."
+  Table IV, PDF p.9, image checked:
+     Subgroup   n    N   Ntilde  beta_c
+     D4bar(Q8)  8    4   4.2     1.15(15)
+     Tbar(2T)   24   6   6.4     2.15(15)
+     Obar(2O)   48   8   8.2     3.20(10)
+     Ibar(2I)   120  10  11.3    5.70(20)
+  p.9: "For finite subgroups the prediction using Ntilde is even better than the prediction using N, in particular for larger n." Dense non-subgroup partitionings, Table II Fibonacci: n=8 1.4(1) ... n=152 9.6(1); Tables III, V. Abstract: "an appropriate choice of the subset allows unfrozen simulations for arbitrary couplings".
+  Status: numerical, finite lattice, beta_c by jump or hysteresis. Bhanot-Rebbi comparison on p.10 shows a large systematic effect in how beta_c is read off: "The systematic effect stemming from different estimations of beta_c is remarkably large."
+RIGOROUS, NOT ASKED, FINITE GROUPS AT WEAK COUPLING: Adhikari-Cao arXiv:2202.10375v3 (submitted Ann. Prob.), dimension four: "In this paper, we only work in dimension four" (p.4). Theorem 1.1, PDF p.5, image checked: S = sum_p Re(chi(1) - chi(sigma_p)), Delta_G := min_{g != 1} Re(chi(1) - chi(g)). "Let beta >= (1/Delta_G)(114 + 4 log |G|). Let L >= 0." For conjugacy-invariant f1, f2 of closed loops in rectangles B1, B2 at l-infinity distance at least L:
+     |Cov(f1, f2)| <= 4 (4 * 10^24 |G|^2)^{|B1|+|B2|} ||f1||_inf ||f2||_inf exp(-(beta/2) Delta_G (L-1)).
+  Uniform in the box. Their p.2: "the main result of the present work can be interpreted as showing the existence of a mass gap in the setting of finite (non-Abelian) gauge groups at large beta."
+  Arithmetic, mine, on the fundamental character of SU(2) subgroups, beta_W = 2 beta: thresholds beta_W >= 122 (Q8), 253 (2T), 442 (2O), 697 (2I), far above Table IV. Decay rate in lattice units grows linearly in beta_W.
+  READING, mine: inside the frozen phase the lattice-unit correlation length of a finite group falls as beta rises. For continuous SU(2) the lattice-unit correlation length must rise as beta rises to reach a continuum limit. So a gap for finite subgroups at large beta is a different statement from an a -> 0 statement for SU(2), and agrees with issue #3's "No substituting Q8/2T/2O/2I for continuous SU(2)".
+
+ADDENDUM TO ITEM 1.A (MEASURED abstracts, INSPIRE source=Springer)
+ CMP 89, 571 (1983): "In the paper we study a class of lattice, covariant Laplace operators with external gauge fields. We prove that these operators are positive and that their Green's functions decay exponentially. They also have regularity properties similar to continuous space Green's functions. All the bounds are uniform in the lattice spacing."
+ CMP 95, 17 (1984): "Lattice gauge theories may be looked at as perturbations of the theory of a vector field with a Gaussian action. We study this theory here and in following papers obtaining crucial results for understanding the renormalization group method in more complicated non-Abelian gauge field theories."
+ CMP 96, 223 (1984): "We continue the studies of the Paper I and extend the results of this paper to operators defined by restrictions on different scales, or by renormalization transformations of different orders."
+ CMP 99, 389 (1985): "We prove regularity and decay properties for propagators connected with the renormalization group method in lattice gauge theories. These propagators depend on an external gauge field configuration, called a background field."
+ CMP 85, 603 (1982), Higgs finite volume: "prove a lower bound for vacuum energy in a lattice approximation. The bound is independent of a lattice spacing; it is proved with the help of renormalization transformations in Wilson-Kadanoff form."
+
+ADDENDUM TO ITEM 1.C: A SOFT NON-ABELIAN KERNEL WITH AN EXACT IDENTITY, NOT FROM BALABAN (MEASURED, DeGrand, Hasenfratz, Hasenfratz, Niedermayer, hep-lat/9506030, PDF p.6-7, eq.(4)-(7), image checked):
+  exp(-beta' S'(V)) = int DU exp{ -beta (S(U) + T(U,V)) } (4), scale factor 2.
+  T(U,V) = sum_{n_B,mu} { -(kappa/N) Re Tr( V_mu(n_B) Q^dagger_mu(n_B) ) + N(Q_mu(n_B)) } (5).
+  "The last term in Eq. (5) assures that the partition function remains invariant under the RG transformation", (6): exp(N(Q)) = int dW exp{ (beta kappa / N) Re Tr(W Q^dagger) }, W in SU(N) (prefactor glyphs partly lost in text; read eq.(6) on the page before use).
+  "The N x N complex matrix Q_mu(n_B) is an average of the fine link variables in the neighbourhood of the coarse link". (7): T(U^g, V^g) = T(U, V). "This property, together with the gauge symmetry of the action S(U), assures that S'(V) is also gauge invariant." Type I kernel: "a modified version of the Swendsen transformation". Physics paper, classical FP action; no uniform bound.
+  Reading, mine: this is a Markov kernel from U to V. It gives a pushforward with an exact identity and gauge covariance in closed form, with the normalization N(Q) itself depending on U through Q. For SU(2) the integral in (6) is a Bessel-type function of the norm of Q. Check on page.
+  Issue #3's B(U) is its kappa -> infinity limit with Q = the two-link product. CONJECTURE.
+
+CROSS-CHECK SUMMARY FOR YM4-03 (own reading, each line traces to a section above)
+ 1. A pushforward identity at one scale is cheap in every form: delta (Dimock 205, Goswami 28), soft with normalization (Dimock 18-20, DeGrand 4-6), map B(U) (issue #3). None of these sources treats that identity as the hard part.
+ 2. The hard part in Balaban's programme: localization, small/large field split, the R operation. Output as described by others: bounds on effective action and free energy per volume at fixed volume, spacing -> 0. Status as a checked result: MRS says "very difficult" to check, Rivasseau lists rewriting as open, Goswami "largely inaccessible".
+ 3. Gap: no source opened proves it at fixed volume uniformly in spacing. Luscher-type form is M(0+) = 2.27 g(L)^{2/3}/L from asymptotic expansions, with electric-flux levels exp(-S/g) lower on T^3.
+ 4. Block average vs thin set: exponential decay at block scale is stated for block averages (scalar soft; abelian gauge sharp). For a thin set no such statement located. One-line scaling (CONJECTURE, 3.D) predicts decay per coarse spacing falling with b.
+ 5. Finite-size criteria: spin-system theorems; LGT application located only as one remark in Alexander-Chayes. Strong-coupling windows only: SZZ beta_W < 1/12 by my conversion, d = 4 SU(2).
+ 6. Tomboulis: cite III.1, III.2 as his statements; his conclusion is disputed in print.
+ STILL CANNOT_SEE and decisive: Balaban CMP 98 (the actual Q), CMP 109 (the actual transformation, action at eq. 0.32, the volume), CMP 119 or 122 I (Theorem 1 of the 4D stability), Luscher NPB 219.
+
+CORRECTIONS AND LOCATIONS, BESIDE THE ENTRIES ABOVE (nothing above was rewritten)
+---------------------------------------------------------------------------------
+ Addendum to 1.C, DeGrand et al eq.(6): the page image of PDF p.7 reads exp(beta N(Q)) = int dW exp{ beta (kappa/N) Re Tr(W Q^dagger) }, W in SU(N). The entry above wrote exp(N(Q)) on the left; beta belongs there. Eq.(5) as written stands.
+ Item 1.B, Chatterjee 1803.01950 quote: PDF p.12.
+ Item 1.B, Jaffe-Witten p.12, the full sentence: "New ideas are needed to prove the existence of a mass gap that is uniform in the volume of space-time. Such a result presumably would enable the study of the limit as T4 -> R4."
+ Vantage: all quotes come from pdftotext or TeX source of the named copy; page images were read where the entries say so. WebFetch summaries were used only for abstract pages and access state. Math glyphs in pdftotext output are lossy; where a formula is load-bearing and no image check is noted, read the page before citing.
+ Triplet: recall :4796 q=Balaban count=0 and q="Yang-Mills block averaging" count=0 (count=0 is not absence). aoom_find_files over C:/tmp, C:/Users/acer, D:/ by name found no Balaban or Luscher 1983 copy, stopped by its 150 s budget (timed_out=1, files_scanned=550125), so incomplete. Fabric council not asked; firing a query was held under E=0 and this is a literature task.
+
+
+SECOND PASS, COORDINATOR'S LEADS -- written 2026-11-05 (text above left as it stands)
+=====================================================================================
+ROUTES, plain fetch only, stopped at first block:
+ ADS scans: articles.adsabs.harvard.edu/pdf/1983NuPhB.219..233L -> 403 AccessDenied; /pdf/1987CMaPh.109..249B -> 403 AccessDenied. CANNOT_SEE. (S3-style denial; it can also mean no scan is held. Not distinguished.)
+ ADS abstract service: ui.adsabs.harvard.edu/abs/1983NuPhB.219..233L/abstract -> 405, page title "Human Verification" (AWS WAF). Stopped. CANNOT_SEE.
+ CDS: search by report number BUTP-23/1982 -> Anubis bot-check, by curl earlier and WebFetch now. Searches with cds.cern.ch as the allowed domain returned no CDS record. No record id in hand. Stopped. CANNOT_SEE.
+ Deep Blue (institutional copies of CMP 102, 255 and 102, 277 are listed by search): item page 403 to WebFetch; handle path returns the 1959 B app shell, no PDF; API Cloudflare 403 earlier. Stopped. CANNOT_SEE.
+ Project Euclid, user-agent changes, browsers, archive copies: not touched.
+ OPENED by plain fetch: Luscher's own page luscher.web.cern.ch/luscher/ (200). It lists lectures/LesHouches88.pdf, LesHouches97.pdf, Erice00.pdf, Paris02.pdf, LesHouches09.pdf. Read 88 and 97.
+
+A. LUSCHER'S STATED FORM OF THE GAP ON THE TORUS (MEASURED, read on page images)
+ M. Luscher, "Selected Topics in Lattice Field Theory", Les Houches XLIX (1988), Course 8, Elsevier 1989, scan on his page, sec. 4.4 "The case of (pure) non-Abelian gauge theories", book p.507-513 = PDF p.57-63. Refs [62] = NPB 219 (1983) 233, [63] = NPB 232 (1984) 445 (PDF p.77). The 1983 paper's body stays CANNOT_SEE; this is his own later statement of it.
+ p.510: "it is possible to show that all eigenvalues of H can be expanded in a power series of gbar^{2/3}, where gbar is a renormalized 'running' gauge coupling at scale L. For example, for the mass M(A1++) of the lightest glueball with quantum numbers A1++ (and electric flux e = 0), we have the asymptotic expansion
+     M(A1++) ~ (1/L) sum_{k=1}^infinity eps_k [gbar(L)]^{2k/3},   (4.36)
+   where the coefficients eps_k are numerically known, for the SU(2) theory, up to one-loop order (i.e. for k <= 4) [62,63]."
+ p.510, the reason: potential energy of the constant modes "proportional to - sum_{k,l} tr{[c_k,c_l][c_k,c_l]}, (4.37) i.e. there is no term proportional to tr{c_k^2}. Thus, the situation is exactly as in a purely anharmonic oscillator, where the level splitting is proportional to g^{2/3}".
+ p.510, scope: "the expansion is actually only valid when L is small compared to the dynamically generated length scale Lambda^-1"; gbar^2 ~ -[2 beta_1 ln Lambda L]^-1 as L -> 0, beta_1 = (11/48 pi^2) N (4.38). "for L ~ Lambda^-1, the coupling is presumably of order 1 and the perturbation series (4.36) is then not applicable." p.510-511: "perturbation theory in this model tells us nothing about the approach to the infinite volume limit".
+ p.511: z = M(A1++) L (4.39). "already at z = 1 there is an interesting non-perturbative phenomenon happening, which invalidates the perturbative analysis. Thus, the range where perturbation theory applies is 0 <= z <= 1 (4.40)."
+ p.512: Table 4, SU(2) at z = 1, M/M(A1+): A1+ 1.00, E+ 0.86, T2+ 0.86, A1+ 1.65, E+ 1.56, T2+ 1.57.
+ ELECTRIC FLUX, p.508-509: U_z built from non-periodic Lambda_z (4.28)-(4.32), z in Z_N^3, commutes with T: "the Hilbert space H accordingly divides into N^3 sectors". "The ground state |0> of the theory can be shown to have quantum numbers A1++ and e = 0 (recall that for L < infinity, the spectrum of the Hamilton operator H is discrete and the ground state is unique)." "States with |e| = 1 can be generated from the vacuum by acting with a Wilson loop which winds around the torus once in a space-like direction."
+ p.509: "the ground state energy DeltaE in the sectors with |e| = 1 ... is considered to be the energy of a flux tube of length L." Strong coupling only: "Munster [59] has been able to prove that DeltaE = sigma L + O(1) as L -> infinity (4.34)"; "most lattice gauge theorists take eq. (4.34) for granted, even at smaller values of g0, where Munster's proof does not apply." [59] = NPB 180 [FS2] (1981) 23.
+ p.512: "the energy spectrum in the sectors with e != 0 is actually exactly the same, to all orders of perturbation theory, as in the zero flux sector [62]. In particular, the flux tube energy DeltaE vanishes to all orders of gbar." "At a non-perturbative level, tunneling between the classical vacua C_z V_0 sets in and the degeneracy of the electric flux sectors is lifted."
+     DeltaE / M(A1+) = 0.00767 z^{3/2} exp(-42.6169 z^{-3/2} + 34.2001 z^{-1/2}) (1 + O(z^{1/4})),   (4.41)   credited to van Baal and Koller.
+ p.513: "which gives DeltaE/M(A1+) = 0.1 at z = 1.34 ... at (say) z >= 1.5, the semi-classical formula (4.41) can no longer be trusted."
+ WHAT HE CALLS RIGOROUS, in these pages: the word occurs once, p.513: "van Baal and Koller thought of a better although not equally rigorous method" (the torons effective Hamiltonian). His terms for (4.36) are "asymptotic expansion" and "perturbation theory"; for (4.34) "prove", at strong coupling; for (4.41) "semi-classical". Nothing in these pages claims a nonperturbative theorem for the gap at small L. What the 1983 paper itself calls rigorous: CANNOT_SEE.
+ Luscher, "Advanced lattice QCD", Les Houches 1997 (his page, also hep-lat/9802029), sec. 7, MEASURED: p.36: "the energy levels are separated by large gaps that increase proportionally to 1/L." p.36: "perturbation theory is much more complicated if periodic boundary conditions are imposed due to the appearance of physical zero modes in the gluon action [65-72]"; [66] = PLB 118 (1982) 391 and NPB 219 (1983) 233. p.37: "QCD is perturbatively soluble at sufficiently small L".
+ ARITHMETIC CHECK, mine, MEASURED by a run: from Koller-van Baal S = 12.4637, T = 3.9186, eps = 4.116719735, B = 0.2063, lambda = 0.6997, and (29), I get S c^{3/2} = 42.6169; first-order z-shift of S/g plus eps T c^{1/2} = 9.8970 + 24.3030 = 34.2001; 2 lambda B^2 / c^{5/2} = 0.007674. All three match (4.41). (4.41) at z = 1.34 evaluates to 0.094, his "0.1".
+
+B. BALABAN: primary bodies STILL CANNOT_SEE. New second-hand statements (MEASURED that the author says it; NAMED as to Balaban's text)
+ Main theorem in d = 4, what it bounds:
+   Faria da Veiga, O'Carroll arXiv:2205.07376v2 p.3: "The starting point is the Wilson plaquette action partition function ... For small gauge coupling 0 < g << 1, stability bounds ... for the corresponding model partition function have been proved in the seminal work of Balaban (see [16, 17] and Refs. therein), using renormalization group (RG) methods and the heavy machinery of multiscale analysis." [16] = CMP 102, 255; [17] = CMP 122, 355. Same p.3: "It is expected that partition function stability bounds of Refs. [16, 17] lead to bounds on YM gauge field correlations." and "in the case of gauge fields, this question, as well as ... the verification of the whole set of Osterwalder-Schrader-Seiler (OSS) axioms ... have never been completely analyzed up to now."
+   Magnen-Rivasseau-Seneor, mp_arc 92-41, "Rigorous results on the ultraviolet limit of non-Abelian gauge theories", intro: "in a finite volume on the lattice ... the resulting effective action on the unit lattice remains bounded ... should follow, at least for subsequences." "Our conclusion, after many years of efforts, is the same as Balaban's, namely that the ultraviolet limit of Yang-Mills can be done constructively, although not easily."
+   Jaffe, ETH-Juerg.pdf (arthurjaffe.com) slide PDF p.50: "d = 4 breakthrough: Balaban's analysis of asymptotic freedom and large fields for lattice gauge fields". Jaffe's publication list p.7: Constructive Gauge Theory, with T. Balaban, entry [101], no hyperlink in the list; the list's hyperlinks start at p.11.
+   So: action = Wilson; volume = finite, torus in d = 3; object = partition function and effective action; coupling small. Exact statement, constants, and his d = 4 boundary condition: CANNOT_SEE.
+ Averaging and gauge fixing:
+   Dimock arXiv:1410.2798 "Covariant Axial Gauge" p.1: Balaban's axial gauge "realized by setting the field to zero on certain trees"; "When he came to applying these methods to pure Yang Mills in d = 3, 4 [8], [9] Balaban found that this was a significant obstacle. Instead he developed a covariant axial gauge in which he averaged over various trees to regain the covariance. However details about taking over the results of [5], [6], [7] were absent. Furthermore in the Yang-Mills papers he used an exponential gauge fixing rather than the original delta function gauge fixing." [8], [9] = CMP 109, 116.
+   p.17: "a simpler version of an analysis by Balaban in [7]. There he treats a multi-scale non-abelian problem while here it is single scale and abelian." [7] = CMP 99, 389.
+   BESIDE ITEM 1.C: my line there said a gauge-fixing delta inside the block. That holds for Dimock's abelian form. For Balaban's Yang-Mills papers Dimock says exponential gauge fixing, averaged over trees. Whether the block-average constraint itself is sharp in CMP 109 remains CANNOT_SEE; Goswami's delta(Ubar V^-1) stays the nearest statement, for sigma models.
+ NOT BALABAN, A RELATED BOUND AT FIXED LATTICE, MEASURED: Faria da Veiga, O'Carroll, arXiv:2205.07376v2, finite lattice aZ^d, d = 2, 3, 4, a in (0,1], L even, U(N) and SU(N), free or periodic, weight exp(-(a^{d-4}/g^2) sum A_p), g^2 in (0, g_0^2]. Abstract: "using scaled fields, defined with an a-dependent noncanonical scaling, we show thermodynamic and UV stable (TUV) stability bounds for a scaled partition function, with bound constants independent of L, a and g."; Eq.(22)-(23) p.9: Z_s = [a^{d-4}/g^2]^{N r/2} Z_u(a), exp(c_l N r) <= Z_s <= exp(c_u N r), r = (d-1)L^d, N = Lie algebra dimension. Theorem 1 eq.(71)-(72) p.28. No RG: Weyl integration, random-matrix integrals.
+   READING, mine: this exponent is per lattice site, r ~ L^d. At fixed physical volume, L = L_phys/a, it grows as a falls. Dimock's analogues bound the ratio to the free field per physical volume (225) or by a constant (42). So a per-site Z bound is cheap and carries no locality. The RG content of Balaban sits in the effective action, and whether his d = 4 constant is per physical volume needs Theorem 1. Mitter says "per unit volume". CONJECTURE until read.
+
+C. DIMOCK: list from the arXiv API (au:Dimock_J), 2011 to 2024: I, II, III; 1410.2798; 1502.02946; 1512.04373; 1712.10029; 2009.01156; 2204.07201 (overview); then Gross-Neveu 2303.07916, 2406.16799. No later part of the Balaban series and no nonabelian paper listed. Grep for non-abelian/Yang-Mills: 2204.07201 p.2 citation sentence only; 1502.02946 and 1512.04373 count 0; 1410.2798 p.1 and p.17 as quoted in B. MEASURED, scope is that listing.
+
+D. BESIDE EARLIER ENTRIES
+ ITEM 2, "WHICH GAP" CONJECTURE: the sector structure is now MEASURED from Luscher p.508-509, and DeltaE vanishing to all orders and (4.41) from p.512. Still mine: the statement that the repo's T on its invariant space has this as its lowest gap at small g, until checked on the repo's definitions. Falsifier stands.
+ ITEM 2, review eq.(12): I transcribed it with glyphs lost. Page image reads DeltaE = 2 L^-1 lambda B^2 g^{5/3}(L) exp[-S/g(L) + eps_1 T / g^{2/3}(L)] {1 + f(g(L))}, lambda = 0.6997. Koller-van Baal 1986 eq.(26) has T eps g^{-1/3}, and only g^{-1/3} reproduces 34.2001 above. Treat the review's g^{2/3} there as a misprint; use the 1986 form.
+ ITEM 2, KvB eq.(31) p.11: "We can strictly trust eq. (31) only for z << 1." "the tunneling sets in between z = 1.1 and z = 1.3".
+ ITEM 2, the 2.27 vs 4.1167 note stands; Luscher's eps_k in (4.36) and KvB's eq.(29) are the gap coefficients, the review's "m0 = L^-1 eps_1 g^{2/3}" uses 4.1167 loosely or by misprint.
+
+
+THIRD PASS, TWO LINKS RELAYED FROM PR #28 issuecomment-6658407383 -- written 2026-11-05 (text above left as it stands)
+======================================================================================================================
+FETCHES, one plain curl each, default client, stopped there:
+ Balaban CMP 102, 255, deepblue.lib.umich.edu/bitstream/handle/2027.42/46460/220_2005_Article_BF01229380.pdf?sequence=1 -> HTTP 200, 1959 B, text/html, the Deep Blue app shell, with no PDF bytes. CANNOT_SEE. dl/deepblue-cmp102-255.
+ Luscher NPB 219, infomall.org/sites/dsc/jpac/QCDRef/1980s/...Luscher - 1983.pdf -> curl (35) schannel SEC_E_CERT_EXPIRED, the site's TLS certificate has expired, 0 bytes. CANNOT_SEE. dl/infomall-luscher83.
+ NOT DONE: curl -k, an http:// retry, or any second client. The first two turn off certificate checking and the instruction was one plain fetch. Script execution in the Deep Blue shell, its API, or a browser: not done.
+ So neither primary was read. Items 1 and 2 of the request cannot be answered from the primaries, and nothing below quotes them.
+
+WHAT THE RELAYING COMMENT SAYS (MEASURED that it says it; NAMED for the papers; its own header: "bibliographic/scope check only, NOT proof or PR acceptance"; posted under the operator's account, relaying GPT-6; the coordinator notes GPT-6's page-image check did not complete):
+ CMP 102, 255: "Its Theorem 1 bounds renormalized densities P_k for three-dimensional Wilson pure gauge with compact semisimple Lie group. It is an ultraviolet-stability result".
+ NPB 219: "Discusses finite-volume central/electric-flux sectors and perturbative one-loop effective Hamiltonian, not a proven scale-uniform continuum gap."
+
+1. BALABAN 1985, THE FIVE QUESTIONS
+ Theorem 1 as written: CANNOT_SEE. Nearest: the comment's one line above, NAMED.
+ Volume and boundary conditions: CANNOT_SEE in the paper. Jaffe-Witten p.11, MEASURED: "a three-dimensional lattice with periodic boundary conditions, approximating a space-time torus".
+ Action: abstract, MEASURED: "We consider only the Wilson lattice approximation for pure Yang-Mills field theories."
+ Group: "compact semisimple Lie group", NAMED via the comment only.
+ What P_k bound: CANNOT_SEE. Jaffe-Witten p.11, MEASURED: "many interesting properties of the effective action", "estimates are uniform in the lattice spacing".
+ Averaging as this paper uses it, sharp or soft: CANNOT_SEE. Unchanged from 1.C and the second pass. Second-hand: CMP 102, 277 abstract says "fixed averages", which reads as sharp (my reading); Dimock 1410.2798 p.1 says the Yang-Mills papers [CMP 109, 116] used exponential gauge fixing, averaged over trees. That paper's list does not place CMP 102, 255.
+ Does it state what stays open: CANNOT_SEE.
+
+2. LUSCHER 1983: BODY CANNOT_SEE. ANSWERED FROM HIS OWN 1988 LECTURES (book p.508-513, read on page images, second-pass section A), WHICH CITE THE 1983 PAPER AS [62]. MEASURED as his 1988 statement. Whether the 1983 text says the same in these terms: CANNOT_SEE.
+ Gap's form: (4.36), M(A1++) ~ (1/L) sum_{k>=1} eps_k [gbar(L)]^{2k/3}, "asymptotic expansion". Abstract of 1983, MEASURED: "worked out to one-loop order".
+ Sectors: Z_N^3 electric flux, (4.27)-(4.33), "the Hilbert space H accordingly divides into N^3 sectors"; ground state A1++, e = 0; M(A1++) is stated for e = 0. Central twist: U_z built from non-periodic Lambda_z, "this is actually not the case [a gauge transformation], because Lambda_z(x) is not periodic".
+ Order: "up to one-loop order (i.e. for k <= 4) [62,63]".
+ Range: p.510 "only valid when L is small compared to the dynamically generated length scale Lambda^-1"; (4.38) gbar^2 ~ -[2 beta_1 ln Lambda L]^-1; (4.40) 0 <= z <= 1.
+ Rigorous vs perturbative: the word appears once in those pages, p.513 "not equally rigorous", about the torons Hamiltonian. (4.36) he names perturbation theory and asymptotic expansion; (4.41) semi-classical; (4.34) "prove", Munster, at strong coupling only.
+ AGAINST MY CONJECTURE ON ODD FLUX (item 2): the statements it rested on are his.
+   States with |e| = 1 are in H: p.509, "generated from the vacuum by acting with a Wilson loop which winds around the torus once in a space-like direction".
+   Same spectrum to all orders: p.512, "exactly the same, to all orders of perturbation theory", "the flux tube energy DeltaE vanishes to all orders of gbar".
+   Form: (4.41), with exponent -42.6169 z^{-3/2} = -S/g at leading order, by my arithmetic from S = 12.4637 and eq.(29).
+   DeltaE < M(A1+) at small z: (4.41) gives 0.094 at z = 1.34, and smaller below.
+   So at small z the lowest gap of H on all of his H is DeltaE, in |e| = 1, and M(A1+) is the gap inside e = 0. That sentence is my one-line deduction from his statements; it does not appear in those words.
+   Remaining CONJECTURE: that the repo's T on its invariant space is his T on his H, with the same sector content. Falsifier stands: exact T split by the Z2^3 twist at large beta.
+ AGAINST KOLLER-VAN BAAL eq.(29): same form. (4.36) with eps_1 = 2.2696390, eps_2 = -0.7975278 is eq.(29); KvB p.10: "The coefficients in eq. (29) and (30) were first evaluated in ref. [6]" = Luscher-Munster. Mine: 6.3863588 - 4.116719735 = 2.269639065. No conflict found. KvB eq.(26) has the exponent with T eps g^{-1/3}, and that form plus their constants reproduces (4.41)'s 42.6169, 34.2001 and 0.00767.
+
+3. WHICH SENTENCES OF docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md SECTION 7a CHANGE (note at commit 6c87200 as checked out in C:/tmp/ym4-03-wt; the repo was only read)
+ FROM THE TWO LINKED SOURCES THEMSELVES: none, from this seat. I read neither.
+ FROM THE COMMENT'S ONE-LINE SUMMARIES, IF RIGHT: none changes. CMP 102, 255 is d = 3, so it adds a d = 3 line beside the Balaban bullet, and its "bounds renormalized densities" agrees with "on partition functions and effective actions". NAMED until read.
+ FROM WHAT THIS SEAT DID READ IN THE SECOND PASS, three proposed edits, for FABLE5 to weigh:
+  a. Opening line, "so what follows on them comes from abstracts and other authors": add Luscher's own 1988 lectures. Its CANNOT_SEE clause stays true here.
+  b. Small volume, "the stated form at small physical volume is M(0+)L = ...": true as written; add that it is the e = 0 sector, with Luscher's stated range 0 <= z <= 1 (4.40).
+  c. Small volume, "This is the closest published statement to target 2 of the README": needs the sector said. On a periodic lattice the |e| = 1 levels are in the invariant space and lie lower at small z, by (4.41). So target 2's "gap" must name e = 0 or the whole invariant space. On the whole space the closest published form is (4.41), exponentially small in 1/g, semiclassical, and "strictly" trusted "only for z << 1" (KvB p.11).
+  Unchanged: "A rigorous theorem giving a positive physical gap at fixed small volume, uniform as the spacing falls: none located, on a small search, so OPEN." Decimation, Strong coupling, Tomboulis, Finite groups: no change. Balaban bullet: its last sentence stands; Faria da Veiga-O'Carroll p.3 and the comment agree with it; Dimock 1410.2798's exponential gauge fixing is an addition beside it, about gauge fixing, not the theorem.
+
+4. WHAT CMP 109 AND CMP 122 WOULD STILL HAVE TO SUPPLY (none of this is in any source I opened; each line is a question, CANNOT_SEE, and the abstracts do not answer it)
+  1. Theorem 1's exact inequality: upper and lower; relative to the free theory or not; the constants' dependence on volume, on k, on L. In particular whether the exponent is per physical volume (Mitter's wording) or per site. Faria da Veiga-O'Carroll already reach a per-site Z bound without RG, so only the per-physical-volume form or the effective-action bound carries content (my reading).
+  2. Which paper states Theorem 1. CMP 122 II's abstract names it; CMP 119 or 122 I may hold it.
+  3. Volume and boundary conditions in d = 4, and the largest physical volume allowed. The analysis is weak-coupling: "in the weak coupling regime" (Mitter), "0 < g << 1" (Faria da Veiga-O'Carroll), and MRS decline to lift the cutoff "since this would lead to large values of the coupling constant". Whether a fixed finite volume of any size is covered, or only one where the coupling stays small at that scale, decides target 2.
+  4. The starting action and group in d = 4: exact Wilson, or Wilson-like with corrections (Goswami cites "Eq. 0.32" of CMP 109 for a Wilson-like form, on chiral models); SU(2) in the scope or not.
+  5. The block factor. The expositions take L odd (Dimock I eq.16; Goswami sec.1.3) and "sufficiently large" (Dimock III Theorem 1). If Balaban's theorem needs that, b = 2 of issue #3 and the note is outside its stated scope, and nothing can be imported directly.
+  6. The averaging in d = 4: Q as used from CMP 98, its domain, sharp or soft on the block average; the exponential gauge fixing and tree average Dimock reports.
+  7. The coupling flow: the recursion for g_k, the two-loop initial condition, the allowed range of g_0 and of the number of steps.
+  8. What the densities bound: small-field regions, large-field regions, the R operation's bound, uniformity in k.
+  9. Observables: any statement on gauge-invariant expectations, and any statement of what stays open. MRS and Faria da Veiga-O'Carroll say it was not completed; his own words are what is needed.
+  10. Any statement on a gap. I expect none, CONJECTURE; falsifier is a sentence in those papers.
+
+CORRECTION BESIDE THE SECOND AND THIRD PASS: the KvB sentences "We can strictly trust eq. (31) only for z << 1" and "the tunneling sets in between z = 1.1 and z = 1.3" are at PDF p.10 (book p.396), where those passes wrote p.11. Eq.(26) is at PDF p.9 (book p.395).

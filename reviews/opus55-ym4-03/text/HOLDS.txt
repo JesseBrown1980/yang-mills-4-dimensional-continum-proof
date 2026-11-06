@@ -1,0 +1,438 @@
+HOLD H1 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+pushed at `7e6b111` before the test existed, and read in section 9: 179 checks with none failed, and 3 rows of the prediction missed, all on values I wrote by hand, kept below.
+>>>
+NEW<<<
+pushed at `7e6b111` before the test existed, and read in section 9. MEASURED: 181 checks with 0 failed, and 3 reads missed on 2 rows of the prediction, kept below: the range in Corollary 10, a value I wrote by hand, and the coefficient in Proposition 11, a row tagged DERIVED whose registered falsifier fired, with the proposition corrected after the run. DERIVED: the numbered statements of sections 2 to 7, with Amos's bound NAMED in Theorem 14. CONJECTURE: the statements so tagged in section 7. OPEN: the uniform bound in d ≥ 3, and the mass gap and the continuum in d = 4.
+>>>
+REASON: receipt YM4_03_DONE|checks=181|failed=0 and my run byte-equal (sha256 63127fa0); 179 is prediction row 31's count for a run with failed=1, whose named file reads 175; row 25 is YM4_03_LAW tag=DERIVED with falsifier another_coefficient_at_u^10; the misses fall on rows certified_truncation_4d and z2_nonlocal_perpendicular.
+
+HOLD H2 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+GPT-6 opened [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28) on the same issue from its own branch, with the same map at b = 2: section 5 holds its isolated tile as a case.
+>>>
+NEW<<<
+GPT-6 opened [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28) on the same issue from its own branch at 11:38:14Z, with its prediction `fae9a7f` at 11:31:28Z, both before `7e6b111` at 11:45Z: the same map at b = 2, the Haar pushforward for continuous SU(2) on even periodic 4D lattices with coarse sides at least 2, and a certified truncation for every β in [0, 1] on an isolated 2×2 tile, which is the one-block step in the proof of Theorem 8.
+>>>
+REASON: gh pulls/28/commits and repo events give those times; its note states the lattice scope and beta range; its tile is an open patch with other couplings zero, and Theorem 8 is a periodic-torus statement.
+
+HOLD H3 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+**Scope:** one finite periodic lattice, any compact group G and any bounded class weight, with SU(2) and the Wilson weight as the case of interest. Sections 5 and 7 read one family as the spacing falls in two dimensions. In three and four dimensions the uniform bound stays OPEN: section 7 states the hypothesis that would give it.
+>>>
+NEW<<<
+**Scope:** one finite periodic lattice, any compact group G and any bounded class weight with Z ≠ 0, with SU(2) and the Wilson weight as the case of interest: a positive weight of positive character coefficients in Theorem 7, SU(2) in Theorems 9 and 14, Z2 in Proposition 11. Sections 5 and 7 read one family as the spacing falls in two dimensions. In three and four dimensions the uniform bound stays OPEN: section 7 states a hypothesis that gives it on H′, with the lowest state's visibility along the family OPEN. Issue #3 sets the mass gap and the continuum outside its target, and in d = 4 both stay OPEN here.
+>>>
+REASON: DERIVED from the note's Theorem 7 item 4, m′ ≥ m with equality exactly on visibility, so UH reaches m only with visibility; Theorem 13 concludes on H′; issue #3 reads "No claim about continuum or mass gap"; w ≡ 0 gives Z = 0.
+
+HOLD H4 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+So a lower bound on the coarse gap bounds the physical gap on everything the coarse observables can see, and the only loss is a state whose conditional expectation on the coarse variables vanishes.
+>>>
+NEW<<<
+So a lower bound on m′ is a bound on H′, and by item 4 it bounds the gap m of the whole gauge-invariant space exactly when the lowest state is visible in H′. By item 3 a state that H′ misses has a vanishing conditional expectation on the coarse variables. Visibility along a family as a falls is OPEN.
+>>>
+REASON: DERIVED from items 3 and 4 as written; GPT-6's comment of 12:53:18Z on PR #29 gives the example (1, 0.99, 0.5) on the same point.
+
+HOLD H5 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+For d ≥ 3 the coarse lines have codimension at least 2, so they leave the off links connected across the whole lattice, and ρ is a product over no local cells.
+>>>
+NEW<<<
+For d ≥ 3 the coarse lines have codimension at least 2, so they leave the off links connected across the whole lattice, and the block-by-block integration of Theorem 8 has no closed block to run on. What is held of ρ there: Theorem 9 for SU(2) at its first order in β, Proposition 11 for Z2 at its first nonlocal order. Its form at higher order for SU(2) is OPEN.
+>>>
+REASON: the sentence has no proof in the note and is false at constant w, where ρ = 1 factors over anything (DERIVED); it is also a statement of what ρ is not, against the operator's rule.
+
+HOLD H6 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+So the one-scale map is c_π → c_π^{b²}, with no other term, and it iterates exactly.
+>>>
+NEW<<<
+So the one-scale map is exactly c_π → c_π^{b²} on every π, and it iterates exactly.
+>>>
+REASON: the operator's rule; same content in the positive form.
+
+HOLD H7 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+That is an explicit effective action with a certified error, on every block in d = 2, and the test brackets it in integers.
+>>>
+NEW<<<
+That is an explicit effective action with a certified error, on every block in d = 2, DERIVED. The test brackets the tail in integers at β = 1, 4 and m = 4, 16, with the cut at n ≤ 3, and evaluates the series directly at m = 1, at five rational angles.
+>>>
+REASON: test section_su2_two_dimensions: direct comparison against exp at m = 1 alone; at m = 4, 16 the check compares the tail with itself, so |chi_n| <= n carries it; receipt rows YM4_03_SU2_TRUNCATION; own sums agree.
+
+HOLD H8 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+this resolves the leading term at β = 10⁻¹²: the bound reads 1.35 × 10⁻⁵² and the leading term's range over V is β⁴/6, or 1.67 × 10⁻⁴⁹. The remainder is crude, so the range of β is narrow.
+>>>
+NEW<<<
+this resolves the leading term at β = 10⁻¹²: the bound is 1.36 × 10⁻⁵², which the receipt floors to 135 × 10⁻⁵⁴, and the leading term's range over V is β⁴/6, or 1.67 × 10⁻⁴⁹. The remainder is crude: on this block the bound stays below β⁴/6 up to β = 1.2 × 10⁻⁹.
+>>>
+REASON: MEASURED own_numbers.out: exact bound 1.358954e-52, an upper bound the note rounds down; crossing at beta_e-12 = 1226 with exp bracketed by 1/(1-y).
+
+HOLD H9 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+over plaquette sets M whose boundary lies on line links.
+>>>
+NEW<<<
+over plaquette sets M whose boundary is a union of whole lines, since a line met on part of its fine links integrates to zero.
+>>>
+REASON: DERIVED: (U_0, U_1) -> (-U_0, -U_1) keeps V at b = 2, and the test's admissible() uses this rule.
+
+HOLD H10 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+So the blocked action leaves the Wilson form at finite order, and its range grows with the order.
+>>>
+NEW<<<
+So for Z2 the blocked action leaves the Wilson form at order u¹⁰, and the pair at coarse distance 1 first reads at order u¹⁴, with coefficient 4 by the second seat's count: two points on how range grows with order. For SU(2) in d ≥ 3 the form of the next term is OPEN.
+>>>
+REASON: MEASURED own_z2.out: route B reads 20 surfaces at size 14 less 16 touching cubes against 0 for the product, so 4 at u^14; the test stops at u^12; issue #3 bars carrying finite groups to SU(2) without a bound.
+
+HOLD H11 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+**Theorem 13 (a coarse influence bound gives a physical gap).**
+>>>
+NEW<<<
+**Theorem 13 (a coarse influence bound gives a gap on H′).**
+>>>
+REASON: its conclusion is on H′, and Theorem 7 item 4 gives m′ ≥ m; same point in GPT-6's comment of 12:53:18Z.
+
+HOLD H12 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+and by Theorem 7, item 5, m ≥ κ/(ba) on H′.
+>>>
+NEW<<<
+and by Theorem 7, item 5, m′ ≥ κ/(ba). By item 4 that bounds m exactly when the lowest state is visible in H′.
+>>>
+REASON: item 5 gives λ′₁ ≤ λ₀^b e^{−κ}, a statement on T′; same point in GPT-6's comment of 12:53:18Z.
+
+HOLD H13 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+Theorem 13 then reduces the uniform bound to this:
+>>>
+NEW<<<
+Theorem 13 then reduces the uniform bound on H′ to this, with the lowest state's visibility in H′ at each a a separate OPEN item:
+>>>
+REASON: PR #29's body already says "the uniform bound on H′"; the note's sentence reads wider than Theorem 13.
+
+HOLD H14 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+UH holds in d = 2, by Theorem 14. For d ≥ 3 three things are recorded:
+>>>
+NEW<<<
+UH holds in d = 2: the proof of Theorem 14 gives ε′ < 1/8 on each plaquette, each coarse link lies in 2 plaquettes with at most 6 other link slots, so Σ_j C_ij < 3/4, and c_κ < 1 for κ < 0.28. For d ≥ 3 three things are recorded:
+>>>
+REASON: DERIVED: Theorem 14 states a spectral ratio, and UH is a weighted influence sum; the row sum and ln(4/3) = 0.2877 close the step the sentence leaves out.
+
+HOLD H15 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+With b² ≥ 4β and arcsinh(y) ≥ y arcsinh(1) on [0, 1], the term n = 2 is at most
+>>>
+NEW<<<
+With b² ≥ 4β and arcsinh(y)/y falling on y > 0, so that b² arcsinh(ν/β) ≥ 4β arcsinh(ν/β) ≥ 4 arcsinh ν at β ≥ 1, the term n = 2 is at most
+>>>
+REASON: DERIVED: at n = 3 and 1 ≤ β < 2, y = 2/β lies outside [0, 1]; the note's terms hold by the monotonicity (own_numbers.out reads 0.117749, 0.000822, 1.014e-6).
+
+HOLD H16 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+With β = 4/(g²a²) this reads, at b = ⌈2√β⌉ and ba → 4/g, m ≥ (log(1/(4 − √15))/4) g, about 0.516 g, uniformly as a → 0.
+>>>
+NEW<<<
+With β = 4/(g²a²), at b = ⌈2√β⌉ one has 4 ≤ bag < 6, with bag = 4 when 2√β is an integer and bag → 4 as a → 0. So on circles with L ∈ bℕ, of physical length at least ba, m ≥ (log(1/(4 − √15))/(bag)) g: above 0.3439 g at every β ≥ 1, and tending to (log(1/(4 − √15))/4) g = 0.5158 g as a → 0.
+>>>
+REASON: MEASURED own_numbers.out BOUND_OFF_SQUARES: 0.343923 at β = 1.0001, 0.421197 at 3/2, 0.511922 at 4097, 0.515859 on squares, infimum 0.343906; 0.516 exceeds the value, and a lower bound rounds down.
+
+HOLD H17 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Here the fine-lattice bounds fail as β grows, with ε = tanh β → 1, and one blocking to the scale 4/g recovers a gap in physical units, of the right form in g.
+>>>
+NEW<<<
+On the fine circle Theorem 5 of YM4-02e needs 2 tanh β < 1, so β < 0.5493, and ε = tanh β → 1 as β grows. One blocking to the scale 4/g brings ε′ below 1/8 at every β ≥ 1, and its bound is proportional to g, as the exact value is at ℓ = 4/g.
+>>>
+REASON: the operator's rule; σ = 0 in d = 2, so 2ε < 1, and artanh(1/2) = 0.5493 (DERIVED); own grid reads the exact value at 1.5002 g at β = 4096.
+
+HOLD H18 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+So the sharp map B here serves the exact identities, and YM4-04 will likely need an average in its place, CONJECTURE: which one, and with which positivity, is OPEN.
+>>>
+NEW<<<
+So the line map B here serves the exact identities, and YM4-04 will likely need an average in its place, CONJECTURE: which one, and with which positivity, is OPEN. The gauge-field sources the second seat opened keep a sharp constraint on an average, and Dimock's scalar case is soft, so the axis here is line against average.
+>>>
+REASON: literature FINDINGS lines 115, 202, 204-207: the Balaban-line gauge sources are sharp, on an average; 1108.1335 is soft; "sharp" points a reader at the wrong axis.
+
+HOLD H19 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+so what follows on them comes from abstracts and other authors.
+>>>
+NEW<<<
+so what follows on them comes from abstracts and other authors. On the report's tags, each quotation below is MEASURED as what the named source says, and NAMED as to any body it left unopened.
+>>>
+REASON: section 7a carries no tag on any line, and the report tags each (lines 2-3, 19, 58).
+
+HOLD H20 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+Magnen, Rivasseau and Sénéor describe that result as the effective action on the unit lattice staying bounded in finite volume as the spacing falls, with the ultraviolet limit of gauge-invariant observables to follow through a subsequence and uniqueness open. So the matched theorem is on partition functions and effective actions.
+>>>
+NEW<<<
+Magnen, Rivasseau and Sénéor, in preprint mp_arc 92-38, describe that result as the effective action on the unit lattice staying bounded in finite volume as the spacing falls, with the ultraviolet limit of gauge-invariant observables to follow through a subsequence and uniqueness open. Mitter's survey describes the free energy per unit volume bounded above and below. So, as those authors describe it, the theorem bears on partition functions and effective actions; the text of Theorem 1 and which paper states it are CANNOT_SEE from this seat. GPT-6 reports reading pp. 355–356 on PR #29, after this head: Theorem 1 assumes the effective couplings stay in (0, γ] and concludes bounds on the effective densities ρ_k, NAMED here.
+>>>
+REASON: literature FINDINGS line 54 "Its text is CANNOT_SEE", line 87 "Whether Balaban's Theorem 1 has that form is CANNOT_SEE", lines 59-64, 67-71; the note says more than the report; GPT-6's comment of 12:58:47Z, unopened here.
+
+HOLD H21 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+Theorem 4.2: decimation with b = 2 on the Ising model is non-quasilocal at low temperature. Their Theorem 4.6 finds even-b block averaging pathological there too.
+>>>
+NEW<<<
+Theorem 4.2: decimation with b = 2 on the infinite-volume Ising model in d ≥ 2, for J above J_c of dimension d − 1, is non-quasilocal. Their Theorem 4.6 finds even-b block averaging pathological there too, at large J. Scope: infinite-volume spin systems, where the text's mentions of gauge are reference titles and two remarks. On a finite lattice the matching question is how the effective couplings' range and size behave uniformly as the spacing falls, the second seat's CONJECTURE.
+>>>
+REASON: literature FINDINGS lines 191, 193, 195, 198; the repo's primary scope is finite, and the bullet drops the setting.
+
+HOLD H22 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+as an expansion of an effective Hamiltonian. A rigorous theorem giving a positive physical gap at fixed small volume, uniform as the spacing falls: none located, on a small search, so OPEN. This is the closest published statement to target 2 of the README.
+>>>
+NEW<<<
+for pure SU(2) on T³ with g renormalized at scale L, as an expansion of an effective Hamiltonian. On T³ the electric-flux levels sit lower, of order exp(−S/g(L)), van Baal's review, eq. 12, so on the second seat's reading M(0⁺) is the gap in the zero-flux sector, CONJECTURE. Rigorous theorems giving a positive physical gap at fixed small volume, uniform as the spacing falls, located on a small search: 0, so that stays OPEN. Among the sources the second seat opened, this expansion is the nearest statement to target 2 of the README.
+>>>
+REASON: literature FINDINGS lines 162, 171, 173, 182, 325; "closest published" appears nowhere in the report and ranks a literature no one searched in full; the operator's rule on "none located".
+
+HOLD H23 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+Theorem 5 of YM4-02e reads β < 0.0716 on (ℤ/L)³.
+>>>
+NEW<<<
+Theorem 5 of YM4-02e reads tanh β < 1/14, about β < 0.07155, on (ℤ/L)³.
+>>>
+REASON: MEASURED own_numbers.out: (1/2) ln(15/13) = 0.071550, so 0.0716 lies outside; YM4-02e and the README say 0.07155.
+
+HOLD H24 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+**Tomboulis,** arXiv:0707.2179, decimation with reflection positivity: unpublished, and disputed by Ito and Seiler, arXiv:0711.4930, 0803.3019, 0901.4246, with no accepted repair located.
+>>>
+NEW<<<
+**Tomboulis,** arXiv:0707.2179, decimation with reflection positivity, listed by INSPIRE with no journal: Ito and Seiler dispute it at arXiv:0711.4930, 0803.3019, 0901.4246, Tomboulis replies at arXiv:0712.2620, and accepted repairs located on a small search: 0.
+>>>
+REASON: literature FINDINGS lines 250, 255, 261 and SOURCES; the reply is in the report and absent from the note; the operator's rule on "unpublished" and "no accepted repair".
+
+HOLD H25 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| Every V read equals the closed form |
+>>>
+NEW<<<
+| Every V read equals the closed form: distinct V 9 of 9, 32 of 36, 32 of 64, 12 of 576 at b = 2 on 2×2, 9 of 9, 7 of 36 at b = 3, and 30 of 81, 6 of 1296 on 4×2 |
+>>>
+REASON: MEASURED own_q8_and_stream.out: the receipt's V_read counts draws with repeats (81 draws reach 9 V).
+
+HOLD H26 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| The first dependence, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with V on either fine link | Independent of V below order 4, and at order 4 equal to the law, by SU(2) averages from 2T within degree 5 |
+>>>
+NEW<<<
+| The first dependence at b = 2, on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with V on either fine link | Independent of V at order 2, on 18 and 36 multisets, with orders 1 and 3 empty after the center-symmetry filter, and at order 4 equal to the law, by SU(2) averages from 2T within degree 5. At b = 3 the coefficient stays DERIVED, with the count of 9 alone read |
+>>>
+REASON: receipt survivors_size_1,2,3,4=0,18,0,1581 and 0,36,0,6294; the b = 3 read row compares frac(2, 2^18) with itself; lattices in section_first_dependence are b = 2 alone.
+
+HOLD H27 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| The count in Theorem 9, by search in d = 2, 3, 4 | 4 at b = 2 and 9 at b = 3 on every lattice read |
+>>>
+NEW<<<
+| The count in Theorem 9, by search in d = 2, 3, 4, in no row of the prediction | 4 at b = 2 and 9 at b = 3 on every lattice read. b·min(b, 4) at b ≥ 4 stays DERIVED |
+>>>
+REASON: no row of docs/PREDICTION-YM4-03.hbp names the search; core_count holds 12 of the 181 checks, at b = 2, 3 alone.
+
+HOLD H28 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=high
+OLD<<<
+| The coarse space on Z2, S3, Z3, Q8 | Closed, top value equal, and the second value on W equal to the whole space's on each case read, so the lowest state is visible there. W has dimension 20 of 32, 33 of 49, 80 of 176, and all of them on the two smallest |
+>>>
+NEW<<<
+| The coarse space W, which is H′ in the coordinates of S = BA built from the constant 1, on Z2 at 2×2 and at 2×1, S3 and Q8 at 2×1 with b_time = 2, and Z3 at 2×1 with b_time = 3 | Closed under T^b by exact rank on all five. Top value inside one bracket of 2 ppm, by exact inertia, on four, and on Q8 by Perron with 1 in W, DERIVED. Second value on W equal to the whole space's to 1 ppm on four, read after the first complete read and in no row of the prediction, and automatic on Z2 at 2×1 and Z3, where W is the whole space. So the lowest state is visible on those cases. W has dimension 20 of 32, 33 of 49, 80 of 176, and all of them on the two smallest. The second seat's own code reads the same dimensions, W built from Ω equal to W built from 1 on all five, and on Q8 the second value equal on W and the whole at 54534 ppm of the top |
+>>>
+REASON: test line 1598 reads [1]*m against a basis that starts with [1]*m, and counts_ok stays True unread on Q8; receipt marks not_read; W is undefined in the note; diff of first read against receipt; MEASURED own_coarse_space.out, own_second_value.out.
+
+HOLD H29 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+| SU(2) in d = 2 at β = 1 to 4096 | δ from 0.0049 to 0.0133, below 1/8, and m/g at least 0.5158 on the bound's own terms |
+>>>
+NEW<<<
+| SU(2) in d = 2 at β = 1, 4, 16, 64, 256, 1024, 4096, each a perfect square, so b = 2√β and bag = 4 on every row | δ from 0.0049 to 0.0133, below 1/8, and m/g at least 0.5158 on the bound's own terms, at these β. At b = ⌈2√β⌉ off the squares the same terms read down to 0.3439, as β falls to 1, by the second seat |
+>>>
+REASON: receipt b_a_g_ppm=4000000 on all 7 rows; MEASURED own_numbers.out BOUND_OFF_SQUARES and BOUND_INF.
+
+HOLD H30 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=low
+OLD<<<
+| Walls, on Z2 and S3 | A product over blocks on every configuration |
+>>>
+NEW<<<
+| Walls, on Z2 at 2×2×2 and 4×2×2 and S3 at 2×2 | A product over blocks on every configuration read, 6, 4 and 6 of them, with 1, 2 and 1 blocks |
+>>>
+REASON: receipt YM4_03_WALLS rows configurations=6, 4, 6 of 2^18, 2^36, 6^4; "every configuration" reads wider than the rows.
+
+HOLD H31 | file=docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md | severity=medium
+OLD<<<
+The first complete read had one failed check, the sum rule at β = 4: my tolerance missed the tail the sum cuts at n = 60, at 2⁻⁴⁰⁰ of the unit. [That read stays on file](../reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp).
+>>>
+NEW<<<
+The first complete read, at 175 checks, had one failed check, the sum rule at β = 4: my tolerance missed the tail the sum cuts at n = 60, at 2⁻⁴⁰⁰ of the unit. [That read stays on file](../reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp).
+
+The test runs narrower than the rows as pushed in these places. `two_dimensions_closes` names Q8 and 2T at b = 3, and they run at b = 2. `integral_identity` names a noncommuting family, and it reads one loop on Z3 and S3 at 2×2, with brute force against elimination carrying the read. `coarse_space` names pencil eigenvalues among those of T^b: it reads closure by rank, and counts and the second value, which hold one-sidedly on every subspace. `su2_character_truncation` names a direct evaluation, which stops at m = 1. `su2_m_over_g_bound`, `su2_exact_m_over_g_at_l=4/g` and `leading_coefficient` are read by conditions that hold whatever the lattice does: the second seat reads 0.515859 and 1.5002 at β = 4096 by its own code, and the coefficient at b = 3 stays DERIVED. `circle_spectrum` skips 2T at L′ = 2. `character_flow`'s condition keeps the result at m = 9.
+>>>
+REASON: section F3e of FINDINGS.txt, row by row; receipt of the first read DONE|checks=175; harness_flow2.out for character_flow; the last two sentences go if H38 and H39 land.
+
+HOLD H32 | file=README.md | severity=low
+OLD<<<
+## Where we stand, November 4, 2026
+>>>
+NEW<<<
+## Where we stand, November 5, 2026
+>>>
+REASON: 6c87200 changes the YM4-03 row under that heading, committed November 5.
+
+HOLD H33 | file=docs/PREDICTION-YM4-03.hbp | severity=medium
+OLD<<<
+YM4_03_ATTEMPT|run=first_complete|checks=179|failed=1|the_check=su2_convolution_sum_rule_beta=4|cause=the_test's_tolerance_missed_the_tail_cut_at_n=60_at_2^-400_of_the_unit|kept_in=reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp|json=0
+>>>
+NEW<<<
+YM4_03_ATTEMPT|run=first_complete|checks=179|failed=1|the_check=su2_convolution_sum_rule_beta=4|cause=the_test's_tolerance_missed_the_tail_cut_at_n=60_at_2^-400_of_the_unit|kept_in=reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp|json=0
+YM4_03_ATTEMPT|correction_of_the_row_above=the_read_it_keeps_reads_DONE_checks=175_failed=1|the_count_179_stands_on_no_filed_read|the_receipt_reads_checks=181|json=0
+>>>
+REASON: FIRST-COMPLETE-READ.hbp last row DONE|checks=175|failed=1; the row is past the 30-row pin, and the correction goes beside it.
+
+HOLD H34 | file=README.md | severity=high
+OLD<<<
+DERIVED at one fixed lattice, with the second seat's attack OPEN: the map, its covariance and closed-loop identity, the exact pushforward and its character table, reflection positivity and the coarse space inside T. In d = 2 the blocking closes, c_π → c_π^{b²}, and one blocking gives a bound uniform as the spacing falls, m ≥ 0.516 g. In d ≥ 3 the first dependence on V is exact, β′/4 = (β/4)^{b²}, with a certified truncation on the block (ℤ/2)⁴ at β = 10⁻¹², and the blocked action leaves the Wilson form. MEASURED on 181 checks against a prediction pushed first, with 3 rows missed on hand values and kept. GPT-6's [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28) holds the same map at b = 2 with an isolated tile. Zero spacing in d ≥ 3 stays OPEN, with the hypothesis stated
+>>>
+NEW<<<
+DERIVED for any compact group and class weight at one fixed finite lattice, with the second seat's attack and GPT-6's reading OPEN: the map, its covariance and closed-loop identity, the exact pushforward and its character table, reflection positivity and the coarse space inside T. In d = 2 the blocking closes exactly, c_π → c_π^{b²}, and for SU(2) at β ≥ 1 and b ≥ 2√β one blocking gives λ₁/λ₀ ≤ (4 − √15)^{1/b} on circles of length L ∈ bℕ, with Amos's bound NAMED: at b = ⌈2√β⌉ that reads m > 0.3439 g at every β ≥ 1, tending to m ≥ 0.5158 g as the spacing falls. In d ≥ 3, for SU(2): the first dependence on V at b = 2, 3 has the coefficient 2^{1−2b²}, read at b = 2, which is β′/4 = (β/4)^{b²} at leading order, with a certified truncation on the block (ℤ/2)⁴ at β = 10⁻¹². For Z2 the blocked action leaves the Wilson form at order u¹⁰, and for SU(2) the next term is OPEN. MEASURED on 181 checks with 0 failed against a prediction pushed first, with 3 reads missed on 2 of its rows and kept, one a hand value and one a row tagged DERIVED. GPT-6's [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28), filed before this branch's prediction, holds the same map at b = 2 with a certified isolated tile. A bound on H′ as the spacing falls in d ≥ 3 stays OPEN, with the hypothesis stated, and so do the mass gap and the continuum in d = 4
+>>>
+REASON: F2, F5 a, c, d, e of FINDINGS.txt: 0.516 exceeds the bound's value and stands on perfect squares; Wilson-form statement is Z2 and Q8 under an SU(2) sentence; beta' is leading order; GPT-6's reading is OPEN too; GPT-6's first filing by gh.
+
+HOLD H35 | file=docs/PROOF_OBLIGATIONS.md | severity=medium
+OLD<<<
+DERIVED at one fixed lattice in [the note](NOTE-YM4-03-ONE-SCALE-BLOCKING.md), with its exact tests EXACT-TEST against a prediction pushed first. Independent review OPEN
+>>>
+NEW<<<
+DERIVED at one fixed lattice in [the note](NOTE-YM4-03-ONE-SCALE-BLOCKING.md), with its exact tests EXACT-TEST against a prediction pushed first, for the map and the pushforward, ρ as an exact integral. The induced action in d = 4 is explicit at its first order in β, b = 2, 3, DERIVED, read at b = 2, with a certified truncation on one block at β = 10⁻¹². Its further terms for SU(2), and independent review, OPEN
+>>>
+REASON: the row's acceptance reads "induced effective action", and issue #3 acceptance 4 and 5 ask for it; note sections 3, 6; Proposition 11 is Z2.
+
+HOLD H36 | file=docs/PROOF_OBLIGATIONS.md | severity=low
+OLD<<<
+Updated 2026-11-04. Each row covers
+>>>
+NEW<<<
+Updated 2026-11-05. Each row covers
+>>>
+REASON: 6c87200 edits row YM4-03 on November 5.
+
+HOLD H37 | file=docs/PROOF_OBLIGATIONS.md | severity=low
+OLD<<<
+Then YM4-03: formulate an **exact gauge-covariant one-block renormalization identity** for D=4 SU(2), showing that integration over fine links induces an invariant effective action on coarse links. Pin the blocking map, Haar conventions and precise formula. Test tractable finite-volume controls, then state separate estimates needed for infinitely many scales, weak coupling, and the actual continuum limit.
+>>>
+NEW<<<
+YM4-03 holds an **exact gauge-covariant one-block renormalization identity** for D=4 SU(2), in [the note](NOTE-YM4-03-ONE-SCALE-BLOCKING.md), with the blocking map, Haar conventions and formula pinned and finite-volume controls tested, beside [PR #28](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28). Next: the separate estimates needed for infinitely many scales, weak coupling, and the actual continuum limit, from YM4-04.
+>>>
+REASON: a sentence the merge of this branch makes stale; the ledger's own row above reads DERIVED.
+
+HOLD H38 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+                good = good and got == (ipow(base[0], m), ipow(base[1], m)) or got == frac(ipow(base[0], m), ipow(base[1], m))
+>>>
+NEW<<<
+                good = good and got == frac(ipow(base[0], m), ipow(base[1], m))
+>>>
+REASON: MEASURED harness_flow2.out: convolution_power wrong at m = 2 alone, 0 character_flow checks fail; with this line 3 fail, S3_sign, S3_two, Q8_fund (run_holds.out); the copy with H38 and H39 reproduces the receipt byte for byte, and the gate on a clone with it reads failed=0.
+
+HOLD H39 | file=tests/test_one_scale_blocking.py | severity=medium
+OLD<<<
+    read_row("su2_m_over_g_bound", True, "2063437/4_ppm_of_g=515859", "0.516")
+    read_row("su2_exact_m_over_g_at_l=4/g", True, "3*4/8=3/2", "1.5")
+>>>
+NEW<<<
+    # arccosh 4 = log(4 + sqrt 15): the constant printed above, read against exact brackets.
+    four_plus = (4 << BITS) + math.isqrt(15 << (2 * BITS))
+    constant_ok = exp_bracket(2063437, 1000000)[1] <= four_plus and four_plus + 1 <= exp_bracket(2063438, 1000000)[0]
+    read_row("su2_m_over_g_bound", constant_ok and (2063437 * 1000000) // 4000000 == 515859, "2063437/4_ppm_of_g=515859", "0.516")
+    # The exact m/g at l = 4/g is beta * (-log t_2). At the last beta of the grid, 4096, it lies within 1/1000 of 3/2 when t_2^beta lies within these brackets.
+    t2_beta = power_bracket(t[2][0], t[2][1], 4096)
+    read_row("su2_exact_m_over_g_at_l=4/g", exp_bracket(-1501, 1000)[0] <= t2_beta[0] and t2_beta[1] <= exp_bracket(-1499, 1000)[1], "3*4/8=3/2", "1.5")
+>>>
+REASON: both rows print MET under a literal True, so hand values 0.516 and 1.5 are read by a condition that cannot fail; the copy with this change prints the same two rows (run_holds.out); own_numbers.out reads 2.063437 and 1.500183.
+
+HOLD H40 | file=.github/workflows/one-scale-blocking.yml | severity=medium
+OLD<<<
+      - name: The gate reads this tree
+>>>
+NEW<<<
+      - name: The note names the receipt's count, and the first complete read stays on file
+        run: |
+          set -euo pipefail
+          n=$(sed -n 's/^YM4_03_DONE|checks=\([0-9]*\)|.*/\1/p' tests/ONE_SCALE_BLOCKING_RECEIPT.txt)
+          grep -qF "$n checks" docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md
+          echo "618b4414384b76e8e66a5c5cc482f962bcdb9f1c1b00c81ed4a2aa4311cf458c  reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp" | sha256sum -c -
+      - name: The gate reads this tree
+>>>
+REASON: both files are triggers that no step opens, which is how 179 passed the hosted runs; run_holds.out reads rc=1 on the note at this head, rc=0 after H1, and the pin passing.
+
+HOLD H41 | file=PR29-BODY | severity=medium
+OLD<<<
+So a coarse gap bounds the physical gap on everything coarse observables see, and the only loss is a state whose conditional expectation on the coarse variables vanishes. On every case read here the lowest state is visible.
+>>>
+NEW<<<
+So a lower bound on the gap m′ on H′ bounds the gap m of the whole gauge-invariant space exactly when the lowest state is visible in H′, and a state H′ misses has a vanishing conditional expectation on the coarse variables. The test reads the lowest state visible on Z2 at 2×2 and S3 at 2×1, and automatically where W is the whole space, Z2 at 2×1 and Z3; the second seat reads it on Q8 at 2×1. Visibility along a family as a falls is OPEN.
+>>>
+REASON: note Theorem 7 items 3, 4; receipt second_over_top_ppm rows, Q8 not_read; own_second_value.out 54534 ppm on both; GPT-6's comment of 12:53:18Z on the same point.
+
+HOLD H42 | file=PR29-BODY | severity=medium
+OLD<<<
+**Read:** 181 checks, 0 failed, 3 rows of the prediction missed on hand values, which stay.
+>>>
+NEW<<<
+**Read:** 181 checks, 0 failed, 3 reads missed on 2 rows of the prediction, which stay: a hand value, and a row tagged DERIVED whose registered falsifier fired, with Proposition 11 corrected after the run.
+>>>
+REASON: prediction rows 16 and 25; receipt's 3 MISS rows; git diff 7e6b111 6c87200 on Proposition 11.
+
+HOLD H43 | file=PR29-BODY | severity=low
+OLD<<<
+**The misses, both my hand counts.**
+>>>
+NEW<<<
+**The misses, both my hand counts, the second registered as a DERIVED law.**
+>>>
+REASON: prediction row 25, YM4_03_LAW|name=z2_nonlocal_perpendicular|...|tag=DERIVED.
+
+HOLD H44 | file=PR29-BODY | severity=high
+OLD<<<
+Theorem 5 on the coarse circle gives λ₁/λ₀ ≤ (4 − √15)^{1/b} at every L in bℕ: with β = 4/(g²a²), m ≥ 0.516 g uniformly as a falls.
+>>>
+NEW<<<
+Theorem 5 of YM4-02e on the coarse circle gives λ₁/λ₀ ≤ (4 − √15)^{1/b} at every L in bℕ: with β = 4/(g²a²) and b = ⌈2√β⌉, on circles of physical length at least ba, m > 0.3439 g at every β ≥ 1, tending to m ≥ 0.5158 g as a → 0.
+>>>
+REASON: MEASURED own_numbers.out; the note's own numbering holds Proposition 5 and no Theorem 5; 0.516 exceeds 0.515859.
+
+HOLD H45 | file=PR29-BODY | severity=medium
+OLD<<<
+so β′/4 = (β/4)^{b²}. On (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³ that reads exactly, with SU(2) averages from 2T within its degree.
+>>>
+NEW<<<
+so β′/4 = (β/4)^{b²} at leading order. That leading order reads exactly at b = 2 on (ℤ/2)⁴ and (ℤ/4)×(ℤ/2)³, with SU(2) averages from 2T within its degree, and at b = 3 the test reads the count of 9, with the coefficient DERIVED.
+>>>
+REASON: section_first_dependence runs b = 2 alone; the b = 3 read row compares a fraction with itself; note Theorem 9 carries O(β^{b²+1}).
+
+HOLD H46 | file=PR29-BODY | severity=high
+OLD<<<
+The blocked action leaves the Wilson form: Q8 at d = 3 takes different values on V with the same commutators, and in Z2 the coefficient of W_P W_Q for perpendicular coarse plaquettes is 3u¹⁰.
+>>>
+NEW<<<
+For Z2 the blocked action leaves the Wilson form: the coefficient of W_P W_Q for perpendicular coarse plaquettes is 3u¹⁰. Q8 on (ℤ/2)²×(ℤ/1) with b = (2, 2, 1) takes different values on V with the same commutators, which reads winding loops on its 1×1×1 coarse lattice. For SU(2) in d ≥ 3 the form of the next term is OPEN.
+>>>
+REASON: prediction row 13 and receipt; own elimination reads the same ratios; issue #3 "No substituting Q8/2T/2O/2I for continuous SU(2) without a rigorously bounded approximation"; note derives Theorem 9 alone for SU(2).
+
+HOLD H47 | file=PR29-BODY | severity=low
+OLD<<<
+so c_π → c_π^{b²} with no other term.
+>>>
+NEW<<<
+so exactly c_π → c_π^{b²} on every π.
+>>>
+REASON: the operator's rule, as in H6.
