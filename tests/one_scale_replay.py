@@ -148,7 +148,7 @@ def read_module(path):
     order = []
     code_parts = []
     assigned = set()
-    duplicate = []
+    blockers = []
     for item in merged:
         line, last, position = item[0], item[1], item[-1]
         head = tokens[position]
@@ -162,9 +162,12 @@ def read_module(path):
         if kind == "code":
             code_parts.append(text)
             assigned |= targets_of(tokens, line, last)
+            # At the top level SABOTAGE is only assigned; a read there would set data by the sabotage, so the cache is then left unused.
+            if module_reads_sabotage(tokens, line, last):
+                blockers.append("SABOTAGE_read_at_top_level")
             continue
         if name in units:
-            duplicate.append(name)
+            blockers.append("bound_twice_" + name)
         units[name] = {"kind": kind, "first": line, "last": last, "digest": sha(text)}
         order.append(name)
     significant = [t for t in tokens if t.type not in (tokenize.NL, tokenize.COMMENT, tokenize.ENCODING, tokenize.INDENT, tokenize.DEDENT)]
@@ -196,11 +199,22 @@ def read_module(path):
     for name in order:
         for line in range(units[name]["first"], units[name]["last"] + 1):
             owner[line] = name
-    return {"units": units, "order": order, "code": sha("\n#\n".join(code_parts)), "assigned": assigned, "duplicate": duplicate, "owner": owner, "file": sha_bytes(data)}
+    return {"units": units, "order": order, "code": sha("\n#\n".join(code_parts)), "assigned": assigned, "blockers": blockers, "owner": owner, "file": sha_bytes(data)}
 
 
 def sha_bytes(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def module_reads_sabotage(tokens, first, last):
+    """True when a top-level statement holds SABOTAGE anywhere but as the target of a plain =."""
+    own = [t for t in tokens if first <= t.start[0] <= last and t.type not in (tokenize.NL, tokenize.COMMENT, tokenize.INDENT, tokenize.DEDENT)]
+    for k, t in enumerate(own):
+        if t.type == tokenize.NAME and t.string == "SABOTAGE":
+            after = own[k + 1] if k + 1 < len(own) else None
+            if after is None or after.type != tokenize.OP or after.string != "=":
+                return True
+    return False
 
 
 def targets_of(tokens, first, last):
@@ -640,10 +654,10 @@ ENTRIES = []
 INDEX = {}
 RECEIPT = b""
 BRACKETS_REACHED = False
-# The cache is usable when the module's top-level names are the ones listed above, with no name bound twice.
-READY = not MODEL["duplicate"] and MODEL["assigned"] <= set(DATA_NAMES) | set(BOOK_NAMES) and set(DATA_NAMES) <= MODEL["assigned"]
+# The cache is usable when the module's top-level names are the ones listed above, none bound twice, and SABOTAGE only assigned at the top level.
+READY = not MODEL["blockers"] and MODEL["assigned"] <= set(DATA_NAMES) | set(BOOK_NAMES) and set(DATA_NAMES) <= MODEL["assigned"]
 if not READY:
-    note("REPLAY_NOT_READY|duplicate=%s|unlisted=%s|json=0" % (",".join(MODEL["duplicate"]) or "none", ",".join(sorted(MODEL["assigned"] - set(DATA_NAMES) - set(BOOK_NAMES))) or "none"))
+    note("REPLAY_NOT_READY|blockers=%s|unlisted=%s|json=0" % (",".join(MODEL["blockers"]) or "none", ",".join(sorted(MODEL["assigned"] - set(DATA_NAMES) - set(BOOK_NAMES))) or "none"))
 if MODE == "record":
     if SEEDS_PATH:
         with open(SEEDS_PATH, "rb") as handle:
