@@ -16,7 +16,8 @@ from pathlib import Path
 
 CONTROLS=("wrong_line_order","missing_inverse","wrong_beta_exponent",
           "wrong_log_tail","wrong_q9","spurious_visibility",
-          "positive_toy_mass_floor")
+          "positive_toy_mass_floor","wrong_Haar_connected_zero_for_same_plaquette",
+          "claim_nonzero_C_from_bound")
 fault=""
 if len(sys.argv)>2 or (len(sys.argv)==2 and
     (not sys.argv[1].startswith("sabotage=")
@@ -287,6 +288,52 @@ def rg_bounds():
     # this inequality, and a second comparison multiplies bounds.
     # |E F - E_w F| <= exp(delta)-1 for |F|<=1.
     # Connected F,G: <=3(exp(delta)-1) <=3*delta/(1-delta).
+    # Additional prediction freeze a31877e0 (before this computation).
+    # On the coarse 2^4 torus take two *spatial* (1,2)-plaquettes at
+    # temporal coordinates x0=0 and x0=1. Their sets of spatial links
+    # are disjoint. Under PRODUCT Haar each single normalized SU(2)
+    # fundamental character has zero expectation, and so does FG.
+    # The full Wilson proxy at beta2 has density ratio to product Haar
+    # bounded by exp(plus_or_minus 2*Ncoarse*beta2), since |X|<=Ncoarse.
+    # If z=2*Ncoarse*beta2<1, then exp(z)-1<=z/(1-z).
+    # Hence |C_proxy|<=eta+eta^2, and
+    # |C_actual|<=3*delta/(1-delta)+eta+eta^2 < 10^-8.
+    # The sign and *nonzero spectral weight* are both UNKNOWN.
+    p0=(0,0,0,0)
+    p1=(1,0,0,0)
+    def spatial_edges(x):
+        return {(x,1),(spatial(x,1,1,2),2),
+                (spatial(x,2,1,2),1),(x,2)}
+    aedges=spatial_edges(p0)
+    bedges=spatial_edges(p1)
+    check(len(aedges)==4 and len(bedges)==4
+          and len(aedges.intersection(bedges))==0,
+          "two_disjoint_spatial_Haar_plaquettes")
+    if fault=="wrong_Haar_connected_zero_for_same_plaquette":
+        bedges=aedges
+        check(len(aedges.intersection(bedges))==0,
+              "RED_wrong_Haar_connected_zero_for_same_plaquette")
+    z=mul(rat(2*Ncoarse),betacoarse)
+    check(lt(z,rat(1,power(2,128))),"Haar_proxy_z_lt_2_minus_128")
+    eta=mul(z,inv(sub(rat(1),z)))
+    actual_upper=add(corr,add(eta,mul(eta,eta)))
+    check(lt(actual_upper,rat(1,100000000)),
+          "absolute_actual_connected_SU2_Wilson_lt_1e_minus8")
+    if fault=="claim_nonzero_C_from_bound":
+        check(lt(rat(0),sub(rat(0),actual_upper)),
+              "RED_claim_nonzero_C_from_bound")
+    emit("YM4_04_ACTUAL_CORRELATION",
+         temporal_separation_fine_links=9,
+         operator_pair="normalized_spatial_SU2_Wilson_t0_and_t9",
+         Haar_single_means="ZERO",
+         Haar_product="ZERO_BY_DISJOINT_LINK_SUPPORT",
+         proxy_to_Haar_z_lt="1/2^128",
+         proxy_connected_bound="eta_plus_eta_squared",
+         actual_connected_interval_lower="-1/100000000",
+         actual_connected_interval_upper="+1/100000000",
+         actual_abs_C_lt="1/100000000",
+         sign_and_first_spectral_weight="OPEN",
+         proof="EXACT_PUSHFORWARD_PLUS_RATIONAL_ENCLOSURES")
     signal=mul(rat(2*Nmid),betamid)
     check(lt(signal,delta1),"uniform_bound_cannot_resolve_Wilson_signal")
     q0=mul(beta,rat(nlinks))
@@ -372,6 +419,15 @@ def main():
     check(sum(int(z.startswith(b"PREDICT|id="))
               for z in prediction.splitlines())==19,
           "nineteen_prediction_rows_frozen")
+    supplement=root.joinpath("docs",
+        "PREDICTION-YM4-04-TWO-BLOCK-CORRELATION-SUPPLEMENT-20261107.hbp"
+        ).read_bytes()
+    check(sum(int(z.startswith(b"PREDICT|supp="))
+              for z in supplement.splitlines())==6,
+          "six_supplement_predictions_frozen_before_actual_C_bound")
+    emit("YM4_04_CORRELATION_FREEZE",
+         supplement_sha256=hashlib.sha256(supplement).hexdigest(),
+         predictions=6,source_commit="a31877e0d91c67ee34e06ba8fc428a66b2d8fa95")
     emit("YM4_04_BEGIN",prediction_sha256=hashlib.sha256(prediction).hexdigest(),
          gauge="CONTINUOUS_SU2",
          map="YM4_03_B3_COMPOSED_B3",
