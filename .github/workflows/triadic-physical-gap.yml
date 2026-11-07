@@ -7,6 +7,9 @@ on:
     paths:
       - 'tests/test_triadic_physical_gap.py'
       - 'tests/test_shadow_cat_residual.py'
+      - 'tests/test_shadow_cat_s3_gauge.py'
+      - 'docs/PREDICTION-YM4-SHADOW-CAT-S3-GAUGE-20261106.hbp'
+      - 'tests/SHADOW_CAT_S3_GAUGE_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-OBSERVABLE-RESIDUAL-20261106.hbp'
       - 'docs/PREDICTION-YM4-04-SHADOW-CATS-20261106.hbp'
       - 'docs/NOTE-YM4-SHADOW-CATS-RESIDUAL-20261106.md'
@@ -19,6 +22,9 @@ on:
     paths:
       - 'tests/test_triadic_physical_gap.py'
       - 'tests/test_shadow_cat_residual.py'
+      - 'tests/test_shadow_cat_s3_gauge.py'
+      - 'docs/PREDICTION-YM4-SHADOW-CAT-S3-GAUGE-20261106.hbp'
+      - 'tests/SHADOW_CAT_S3_GAUGE_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-OBSERVABLE-RESIDUAL-20261106.hbp'
       - 'docs/PREDICTION-YM4-04-SHADOW-CATS-20261106.hbp'
       - 'docs/NOTE-YM4-SHADOW-CATS-RESIDUAL-20261106.md'
@@ -58,6 +64,12 @@ jobs:
           if test -f tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt; then
             tail -n +4 tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt | cmp - build/triadic-gap/SHADOW.hbp
           fi
+          python3 -I -X utf8 tests/test_shadow_cat_s3_gauge.py | tee build/triadic-gap/GAUGE.hbp
+          grep -F 'SHADOW_S3_VERIFY|status=PASS|predictions=9|group_elements=6|sweep_cases=1296|' build/triadic-gap/GAUGE.hbp
+          grep -F 'SHADOW_S3_SWEEP|link_pairs=36|gauge_pairs=36|cases=1296|' build/triadic-gap/GAUGE.hbp
+          if test -f tests/SHADOW_CAT_S3_GAUGE_RECEIPT.txt; then
+            tail -n +4 tests/SHADOW_CAT_S3_GAUGE_RECEIPT.txt | cmp - build/triadic-gap/GAUGE.hbp
+          fi
           if test -f tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt; then
             tail -n +4 tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt | cmp - build/triadic-gap/REPLAY.hbp
           fi
@@ -91,6 +103,19 @@ jobs:
             esac
             grep -F "FAILED|check=$expected|json=0" "shadow-$case.hbp"
             grep -F 'SHADOW_VERIFY|status=FAIL|' "shadow-$case.hbp"
+          done
+          for case in claim_signed_label_is_gauge_invariant claim_trace_distinguishes_orientation claim_transposition_in_A3 claim_gap_is_proved; do
+            rc=0
+            python3 -I -X utf8 ../../tests/test_shadow_cat_s3_gauge.py "sabotage=$case" > "gauge-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            case "$case" in
+              claim_signed_label_is_gauge_invariant) expected=signed_shadow_not_gauge_invariant ;;
+              claim_trace_distinguishes_orientation) expected=character_cannot_distinguish_shadow_orientation ;;
+              claim_transposition_in_A3) expected=transposition_not_in_A3 ;;
+              claim_gap_is_proved) expected=S3_conjugacy_not_clay_proof ;;
+            esac
+            grep -F "FAILED|check=$expected|json=0" "gauge-$case.hbp"
+            grep -F 'SHADOW_S3_VERIFY|status=FAIL|' "gauge-$case.hbp"
           done
           sha256sum *.hbp > SHA256SUMS
       - uses: actions/upload-artifact@v4
