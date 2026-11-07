@@ -11,6 +11,19 @@ from hashlib import sha256
 from itertools import permutations
 from math import gcd
 
+def integer_power(base, exponent):
+    """Integer-only binary exponentiation; negative exponents are refused."""
+    if not isinstance(exponent, int) or exponent < 0:
+        raise ValueError('NEGATIVE_EXPONENT')
+    value = 1
+    while exponent:
+        if exponent & 1:
+            value *= base
+        exponent //= 2
+        if exponent:
+            base *= base
+    return value
+
 G = tuple(permutations(range(3)))
 N = 6
 assert len(G) == N and G[0] == (0, 1, 2)
@@ -62,7 +75,7 @@ def ternary(a,n):
 def character_matrix(n):
     if n<0: raise ValueError('NEGATIVE_EXPONENT')
     if n==0: return ident()
-    aa,bb,cc=16**n,4**n,7**n
+    aa,bb,cc=integer_power(16,n),integer_power(4,n),integer_power(7,n)
     rows=[]
     for g in G:
         row=[]
@@ -89,7 +102,7 @@ def correlation(a, n, observable):
     top=sum(v[i]*a[i][j]*v[j] for i in range(N) for j in range(N))
     assert top%N==0
     top//=N
-    bot=16**n
+    bot=integer_power(16,n)
     d=gcd(top,bot)
     return top//d,bot//d
 
@@ -132,12 +145,12 @@ def main():
     pe=next(v for c,v in orig if c==2)
     pt=next(v for c,v in orig if c==0)
     pc=next(v for c,v in orig if c==-1)
-    assert pt**3==pe*pc**2
+    assert pt*pt*pt==pe*pc**2
     eff=[(chi(g),local3[0][j]) for j,g in enumerate(G)]
     e=next(v for c,v in eff if c==2)
     t=next(v for c,v in eff if c==0)
     c=next(v for k,v in eff if k==-1)
-    residual=t**3-e*c*c
+    residual=t*t*t-e*c*c
     assert residual<0
     emit('YM3_WILSON_CLOSURE',area=9,unblocked_family_identity=1,
          blocked_family_identity=0,negative_residual=1,
@@ -156,10 +169,10 @@ def main():
         for mode,fun,base in [('std',chi,7),('sign',sign,4)]:
             got=correlation(ff,9*ticks,fun)
             if base==7:
-                d=gcd(7**(9*ticks),16**(9*ticks))
-                expected=(7**(9*ticks)//d,16**(9*ticks)//d)
+                d=gcd(integer_power(7,9*ticks),integer_power(16,9*ticks))
+                expected=(integer_power(7,9*ticks)//d,integer_power(16,9*ticks)//d)
             else:
-                expected=(1,4**(9*ticks))
+                expected=(1,integer_power(4,9*ticks))
             assert got==expected
             emit('YM3_CORRELATION',mode=mode,fine_ticks=ticks,
                  coarse3_ticks=ticks//3,coarse9_ticks=ticks//9,
@@ -169,7 +182,7 @@ def main():
     for b in (1,3,9):
         n=9*b
         emit('YM3_GAP',spatial_scale=b,temporal_scale=b,
-             standard_ratio_numer=7**n,standard_ratio_denom=16**n,
+             standard_ratio_numer=integer_power(7,n),standard_ratio_denom=integer_power(16,n),
              first_gap_coefficient='9*ln(16/7)',physical_gap_equal=1,status='PASS')
     assert ternary(ternary(a,3)[0],3)[0]!=mid
     emit('YM3_RED',control='wrong_block_area_3_instead_of_9',result='REJECTED',status='PASS')
