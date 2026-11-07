@@ -81,13 +81,21 @@ def digest(x):
 
 
 def stable(j):
-    K=3**j
+    K=power3(j)
     return q(K, K+1)
 
 
 def collapse(j):
-    K=3**j
+    K=power3(j)
     return q(K*K, K*K+1)
+
+
+def power3(k):
+    assert isinstance(k, int) and k >= 0
+    result=1
+    for _ in range(k):
+        result*=3
+    return result
 
 
 def emit(tag, **fields):
@@ -115,7 +123,7 @@ def main():
          prediction_sha256=sha256(pred).hexdigest(),
          residual_sha256=sha256(res).hexdigest(),model="TOY_TRANSFER_NOT_YM4")
     for j in range(13):
-        K=3**j
+        K=power3(j)
         qs=stable(j)
         qc=collapse(j)
         lower=q(K,K+1)
@@ -132,7 +140,7 @@ def main():
           SABOTAGE!="drop_physical_a" or q(1,3**24)==q(1,3**12))
     check("collapsing_limit",lt(q(1,3**12),q(1,100000)))
     for j in range(1,13):
-        K=3**j
+        K=power3(j)
         delta=ab(sub(power(collapse(j),3),collapse(j-1)))
         bound=q(6,K*K)
         check("one_scale_block_j"+str(j),le(delta,bound))
@@ -163,7 +171,7 @@ def main():
     for name,getter in (("STABLE",stable),("COLLAPSE",collapse)):
         one=getter(5)
         for exponent in range(1,7):
-            n=3**exponent
+            n=power3(exponent)
             jumped=one
             for _ in range(exponent):
                 jumped=mul(mul(jumped,jumped),jumped)
@@ -180,7 +188,7 @@ def main():
                  direct_checked=int(n<=243),
                  state_sha256=digest(binary))
     for j in (0,3,6,12):
-        K=3**j
+        K=power3(j)
         E=[q(i,K) for i in range(8)]
         E.extend([add(q(94),q(7,K)),add(q(95),q(7,K))])
         high=sub(E[8],E[7])
@@ -197,7 +205,7 @@ def main():
           else le(q(1,2),q(1,3**12)))
     # A fixed-time observable residual: 1-C_j(1), where C_j(t)=q_j^(t/a_j).
     for j in range(7):
-        K=3**j
+        K=power3(j)
         c_stable=power(stable(j),K)
         c_collapse=power(collapse(j),K)
         r_stable=sub(q(1),c_stable)
