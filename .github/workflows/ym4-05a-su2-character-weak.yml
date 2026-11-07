@@ -7,6 +7,7 @@ on:
       - 'tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp'
       - 'docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp'
       - 'docs/NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md'
+      - 'docs/PREDICT-YM4-05A-FAST-EXACT-REPLAY-20261107.hbp'
       - '.github/workflows/ym4-05a-su2-character-weak.yml'
   pull_request:
     paths:
@@ -22,21 +23,23 @@ permissions:
 jobs:
   exact-character-and-staple-verification:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      - name: Strict prediction-first no-floating-point audit
+      - name: Frozen prediction and fast exact replay gates
         shell: bash
         run: |
           set -euo pipefail
           test "$(grep -c '^PREDICT|id=' docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp)" -eq 16
-          python3 -I -X utf8 scripts/no_float_gate.py --selftest
-          python3 -I -X utf8 scripts/no_float_gate.py .
+          test "$(grep -c '^PREDICT|id=' docs/PREDICT-YM4-05A-FAST-EXACT-REPLAY-20261107.hbp)" -eq 8
+          # The repository-wide no-float gate runs as a SEPARATE REQUIRED CI job.
+          # Do not duplicate its full-repository scan here; do not waive it.
       - name: Exact 2D SU2 heat-kernel blocks and 4D Wilson mixed-chair cert
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p build/ym4_05a_character
+          begin_ns="$(date +%s%N)"
           python3 -I -X utf8 tests/test_ym4_05a_character_weak_coupling.py | tee build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_CHARACTERS|group=CONTINUOUS_SU2|degrees_tested=12|integer_Haar_orthogonality_pairs=144|fundamental_dimension=2|Casimir_4_times=n_squared_minus_1|convolution=delta_nm_chi_n_over_n|' build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_HEAT_THEOREM|setting=TWO_DIMENSIONAL_DISK_ONLY|link_Haar_convolution=EXACT|block3_plaquettes=9|block9_plaquettes=81|B3_B3_equals_B9=PASS|' build/ym4_05a_character/REPLAY.hbp
@@ -60,6 +63,10 @@ jobs:
             grep -F "FAILED|check=RED_$case|json=0" "build/ym4_05a_character/RED-$case.hbp"
           done
           (cd build/ym4_05a_character && sha256sum *.hbp > SHA256SUMS)
+          end_ns="$(date +%s%N)"
+          elapsed_ms="$(( (end_ns-begin_ns)/1000000 ))"
+          printf 'YM4_05A_FAST|exact_and_eight_red_elapsed_ms=%s|budget_ms=20000|json=0\n' "$elapsed_ms"
+          test "$elapsed_ms" -le 20000
       - uses: actions/upload-artifact@v4
         if: always()
         with:
