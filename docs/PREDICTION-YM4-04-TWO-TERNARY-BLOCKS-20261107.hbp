@@ -1,0 +1,24 @@
+# YM4-04 TWO-TERNARY-BLOCK EXPERIMENT. 2026-11-07. PREDICTIONS BEFORE IMPLEMENTATION.
+# Uses existing YM4-03 theorem 1-9 for ACTUAL continuous SU2 Wilson gauge measure.
+# The Wilson beta_1,beta_2 below are PROXIES not actual closed RG couplings.
+# No claim of a uniform physical gap or interacting continuum induction.
+PREDICT|id=01|geometry=4D_SU2|coarse_sides=2,2,2,2|middle_sides=6,6,6,6|fine_sides=18,18,18,18|block=3_then_3|status=DERIVED|json=0
+PREDICT|id=02|plaquettes_fine=629856|plaquettes_middle=7776|plaquettes_coarse=96|fine_spatial_links=17496|status=DERIVED|json=0
+PREDICT|id=03|bare_beta=1/20155392|small_coupling_gate=beta_le_1_over_8Np|status=DERIVED|json=0
+PREDICT|id=04|Wilson_proxy_beta1=beta0^9/4^8|Wilson_proxy_beta2=beta0^81/4^80|actual_4D_induced_action_Wilson_closed=NO_PROOF|status=DERIVED|json=0
+PREDICT|id=05|SU2_quaternions=RATIONAL_UNIT|B3_B3_equals_B9=EXACT|noncommuting=YES|gauge_covariance=EXACT|status=DERIVED|json=0
+PREDICT|id=06|coarse_link_paths=64|coarse_plaquette_paths=96|coarse_time_separated_spatial_Wilson_pullback=EXACT|status=DERIVED|json=0
+PREDICT|id=07|two_scale_pushforward_measure=EXACT|connected_Wilson_correlations_pullback=EXACT|physical_time_ratio=3_then_3|status=DERIVED|json=0
+PREDICT|id=08|first_scale_uniform_log_density_error=1/536870912|proof=COMPLEX_CAUCHY_TAIL_AT_NINE|status=DERIVED|json=0
+PREDICT|id=09|second_scale_log_density_error_lt=1/2^128|combined_error=sum_of_two_exact_rationals|status=DERIVED|json=0
+PREDICT|id=10|bounded_normalized_Wilson_pair_connected_correlation_error_lt=1/100000000|actual_vs_iterated_Wilson_proxy|status=DERIVED|json=0
+PREDICT|id=11|transfer_SU2_ratio_q0_le=1/1152|q3_le=1/1152^3|q9_le=1/1152^9|method=YM4_02d_PLUS_YM4_03_HPRIME|status=DERIVED_WITH_SOURCE|json=0
+PREDICT|id=12|transfer_ratio_q9_le_q3_cubed=YES|first_state_visibility_at_any_block=OPEN|proxy_Wilson_spectral_gap_COMPARISON=NOT_JUSTIFIED|status=LIMIT|json=0
+PREDICT|id=13|spectral_mass_lower_exact_pushforward=log(1152)/a|weak_coupling_beta_to_infinity_control=NONE|all_scale_induction=OPEN|status=LIMIT|json=0
+PREDICT|id=14|Wilson_proxy_signal_first_scale_below_uniform_error=YES|quantitative_relative_precision=FAIL_EXPECTED|status=FALSIFIABLE|json=0
+PREDICT|id=15|toy_q_k=3^(2k)/(3^(2k)+1)|fine_gap=log(1+3^(-2k))_positive|physical_mass_lt=3^(-k)|status=COUNTEREXAMPLE|json=0
+PREDICT|id=16|toy_block_3_and_9_time_transfer=q_k^3_and_q_k^9|same_physical_mass=YES|k_test=1,2,3,4,5,6|status=COUNTEREXAMPLE|json=0
+PREDICT|id=17|toy_connected_C_at_physical_t1=q_k^(3^k)|C_lower_ge=1-3^(-k)|physical_decay_disappears=YES|status=COUNTEREXAMPLE|json=0
+PREDICT|id=18|negative_controls=wrong_line_order,missing_inverse,wrong_beta_exponent,wrong_log_tail,wrong_q9,spurious_visibility,positive_toy_mass_floor|all_REJECT|status=RED|json=0
+PREDICT|id=19|finite_SU2_two_scale_absolute_control=PASS_TARGET|relative_Wilson_signal=FAIL_EXPECTED|infinite_volume_or_continuum=OPEN|status=SCOPE|json=0
+PREDICTION_SUMMARY|rows=19|frozen_before_new_source=YES|new_independent_full_lattice_integral=NOT_RUN|json=0

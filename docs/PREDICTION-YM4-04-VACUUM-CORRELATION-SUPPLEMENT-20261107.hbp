@@ -1,0 +1,8 @@
+# 2026-11-07 THIRD PREDICTION FREEZE BEFORE VACUUM TRANSFER CORRELATION GATE.
+# The 18^4 periodic Euclidean correlator is not the infinite-temporal-extent
+# interacting vacuum correlator. These are DISTINCT, both controlled.
+PREDICT|vac=01|observables=spatial_normalized_9x9_SU2_wilson|time_gap=9_fine_steps|finite_periodic_euclidean_and_infinite_time_vacuum=DIFFERENT|status=BOUNDARY|json=0
+PREDICT|vac=02|transfer_positivity=SU2_wilson_beta_positive|fine_ratio_le=1/1152|vacuum_C_at_9_lower=0|vacuum_C_at_9_upper=1/1152^9|status=DERIVED_FROM_YM4_02C_02D|json=0
+PREDICT|vac=03|blocked_Hprime_ratio_q3_le=1/1152^3|blocked_Hprime_ratio_q9_le=1/1152^9|lowest_state_visibility=OPEN|status=DERIVED|json=0
+PREDICT|vac=04|counterfactual_normalized_Wilson_variance_gt_one=REJECT|first_spectral_weight_nonzero_from_upper_bound=NOT_CERTIFIED|status=RED|json=0
+PREDICTION_VACUUM_SUMMARY|rows=4|frozen_before_code=YES|full_spatial_SU2_eigenvectors=NOT_COMPUTED|json=0
