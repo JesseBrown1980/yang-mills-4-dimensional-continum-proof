@@ -1,0 +1,15 @@
+# SHADOW-CAT RESIDUAL PREDICTIONS, FROZEN BEFORE IMPLEMENTATION
+# User's notation: C0,C1,C2, ternary residual, shadow cat; a retained
+# mod-3 residue. Mathematical test only; no FTL, no experimental proof.
+# Balanced coordinates: r=2 has unsigned 2/3 and signed -1/3
+# representatives of the SAME value modulo an integer.
+PREDICT|id=01|check=SHADOW_CATS|definition=(C0+C1+C2)_mod_3|residue=0,1,2|status=DECLARED|json=0
+PREDICT|id=02|check=SIGNED_RESIDUAL|residue=2|unsigned=2/3|balanced=-1/3|difference=1|status=DERIVED|json=0
+PREDICT|id=03|check=C1_ROTATION|cycles=3|C0_C1_C2=ROTATE|residue=INVARIANT|status=DERIVED|json=0
+PREDICT|id=04|check=BLOCKING|ring=27|levels=27,9,3,1|rule=sum_mod3|total_residue=2|status=DERIVED|json=0
+PREDICT|id=05|check=POWER_THREE_JUMP|k=0..16|steps_up_to=43046721|residue_invariant=YES|jump_vs_rotation=EQUAL|status=DERIVED|json=0
+PREDICT|id=06|check=TWO_CONNECTED_TORI|shared_shadow_residue=2|C1_rotated_partner=YES|not_instantaneous_physics=1|status=DERIVED|json=0
+PREDICT|id=07|check=VISIBLE_SHADOW_WITH_COLLAPSING_GAP|residue=2|visible_residual_nonzero=YES|lowest_physical_gap_limit=ZERO|status=DERIVED|json=0
+PREDICT|id=08|check=NEGATIVE_CONTROLS|flip_residue=REJECT|lose_1_over_3=REJECT|break_C1_cycle=REJECT|confuse_shadow_with_gap=REJECT|status=RED|json=0
+PREDICT|id=09|check=SCOPE|classical_ternary_algebra=ONLY|physical_ftl=NOT_CLAIMED|4D_SU2_mass_gap=OPEN|status=LIMIT|json=0
+PREDICTION_SUMMARY|rows=9|frozen_before_code=1|result=NOT_RUN|json=0
