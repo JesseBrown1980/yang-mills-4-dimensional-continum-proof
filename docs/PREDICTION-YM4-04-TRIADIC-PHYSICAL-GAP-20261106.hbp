@@ -1,0 +1,18 @@
+# YM4-04/YM4-06 precommitted physical mass-gap bridge and falsifier
+# Committed BEFORE tests/test_triadic_physical_gap.py and hosted execution.
+# ALL TEST NUMBERS exact rational; no numerical proof of a 4D continuum QFT.
+# a_j=1/3^j; T_j=diag(1,q_j). Symbolic physical gap m_j=-log(q_j)/a_j.
+PREDICT|id=01|check=STABLE_FINITE_FAMILY|q_j=1/(1+a_j)|j=0..12|physical_gap_lower=1/2|physical_gap_upper=1|status=DERIVED|json=0
+PREDICT|id=02|check=COLLAPSING_FINITE_FAMILY|q_j=1/(1+a_j_squared)|j=0..12|every_lattice_gap=POSITIVE|physical_gap_upper=a_j|physical_gap_limit=ZERO|status=DERIVED|json=0
+PREDICT|id=03|check=BLOCK_MISMATCH_COLLAPSE|b=3|j=1..12|abs(q_j_cubed-q_(j-1))<=6*a_j_squared|mismatch_limit=ZERO|physical_gap_limit=ZERO|status=DERIVED|json=0
+PREDICT|id=04|check=EXACT_THREE_SCALE|q_fine_at_a_1_over_9=1/2|q_middle_at_a_1_over_3=1/8|q_coarse_at_a_1=1/512|T_fine_cubed=T_middle|T_fine_ninth=T_coarse|status=DERIVED|json=0
+PREDICT|id=05|check=EXACT_THREE_SCALE_MASS|m_fine=9*log(2)|m_middle=9*log(2)|m_coarse=9*log(2)|status=DERIVED|json=0
+PREDICT|id=06|check=TRIADIC_JUMP_TEST|level=5|n=3,9,27,81,243,729|families=STABLE,COLLAPSE|jump_equals_pow=PASS|short_direct=PASS|status=DERIVED|json=0
+PREDICT|id=07|check=CLUSTER_FALSIFIER|ten_state_H=diag(0,1/K,...,7/K,94+7/K,95+7/K)|K=3^j|gap_E9_E8=94|gap_E2_E1=1/K|first_gap_tends_ZERO|status=DERIVED|json=0
+PREDICT|id=08|check=FINITE_S3_SCOPE|actual_3x4_E9_minus_E8_lower_at_r9=24.039673_JE|first_E2_minus_E1=NOT_INFERRED|group=S3|status=REPO_SOURCE|json=0
+PREDICT|id=09|check=SU2_WILSON_SCOPE|fixed_volume_and_spacing_gap=DERIVED_IN_COMPANION|unbounded_scale_and_beta_trajectory=OPEN|status=REPO_SOURCE|json=0
+PREDICT|id=10|check=SPACETIME_SCOPE|Clay_requires_4D_R4_nontrivial_QFT_and_each_compact_simple_group=TRUE|fixed_finite_slice_is_NOT_SUFFICIENT|status=CLAY_SOURCE|json=0
+PREDICT|id=11|check=NUMERICAL_SCALE|length_j=3^j|physical_mass_bound_unit=1/a_j|exact_integers=1|no_binary_float=1|status=DERIVED|json=0
+PREDICT|id=12|check=HYPOTHESES_NEEDED|uniform_physical_gap=OPEN|lowest_state_visibility=OPEN|OS_reconstruction=OPEN|all_group_extension=OPEN|status=OPEN|json=0
+PREDICT|id=13|check=RED_CONTROLS|drop_physical_a=REJECT|misread_high_cluster_as_first=REJECT|wrong_cube_block=REJECT|fake_uniform_collapsing_gap=REJECT|status=RED|json=0
+PREDICTION_SUMMARY|rows=13|frozen_before_test=1|result=NOT_RUN|json=0

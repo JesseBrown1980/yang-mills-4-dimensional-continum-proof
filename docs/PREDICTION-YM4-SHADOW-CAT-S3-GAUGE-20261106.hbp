@@ -1,0 +1,13 @@
+# FROZEN S3 GAUGE-CONJUGACY TEST OF C0/C1/C2 SHADOW CAT HOLOMONY CANDIDATE
+# No claim this candidate is the user's full physical Shadow Cat model.
+# S3 permutations on {0,1,2}. a=(1,2,0) order 3; t=(1,0,2) transposition.
+PREDICT|id=01|check=S3_ELEMENTS|size=6|A3_normal_subgroup_size=3|status=DERIVED|json=0
+PREDICT|id=02|check=CONJUGATION|t_a_t_inverse=a_squared|signed_r_changes=1_to_2|status=DERIVED|json=0
+PREDICT|id=03|check=CYCLE_PERIOD|a_cubed=identity|ternary_power_jumps_3_to_3^16=identity|status=DERIVED|json=0
+PREDICT|id=04|check=SHADOW_CANDIDATE|raw_r_on_A3=0,1,2|conjugation_gauge_invariant=FALSE|status=DERIVED|json=0
+PREDICT|id=05|check=CONJUGACY_OBSERVABLE|class_3cycle_flag=1_for_a_and_a_squared|gauge_invariant=TRUE|orientation_lost=YES|status=DERIVED|json=0
+PREDICT|id=06|check=STANDARD_CHARACTER|chi_identity=2|chi_transposition=0|chi_3cycle=-1|gauge_invariant=TRUE|status=DERIVED|json=0
+PREDICT|id=07|check=LOOP_TRANSFORMATION|holonomy_transforms_by_conjugation|only_class_function_directly_invariant=TRUE|status=DERIVED|json=0
+PREDICT|id=08|check=SU2_EXTENSION|Z3_label_not_proved_as_SU2_gauge_invariant_operator=1|4D_mass_gap=OPEN|status=LIMIT|json=0
+PREDICT|id=09|check=RED|claim_signed_label_is_gauge_invariant=REJECT|claim_3cycle_trace_distinguishes_orientation=REJECT|claim_transposition_in_A3=REJECT|claim_gap_is_proved=REJECT|status=RED|json=0
+PREDICTION_SUMMARY|rows=9|frozen_before_implementation=1|result=NOT_RUN|json=0

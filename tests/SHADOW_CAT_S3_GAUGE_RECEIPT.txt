@@ -1,0 +1,14 @@
+# Hosted GitHub Actions run 42330519118; job 128275742574; S3 Shadow Cat gauge predictions frozen be28b59568896d44dc3d5d2dd226c988ed127ea0
+# Exhaustive 1296-case candidate holonomy conjugation test, integer-only.
+# Not a claimed physical mapping of Shadow Cats into SU2 or a Clay mass gap.
+SHADOW_S3_CONJUGATION|gauge_element=TRANS|loop_before=C1|loop_after=C2|raw_shadow_before=1|raw_shadow_after=2|signed_label_invariant=NO|conjugacy_class_invariant=YES|json=0
+SHADOW_S3_CHARACTER|chi_identity=2|chi_transposition=0|chi_cycle=-1|chi_inverse_cycle=-1|character_is_gauge_invariant=1|orientation_information_lost=1|json=0
+SHADOW_S3_SWEEP|link_pairs=36|gauge_pairs=36|cases=1296|all_character_checks=1296|digest=f8ef85538d5b3d58b2954d6d64ee035e1e92cb7b3f7aa6bddc8ff132071fd600|status=PASS|json=0
+SHADOW_S3_JUMP|k=1|steps=3|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_JUMP|k=2|steps=9|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_JUMP|k=3|steps=27|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_JUMP|k=4|steps=81|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_JUMP|k=8|steps=6561|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_JUMP|k=16|steps=43046721|cycle_power=IDENTITY|raw_signed_label_after_power=0|physical_time_evolution=NOT_MODELLED|json=0
+SHADOW_S3_SCOPE|raw_shadow_r=GAUGE_COVARIANT_ONLY|class_character=GAUGE_INVARIANT|physical_S3_Hamiltonian_first_gap=NOT_COMPUTED|SU2_continuum_4D=OPEN|quantum_cloning=NOT_TESTED|three_cycle_orientation=NOT_IN_WILSON_TRACE|json=0
+SHADOW_S3_VERIFY|status=PASS|predictions=9|group_elements=6|sweep_cases=1296|signed_shadow_gauge_invariant=0|class_wilson_gauge_invariant=1|jumps_max=43046721|red_controls=RUN_SEPARATELY|Clay_gap=NOT_PROVED|json_zero=1|json=0
