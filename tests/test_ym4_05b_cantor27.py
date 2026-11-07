@@ -275,9 +275,13 @@ def cantor_times():
     out=[]
     for i in range(27):
         rank=i*31//26
-        pos=sum(2*((rank>>j)&1)*integer_power(3,j)
+        # Map the most-significant selected binary digit to the
+        # smallest ternary power, then sort the Cantor positions.
+        # This fixes the intended pre-freeze exploratory sample order.
+        pos=sum(2*((rank>>(4-j))&1)*integer_power(3,j)
                 for j in range(5))
         out.append(pos)
+    out.sort()
     check(len(out)==27 and out==sorted(set(out))
           and out[0]==0 and out[-1]==242,
           "twenty_seven_Cantor_ranks")
