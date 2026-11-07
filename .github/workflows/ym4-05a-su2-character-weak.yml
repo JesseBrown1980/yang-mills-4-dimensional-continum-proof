@@ -42,7 +42,7 @@ jobs:
           grep -F 'YM4_05A_HEAT_THEOREM|setting=TWO_DIMENSIONAL_DISK_ONLY|link_Haar_convolution=EXACT|block3_plaquettes=9|block9_plaquettes=81|B3_B3_equals_B9=PASS|' build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_4D_GEOMETRY|dimension=4|same_oriented_link_plaquettes=6|unordered_staple_pairs=15|pair_of_different_planes=12|mixed_plane_union_without_common_link=6|mixed_loop=NONPLANAR_SIX_LINK_CHAIR|' build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_4D_HAAR|beta=64|Wilson_link_integration=EXACT_SU2_S3_HAAR|staple_count=6|Q_pp=36|Q_pm=16|Q_mp=16|Q_mm=4|log_mixed_beta_squared_coefficient=1|' build/ym4_05a_character/REPLAY.hbp
-          grep -F 'YM4_05A_LIMITS|two_dim_weak_character_blocking=EXACT|four_dim_local_Wilson_mixed_chair=CERTIFIED|4D_induced_action_Wilson_closed=NOT_PROVED|4D_weak_coupling_Renormalized_flow=OPEN|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_LIMITS|two_dim_weak_character_blocking=EXACT|four_dim_local_Wilson_mixed_chair=CERTIFIED|fourD_induced_action_Wilson_closed=NOT_PROVED|fourD_weak_coupling_Renormalized_flow=OPEN|' build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_DONE|status=PASS_WITH_4D_WEAK_RG_HOLD|two_dim_heat_kernel_semigroup=EXACT|four_dim_six_staple_pair_network=REQUIRED|physical_gap=NOT_CERTIFIED|' build/ym4_05a_character/REPLAY.hbp
           test "$(grep -c '^YM4_05A_HEAT_FLOW|' build/ym4_05a_character/REPLAY.hbp)" -eq 4
           test "$(grep -c '^YM4_05A_4D_HAAR|' build/ym4_05a_character/REPLAY.hbp)" -eq 4
