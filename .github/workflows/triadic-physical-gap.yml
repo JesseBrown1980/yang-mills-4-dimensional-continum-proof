@@ -6,6 +6,11 @@ on:
       - main
     paths:
       - 'tests/test_triadic_physical_gap.py'
+      - 'tests/test_shadow_cat_residual.py'
+      - 'docs/PREDICTION-YM4-04-OBSERVABLE-RESIDUAL-20261106.hbp'
+      - 'docs/PREDICTION-YM4-04-SHADOW-CATS-20261106.hbp'
+      - 'docs/NOTE-YM4-SHADOW-CATS-RESIDUAL-20261106.md'
+      - 'tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.hbp'
       - 'docs/NOTE-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.md'
       - 'tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt'
@@ -13,6 +18,11 @@ on:
   pull_request:
     paths:
       - 'tests/test_triadic_physical_gap.py'
+      - 'tests/test_shadow_cat_residual.py'
+      - 'docs/PREDICTION-YM4-04-OBSERVABLE-RESIDUAL-20261106.hbp'
+      - 'docs/PREDICTION-YM4-04-SHADOW-CATS-20261106.hbp'
+      - 'docs/NOTE-YM4-SHADOW-CATS-RESIDUAL-20261106.md'
+      - 'tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.hbp'
       - 'docs/NOTE-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.md'
       - 'tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt'
@@ -35,10 +45,19 @@ jobs:
           set -euo pipefail
           mkdir -p build/triadic-gap
           python3 -I -X utf8 tests/test_triadic_physical_gap.py | tee build/triadic-gap/REPLAY.hbp
-          grep -F 'YM4_BRIDGE_VERIFY|status=PASS|prediction_rows=13|rational_family_levels=13|exact_three_scale=1|jump_rows=12|cluster_examples=4|' build/triadic-gap/REPLAY.hbp
+          grep -F 'YM4_BRIDGE_VERIFY|status=PASS|prediction_rows=13|residual_prediction_rows=7|rational_family_levels=13|exact_three_scale=1|jump_rows=12|cluster_examples=4|residual_levels=7|dark_counterexamples=6|' build/triadic-gap/REPLAY.hbp
           grep -F 'YM4_COLLAPSE|family=q=1/(1+a^2)|one_scale_blocking_defect_bound=6*a_squared|physical_mass_upper=a|continuum_gap_limit=ZERO|' build/triadic-gap/REPLAY.hbp
           test "$(grep -c '^YM4_MATRIX_JUMP|' build/triadic-gap/REPLAY.hbp)" -eq 12
           test "$(grep -c '^YM4_CLUSTER|' build/triadic-gap/REPLAY.hbp)" -eq 4
+          test "$(grep -c '^YM4_OBSERVABLE_RESIDUAL|' build/triadic-gap/REPLAY.hbp)" -eq 7
+          test "$(grep -c '^YM4_DARK_EXCITATION|' build/triadic-gap/REPLAY.hbp)" -eq 6
+          python3 -I -X utf8 tests/test_shadow_cat_residual.py | tee build/triadic-gap/SHADOW.hbp
+          grep -F 'SHADOW_VERIFY|status=PASS|predictions=9|torus_sizes=27,9,3,1|jump_exponents=0..16|high_jump=43046721|' build/triadic-gap/SHADOW.hbp
+          test "$(grep -c '^SHADOW_BLOCK|' build/triadic-gap/SHADOW.hbp)" -eq 4
+          test "$(grep -c '^SHADOW_JUMP|' build/triadic-gap/SHADOW.hbp)" -eq 6
+          if test -f tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt; then
+            tail -n +4 tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt | cmp - build/triadic-gap/SHADOW.hbp
+          fi
           if test -f tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt; then
             tail -n +4 tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt | cmp - build/triadic-gap/REPLAY.hbp
           fi
@@ -46,7 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           cd build/triadic-gap
-          for case in drop_physical_a misread_high_cluster wrong_cube_block fake_uniform_collapsing_gap; do
+          for case in drop_physical_a misread_high_cluster wrong_cube_block fake_uniform_collapsing_gap claim_observed_residual_implies_gap; do
             rc=0
             python3 -I -X utf8 ../../tests/test_triadic_physical_gap.py "sabotage=$case" > "$case.hbp" || rc=$?
             test "$rc" -eq 1
@@ -55,9 +74,23 @@ jobs:
               misread_high_cluster) expected=cluster_not_first ;;
               wrong_cube_block) expected=exact_three_scale ;;
               fake_uniform_collapsing_gap) expected=uniform_continuum_gap_not_inferred ;;
+              claim_observed_residual_implies_gap) expected=visible_residual_does_not_set_first_gap ;;
             esac
             grep -F "FAILED|check=$expected|json=0" "$case.hbp"
             grep -F 'YM4_BRIDGE_VERIFY|status=FAIL|' "$case.hbp"
+          done
+          for case in flip_residue lose_signed_third break_C1_cycle confuse_shadow_with_mass_gap; do
+            rc=0
+            python3 -I -X utf8 ../../tests/test_shadow_cat_residual.py "sabotage=$case" > "shadow-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            case "$case" in
+              flip_residue) expected=initial_residual ;;
+              lose_signed_third) expected=signed_shadow_third ;;
+              break_C1_cycle) expected=C1_order_three ;;
+              confuse_shadow_with_mass_gap) expected=shadow_not_gap_1 ;;
+            esac
+            grep -F "FAILED|check=$expected|json=0" "shadow-$case.hbp"
+            grep -F 'SHADOW_VERIFY|status=FAIL|' "shadow-$case.hbp"
           done
           sha256sum *.hbp > SHA256SUMS
       - uses: actions/upload-artifact@v4
