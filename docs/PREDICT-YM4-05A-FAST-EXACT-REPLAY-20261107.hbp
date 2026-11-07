@@ -1,0 +1,10 @@
+# YM4-05A-FAST — FROZEN before optimization source, 2026-11-07
+PREDICT|id=01|baseline=14_row_YM4_05A_CHARACTER_WEAK_RECEIPT|exact_byte_replay=MUST_MATCH|status=GATE|json=0
+PREDICT|id=02|SU2_Haar_144_orthogonality_checks=PRESERVED|status=GATE|json=0
+PREDICT|id=03|two_dim_heat_scales=9,81,729,6561|status=GATE|json=0
+PREDICT|id=04|four_dim_Wilson_beta=1,4,16,64|tail_bound=1e-12_exact_rational|status=GATE|json=0
+PREDICT|id=05|negative_controls=8|must_all_fail_named|status=GATE|json=0
+PREDICT|id=06|matrix_symmetry=exploit_in_future_YM4_05B|not_a_claim_of_speedup_here=YES|status=SCOPE|json=0
+PREDICT|id=07|dedicated_replay_math_plus_falsifiers_budget_seconds=20|runner_startup_and_separate_global_gates_excluded=YES|status=TARGET|json=0
+PREDICT|id=08|no_float_global_gate=SEPARATE_REQUIRED|never_skip_for_merge=YES|status=GATE|json=0
+PREDICTION_SUMMARY|rows=8|freeze_before_code=YES|no_float=YES|json=0
