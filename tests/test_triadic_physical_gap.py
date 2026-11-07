@@ -39,7 +39,7 @@ if len(sys.argv) == 2:
 ROOT = Path(__file__).resolve().parents[1]
 PRED = ROOT / "docs/PREDICTION-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.hbp"
 preddata = PRED.read_bytes()
-assert preddata.count(b"\nPREDICT|id=") == 12 or preddata.startswith(b"PREDICT|id=")
+assert preddata.count(b"\nPREDICT|id=") == 13
 predictions = [l for l in preddata.splitlines() if l.startswith(b"PREDICT|id=")]
 assert len(predictions) == 13
 FAILS = []
