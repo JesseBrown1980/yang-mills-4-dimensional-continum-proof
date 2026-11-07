@@ -17,7 +17,7 @@ from pathlib import Path
 CONTROLS=("wrong_line_order","missing_inverse","wrong_beta_exponent",
           "wrong_log_tail","wrong_q9","spurious_visibility",
           "positive_toy_mass_floor","wrong_Haar_connected_zero_for_same_plaquette",
-          "claim_nonzero_C_from_bound")
+          "claim_nonzero_C_from_bound","false_variance_gt_one")
 fault=""
 if len(sys.argv)>2 or (len(sys.argv)==2 and
     (not sys.argv[1].startswith("sabotage=")
@@ -359,6 +359,30 @@ def rg_bounds():
          normalized_connected_Wilson_error_lt="1/100000000",
          bound="3*delta_total/(1-delta_total)",
          normalized_Wilson_character_absolute_bound="1")
+    # The finite periodic Euclidean measure with N_t=18 (above) is
+    # DIFFERENT from the infinite temporal extent vacuum correlation.
+    # For the latter, choose F=1/2 Tr(U_{9x9 spatial rectangle}) on
+    # a 3D fine spatial slice, so ||F||<=1 and F is gauge invariant.
+    # With positive normalized fine transfer P=T/lambda0, the centered
+    # v=(F-<Omega,F Omega>)*Omega has norm^2=Var(F)<=1.
+    # Thus C_Omega(n)=<v,P^n v> is NONNEGATIVE, and for n=9
+    # C_Omega(9)<=q0^9 Var(F)<=1/1152^9.
+    # Visibility of the actual first eigenstate is not required for
+    # the upper bound, and is not established by it.
+    if fault=="false_variance_gt_one":
+        check(lt(rat(1),rat(1)),"RED_false_variance_gt_one")
+    check(q9==rat(1,3573323304747203265520730112),
+          "infinite_time_vacuum_corr_transfer_upper")
+    emit("YM4_04_VACUUM_CORRELATION",
+         state="INFINITE_TEMPORAL_EXTENT_INTERACTING_SU2_VACUUM",
+         observable="NORMALIZED_SPATIAL_9x9_WILSON_RECTANGLE",
+         time_separation_fine_links=9,
+         connected_C_lower="0",
+         connected_C_upper=rs(q9),
+         centered_variance_upper="1",
+         proof="POSITIVE_TRANSFER_PLUS_YM4_02D_RATIO",
+         first_excitation_overlap="OPEN",
+         distinct_from_finite_periodic_measure="YES")
     emit("YM4_04_SPECTRUM",
          fine_transfer_subleading_ratio_le=rs(q0),
          B3_visible_subspace_ratio_le=rs(q3),
@@ -425,6 +449,15 @@ def main():
     check(sum(int(z.startswith(b"PREDICT|supp="))
               for z in supplement.splitlines())==6,
           "six_supplement_predictions_frozen_before_actual_C_bound")
+    vacuum_pred=root.joinpath("docs",
+        "PREDICTION-YM4-04-VACUUM-CORRELATION-SUPPLEMENT-20261107.hbp"
+        ).read_bytes()
+    check(sum(int(z.startswith(b"PREDICT|vac="))
+              for z in vacuum_pred.splitlines())==4,
+          "four_vacuum_correlator_predictions_frozen")
+    emit("YM4_04_VACUUM_FREEZE",
+         prediction_sha256=hashlib.sha256(vacuum_pred).hexdigest(),
+         predictions=4,source_commit="4a5853527776cbf660e4acf2410016c3694dc187")
     emit("YM4_04_CORRELATION_FREEZE",
          supplement_sha256=hashlib.sha256(supplement).hexdigest(),
          predictions=6,source_commit="a31877e0d91c67ee34e06ba8fc428a66b2d8fa95")
