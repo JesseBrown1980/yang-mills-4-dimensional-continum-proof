@@ -1,0 +1,69 @@
+name: YM4-04B local SU2 connected Wilson cluster comparison
+
+on:
+  push:
+    paths:
+      - 'tests/test_ym4_04b_local_cluster.py'
+      - 'tests/YM4_04B_LOCAL_CLUSTER_RECEIPT.txt'
+      - 'docs/PREDICTION-YM4-04B-LOCAL-CLUSTER-20261107.hbp'
+      - 'docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md'
+      - '.github/workflows/ym4-04b-local-cluster.yml'
+  pull_request:
+    paths:
+      - 'tests/test_ym4_04b_local_cluster.py'
+      - 'tests/YM4_04B_LOCAL_CLUSTER_RECEIPT.txt'
+      - 'docs/PREDICTION-YM4-04B-LOCAL-CLUSTER-20261107.hbp'
+      - 'docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md'
+      - '.github/workflows/ym4-04b-local-cluster.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-local-connected-su2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Frozen prediction and strict no-float source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c '^PREDICT|id=' docs/PREDICTION-YM4-04B-LOCAL-CLUSTER-20261107.hbp)" -eq 19
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact 4D plaquette incidence, Dobrushin comparison, 2-block bounds and all-k tail
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_04b_local
+          python3 -I -X utf8 tests/test_ym4_04b_local_cluster.py | tee build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_COUPLING|beta0=1/1000|alpha0=9/500|local_overlap_count=18|sufficient_contraction=18*beta_lt_1|large_volume_Np_unrestricted=YES|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_FINE_GEOMETRY|shape=18x18x18x18|spatial_wilson_rectangle_side=9|perimeter_support=36|temporal_distance=9|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_TWO_BLOCKS|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'first_connected_proxy_error_lt=1/10000|second_connected_proxy_error_lt=1/100000000000000|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_INFINITE_SUM|fixed_bare_beta=1/1000|full_SU2_all_finite_tori=SIDE_2_TIMES_3_POWER_K|actual_ratio_bound=3*(9/500)^6|proxy_ratio_bound=1/2|all_connected_proxy_errors_sum_lt=1/10000|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_WEAK_COUPLING_RED|beta_small=1/1000|beta_test_1=1/10|alpha_bound_1=9/5|beta_test_2=4|alpha_bound_2=72|local_Dobrushin_test=NO_CONTRACTION_AT_WEAK_COUPLING|' build/ym4_04b_local/REPLAY.hbp
+          grep -F 'YM4_04B_DONE|status=PASS_STRONG_COUPLING_LOCAL_SUMMABLE_ONLY|exact_SU2_link_geometry=YES|bounded_two_block_connected_error=YES|all_k_connected_errors_summable=YES|weak_coupling_induction=HOLD|physical_gap_first_E1=OPEN|' build/ym4_04b_local/REPLAY.hbp
+          test "$(grep -c '^YM4_04B_GEOMETRY|' build/ym4_04b_local/REPLAY.hbp)" -eq 3
+          test "$(grep -c '^YM4_04B_SCALE|' build/ym4_04b_local/REPLAY.hbp)" -eq 6
+          if test -f tests/YM4_04B_LOCAL_CLUSTER_RECEIPT.txt; then
+            cmp tests/YM4_04B_LOCAL_CLUSTER_RECEIPT.txt build/ym4_04b_local/REPLAY.hbp
+          fi
+      - name: Eight invalid SU2 local-inequality claims must fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for case in wrong_plaquette_incidence wrong_neighbor_sum missing_time_separation wrong_proxy_exponent spurious_weak_coupling_contraction spurious_first_weight wrong_scale_ratio non_summable_invention; do
+            rc=0
+            python3 -I -X utf8 tests/test_ym4_04b_local_cluster.py "sabotage=$case" > "build/ym4_04b_local/RED-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            grep -F "FAILED|check=RED_$case|json=0" "build/ym4_04b_local/RED-$case.hbp"
+          done
+          (cd build/ym4_04b_local && sha256sum *.hbp > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-04b-su2-local-cluster-bound-and-weak-coupling-countertest
+          path: build/ym4_04b_local/
+          if-no-files-found: warn
