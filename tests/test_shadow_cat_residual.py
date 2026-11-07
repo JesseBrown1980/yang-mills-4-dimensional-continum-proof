@@ -21,6 +21,14 @@ SABOTAGE=arg[0][9:] if arg else ""
 FAIL=[]
 
 
+def power3(k):
+    assert isinstance(k, int) and k >= 0
+    result=1
+    for _ in range(k):
+        result*=3
+    return result
+
+
 def emit(tag,**data):
     print(tag+"|"+"|".join(str(k)+"="+str(v) for k,v in data.items())+"|json=0")
 
@@ -103,7 +111,7 @@ def main():
     first=[(i-1)%27 for i in range(27)]
     jumped=first
     for k in range(17):
-        n=3**k
+        n=power3(k)
         result=apply(jumped,cells)
         independent=[cells[(i-n)%27] for i in range(27)]
         check("jump_"+str(k),result==independent and residue(result)==2)
@@ -121,7 +129,7 @@ def main():
     # A persistent finite-valued Shadow Cat DOES NOT supply the energy
     # of the lowest excited transfer state. The spectral ratio can close.
     for j in (1,3,6,9,12):
-        K=3**j
+        K=power3(j)
         qdark=(K*K,K*K+1)
         upper=(1,K)
         valid=residue(cells)==2 and K>=3 and upper[0]<upper[1]
