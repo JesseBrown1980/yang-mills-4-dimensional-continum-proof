@@ -385,8 +385,8 @@ def main():
     emit("YM4_05A_LIMITS",
          two_dim_weak_character_blocking="EXACT",
          four_dim_local_Wilson_mixed_chair="CERTIFIED",
-         4D_induced_action_Wilson_closed="NOT_PROVED",
-         4D_weak_coupling_Renormalized_flow="OPEN",
+         fourD_induced_action_Wilson_closed="NOT_PROVED",
+         fourD_weak_coupling_Renormalized_flow="OPEN",
          full_spectrum_first_gap="OPEN",
          physical_mass_uniformity="OPEN",
          continuum_4D_SU2_Yang_Mills_Clay="OPEN")
