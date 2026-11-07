@@ -1,0 +1,25 @@
+# Host run 42330239449 ; Shadow Cat prediction commit 11fecb81fa2a98c68f6b35cf13e8dcd20a2f29de
+# Ternary C0,C1,C2 residual; not a measured gauge excitation or quantum signal.
+# 22 replay rows; full output exactly reproduced by CI.
+SHADOW_BEGIN|registered_predictions=9|prediction_sha256=e0eb82ea0d49a5db0ebc158dd1ffdd570377fbdb2590a79f6aa288622f5a9682|interpretation=TERNARY_ALGEBRA_NOT_YM4_SPECTRUM|json=0
+SHADOW_CAT|C1_rotation=0|C0=1|C1=1|C2=0|shadow_residue=2|unsigned_fraction=2/3|balanced_fraction=-1/3|json=0
+SHADOW_CAT|C1_rotation=1|C0=0|C1=1|C2=1|shadow_residue=2|unsigned_fraction=2/3|balanced_fraction=-1/3|json=0
+SHADOW_CAT|C1_rotation=2|C0=1|C1=0|C2=1|shadow_residue=2|unsigned_fraction=2/3|balanced_fraction=-1/3|json=0
+SHADOW_SIGNED|residue=2|unsigned=2/3|balanced=-1/3|difference=1/1|same_residue_mod_integer=1|json=0
+SHADOW_CONNECTED|torus_A=1,1,0|torus_B=0,1,1|shared_shadow_residue=2|instant_physical_signal=NOT_TESTED|json=0
+SHADOW_BLOCK|sites=27|residue=2|state_sha256=abacc7845bc7b8fa853eec4e5a4216224b03db6aaf65e46ad500beb06a46ff02|json=0
+SHADOW_BLOCK|sites=9|residue=2|state_sha256=f7a9d8a7615e9b6c7a63b96ece8466fa256438832a6c9e0455a3a9fd4175b0b5|json=0
+SHADOW_BLOCK|sites=3|residue=2|state_sha256=070b13c004e9475fa155cd84d90de9f87db1b7dea6707329638a6ce66043d246|json=0
+SHADOW_BLOCK|sites=1|residue=2|state_sha256=dbc1b4c900ffe48d575b5da5c638040125f65db0fe3e24494b76ea986457d986|json=0
+SHADOW_JUMP|exponent=0|steps=1|ring_sites=27|remainder=1|shadow_residue=2|direct_short_checked=1|state_sha256=7795b4c762966dea8ca4392f16d46629980b06067bfa4a91422538f127efb438|json=0
+SHADOW_JUMP|exponent=1|steps=3|ring_sites=27|remainder=3|shadow_residue=2|direct_short_checked=1|state_sha256=ee335ec53f7884648f0a6acdc95df90df56a00efdcbd8bcbcaa63555e149d8a5|json=0
+SHADOW_JUMP|exponent=2|steps=9|ring_sites=27|remainder=9|shadow_residue=2|direct_short_checked=1|state_sha256=4faeaca5066fa29ad69b2c6cff478bbdfdf2827e2e7f17b1627a20f720460967|json=0
+SHADOW_JUMP|exponent=3|steps=27|ring_sites=27|remainder=0|shadow_residue=2|direct_short_checked=1|state_sha256=abacc7845bc7b8fa853eec4e5a4216224b03db6aaf65e46ad500beb06a46ff02|json=0
+SHADOW_JUMP|exponent=9|steps=19683|ring_sites=27|remainder=0|shadow_residue=2|direct_short_checked=0|state_sha256=abacc7845bc7b8fa853eec4e5a4216224b03db6aaf65e46ad500beb06a46ff02|json=0
+SHADOW_JUMP|exponent=16|steps=43046721|ring_sites=27|remainder=0|shadow_residue=2|direct_short_checked=0|state_sha256=abacc7845bc7b8fa853eec4e5a4216224b03db6aaf65e46ad500beb06a46ff02|json=0
+SHADOW_GAP_BOUNDARY|inv_spacing=3|shadow_residue=2|dark_transfer_ratio=9/10|dark_first_physical_gap_upper=1/3|positive_uniform_gap=NOT_INFERRED|actual_SU2_gauge_observable=NOT_CONSTRUCTED|json=0
+SHADOW_GAP_BOUNDARY|inv_spacing=27|shadow_residue=2|dark_transfer_ratio=729/730|dark_first_physical_gap_upper=1/27|positive_uniform_gap=NOT_INFERRED|actual_SU2_gauge_observable=NOT_CONSTRUCTED|json=0
+SHADOW_GAP_BOUNDARY|inv_spacing=729|shadow_residue=2|dark_transfer_ratio=531441/531442|dark_first_physical_gap_upper=1/729|positive_uniform_gap=NOT_INFERRED|actual_SU2_gauge_observable=NOT_CONSTRUCTED|json=0
+SHADOW_GAP_BOUNDARY|inv_spacing=19683|shadow_residue=2|dark_transfer_ratio=387420489/387420490|dark_first_physical_gap_upper=1/19683|positive_uniform_gap=NOT_INFERRED|actual_SU2_gauge_observable=NOT_CONSTRUCTED|json=0
+SHADOW_GAP_BOUNDARY|inv_spacing=531441|shadow_residue=2|dark_transfer_ratio=282429536481/282429536482|dark_first_physical_gap_upper=1/531441|positive_uniform_gap=NOT_INFERRED|actual_SU2_gauge_observable=NOT_CONSTRUCTED|json=0
+SHADOW_VERIFY|status=PASS|predictions=9|torus_sizes=27,9,3,1|jump_exponents=0..16|high_jump=43046721|shared_signed_residual=2/3_equiv_-1/3_mod1|physical_instant_signaling=NOT_SHOWN|SU2_continuum_mass_gap=OPEN|json_zero=1|json=0
