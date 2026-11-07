@@ -1,0 +1,18 @@
+# YM4-05B MATRIX-LAW ACCELERATOR: PREDICTION FREEZE BEFORE SOURCE.
+# Structural exact speed gains; no replacement of a 2.17-billion-row certification.
+# Fix original YM4-05A commit, receipt and all 4D continuum proof scopes unchanged.
+PREDICT|id=01|method=COMMON_DENOMINATOR_INTEGER_HORNER|SU2_S3_HAAR_Z=SUM_x^m_over_4^m_m_factorial_m_plus_1_factorial|status=EXACT_IDENTITY|json=0
+PREDICT|id=02|N=40,40,96,384|beta=1,4,16,64|Q=0,4,16,36|four_certified_mixed_ratios=UNCHANGED|status=EXACT|json=0
+PREDICT|id=03|slow_independent_rational_reference=16_combinations|lower_upper_fractions_match_byte_for_byte_when_normalized=YES|status=PASS_TARGET|json=0
+PREDICT|id=04|mixed_ppm_beta_1=1365888:1365889|mixed_ppm_beta_4=1512545:1512546|mixed_ppm_beta_16=1533420:1533421|mixed_ppm_beta_64=1538087:1538088|status=PINNED|json=0
+PREDICT|id=05|all_64_sign_staple_configs=GRAM_Q_EQUAL_DIRECT|distinct_Q=4|histogram_Q0=20,Q4=30,Q16=12,Q36=2|status=EXACT|json=0
+PREDICT|id=06|six_staple_Gram_matrix=SYMMETRIC|diagonal=1|15_pairs|norm_sum_q=6_plus_twice_pair_sum|status=EXACT|json=0
+PREDICT|id=07|noncommuting_rational_SU2_Gram_example=VALID|q_direct_equals_pair_form|status=EXACT|json=0
+PREDICT|id=08|SU2_heat_character_eigenmode_mod_prime=1000081|q=7_over_9|n=1_to_9|k=0_to_40|40_ternary_cubings|status=ALGEBRA_ONLY|json=0
+PREDICT|id=09|modular_direct_reference_k=1,3,9,20,40|jump_equals_pow=YES|zero_mode_backward=REFUSE|status=EXACT|json=0
+PREDICT|id=10|Pascal_mod3_Frobenius_for_commuting_translations=VALID|ordinary_real_SU2_4D_action_collapse=NOT_VALID|status=SCOPE|json=0
+PREDICT|id=11|benchmark_beta64_repeated_exact_Haar=fast_only_under_5000_ms_on_hosted_runner|speedup_ration_nonbinding|time_receipt_not_a_math_certificate=YES|status=PERFORMANCE_GATE|json=0
+PREDICT|id=12|ORIGINAL_YM4_05A_14_ROWS=BYTE_EXACT_REPLAY|original_checker=UNCHANGED|no_float_gate=PASS_TARGET|status=REGRESSION|json=0
+PREDICT|id=13|invalid_Q,wrong_Horner_order,wrong_tail,wrong_Gram,wrong_ternary_exponent,backward_zero_eigenvalue,noncommuting_as_abelian,claim_full_4D_gap|all_REJECT|status=RED|json=0
+PREDICT|id=14|claim_45m_orbit_complete_in_seconds=NOT_ESTABLISHED|claim_full_4D_nonlocal_RG_in_seconds=NOT_ESTABLISHED|actual_YangMills_mass_gap=OPEN|status=SCOPE|json=0
+PREDICTION_SUMMARY|rows=14|frozen_before_fast_source=YES|physical_claims=UNCHANGED|json=0
