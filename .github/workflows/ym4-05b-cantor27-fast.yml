@@ -7,6 +7,7 @@ on:
       - 'tests/YM4_05B_CANTOR27-RECEIPT.hbp'
       - 'docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp'
       - 'docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp'
+      - 'docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp'
       - 'docs/NOTE-YM4-05B-CANTOR27-20261107.md'
       - '.github/workflows/ym4-05b-cantor27-fast.yml'
   pull_request:
@@ -15,6 +16,7 @@ on:
       - 'tests/YM4_05B_CANTOR27-RECEIPT.hbp'
       - 'docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp'
       - 'docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp'
+      - 'docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp'
       - 'docs/NOTE-YM4-05B-CANTOR27-20261107.md'
       - '.github/workflows/ym4-05b-cantor27-fast.yml'
 
@@ -33,6 +35,10 @@ jobs:
           set -euo pipefail
           test "$(grep -c '^PREDICT|id=' docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp)" -eq 14
           test "$(grep -c '^PREDICT|cantor=' docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp)" -eq 12
+          # Postmeasurement theorem prediction: registered AFTER the 27 point receipt.
+          test "$(grep -c '^PREDICT|reduction=' docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp)" -eq 8
+          grep -F 'PREDICT|reduction=01|target=GAUGE_INVARIANT_R|necessary=R(F(U))_equals_Phi(R(U))_for_all_U|Q_only=REJECTED_BY_14_CANTOR_CONTRADICTIONS|' docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp
+          grep -F 'PREDICT|reduction=07|physical_continuum_gap=REQUIRES_uniform_lower_m(a,L)_greater_than_zero|coupling_flow_beta(a)_to_infinity=UNPROVED|all_scales=OPEN|' docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp
           python3 -I -X utf8 scripts/no_float_gate.py --selftest
           python3 -I -X utf8 scripts/no_float_gate.py .
       - name: 27 Cantor points vs true nonlinear 4D update, exact Haar and verified 3^40 orbit jump
