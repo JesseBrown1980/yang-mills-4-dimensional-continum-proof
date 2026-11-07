@@ -1,0 +1,68 @@
+name: YM4-05A exact SU2 weak-coupling character and 4D staple controls
+
+on:
+  push:
+    paths:
+      - 'tests/test_ym4_05a_character_weak_coupling.py'
+      - 'tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp'
+      - 'docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp'
+      - 'docs/NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md'
+      - '.github/workflows/ym4-05a-su2-character-weak.yml'
+  pull_request:
+    paths:
+      - 'tests/test_ym4_05a_character_weak_coupling.py'
+      - 'tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp'
+      - 'docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp'
+      - 'docs/NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md'
+      - '.github/workflows/ym4-05a-su2-character-weak.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-character-and-staple-verification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict prediction-first no-floating-point audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c '^PREDICT|id=' docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp)" -eq 16
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact 2D SU2 heat-kernel blocks and 4D Wilson mixed-chair cert
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_05a_character
+          python3 -I -X utf8 tests/test_ym4_05a_character_weak_coupling.py | tee build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_CHARACTERS|group=CONTINUOUS_SU2|degrees_tested=12|integer_Haar_orthogonality_pairs=144|fundamental_dimension=2|Casimir_4_times=n_squared_minus_1|convolution=delta_nm_chi_n_over_n|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_HEAT_THEOREM|setting=TWO_DIMENSIONAL_DISK_ONLY|link_Haar_convolution=EXACT|block3_plaquettes=9|block9_plaquettes=81|B3_B3_equals_B9=PASS|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_4D_GEOMETRY|dimension=4|same_oriented_link_plaquettes=6|unordered_staple_pairs=15|pair_of_different_planes=12|mixed_plane_union_without_common_link=6|mixed_loop=NONPLANAR_SIX_LINK_CHAIR|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_4D_HAAR|beta=64|Wilson_link_integration=EXACT_SU2_S3_HAAR|staple_count=6|Q_pp=36|Q_pm=16|Q_mp=16|Q_mm=4|log_mixed_beta_squared_coefficient=1|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_LIMITS|two_dim_weak_character_blocking=EXACT|four_dim_local_Wilson_mixed_chair=CERTIFIED|fourD_induced_action_Wilson_closed=NOT_PROVED|fourD_weak_coupling_Renormalized_flow=OPEN|' build/ym4_05a_character/REPLAY.hbp
+          grep -F 'YM4_05A_DONE|status=PASS_WITH_4D_WEAK_RG_HOLD|two_dim_heat_kernel_semigroup=EXACT|four_dim_six_staple_pair_network=REQUIRED|physical_gap=NOT_CERTIFIED|' build/ym4_05a_character/REPLAY.hbp
+          test "$(grep -c '^YM4_05A_HEAT_FLOW|' build/ym4_05a_character/REPLAY.hbp)" -eq 4
+          test "$(grep -c '^YM4_05A_4D_HAAR|' build/ym4_05a_character/REPLAY.hbp)" -eq 4
+          if test -f tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp; then
+            cmp tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp build/ym4_05a_character/REPLAY.hbp
+          fi
+      - name: Eight falsified character or 4D closure statements must exit red
+        shell: bash
+        run: |
+          set -euo pipefail
+          for case in bad_dimension bad_convolution bad_ternary_area bad_casimir missing_chair bad_mixed_derivative claim_4D_closure claim_mass_gap; do
+            rc=0
+            python3 -I -X utf8 tests/test_ym4_05a_character_weak_coupling.py "sabotage=$case" > "build/ym4_05a_character/RED-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            grep -F "FAILED|check=RED_$case|json=0" "build/ym4_05a_character/RED-$case.hbp"
+          done
+          (cd build/ym4_05a_character && sha256sum *.hbp > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-05a-two-dim-character-four-dim-wilson-six-staple
+          path: build/ym4_05a_character/
+          if-no-files-found: warn

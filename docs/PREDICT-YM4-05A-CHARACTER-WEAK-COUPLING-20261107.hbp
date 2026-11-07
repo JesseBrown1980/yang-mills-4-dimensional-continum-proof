@@ -1,0 +1,21 @@
+# 2026-11-07. YM4-05A: EXACT SU2 WEAK-COUPLING CHARACTER-BLOCKING CONTROLS.
+# FROZEN BEFORE CHECKER SOURCE. Real 2D heat-kernel convolution is a positive
+# control, NOT a proof of 4D Wilson closure or Clay mass gap.
+# 4D Wilson integration over a single link produces nonplanar chair terms.
+PREDICT|id=01|source_model=CONTINUOUS_SU2|positive_control=2D_heat_kernel_on_disk|negative_control=4D_Wilson_six_staples|status=SCOPE|json=0
+PREDICT|id=02|heat_kernel_character_dim=n|spin=(n-1)/2|Casimir_four_times=n_squared_minus_1|coefficient=c_n=q^(n_squared_minus_1)|status=DERIVED|json=0
+PREDICT|id=03|SU2_Haar_character_convolution=delta_nm_chi_n_over_n|convolution_heat_q_and_r=heat_qr|status=DERIVED|json=0
+PREDICT|id=04|2D_B3_n_coeff=q^(9*(n_squared_minus_1))|2D_B9_n_coeff=q^(81*(n_squared_minus_1))|B3_B3_equals_B9=EXACT|status=DERIVED|json=0
+PREDICT|id=05|weak_2D_sequence=q_k=1_minus_1_over_2_times_9_power_k|k=1,2,3,4|increasing_beta_eff=2_times_9_power_k|status=DERIVED|json=0
+PREDICT|id=06|blocked_coefficient_fundamental=q_k^(3*9^k)|q_k_power_9^k_STRICT_INCREASE=YES|limit=e^(-1/2)|status=DERIVED|json=0
+PREDICT|id=07|log_q_k_power_9^k_in=[-1/2-1/(8*9^k-4),-1/2]|holds_all_k_ge_1=YES|status=DERIVED|json=0
+PREDICT|id=08|2D_blocked_SU2_heatkernel_character_truncation_n_le_9|uniform_tail_bound=2*100*(2/3)^99|tail_lt=1/1000000000000|status=DERIVED|json=0
+PREDICT|id=09|4D_link_has_six_adjacent_plaquettes=YES|staple_pair_count=15|mixed_plane_pair_produces_nonplanar_six_edge_chair=YES|status=DERIVED|json=0
+PREDICT|id=10|SU2_local_one_link_Z(beta;Q)=sum_m_beta^(2m)*Q^m/(4^m*m!*(m+1)!)|Q=norm_squared_sum_of_six_staples|status=DERIVED|json=0
+PREDICT|id=11|Z_beta_Q_0=1|Z_beta_Q_4,16,36=STRICT_INCREASING_IN_Q|integer_Taylor_interval=YES|status=DERIVED|json=0
+PREDICT|id=12|2_link_sign_mixed_difference_Qpp_minus_Qpm_minus_Qmp_plus_Qmm=8|mixed_log_Z_leading_beta2_coefficient=1|status=DERIVED|json=0
+PREDICT|id=13|4D_mixed_ratio_R=Z36*Z4/Z16^2|beta_values=1,4,16,64|R_lower_gt_1=YES|rational_tail_relative_lt=1/1000000000000|status=EXPECTED|json=0
+PREDICT|id=14|4D_single_link_elimination_Wilson_plaquettes_only=NOT_JUSTIFIED|nonplanar_chair_term_nonzero=YES|higher_character_networks_possible=YES|status=LIMIT|json=0
+PREDICT|id=15|2D_heat_kernel_weak_flow_four_dim_SU2_flow=NOT_EQUIVALENT|first_excitation_4D=OPEN|weak_coupling_renormalization_4D=OPEN|continuum_mass_gap=OPEN|status=LIMIT|json=0
+PREDICT|id=16|FALSIFIERS=bad_dimension,bad_convolution,bad_ternary_area,bad_casimir,missing_chair,bad_mixed_derivative,claim_4D_closure,claim_mass_gap|all_REJECT|status=RED|json=0
+PREDICTION_SUMMARY|rows=16|frozen_first=YES|no_numerical_full_4D_integral=YES|json=0
