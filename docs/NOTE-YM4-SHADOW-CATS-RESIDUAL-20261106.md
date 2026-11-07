@@ -57,3 +57,17 @@ Normal execution must print `SHADOW_VERIFY|status=PASS`; all four sabotage execu
 ### Next physical obligation, not completed
 
 Construct `O_shadow(U)` as an actual gauge-invariant function of continuous SU(2) link variables on each four-dimensional lattice slice, and check `O_shadow(B_3 U)` versus a controlled fine-slice operator. Then compute its **connected** Euclidean two-point function and whether it has nonzero overlap with the spectral lowest excited gauge state. Prove any claimed positive physical gap uniformly as lattice spacing vanishes. Without that construction, the ternary conservation result is a valid piece of algebra but not a Clay theorem.
+
+## Exact S₃ gauge-invariance gate for a candidate Shadow Cat mapping
+
+**Additional prediction freeze:** `be28b59568896d44dc3d5d2dd226c988ed127ea0`, committed **before** test code. [Hosted run 42330519118](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/42330519118) **PASS**: all **1,296** two-link S₃ holonomies and pairs of local gauge transformations reproduced exact conjugation covariance, plus four deliberately incorrect controls rejected. The eleven HBP records are pinned in [SHADOW_CAT_S3_GAUGE_RECEIPT.txt](../tests/SHADOW_CAT_S3_GAUGE_RECEIPT.txt).
+
+This test explores **one explicitly labeled candidate**: identify the Shadow Cat's `r=0,1,2` with the three elements of the order-three subgroup `A₃ ⊲ S₃`. Let `a=(012)` be the positive 3-cycle and `t=(01)` a transposition. Then
+
+`t a t⁻¹ = a⁻¹`, and likewise `t a² t⁻¹ = a`.
+
+Thus a holonomy carrying the putative raw residue `r=1` transforms to `r=2` under a legitimate local S₃ gauge transformation at the loop basepoint. **The signed label cannot be a gauge-invariant Wilson-loop observable by itself.** Its conjugacy class, however, is invariant: the two 3-cycles share the standard representation character `χ_std=-1`, while `χ_std(1)=2` and `χ_std(transposition)=0`. This invariant test **loses the orientation/sign information** that distinguished the two signed Shadow Cat representations.
+
+The retained `r=2/3≡-1/3 (mod 1)` bookkeeping and the full conjugacy-class observation therefore answer **different questions**. More structure (for instance a relationally anchored gauge-invariant Wilson network) would be needed to represent the orientation without choosing a gauge. This is an algebraic obstruction for the **candidate** `A₃` identification; it does not disprove a different, properly defined Shadow Cat mechanism.
+
+A finite `S₃` class-function check also does **not** establish that the residual is an operator in continuous SU(2) four-dimensional Yang–Mills, or that its correlation decays with a positive first physical excitation energy. The required continuum construction and mass-gap bound remain open.
