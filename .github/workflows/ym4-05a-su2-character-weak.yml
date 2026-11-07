@@ -65,7 +65,7 @@ jobs:
           (cd build/ym4_05a_character && sha256sum *.hbp > SHA256SUMS)
           end_ns="$(date +%s%N)"
           elapsed_ms="$(( (end_ns-begin_ns)/1000000 ))"
-          printf 'YM4_05A_FAST|exact_and_eight_red_elapsed_ms=%s|budget_ms=20000|json=0\n' "$elapsed_ms"
+          printf 'YM4_05A_FAST|eight_red_elapsed_ms=%s|budget_ms=20000|json=0\n' "$elapsed_ms"
           test "$elapsed_ms" -le 20000
       - uses: actions/upload-artifact@v4
         if: always()
