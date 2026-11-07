@@ -39,7 +39,6 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p build/ym4_05a_character
-          begin_ns="$(date +%s%N)"
           python3 -I -X utf8 tests/test_ym4_05a_character_weak_coupling.py | tee build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_CHARACTERS|group=CONTINUOUS_SU2|degrees_tested=12|integer_Haar_orthogonality_pairs=144|fundamental_dimension=2|Casimir_4_times=n_squared_minus_1|convolution=delta_nm_chi_n_over_n|' build/ym4_05a_character/REPLAY.hbp
           grep -F 'YM4_05A_HEAT_THEOREM|setting=TWO_DIMENSIONAL_DISK_ONLY|link_Haar_convolution=EXACT|block3_plaquettes=9|block9_plaquettes=81|B3_B3_equals_B9=PASS|' build/ym4_05a_character/REPLAY.hbp
@@ -56,6 +55,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          begin_ns="$(date +%s%N)"
           for case in bad_dimension bad_convolution bad_ternary_area bad_casimir missing_chair bad_mixed_derivative claim_4D_closure claim_mass_gap; do
             rc=0
             python3 -I -X utf8 tests/test_ym4_05a_character_weak_coupling.py "sabotage=$case" > "build/ym4_05a_character/RED-$case.hbp" || rc=$?
