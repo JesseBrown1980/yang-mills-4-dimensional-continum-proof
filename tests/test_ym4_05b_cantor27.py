@@ -454,7 +454,7 @@ def main():
           "original_4D_Haar_receipt_pinned_exist")
     emit("CANTOR27_START",source="NONLINEAR_4D_GAUGE_COVARIANT_Q8_SURROGATE",
          exact_local_integral="ACTUAL_SU2_HAAR",
-         4D_Wilson_transfer_operator="NOT_THIS_DYNAMICS",
+         fourD_Wilson_transfer_operator="NOT_THIS_DYNAMICS",
          original_sha256=hashlib.sha256(original).hexdigest())
     check_six_staple_Gram_Pascal()
     check_original_haar()
