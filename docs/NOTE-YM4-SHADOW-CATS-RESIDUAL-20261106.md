@@ -45,3 +45,15 @@ python3 -I -X utf8 tests/test_shadow_cat_residual.py sabotage=confuse_shadow_wit
 ```
 
 Normal execution must print `SHADOW_VERIFY|status=PASS`; all four sabotage executions must fail on a named check without an exception. This measures exact finite modular arithmetic, not a physical faster-than-light signal, not quantum cloning, and not the 4D continuum gap.
+
+## Hosted results — verified algebraic Shadow Cat residual
+
+[GitHub Actions run 42330239449](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/42330239449) passed under the repository's strict no-float gate. The complete exact HBP logs are pinned in [SHADOW_CAT_RESIDUAL_RECEIPT.txt](../tests/SHADOW_CAT_RESIDUAL_RECEIPT.txt) and [TRIADIC_PHYSICAL_GAP_RECEIPT.txt](../tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt). The repeat workflow compares each output byte for byte to those recorded receipts and independently requires all nine sabotage tests to fail on their named checks.
+
+**Algebraic observations:** the initial 27-trit ring had `r=2` and preserved it exactly at **27, 9, 3, and 1 cells**, and under every tested ternary jump exponent `k=0..16`, including `43,046,721` abstract permutation steps. The three distinct C1 cyclic rotations of the example `(1,1,0)` retained the same residual. Signed forms `2/3` and `-1/3` were recorded as representatives differing by one whole integer.
+
+**Mass-gap separation:** in an independent exact rational toy family, the residual associated with a *visible* correlation channel remained at least `1/2` while a lower, invisible excitation had a physical gap bounded above by `1/3^j`, vanishing as `j→∞`. This shows why even a persistent, precisely preserved observable sector label cannot by itself prove the positive first Yang–Mills mass gap. In this test, **the Shadow Cat trit residue and the correlation residual are distinct observables**; no equation identifying them as a real gauge-invariant Wilson operator has been derived.
+
+### Next physical obligation, not completed
+
+Construct `O_shadow(U)` as an actual gauge-invariant function of continuous SU(2) link variables on each four-dimensional lattice slice, and check `O_shadow(B_3 U)` versus a controlled fine-slice operator. Then compute its **connected** Euclidean two-point function and whether it has nonzero overlap with the spectral lowest excited gauge state. Prove any claimed positive physical gap uniformly as lattice spacing vanishes. Without that construction, the ternary conservation result is a valid piece of algebra but not a Clay theorem.
