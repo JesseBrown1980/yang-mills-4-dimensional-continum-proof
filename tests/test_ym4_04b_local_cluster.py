@@ -268,6 +268,9 @@ def numerical_certificates():
     p9=proxy_covariance_bound(2)
     error3=add(c3,p3)
     error9=add(c9,p9)
+    check(less(p3,rat(1,power(10,27)))
+          and less(p9,rat(1,power(10,29))),
+          "named_Wilson_proxy_individual_bounds")
     check(less(c3,rat(1,10000)) and
           less(error3,rat(1,10000)),
           "local_first_step_absolute_correlation_error")
@@ -322,6 +325,14 @@ def numerical_certificates():
           "summable_actual_tail_ratio")
     sum_actual=div(c3,sub(rat(1),actual_ratio))
     alpha1=mul(rat(18),beta1)
+    # For every k>=1, alpha_(k+1)/alpha_k
+    # = 4000^(-8*9^k) <= 4000^(-72) < 1/2.
+    # Since x/(1-x) is increasing, the same ratio upper bounds
+    # successive proxy covariance estimates.
+    alpha2=mul(rat(18),beta_proxy(2))
+    check(less(mul(rat(2),alpha2),alpha1)
+          and power(4000,72)>2,
+          "proxy_infinite_ratio_bound_from_power_recursion")
     sum_proxy=mul(rat(2),proxy_covariance_bound(1))
     total=add(sum_actual,sum_proxy)
     check(less(total,rat(1,10000)),
