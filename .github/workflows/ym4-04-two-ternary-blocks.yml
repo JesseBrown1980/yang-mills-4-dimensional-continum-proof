@@ -7,6 +7,7 @@ on:
       - 'tests/YM4_04_TWO_TERNARY_BLOCKS_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-TWO-TERNARY-BLOCKS-20261107.hbp'
       - 'docs/PREDICTION-YM4-04-TWO-BLOCK-CORRELATION-SUPPLEMENT-20261107.hbp'
+      - 'docs/PREDICTION-YM4-04-VACUUM-CORRELATION-SUPPLEMENT-20261107.hbp'
       - 'docs/NOTE-YM4-04-TWO-TERNARY-BLOCKS-20261107.md'
       - '.github/workflows/ym4-04-two-ternary-blocks.yml'
   pull_request:
@@ -15,6 +16,7 @@ on:
       - 'tests/YM4_04_TWO_TERNARY_BLOCKS_RECEIPT.txt'
       - 'docs/PREDICTION-YM4-04-TWO-TERNARY-BLOCKS-20261107.hbp'
       - 'docs/PREDICTION-YM4-04-TWO-BLOCK-CORRELATION-SUPPLEMENT-20261107.hbp'
+      - 'docs/PREDICTION-YM4-04-VACUUM-CORRELATION-SUPPLEMENT-20261107.hbp'
       - 'docs/NOTE-YM4-04-TWO-TERNARY-BLOCKS-20261107.md'
       - '.github/workflows/ym4-04-two-ternary-blocks.yml'
 
@@ -33,6 +35,7 @@ jobs:
           set -euo pipefail
           test "$(grep -c '^PREDICT|id=' docs/PREDICTION-YM4-04-TWO-TERNARY-BLOCKS-20261107.hbp)" -eq 19
           test "$(grep -c '^PREDICT|supp=' docs/PREDICTION-YM4-04-TWO-BLOCK-CORRELATION-SUPPLEMENT-20261107.hbp)" -eq 6
+          test "$(grep -c '^PREDICT|vac=' docs/PREDICTION-YM4-04-VACUUM-CORRELATION-SUPPLEMENT-20261107.hbp)" -eq 4
           python3 -I -X utf8 scripts/no_float_gate.py --selftest
           python3 -I -X utf8 scripts/no_float_gate.py .
       - name: Two exact b3 SU2 blocks, connected Wilson error, spectral and toy-gap check
@@ -45,6 +48,7 @@ jobs:
           grep -F 'YM4_04_CORRELATION|exact_two_block_pullback=BY_HAAR_THEOREM|delta1=1/536870912|delta2_lt=1/2^128|' build/ym4_04_two_blocks/REPLAY.hbp
           grep -F 'YM4_04_ACTUAL_CORRELATION|temporal_separation_fine_links=9|operator_pair=normalized_spatial_SU2_Wilson_t0_and_t9|Haar_single_means=ZERO|Haar_product=ZERO_BY_DISJOINT_LINK_SUPPORT|proxy_to_Haar_z_lt=1/2^128|' build/ym4_04_two_blocks/REPLAY.hbp
           grep -F 'actual_abs_C_lt=1/100000000|sign_and_first_spectral_weight=OPEN|proof=EXACT_PUSHFORWARD_PLUS_RATIONAL_ENCLOSURES|' build/ym4_04_two_blocks/REPLAY.hbp
+          grep -F 'YM4_04_VACUUM_CORRELATION|state=INFINITE_TEMPORAL_EXTENT_INTERACTING_SU2_VACUUM|observable=NORMALIZED_SPATIAL_9x9_WILSON_RECTANGLE|time_separation_fine_links=9|connected_C_lower=0|connected_C_upper=1/3573323304747203265520730112|' build/ym4_04_two_blocks/REPLAY.hbp
           grep -F 'YM4_04_SPECTRUM|fine_transfer_subleading_ratio_le=1/1152|' build/ym4_04_two_blocks/REPLAY.hbp
           grep -F 'YM4_04_PRECISION|absolute_Wilson_correlation_control=PASS|first_proxy_Wilson_signal_smaller_than_error=YES|relative_beta_precision=FAIL_EXPECTED|' build/ym4_04_two_blocks/REPLAY.hbp
           grep -F 'YM4_04_COUNTEREXAMPLE|model=Tdiag1_and_one_over_1_plus_a_squared|every_finite_gap=POSITIVE|physical_gap_limit=ZERO|' build/ym4_04_two_blocks/REPLAY.hbp
@@ -53,12 +57,12 @@ jobs:
           if test -f tests/YM4_04_TWO_TERNARY_BLOCKS_RECEIPT.txt; then
             cmp tests/YM4_04_TWO_TERNARY_BLOCKS_RECEIPT.txt build/ym4_04_two_blocks/REPLAY.hbp
           fi
-      - name: Nine false claims must all exit red at their named gate
+      - name: Ten false claims must all exit red at their named gate
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p build/ym4_04_two_blocks
-          for case in wrong_line_order missing_inverse wrong_beta_exponent wrong_log_tail wrong_q9 spurious_visibility positive_toy_mass_floor wrong_Haar_connected_zero_for_same_plaquette claim_nonzero_C_from_bound; do
+          for case in wrong_line_order missing_inverse wrong_beta_exponent wrong_log_tail wrong_q9 spurious_visibility positive_toy_mass_floor wrong_Haar_connected_zero_for_same_plaquette claim_nonzero_C_from_bound false_variance_gt_one; do
             rc=0
             python3 -I -X utf8 tests/test_ym4_04_two_ternary_blocks.py "sabotage=$case" > "build/ym4_04_two_blocks/RED-$case.hbp" || rc=$?
             test "$rc" -eq 1
