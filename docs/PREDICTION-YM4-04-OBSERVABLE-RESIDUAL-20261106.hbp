@@ -1,0 +1,12 @@
+# PRECOMMITTED AFTER USER'S RESIDUAL OBSERVATION, BEFORE CODE EXTENSION.
+# A visible two-point correlation C_j(1)=q_j^(1/a_j) at fixed physical time 1.
+# The measured residual R_j=1-C_j(1) is an observable difference, not automatically a Yang-Mills gap.
+# q_j stable=K/(K+1), q_j collapsing=K^2/(K^2+1), K=3^j.
+PREDICT|id=01|check=VISIBLE_RESIDUAL_STABLE|levels=0..6|R_j>=1/2|limit=1-exp(-1)|status=DERIVED|json=0
+PREDICT|id=02|check=VISIBLE_RESIDUAL_COLLAPSE|levels=0..6|0<R_j<=1/K|limit=0|status=DERIVED|json=0
+PREDICT|id=03|check=DARK_LOW_EXCITATION|T_j=diag(1,q_dark,q_visible)|q_dark=K_squared/(K_squared+1)|q_visible=K/(K+1)|K>=3|status=DERIVED|json=0
+PREDICT|id=04|check=VISIBLE_NONZERO_RESIDUAL_WITH_HIDDEN_GAP|R_visible>=1/2|first_physical_gap<=1/K|j=1..6|status=DERIVED|json=0
+PREDICT|id=05|check=VISIBLE_CORRELATION|overlap_with_dark=ZERO|visible_C=q_visible^K|physical_time=1|status=DERIVED|json=0
+PREDICT|id=06|check=RED_CONTROL|claim_any_nonzero_residual_proves_mass_gap=REJECT|status=RED|json=0
+PREDICT|id=07|check=SCOPE|toy_operator_not_4D_SU2=1|actual_user_residual_NOT_MEASURED=1|status=LIMIT|json=0
+PREDICTION_SUMMARY|rows=7|frozen_before_extension=1|results=NOT_RUN|json=0
