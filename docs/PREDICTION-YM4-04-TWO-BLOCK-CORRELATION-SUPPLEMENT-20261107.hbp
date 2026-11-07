@@ -1,0 +1,10 @@
+# 2026-11-07 SUPPLEMENTAL PREDICTION FROZEN BEFORE CORRELATION-TO-HAAR CODE.
+# This adds an actual interacting continuous-SU2 finite model C(t=9a) absolute
+# enclosure, not an estimate of first-state spectral weight or the mass gap.
+PREDICT|supp=01|lattice_coarse=2^4|spatial_plaquettes=at_t0_and_t1|Haar_single_means=0|Haar_two_point=0|disjoint_spatial_links=YES|status=DERIVED|json=0
+PREDICT|supp=02|Wilson_proxy_beta2=beta0^81/4^80|Nc_plaquettes=96|z=2*Nc*beta2|proxy_to_Haar_density_ratio_in_exp_plus_minus_z=YES|status=DERIVED|json=0
+PREDICT|supp=03|eta_proxy_le=z/(1-z)|z_lt=1/2^128|connected_proxy_bound=eta_plus_eta_squared|status=DERIVED|json=0
+PREDICT|supp=04|actual_connected_C_at_t9a_minus_1e_minus8_to_plus_1e_minus8=YES|proof=triangle_absolute_density_error_plus_Haar_proxy|status=DERIVED|json=0
+PREDICT|supp=05|actual_C_sign=UNKNOWN|mass_gap_from_single_C=NOT_CERTIFIED|spectral_weight=OPEN|status=LIMIT|json=0
+PREDICT|supp=06|wrong_Haar_connected_zero_for_same_plaquette=REJECT|claim_nonzero_C_from_bound=REJECT|status=RED|json=0
+PREDICTION_SUPPLEMENT_SUMMARY|rows=6|before_implementation=YES|json=0
