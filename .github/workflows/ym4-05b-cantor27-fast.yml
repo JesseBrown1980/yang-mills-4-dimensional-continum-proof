@@ -1,0 +1,74 @@
+name: YM4-05B Cantor27 nonlinear SU2-local and exact matrix-law fast replay
+
+on:
+  push:
+    paths:
+      - 'tests/test_ym4_05b_cantor27.py'
+      - 'tests/YM4_05B_CANTOR27-RECEIPT.hbp'
+      - 'docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp'
+      - 'docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp'
+      - 'docs/NOTE-YM4-05B-CANTOR27-20261107.md'
+      - '.github/workflows/ym4-05b-cantor27-fast.yml'
+  pull_request:
+    paths:
+      - 'tests/test_ym4_05b_cantor27.py'
+      - 'tests/YM4_05B_CANTOR27-RECEIPT.hbp'
+      - 'docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp'
+      - 'docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp'
+      - 'docs/NOTE-YM4-05B-CANTOR27-20261107.md'
+      - '.github/workflows/ym4-05b-cantor27-fast.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-cantor27-fast-math:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prediction-first and strict no-floating-point audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(grep -c '^PREDICT|id=' docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp)" -eq 14
+          test "$(grep -c '^PREDICT|cantor=' docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp)" -eq 12
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: 27 Cantor points vs true nonlinear 4D update, exact Haar and verified 3^40 orbit jump
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_05b_cantor
+          start_ns="$(date +%s%N)"
+          python3 -I -X utf8 tests/test_ym4_05b_cantor27.py | tee build/ym4_05b_cantor/REPLAY.hbp
+          finish_ns="$(date +%s%N)"
+          elapsed_ms=$(( (finish_ns-start_ns)/1000000 ))
+          printf 'CANTOR27_RUNTIME|core_elapsed_ms=%s|runner_wall_clock=YES|json=0\n' "$elapsed_ms" | tee build/ym4_05b_cantor/RUNTIME.hbp
+          test "$elapsed_ms" -lt 10000
+          test "$(grep -c '^CANTOR27|slot=' build/ym4_05b_cantor/REPLAY.hbp)" -eq 27
+          test "$(grep -c '^CANTOR_FAST_HAAR|' build/ym4_05b_cantor/REPLAY.hbp)" -eq 4
+          grep -F 'CANTOR_FAST_GRAM|signed_Q8_inputs=64|Gram_matrix_pairs=15|unique_invariants=4|histogram=Q0:20,Q4:30,Q16:12,Q36:2|' build/ym4_05b_cantor/REPLAY.hbp
+          grep -F 'CANTOR27_ANALYSIS|samples=27|source=CLASSIC_MIDDLE_THIRD_LEVEL5_RANK_SUBSET|time_min=0|time_max=242|distinct_W_Q_pairs=23|local_Q_unique=8|Q_to_next_Q_conflicts=14|scalar_Q_Markov_reduction=REFUTED_FOR_THIS_UPDATE|' build/ym4_05b_cantor/REPLAY.hbp
+          grep -F 'CANTOR27_CYCLE|first_repeat_time=172|repeats_state_at=4|cycle_length=168|exact_state_equality=YES|jump_target=3^40|' build/ym4_05b_cantor/REPLAY.hbp
+          grep -F 'CANTOR27_DONE|status=PASS_WITH_SCALAR_REDUCTION_REFUTED|Cantor_measurements=27|inferred_Q_only_dynamics=FAIL|verified_full_state_cycle=PASS_SURROGATE_ONLY|nonlinear_jump_3pow40=VALID_AFTER_ORBIT_CERTIFICATION|actual_4D_SU2_Renormalized_reduction=OPEN|physical_YangMills_mass_gap=OPEN|' build/ym4_05b_cantor/REPLAY.hbp
+          if test -f tests/YM4_05B_CANTOR27-RECEIPT.hbp; then
+            cmp tests/YM4_05B_CANTOR27-RECEIPT.hbp build/ym4_05b_cantor/REPLAY.hbp
+          fi
+      - name: Seven false nonlinear reductions or gauge claims rejected
+        shell: bash
+        run: |
+          set -euo pipefail
+          for case in wrong_Cantor_digit missing_inverse broken_gauge_covariance false_Q_closure false_cycle incorrect_ternary_jump claim_physical_mass_gap; do
+            rc=0
+            python3 -I -X utf8 tests/test_ym4_05b_cantor27.py "sabotage=$case" > "build/ym4_05b_cantor/RED-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            grep -F "FAILED|check=RED_$case|json=0" "build/ym4_05b_cantor/RED-$case.hbp"
+          done
+          (cd build/ym4_05b_cantor && sha256sum *.hbp > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-05b-Cantor27-nonlinear-fast-matrixlaw
+          path: build/ym4_05b_cantor/
+          if-no-files-found: warn
