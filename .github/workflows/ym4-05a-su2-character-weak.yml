@@ -1,4 +1,6 @@
 name: YM4-05A exact SU2 weak-coupling character and 4D staple controls
+# Branch protection recheck after merged YM4-05B Cantor27 PR #40.
+# The separate global source and compiled no-float gates are still required.
 
 on:
   push:
