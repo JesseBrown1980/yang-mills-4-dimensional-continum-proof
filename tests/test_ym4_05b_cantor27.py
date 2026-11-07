@@ -118,6 +118,24 @@ def fast_haar(beta,Q,N):
     return lo,upper
 
 
+def check_six_staple_Gram_Pascal():
+    # Exact 64 signed SU2 inputs compress to four Gram norms.
+    histogram={0:0,4:0,16:0,36:0}
+    for signs in itertools.product((-1,1),repeat=6):
+        sum_signs=sum(signs)
+        q=sum_signs*sum_signs
+        paired=6+2*sum(signs[i]*signs[j]
+                       for i in range(6) for j in range(i+1,6))
+        check(q==paired,"signed_six_staple_Gram_pair_identity")
+        histogram[q]+=1
+    check(histogram=={0:20,4:30,16:12,36:2},
+          "six_staple_Pascal_64_to_four")
+    emit("CANTOR_FAST_GRAM",signed_Q8_inputs=64,
+         Gram_matrix_pairs=15,unique_invariants=4,
+         histogram="Q0:20,Q4:30,Q16:12,Q36:2",
+         method="PASCAL_AND_PAIRWISE_GRAM")
+
+
 def check_original_haar():
     expected=((1365888,1365889),(1512545,1512546),
               (1533420,1533421),(1538087,1538088))
@@ -162,8 +180,6 @@ def quat_mul(a,b):
 
 MUL=[[QI[quat_mul(a,b)] for b in QUATS] for a in QUATS]
 INV=[QI[(v[0],-v[1],-v[2],-v[3])] for v in QUATS]
-check_commutes= MULL_MARKER = 0
-
 
 def mult(a,b):
     return MUL[a][b]
@@ -440,6 +456,7 @@ def main():
          exact_local_integral="ACTUAL_SU2_HAAR",
          4D_Wilson_transfer_operator="NOT_THIS_DYNAMICS",
          original_sha256=hashlib.sha256(original).hexdigest())
+    check_six_staple_Gram_Pascal()
     check_original_haar()
     explore()
     verify_matrix_law_scope()
