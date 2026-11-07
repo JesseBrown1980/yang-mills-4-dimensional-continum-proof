@@ -1,0 +1,68 @@
+name: YM4 triadic physical gap falsifier
+on:
+  push:
+    branches:
+      - gpt6-ym4-triadic-physical-gap-obstruction-20261106
+      - main
+    paths:
+      - 'tests/test_triadic_physical_gap.py'
+      - 'docs/PREDICTION-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.hbp'
+      - 'docs/NOTE-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.md'
+      - 'tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt'
+      - '.github/workflows/triadic-physical-gap.yml'
+  pull_request:
+    paths:
+      - 'tests/test_triadic_physical_gap.py'
+      - 'docs/PREDICTION-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.hbp'
+      - 'docs/NOTE-YM4-04-TRIADIC-PHYSICAL-GAP-20261106.md'
+      - 'tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt'
+      - '.github/workflows/triadic-physical-gap.yml'
+permissions:
+  contents: read
+jobs:
+  physical-gap-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integer-only code gate
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Recompute exact rational families and triadic matrix powers
+        run: |
+          set -euo pipefail
+          mkdir -p build/triadic-gap
+          python3 -I -X utf8 tests/test_triadic_physical_gap.py | tee build/triadic-gap/REPLAY.hbp
+          grep -F 'YM4_BRIDGE_VERIFY|status=PASS|prediction_rows=13|rational_family_levels=13|exact_three_scale=1|jump_rows=12|cluster_examples=4|' build/triadic-gap/REPLAY.hbp
+          grep -F 'YM4_COLLAPSE|family=q=1/(1+a^2)|one_scale_blocking_defect_bound=6*a_squared|physical_mass_upper=a|continuum_gap_limit=ZERO|' build/triadic-gap/REPLAY.hbp
+          test "$(grep -c '^YM4_MATRIX_JUMP|' build/triadic-gap/REPLAY.hbp)" -eq 12
+          test "$(grep -c '^YM4_CLUSTER|' build/triadic-gap/REPLAY.hbp)" -eq 4
+          if test -f tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt; then
+            tail -n +4 tests/TRIADIC_PHYSICAL_GAP_RECEIPT.txt | cmp - build/triadic-gap/REPLAY.hbp
+          fi
+      - name: All four falsifiers fail in exactly the predicted way
+        run: |
+          set -euo pipefail
+          cd build/triadic-gap
+          for case in drop_physical_a misread_high_cluster wrong_cube_block fake_uniform_collapsing_gap; do
+            rc=0
+            python3 -I -X utf8 ../../tests/test_triadic_physical_gap.py "sabotage=$case" > "$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            case "$case" in
+              drop_physical_a) expected=gap_physical_scale ;;
+              misread_high_cluster) expected=cluster_not_first ;;
+              wrong_cube_block) expected=exact_three_scale ;;
+              fake_uniform_collapsing_gap) expected=uniform_continuum_gap_not_inferred ;;
+            esac
+            grep -F "FAILED|check=$expected|json=0" "$case.hbp"
+            grep -F 'YM4_BRIDGE_VERIFY|status=FAIL|' "$case.hbp"
+          done
+          sha256sum *.hbp > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-triadic-physical-gap-proof-boundary
+          path: build/triadic-gap/
+          if-no-files-found: warn
