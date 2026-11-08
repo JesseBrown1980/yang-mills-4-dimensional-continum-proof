@@ -1,0 +1,4 @@
+T+448620|sabotage=wrong_convolution_power exit=1 10 failed checks, among them two_dimensions_closes_S3_b=2_2x2
+T+855797|sabotage=wrong_first_coefficient exit=1 4 failed checks, among them first_dependence_(2,2,2,2)_position=0
+T+1280459|sabotage=extra_plaquette_factor exit=1 8 failed checks, among them brute_equals_elimination_S3
+T+1785387|sabotage=wrong_block_shell exit=1 2 failed checks, among them walls_Z2_4x2x2

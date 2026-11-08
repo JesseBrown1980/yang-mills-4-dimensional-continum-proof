@@ -1,0 +1,227 @@
+one-scale-blocking	UNKNOWN STEP	﻿2026-11-06T00:42:38.5181195Z Current runner version: '2.338.2'
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5207250Z ##[group]Runner Image Provisioner
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5208135Z Hosted Compute Agent
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5208743Z Version: 20261028.624
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5209482Z Commit: 54898b74c23fde5556c9b3c3a2290865feef0dfe
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5210579Z Build Date: 2026-10-28T21:51:42Z
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5211294Z Worker ID: {03e4b59a-2520-4c64-aca3-0afc8ae96def}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5212109Z Region: eastus2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5212678Z Cloud: Azure
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5213267Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5215214Z ##[group]Operating System
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5215875Z Ubuntu
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5216512Z 24.04.5
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5217042Z LTS
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5217640Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5218274Z ##[group]Runner Image
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5218897Z Image: ubuntu-24.04
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5219536Z Version: 20261101.360.1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5221287Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261101.360/images/ubuntu/Ubuntu2404-Readme.md
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5222993Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261101.360
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5223981Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5225196Z ##[group]GITHUB_TOKEN Permissions
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5227372Z Contents: read
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5228130Z Metadata: read
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5228745Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5231248Z Secret source: Actions
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5232234Z Cache mode: write
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5233597Z Prepare workflow directory
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5566735Z Prepare all required actions
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.5615481Z Getting action download info
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.7892993Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:38.9894090Z Complete job name: one-scale-blocking
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0909475Z ##[group]Run actions/checkout@v4
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0910612Z with:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0911246Z   repository: JesseBrown1980/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0915181Z   token: ***
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0915623Z   ssh-strict: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0916064Z   ssh-user: git
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0916523Z   persist-credentials: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0917021Z   clean: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0917472Z   sparse-checkout-cone-mode: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0917999Z   fetch-depth: 1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0918436Z   fetch-tags: false
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0918888Z   show-progress: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0919336Z   lfs: false
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0919752Z   submodules: false
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0920368Z   set-safe-directory: true
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0920880Z   allow-unsafe-pr-checkout: false
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.0922396Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3560912Z Syncing repository: JesseBrown1980/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3564724Z ##[group]Getting Git version info
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3567968Z Working directory is '/home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof'
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3572286Z [command]/usr/bin/git version
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3645312Z git version 2.56.0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3668889Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3684336Z Temporarily overriding HOME='/home/runner/work/_temp/316fb83a-515b-4fae-b5dc-1f5c4c7f8aad' before making global git config changes
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3688647Z Adding repository directory to the temporary git global config as a safe directory
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3693640Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3774411Z Deleting the contents of '/home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof'
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3785683Z ##[group]Initializing the repository
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3813180Z [command]/usr/bin/git init /home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3906450Z hint: Using 'master' as the name for the initial branch. This default branch name
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3909648Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3912329Z hint: to use in all of your new repositories, which will suppress this warning,
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3914242Z hint: call:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3915170Z hint:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3916342Z hint: 	git config --global init.defaultBranch <name>
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3917829Z hint:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3919218Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3921886Z hint: 'development'. The just-created branch can be renamed via this command:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3923799Z hint:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3924754Z hint: 	git branch -m <name>
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3925868Z hint:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3927413Z hint: Disable this message with "git config set advice.defaultBranchName false"
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3943529Z Initialized empty Git repository in /home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof/.git/
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.3956153Z [command]/usr/bin/git remote add origin https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4007925Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4010702Z ##[group]Disabling automatic garbage collection
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4012981Z [command]/usr/bin/git config --local gc.auto 0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4050407Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4052855Z ##[group]Setting up auth
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4056643Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4103146Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4502396Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4556052Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4797627Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.4846973Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.5108524Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.5159847Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.5177686Z ##[group]Fetching the repository
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.5181427Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +35b3f42f8d79912a8424e91da24b076b084f0c86:refs/remotes/origin/main
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8722097Z From https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8723698Z  * [new ref]         35b3f42f8d79912a8424e91da24b076b084f0c86 -> origin/main
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8727850Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8729000Z ##[group]Determining the checkout info
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8732227Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8738369Z [command]/usr/bin/git sparse-checkout disable
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8808085Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8846375Z ##[group]Checking out the ref
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.8851791Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9306194Z Switched to a new branch 'main'
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9312312Z branch 'main' set up to track 'origin/main'.
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9318609Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9369374Z [command]/usr/bin/git log -1 --format=%H
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9403039Z 35b3f42f8d79912a8424e91da24b076b084f0c86
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9656352Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9657001Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9657883Z ^[[36;1mgot=$(head -n 30 docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9658810Z ^[[36;1mtest "$got" = bcb1f24c0a6dd0e7942a9d4b5743145bf1536ec70854f65ff8e4854ff2c46a55^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9659667Z ^[[36;1mflux=$(sed -n 34,42p docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9660701Z ^[[36;1mtest "$flux" = 76e1d8f53e1519c82909004061c0587db59bf536902b6feb8610a2b2e7d82577^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9684827Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9685343Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9845024Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9845568Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9846214Z ^[[36;1mn=$(sed -n 's/^YM4_03_DONE|checks=\([0-9]*\)|.*/\1/p' tests/ONE_SCALE_BLOCKING_RECEIPT.txt)^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9846993Z ^[[36;1mgrep -qF "$n checks" docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9848078Z ^[[36;1mecho "618b4414384b76e8e66a5c5cc482f962bcdb9f1c1b00c81ed4a2aa4311cf458c  reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp" | sha256sum -c -^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9849511Z ^[[36;1mecho "404cb4d79a5a77dbf26f9e50871ace546c0b80a5cd287dc950069ac6764d8c0a  reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp" | sha256sum -c -^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9851249Z ^[[36;1m(cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS)^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9852038Z ^[[36;1m(cd reviews/opus55-ym4-03-recheck && sha256sum --strict -c --quiet SHA256SUMS)^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9852913Z ^[[36;1mcd reviews/opus55-ym4-03-certificate && sha256sum --strict -c --quiet SHA256SUMS^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9871766Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9872226Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9956107Z reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp: OK
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:39.9972787Z reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp: OK
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0069297Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0069831Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0070702Z ^[[36;1mpython3 -I -X utf8 scripts/no_float_gate.py --selftest^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0071364Z ^[[36;1mpython3 -I -X utf8 scripts/no_float_gate.py .^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0090342Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.0090832Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:40.1797449Z NO_FLOAT_SELFTEST_DONE|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2699053Z NO_FLOAT_DONE|code_files=104|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2827535Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2827954Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2828492Z ^[[36;1mpython3 -I -X utf8 tests/test_one_scale_blocking.py > /tmp/blocking.out 2> /tmp/blocking.err^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2829048Z ^[[36;1mcat /tmp/blocking.err^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2829446Z ^[[36;1mcmp /tmp/blocking.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2829895Z ^[[36;1mgrep -q '|failed=0|' /tmp/blocking.out^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2830886Z ^[[36;1mif grep -q '^FAILED' /tmp/blocking.out; then echo "a check failed"; exit 1; fi^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2852004Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:42:46.2852340Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4442078Z SECTION|covariance|elapsed_seconds=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4445024Z SECTION|closed_loops|elapsed_seconds=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4445581Z SECTION|reflection_map|elapsed_seconds=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4446249Z SECTION|haar_pushforward|elapsed_seconds=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4446910Z SECTION|integral_identity|elapsed_seconds=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4447481Z SECTION|two_dimensions|elapsed_seconds=17
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4448007Z SECTION|three_dimensions|elapsed_seconds=17
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4448583Z SECTION|first_dependence_count|elapsed_seconds=17
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4449151Z SECTION|first_dependence|elapsed_seconds=30
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4449708Z SECTION|certified_truncation|elapsed_seconds=65
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4450511Z SECTION|coarse_space|elapsed_seconds=65
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4451268Z SECTION|circle_spectrum|elapsed_seconds=91
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4451641Z SECTION|su2_two_dimensions|elapsed_seconds=91
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4451999Z SECTION|z2_surfaces|elapsed_seconds=91
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4452289Z SECTION|walls|elapsed_seconds=91
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4452566Z SECTION|electric_flux|elapsed_seconds=91
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4452866Z SECTION|done|elapsed_seconds=166
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4517526Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4517901Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4518189Z ^[[36;1mread_sabotage() {^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4518446Z ^[[36;1m  rc=0^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4518886Z ^[[36;1m  python3 -I -X utf8 tests/test_one_scale_blocking.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 || rc=$?^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4519377Z ^[[36;1m  test "$rc" = 1^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4519680Z ^[[36;1m  grep -qF "FAILED|check=$2|json=0" "/tmp/sab-$1.out"^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4520516Z ^[[36;1m  if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4521174Z ^[[36;1m  echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4521627Z ^[[36;1m}^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4521881Z ^[[36;1mread_sabotage reversed_order 'covariance_b=2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4522251Z ^[[36;1mread_sabotage shifted_endpoint 'covariance_b=2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4522654Z ^[[36;1mread_sabotage dropped_inverse 'covariance_b=2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4523063Z ^[[36;1mread_sabotage theta_no_inverse 'reflection_map_b=2_c=0'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4523560Z ^[[36;1mread_sabotage wrong_convolution_power 'two_dimensions_closes_S3_b=2_2x2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4524110Z ^[[36;1mread_sabotage wrong_first_coefficient 'first_dependence_(2,2,2,2)_position=0'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4524644Z ^[[36;1mread_sabotage extra_plaquette_factor 'brute_equals_elimination_S3'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4525089Z ^[[36;1mread_sabotage wrong_block_shell 'walls_Z2_4x2x2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4525483Z ^[[36;1mread_sabotage twist_every_link 'winding_parity_b=2'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4525902Z ^[[36;1mread_sabotage flux_wrong_sign 'flux_ground_in_e=0_Z2_2x1'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4526370Z ^[[36;1mread_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4526867Z ^[[36;1mread_sabotage overlap_skips_next 'overlap_bracket_Z2_2x1_(1, -1)'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4527445Z ^[[36;1mread_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4528068Z ^[[36;1mread_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4528673Z ^[[36;1mread_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4529257Z ^[[36;1mread_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4549364Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:45:32.4549648Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:48:17.8444364Z sabotage=reversed_order exit=1 10 failed checks, among them covariance_b=2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:51:02.8549462Z sabotage=shifted_endpoint exit=1 2 failed checks, among them covariance_b=2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:53:47.8115609Z sabotage=dropped_inverse exit=1 2 failed checks, among them covariance_b=2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:56:32.7312923Z sabotage=theta_no_inverse exit=1 4 failed checks, among them reflection_map_b=2_c=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T00:59:17.2202506Z sabotage=wrong_convolution_power exit=1 10 failed checks, among them two_dimensions_closes_S3_b=2_2x2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:02:03.0950692Z sabotage=wrong_first_coefficient exit=1 4 failed checks, among them first_dependence_(2,2,2,2)_position=0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:04:49.8332634Z sabotage=extra_plaquette_factor exit=1 8 failed checks, among them brute_equals_elimination_S3
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:07:37.2534638Z sabotage=wrong_block_shell exit=1 2 failed checks, among them walls_Z2_4x2x2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:09:08.0994066Z sabotage=twist_every_link exit=1 2 failed checks, among them winding_parity_b=2
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:11:46.1732293Z sabotage=flux_wrong_sign exit=1 64 failed checks, among them flux_ground_in_e=0_Z2_2x1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:14:30.7624115Z sabotage=overlap_skips_next exit=1 16 failed checks, among them overlap_closed_form_Z2_2x1_(1, -1)
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:17:15.4197429Z sabotage=overlap_skips_next exit=1 16 failed checks, among them overlap_bracket_Z2_2x1_(1, -1)
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:20:01.4302788Z sabotage=visibility_ignores_omega_error exit=1 7 failed checks, among them flux_exact_zero_overlap_not_certified_Z2_2x1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:22:46.2199334Z sabotage=visibility_error_halved exit=1 5 failed checks, among them flux_exact_zero_residual_rejected_Z2_2x1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:25:32.1930956Z sabotage=visibility_error_inflated exit=1 6 failed checks, among them flux_two_insertions_above_the_residual_Z2_2x1
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2289752Z sabotage=overlap_one_power exit=1 16 failed checks, among them overlap_bracket_narrow_Z2_2x1_(1, -1)
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2345543Z ##[group]Run set -euo pipefail
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2345870Z ^[[36;1mset -euo pipefail^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2346111Z ^[[36;1mrc=0^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2346585Z ^[[36;1mpython3 -I -X utf8 tests/test_one_scale_blocking.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2347104Z ^[[36;1mtest "$rc" = 2^[[0m
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2366983Z shell: /usr/bin/bash -e {0}
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.2367286Z ##[endgroup]
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.3101037Z Post job cleanup.
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4030885Z [command]/usr/bin/git version
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4077045Z git version 2.56.0
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4118616Z Temporarily overriding HOME='/home/runner/work/_temp/431f4ad1-cd79-43db-8b4f-b5c374c6e00a' before making global git config changes
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4120137Z Adding repository directory to the temporary git global config as a safe directory
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4125532Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/yang-mills-4-dimensional-continum-proof/yang-mills-4-dimensional-continum-proof
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4166265Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4234972Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4481980Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4509888Z http.https://github.com/.extraheader
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4523008Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4564545Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4870585Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.4947741Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.5356372Z Cleaning up orphan processes
+one-scale-blocking	UNKNOWN STEP	2026-11-06T01:28:09.5652721Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

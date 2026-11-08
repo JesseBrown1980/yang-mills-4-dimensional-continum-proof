@@ -1,0 +1,12 @@
+VERIFY_BYTES|files=299|listed=300|seal=0bad1e743faba59a|json=0
+VERIFY_SABOTAGES|names=15|replay_equals_full=15|json=0
+VERIFY_NUMBER|name=after_calls|replayed=15|results_hbp=15|same=1|json=0
+VERIFY_NUMBER|name=after_cpu_ms|replayed=579710|results_hbp=579710|same=1|json=0
+VERIFY_NUMBER|name=after_wall_ms|replayed=632694|results_hbp=632694|same=1|json=0
+VERIFY_NUMBER|name=before_calls|replayed=16|results_hbp=16|same=1|json=0
+VERIFY_NUMBER|name=before_cpu_ms|replayed=6530610|results_hbp=6530610|same=1|json=0
+VERIFY_NUMBER|name=before_wall_ms|replayed=7087377|results_hbp=7087377|same=1|json=0
+VERIFY_NUMBER|name=cpu_x1000|replayed=11265|results_hbp=11265|same=1|json=0
+VERIFY_NUMBER|name=wall_x1000|replayed=11201|results_hbp=11201|same=1|json=0
+VERIFY_PLANTS|rows=34|with_a_named_check=10|refused_by_it=10|json=0
+VERIFY_DONE|files=299|failures=0|reads_met=24|reads_miss=none|reads_observed=Q17,Q18,X01,X02,X03,X04,X05|result=PASS|json=0

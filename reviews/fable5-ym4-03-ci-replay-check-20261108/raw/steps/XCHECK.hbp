@@ -1,0 +1,6 @@
+XCHECK|name=wfA|files=24|diff_rc=0|json=0
+XCHECK|name=wfB|files=24|diff_rc=0|json=0
+XCHECK|name=wfP|files=24|diff_rc=0|json=0
+XCHECK|name=nofloat|files=4|diff_rc=0|json=0
+XCHECK|name=base|files=5|diff_rc=0|json=0
+XCHECK|name=compiled|files=8|diff_rc=0|json=0

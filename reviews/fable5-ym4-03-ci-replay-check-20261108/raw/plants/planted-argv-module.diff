@@ -1,0 +1,11 @@
+--- repo/tests/test_one_scale_blocking.py	2026-11-08 11:28:40.408426600 -0300
++++ argv/tests/test_one_scale_blocking.py	2026-11-08 13:17:04.486117200 -0300
+@@ -453,6 +453,8 @@
+ 
+ 
+ def section_haar():
++    if "sabotage=twist_every_link" in sys.argv:
++        say("YM4_03_PLANTED|section=haar|read=sys_argv_text|json=0")
+     stamp("haar_pushforward")
+     for name in ("Z2", "Z3", "S3", "Q8", "2T"):
+         g = GROUPS[name]

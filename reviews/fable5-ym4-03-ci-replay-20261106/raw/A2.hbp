@@ -1,0 +1,9 @@
+STEP|label=A2|k=1|rc=0|ms=31|cpu_ms=10|load=5.80|name=The 30 rows of the prediction as pushed at 7e6b111 stay byte for byte|json=0
+STEP|label=A2|k=2|rc=0|ms=181|cpu_ms=40|load=5.80|name=The note names the receipt's count, and the first complete read stays on file|json=0
+STEP|label=A2|k=3|rc=0|ms=17522|cpu_ms=15890|load=5.85|name=The gate reads this tree|json=0
+STEP|label=A2|k=4|rc=0|ms=305566|cpu_ms=281560|load=7.79|name=Every row against the recorded receipt, every section computed, the replay index written beside it|json=0
+STEP|label=A2|k=5|rc=0|ms=784185|cpu_ms=588240|load=6.96|name=Each sabotage exits 1 on its named checks, with no crash, computing every section its flag reaches|json=0
+STEP|label=A2|k=6|rc=0|ms=5731|cpu_ms=4910|load=6.96|name=The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket, and reused reached sections print the passing receipt|json=0
+STEP|label=A2|k=7|rc=0|ms=792|cpu_ms=430|load=6.96|name=An unknown sabotage name exits 2|json=0
+WORKFLOW_DONE|label=A2|head=0574ce9a4257dcb4dae656c96707390856c37e53|steps=7|total_ms=1114008|load_start=5.80|load_end=7.13|json=0
+RUN_DONE|label=A2|json=0

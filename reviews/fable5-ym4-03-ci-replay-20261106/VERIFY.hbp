@@ -1,0 +1,11 @@
+VERIFY_NUMBER|name=H1_after_ms|replayed=239588|measure_hbp=239588|same=1|json=0
+VERIFY_NUMBER|name=H1_x1000|replayed=10671|measure_hbp=10671|same=1|json=0
+VERIFY_NUMBER|name=H2_after_ms|replayed=240824|measure_hbp=240824|same=1|json=0
+VERIFY_NUMBER|name=H2_x1000|replayed=10616|measure_hbp=10616|same=1|json=0
+VERIFY_NUMBER|name=H4C_after_ms|replayed=229798|measure_hbp=229798|same=1|json=0
+VERIFY_NUMBER|name=H4_after_ms|replayed=165944|measure_hbp=165944|same=1|json=0
+VERIFY_NUMBER|name=hosted_step_ms|replayed=2556782|measure_hbp=2556782|same=1|json=0
+VERIFY_NUMBER|name=main_x1000|replayed=805|measure_hbp=805|same=1|json=0
+VERIFY_NUMBER|name=sabotage_x1000|replayed=10671|measure_hbp=10671|same=1|json=0
+VERIFY_NUMBER|name=stdout_identical|replayed=15|measure_hbp=15|same=1|json=0
+VERIFY_DONE|files=193|failures=0|ranges=P11:MET,P12:MET,P13:MET,P14:MET,P15:MET,P17:MET,Q1:MISS,Q2:MET,Q3:MISS|result=PASS|json=0

@@ -1,0 +1,10 @@
+--- repo/tests/test_one_scale_blocking.py	2026-11-08 11:28:40.408426600 -0300
++++ edit-certify/tests/test_one_scale_blocking.py	2026-11-08 13:17:06.247991000 -0300
+@@ -2122,6 +2122,7 @@
+ 
+ 
+ def certify_overlap(model, w, top_low, top_high, next_high, shift, label, leak=None, quiet=False):
++    shift = shift + 0
+     """The share of w in the eigenspace of the top value, between a certified low and high, from <w, T^(2n) w>, with the other eigenvalues in [0, next_high], all three at scale 2^shift.
+     In e = 0 a value above the target sits there too, the ground. leak = (num, den, ground_high): the ground's weight in w is at most num/den of |w|^2, and its value at most
+     ground_high/2^shift, so <w, T^(2n) w> <= (num/den) |w|^2 ground_high^(2n) + share |w|^2 top_high^(2n) + |w|^2 next_high^(2n), and each n takes that first term off the low end."""

@@ -1,0 +1,5 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=theta_no_inverse|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_reflection|line=216|literal=reversed_order|hits=512|json=0
+INSTR_LINE|section=section_reflection|line=359|literal=theta_no_inverse|hits=3104|json=0
+INSTR_SECTION|order=1|section=section_reflection|failed_added=4|names=reflection_map_b=2_c=0;reflection_map_b=2_c=-1;reflection_map_b=3_c=0;reflection_map_b=3_c=-1|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

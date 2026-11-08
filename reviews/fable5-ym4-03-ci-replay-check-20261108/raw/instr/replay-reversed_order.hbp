@@ -1,0 +1,11 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=reversed_order|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_covariance|line=216|literal=reversed_order|hits=384|json=0
+INSTR_LINE|section=section_loops|line=216|literal=reversed_order|hits=128|json=0
+INSTR_LINE|section=section_reflection|line=216|literal=reversed_order|hits=512|json=0
+INSTR_LINE|section=section_covariance|line=248|literal=shifted_endpoint|hits=128|json=0
+INSTR_LINE|section=section_covariance|line=251|literal=dropped_inverse|hits=128|json=0
+INSTR_LINE|section=section_reflection|line=359|literal=theta_no_inverse|hits=6208|json=0
+INSTR_SECTION|order=1|section=section_covariance|failed_added=2|names=covariance_b=2;covariance_b=3|json=0
+INSTR_SECTION|order=2|section=section_loops|failed_added=8|names=closed_loops_b=2_plaquette;closed_loops_b=2_rectangle_1x2;closed_loops_b=2_hexagon;closed_loops_b=2_winding;closed_loops_b=3_plaquette;closed_loops_b=3_rectangle_1x2;closed_loops_b=3_hexagon;closed_loops_b=3_winding|json=0
+INSTR_SECTION|order=3|section=section_reflection|failed_added=0|names=none|json=0
+INSTR_DONE|exit=1|sections_run=3|json=0

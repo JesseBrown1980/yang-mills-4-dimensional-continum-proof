@@ -7,6 +7,8 @@ hand is read as MET or MISS beside it, and a miss stays on record with no effect
 
 usage = test_one_scale_blocking.py [sabotage=NAME]
 NAME is one of SABOTAGE_NAMES below, and each must exit 1 on a named check. An unknown name exits 2.
+The workflow runs it through tests/one_scale_replay.py, which sets HOOKS: every section computed in the main step, and each sabotage computing the
+sections its flag reaches, with the others replayed from the receipt by sha256.
 Python standard library, integers only, json=0.
 """
 import itertools
@@ -26,6 +28,8 @@ for argument in sys.argv[1:]:
 FAILS = []
 MISSES = []
 CHECKS = [0]
+# The replay driver, tests/one_scale_replay.py, sets these two. Unset, run_section calls each section and level_bracket bisects, as before.
+HOOKS = {"section": None, "bracket": None}
 
 
 def say(text):
@@ -2097,6 +2101,13 @@ def count_above(pencil, value, shift):
 
 
 def level_bracket(pencil, top, wanted, shift):
+    """(low, high) at scale 2^shift, with at least `wanted` eigenvalues above low and fewer above high, one unit apart: bisect_level's pair.
+    The replay driver's hook, when set, answers with a seeded pair that it certifies by count_above at low and at high, or with bisect_level's own."""
+    hook = HOOKS["bracket"]
+    return bisect_level(pencil, top, wanted, shift) if hook is None else hook(pencil, top, wanted, shift)
+
+
+def bisect_level(pencil, top, wanted, shift):
     """(low, high) at scale 2^shift, with at least `wanted` eigenvalues above low and fewer above high, one unit apart."""
     low, high = 0, top
     if count_above(pencil, low, shift) < wanted:
@@ -2556,25 +2567,31 @@ def section_walls():
         say("YM4_03_WALLS|group=%s|fine=%s|wall_links=%d|interior_links=%d|blocks=%d|configurations=%d|product_over_blocks=%d|json=0" % (name, "x".join(map(str, sides)), len(wall_links), len(lat.links) - len(wall_links), len(blocks), rows, good))
 
 
+def run_section(function):
+    """A section, through the replay driver's hook when one is set."""
+    hook = HOOKS["section"]
+    return function() if hook is None else hook(function)
+
+
 def main():
     say("YM4_03_START|prediction=docs/PREDICTION-YM4-03.hbp|integers_only=1|json=0")
-    links = section_covariance()
+    links = run_section(section_covariance)
     say("YM4_03_COVARIANCE_TOTAL|coarse_links=%d|json=0" % links)
-    section_loops()
-    section_reflection()
-    section_haar()
-    section_pushforward()
-    section_two_dimensions()
-    section_three_dimensions()
-    section_core_count()
-    section_first_dependence()
-    section_certified()
-    section_coarse_space()
-    section_circle()
-    section_su2_two_dimensions()
-    section_z2_surfaces()
-    section_walls()
-    section_flux()
+    run_section(section_loops)
+    run_section(section_reflection)
+    run_section(section_haar)
+    run_section(section_pushforward)
+    run_section(section_two_dimensions)
+    run_section(section_three_dimensions)
+    run_section(section_core_count)
+    run_section(section_first_dependence)
+    run_section(section_certified)
+    run_section(section_coarse_space)
+    run_section(section_circle)
+    run_section(section_su2_two_dimensions)
+    run_section(section_z2_surfaces)
+    run_section(section_walls)
+    run_section(section_flux)
     stamp("done")
     say("YM4_03_DONE|checks=%d|failed=%d|prediction_misses=%d|misses=%s|json=0" % (CHECKS[0], len(FAILS), len(MISSES), ",".join(MISSES) if MISSES else "none"))
     return 1 if FAILS else 0

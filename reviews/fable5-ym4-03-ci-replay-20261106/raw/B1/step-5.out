@@ -1,0 +1,4 @@
+T+319594|sabotage=reversed_order exit=1 10 failed checks, among them covariance_b=2
+T+647215|sabotage=shifted_endpoint exit=1 2 failed checks, among them covariance_b=2
+T+1000250|sabotage=dropped_inverse exit=1 2 failed checks, among them covariance_b=2
+T+1401294|sabotage=theta_no_inverse exit=1 4 failed checks, among them reflection_map_b=2_c=0

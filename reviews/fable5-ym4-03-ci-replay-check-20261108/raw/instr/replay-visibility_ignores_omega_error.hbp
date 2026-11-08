@@ -1,0 +1,12 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=visibility_ignores_omega_error|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_flux|line=2035|literal=twist_every_link|hits=19|json=0
+INSTR_LINE|section=section_flux|line=2132|literal=overlap_one_power|hits=280|json=0
+INSTR_LINE|section=section_flux|line=2137|literal=overlap_skips_next|hits=240|json=0
+INSTR_LINE|section=section_flux|line=2157|literal=visibility_ignores_omega_error|hits=25|json=0
+INSTR_LINE|section=section_flux|line=2159|literal=visibility_error_halved|hits=25|json=0
+INSTR_LINE|section=section_flux|line=2161|literal=visibility_error_inflated|hits=25|json=0
+INSTR_LINE|section=section_flux|line=2213|literal=twist_every_link|hits=35200|json=0
+INSTR_LINE|section=section_flux|line=2229|literal=twist_every_link|hits=1|json=0
+INSTR_LINE|section=section_flux|line=2276|literal=flux_wrong_sign|hits=2880|json=0
+INSTR_SECTION|order=1|section=section_flux|failed_added=7|names=flux_exact_zero_residual_rejected_Z2_2x1;flux_exact_zero_overlap_not_certified_Z2_2x1;flux_exact_zero_residual_rejected_Z2_2x2;flux_exact_zero_residual_rejected_Z2_3x1;flux_exact_zero_overlap_not_certified_Z2_3x1;flux_exact_zero_residual_rejected_Z2_3x2;flux_exact_zero_residual_rejected_Q8_2x1|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

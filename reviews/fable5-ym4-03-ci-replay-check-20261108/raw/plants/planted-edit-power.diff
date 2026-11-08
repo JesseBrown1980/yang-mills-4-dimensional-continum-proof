@@ -1,0 +1,11 @@
+--- repo/tests/test_one_scale_blocking.py	2026-11-08 11:28:40.408426600 -0300
++++ edit-power/tests/test_one_scale_blocking.py	2026-11-08 13:17:05.413580600 -0300
+@@ -57,7 +57,7 @@
+     out = 1
+     for _ in range(exponent):
+         out *= base
+-    return out
++    return out + 0 * exponent
+ 
+ 
+ def frac(n, d):

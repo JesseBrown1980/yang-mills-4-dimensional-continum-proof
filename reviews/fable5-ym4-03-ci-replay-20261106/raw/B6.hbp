@@ -1,0 +1,4 @@
+SPLIT|function=read_sabotage|calls=16|chunk=6|size=2|picked=2|json=0
+STEP|label=B6|k=5|rc=0|ms=866684|cpu_ms=795990|load=6.71|name=Each sabotage exits 1 on its named check, with no crash|json=0
+WORKFLOW_DONE|label=B6|head=bf58ab272d2713c5e79d06005f6cfd1226763ed4|steps=1|total_ms=866684|load_start=7.75|load_end=6.71|json=0
+RUN_DONE|label=B6|json=0

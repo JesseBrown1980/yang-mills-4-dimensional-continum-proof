@@ -1,0 +1,11 @@
+--- repo/tests/one_scale_replay.py	2026-11-08 11:28:40.402056900 -0300
++++ unmark-section_reflection/tests/one_scale_replay.py	2026-11-08 13:17:07.529982000 -0300
+@@ -580,7 +580,7 @@
+     why = ""
+     if entry["reusable"] != "1":
+         why = "recorded_not_reusable"
+-    elif blocking.SABOTAGE and blocking.SABOTAGE in reached and CACHE_SABOTAGE != "reuse_reached":
++    elif blocking.SABOTAGE and blocking.SABOTAGE in reached and CACHE_SABOTAGE != "reuse_reached" and section != "section_reflection":
+         why = "reached_by_%s" % blocking.SABOTAGE
+     elif inputs != entry["inputs"]:
+         why = "inputs_changed"

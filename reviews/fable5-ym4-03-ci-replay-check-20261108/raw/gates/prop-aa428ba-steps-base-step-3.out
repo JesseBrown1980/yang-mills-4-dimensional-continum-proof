@@ -1,0 +1,7 @@
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/instrument.py|first=[exec_imports] import runpy at line 12|count=5|json=0
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/neg_controls.py|first=import yaml at line 12|count=3|json=0
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/opacity_probe.py|first=exec at line 24|count=5|json=0
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/plants.py|first=[dunder_strings] the string ipow at line 124|count=2|json=0
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/reads.py|first=[dunder_strings] the string ipow at line 118|count=1|json=0
+NO_FLOAT|file=reviews/fable5-ym4-03-ci-replay-check-20261108/scripts/wf_steps.py|first=import yaml at line 12|count=2|json=0
+NO_FLOAT_DONE|code_files=126|listed_files=28|listed_folders=0|listed_findings=162|failed=6|json=0

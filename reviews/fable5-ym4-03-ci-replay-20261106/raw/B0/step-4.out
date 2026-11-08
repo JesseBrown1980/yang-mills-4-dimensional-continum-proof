@@ -1,0 +1,17 @@
+T+321733|SECTION|covariance|elapsed_seconds=0
+T+321734|SECTION|closed_loops|elapsed_seconds=0
+T+321734|SECTION|reflection_map|elapsed_seconds=0
+T+321735|SECTION|haar_pushforward|elapsed_seconds=0
+T+321735|SECTION|integral_identity|elapsed_seconds=0
+T+321735|SECTION|two_dimensions|elapsed_seconds=32
+T+321736|SECTION|three_dimensions|elapsed_seconds=32
+T+321736|SECTION|first_dependence_count|elapsed_seconds=32
+T+321737|SECTION|first_dependence|elapsed_seconds=58
+T+321738|SECTION|certified_truncation|elapsed_seconds=127
+T+321738|SECTION|coarse_space|elapsed_seconds=127
+T+321739|SECTION|circle_spectrum|elapsed_seconds=177
+T+321739|SECTION|su2_two_dimensions|elapsed_seconds=177
+T+321740|SECTION|z2_surfaces|elapsed_seconds=178
+T+321741|SECTION|walls|elapsed_seconds=178
+T+321742|SECTION|electric_flux|elapsed_seconds=178
+T+321742|SECTION|done|elapsed_seconds=321
