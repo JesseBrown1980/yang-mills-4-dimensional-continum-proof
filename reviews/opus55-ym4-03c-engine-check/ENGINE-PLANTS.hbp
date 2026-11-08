@@ -1,0 +1,4 @@
+PLANT|name=one_class_orbit_dropped|exit=1|first=FAILED|check=P8c_d4_W_P_u^8|read=1/6|frozen=16|json=0
+PLANT|name=chair_class_orbit_doubled|exit=1|first=FAILED|check=P8_d4_W_PW_Q_perpendicular_u^10|read=4|frozen=3|json=0
+PLANT|name=cluster_sign_flipped|exit=1|first=FAILED|check=P5_d4_b8_chi_1(V_P)_log_rho|read=35/884736|frozen=-19/884736|json=0
+PLANT|name=twoi_average_past_degree_11|exit=1|first=FAILED|check=G1_2I_term_check_within_degree_11|max_link_degree=13|json=0
