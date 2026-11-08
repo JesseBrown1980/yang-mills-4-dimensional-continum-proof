@@ -1,0 +1,11 @@
+ROUTE_S_SETS|d4|boundary=the_chair's_12_line_links|method_a_chains_of_<=3_cubes_in_window_[-2,3)^d=4|cubes_in_window=2500|method_b_defect_repair_walk=4|in_both=4|by_size_connection_valence_euler=8:split:off_links_in_two:euler=1=1,10:connected:off_links_in_two:euler=1=3|tag=MEASURED|json=0
+ROUTE_S_DISKS|d4|disks_of_10=3|positions_of_l_held=(),(0),(1)|found_by_both_methods=3|largest_fine_span=2|so_it_embeds_in_fine_6^d,coarse_sides>=3|tag=MEASURED|json=0
+ROUTE_S_DECORATIONS|d4|half-integer_sets_of_8=1|spin-1_plaquettes_tried_in_window=7768|with_an_invariant_at_every_off_link=0|tag=MEASURED|json=0
+ROUTE_S_T2|route=Bessel_I_2/I_1|t_2=b1:1/4,b3:-1/96,b5:1/1536,b7:-1/23040,b9:13/4423680|tag=MEASURED|json=0
+ROUTE_S_CHAIR|d4|operator=chi_1/2_of_the_6-link_loop_around_P=(0,1)_and_Q=(0,2)_at_x'=0,spin_0_on_l=(0,e_0)|b10_log_rho=3/524288|S_10_coefficient=-3/524288|sign=+c_in_log_rho,-c_in_S_eff|clusters=none,F_P_and_F_Q_share_line_links_only|decorations=0|lattice=coarse_sides>=3|tag=MEASURED|json=0
+ROUTE_S_SETS|d3|boundary=the_chair's_12_line_links|method_a_chains_of_<=3_cubes_in_window_[-2,3)^d=4|cubes_in_window=125|method_b_defect_repair_walk=4|in_both=4|by_size_connection_valence_euler=8:split:off_links_in_two:euler=1=1,10:connected:off_links_in_two:euler=1=3|tag=MEASURED|json=0
+ROUTE_S_DISKS|d3|disks_of_10=3|positions_of_l_held=(),(0),(1)|found_by_both_methods=3|largest_fine_span=2|so_it_embeds_in_fine_6^d,coarse_sides>=3|tag=MEASURED|json=0
+ROUTE_S_DECORATIONS|d3|half-integer_sets_of_8=1|spin-1_plaquettes_tried_in_window=640|with_an_invariant_at_every_off_link=0|tag=MEASURED|json=0
+ROUTE_S_T2|route=Bessel_I_2/I_1|t_2=b1:1/4,b3:-1/96,b5:1/1536,b7:-1/23040,b9:13/4423680|tag=MEASURED|json=0
+ROUTE_S_CHAIR|d3|operator=chi_1/2_of_the_6-link_loop_around_P=(0,1)_and_Q=(0,2)_at_x'=0,spin_0_on_l=(0,e_0)|b10_log_rho=3/524288|S_10_coefficient=-3/524288|sign=+c_in_log_rho,-c_in_S_eff|clusters=none,F_P_and_F_Q_share_line_links_only|decorations=0|lattice=coarse_sides>=3|tag=MEASURED|json=0
+ROUTE_S_DONE|d4=3/524288|d3=3/524288|frozen=3/524288|result=MET|json=0

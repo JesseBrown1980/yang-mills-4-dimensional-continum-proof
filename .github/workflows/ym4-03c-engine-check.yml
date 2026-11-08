@@ -1,0 +1,80 @@
+# YM4-03C engine check: route C, a reading of the blocked action's coefficients by cumulants, placed supports, the line gauge (V, 1)
+# and complex-coordinate Haar moments, reruns byte for byte against its filed outputs in d = 3 and d = 4 through beta^10, with its
+# gauge control; its planted errors and the engine check's planted errors in the engine each fail by name; the engine's frozen
+# literals read against the frozen rows; and this folder's chain holds.
+name: YM4-03C engine check, route C
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'docs/PREDICTION-YM4-03C.hbp'
+      - 'docs/NOTE-YM4-03C-BLOCKED-ACTION.md'
+      - 'reviews/fable5-ym4-03c-engine/**'
+      - 'reviews/opus55-ym4-03c-engine-check/**'
+      - '.github/workflows/ym4-03c-engine-check.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-03C.hbp'
+      - 'docs/NOTE-YM4-03C-BLOCKED-ACTION.md'
+      - 'reviews/fable5-ym4-03c-engine/**'
+      - 'reviews/opus55-ym4-03c-engine-check/**'
+      - '.github/workflows/ym4-03c-engine-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ym4-03c-engine-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: The chain of this folder, HBI to HBP to SHA to SH to HASH
+        run: |
+          set -euo pipefail
+          d=reviews/opus55-ym4-03c-engine-check
+          (cd "$d" && sha256sum --strict -c --quiet SHA256SUMS)
+          python3 -I -B -X utf8 "$d/make_chain.py"
+          git diff --exit-code "$d"
+          seal=$(cat "$d/SHA256SUMS" "$d/INDEX.hbi" | sha256sum | cut -d' ' -f1)
+          grep -qF "|seal=$seal|" "$d/SEAL.hbp"
+      - name: Route C in d = 3 and d = 4 through beta^10, and the gauge control, byte for byte against the filed outputs
+        run: |
+          set -euo pipefail
+          d=reviews/opus55-ym4-03c-engine-check
+          python3 -I -B -X utf8 "$d/route_c_cumulants.py" 3 10 > /tmp/route_c_d3.hbp
+          cmp /tmp/route_c_d3.hbp "$d/ROUTE-C-D3.hbp"
+          grep -qx 'ROUTE_C_DONE|d=3|reads=19|met=19|miss=0|json=0' /tmp/route_c_d3.hbp
+          python3 -I -B -X utf8 "$d/route_c_cumulants.py" 3 10 gauge_1V > /tmp/route_c_d3_g.hbp
+          cmp /tmp/route_c_d3_g.hbp "$d/ROUTE-C-D3-GAUGE-1V.hbp"
+          grep -qx 'ROUTE_C_DONE|d=3|reads=19|met=19|miss=0|json=0' /tmp/route_c_d3_g.hbp
+          python3 -I -B -X utf8 "$d/route_c_cumulants.py" 4 10 > /tmp/route_c_d4.hbp
+          cmp /tmp/route_c_d4.hbp "$d/ROUTE-C-D4.hbp"
+          grep -qx 'ROUTE_C_DONE|d=4|reads=19|met=19|miss=0|json=0' /tmp/route_c_d4.hbp
+          if grep -q '|result=MISS|' /tmp/route_c_d3.hbp /tmp/route_c_d4.hbp /tmp/route_c_d3_g.hbp; then echo "a MISS row"; exit 1; fi
+      - name: Route C's planted errors, each a MISS by name
+        run: |
+          set -euo pipefail
+          d=reviews/opus55-ym4-03c-engine-check
+          bash "$d/route_c_plants.sh" > /tmp/route_c_plants.hbp
+          cmp /tmp/route_c_plants.hbp "$d/ROUTE-C-PLANTS.hbp"
+          test "$(grep -c '|exit=1|first_miss=ROUTE_C_READ|' /tmp/route_c_plants.hbp)" = 4
+      - name: The engine's frozen literals against the frozen rows
+        run: |
+          set -euo pipefail
+          d=reviews/opus55-ym4-03c-engine-check
+          python3 -I -B -X utf8 "$d/frozen_literals.py" docs/PREDICTION-YM4-03C.hbp reviews/fable5-ym4-03c-engine/RECEIPT-YM4-03C.hbp > /tmp/frozen_literals.hbp
+          cmp /tmp/frozen_literals.hbp "$d/FROZEN-LITERALS.hbp"
+      - name: Rust 1.81
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal
+          rustc +1.81.0 --version
+      - name: The engine check's planted errors in the engine, each stopped by name
+        run: |
+          set -euo pipefail
+          d=reviews/opus55-ym4-03c-engine-check
+          bash "$d/engine_plants.sh" /tmp/engine-plants > /tmp/engine_plants.hbp
+          cmp /tmp/engine_plants.hbp "$d/ENGINE-PLANTS.hbp"
+          test "$(grep -c '|exit=1|first=FAILED|check=' /tmp/engine_plants.hbp)" = 4

@@ -1,0 +1,4 @@
+ROUTE_C_PLANT|option=plant_no_multinomial|exit=1|first_miss=ROUTE_C_READ|d=3|row=G2|item=rho_b8_chi_1(V_P)|read=-277/884736|frozen=1/110592|literal_in_frozen_row=1|result=MISS|json=0|done=ROUTE_C_DONE|d=3|reads=19|met=13|miss=6|json=0
+ROUTE_C_PLANT|option=plant_moment_for_cumulant|exit=1|first_miss=ROUTE_C_READ|d=3|row=G2|item=rho_b8_chi_1(V_P)|read=35/884736|frozen=1/110592|literal_in_frozen_row=1|result=MISS|json=0|done=ROUTE_C_DONE|d=3|reads=19|met=13|miss=6|json=0
+ROUTE_C_PLANT|option=plant_support_twice|exit=1|first_miss=ROUTE_C_READ|d=3|row=P5|item=b8_chi_1/2(V_P)|read=43/98304|frozen=5/12288|literal_in_frozen_row=1|result=MISS|json=0|done=ROUTE_C_DONE|d=3|reads=19|met=17|miss=2|json=0
+ROUTE_C_PLANT|option=plant_recursion_sign|exit=1|first_miss=ROUTE_C_READ|d=3|row=G2|item=log_rho_b8_disjoint_pair_cumulant_terms|read=1|frozen=0|literal_in_frozen_row=1|result=MISS|json=0|done=ROUTE_C_DONE|d=3|reads=19|met=12|miss=7|json=0
