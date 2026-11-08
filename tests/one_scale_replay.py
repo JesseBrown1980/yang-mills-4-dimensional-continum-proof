@@ -24,9 +24,11 @@ A seed file for record holds level bracket rows. A seed is used when count_above
 returns, since count_above is non-increasing in the value (the pencil's G is a Gram matrix); bisect_level runs as well on every pencil of dimension at most
 CROSSCHECK_DIMENSION, and a difference exits 1.
 
-A failed replay check prints FAILED|check=replay_...|json=0 and exits 1. cache_sabotage names the controls for the replay itself, each of which must
-fail: key_misses_helper drops block_map from section_covariance's coverage and rewrites its key to match; row_tampered changes one byte of the
-receipt inside section_covariance's rows; stale_bracket moves every recorded level bracket up by one. An unknown name exits 2.
+A failed replay check prints FAILED|check=replay_...|json=0 and exits 1. cache_sabotage names the controls for the replay itself. Three must fail here:
+key_misses_helper drops block_map from section_covariance's coverage and rewrites its key to match; row_tampered changes one byte of the receipt
+inside section_covariance's rows; stale_bracket moves every recorded level bracket up by one. reuse_reached reuses every section, those the
+sabotage reaches too, so the run prints the passing receipt and exits 0, and the workflow's sabotage step, which needs exit 1 and the named line,
+refuses it. An unknown name exits 2.
 Python standard library, integers only, json=0.
 """
 import hashlib
@@ -41,7 +43,7 @@ MODULE_PATH = os.path.join(HERE, "test_one_scale_blocking.py")
 RECEIPT_PATH = os.path.join(HERE, "ONE_SCALE_BLOCKING_RECEIPT.txt")
 INDEX_NAME = "REPLAY-INDEX.hbp"
 FORMAT = "1"
-CACHE_SABOTAGE_NAMES = ("key_misses_helper", "row_tampered", "stale_bracket")
+CACHE_SABOTAGE_NAMES = ("key_misses_helper", "row_tampered", "stale_bracket", "reuse_reached")
 CROSSCHECK_DIMENSION = 12
 # The module's data, digested at each section's start, and its bookkeeping, which the replay carries by itself.
 DATA_NAMES = ("SABOTAGE_NAMES", "Q_ONE", "MAT_ONE", "GROUPS", "Q8_ELEMENTS", "T2_ELEMENTS", "T2_QUATS", "BITS", "CENTER")
@@ -405,9 +407,10 @@ def bracket_key(pencil, top, wanted, shift):
 
 
 def certified(pencil, top, wanted, shift, low, high):
-    """True when (low, high) is the pair bisect_level returns: read by count_above, which falls as the value rises."""
+    """True when (low, high) is the pair bisect_level returns: read by count_above, which falls as the value rises. With top at most 1,
+    bisect_level takes at most one count_above, and the pair is compared with its own."""
     if top <= 1:
-        return False
+        return (low, high) == blocking.bisect_level(pencil, top, wanted, shift)
     if low == 0 and high == 0:
         return blocking.count_above(pencil, 0, shift) < wanted
     if not (0 <= low and high == low + 1 and high <= top):
@@ -577,7 +580,7 @@ def replay_section(function):
     why = ""
     if entry["reusable"] != "1":
         why = "recorded_not_reusable"
-    elif blocking.SABOTAGE and blocking.SABOTAGE in reached:
+    elif blocking.SABOTAGE and blocking.SABOTAGE in reached and CACHE_SABOTAGE != "reuse_reached":
         why = "reached_by_%s" % blocking.SABOTAGE
     elif inputs != entry["inputs"]:
         why = "inputs_changed"

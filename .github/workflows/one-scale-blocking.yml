@@ -19,6 +19,7 @@ on:
       - 'reviews/opus55-ym4-03/**'
       - 'reviews/opus55-ym4-03-recheck/**'
       - 'reviews/opus55-ym4-03-certificate/**'
+      - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -35,6 +36,7 @@ on:
       - 'reviews/opus55-ym4-03/**'
       - 'reviews/opus55-ym4-03-recheck/**'
       - 'reviews/opus55-ym4-03-certificate/**'
+      - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -64,6 +66,7 @@ jobs:
           echo "404cb4d79a5a77dbf26f9e50871ace546c0b80a5cd287dc950069ac6764d8c0a  reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp" | sha256sum -c -
           (cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS)
           (cd reviews/opus55-ym4-03-recheck && sha256sum --strict -c --quiet SHA256SUMS)
+          (cd reviews/fable5-ym4-03-ci-replay-20261106 && sha256sum --strict -c --quiet SHA256SUMS)
           cd reviews/opus55-ym4-03-certificate && sha256sum --strict -c --quiet SHA256SUMS
       - name: The gate reads this tree
         run: |
@@ -93,6 +96,8 @@ jobs:
             done
             if grep -q 'Traceback' "/tmp/sab-$name.out"; then echo "sabotage=$name crashed"; exit 1; fi
             if grep -q '^FAILED|check=replay_' "/tmp/sab-$name.out"; then echo "sabotage=$name: a replay check failed"; exit 1; fi
+            reached=$(grep -c "|mode=computed|why=reached_by_$name|" "/tmp/sab-$name.out" || true)
+            if [ "$reached" -lt 1 ]; then echo "sabotage=$name computed no section it reaches"; exit 1; fi
             echo "sabotage=$name exit=$rc $(grep -c '^FAILED' "/tmp/sab-$name.out") failed checks, among them $*; computed=$(grep -c '|mode=computed|' "/tmp/sab-$name.out") reused=$(grep -c '|mode=reused|' "/tmp/sab-$name.out")"
           }
           read_sabotage reversed_order 'covariance_b=2'
@@ -110,7 +115,7 @@ jobs:
           read_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'
           read_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'
           read_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'
-      - name: The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket
+      - name: The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket, and reused reached sections print the passing receipt
         run: |
           set -euo pipefail
           refused() {
@@ -133,6 +138,14 @@ jobs:
           refused tests/one_scale_replay.py replay_coverage_misses_helper_section_covariance sabotage=reversed_order cache_sabotage=key_misses_helper
           refused tests/one_scale_replay.py replay_rows_sha256_section_covariance cache_sabotage=row_tampered
           refused tests/one_scale_replay.py replay_bracket_stale sabotage=overlap_one_power cache_sabotage=stale_bracket
+          # Every section reused, those reversed_order reaches too: the passing receipt and exit 0, which the sabotage step's read refuses.
+          rc=0
+          python3 -I -B -X utf8 tests/one_scale_replay.py replay /tmp/ym4-03-cache sabotage=reversed_order cache_sabotage=reuse_reached > /tmp/reuse.out 2> /tmp/reuse.err || rc=$?
+          test "$rc" = 0
+          cmp /tmp/reuse.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt
+          if grep -qF 'FAILED|check=covariance_b=2|json=0' /tmp/reuse.out; then echo "the reused rows hold the named check"; exit 1; fi
+          grep -q '|reused=16|computed=0|' /tmp/reuse.err
+          echo "cache control: every section reused under reversed_order gives exit 0 and the receipt, which the sabotage step refuses"
       - name: An unknown sabotage name exits 2
         run: |
           set -euo pipefail
