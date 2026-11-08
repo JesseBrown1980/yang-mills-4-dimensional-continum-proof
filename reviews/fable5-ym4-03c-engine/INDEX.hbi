@@ -1,10 +1,10 @@
 EMIT|family=ym4-03c-engine|name=docs/PREDICTION-YM4-03C.hbp|pid=113555f926625f35|bytes=12704|sha256=ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881|sh=ddd7b779d60e04f2|json=0
-EMIT|family=ym4-03c-engine|name=docs/NOTE-YM4-03C-BLOCKED-ACTION.md|pid=679f9cb8c2316f4c|bytes=43919|sha256=800e5c8b47a22264b83e4007ccda0862bc5a3092e5db7dab2f7e883a81e89814|sh=800e5c8b47a22264|json=0
+EMIT|family=ym4-03c-engine|name=docs/NOTE-YM4-03C-BLOCKED-ACTION.md|pid=679f9cb8c2316f4c|bytes=44828|sha256=9a3ca0681a5ebcfcd3c94a56626888f9c59fa725c5d9eb484749fd6f497edf33|sh=9a3ca0681a5ebcfc|json=0
 EMIT|family=ym4-03c-engine|name=.github/workflows/blocked-action-b10.yml|pid=2f60b3e838021f4b|bytes=7098|sha256=35f097ae6ad09de4ad7b945c00968966d73011a099f7721abcba65e1657c78e6|sh=35f097ae6ad09de4|json=0
-EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/blocked_action_engine.rs|pid=b4ec2f044e1c3d7a|bytes=164303|sha256=e92a009ea07a5d7fd1a449d9d423477dd699edda1a36a537c8d4a06c6fe12e5c|sh=e92a009ea07a5d7f|json=0
+EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/blocked_action_engine.rs|pid=b4ec2f044e1c3d7a|bytes=164575|sha256=d305d376263b01376417111775f3c5c260a0de1ee010405cdbd871b18f004bee|sh=d305d376263b0137|json=0
 EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/RECEIPT-YM4-03C.hbp|pid=9888ea38bf70b801|bytes=29650|sha256=76dc01b78449952bce3de6a21bfa0d0bac727f62cd0acf4e5f8d1566e4950227|sh=76dc01b78449952b|json=0
 EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/route_s_chair.py|pid=4840f3bd910eaf0a|bytes=13403|sha256=2f68bb50834e20af4f3152925670bc44edd716d3d056b6243f0caac1fde89de8|sh=2f68bb50834e20af|json=0
 EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/ROUTE-S.hbp|pid=f7c7f42322fab892|bytes=2075|sha256=4f5e0c5c3b7ea7d3ae46887857221fe87603798b0334e70ea1f956722d7883f4|sh=4f5e0c5c3b7ea7d3|json=0
 EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/check_prediction_chain.py|pid=a9107d24652d30e2|bytes=3566|sha256=f6b57bbff50eb1272bb0caadfb76b20db0bc68995ccd56fe8f6fe724cf189eb3|sh=f6b57bbff50eb127|json=0
-EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/RECORDS.hbp|pid=5624e801cda79262|bytes=5677|sha256=a85e8748d96209215bfa3294a6ecbbbcbee19fdbe77ba2e929cde28dc8719329|sh=a85e8748d9620921|json=0
+EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/RECORDS.hbp|pid=5624e801cda79262|bytes=6591|sha256=e0279a6748c9cb2e937b50f6359b5ef65bfdba6917fc3ec385211dadb921ee32|sh=e0279a6748c9cb2e|json=0
 EMIT|family=ym4-03c-engine|name=reviews/fable5-ym4-03c-engine/make_chain.py|pid=260eb14ad530c667|bytes=3213|sha256=f021354fd464cba2a1214009cc0ce56da385852ec7280cbbe902dd039d6628cc|sh=f021354fd464cba2|json=0

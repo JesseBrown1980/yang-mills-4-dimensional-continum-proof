@@ -2423,6 +2423,12 @@ fn section_integrator_checks(out: &mut Out, ig: &mut Integrator, g2i: &[Qp]) {
             checked += 1;
         }
     }
+    // the guards above leave out every term past degree 11; this check stops the run if one reached its 2I average
+    out.check(
+        "G1_2I_term_check_within_degree_11",
+        max_deg <= 11,
+        &("max_link_degree=".to_string() + &max_deg.to_string()),
+    );
     let hist: Vec<String> = degs
         .iter()
         .map(|(d, c)| d.to_string() + ":" + &c.to_string())
