@@ -221,3 +221,79 @@ In [`reviews/fable5-ym4-03c-prediction/`](../reviews/fable5-ym4-03c-prediction/)
 ## 12. OPEN
 
 A local polymer bound that replaces the volume-dependent remainder of Corollary 10, the next target after this stage; the weak-coupling renormalization problem; the mass gap and the continuum in d = 4.
+
+## 13. Results: the engine, stage 2
+
+**Status: the engine commit, on the operator's word: "YM4-03 continuation: exact coefficients through beta^10. Freeze predictions before implementation. Begin with the Z2 control, then use canonical cluster classes, exact multinomial multiplicities, SU(2) Haar integration and McKay adjacency powers." Written for the seat ACER-CLAUDE-FABLE5 by the second seat's engine lane on November 8, 2026, on the prediction commit `32486bd`; sections 1 to 12 above stay byte for byte, and this section follows them. The engine is [`blocked_action_engine.rs`](../reviews/fable5-ym4-03c-engine/blocked_action_engine.rs), one Rust 1.81 file, standard library only, integers and exact rationals only (i128 pairs with checked arithmetic, promoted to the file's own big integers on overflow). Its receipt is [`RECEIPT-YM4-03C.hbp`](../reviews/fable5-ym4-03c-engine/RECEIPT-YM4-03C.hbp), 185 rows, sha256 `76dc01b78449952bce3de6a21bfa0d0bac727f62cd0acf4e5f8d1566e4950227`. All 92 reads of the prediction rows are MET, P1 to P13 and G2, in d = 4 and d = 3. MEASURED.**
+
+### 13.1 The coefficient table
+
+```text
+d = 4 on fine 6^4, coarse 3^4 (coarse sides >= 3):  S_eff = const + sum_{n=1}^{10} beta^n S_n + O(beta^11)
+
+S_1 = S_2 = S_3 = S_5 = S_7 = S_9 = 0
+S_4  = -(1/128)       sum_P chi_1/2(V_P)
+S_6  = +(1/768)       sum_P chi_1/2(V_P)
+S_8  = -(1/1536)      sum_P chi_1/2(V_P) + (19/884736) sum_P chi_1(V_P)
+S_10 = +(467/2211840) sum_P chi_1/2(V_P) - (7/884736) sum_P chi_1(V_P) - (3/524288) sum_chairs chi_1/2(V_chair)
+
+d = 3 on fine 6^3: S_8 = -(5/12288) sum_P chi_1/2(V_P) + (19/884736) sum_P chi_1(V_P), and S_10 holds +(1013/8847360) on chi_1/2(V_P);
+every other entry equals the d = 4 entry.
+```
+
+Placements per coarse site: 6 plaquettes and 48 chairs in d = 4, 3 and 12 in d = 3. The Parseval residual of every class's function against the named functionals of section 4 reads 0 at every order through β¹⁰ in both dimensions, so these three functionals carry the whole V-dependence through β¹⁰. MEASURED.
+
+**The first genuinely non-Wilson interaction is the chair:** χ½ of the 6-link loop around two perpendicular coarse plaquettes P = (μ, ν) and Q = (μ, λ) sharing ℓ = (x′, μ), spin 0 on ℓ, entering at β¹⁰ with coefficient −3/524288 in S_eff (+3/524288 in log ρ). The first plaquette term outside the fundamental Wilson form is χ₁(V_P) at β⁸, +19/884736 in S_eff.
+
+### 13.2 The rows
+
+| Row | Read by the engine | Frozen tag | Result |
+|---|---|---|---|
+| P1 | β⁴: 1/128 on χ½(V_P) in log ρ, S_4 = −(1/128) Σ χ½(V_P), no other functional, d = 4 and d = 3; the YM4-03 benchmark −24359/438048 on fine 2×2×2×2 and −5693581/33434856 on 4×2×2×2, at positions 0 and 1 | DERIVED | MET |
+| P2 | every V-dependent coefficient at β¹ to β³: 0; on the benchmark lattices E[Xⁿ]/n! for n ≤ 3 equal at V = 1, V_a, V_b | DERIVED | MET |
+| P3 | every coefficient at β¹, β³, β⁵, β⁷, β⁹, computed: 0; odd-cost spin assignments with a nonzero integral: 0 | DERIVED | MET |
+| P4 | −1/768 on χ½(V_P), alone | DERIVED | MET |
+| P5 | 1/1536 (d = 4), 5/12288 (d = 3) on χ½(V_P); −19/884736 on χ₁(V_P); nothing else | DERIVED | MET |
+| P6 | the chair 3/524288 at β¹⁰ and 0 below, d = 4 and d = 3 | CONJECTURE | MET |
+| P7 | the rectangle 0 through β¹⁰ | DERIVED | MET |
+| P8 | Z2: perpendicular pair 3u¹⁰ with 0 below; parallel pair at coarse distance 1: 0 through u¹², with no connected polymer of that character through 12 plaquettes and no incompatible pair of W_P and W_Q polymers | DERIVED | MET |
+| P8c | Z2: W_P reads u⁴ + 16u⁸ + 0·u¹⁰ (d = 4) and u⁴ + 8u⁸ + 0·u¹⁰ (d = 3); at u¹⁰ the 32 polymers of 10 plaquettes meet −32 from the clusters with the cubes | DERIVED | MET |
+| P9 | E[χ½⁶]: SU(2) 5, 2T 6; E[χ½¹²]: SU(2) 132, 2I 133; Σ_{2I} χ_j = 0 for j = ½ to 11/2, 120 at j = 6; Σ_{2T} χ_j = 0 for j = ½ to 5/2, 24 at j = 3 | DERIVED | MET |
+| P10a | every V-dependent support through β¹⁰ spans at most 3 plaquette widths in each direction, below the fine side 6, so none winds; β¹¹ is odd, 0 by P3 | DERIVED | MET |
+| P10b | χ₁(V_ℓ) on fine 2×6×6×6: 3/16384 at β⁸, 0 below, from the 12 tori per coarse link | CONJECTURE | MET |
+| P11 | χ½(V_P) at β¹⁰: −467/2211840 (d = 4), −1013/8847360 (d = 3) | CONJECTURE | MET |
+| P12 | χ₁(V_P) at β¹⁰: 7/884736, d = 4 and d = 3 | CONJECTURE | MET |
+| P13 | nonzero through β¹⁰: χ½(V_P), χ₁(V_P), the chair; N1_PQ, the rectangle, disjoint pairs, the twisted hexagon and χ_{3/2}(V_P) read 0; Parseval residual 0 | CONJECTURE, its spin and rectangle clauses DERIVED | MET |
+
+P11 by parts, from the receipt's `YM4_03C_CLASS` and `YM4_03C_CLUSTER` rows, d = 4, part for part with the table of section 7.8: the filling's series −79/4423680; the 16 bumps −1/6144; the 16 domino disks +1/32768; the 16 cubes on a face, the polymer with that face at spin 1 at +1/16384 beside the cluster with the filling at −1/8192; the 16 cubes on one off link, the polymer at +1/8192 beside its cluster at −1/8192. One class of 10 plaquettes holds both positions of ℓ and integrates to the constant 1/256 = 2^(2−10), the value of a closed sphere of 10 plaquettes.
+
+### 13.3 The gates
+
+**G1, Haar exactness.** The engine integrates each link exactly over SU(2) at every degree: the d occurrences of the link, an inverse written U⁻¹ = εᵀUᵀε, integrate to Σ W(σ, τ) ε_σ ε_τᵀ over the non-crossing ε-matchings, with W the inverse of their Gram matrix, the orthogonal projector onto the invariants of U^{⊗d}. Before each integral it writes the link's degree, the multiplicities of the term's plaquettes on it with every inserted coarse functional counted: 33,208 integrals over the run, by degree 1:277, 2:32139, 3:139, 4:547, 5:35, 6:25, 7:15, 8:11, 9:10, 10:5, 11:3, 12:2 (odd degrees integrate to 0); in the coefficient pipeline the largest off-link degree is 4 and the largest coarse-link degree in a readout is 5. The 2I route runs at degree ≤ 11 each time it runs: 58 trace-word terms with two integrated links of degree up to 11, as 120² averages, each equal to the exact integral; the filling at spins ½ and 1, link degree 2 and 4, as 120³ averages over its three free internal links at four values of V in 2I, equal; and the 2T route on all 1599 order-4 benchmark terms of fine 2×2×2×2, link degree ≤ 4, equal. 2I is a spherical 11-design by its class sums, so its average equals the SU(2) projector on one link through degree 11, and the one-link tensors read equal entry by entry at degree 2, 4 and 6; at degree 6 the 2T tensor differs, and at degree 12 the 2I moment reads 133 against 132. The exactness of each coefficient for continuous SU(2) rests on the projector and the degrees written beside it.
+
+**G2, connected coefficients.** Two series per class: the families of the partition function, ρ(V)/∫ρ, and the cluster expansion of log ρ, filed apart in the receipt's `YM4_03C_G2` rows. At β⁸, ρ/∫ρ holds 1/110592 on χ₁(V_P) and 2⁻¹⁴ = 1/16384 on each disjoint pair; log ρ holds −19/884736 and 0. The cancellations: the self-cluster −½z_F² = −2t₂⁸χ½(V_P)² carries −1/32768 onto χ₁(V_P); the compatible family z_P z_Q meets −½(2 z_P z_Q) in the logarithm. Clusters through β¹⁰ are pairs, since the smallest polymer costs 4, measured over every support of up to 6 plaquettes grown from each plaquette orbit, and three polymers cost at least 12. Multiplicities: every class carries its stabilizer and its orbit per coarse site under coarse translations times the 384 signed permutations (48 in d = 3); the per-plaquette multinomial 1/m! enters through c_n = Σ_m βᵐ N_m(n)/(2ᵐ m!), with the McKay fold tᵐ = Σ_n N_m(n) χ_{n/2}(t) checked as integer polynomials for m ≤ 12 and the characters orthonormal under the integrator; the P1 benchmark sums its multisets with 1/∏ m_p!.
+
+**G3, an independent first non-plaquette term.** Route S, [`route_s_chair.py`](../reviews/fable5-ym4-03c-engine/route_s_chair.py), shares no code with the engine: plain fine coordinates of ℤ^d, the chains F_P ⊕ F_Q ⊕ ∂C of at most three cubes in a window, and the defect-repair walk as its second method. Both find the same 4 sets with the chair's fine boundary through 10 plaquettes: F_P ∪ F_Q at 8, split through off links, and 3 disks of Euler characteristic 1 at 10, holding the positions (), (0) and (1) of ℓ, each off link in exactly two of their plaquettes. Each disk integrates to 2t₂¹⁰χ½(V_chair) with spin 0 on ℓ; t₂ comes from the Bessel series I₂/I₁; the size-8 set takes no spin-1 decoration with an invariant at every off link (7768 plaquettes tried in d = 4, 640 in d = 3). Operator: χ½ of the 6-link chair loop, spin 0 on ℓ. Sign: +3/524288 in log ρ, −3/524288 in S_10. Lattice: coarse sides ≥ 3, the largest disk spanning 2 lattice spacings. d = 4 and d = 3 read the same, and equal the engine's reads. Its output, [`ROUTE-S.hbp`](../reviews/fable5-ym4-03c-engine/ROUTE-S.hbp), sha256 `4f5e0c5c3b7ea7d3ae46887857221fe87603798b0334e70ea1f956722d7883f4`.
+
+### 13.4 The computations avoided
+
+| In place of | The engine computed | MEASURED |
+|---|---|---|
+| C(7785, 10) = 224032869580373617034734370850096 multisets of 10 plaquettes on fine 6⁴ | supports grown from the 6 plaquettes at position 0 of one coarse link | 166,079 search states, 858 closed placed supports, 618 holding both positions, 8 classes (d = 3: 11,378 states, 7 classes) |
+| every translate and rotation | orbit sizes per coarse site from stabilizers | stabilizers 4 to 64 in d = 4 |
+| an integral per multiplicity vector | one integral per support and spin pattern, folded by the t-series | 9 spin assignments in d = 4, 8 in d = 3 |
+| 120^k products over k free links | exact link-by-link integration | Σ over the polymers of 120^(off links) = 15793267194606492057600414720000 in d = 4, replaced by 33,208 one-link integrals over the whole run |
+| a logarithm of the whole partition function | pairs of incompatible polymers | 39 ordered pair terms in d = 4, 12 in d = 3 |
+| odd orders skipped | odd orders computed | each 0 |
+
+The search cost by largest support: 1,593, 15,550 and 166,079 states at 6, 8 and 10 plaquettes in d = 4, about tenfold per two plaquettes. The whole receipt runs in about 25 to 40 seconds and 18 MB on the shared machine, so β¹⁰ is the order reached, inside the 30-minute bound with room.
+
+### 13.5 Replay and planted errors
+
+rustfmt and clippy on Rust 1.81 (`-D warnings`) exit 0; the no-float gate of this branch and of main read 110 code files with 0 failed, and the compiled check reads the engine at fp_lines = 0. Two runs under WSL and one Windows MSVC build of the same file write the same receipt byte for byte. Each planted error stops the engine with a row naming its check: `SABOTAGE=dropped_multiplicity` (every class's orbit factor set to 1) at `P8c_d4_W_P_u^4`; `dropped_multinomial` (the per-plaquette 1/m!) at `P4_d4_b6_chi_1/2(V_P)_log_rho`; `disconnected_cluster` (pairs sharing line links only left in the logarithm) at `P5_d4_b8_other_functionals`, reading the chair, N1 and the rectangle at β⁸; `2i_beyond_degree_11` (the 2I average taken at degree 12) at `G1_2I_within_degree_11`; `wrong_sign` (S_eff = +log ρ) at `P1_d4_b4_chi_1/2(V_P)_log_rho`. [`blocked-action-b10.yml`](../.github/workflows/blocked-action-b10.yml) reruns all of it: the format and lints, the rebuild, the receipt against its pinned sha256, route S against its file, the five planted errors, and both evidence chains, the prediction's read against `32486bd`.
+
+### 13.6 Kept, and open
+
+Every prediction row reads MET. Two engine runs stopped before a receipt, and [`RECORDS.hbp`](../reviews/fable5-ym4-03c-engine/RECORDS.hbp) keeps them. On the coarse-side-1 lattice of P10b a plaquette of a plane (0, ν) holds its ν link twice, so its character spans two basis elements; P10b reads the projection onto χ₁(V_ℓ), a single basis element, and the receipt keeps that lattice's table out.
+
+OPEN: β¹² and above, where clusters of three polymers start, the winding strip at L = 3 enters ρ and the rectangle's β¹⁴ part lies beyond; the local polymer bound uniform in the volume; the weak-coupling renormalization problem; the mass gap and the continuum in d = 4.
