@@ -1,0 +1,5 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=twist_every_link|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_flux|line=2213|literal=twist_every_link|hits=35200|json=0
+INSTR_LINE|section=section_flux|line=2229|literal=twist_every_link|hits=1|json=0
+INSTR_SECTION|order=1|section=section_flux|failed_added=2|names=winding_parity_b=2;winding_parity_b=3|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

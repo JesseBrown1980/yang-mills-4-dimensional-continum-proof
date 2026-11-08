@@ -1,0 +1,4 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=wrong_first_coefficient|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_first_dependence|line=1178|literal=wrong_first_coefficient|hits=1|json=0
+INSTR_SECTION|order=1|section=section_first_dependence|failed_added=4|names=first_dependence_(2,2,2,2)_position=0;first_dependence_(2,2,2,2)_position=1;first_dependence_(4,2,2,2)_position=0;first_dependence_(4,2,2,2)_position=1|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

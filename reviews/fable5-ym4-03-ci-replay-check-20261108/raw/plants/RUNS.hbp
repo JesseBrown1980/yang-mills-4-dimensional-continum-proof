@@ -1,0 +1,2 @@
+RUN|name=argv_full_twist|rc=1|out_sha256=bb5671a39ce915efe2e3ac33f521465dd7b2be1abc1c4c0384df0eb8a45dbeda|json=0
+RUN|name=argv_record|rc=0|stdout_sha256=c6fbb64b30500f4f97b4cf3a508397977e6c4773182037ea820f527af8c79b8b|json=0

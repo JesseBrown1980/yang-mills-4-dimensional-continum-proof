@@ -1,0 +1,177 @@
+# YM4-03: exact rows against the receipt, and each sabotage must exit 1 on its named check.
+# The main step computes every section in full through tests/one_scale_replay.py and writes the replay index beside the receipt. Each sabotage then
+# computes every section its flag reaches and replays the others from the receipt, by sha256, under keys over their code, data and configuration.
+name: YM4-03 one-scale blocking
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/test_one_scale_blocking.py'
+      - 'tests/one_scale_replay.py'
+      - 'tests/ONE_SCALE_BLOCKING_RECEIPT.txt'
+      - 'tests/ONE_SCALE_BLOCKING_BRACKETS.hbp'
+      - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
+      - 'docs/PREDICTION-YM4-03.hbp'
+      - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp'
+      - 'reviews/opus55-ym4-03/**'
+      - 'reviews/opus55-ym4-03-recheck/**'
+      - 'reviews/opus55-ym4-03-certificate/**'
+      - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
+      - 'reviews/fable5-ym4-03-ci-replay-check-20261108/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/one-scale-blocking.yml'
+  pull_request:
+    paths:
+      - 'tests/test_one_scale_blocking.py'
+      - 'tests/one_scale_replay.py'
+      - 'tests/ONE_SCALE_BLOCKING_RECEIPT.txt'
+      - 'tests/ONE_SCALE_BLOCKING_BRACKETS.hbp'
+      - 'docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md'
+      - 'docs/PREDICTION-YM4-03.hbp'
+      - 'reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp'
+      - 'reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp'
+      - 'reviews/opus55-ym4-03/**'
+      - 'reviews/opus55-ym4-03-recheck/**'
+      - 'reviews/opus55-ym4-03-certificate/**'
+      - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
+      - 'reviews/fable5-ym4-03-ci-replay-check-20261108/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/one-scale-blocking.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  one-scale-blocking:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: The 30 rows of the prediction as pushed at 7e6b111 stay byte for byte
+        run: |
+          set -euo pipefail
+          got=$(head -n 30 docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = bcb1f24c0a6dd0e7942a9d4b5743145bf1536ec70854f65ff8e4854ff2c46a55
+          flux=$(sed -n 34,42p docs/PREDICTION-YM4-03.hbp | sha256sum | cut -d' ' -f1)
+          test "$flux" = 76e1d8f53e1519c82909004061c0587db59bf536902b6feb8610a2b2e7d82577
+      - name: The note names the receipt's count, and the first complete read stays on file
+        run: |
+          set -euo pipefail
+          n=$(sed -n 's/^YM4_03_DONE|checks=\([0-9]*\)|.*/\1/p' tests/ONE_SCALE_BLOCKING_RECEIPT.txt)
+          grep -qF "$n checks" docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md
+          echo "618b4414384b76e8e66a5c5cc482f962bcdb9f1c1b00c81ed4a2aa4311cf458c  reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp" | sha256sum -c -
+          echo "404cb4d79a5a77dbf26f9e50871ace546c0b80a5cd287dc950069ac6764d8c0a  reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp" | sha256sum -c -
+          (cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS)
+          (cd reviews/opus55-ym4-03-recheck && sha256sum --strict -c --quiet SHA256SUMS)
+          (cd reviews/fable5-ym4-03-ci-replay-20261106 && sha256sum --strict -c --quiet SHA256SUMS)
+          (cd reviews/fable5-ym4-03-ci-replay-check-20261108 && sha256sum --strict -c --quiet SHA256SUMS)
+          cd reviews/opus55-ym4-03-certificate && sha256sum --strict -c --quiet SHA256SUMS
+      - name: The gate reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Every row against the recorded receipt, every section computed, the replay index written beside it
+        run: |
+          set -euo pipefail
+          python3 -I -B -X utf8 tests/one_scale_replay.py record /tmp/ym4-03-cache seeds=tests/ONE_SCALE_BLOCKING_BRACKETS.hbp > /tmp/blocking.out 2> /tmp/blocking.err
+          cat /tmp/blocking.err
+          cmp /tmp/blocking.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt
+          grep -q '|failed=0|' /tmp/blocking.out
+          if grep -q '^FAILED' /tmp/blocking.out; then echo "a check failed"; exit 1; fi
+          grep '^REPLAY_DONE|' /tmp/ym4-03-cache/REPLAY-INDEX.hbp
+      - name: Each sabotage exits 1 on its named checks, with no crash, computing every section its flag reaches
+        run: |
+          set -euo pipefail
+          read_sabotage() {
+            name=$1
+            shift
+            rc=0
+            python3 -I -B -X utf8 tests/one_scale_replay.py replay /tmp/ym4-03-cache "sabotage=$name" > "/tmp/sab-$name.out" 2>&1 || rc=$?
+            test "$rc" = 1
+            for named in "$@"; do
+              grep -qF "FAILED|check=$named|json=0" "/tmp/sab-$name.out"
+            done
+            if grep -q 'Traceback' "/tmp/sab-$name.out"; then echo "sabotage=$name crashed"; exit 1; fi
+            if grep -q '^FAILED|check=replay_' "/tmp/sab-$name.out"; then echo "sabotage=$name: a replay check failed"; exit 1; fi
+            reached=$(grep -c "|mode=computed|why=reached_by_$name|" "/tmp/sab-$name.out" || true)
+            if [ "$reached" -lt 1 ]; then echo "sabotage=$name computed no section it reaches"; exit 1; fi
+            for section in $(awk -F'|' -v n="$name" '$1 == "REPLAY_SECTION" { s = ""; r = ""; for (i = 2; i <= NF; i++) { if (index($i, "section=") == 1) s = substr($i, 9); if (index($i, "reach=") == 1) r = "," substr($i, 7) "," } if (index(r, "," n ",") > 0) print s }' /tmp/ym4-03-cache/REPLAY-INDEX.hbp); do
+              if ! grep -q "^REPLAY|order=[0-9]*|section=$section|mode=computed|" "/tmp/sab-$name.out"; then echo "sabotage=$name reused $section, which the index says it reaches"; exit 1; fi
+            done
+            echo "sabotage=$name exit=$rc $(grep -c '^FAILED' "/tmp/sab-$name.out") failed checks, among them $*; computed=$(grep -c '|mode=computed|' "/tmp/sab-$name.out") reused=$(grep -c '|mode=reused|' "/tmp/sab-$name.out")"
+          }
+          read_sabotage reversed_order 'covariance_b=2'
+          read_sabotage shifted_endpoint 'covariance_b=2'
+          read_sabotage dropped_inverse 'covariance_b=2'
+          read_sabotage theta_no_inverse 'reflection_map_b=2_c=0'
+          read_sabotage wrong_convolution_power 'two_dimensions_closes_S3_b=2_2x2'
+          read_sabotage wrong_first_coefficient 'first_dependence_(2,2,2,2)_position=0'
+          read_sabotage extra_plaquette_factor 'brute_equals_elimination_S3'
+          read_sabotage wrong_block_shell 'walls_Z2_4x2x2'
+          read_sabotage twist_every_link 'winding_parity_b=2'
+          read_sabotage flux_wrong_sign 'flux_ground_in_e=0_Z2_2x1'
+          read_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)' 'overlap_bracket_Z2_2x1_(1, -1)'
+          read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'
+          read_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'
+          read_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'
+          read_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'
+          # A reached section wrongly reused: the read above refuses it, by the reach the index recorded.
+          mkdir -p /tmp/unmark-tree
+          cp -r tests /tmp/unmark-tree/tests
+          sed -i 's/CACHE_SABOTAGE != "reuse_reached":$/CACHE_SABOTAGE != "reuse_reached" and section != "section_loops":/' /tmp/unmark-tree/tests/one_scale_replay.py
+          if cmp -s tests/one_scale_replay.py /tmp/unmark-tree/tests/one_scale_replay.py; then echo "the edit changed nothing"; exit 1; fi
+          rc=0
+          (cd /tmp/unmark-tree && read_sabotage reversed_order 'covariance_b=2') > /tmp/unmark.out 2>&1 || rc=$?
+          cat /tmp/unmark.out
+          test "$rc" = 1
+          grep -qF "sabotage=reversed_order reused section_loops, which the index says it reaches" /tmp/unmark.out
+          echo "the read refuses reversed_order with section_loops reused"
+      - name: The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket, and reused reached sections print the passing receipt
+        run: |
+          set -euo pipefail
+          refused() {
+            script=$1
+            named=$2
+            shift 2
+            rc=0
+            python3 -I -B -X utf8 "$script" replay /tmp/ym4-03-cache "$@" > /tmp/cache-control.out 2>&1 || rc=$?
+            test "$rc" = 1
+            grep -qF "FAILED|check=$named|json=0" /tmp/cache-control.out
+            if grep -q 'Traceback' /tmp/cache-control.out; then echo "the cache control on $named crashed"; exit 1; fi
+            echo "cache control exit=$rc on $named"
+          }
+          # A stale entry: the helper block_map edited after the index was recorded.
+          mkdir -p /tmp/stale-tree
+          cp -r tests /tmp/stale-tree/tests
+          sed -i 's/^def block_map(U, x_c, mu, b, sides, mul, one):$/&\n    # edited after the index was recorded/' /tmp/stale-tree/tests/test_one_scale_blocking.py
+          if cmp -s tests/test_one_scale_blocking.py /tmp/stale-tree/tests/test_one_scale_blocking.py; then echo "the edit changed nothing"; exit 1; fi
+          refused /tmp/stale-tree/tests/one_scale_replay.py replay_key_stale_section_covariance
+          refused tests/one_scale_replay.py replay_coverage_misses_helper_section_covariance sabotage=reversed_order cache_sabotage=key_misses_helper
+          refused tests/one_scale_replay.py replay_rows_sha256_section_covariance cache_sabotage=row_tampered
+          refused tests/one_scale_replay.py replay_bracket_stale sabotage=overlap_one_power cache_sabotage=stale_bracket
+          # Every section reused, those reversed_order reaches too: the passing receipt and exit 0, which the sabotage step's read refuses.
+          rc=0
+          python3 -I -B -X utf8 tests/one_scale_replay.py replay /tmp/ym4-03-cache sabotage=reversed_order cache_sabotage=reuse_reached > /tmp/reuse.out 2> /tmp/reuse.err || rc=$?
+          test "$rc" = 0
+          cmp /tmp/reuse.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt
+          if grep -qF 'FAILED|check=covariance_b=2|json=0' /tmp/reuse.out; then echo "the reused rows hold the named check"; exit 1; fi
+          grep -q '|reused=16|computed=0|' /tmp/reuse.err
+          echo "cache control: every section reused under reversed_order gives exit 0 and the receipt, which the sabotage step refuses"
+      - name: An unknown sabotage name exits 2
+        run: |
+          set -euo pipefail
+          rc=0
+          python3 -I -X utf8 tests/test_one_scale_blocking.py sabotage=no_such_name > /tmp/unknown.out 2>&1 || rc=$?
+          test "$rc" = 2
+          rc=0
+          python3 -I -B -X utf8 tests/one_scale_replay.py replay /tmp/ym4-03-cache sabotage=no_such_name > /tmp/unknown-replay.out 2>&1 || rc=$?
+          test "$rc" = 2
+          rc=0
+          python3 -I -B -X utf8 tests/one_scale_replay.py replay /tmp/ym4-03-cache cache_sabotage=no_such_name > /tmp/unknown-cache.out 2>&1 || rc=$?
+          test "$rc" = 2

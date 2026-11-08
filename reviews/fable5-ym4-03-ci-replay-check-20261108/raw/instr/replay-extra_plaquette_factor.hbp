@@ -1,0 +1,4 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=extra_plaquette_factor|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_pushforward|line=701|literal=extra_plaquette_factor|hits=45|json=0
+INSTR_SECTION|order=1|section=section_pushforward|failed_added=8|names=normalization_Z3;brute_equals_elimination_Z3;integral_identity_loop_Z3;integral_identity_variant_Z3;normalization_S3;brute_equals_elimination_S3;integral_identity_loop_S3;integral_identity_variant_S3|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

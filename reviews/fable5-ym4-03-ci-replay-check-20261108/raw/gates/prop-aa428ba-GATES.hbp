@@ -1,0 +1,15 @@
+GATE|label=prop-aa428ba|job=no-float|k=1|rc=0|name=The gate reads its own test snippets|out_sha256=ae11c5173e540820b1b49e0860548cbea0ea4649f464b5263ad164f45597be90|json=0
+GATE|label=prop-aa428ba|job=no-float|k=2|rc=1|name=Scan the tracked files the gate reads|out_sha256=28e422aba8a4943f2e66cbc35cce2c172c2912bc4f2859e2b50f99af3036a47c|json=0
+GATE|label=prop-aa428ba|job=no-float|k=3|rc=1|name=The gate goes red on each plant, for its named reason|out_sha256=c610870517c0cedf455e8e619b7a68085ba115e5465be0cb99a3c1f732de79c3|json=0
+GATE|label=prop-aa428ba|job=no-float-base|k=1|rc=0|name=A row recording the trusted commit, its gate and the head they read|out_sha256=b38f2d09f3d4a2ebce3528cf7265b8384e3892e19bebe8824afde181ab369b9d|json=0
+GATE|label=prop-aa428ba|job=no-float-base|k=2|rc=0|name=The base gate reads its own test snippets|out_sha256=ae11c5173e540820b1b49e0860548cbea0ea4649f464b5263ad164f45597be90|json=0
+GATE|label=prop-aa428ba|job=no-float-base|k=3|rc=1|name=The base gate reads the pull request's list and files|out_sha256=28e422aba8a4943f2e66cbc35cce2c172c2912bc4f2859e2b50f99af3036a47c|json=0
+GATE|label=prop-aa428ba|job=no-float-list-unchanged|k=4|rc=0|name=The gate, the list and both workflows, against the point this pull request forked from|out_sha256=0619df50e7887d7dcf75cd62744256caa2e25e2c94924c54e9810050d8857e3e|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=1|rc=0|name=Rust 1.81|out_sha256=efa8eac8b0df28668cb013c4f122e4c3a95ac757e357718ccf3c78220a9e4991|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=2|rc=0|name=Every C, C++ and Rust file compiled and read|out_sha256=0984ecdf773478e71b169d085b9429571b317fcb68c997644c27b5220cbebae9|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=3|rc=0|name=Planted floats go red, controls stay green|out_sha256=d0854b6c9cf1bc8bd8496917acc4d0054b46107b1de5bfc51a5053f93a968bc6|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=4|rc=0|name=A tracked float goes red through the check itself|out_sha256=b93f1e43cb6425b0013693de65b9e08e8641361e072fbfd60db1747574ee0b15|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=5|rc=0|name=A tracked float in a Rust file goes red through the check itself|out_sha256=2a5aebc96311c74cd27e91ec7934fff6715ede0063bc31043f44388325d8ee90|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=6|rc=0|name=A tracked Rust file that does not build goes red|out_sha256=6078403264cfb7e3e0be8245803ed245c025be66c83a3e2f025ccc48fcd5f583|json=0
+GATE|label=prop-aa428ba|job=no-float-compiled|k=7|rc=0|name=A tracked Cargo package stops the small form|out_sha256=9855c53ec53183cae74a22a0f68d2b5462b7bb780abad8d498ac8c56debe3d9d|json=0
+GATES_DONE|label=prop-aa428ba|head=aa428ba15c73bac6428754630d8c60d3009d4c09|failed=3|json=0

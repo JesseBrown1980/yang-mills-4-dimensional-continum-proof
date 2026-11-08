@@ -1,0 +1,23 @@
+STEP|k=1|job=one-scale-blocking|name=The 30 rows of the prediction as pushed at 7e6b111 stay byte for byte|run_sha256=aba3ff78bea154c539b298e03e2c7b401f6c2ef311c728dfd53dfec00949249a|file_sha256=aba3ff78bea154c539b298e03e2c7b401f6c2ef311c728dfd53dfec00949249a|json=0
+STEP|k=2|job=one-scale-blocking|name=The note names the receipt's count, and the first complete read stays on file|run_sha256=e07e5bdb30b9ddbd643151af163d59f697a0d2fe1b3247c7b9f4f50f74645475|file_sha256=e07e5bdb30b9ddbd643151af163d59f697a0d2fe1b3247c7b9f4f50f74645475|json=0
+STEP|k=3|job=one-scale-blocking|name=The gate reads this tree|run_sha256=430bcd90b009f7fc6ddf50a8f3572651d0e2736ab4ccd34e4cbb5d042fef4f48|file_sha256=430bcd90b009f7fc6ddf50a8f3572651d0e2736ab4ccd34e4cbb5d042fef4f48|json=0
+STEP|k=4|job=one-scale-blocking|name=Every row against the recorded receipt, every section computed, the replay index written beside it|run_sha256=af1440c5bf4f53f5d03be4ecb10617df6b583b8c3ff1e0c21971c032898a68af|file_sha256=64afbf43b3c1f4b86d89ea5fc654792f127eade55d9e0dddd38b93bfcacc87a7|json=0
+STEP|k=5|job=one-scale-blocking|name=Each sabotage exits 1 on its named checks, with no crash, computing every section its flag reaches|run_sha256=f057be5d6f56707c1ff64da89f582adedbf4ead06adaa2522f26fbf6d82ec23c|file_sha256=10cbabc8097fa504ceb028eff847ecc4052acf627321f5a906dce6bd5dbb252c|json=0
+CALL|step=5|n=1|name=reversed_order|line_sha256=6445760b8e97e133e4b99bf27e1387c54e6a31e5169d6d520a4b8016e4ff9ded|json=0
+CALL|step=5|n=2|name=shifted_endpoint|line_sha256=c4110675dc9ac23ea33b60721647cd99b58c5ab0564c78d7f4aefe68e60fa839|json=0
+CALL|step=5|n=3|name=dropped_inverse|line_sha256=fa97922dbf8de0007a359e232aa930a04ab6cced89276c1265163b1f2b49072b|json=0
+CALL|step=5|n=4|name=theta_no_inverse|line_sha256=62e9315f88355c4d836e26ad6e8f244f0a173d74637dc530992fbd48a03b9d20|json=0
+CALL|step=5|n=5|name=wrong_convolution_power|line_sha256=12755deaf6d767a798040ec4544b9b53ce9e69e4522f66f00a0388a7c28f6675|json=0
+CALL|step=5|n=6|name=wrong_first_coefficient|line_sha256=3d4e23bd4760d6f993e6d387530f445942d46692c5243834c33b76e336e8cd62|json=0
+CALL|step=5|n=7|name=extra_plaquette_factor|line_sha256=d729a29f2aa44e555b9baac0dfa7877466ca290db520d6cc38b1894600e6d9f5|json=0
+CALL|step=5|n=8|name=wrong_block_shell|line_sha256=af38eaa7fb0b9d4f68f34f11e78352708e848d7ec4a61d121e4d7e682a3606f0|json=0
+CALL|step=5|n=9|name=twist_every_link|line_sha256=032197a1da96198946d7b9e28b2687d7bf6b9352a0c8ae6810a49933f22a5db4|json=0
+CALL|step=5|n=10|name=flux_wrong_sign|line_sha256=acb0e35e0d1b3106827e24fa51c3ab8c808cb56e44f5fdf78198fcf4209f8563|json=0
+CALL|step=5|n=11|name=overlap_skips_next|line_sha256=826d75404dc7bf680a29c18af718af978477a1f4f8522955f88c13ba66784625|json=0
+CALL|step=5|n=12|name=visibility_ignores_omega_error|line_sha256=01abd7b8d2cffa31f4bfd8c46b97b47370409621ecf07167cac8c32cf066bf36|json=0
+CALL|step=5|n=13|name=visibility_error_halved|line_sha256=6f8beb3d9e158b2d722cd6fb46bfd1a9295ef6dd09405c41f734d3e9b2b0daf4|json=0
+CALL|step=5|n=14|name=visibility_error_inflated|line_sha256=231561d6857d64c991497036da916fa20ee52821aafd274a206884b8e3f67265|json=0
+CALL|step=5|n=15|name=overlap_one_power|line_sha256=df54a2c35daee2328a9b6df7d1108667b78667491c3649c03db7be92eed14500|json=0
+SPLIT|step=5|calls=15|prelude_lines=19|after_last_call=11|json=0
+STEP|k=6|job=one-scale-blocking|name=The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket, and reused reached sections print the passing receipt|run_sha256=d45c485317569db40c178c95d536d9689234e7c952a16c8e6c965c82f43c07b7|file_sha256=7cdb7d39e0ca5f3d28302e11bbb72be793de1247cb1030d6084275286e6ade34|json=0
+STEP|k=7|job=one-scale-blocking|name=An unknown sabotage name exits 2|run_sha256=dbf34af001c7b69f9ef46d98bb450a2124b95cfafcf47561fa759931ad0878b8|file_sha256=9e6134ac596e3f3d5844e19b12d295e6fbfa43ca4f987aa32fae98e7be324030|json=0

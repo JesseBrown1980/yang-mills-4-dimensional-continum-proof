@@ -1,0 +1,4 @@
+INSTR_HEAD|script=one_scale_replay.py|args=replay /mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/work/runA/ym4-03-cache sabotage=wrong_block_shell|test=/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/repo/tests/test_one_scale_blocking.py|literal_lines=18|other_reads=22,27|json=0
+INSTR_LINE|section=section_walls|line=2506|literal=wrong_block_shell|hits=552|json=0
+INSTR_SECTION|order=1|section=section_walls|failed_added=2|names=walls_Z2_4x2x2;walls_S3_4x2|json=0
+INSTR_DONE|exit=1|sections_run=1|json=0

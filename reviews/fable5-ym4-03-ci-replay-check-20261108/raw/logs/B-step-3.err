@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/main-tree/scripts/no_float_gate.py", line 1813, in <module>
+    sys.exit(scan(args[0] if args else "."))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/main-tree/scripts/no_float_gate.py", line 1597, in scan
+    rows = ls_files(root)
+           ^^^^^^^^^^^^^^
+  File "/mnt/c/tmp/opus55/ym4d-ci-replay-check-20261108/main-tree/scripts/no_float_gate.py", line 1531, in ls_files
+    raw = subprocess.run(["git", "-C", root, "ls-files", "-s", "-z"], capture_output=True, check=True, stdin=subprocess.DEVNULL, env=git_env()).stdout
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', '-C', '.', 'ls-files', '-s', '-z']' returned non-zero exit status 128.

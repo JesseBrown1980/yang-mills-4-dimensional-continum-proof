@@ -1,0 +1,70 @@
+LINE|step=1|n=1|status=SAME|step_name_in_branch=1|text=set -euo pipefail|json=0
+LINE|step=1|n=2|status=SAME|step_name_in_branch=1|text=got=$(head -n 30 docs/PREDICTION-YM4-03.hbp \x7c sha256sum \x7c cut -d' ' -f1)|json=0
+LINE|step=1|n=3|status=SAME|step_name_in_branch=1|text=test "$got" = bcb1f24c0a6dd0e7942a9d4b5743145bf1536ec70854f65ff8e4854ff2c46a55|json=0
+LINE|step=1|n=4|status=SAME|step_name_in_branch=1|text=flux=$(sed -n 34,42p docs/PREDICTION-YM4-03.hbp \x7c sha256sum \x7c cut -d' ' -f1)|json=0
+LINE|step=1|n=5|status=SAME|step_name_in_branch=1|text=test "$flux" = 76e1d8f53e1519c82909004061c0587db59bf536902b6feb8610a2b2e7d82577|json=0
+LINE|step=2|n=1|status=SAME|step_name_in_branch=1|text=set -euo pipefail|json=0
+LINE|step=2|n=2|status=SAME|step_name_in_branch=1|text=n=$(sed -n 's/^YM4_03_DONE\x7cchecks=\([0-9]*\)\x7c.*/\1/p' tests/ONE_SCALE_BLOCKING_RECEIPT.txt)|json=0
+LINE|step=2|n=3|status=SAME|step_name_in_branch=1|text=grep -qF "$n checks" docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md|json=0
+LINE|step=2|n=4|status=SAME|step_name_in_branch=1|text=echo "618b4414384b76e8e66a5c5cc482f962bcdb9f1c1b00c81ed4a2aa4311cf458c  reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp" \x7c sha256sum -c -|json=0
+LINE|step=2|n=5|status=SAME|step_name_in_branch=1|text=echo "404cb4d79a5a77dbf26f9e50871ace546c0b80a5cd287dc950069ac6764d8c0a  reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp" \x7c sha256sum -c -|json=0
+LINE|step=2|n=6|status=SAME|step_name_in_branch=1|text=(cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS)|json=0
+LINE|step=2|n=7|status=SAME|step_name_in_branch=1|text=(cd reviews/opus55-ym4-03-recheck && sha256sum --strict -c --quiet SHA256SUMS)|json=0
+LINE|step=2|n=8|status=SAME|step_name_in_branch=1|text=cd reviews/opus55-ym4-03-certificate && sha256sum --strict -c --quiet SHA256SUMS|json=0
+LINE|step=3|n=1|status=SAME|step_name_in_branch=1|text=set -euo pipefail|json=0
+LINE|step=3|n=2|status=SAME|step_name_in_branch=1|text=python3 -I -X utf8 scripts/no_float_gate.py --selftest|json=0
+LINE|step=3|n=3|status=SAME|step_name_in_branch=1|text=python3 -I -X utf8 scripts/no_float_gate.py .|json=0
+LINE|step=4|n=1|status=MOVED|step_name_in_branch=0|text=set -euo pipefail|json=0
+LINE|step=4|n=2|status=REWRITTEN|step_name_in_branch=0|text=python3 -I -X utf8 tests/test_one_scale_blocking.py > /tmp/blocking.out 2> /tmp/blocking.err|json=0
+LINE|step=4|n=3|status=MOVED|step_name_in_branch=0|text=cat /tmp/blocking.err|json=0
+LINE|step=4|n=4|status=MOVED|step_name_in_branch=0|text=cmp /tmp/blocking.out tests/ONE_SCALE_BLOCKING_RECEIPT.txt|json=0
+LINE|step=4|n=5|status=MOVED|step_name_in_branch=0|text=grep -q '\x7cfailed=0\x7c' /tmp/blocking.out|json=0
+LINE|step=4|n=6|status=MOVED|step_name_in_branch=0|text=if grep -q '^FAILED' /tmp/blocking.out; then echo "a check failed"; exit 1; fi|json=0
+LINE|step=5|n=1|status=MOVED|step_name_in_branch=0|text=set -euo pipefail|json=0
+LINE|step=5|n=2|status=MOVED|step_name_in_branch=0|text=read_sabotage() {|json=0
+LINE|step=5|n=3|status=MOVED|step_name_in_branch=0|text=rc=0|json=0
+LINE|step=5|n=4|status=REWRITTEN|step_name_in_branch=0|text=python3 -I -X utf8 tests/test_one_scale_blocking.py "sabotage=$1" > "/tmp/sab-$1.out" 2>&1 \x7c\x7c rc=$?|json=0
+LINE|step=5|n=5|status=MOVED|step_name_in_branch=0|text=test "$rc" = 1|json=0
+LINE|step=5|n=6|status=REWRITTEN|step_name_in_branch=0|text=grep -qF "FAILED\x7ccheck=$2\x7cjson=0" "/tmp/sab-$1.out"|json=0
+LINE|step=5|n=7|status=REWRITTEN|step_name_in_branch=0|text=if grep -q 'Traceback' "/tmp/sab-$1.out"; then echo "sabotage=$1 crashed"; exit 1; fi|json=0
+LINE|step=5|n=8|status=REWRITTEN|step_name_in_branch=0|text=echo "sabotage=$1 exit=$rc $(grep -c '^FAILED' "/tmp/sab-$1.out") failed checks, among them $2"|json=0
+LINE|step=5|n=9|status=MOVED|step_name_in_branch=0|text=}|json=0
+LINE|step=5|n=10|status=MOVED|step_name_in_branch=0|text=read_sabotage reversed_order 'covariance_b=2'|json=0
+LINE|step=5|n=11|status=MOVED|step_name_in_branch=0|text=read_sabotage shifted_endpoint 'covariance_b=2'|json=0
+LINE|step=5|n=12|status=MOVED|step_name_in_branch=0|text=read_sabotage dropped_inverse 'covariance_b=2'|json=0
+LINE|step=5|n=13|status=MOVED|step_name_in_branch=0|text=read_sabotage theta_no_inverse 'reflection_map_b=2_c=0'|json=0
+LINE|step=5|n=14|status=MOVED|step_name_in_branch=0|text=read_sabotage wrong_convolution_power 'two_dimensions_closes_S3_b=2_2x2'|json=0
+LINE|step=5|n=15|status=MOVED|step_name_in_branch=0|text=read_sabotage wrong_first_coefficient 'first_dependence_(2,2,2,2)_position=0'|json=0
+LINE|step=5|n=16|status=MOVED|step_name_in_branch=0|text=read_sabotage extra_plaquette_factor 'brute_equals_elimination_S3'|json=0
+LINE|step=5|n=17|status=MOVED|step_name_in_branch=0|text=read_sabotage wrong_block_shell 'walls_Z2_4x2x2'|json=0
+LINE|step=5|n=18|status=MOVED|step_name_in_branch=0|text=read_sabotage twist_every_link 'winding_parity_b=2'|json=0
+LINE|step=5|n=19|status=MOVED|step_name_in_branch=0|text=read_sabotage flux_wrong_sign 'flux_ground_in_e=0_Z2_2x1'|json=0
+LINE|step=5|n=20|status=REWRITTEN|step_name_in_branch=0|text=read_sabotage overlap_skips_next 'overlap_closed_form_Z2_2x1_(1, -1)'|json=0
+LINE|step=5|n=21|status=REWRITTEN|step_name_in_branch=0|text=read_sabotage overlap_skips_next 'overlap_bracket_Z2_2x1_(1, -1)'|json=0
+LINE|step=5|n=22|status=MOVED|step_name_in_branch=0|text=read_sabotage visibility_ignores_omega_error 'flux_exact_zero_overlap_not_certified_Z2_2x1'|json=0
+LINE|step=5|n=23|status=MOVED|step_name_in_branch=0|text=read_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'|json=0
+LINE|step=5|n=24|status=MOVED|step_name_in_branch=0|text=read_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'|json=0
+LINE|step=5|n=25|status=MOVED|step_name_in_branch=0|text=read_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'|json=0
+LINE|step=6|n=1|status=SAME|step_name_in_branch=1|text=set -euo pipefail|json=0
+LINE|step=6|n=2|status=SAME|step_name_in_branch=1|text=rc=0|json=0
+LINE|step=6|n=3|status=SAME|step_name_in_branch=1|text=python3 -I -X utf8 tests/test_one_scale_blocking.py sabotage=no_such_name > /tmp/unknown.out 2>&1 \x7c\x7c rc=$?|json=0
+LINE|step=6|n=4|status=SAME|step_name_in_branch=1|text=test "$rc" = 2|json=0
+CALL|sabotage=reversed_order|named=covariance_b=2|in_branch=1|json=0
+CALL|sabotage=shifted_endpoint|named=covariance_b=2|in_branch=1|json=0
+CALL|sabotage=dropped_inverse|named=covariance_b=2|in_branch=1|json=0
+CALL|sabotage=theta_no_inverse|named=reflection_map_b=2_c=0|in_branch=1|json=0
+CALL|sabotage=wrong_convolution_power|named=two_dimensions_closes_S3_b=2_2x2|in_branch=1|json=0
+CALL|sabotage=wrong_first_coefficient|named=first_dependence_(2,2,2,2)_position=0|in_branch=1|json=0
+CALL|sabotage=extra_plaquette_factor|named=brute_equals_elimination_S3|in_branch=1|json=0
+CALL|sabotage=wrong_block_shell|named=walls_Z2_4x2x2|in_branch=1|json=0
+CALL|sabotage=twist_every_link|named=winding_parity_b=2|in_branch=1|json=0
+CALL|sabotage=flux_wrong_sign|named=flux_ground_in_e=0_Z2_2x1|in_branch=1|json=0
+CALL|sabotage=overlap_skips_next|named=overlap_closed_form_Z2_2x1_(1, -1)|in_branch=1|json=0
+CALL|sabotage=overlap_skips_next|named=overlap_bracket_Z2_2x1_(1, -1)|in_branch=1|json=0
+CALL|sabotage=visibility_ignores_omega_error|named=flux_exact_zero_overlap_not_certified_Z2_2x1|in_branch=1|json=0
+CALL|sabotage=visibility_error_halved|named=flux_exact_zero_residual_rejected_Z2_2x1|in_branch=1|json=0
+CALL|sabotage=visibility_error_inflated|named=flux_two_insertions_above_the_residual_Z2_2x1|in_branch=1|json=0
+CALL|sabotage=overlap_one_power|named=overlap_bracket_narrow_Z2_2x1_(1, -1)|in_branch=1|json=0
+TRIGGER|event=push|main_paths=12|branch_paths=15|missing=none|added=tests/one_scale_replay.py,tests/ONE_SCALE_BLOCKING_BRACKETS.hbp,reviews/fable5-ym4-03-ci-replay-20261106/**|main_branches=any|branch_branches=main|json=0
+TRIGGER|event=pull_request|main_paths=12|branch_paths=15|missing=none|added=tests/one_scale_replay.py,tests/ONE_SCALE_BLOCKING_BRACKETS.hbp,reviews/fable5-ym4-03-ci-replay-20261106/**|main_branches=any|branch_branches=any|json=0
+NEG_CONTROLS_DONE|main_lines=51|same=20|moved=24|rewritten=7|main_calls=16|calls_kept=16|branch_calls=15|json=0

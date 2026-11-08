@@ -1,0 +1,10 @@
+--- repo/tests/test_one_scale_blocking.py	2026-11-08 11:28:40.408426600 -0300
++++ edit-inertia/tests/test_one_scale_blocking.py	2026-11-08 13:17:05.833475300 -0300
+@@ -1459,6 +1459,7 @@
+ 
+ 
+ def inertia_positive(rows):
++    rows = [list(row) for row in rows]
+     """The number of positive eigenvalues of an integer symmetric matrix, by fraction-free elimination with symmetric pivoting of 2 x 2 blocks by sum."""
+     m = [list(r) for r in rows]
+     n = len(m)
