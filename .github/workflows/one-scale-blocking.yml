@@ -20,6 +20,7 @@ on:
       - 'reviews/opus55-ym4-03-recheck/**'
       - 'reviews/opus55-ym4-03-certificate/**'
       - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
+      - 'reviews/fable5-ym4-03-ci-replay-check-20261108/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -37,6 +38,7 @@ on:
       - 'reviews/opus55-ym4-03-recheck/**'
       - 'reviews/opus55-ym4-03-certificate/**'
       - 'reviews/fable5-ym4-03-ci-replay-20261106/**'
+      - 'reviews/fable5-ym4-03-ci-replay-check-20261108/**'
       - 'scripts/no_float_gate.py'
       - 'scripts/FLOAT-EVIDENCE.txt'
       - '.github/workflows/one-scale-blocking.yml'
@@ -67,6 +69,7 @@ jobs:
           (cd reviews/opus55-ym4-03 && sha256sum --strict -c --quiet SHA256SUMS)
           (cd reviews/opus55-ym4-03-recheck && sha256sum --strict -c --quiet SHA256SUMS)
           (cd reviews/fable5-ym4-03-ci-replay-20261106 && sha256sum --strict -c --quiet SHA256SUMS)
+          (cd reviews/fable5-ym4-03-ci-replay-check-20261108 && sha256sum --strict -c --quiet SHA256SUMS)
           cd reviews/opus55-ym4-03-certificate && sha256sum --strict -c --quiet SHA256SUMS
       - name: The gate reads this tree
         run: |
@@ -98,6 +101,9 @@ jobs:
             if grep -q '^FAILED|check=replay_' "/tmp/sab-$name.out"; then echo "sabotage=$name: a replay check failed"; exit 1; fi
             reached=$(grep -c "|mode=computed|why=reached_by_$name|" "/tmp/sab-$name.out" || true)
             if [ "$reached" -lt 1 ]; then echo "sabotage=$name computed no section it reaches"; exit 1; fi
+            for section in $(awk -F'|' -v n="$name" '$1 == "REPLAY_SECTION" { s = ""; r = ""; for (i = 2; i <= NF; i++) { if (index($i, "section=") == 1) s = substr($i, 9); if (index($i, "reach=") == 1) r = "," substr($i, 7) "," } if (index(r, "," n ",") > 0) print s }' /tmp/ym4-03-cache/REPLAY-INDEX.hbp); do
+              if ! grep -q "^REPLAY|order=[0-9]*|section=$section|mode=computed|" "/tmp/sab-$name.out"; then echo "sabotage=$name reused $section, which the index says it reaches"; exit 1; fi
+            done
             echo "sabotage=$name exit=$rc $(grep -c '^FAILED' "/tmp/sab-$name.out") failed checks, among them $*; computed=$(grep -c '|mode=computed|' "/tmp/sab-$name.out") reused=$(grep -c '|mode=reused|' "/tmp/sab-$name.out")"
           }
           read_sabotage reversed_order 'covariance_b=2'
@@ -115,6 +121,17 @@ jobs:
           read_sabotage visibility_error_halved 'flux_exact_zero_residual_rejected_Z2_2x1'
           read_sabotage visibility_error_inflated 'flux_two_insertions_above_the_residual_Z2_2x1'
           read_sabotage overlap_one_power 'overlap_bracket_narrow_Z2_2x1_(1, -1)'
+          # A reached section wrongly reused: the read above refuses it, by the reach the index recorded.
+          mkdir -p /tmp/unmark-tree
+          cp -r tests /tmp/unmark-tree/tests
+          sed -i 's/CACHE_SABOTAGE != "reuse_reached":$/CACHE_SABOTAGE != "reuse_reached" and section != "section_loops":/' /tmp/unmark-tree/tests/one_scale_replay.py
+          if cmp -s tests/one_scale_replay.py /tmp/unmark-tree/tests/one_scale_replay.py; then echo "the edit changed nothing"; exit 1; fi
+          rc=0
+          (cd /tmp/unmark-tree && read_sabotage reversed_order 'covariance_b=2') > /tmp/unmark.out 2>&1 || rc=$?
+          cat /tmp/unmark.out
+          test "$rc" = 1
+          grep -qF "sabotage=reversed_order reused section_loops, which the index says it reaches" /tmp/unmark.out
+          echo "the read refuses reversed_order with section_loops reused"
       - name: The replay refuses a stale entry, a key that misses a helper, a tampered row and a stale bracket, and reused reached sections print the passing receipt
         run: |
           set -euo pipefail

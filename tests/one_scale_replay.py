@@ -12,7 +12,8 @@ The key of a section is a sha256 over the source of every top-level function and
 values of the module's data at the section's start, the sabotage, empty in the record, and the Python version. The coverage is the union of what
 the section ran, read by sys.monitoring, and the static closure of the names it reaches, read from the tokens, so a shared helper counts in every
 section that calls it. A sabotage reaches a section when its name is one of the literals compared with SABOTAGE in the covered code; every read of
-SABOTAGE there is SABOTAGE == "literal", and any other read makes the unit reached by every sabotage.
+SABOTAGE there is SABOTAGE == "literal", and any other read makes the unit reached by every sabotage. So does a string holding the word sabotage
+in any case, and any of the names in DYNAMIC_READS, through which a unit could read the arguments or the module's names without the token SABOTAGE.
 
 replay imports the test with the sabotage, then for each section: the recorded key must match the current code, the coverage must hold the static
 closure, and then a section the sabotage reaches, or one whose data changed, runs in full. Any other section prints its recorded receipt bytes after
@@ -45,6 +46,8 @@ INDEX_NAME = "REPLAY-INDEX.hbp"
 FORMAT = "1"
 CACHE_SABOTAGE_NAMES = ("key_misses_helper", "row_tampered", "stale_bracket", "reuse_reached")
 CROSSCHECK_DIMENSION = 12
+# Names through which a unit could read the sabotage without the token SABOTAGE; any of them makes the unit reached by every sabotage.
+DYNAMIC_READS = ("argv", "getattr", "globals", "vars", "locals", "eval", "exec", "__dict__", "__import__", "modules")
 # The module's data, digested at each section's start, and its bookkeeping, which the replay carries by itself.
 DATA_NAMES = ("SABOTAGE_NAMES", "Q_ONE", "MAT_ONE", "GROUPS", "Q8_ELEMENTS", "T2_ELEMENTS", "T2_QUATS", "BITS", "CENTER")
 BOOK_NAMES = ("START_NS", "SABOTAGE", "FAILS", "MISSES", "CHECKS", "HOOKS", "SINGLE_POWER", "argument")
@@ -179,7 +182,9 @@ def read_module(path):
         names, attributes, methods, literals = set(), set(), set(), set()
         opaque = False
         for k, t in enumerate(own):
-            if t.type == tokenize.STRING and "SABOTAGE" in t.string:
+            if t.type == tokenize.STRING and "sabotage" in t.string.lower():
+                opaque = True
+            if t.type == tokenize.NAME and t.string in DYNAMIC_READS:
                 opaque = True
             if t.type != tokenize.NAME:
                 continue
