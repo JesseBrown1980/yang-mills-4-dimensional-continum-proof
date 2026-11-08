@@ -34,14 +34,15 @@ jobs:
         run: |
           set -euo pipefail
           got=$(head -n 26 docs/PREDICTION-YM4-03C.hbp | sha256sum | cut -d' ' -f1)
-          test "$got" = 5e819f6d2b8c75eb2b1d8c3cf01fd417d5fa47932ebb422f136a1a66de261961
-          grep -qF 5e819f6d2b8c75eb2b1d8c3cf01fd417d5fa47932ebb422f136a1a66de261961 docs/NOTE-YM4-03C-BLOCKED-ACTION.md
+          test "$got" = ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881
+          grep -qF ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881 docs/NOTE-YM4-03C-BLOCKED-ACTION.md
           if grep -q $'\r' docs/PREDICTION-YM4-03C.hbp; then echo "a CR in the prediction"; exit 1; fi
       - name: The evidence chain, HBI to HBP to SHA to SH to HASH
         run: |
           set -euo pipefail
           cd reviews/fable5-ym4-03c-prediction
           sha256sum --strict -c --quiet SHA256SUMS
+          cd ../.. && python3 -I -B -X utf8 reviews/fable5-ym4-03c-prediction/make_chain.py && git diff --exit-code reviews/fable5-ym4-03c-prediction/ && cd reviews/fable5-ym4-03c-prediction
           seal=$(cat SHA256SUMS INDEX.hbi | sha256sum | cut -d' ' -f1)
           grep -qF "|seal=$seal|" SEAL.hbp
           grep -qF "|sh=${seal:0:16}|" SEAL.hbp

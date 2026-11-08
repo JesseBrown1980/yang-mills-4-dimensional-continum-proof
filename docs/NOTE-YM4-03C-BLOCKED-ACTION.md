@@ -51,7 +51,7 @@ with κ_n(V) the n-th cumulant of X under E_V. A coefficient c of a basis functi
 
 ## 4. The coarse spin-network basis, fixed
 
-Functions of V ∈ SU(2)^{coarse links} that are invariant under coarse gauge transformations, as ρ is by Theorem 4. For each coarse link ℓ and spin j, the projection Π_ℓ^j onto the span of the spin-j matrix elements of V_ℓ is canonical; the projections of different links commute, and the joint components {j_ℓ} split every such function into orthogonal parts. A component holds intertwiners at coarse sites. Every functional named below has a one-dimensional component, with two- or three-valent coarse sites, so the named functionals fix the basis through β¹⁰. A four-valent coarse site takes the recoupling in which the two links of the lexicographically lower coarse plaquette couple first; this is fixed now so that an extension reads in the same basis.
+Functions of V ∈ SU(2)^{coarse links} that are invariant under coarse gauge transformations, as ρ is by Theorem 4. For each coarse link ℓ and spin j, the projection Π_ℓ^j onto the span of the spin-j matrix elements of V_ℓ is canonical; the projections of different links commute, and the joint components {j_ℓ} split every such function into orthogonal parts. A component holds intertwiners at coarse sites. Every functional named below has a one-dimensional component, with two- or three-valent coarse sites, so the named functionals fix the basis through β¹⁰. A four-valent coarse site takes the recoupling in which the two links of the lexicographically lower coarse plaquette couple first; this is fixed now so that an extension reads in the same basis, with coarse plaquettes ordered by base site lexicographically, then by direction pair; through β¹⁰ P13's zeros are statements about whole joint components {j_ℓ}, the same in every recoupling basis.
 
 **Readout.** The coefficient of a basis function F in a function f is c_F = ⟨F, f⟩/⟨F, F⟩ in coarse Haar. ⟨χ_j(V_C), χ_j(V_C)⟩ = 1 for a simple coarse loop C.
 
@@ -70,7 +70,7 @@ Per coarse site, by orbits under the group of section 5, MEASURED in `derive_che
 
 ## 5. Lattice-size conditions and symmetry
 
-**Sides.** Every coarse side L_i ≥ 3, so fine sides ≥ 6. The smallest lattice is fine 6⁴, with 7776 plaquettes, where the multisets of 10 plaquettes number C(7785, 10) = 2.24 × 10³². A term that moves with V on a winding coarse loop of L coarse links holds 2L disjoint fine slices across that direction, each with at least min(b, 4) = 2 nontrivial plaquettes, by step (c) of Theorem 9, so at least 4L of them. At L = 3 nothing wraps through β¹¹, and the first winding functional, a strip of 12 plaquettes between two adjacent parallel winding coarse lines, enters at β¹². An extension to β¹² takes L ≥ 4. Closed fine surfaces that wrap hold at least 24 plaquettes at fine side 6.
+**Sides.** Every coarse side L_i ≥ 3, so fine sides ≥ 6. The smallest lattice is fine 6⁴, with 7776 plaquettes, where the multisets of 10 plaquettes number C(7785, 10) = 2.24 × 10³². A term that moves with V on a winding coarse loop of L coarse links holds 2L disjoint fine slices across that direction, each with at least min(b, 4) = 2 nontrivial plaquettes, by step (c) of Theorem 9, so at least 4L of them. At L = 3 nothing wraps through β¹¹. The bound 4L = 12 is met only by flat fillings of coarse plaquettes along the loop, joined on line links only, such as the strip of 12 plaquettes between two adjacent parallel winding coarse lines: it enters ρ at β¹² with 2⁻²¹ on χ½(V_{P₁})χ½(V_{P₂})χ½(V_{P₃}), and its joint cumulant is 0 by Lemma B, so log ρ holds no winding term through β¹³ at L = 3. An extension of G2's partition-function series to β¹² takes L ≥ 4. Closed fine surfaces that wrap hold at least 24 plaquettes at fine side 6.
 
 **Symmetry.** The coarse-compatible group is the coarse translations, fine translations by 2ℤ⁴, times the 384 signed permutations about a coarse site; it maps coarse sites to coarse sites and lines to lines, and ρ is invariant under it; fine translations by a vector with an odd entry move coarse sites to midpoints and other fine sites. A class is an orbit; its canonical form is the lexicographically least image of its plaquette set, translated so that its least site is the origin, and keyed by the hash of that form.
 
@@ -160,7 +160,7 @@ The cube on a face: F_P's three other faces and the cube's five other faces at s
 
 **Lemma E (one shared off link).** If polymers γ, γ′ share only the off link e, and at an end s of e every other link of γ is an off link outside γ′, then the polymer γ ∪ γ′ has activity z_γz_γ′. *Proof.* Integrating γ's other links at s first leaves a function of e invariant under e → he by the gauge transformation at s, so a constant, equal to z_γ. ∎ The cube on one off link meets F_P at the center, where F_P's three other internal links are free, so its joint activity cancels the cluster term exactly.
 
-In d dimensions each class holds 8(d − 2), and the total is −79/4423680 − 19(d − 2)/196608, −1013/8847360 at d = 3. CONJECTURE: the table ranges over this lane's classes, with the decorations of cost 6 excluded by the argument of 7.5, and the engine's exhaustive classes read it, part by part where its classes match these.
+In d dimensions the bumps, the domino disks and the cubes on a face hold 8(d − 2) each, and the cubes on one off link 16·C(d − 2, 2), 16 at d = 4 and 0 at d = 3, adding 0; the total is −79/4423680 − 19(d − 2)/196608, −1013/8847360 at d = 3. CONJECTURE: the table ranges over this lane's classes, with the decorations of cost 6 excluded by the argument of 7.5, and the engine's exhaustive classes read it, part by part where its classes match these.
 
 ### 7.9 P12, order 10 of χ₁(V_P)
 
@@ -176,7 +176,7 @@ P10a is section 5's count, DERIVED. P10b, on fine 2×6×6×6, coarse 1×3×3×3:
 
 ### 7.12 P13, the β¹⁰ functionals
 
-Through β¹⁰ the basis functions with a nonzero coefficient are χ½(V_P), χ₁(V_P) and the chair. Spin j ≥ 3/2 on a coarse link needs plaquettes of total spin at least j at each of its two positions, and a plaquette holds at most two line links of one coarse loop, so cost at least 12 on any loop: DERIVED. The rectangle is P7. N1_PQ is 7.6 and 7.7. A disjoint pair needs a cluster or a polymer joining two fillings that share no off link, order at least 14. A simple coarse loop of length at least 8 spans at least 3 coarse plaquettes, 12 fine ones. The twisted hexagon spans 3 coarse plaquettes and needs connections. CONJECTURE for the clauses without a derivation.
+Through β¹⁰ the basis functions with a nonzero coefficient are χ½(V_P), χ₁(V_P) and the chair. Spin j ≥ 3/2 on a coarse link needs plaquettes of total spin at least j at each of its two positions, and a fine plaquette holds at most two line links, so the cost Σ2j_p is at least 2Σ_ℓ j_ℓ; a spin network with j ≥ 3/2 on ℓ carries spin ≥ 3/2 across each of the three disjoint cuts at graph distance 1, 2, 3 between ℓ's ends, so Σ_ℓ j_ℓ ≥ 6 and the cost is at least 12; a cluster reaches spin 3/2 on ℓ only from polymers costing at least 4 per spin ½ there, so at least 12: DERIVED. The rectangle is P7. N1_PQ is 7.6 and 7.7. A disjoint pair needs a cluster or a polymer joining two fillings that share no off link, order at least 14. A simple coarse loop of length at least 8 spans at least 3 coarse plaquettes, 12 fine ones. The twisted hexagon spans 3 coarse plaquettes and needs connections. CONJECTURE for the clauses without a derivation.
 
 ## 8. The three gates
 
@@ -196,7 +196,7 @@ Through β¹⁰ the basis functions with a nonzero coefficient are χ½(V_P), χ
 | E3 | multiplicity vectors on each support, with 1/∏ m_p! | the McKay fold: one Φ_S(j; V) per support and spin pattern serves every vector | an integral per multiset |
 | E4 | Φ_S(j; V) exactly, at rational V | link-by-link SU(2) integration, by the character merges of section 7 where a link has two plaquettes and exact recoupling where it has three or four; 2I averages in ℚ(√5) as the second route inside degree 11 under G1, where the √5 parts cancel, a check of its own | 120^k products over k free links |
 | E5 | cumulants by the recursion, and the cluster expansion of the polymer form as route S | both series of G2 per class | a log taken on the whole partition function |
-| E6 | the readout c_F in the basis of section 4, by exact solves at rational V | the per-class functional list of section 7 | integration over V, which would raise G1's degrees |
+| E6 | the readout c_F in the basis of section 4, by exact solves at rational V with more sample points than unknowns and the residual filed as 0, or by the exact isotypic projection | the per-class functional list of section 7 | integration over V, which would raise G1's degrees |
 | E7 | the chair by route S in separate code, for G3 | surfaces and disk weights | |
 | E8 | receipts through HBI → HBP → SHA → SH → HASH | | |
 
@@ -204,7 +204,7 @@ Odd orders are skipped by P3, with β⁵ computed as its check. The planar corre
 
 ## 10. The checks of this commit
 
-[`derive_checks.py`](../reviews/fable5-ym4-03c-prediction/derive_checks.py), integers and integer pairs only, writes [`DERIVE-CHECKS.hbp`](../reviews/fable5-ym4-03c-prediction/DERIVE-CHECKS.hbp): 52 checks, 0 failed, about 34 seconds and 250 MB under WSL Python 3.12. MEASURED:
+[`derive_checks.py`](../reviews/fable5-ym4-03c-prediction/derive_checks.py), integers and integer pairs only, writes [`DERIVE-CHECKS.hbp`](../reviews/fable5-ym4-03c-prediction/DERIVE-CHECKS.hbp): 52 checks, 0 failed, about 21 seconds (20540 ms in RECORDS.hbp) and 250 MB under WSL Python 3.12. MEASURED:
 
 - **McKay route.** N_m(0) are the Catalan numbers. t₂ = β/4 − β³/96 + β⁵/1536 − β⁷/23040 + 13β⁹/4423680 and t₃ = β²/24 − β⁴/384 + β⁶/5760 − 13β⁸/1105920, from N_m alone. 2t₂⁴ and 3t₃⁴ − 2t₂⁸ through β¹² equal the decide and attack lanes' Bessel routes: 1/128, −1/768, 1/6144, −79/4423680, 769/424673280 and −19/884736, 7/884736, −373/212336640.
 - **Designs.** In ℤ[φ], Σ_{2I} χ_j reads 120 at j = 0, 0 at j = ½ to 11/2, and 120 at j = 6; Σ_{2T} χ_j vanishes for j = ½ to 5/2 and reads 24 at j = 3. E[χ½^m] by closed walks on affine E8 and E6 equals the class sums, agrees with SU(2) through m = 11 and m = 5, and reads 133 against 132 at m = 12 and 6 against 5 at m = 6.
@@ -216,7 +216,7 @@ The two earlier runs stay beside the script. [`FIRST-RUN.hbp`](../reviews/fable5
 
 ## 11. The evidence chain and the pin
 
-In [`reviews/fable5-ym4-03c-prediction/`](../reviews/fable5-ym4-03c-prediction/): `INDEX.hbi`, one row per artifact with its bytes, sha256 and 16-hex SH; `RECORDS.hbp`, what each artifact is and how it was made; `SHA256SUMS` over the folder's files; and `SEAL.hbp`, the sha256 of `SHA256SUMS` and of `INDEX.hbi` and the sha256 of the two concatenated. The 26 rows of the prediction, as pushed in this commit, hash to `5e819f6d2b8c75eb2b1d8c3cf01fd417d5fa47932ebb422f136a1a66de261961` by `head -n 26 docs/PREDICTION-YM4-03C.hbp | sha256sum`, and [`blocked-action-b10.yml`](../.github/workflows/blocked-action-b10.yml) holds that pin, as `one-scale-blocking.yml` holds YM4-03's. Later rows, attempts and corrections, go after row 26, so every earlier row stays a byte prefix.
+In [`reviews/fable5-ym4-03c-prediction/`](../reviews/fable5-ym4-03c-prediction/): `INDEX.hbi`, one row per artifact with its bytes, sha256 and 16-hex SH; `RECORDS.hbp`, what each artifact is and how it was made; `SHA256SUMS` over the folder's files; and `SEAL.hbp`, the sha256 of `SHA256SUMS` and of `INDEX.hbi` and the sha256 of the two concatenated. The 26 rows of the prediction, as pushed in this commit, hash to `ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881` by `head -n 26 docs/PREDICTION-YM4-03C.hbp | sha256sum`, and [`blocked-action-b10.yml`](../.github/workflows/blocked-action-b10.yml) holds that pin, as `one-scale-blocking.yml` holds YM4-03's. Later rows, attempts and corrections, go after row 26, so every earlier row stays a byte prefix.
 
 ## 12. OPEN
 
