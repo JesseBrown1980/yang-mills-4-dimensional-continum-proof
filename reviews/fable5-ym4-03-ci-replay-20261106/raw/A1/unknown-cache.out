@@ -1,0 +1,1 @@
+usage = one_scale_replay.py record DIR [seeds=PATH] | one_scale_replay.py replay DIR [sabotage=NAME] [cache_sabotage=NAME]

@@ -1,0 +1,5 @@
+T+934|cache control exit=1 on replay_key_stale_section_covariance
+T+1779|cache control exit=1 on replay_coverage_misses_helper_section_covariance
+T+2586|cache control exit=1 on replay_rows_sha256_section_covariance
+T+3405|cache control exit=1 on replay_bracket_stale
+T+4243|cache control: every section reused under reversed_order gives exit 0 and the receipt, which the sabotage step refuses

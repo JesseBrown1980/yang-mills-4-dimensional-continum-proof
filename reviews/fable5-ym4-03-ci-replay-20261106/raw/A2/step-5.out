@@ -1,0 +1,15 @@
+T+1642|sabotage=reversed_order exit=1 10 failed checks, among them covariance_b=2; computed=3 reused=13
+T+2863|sabotage=shifted_endpoint exit=1 2 failed checks, among them covariance_b=2; computed=1 reused=15
+T+4092|sabotage=dropped_inverse exit=1 2 failed checks, among them covariance_b=2; computed=1 reused=15
+T+5317|sabotage=theta_no_inverse exit=1 4 failed checks, among them reflection_map_b=2_c=0; computed=1 reused=15
+T+6754|sabotage=wrong_convolution_power exit=1 10 failed checks, among them two_dimensions_closes_S3_b=2_2x2; computed=1 reused=15
+T+148747|sabotage=wrong_first_coefficient exit=1 4 failed checks, among them first_dependence_(2,2,2,2)_position=0; computed=1 reused=15
+T+196956|sabotage=extra_plaquette_factor exit=1 8 failed checks, among them brute_equals_elimination_S3; computed=1 reused=15
+T+202586|sabotage=wrong_block_shell exit=1 2 failed checks, among them walls_Z2_4x2x2; computed=1 reused=15
+T+203715|sabotage=twist_every_link exit=1 2 failed checks, among them winding_parity_b=2; computed=1 reused=15
+T+334283|sabotage=flux_wrong_sign exit=1 64 failed checks, among them flux_ground_in_e=0_Z2_2x1; computed=1 reused=15
+T+484607|sabotage=overlap_skips_next exit=1 16 failed checks, among them overlap_closed_form_Z2_2x1_(1, -1) overlap_bracket_Z2_2x1_(1, -1); computed=1 reused=15
+T+567454|sabotage=visibility_ignores_omega_error exit=1 7 failed checks, among them flux_exact_zero_overlap_not_certified_Z2_2x1; computed=1 reused=15
+T+646117|sabotage=visibility_error_halved exit=1 5 failed checks, among them flux_exact_zero_residual_rejected_Z2_2x1; computed=1 reused=15
+T+724835|sabotage=visibility_error_inflated exit=1 6 failed checks, among them flux_two_insertions_above_the_residual_Z2_2x1; computed=1 reused=15
+T+784184|sabotage=overlap_one_power exit=1 16 failed checks, among them overlap_bracket_narrow_Z2_2x1_(1, -1); computed=1 reused=15

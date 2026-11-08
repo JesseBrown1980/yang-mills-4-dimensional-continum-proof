@@ -1,0 +1,17 @@
+GATES_HEAD|head=0979d1c0664e751b89b52150757e7e4d74e01d08|base=bf58ab272d2713c5e79d06005f6cfd1226763ed4|json=0
+STEP|label=no-float|k=1|rc=0|ms=374|cpu_ms=330|load=6.61|name=The gate reads its own test snippets|json=0
+STEP|label=no-float|k=2|rc=0|ms=17796|cpu_ms=16420|load=6.70|name=Scan the tracked files the gate reads|json=0
+STEP|label=no-float|k=3|rc=0|ms=229785|cpu_ms=211870|load=7.05|name=The gate goes red on each plant, for its named reason|json=0
+WORKFLOW_DONE|label=no-float|head=0979d1c0664e751b89b52150757e7e4d74e01d08|steps=3|total_ms=247955|load_start=6.58|load_end=7.05|json=0
+NO_FLOAT_BASE|base_sha=bf58ab272d2713c5e79d06005f6cfd1226763ed4|gate_sha256=935bd77b893026a88085850484d6899778e73cb2a6b5188615c36101f4469193|head_sha=0979d1c0664e751b89b52150757e7e4d74e01d08|json=0
+NO_FLOAT_BASE_SELFTEST|rc=0|last=NO_FLOAT_SELFTEST_DONE|must_flag=124|must_name_its_rule=158|must_pass=91|file_rows=59|list_rows=14|failed=0|json=0|json=0
+NO_FLOAT_BASE_SCAN|rc=0|last=NO_FLOAT_DONE|code_files=109|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0|json=0
+NO_FLOAT_LIST|fork=bf58ab272d2713c5e79d06005f6cfd1226763ed4|changed=none|json=0
+rustc 1.81.0 (eeb90cda1 2024-09-04)
+STEP|label=no-float-compiled|k=2|rc=0|ms=3263|cpu_ms=3220|load=7.03|name=Every C, C++ and Rust file compiled and read|json=0
+STEP|label=no-float-compiled|k=3|rc=0|ms=2563|cpu_ms=2480|load=7.03|name=Planted floats go red, controls stay green|json=0
+STEP|label=no-float-compiled|k=4|rc=0|ms=3084|cpu_ms=3070|load=7.11|name=A tracked float goes red through the check itself|json=0
+STEP|label=no-float-compiled|k=5|rc=0|ms=3192|cpu_ms=3140|load=7.11|name=A tracked float in a Rust file goes red through the check itself|json=0
+STEP|label=no-float-compiled|k=6|rc=0|ms=3215|cpu_ms=3170|load=7.18|name=A tracked Rust file that does not build goes red|json=0
+STEP|label=no-float-compiled|k=7|rc=0|ms=32|cpu_ms=30|load=7.18|name=A tracked Cargo package stops the small form|json=0
+WORKFLOW_DONE|label=no-float-compiled|head=0979d1c0664e751b89b52150757e7e4d74e01d08|steps=6|total_ms=15349|load_start=7.04|load_end=7.18|json=0
