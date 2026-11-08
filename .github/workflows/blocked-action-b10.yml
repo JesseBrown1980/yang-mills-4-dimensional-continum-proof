@@ -1,0 +1,136 @@
+# YM4-03C: the prediction rows stay byte for byte, both evidence chains hold, the derivation checks reproduce their filed output, the engine
+# rebuilt with Rust 1.81 rereads its receipt byte for byte, route S rereads the chair in separate code, and each planted error fails by name.
+name: YM4-03C blocked action through beta^10
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'docs/PREDICTION-YM4-03C.hbp'
+      - 'docs/NOTE-YM4-03C-BLOCKED-ACTION.md'
+      - 'reviews/fable5-ym4-03c-prediction/**'
+      - 'reviews/fable5-ym4-03c-engine/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/blocked-action-b10.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-03C.hbp'
+      - 'docs/NOTE-YM4-03C-BLOCKED-ACTION.md'
+      - 'reviews/fable5-ym4-03c-prediction/**'
+      - 'reviews/fable5-ym4-03c-engine/**'
+      - 'scripts/no_float_gate.py'
+      - 'scripts/FLOAT-EVIDENCE.txt'
+      - '.github/workflows/blocked-action-b10.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  blocked-action-b10:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # the prediction commit's blobs, for its evidence chain
+          fetch-depth: 0
+      - name: The 26 rows of the prediction as pushed stay byte for byte, and the note names their hash
+        run: |
+          set -euo pipefail
+          got=$(head -n 26 docs/PREDICTION-YM4-03C.hbp | sha256sum | cut -d' ' -f1)
+          test "$got" = ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881
+          grep -qF ddd7b779d60e04f2dca1f866ff56f1194107dd10a8470088dee4f0ab3336b881 docs/NOTE-YM4-03C-BLOCKED-ACTION.md
+          if grep -q $'\r' docs/PREDICTION-YM4-03C.hbp; then echo "a CR in the prediction"; exit 1; fi
+      - name: The prediction's evidence chain, read against the prediction commit 32486bd, with the note's frozen sections a byte prefix
+        run: |
+          set -euo pipefail
+          cd reviews/fable5-ym4-03c-prediction
+          sha256sum --strict -c --quiet SHA256SUMS
+          cd ../..
+          python3 -I -B -X utf8 reviews/fable5-ym4-03c-engine/check_prediction_chain.py
+      - name: The gate reads this tree
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: The derivation checks against their filed output
+        run: |
+          set -euo pipefail
+          python3 -I -B -X utf8 reviews/fable5-ym4-03c-prediction/derive_checks.py > /tmp/derive.out
+          cmp /tmp/derive.out reviews/fable5-ym4-03c-prediction/DERIVE-CHECKS.hbp
+          grep -q '^YM4_03C_CHECKS_DONE|checks=52|failed=0|json=0$' /tmp/derive.out
+      - name: Rust 1.81 with rustfmt and clippy
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component rustfmt,clippy
+          rustc +1.81.0 --version
+      - name: The engine's format and lints on Rust 1.81, through a Cargo wrapper outside the tree
+        run: |
+          set -euo pipefail
+          rustfmt +1.81.0 --edition 2021 --check reviews/fable5-ym4-03c-engine/blocked_action_engine.rs
+          mkdir -p /tmp/wrap
+          {
+            echo '[package]'
+            echo 'name = "ym4_03c_engine_wrap"'
+            echo 'version = "0.1.0"'
+            echo 'edition = "2021"'
+            echo ''
+            echo '[[bin]]'
+            echo 'name = "blocked_action_engine"'
+            echo "path = \"$GITHUB_WORKSPACE/reviews/fable5-ym4-03c-engine/blocked_action_engine.rs\""
+          } > /tmp/wrap/Cargo.toml
+          cd /tmp/wrap
+          CARGO_TARGET_DIR=/tmp/wrap-target cargo +1.81.0 fmt --all -- --check
+          CARGO_TARGET_DIR=/tmp/wrap-target cargo +1.81.0 clippy --release -- -D warnings
+      - name: The engine rebuilt and rerun, its receipt byte for byte against the pinned file
+        run: |
+          set -euo pipefail
+          r=reviews/fable5-ym4-03c-engine/RECEIPT-YM4-03C.hbp
+          test "$(sha256sum "$r" | cut -d' ' -f1)" = 76dc01b78449952bce3de6a21bfa0d0bac727f62cd0acf4e5f8d1566e4950227
+          grep -qF 76dc01b78449952bce3de6a21bfa0d0bac727f62cd0acf4e5f8d1566e4950227 docs/NOTE-YM4-03C-BLOCKED-ACTION.md
+          if grep -q $'\r' "$r"; then echo "a CR in the receipt"; exit 1; fi
+          rustc +1.81.0 -O --edition 2021 -o /tmp/engine reviews/fable5-ym4-03c-engine/blocked_action_engine.rs
+          /tmp/engine > /tmp/receipt.hbp 2> /tmp/engine.err
+          tail -n 3 /tmp/engine.err
+          cmp /tmp/receipt.hbp "$r"
+          grep -qx 'YM4_03C_DONE|rows=185|misses=none|json=0' /tmp/receipt.hbp
+          test "$(grep -c '|result=MET|' /tmp/receipt.hbp)" = 92
+          if grep -q '|result=MISS|' /tmp/receipt.hbp; then echo "a MISS row"; exit 1; fi
+      - name: Route S, the chair in code separate from the engine, against its filed output and the engine's reads
+        run: |
+          set -euo pipefail
+          python3 -I -B -X utf8 reviews/fable5-ym4-03c-engine/route_s_chair.py > /tmp/route_s.hbp
+          cmp /tmp/route_s.hbp reviews/fable5-ym4-03c-engine/ROUTE-S.hbp
+          grep -qx 'ROUTE_S_DONE|d4=3/524288|d3=3/524288|frozen=3/524288|result=MET|json=0' /tmp/route_s.hbp
+          grep -qF '|row=P6|item=d4_b10_chi_1/2(V_chair)_log_rho|read=3/524288|frozen=3/524288|' /tmp/receipt.hbp
+          grep -qF '|row=P6|item=d3_b10_chi_1/2(V_chair)_log_rho|read=3/524288|frozen=3/524288|' /tmp/receipt.hbp
+      - name: Each planted error stops the engine with a row naming its check
+        run: |
+          set -uo pipefail
+          planted() {
+            rc=0
+            SABOTAGE="$1" /tmp/engine > /tmp/sab.out 2> /tmp/sab.err || rc=$?
+            if [ "$rc" != 1 ]; then echo "SABOTAGE=$1 gave rc=$rc, wanted 1"; exit 1; fi
+            if ! grep -qF "FAILED|check=$2|" /tmp/sab.out; then echo "SABOTAGE=$1 failed by another name:"; grep '^FAILED' /tmp/sab.out; exit 1; fi
+            echo "SABOTAGE=$1 failed by name: $2"
+          }
+          planted dropped_multiplicity 'P8c_d4_W_P_u^4'
+          planted dropped_multinomial 'P4_d4_b6_chi_1/2(V_P)_log_rho'
+          planted disconnected_cluster 'P5_d4_b8_other_functionals'
+          planted 2i_beyond_degree_11 'G1_2I_within_degree_11'
+          planted wrong_sign 'P1_d4_b4_chi_1/2(V_P)_log_rho'
+      - name: The engine's evidence chain, HBI to HBP to SHA to SH to HASH
+        run: |
+          set -euo pipefail
+          cd reviews/fable5-ym4-03c-engine
+          sha256sum --strict -c --quiet SHA256SUMS
+          cd ../..
+          python3 -I -B -X utf8 reviews/fable5-ym4-03c-engine/make_chain.py
+          git diff --exit-code reviews/fable5-ym4-03c-engine/
+          cd reviews/fable5-ym4-03c-engine
+          seal=$(cat SHA256SUMS INDEX.hbi | sha256sum | cut -d' ' -f1)
+          grep -qF "|seal=$seal|" SEAL.hbp
+          grep -qF "|sh=${seal:0:16}|" SEAL.hbp
+          grep -qF "|sha256_SHA256SUMS=$(sha256sum SHA256SUMS | cut -d' ' -f1)|" SEAL.hbp
+          grep -qF "|sha256_INDEX.hbi=$(sha256sum INDEX.hbi | cut -d' ' -f1)|" SEAL.hbp
