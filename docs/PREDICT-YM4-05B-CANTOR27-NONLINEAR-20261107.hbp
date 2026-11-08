@@ -1,0 +1,21 @@
+# YM4-05B CANTOR-27 EXPLORATORY FORECAST, FROZEN BEFORE HOSTED VERIFIER.
+# Sampled nonlinear gauge-covariant *surrogate*, not Yang-Mills evolution.
+# Field on 3^4 4D torus with exactly represented Q8 subset of continuous SU2.
+# At every link deterministic simultaneous F(U)_ell=P_(mu,mu+1)(x) U_ell;
+# P is based oriented 4D plaquette. This is NONLINEAR, noncommuting, and
+# gauge covariant, but not a physical SU2 heat-bath, Wilson RG, or transfer.
+# Cantor positions: rank-spaced selection of 27 from 32 five-digit
+# ternary {0,2} endpoints, not 27 random draws or complete reconstruction.
+PREDICT|cantor=01|lattice=3x3x3x3|vertices=81|positively_oriented_links=324|plaquettes=486|field_values=Q8_SUBSET_OF_SU2|status=TEST_MODEL|json=0
+PREDICT|cantor=02|nonlinear_update=BASED_PLAQUETTE_TIMES_LINK|plaquette_plane=mu,mu_plus_1_mod_4|simultaneous=YES|gauge_covariant=YES|Yang_Mills_time_evolution=NO|status=MODEL|json=0
+PREDICT|cantor=03|samples=27|Cantor_level=5|Cantor_digit_set=0,2|indices=floor(i*31/26)_for_i0_to26|timeline=0_to242|status=GEOMETRY|json=0
+PREDICT|cantor=04|local_4D_Haar_Z=EXACT_CONTINUOUS_SU2_INTEGRAL|staples=6|Q=norm_squared_six_staples|Z_depends_only_on_Q=YES|sampled_Haar_enclosures=EXACT_RATIONAL|status=ONE_LINK_ONLY|json=0
+PREDICT|cantor=05|27_Cantor_W_and_Q_pairs_distinct=23|local_Q_distinct=8|nonconstant=YES|status=EXPLORATORY_FORECAST|json=0
+PREDICT|cantor=06|Cantor_Q_to_next_Q_scalar_closure=FALSE|conflicting_sample_pairs_at_least=1|observed_conflicts=14|status=EXPLORATORY_FORECAST|json=0
+PREDICT|cantor=07|full_state_first_repeat_at_t=172|same_as_t=4|cycle_length=168|full_state_cycle_independent_check=REQUIRED|status=EXPLORATORY_FORECAST|json=0
+PREDICT|cantor=08|if_exact_full_state_cycle_certificate=VALID|state_after_3pow40=state_after_4_plus_mod_168_of_3pow40_minus4|time_jump=EXACT_ON_THIS_ORBIT|status=CONDITIONAL|json=0
+PREDICT|cantor=09|if_valid_scalar_observable_reduction=VALID|equal_Q_implies_equal_next_Q=NECESSARY|Cantor_counterexample_falsifies_this_specific_Q_reduction=YES|status=TESTABLE_THEOREM_GATE|json=0
+PREDICT|cantor=10|Cantor_samples_alone_prove_full_state_cycle=NO|all_state_replay_and_gauge_check=REQUIRED|mod3_Frobenius_from_matrix_law=NOT_VALID_OVER_SU2|status=LIMIT|json=0
+PREDICT|cantor=11|exact_original_Haar_beta64_Q36=FAST_HORNER_EQUAL_SLOW_REFERENCE|speed_target=UNDER_10_SECONDS_FOR_CHECKER_NOT_ACTION_QUEUE|ratio_at_least=10_on_local_reference_NOT_CI_GATE|status=PERFORMANCE|json=0
+PREDICT|cantor=12|negative_controls=wrong_Cantor_digit,missing_inverse,broken_gauge_covariance,false_Q_closure,false_cycle,incorrect_ternary_jump,claim_physical_mass_gap|all_REJECT|status=RED|json=0
+PREDICTION_CANTOR_SUMMARY|rows=12|frozen_before_verified_source=YES|underlying_YM_4D_continuum_gap=OPEN|json=0

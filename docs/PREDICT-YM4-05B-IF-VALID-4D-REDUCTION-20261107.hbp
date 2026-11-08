@@ -1,0 +1,12 @@
+# YM4-05B POST-MEASUREMENT THEOREM TARGET: CONDITIONAL FORECAST, NOT PROVEN 4D YM.
+# Written AFTER hosted Cantor27 39-row receipt, for future 4D SU2 reductions.
+# Freeze before any future theorem checker or physical continuum claim.
+PREDICT|reduction=01|target=GAUGE_INVARIANT_R|necessary=R(F(U))_equals_Phi(R(U))_for_all_U|Q_only=REJECTED_BY_14_CANTOR_CONTRADICTIONS|status=PROOF_OBLIGATION|json=0
+PREDICT|reduction=02|observable=O|necessary=O(U)_equals_h(R(U))|sample_agreement_alone=INSUFFICIENT|status=PROOF_OBLIGATION|json=0
+PREDICT|reduction=03|if_closed_Phi_is_fixed_linear|jump_3pow40_by=40_CUBINGS|matrix_size_d=27|dense_cubing_mults_at_most=40_times_27_cubed|runtime_seconds=HARDWARE_DEPENDENT|status=CONDITIONAL_FORECAST|json=0
+PREDICT|reduction=04|if_Phi_nonlinear|ordinary_matrix_cubing=INVALID|alternative=EXACT_COMPOSITION_CYCLE_OR_CERTIFIED_TRANSFER_STRUCTURE|status=CONDITIONAL_FORECAST|json=0
+PREDICT|reduction=05|if_full_field_finite_orbit_exact_repeat|after_t4_cycle=168|3pow40_reduced_index=81|this_Q8_test_only=YES|status=VALID_SMALL_MODEL_CONTROL|json=0
+PREDICT|reduction=06|if_reduction_retains_first_true_interacting_excitation=YES|spectral_comparison_still_needs=POSITIVE_TRANSFER_AND_FULL_SPECTRUM_OR_VISIBILITY|status=CONDITIONAL_FORECAST|json=0
+PREDICT|reduction=07|physical_continuum_gap=REQUIRES_uniform_lower_m(a,L)_greater_than_zero|coupling_flow_beta(a)_to_infinity=UNPROVED|all_scales=OPEN|status=LIMIT|json=0
+PREDICT|reduction=08|Cantor_only_27_measurements=DO_NOT_PROVE_THEOREM|independent_full_replay_and_negatives=REQUIRED|status=EVIDENCE_BOUNDARY|json=0
+PREDICTION_REDUCTION_SUMMARY|rows=8|measured_Cantor_reference=YM4_05B_CANTOR27-RECEIPT.hbp|future_real_4D_YM_reduction=OPEN|json=0

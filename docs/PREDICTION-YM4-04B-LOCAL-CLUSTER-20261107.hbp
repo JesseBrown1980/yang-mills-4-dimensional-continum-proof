@@ -1,0 +1,25 @@
+# YM4-04B -- Local strong-coupling connected Wilson correlation comparison.
+# Prediction frozen BEFORE independent local comparison checker is authored.
+# Uses standard Dobrushin comparison theorem on compact SU2 link spins
+# and the existing YM4-03 EXACT two-block Wilson pullback.
+# This is NOT a rigorous bound on full induced effective action or physical E1.
+PREDICT|id=01|base=PR36_head_78d970c3|group=CONTINUOUS_SU2|dimension=4|lattice_min_side=2|link_plaquettes=6|other_links_per_plaquette=3|total_neighbor_multiplicity=18|status=PROOF_TARGET|json=0
+PREDICT|id=02|check=CONDITIONAL_TV|C_ij_le=tanh(beta_times_shared_plaquette_count)|C_ij_le=beta_times_count|alpha_le=18_beta|status=DERIVED|json=0
+PREDICT|id=03|beta0=1/1000|alpha0=9/500|Dobrushin_less_than_one=YES|global_beta_Np_small=NO_on_18^4|status=DERIVED|json=0
+PREDICT|id=04|test_tori=2^4,3^4,6^4|every_link_incidence_count=6|every_neighbor_multiplicity_sum=18|status=EXHAUSTIVE_FINITE_GEOMETRY|json=0
+PREDICT|id=05|observable=normalized_SU2_fundamental_Wilson_rectangle|F_perimeter_fine_3x3=12|F_perimeter_fine_9x9=36|temporal_distance=3_or_9|Haar_baseline=DISJOINT|status=DERIVED|json=0
+PREDICT|id=06|Dobrushin_connected_covariance_bound=F_support_times_alpha^time_distance_over_1_minus_alpha|derivative_via_tilt=YES|volume_independent=YES|status=NAMED_COMPARISON_LEMMA|json=0
+PREDICT|id=07|C_actual_fine_3step_le=12*(9/500)^3/(1-9/500)|strict_lt=1/10000|status=DERIVED|json=0
+PREDICT|id=08|C_actual_fine_9step_le=36*(9/500)^9/(1-9/500)|strict_lt=1/100000000000000|status=DERIVED|json=0
+PREDICT|id=09|Wilson_proxy_beta1=beta0^9/4^8|Wilson_proxy_beta2=beta0^81/4^80|both_small_beta=YES|not_actual_coupling=YES|status=DERIVED|json=0
+PREDICT|id=10|C_proxy1_le=4*18*beta1/(1-18*beta1)|C_proxy2_le=4*18*beta2/(1-18*beta2)|induced_action_equal_Wilson_proxy=NOT_CLAIMED|status=DERIVED|json=0
+PREDICT|id=11|two_step_connected_error_1=actual_b3_bound_plus_proxy1_bound|strict_lt=1/10000|status=DERIVED|json=0
+PREDICT|id=12|two_step_connected_error_2=actual_b9_bound_plus_proxy2_bound|strict_lt=1/100000000000000|status=DERIVED|json=0
+PREDICT|id=13|scale_family_r=3^k|spacings_a=3^-k|smallest_physical_time_separation=1|volume_site_sides=2*3^k|beta0_held_fixed=1/1000|status=DERIVED|json=0
+PREDICT|id=14|scale_error_actual_k_le=4*3^k*alpha0^(3^k)/(1-alpha0)|proxy_alpha_k=72/4000^(9^k)|k_ge=1|status=DERIVED|json=0
+PREDICT|id=15|infinite_sum_actual_le=12*alpha0^3/((1-alpha0)*(1-3*alpha0^6))|infinite_sum_proxy_le=8*alpha1/(1-alpha1)|combined_sum_lt=1/10000|status=DERIVED|json=0
+PREDICT|id=16|two_step_actual_correlation_precision=ABSOLUTE_ONLY|first_spectral_weight=OPEN|physical_mass_floor=NOT_DERIVED|status=LIMIT|json=0
+PREDICT|id=17|weak_beta=1/10|alpha_upper=9/5|Dobrushin_contraction=FAIL|weak_beta=4|alpha_upper=72|status=EXPECTED_RED|json=0
+PREDICT|id=18|actual_SU2_weak_coupling_beta_to_infinity=NOT_CONTROLLED|renormalized_induced_action=NOT_CONTROLLED|nontrivial_continuum=OPEN|status=LIMIT|json=0
+PREDICT|id=19|red_controls=wrong_plaquette_incidence,wrong_neighbor_sum,missing_time_separation,wrong_proxy_exponent,spurious_weak_coupling_contraction,spurious_first_weight,wrong_scale_ratio,non_summable_invention|all_REJECT|status=RED|json=0
+PREDICTION_SUMMARY|rows=19|source_frozen_before_checker=YES|stacked_on_PR36=YES|actual_SU2_integral_not_evaluated=YES|json=0
