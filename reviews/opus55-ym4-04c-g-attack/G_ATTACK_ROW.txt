@@ -1,0 +1,89 @@
+YM4_04C_GATE
+id=G_attack
+criterion=note_sections_3_and_4_derive_G0_and_G1_in_full_and_end_with_constants_tables_against_the_draft;
+   three_second-seat_lenses_per_theorem_attacked_the_two_derivation_routes_before_the_repair_and_filed_their_verdicts_(G0:Kotecky-Preiss_GAP,counting_GAP,assembly_GAP,each_on_the_factor_6;
+   G1:tree-graph_GAP,channel_HOLDS,structure_HOLDS;
+   note_section_16);
+   the_repaired_sections_carry_the_proved_constants,and_this_file_carries_them;
+   the_gate_stays_OPEN_until_the_second_seat_named_in_the_second_seat_field_attacks_the_final_sections_3_and_4_as_written,G1's_(1+t)^f_tree-graph_step_and_its_root_restriction_m>=1_included,and_files_the_attack:a_status_for_each_of_the_seven_acceptance_checks_and_for_each_entry_of_per_step_status;
+   an_unrepaired_gap,or_a_proved_constant_that_differs_from_the_one_in_this_file,makes_every_row_and_clause_that_rests_on_it_read_UNSUPPORTED,whatever_its_arithmetic;
+   a_repair_or_a_corrected_constant_is_filed_as_appended_rows_after_line_42;
+   no_engine_code_before_the_filing
+second_seat=the_local_Opus_5.5_seat,pid_8467a937cba309f7
+status_values=reproduced,refuted_or_open;
+   every_check_and_every_step_starts_open;
+   this_row_is_frozen_and_keeps_open_as_written,so_the_second_seat_files_each_status_in_rows_appended_after_line_42,one_per_check_and_one_per_step
+check_T1=open;
+   domain_preservation:every_permitted_input_stays_inside_the_claimed_strong-coupling_region,including_its_boundary:the_C14_edge_0.02074/0.02075,delta_crit,lambda(delta)<=kappa_and_C_0's_pole_test;
+   points_at:note_Corollary_4.20_(lambda(delta_{j+1})<=kappa_follows_from_delta_{j+1}<=delta_j),Lemmas_4.17,4.19,3.30,3.31_and_3.32;
+   constants:delta_crit_in_[0.114846768,0.114846769]_(TG),fallback_[0.111780108,0.111780109],and_the_pole_test_mu^+x^+<1
+check_T2=open;
+   uniform_contraction:the_constants_and_error_bounds_hold_for_every_k,not_only_for_the_finitely_many_steps_tested;
+   a_step_checked_only_for_finitely_many_k_counts_as_computational_evidence,not_mathematical;
+   points_at:note_Theorem_G1_(C3),Theorem_G0_(C5),Lemmas_4.17_and_4.19_and_Corollary_4.20;
+   constants:c_fin(delta)=e^{-1}_for_0<delta<=0.078733761,c_fin(delta)<=max{e^{-4kappa},e^{delta-kappa/2}}<1_on_the_whole_domain,and_c_fin(delta_crit^-)_in_[0.989898,0.989899]_(C13)
+check_T3=open;
+   tail_control:the_omitted_terms_stay_bounded_under_repeated_blocking,including_the_reviewers'_edge_cases_and_the_missing_tail_planted_fault;
+   points_at:at_step_0_note_Corollary_3.12_and_Lemmas_3.11,3.29_and_3.30:the_tail_beyond_the_head_is_bounded_by_sum_{n=11..48}6F_20(n)x^n_and_the_closed_tail_6F_20(49)x^49/(1-mu*x),with_the_pole_test_mu^+x^+<1;
+   at_step_k_note_Propositions_4.14_and_4.15_and_Lemmas_4.12,4.13_item_1_and_4.16:step_k_omits_no_term,since_every_Y_and_every_cluster_stays_in_the_norm_(Proposition_4.14's_regrouping)_and_objects_of_every_size_enter_the_per-root_sum_(Proposition_4.15's_first_line),where_Lemma_4.16's_closed_form_of_Q(lambda),a_sup_over_f_and_m_that_holds_the_sup_over_f>=4_of_e^{-(kappa-lambda)f}-e^{-kappa*f},bounds_them_uniformly_in_f_and_m;
+   the_engine's_cuts_carry_closed-form_tail_bounds:C10c's_Taylor_tail_beyond_s^6_is_at_most_(1/2)sum_{m>=7}(16s)^m_(row_C10c,by_the_YM4-04A_Cauchy_argument:abs(X)<=4,so_abs(f)<1/2_on_abs(s)<=1/16),and_c_fin's_scan_over_f_has_a_certified_tail_cut;
+   edge_cases:the_edge_reads_of_ym4c/pkg/derive/g1a/g1a_edges.py_(sha256_7d87ac222a73977baf192ed0a473d90bdec2a1ee75f66f895b659d96f45776a5)_with_ym4c/pkg/derive/g1a/g1a_edges.out_(sha256_323b6a2c0fac09c7ec27f4e959a2f05af93acc75cecc6c64c62a8c106e210d10),ym4c/pkg/derive/g1b/g1b_edges.py_(sha256_0aa2ccbd1d2ecd531629e7203ac678a01610215ba7a5536dda5b61a3841904ec)_with_ym4c/pkg/derive/g1b/g1b_edges.out_(sha256_ecd1c6491188ca98d5fa181b5fdb694eab0c64360f3c1cfcdcc13ac001258c08)_and_ym4c/pkg/repair/G1-repair-edges-extra.py_(sha256_234fe9209a7ab21965b145fed7da46462df6476f80fb38c408789a6425b7ce18)_with_ym4c/pkg/repair/G1-repair-edges-extra.out_(sha256_198271e9b9f1ed4b212e10b220ba43e247b9e44aebde29af83808702106cdb86),as_MANIFEST-ym4c-pkg.sha256_lists_them,and_ym4-04c/final-check/edges.py_(sha256_c2f4f7bb34e758c8d345bb3d4f90e79682978599352271a611faa77c210afa85),as_MANIFEST-ym4-04c-scratch.sha256_lists_it,in_Decimal_and_with_no_.out_file;
+   the_paths_are_relative_to_reviews/ym4-04c-prediction/;
+   some_read_the_draft's_constants;
+   constants:mu_in_[53.00068,53.00069],and_C19's_missing_tail_reads,S^+<=1.96e-7_at_1/40_and_S^+<=1.28e-7_at_0.02248_(alpha=2^-22)
+check_T4=open;
+   scope:the_result_is_convergence_toward_the_Haar_fixed_point_(beta=0)_inside_the_strong-coupling_window,and_nothing_more;
+   weak_coupling_and_the_continuum_stay_separate_(OPEN);
+   points_at:note_Corollary_4.20,Lemmas_4.21_and_4.22,and_row_C16;
+   constants:abs(beta_k)<=(16/(3pi))e^{-4kappa}delta_k<0.62454delta_k_(note_Lemma_4.22),with_pi>=1231847548/392109375_from_note_Lemma_3.2_item_5;
+   Lemma_4.22's_own_proof_states_pi>333/106,that_is_abs(beta_k)<0.6245481delta_k,and_through_8/(3pi)<8489/10000_only_abs(beta_k)<0.62459delta_k;
+   and_the_window_edges_beta_0<=0.02074_(C14,CONJECTURE_on_C03)_and_beta_0<=0.01767_(C13,TG,fallback_0.01761)
+check_G1a=open;
+   note_Proposition_3.18_supplies_every_hypothesis_G1_previously_took_from_Kotecky-Preiss_(the_polymer_weights,the_compatibility_relation_and_the_smallness_condition)_in_the_form_G1_uses_them;
+   points_at:note_Theorem_4.9,Corollary_4.10,Lemma_4.13_items_2-4,and_question_11_of_the_brief_in_note_section_16;
+   constants:alpha=t=delta',theta=kappa_and_#gamma:=(1/2)#line(supp_gamma)
+check_G1b=open;
+   the_exponential_formula_for_connected_graphs_(REPORTED,via_note_Lemma_3.15)_holds_as_G1_uses_it,including_at_the_window_boundary;
+   points_at:the_argument_of_note_Lemma_3.20_in_the_proof_of_Theorem_4.9,and_Proposition_4.14;
+   constants:the_polydisc_abs(zeta)<=omega_at_lambda(delta)=kappa,the_window_boundary_delta=delta_crit
+check_G1c=open;
+   the_package-critic_fix_pass's_two_departures_from_the_critic:the_coarse-count_ratio_(e^{-3kappa}+e^{-2kappa})/2_in_[0.5394486,0.5394487],and_G1_not_'fully_DERIVED';
+   recompute_both_from_the_frozen_rows,siding_with_neither;
+   points_at:C19's_variant_that_fires_with_another_ratio_field_and_the_THEOREMS_status_field;
+   for_the_second_part,the_THEOREMS_status_names_the_exponential_formula_for_connected_graphs_as_G1's_one_REPORTED_input,which_is_right_for_Theorem_G1_itself,but_the_section-4_entry_note_Lemma_4.22_also_uses_the_REPORTED_Weyl_integration_formula,through_note_Lemma_3.2_item_1_(the_Haar_density_(2/pi)sin^2_psi);
+   its_first_part_tests_C19's_recorded_fault_variant,not_a_step_of_G1,and_it_still_gates_G1_under_G1_rule
+G1_rule=if_check_G1a,G1b_or_G1c_fails_or_stays_unchecked,G1_stays_CONDITIONAL,and_so_does_every_row_and_clause_named_in_rests_on_G0_and_G1,rests_on_G1_and_rests_on_the_(1+t)^f_step
+step_rule=G0_stays_CONDITIONAL_until_the_filing_marks_reproduced_checks_T1,T2,T3_and_T4_and_every_section-3_entry_of_per_step_status,Remarks_3.19_and_3.34_included;
+   G1_stays_CONDITIONAL_until_it_marks_reproduced_T1-T4,G1a,G1b,G1c,every_section-4_entry,and_the_section-3_entries_that_G1_uses:Lemma_3.2_(items_1_and_5,through_Lemma_4.22),Lemmas_3.15,3.16_and_3.17,Proposition_3.18_and_Lemma_3.20;
+   an_open_check_or_entry_keeps_its_theorem_CONDITIONAL,and_with_it_the_rows_and_clauses_of_rests_on_G0_and_G1_and_rests_on_G0_(for_G0,with_the_H_1_meaning_of_meaning_only_through_G0)_or_of_rests_on_G0_and_G1,rests_on_G1_and_rests_on_the_(1+t)^f_step_(for_G1);
+   a_refuted_check_or_entry_is_an_unrepaired_gap_under_the_read_rule,so_every_row_and_clause_that_rests_on_it_reads_UNSUPPORTED_until_a_repair_is_filed_after_line_42;
+   a_refuted_first_part_of_G1c_is_the_one_exception:it_makes_only_C19's_variant_that_fires_with_another_ratio_field_read_UNSUPPORTED,and_while_that_part_is_open_or_refuted,G1_stays_CONDITIONAL_under_G1_rule;
+   G1_rule_states_the_CONDITIONAL_part_of_this_rule_for_G1a,G1b_and_G1c;
+   a_clause_in_rests_on_a_numbered_entry_stays_CONDITIONAL_while_an_entry_it_names_is_open,and_reads_UNSUPPORTED_if_one_is_refuted,until_a_repair_is_filed_after_line_42;
+   its_arithmetic_at_the_read_points_keeps_its_row's_tag,since_those_reads_do_not_rest_on_the_entry;
+   a_clause_named_there_and_in_a_theorem's_list_stays_CONDITIONAL_until_both_rules_release_it
+per_step_status=Theorem_G0:open,Corollary_G0.C:open,Lemma_3.1:open,Lemma_3.2:open,Lemma_3.3:open,Lemma_3.4:open,Lemma_3.5:open,Lemma_3.6:open,Theorem_3.7:open,Lemma_3.8:open,Lemma_3.9:open,Lemma_3.10:open,Lemma_3.11:open,Corollary_3.12:open,Lemma_3.13:open,Lemma_3.14:open,Lemma_3.15:open,Lemma_3.16:open,Lemma_3.17:open,Proposition_3.18:open,Remark_3.19:open,Lemma_3.20:open,Lemma_3.21:open,Proposition_3.22:open,Lemma_3.23:open,Proposition_3.24:open,Lemma_3.25:open,Lemma_3.26:open,Corollary_3.27:open,Proposition_3.28:open,Lemma_3.29:open,Lemma_3.30:open,Lemma_3.31:open,Lemma_3.32:open,Corollary_3.33:open,Remark_3.34:open,Theorem_G1:open,Corollary_G1-frozen:open,Lemma_4.1:open,Lemma_4.2:open,Lemma_4.3:open,Lemma_4.4:open,Lemma_4.5:open,Lemma_4.6:open,Lemma_4.7:open,Lemma_4.8:open,Theorem_4.9:open,Corollary_4.10:open,Lemma_4.11:open,Lemma_4.12:open,Lemma_4.13:open,Proposition_4.14:open,Proposition_4.15:open,Lemma_4.16:open,Lemma_4.17:open,Lemma_4.18:open,Lemma_4.19:open,Corollary_4.20:open,Lemma_4.21:open,Lemma_4.22:open,Lemma_4.23:open,Corollary_4.24:open;
+   62_entries:the_60_numbered_lemmas,propositions,theorems_and_corollaries_of_note_sections_3_and_4,and_Remarks_3.19_and_3.34,which_carry_proof_steps:Remark_3.19_states_and_proves_the_per-polymer_corollary_with_e^{d(X)}_on_the_left,which_the_proof_of_Theorem_G0_cites_for_(C4)_(note_section_3.16,B2),and_Remark_3.34_proves_the_head-free_lower_limit_on_delta_1,which_the_CERTIFICATES_row_cites_and_C06,C08,C12,C14_and_C15_use;
+   Remark_4.18a_is_not_a_step:no_proof_and_no_row_cites_it;
+   the_paragraph_after_Lemma_4.13_and_section_4.18_cite_it_only_to_explain_the_frozen_bookkeeping
+rests_on_G0_and_G1=C07,C08,C11,C12,C13,C14,C16,the_replacement_clause_of_C17,the_regime_clause_of_the_hypothesis_row,the_scope_row's_windows_beta_ind_in_[0.02074,0.02075)_and_beta_ind^crude_in_[0.01767,0.01768),and_the_delta_crit_surrogate_edge_of_C19_and_the_upper_end_of_its_surrogate_range
+rests_on_G0=the_injection_clause_of_C01_(note_Lemma_3.9),C09_(T),and_the_readout_grid_128_value_of_C19
+rests_on_G1=the_c_fin(delta_in)_and_per-root_comparisons_of_C10b_and_C10c,C13's_delta_crit_and_c_fin_values,and_C10's_optimality_clause_(G1's_c_fin=e^{-4kappa}_is_optimal_for_0<delta<=0.078733761,also_in_THEOREMS_ties_to_exact_data)
+rests_on_the_(1+t)^f_step=delta_crit,C13's_c_fin_values_above_0.078733761_and_the_end_0.078733761_of_its_flat_range,also_in_C10's_optimality_clause_(fallback_0.077320139),C13's_crude_edge,the_crude_window_of_the_scope_row,and_the_upper_end_of_C19's_surrogate_range;
+   each_carries_its_fallback_under_2delta'<=kappa
+rests_on_a_numbered_entry=clauses_that_hold_beyond_their_read_points_only_through_named_entries_of_note_sections_3_and_4:C01's_every-n_ratio_clause_(Lemma_3.11);
+   C02's_Finner_bound_sup_V_abs(z_gamma)<=eps_6^{#gamma}_(Lemma_3.8,with_the_REPORTED_Theorem_3.7);
+   the_lattice_identity_of_C03_and_C17_for_n<=15_(Lemma_3.14);
+   C04's_crossings_and_its_NOT_MET_at_every_beta_above_beta_wall(1/4)_(Lemma_3.32,Corollary_3.33,with_Lemma_3.11_as_L08);
+   the_windows_of_C05_and_C06,and_the_scope_row's_windows_beta_crude,beta_stop_and_beta_wall(1/4)_(Lemma_3.32);
+   C09's_exclusion_for_clusters_(Lemma_3.26,Corollary_3.27);
+   C10's_floor_for_every_representation_and_its_kappa=0_NOT_MET_(Lemma_4.23,Corollary_4.24),and_the_slice_bounds_of_C10b_and_C10c_(Lemma_4.23);
+   C15's_wall_at_1/40_and_above_(Corollary_3.33,with_Lemma_3.11);
+   the_head-free_clauses_of_C06_and_C15_(Remark_3.34);
+   the_hypothesis_row's_bound_on_beta_k_(Lemma_4.22,with_Lemma_3.2_item_5)_and_its_clause_c_fin<1_on_the_whole_domain_(Lemma_4.17);
+   and,in_rows_and_clauses_also_named_in_a_theorem's_list,the_windows_of_C13_and_C14_and_the_scope_row's_windows_beta_ind_and_beta_ind^crude_(Lemma_3.32),the_head-free_clauses_of_C08,C12_and_C14_(Remark_3.34),C13's_clause_c_fin<1_on_the_whole_domain_(Lemma_4.17),the_interval_clause_c_fin=e^{-1}_for_0<delta<=0.078733761_of_C13_and_of_C10's_optimality_clause_(Lemma_4.19),the_sum_bounds_of_C07,C08,C11,C12_and_C14_and_C16's_delta_20_(Corollary_4.20),and_C16's_oscillation_bound_(Lemma_4.21,Corollary_4.20)
+meaning_only_through_G0=C04,C05,C06,C15,and_C19's_iteration_cap_400_and_missing_tail_reads:their_arithmetic_at_the_read_points_keeps_its_row's_tag_whatever_G0_says,and_they_speak_about_H_1_only_through_G0;
+   their_windows,wall_clauses_and_head-free_clauses_rest_on_numbered_entries_and_stay_CONDITIONAL_while_those_are_open_(rests_on_a_numbered_entry)
+rests_on_neither=neither_G0_nor_G1:C02,C03,C10,C18_and_the_W_lane;
+   C10's_optimality_clause_rests_on_G1,and_C02's_Finner_bound,C03's_lattice_identity,C10's_floor_and_its_kappa=0_NOT_MET_rest_on_numbered_entries_and_stay_CONDITIONAL_while_those_are_open_(rests_on_a_numbered_entry)
+json=0

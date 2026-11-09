@@ -1,0 +1,13 @@
+NF|file=ilib.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=g1lib.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=polylib.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n1_constants.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n2_certs.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n3_c09.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n4_g1c.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n5_w03.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n6_extra.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=n7_precision_recheck.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=t_ilib.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=nf_scan.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF_END|total=0|json=0

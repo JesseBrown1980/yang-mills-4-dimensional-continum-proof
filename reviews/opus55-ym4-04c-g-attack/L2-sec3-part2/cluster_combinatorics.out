@@ -1,0 +1,16 @@
+PART_A|lemma=3.16|graphs_checked=922|all_connected_graphs_n<=5_plus_150_at_n=6|identity_holds=1|abs_phiT<=spanning_trees=1|tag=MEASURED
+PART_B|lemma=3.15|system=5_elements_on_4_links|degree<=5|monomials_compared=106|log_Xi_equals_cluster_series=1|tag=MEASURED
+PART_C|lemma=3.17|M_0=1_and_M_(h+1)=exp(sum_(g2_incompatible_with_g)omega(g2)M_h(g2))_coefficientwise_through_s^5|h=0..3|elements=5|cayley_counts_ok=1|holds=1|tag=MEASURED
+PART_D_HYP|KP_w_with_alpha=1/5|max_over_w_of_left_side_upper=0.07054992|holds=1
+PART_D_ITEM1|gamma=a|#off=1|truncated_n<=6_abs_phiT_sum<=1.0438997543|truncated_tree_sum<=1.0449361843|e^(alpha#off)>=1.2214027581
+PART_D_ITEM1|gamma=b|#off=2|truncated_n<=6_abs_phiT_sum<=1.0681375614|truncated_tree_sum<=1.0699659330|e^(alpha#off)>=1.4918246976
+PART_D_ITEM1|gamma=c|#off=2|truncated_n<=6_abs_phiT_sum<=1.0634362209|truncated_tree_sum<=1.0652212760|e^(alpha#off)>=1.4918246976
+PART_D_ITEM1|gamma=d|#off=1|truncated_n<=6_abs_phiT_sum<=1.0568544316|truncated_tree_sum<=1.0586196082|e^(alpha#off)>=1.2214027581
+PART_D_ITEM1|gamma=e|#off=2|truncated_n<=6_abs_phiT_sum<=1.0813011737|truncated_tree_sum<=1.0839768487|e^(alpha#off)>=1.4918246976
+PART_D_ITEM3|w=1|truncated_n<=5_cluster_sum<=0.0429634844|sum_(gamma_holding_w)omega*e^(alpha#off)>=0.0553988139|alpha=1/5
+PART_D_ITEM3|w=2|truncated_n<=5_cluster_sum<=0.0405987932|sum_(gamma_holding_w)omega*e^(alpha#off)>=0.0580154049|alpha=1/5
+PART_D_ITEM3|w=3|truncated_n<=5_cluster_sum<=0.0442636687|sum_(gamma_holding_w)omega*e^(alpha#off)>=0.0629881539|alpha=1/5
+PART_D_ITEM3|w=4|truncated_n<=5_cluster_sum<=0.0552970324|sum_(gamma_holding_w)omega*e^(alpha#off)>=0.0705499192|alpha=1/5
+PART_D|prop=3.18|item1_truncated_below_bound=1|abs_phiT<=trees_pointwise=1|item3_truncated_below_middle_term=1|tag=MEASURED_(finite_truncations,evidence_only)
+PART_E|phiT(K_n)=(-1)^(n-1)(n-1)!_for_n=1..6:1|tag=MEASURED
+SUMMARY|cluster_combinatorics_all_pass=1|json=0

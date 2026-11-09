@@ -1,0 +1,25 @@
+HAAR|item1_2_even_moments_weyl_eq_S3_eq_note_closed_form_m0..60|ok=1
+HAAR|item2_4^m_E[a^2m]_is_Catalan_m0..60|ok=1
+HAAR|item1_chebyshevU_orthonormal_under_weyl_moments_m,k<=20|ok=1
+HAAR|item1_U_m(1)=m+1|ok=1
+HAAR|item2_c0_coefficients_(beta/2)^2m/(m!(m+1)!)|ok=1
+HAAR|item3_fourier_coefficient_two_routes_k<=40_n<=15|ok=1
+HAAR|item3_E[chi e^{beta a}]=(2n/beta)I_n_coefficientwise_n1..15_k<40|ok=1
+HAAR|item3_E[chi_{(n-1)/2} a^k]=0_for_k<n-1|ok=1
+HAAR|item3_coefficientwise_bound_ntn_c0<=2n_beta^{n-1}e^beta/n!|ok=1
+HAAR|item4_eps6^6_binomial_formula_eq_E[K^6]_series_to_beta^16|ok=1|beta^6_coeff=5/64|beta^8_coeff=43/512
+HAAR|item5_machin_gaussian_identity|ok=1|(5+i)^4(239-i)=114244+114244i
+HAAR|item5_pi_lower_equals_frozen_1231847548/392109375|ok=1|1231847548/392109375
+HAAR|item5_series_terms|ok=1
+HAAR|item5_pi_lower>333/106|ok=1
+HAAR|item5_8/(3pi)<848/999_iff_pi>333/106|ok=1
+HAAR|item5_848/999<8489/10000|ok=1
+HAAR|item5_remark_enclosure_8/(3pi)_in_[0.8488263,0.8488264]_with_long_machin|ok=1
+HAAR|item5_remark_item5_lower_bound_alone_does_not_give_upper_end_0.8488264|ok=1|pi_lo_item5=1231847548/392109375
+HAAR|item5_remark_routeB_display_misses|ok=1
+HAAR|T4note_machin_bound_gives_<0.62454|ok=1
+HAAR|T4note_pi>333/106_gives_<0.6245481|ok=1
+HAAR|T4note_pi>333/106_does_not_give_0.62454|ok=1
+HAAR|T4note_8489/10000_gives_<0.62459|ok=1
+HAAR|T4note_8489/10000_does_not_give_0.62454|ok=1
+HAAR_SUMMARY|all_ok=1|tag=MEASURED|json=0

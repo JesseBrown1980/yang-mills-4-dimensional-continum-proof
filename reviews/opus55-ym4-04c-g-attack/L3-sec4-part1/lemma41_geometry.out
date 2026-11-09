@@ -1,0 +1,2 @@
+L3_LEMMA41|M=8|L=4|line_links=2048|plaquette_line_counts={0: 18432, 2: 6144}|midpoints=1024|coarse_sites=256|double_links=0|triangles=0|all_asserts=PASS|json=0
+L3_LEMMA41|M=12|L=6|line_links=10368|plaquette_line_counts={0: 93312, 2: 31104}|midpoints=5184|coarse_sites=1296|double_links=0|triangles=0|all_asserts=PASS|json=0

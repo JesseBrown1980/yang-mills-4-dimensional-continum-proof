@@ -1,0 +1,5 @@
+CLASSRULE|N=8|maps_preserve_class_and_plaquettes=1|transitive_on_each_class=1|class1_orbit=6144_of_6144|class2_orbit=6144_of_6144|class3_orbit=2048_of_2048
+CLASSRULE|N=10|maps_preserve_class_and_plaquettes=1|transitive_on_each_class=1|class1_orbit=15000_of_15000|class2_orbit=15000_of_15000|class3_orbit=5000_of_5000
+BFS_TAU|N=8|quarter_root|connected_sets_size<=4=3531|tau_valid_subtree_rebuilds_A_injective=1
+BFS_TAU|N=8|O1_root|connected_sets_size<=4=9877|tau_valid_subtree_rebuilds_A_injective=1
+CR_BFS_SUMMARY|all_ok=1|tag=MEASURED|json=0

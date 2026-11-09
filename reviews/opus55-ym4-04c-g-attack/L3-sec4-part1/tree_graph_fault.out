@@ -1,0 +1,9 @@
+L3_TREEGRAPH_FAULT|rep=0|kind=fat|t=1|off_links=7|item1_violations=7|json=0
+L3_TREEGRAPH_FAULT|rep=1|kind=star|t=1|off_links=7|item1_violations=1|json=0
+L3_TREEGRAPH_FAULT|rep=2|kind=fat|t=1|off_links=6|item1_violations=5|json=0
+L3_TREEGRAPH_FAULT|rep=3|kind=star|t=1|off_links=5|item1_violations=1|json=0
+L3_TREEGRAPH_FAULT|rep=4|kind=fat|t=1|off_links=6|item1_violations=6|json=0
+L3_TREEGRAPH_FAULT|rep=5|kind=star|t=1|off_links=5|item1_violations=1|json=0
+L3_TREEGRAPH_FAULT|rep=6|kind=fat|t=1|off_links=6|item1_violations=6|json=0
+L3_TREEGRAPH_FAULT|rep=7|kind=star|t=1|off_links=6|item1_violations=1|json=0
+L3_TREEGRAPH_FAULT_END|total_violations=28|expected=positive|tag=MEASURED|json=0

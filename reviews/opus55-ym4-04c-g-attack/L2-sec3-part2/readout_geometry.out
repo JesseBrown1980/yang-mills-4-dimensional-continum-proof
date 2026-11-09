@@ -1,0 +1,6 @@
+LEMMA_3.23_GEOMETRY|each_of_6_plaquettes_through_e0_is_a_quarter_with_1_off_link_at_m_and_2_in_W|#W(e0)=12|#W'=6|W'_=_off_links_at_m|same_W'_from_e1|holds=1|tag=MEASURED
+F_P|4_quarters|closed=1|connected=1|holds_exactly_the_8_line_links_of_dP=1
+LEMMA_3.26_SEARCH|Z^4|closed_connected_sets_holding_all_8_line_links_of_dP|size_counts=n4:1,n5:0,n6:0,n7:0,n8:16|only_F_P_below_8=1|states_visited=12122|tag=MEASURED
+COROLLARY_3.27_BUMPS|16_distinct=1|each_8_plaquettes_closed_connected_holding_dP=1|each_keeps_3_quarters_of_F_P=1|size8_found_total=16|tag=MEASURED
+LEMMA_3.21_ITEM4|#Y''(gamma)<=#quarters<=#gamma_and_dP_in_Y''_on_all_17_found_polymers=1|Y''(F_P)=dP=1|tag=MEASURED
+SUMMARY|readout_geometry_all_pass=1|json=0

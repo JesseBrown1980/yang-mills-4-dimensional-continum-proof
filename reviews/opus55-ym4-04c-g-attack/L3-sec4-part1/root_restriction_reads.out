@@ -1,0 +1,4 @@
+L3_ROOT_RESTRICTION|rate=lambda|roots=m>=1(e^{-k/2})|flat_end_last_delta=78733761/10^9|object_entry=[0.3678794375,0.3678794376]|f=7|first_delta_above=78733762/10^9|object_entry=[0.3678794462,0.3678794463]|f=7|tag=MEASURED|json=0
+L3_ROOT_RESTRICTION|rate=2delta'|roots=m>=1(e^{-k/2})|flat_end_last_delta=77320139/10^9|object_entry=[0.3678794338,0.3678794339]|f=7|first_delta_above=77320140/10^9|object_entry=[0.3678794428,0.3678794429]|f=7|tag=MEASURED|json=0
+L3_ROOT_RESTRICTION|rate=lambda|roots=m>=0(no_factor)|flat_end_last_delta=73323362/10^9|object_entry=[0.3678794334,0.3678794335]|f=6|first_delta_above=73323363/10^9|object_entry=[0.3678794419,0.3678794420]|f=6|tag=MEASURED|json=0
+L3_ROOT_RESTRICTION|rate=2delta'|roots=m>=0(no_factor)|flat_end_last_delta=72094954/10^9|object_entry=[0.3678794335,0.3678794336]|f=6|first_delta_above=72094955/10^9|object_entry=[0.3678794422,0.3678794423]|f=6|tag=MEASURED|json=0

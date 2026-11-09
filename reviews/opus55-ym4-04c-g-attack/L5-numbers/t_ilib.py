@@ -1,0 +1,23 @@
+# self-test of ilib against well-known constants (integer only)
+import sys
+sys.path.insert(0, '/mnt/c/tmp/opus55/ym4-04c-gattack/work/L5-numbers')
+import ilib as L
+
+E = L.exp_point(L.ONE)
+print('e      ', L.fmti(E, 30), L.inside(E, '2.718281828459045235360287471352', '2.718281828459045235360287471353'))
+EM = L.exp_point(-L.ONE)
+print('e^-1   ', L.fmti(EM, 30), L.inside(EM, '0.367879441171442321595523770161', '0.367879441171442321595523770162'))
+PI = L.pi_iv()
+print('pi     ', L.fmti(PI, 30), L.inside(PI, '3.141592653589793238462643383279', '3.141592653589793238462643383280'))
+LN2 = L.ln1p_iv((L.ONE, L.ONE))
+print('ln2    ', L.fmti(LN2, 30), L.inside(LN2, '0.693147180559945309417232121458', '0.693147180559945309417232121459'))
+S2 = L.sqrt_iv(L.const(2))
+print('sqrt2  ', L.fmti(S2, 30), L.inside(S2, '1.414213562373095048801688724209', '1.414213562373095048801688724210'))
+C1 = L.cos_iv((L.ONE, L.ONE))
+print('cos1   ', L.fmti(C1, 30), L.inside(C1, '0.540302305868139717400936607442', '0.540302305868139717400936607443'))
+CP = L.cos_iv(PI)
+print('cos pi ', L.fmti(CP, 30))
+E25 = L.exp_point(L.rat(5, 2)[0])
+print('e^2.5  ', L.fmti(E25, 25), 'width bits', (E25[1]-E25[0]).bit_length())
+print('widths: e', (E[1]-E[0]).bit_length(), 'pi', (PI[1]-PI[0]).bit_length(), 'ln2', (LN2[1]-LN2[0]).bit_length(), 'P', L.P)
+print('sci', L.scii(L.rat(30940, 10**15), 6), L.scii(L.rat(123, 1), 4))

@@ -1,0 +1,3 @@
+EDGE314|N=4|w=c1|class=1|N_w(n)_n1..8=0,0,0,1,0,12,0,32|winding_n1..8=0,0,0,0,0,0,0,0|dup=0
+EDGE314|N=8|w=c1|class=1|N_w(n)_n1..8=0,0,0,1,0,12,0,32|winding_n1..8=0,0,0,0,0,0,0,0|dup=0
+EDGE314_END|tag=MEASURED|json=0
