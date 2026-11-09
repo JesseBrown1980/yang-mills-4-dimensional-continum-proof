@@ -1,0 +1,938 @@
+YM4-04C freeze package: the work log of seven passes over this directory (2026-11-09)
+
+This file is the work log. It is not a deliverable of the freeze commit.
+Pass 7, the third review of the integer-only rewrite, comes first. Pass 6, the second review of the integer-only rewrite, follows, then pass 5, the review of the integer-only rewrite, then pass 4, the integer-only freeze checks, then pass 3, the review of the final additions, then pass 2, the final additions after the two verifiers, then pass 1, the package critic's findings applied.
+Pass 6 is unchanged except for its result heading and three marks, each [corrected in pass 7] or [addressed in pass 7].
+Pass 5 is unchanged except for its result heading and four marks, each [corrected in pass 6] or [addressed in pass 6].
+Pass 4 is unchanged except for its result heading and two marks, each [addressed in pass 5].
+Pass 3 is unchanged except for its result heading and one mark, [superseded in pass 4].
+Pass 2 is unchanged except for its result heading and two marks, each [corrected in pass 3].
+Pass 1 is unchanged except for its title, one added line under Findings, its result heading and two corrections, each marked [corrected in pass 2].
+
+PASS 7. THE THIRD REVIEW OF THE INTEGER-ONLY REWRITE
+
+Source: this directory after pass 6 (prediction pin d5ceb714bcd0c7aa46e29180d6f720ae6f4bfbdcb290d28af76da3191d3e5610).
+It was copied to scratchpad/ym4c-close/pass7/before/ before any edit.
+Findings: the third review of the package after pass 6, with one blocking item and nine minor items. The blocking item and
+eight minor items are applied. Minor item 5 leaves the choice to the owner. Note section 16 records it, and nothing is decided
+for the owner.
+How: scratchpad/ym4c-close/pass7/scripts/build_pass7.py applies every edit to the prediction file and the note as an exact
+replacement that must match once. Its output is scratchpad/ym4c-close/pass7/out/build_pass7.out.
+It checks the before hashes. It checks that only lines 1, 7, 36, 41 and 42 of the prediction file change, that lines 8-35 (every
+C and W row) are byte-identical, so every predicted=, predicts_NOT_MET=, falsifier= and tag= field is kept, and that every line is
+ASCII, with no spaces, no duplicate keys and json=0 at the end. It checks that note section 12's code block equals
+engine_plan.txt, and that note section 11 carries every row of ledger_rows.txt. Before this pass L06 differed. Now no row does.
+It computes the pin. scratchpad/ym4c-close/scripts/field_diff.py writes the field-level diff (pass7/out/field_diff.out).
+This file was edited by hand, with exact replacements.
+No new number was computed. The numbers this pass adds to the lists, 0.078733761, 0.077320139 and [0.01767,0.01768), are copied
+from rows C10 and C13, the CERTIFICATES row and the SCOPE row.
+No predicted value moved. Only files in this directory changed. No engine code exists and none ran.
+The repository was touched only through a temporary detached worktree at 830fd3f, removed afterwards. Nothing was committed or pushed.
+
+Result
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404 (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 322284bd5a72fe16e286e43b444d777512fc4ca8ef475dcdefa196f5934b0a40, 1770 lines.
+- Unchanged: reviews/ym4-04c-prediction/engine_plan.txt (2f26a8a64e3e74d47d756cde4107a817a9e188ee45ffd8bb6e7701decf1d0fe3),
+  ledger_rows.txt (c9431fde031abf0d2bac6c4f68c7b5b53cf0d15cb1131f26d0f7d01cb4759364), derive_checks.py
+  (725479144cb0903fc2ed914a7e8d3c833bcbf079500a50d7b03435803b806f23), DERIVE-CHECKS.hbp
+  (19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c) and CRITIC-FINDINGS.txt
+  (58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c).
+- python3 -I -B derive_checks.py, run in reviews/ym4-04c-prediction/, reruns byte-identical to DERIVE-CHECKS.hbp (cmp; 54 checks,
+  0 failed, exit 0, empty stderr). So does python3 -I -B -X utf8.
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- Lines 2-6, 8-35 and 37-40 of the prediction file are byte-identical to the before/ copy, so no C or W row changed at all.
+  The field-level diff shows changes only in: the header (version, lane); DISCLOSURE (the new field
+  corrections_after_the_third_review_of_the_integer-only_rewrite); G_attack (rests_on_G0_and_G1, rests_on_the_(1+t)^f_step,
+  rests_on_a_numbered_entry, rests_on_neither); EVIDENCE (computational_certificates); SUMMARY (conditional_on_G0_and_G1,
+  conditional_on_G0, conditional_on_the_(1+t)^f_step, conditional_on_a_numbered_entry).
+- The note changes in sections 0 (the CONDITIONAL and evidence paragraphs, and a new paragraph), 11 (row L06), 13 (a bullet
+  and a sentence under Corrections), 15 (the pin) and 16 (the CONDITIONAL lists, and a new paragraph, 'An open decision').
+
+(A) The blocking item: two copies of C13's crude edge
+- The review is right. In the before/ copy, rests_on_G0_and_G1 named the scope row's beta_ind window and C19's delta_crit
+  surrogate edge. It did not name the scope row's crude window beta_ind^crude in [0.01767,0.01768) or the upper end 0.01767 of
+  C19's surrogate range. Those two were only on rests_on_the_(1+t)^f_step, which G1_rule and step_rule tie to G1 alone.
+- Both are C13's crude edge. That edge uses G0's delta_1=6alpha_-(kappa) and G1's test lambda(delta_1)<=kappa, and as a window
+  it uses Lemma 3.32. C13 is on rests_on_G0_and_G1, and so is the hypothesis row's crude boundary, inside the regime clause.
+- Pass 6's sentence 'Its beta_ind window and its crude window were already on the G0-and-G1 and (1+t)^f lists' is marked
+  [corrected in pass 7].
+- The fix is applied as written. G_attack rests_on_G0_and_G1 now names 'the scope row's windows beta_ind in [0.02074,0.02075)
+  and beta_ind^crude in [0.01767,0.01768)' and 'the delta_crit surrogate edge of C19 and the upper end of its surrogate range'.
+  Both items stay on rests_on_the_(1+t)^f_step. SUMMARY conditional_on_G0_and_G1, the CONDITIONAL paragraph of note section 0
+  and the CONDITIONAL lists of note section 16 say the same.
+- The optional part is applied too. The second group of rests_on_a_numbered_entry adds the scope row's windows beta_ind and
+  beta_ind^crude to its Lemma 3.32 item. Its heading becomes 'in rows and clauses also named in a theorem's list', since these
+  two windows are clauses of the scope row, not the whole row. Note section 16 follows. SUMMARY conditional_on_a_numbered_entry
+  and note section 0 list the numbered-entry clauses without groups, and they now name all five scope windows.
+- So if G1 is released while G0 or Lemma 3.32 is still open, the two copies stay CONDITIONAL, as C13's window and the
+  hypothesis row's crude boundary do.
+
+(B) The minor items
+1. C10's kappa=0 NOT_MET. It is added after 'C10's floor' in SUMMARY conditional_on_a_numbered_entry, in note section 0 and in
+   rests_on_neither. All five places now name it.
+2. The end of C13's flat range. The three TG lists (G_attack rests_on_the_(1+t)^f_step, SUMMARY conditional_on_the_(1+t)^f_step
+   and note section 16) now say 'C13's c_fin values above 0.078733761 and the end 0.078733761 of its flat range, also in C10's
+   optimality clause (fallback 0.077320139)'. The next item reads 'C13's crude edge' in place of 'its crude edge', since the
+   item before it now ends on C10. Checked: C13's fallback field and the CERTIFICATES fallback field both give the factor
+   e^{-1} only for delta<=0.077320139.
+3. Entries named alike.
+   - Note section 0 now cites C16's oscillation bound as (Lemma 4.21, Corollary 4.20).
+   - EVIDENCE now says that C04's bisection pairs place its crossings and give its every-beta NOT_MET 'only through note
+     Lemma 3.32 and Corollary 3.33, with Lemma 3.11'. Its C15 sentence adds ', with Lemma 3.11' too, so that every field names
+     the same entries for C15's wall. Note section 0's evidence paragraph follows.
+   - C15's wall reads '(Corollary 3.33, with Lemma 3.11)' in G_attack and in note sections 0 and 16. Ledger row L13 already
+     names Lemma 3.11, so it is unchanged.
+4. Grouping and C09.
+   - The head-free clauses of C08, C12 and C14 move to the second group of rests_on_a_numbered_entry and of note section 16.
+     The first group keeps those of C06 and C15. SUMMARY and note section 0 do not group these clauses, so they are unchanged.
+   - SUMMARY conditional_on_G0 and note sections 0 and 16 now write 'C09 (T)', as G_attack rests_on_G0 does.
+5. Not applied: the owner's decision. The review offers two options and says the choice is the owner's. Note section 16 has a
+   new paragraph, 'An open decision'. It says that a NOT_MET read of C_0 at its point closes only through Lemma 3.31 item 1,
+   that no list names Lemma 3.31, and that these reads keep their rows' tags while it is open. It names both options and the
+   line both need. It says that both change the prediction file, so the choice is the owner's, before the freeze commit.
+   The prediction file does not change for this item.
+6. EVIDENCE's lists. The list of reads carried beyond their points adds C01's every-n ratio clause and C02's Finner bound.
+   C13's named delta adds 0.078733761. Note section 0's evidence paragraph follows.
+7. close_exact.py. Rerun (out in pass7/out/close_exact_rerun.out): 11 PASS lines, exit 0, empty stderr, byte-identical to
+   out/close_exact.out. The last line prints a hard-coded checks=10. The simplest route is taken: pass 6's '10 checks, 0 failed'
+   is marked [corrected in pass 7: 11 checks, 0 failed (the script's last line prints a hard-coded checks=10)]. The script and
+   its output are unchanged, so the two sha256 values in note section 13 still hold.
+8. Note section 0 now writes 'C10's floor for every representation and its κ = 0 NOT_MET (Lemma 4.23, Corollary 4.24)' and
+   'C16's oscillation bound (Lemma 4.21, Corollary 4.20)'. This item suggests leaving SUMMARY as it is, to keep the pin. The
+   blocking item changes line 42 anyway, so item 1's SUMMARY change is applied.
+9. Note section 11's L06 now reads '(note §4.5)', as ledger_rows.txt does. All 28 rows of note section 11 now equal
+   ledger_rows.txt. Pass 6's line on L06 is marked [addressed in pass 7]. Neither the note nor the prediction file
+   quotes the hash of the note or of ledger_rows.txt, so this item alone would not move the pin.
+
+(C) Other edits made to keep the files consistent
+- The header's version and lane fields, and a new DISCLOSURE field, corrections_after_the_third_review_of_the_integer-only_rewrite,
+  record this pass, as every earlier pass did.
+- Note section 0 has a new paragraph, 'What changed after the third review of the integer-only rewrite'. Note section 13 has a
+  new bullet and a sentence under Corrections. Note section 15 carries the new pin.
+
+(D) Kept as written
+- Every C and W row. Lines 8-35 are byte-identical.
+- C13's tag names the c_fin values above 0.078733761 as TG, not the end 0.078733761 itself. C13's fallback field covers that
+  end. The tag stays as frozen, and the TG lists now name the end.
+- step_rule, G1_rule, meaning_only_through_G0, the LEDGER row, note sections 3.13, 4.15 and 4.16, ledger_rows.txt,
+  engine_plan.txt, derive_checks.py, DERIVE-CHECKS.hbp, CRITIC-FINDINGS.txt, the three manifests, and close_exact.py with its output.
+
+(E) The gate test
+- A temporary detached worktree of /home/user/yang-mills-4-dimensional-continum-proof at 830fd3f, in scratchpad/ym4c-close/pass7/wt.
+- Baseline, nothing staged: NO_FLOAT_DONE|code_files=136|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The test. Every file of final/docs/ (2 files) and final/reviews/ym4-04c-prediction/ (8 files) is copied to the same repo-relative
+  path. CHANGES.txt and the manifest-listed scratch trees are not copied. The files are staged with git add, not -N. The 10 staged
+  blobs each have the sha256 of their file here. python3 -I -X utf8 scripts/no_float_gate.py . from the worktree root ends (exit 0,
+  empty stderr):
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The worktree was removed with git worktree remove --force, then git worktree prune. git worktree list shows only the main
+  checkout, at 830fd3f, and its status is clean.
+
+(F) The pin
+- head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404. Note section 15 carries it.
+- The file still has 42 lines, so head -n 42 covers every frozen row, and appended rows start at line 43.
+
+Not done
+- Minor item 5, the owner's decision (above).
+- Pass 6's open items stay open: the deliverables still do not name pass 5's scratch script pass5_exact.py; how the freeze
+  commit carries the 104 Python files that fail the gate is the owner's decision; so are the owner's assent to pass 1's renames
+  and the freeze commit. Gate G_attack stays OPEN.
+
+PASS 6. THE SECOND REVIEW OF THE INTEGER-ONLY REWRITE
+
+Source: this directory after pass 5 (prediction pin c25227e0e97cfaf1cc146bf61645d4a0a5da69d3bb1c565999bc3fa972cc789c).
+It was copied to scratchpad/ym4c-close/before/ before any edit.
+Findings: the second review of the package after pass 5 (the last check-checklist result in the workflow journal), with one
+blocking item and four minor items. All five are applied. This pass also rewrites the engine plan's arithmetic line in integers
+only, as its task asks. Pass 4 left that line to the owner, and pass 5 recorded it as an open decision.
+How: scratchpad/ym4c-close/scripts/build_pass6.py applies every edit as an exact replacement that must match once.
+It checks the before hashes. It checks that only lines 1, 7, 36, 40, 41 and 42 of the prediction file change, that every C and
+W row keeps its predicted=, predicts_NOT_MET=, falsifier= and tag= fields, and that every line is ASCII, with no spaces, no
+duplicate keys and json=0 at the end. It checks that note section 12's code block equals engine_plan.txt, and that note section 11
+still carries every row of ledger_rows.txt. L06 differed before this pass ('(note §4.5)' against '(§4.5)') and still does.
+[addressed in pass 7: note section 11's L06 now reads '(note §4.5)', as ledger_rows.txt does]
+It computes the pin.
+scratchpad/ym4c-close/scripts/close_exact.py (output scratchpad/ym4c-close/out/close_exact.out) holds the new exact reads:
+Fractions, alternating series with bracketing partial sums, positive partial sums with geometric remainders, no floats.
+10 checks, 0 failed [corrected in pass 7: 11 checks, 0 failed (the script's last line prints a hard-coded checks=10)]. scratchpad/ym4c-close/scripts/field_diff.py writes the field-level diff (out/field_diff.out).
+No predicted value moved. Only files in this directory changed. No engine code exists and none ran.
+The repository was touched only through a temporary detached worktree at 830fd3f, removed afterwards. Nothing was committed or pushed.
+
+Result of pass 6 (pass 7 supersedes the pin, the prediction file and the note)
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = d5ceb714bcd0c7aa46e29180d6f720ae6f4bfbdcb290d28af76da3191d3e5610 (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 f61b47b33f26497599e90833a92c849044fa7554ad8dd6ae951bd2379f897cf1.
+- reviews/ym4-04c-prediction/engine_plan.txt: sha256 2f26a8a64e3e74d47d756cde4107a817a9e188ee45ffd8bb6e7701decf1d0fe3 (was 646e339aa8946f5da39a14f8e9e9481c3ed943dee706aaacbbe8474446a634df).
+  It equals note section 12's code block. Lines 1 and 12 change.
+- reviews/ym4-04c-prediction/ledger_rows.txt: sha256 c9431fde031abf0d2bac6c4f68c7b5b53cf0d15cb1131f26d0f7d01cb4759364 (was 4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159).
+  Rows L13 and L14 change, and note section 11 carries the same rows.
+- Unchanged: reviews/ym4-04c-prediction/derive_checks.py (725479144cb0903fc2ed914a7e8d3c833bcbf079500a50d7b03435803b806f23), DERIVE-CHECKS.hbp (19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c),
+  CRITIC-FINDINGS.txt (58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c).
+- python3 -I -B derive_checks.py reruns byte-identical to DERIVE-CHECKS.hbp (cmp; 54 checks, 0 failed, exit 0, empty stderr). So does python3 -I -B -X utf8.
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- Lines 2-6, 8-35 and 37-39 of the prediction file are byte-identical to the before/ copy, so no C or W row changed at all.
+  The field-level diff (out/field_diff.out) shows changes only in: the header (version, lane, read_rule); DISCLOSURE (the new
+  field corrections_after_the_second_review_of_the_integer-only_rewrite); G_attack (check_T3, check_T4, step_rule,
+  per_step_status, meaning_only_through_G0, rests_on_neither, and the new field rests_on_a_numbered_entry); LEDGER
+  (CONDITIONAL_here); EVIDENCE (computational_certificates, mathematical_derivations); SUMMARY (G_attack_checklist, evidence,
+  meaning_only_through_G0, and the new field conditional_on_a_numbered_entry).
+- The note changes in sections 0 (three edits and a new paragraph), 4 (the assembly note, and a new assembly note after
+  Lemma 4.17), 11 (rows L13 and L14), 12 (the plan's first and arithmetic lines, and the paragraph after the plan), 13 (a bullet
+  and a sentence), 15 (the pin) and 16 (the gate paragraph, checks T3 and T4, the step rule, the per-step paragraph and the
+  CONDITIONAL lists).
+
+(A) The blocking item: clauses that rest on one numbered entry
+- The review is right. EVIDENCE held the C05 and C06 windows CONDITIONAL through Lemma 3.32. G_attack's meaning_only_through_G0
+  said that the arithmetic of C04, C05 and C06 is DERIVED whatever G0 says. No field said what an open entry does to a clause
+  that cites it directly.
+- The fix's first route is taken. G_attack has a new field, rests_on_a_numbered_entry, after rests_on_the_(1+t)^f_step. It lists
+  every clause the fix names: C04's every-beta NOT_MET clause (Lemma 3.32, Corollary 3.33); the C05 and C06 windows (Lemma 3.32);
+  C15's wall (Corollary 3.33); the C03 and C17 lattice identity (Lemma 3.14); C09's exclusion (Lemma 3.26, Corollary 3.27); the
+  head-free clauses of C06, C08, C12, C14 and C15 (Remark 3.34); and C10's floor with the slice bounds of C10b and C10c
+  (Lemma 4.23, Corollary 4.24).
+- Added, from a read of rows 2-35 against sections 3 and 4:
+  - C01's every-n ratio clause, 'proved for every n (note Lemma 3.11)'.
+  - C02's Finner bound sup_V abs(z_gamma)<=eps_6^{#gamma}, which is Lemma 3.8 with the REPORTED Theorem 3.7.
+  - C04's crossings. Its brackets place the crossings only through Lemma 3.32, which names 'the bisection of C04'. C04 also cites
+    L08, that is Lemma 3.11, which the proof of Corollary 3.33 uses.
+  - C10's kappa=0 NOT_MET, the last clause of Corollary 4.24.
+  - The scope row's windows beta_crude, beta_stop and beta_wall(1/4) (Lemma 3.32). No list named them. Its beta_ind window and
+    its crude window were already on the G0-and-G1 and (1+t)^f lists.
+    [corrected in pass 7: the beta_ind window was on the G0-and-G1 list, but the crude window was only on the (1+t)^f list;
+    pass 7 adds the crude window to the G0-and-G1 list]
+  - The hypothesis row's bound on beta_k (Lemma 4.22, with Lemma 3.2 item 5, as check T4 says) and its clause c_fin<1 on the
+    whole domain (Lemma 4.17).
+  - In rows that a theorem's list also names, so that EVIDENCE and the gate agree: the windows of C13 and C14 (Lemma 3.32); C13's
+    clause c_fin<1 (Lemma 4.17); the interval clause c_fin=e^{-1} for 0<delta<=0.078733761 of C13 and of C10's optimality clause
+    (Lemma 4.19); the sum bounds of C07, C08, C11, C12 and C14 and C16's delta_20 (Corollary 4.20); and C16's oscillation bound
+    (Lemma 4.21, Corollary 4.20).
+  - Not added: C01's census and C03's counts, which the rows claim only on the two lattices the engine reads; the other DERIVED
+    clauses of C10b and C10c, which cite no numbered entry; the W lane, whose proofs are in note section 10, outside the gate;
+    and the CERTIFICATES and THEOREMS rows, which state G0, G1 and their entries.
+- step_rule adds at its end: 'a clause in rests_on_a_numbered_entry stays CONDITIONAL while an entry it names is open, and reads
+  UNSUPPORTED if one is refuted, until a repair is filed after line 42; its arithmetic at the read points keeps its row's tag,
+  since those reads do not rest on the entry; a clause named there and in a theorem's list stays CONDITIONAL until both rules
+  release it'. The words 'since those reads do not rest on the entry' keep the rule consistent with the criterion, which makes
+  every row and clause that rests on a gap read UNSUPPORTED, whatever its arithmetic.
+- One rule, applied everywhere:
+  - meaning_only_through_G0 (G_attack and SUMMARY): the arithmetic at the read points keeps its row's tag whatever G0 says, and
+    the windows, wall clauses and head-free clauses rest on numbered entries. 'keeps its row's tag' replaces 'is DERIVED', since
+    C06's refined edge is CONJECTURE on C03.
+  - rests_on_neither now means neither theorem. It points to the new field for C02's Finner bound, C03's lattice identity and
+    C10's floor. C10's optimality clause still rests on G1.
+  - EVIDENCE computational_certificates: '(G0, CONDITIONAL)' and '(G1, CONDITIONAL)' after Lemma 3.32, Lemma 4.19 and
+    Corollary 4.20 give way to one statement. A read becomes a claim beyond its points only through a numbered entry, listed in
+    rests_on_a_numbered_entry, and that claim stays CONDITIONAL while the entry is open. EVIDENCE mathematical_derivations says
+    that each numbered entry works the same way on its own.
+  - SUMMARY: G_attack_checklist and evidence say the same, and a new field, conditional_on_a_numbered_entry, lists the clauses.
+  - LEDGER CONDITIONAL_here: a clause of rests_on_a_numbered_entry, among them the clauses on Lemma 3.11, Lemma 3.14, Lemma 3.32,
+    Corollary 3.33 and Lemma 4.23 of DERIVED_relied_on, stays CONDITIONAL while its entry is open.
+  - The header's read_rule: 'a row or clause tagged CONDITIONAL, or named in a list of gate G_attack, reads UNSUPPORTED when ...'.
+  - Ledger rows L13 and L14, in ledger_rows.txt and note section 11, add 'as evidence, CONDITIONAL while ... is open at gate
+    G_attack' after their DERIVED entries: Lemma 3.11, Lemma 3.32 or Corollary 3.33 for L13, and Lemma 3.14 for L14.
+  - Note section 0: the DERIVED paragraph adds that each item is DERIVED as written, and that as evidence the lists below
+    govern. The CONDITIONAL paragraph lists the clauses on numbered entries. Its sentence 'Rows C04, C05, C06 and C15 have DERIVED
+    arithmetic' is reworded as meaning_only_through_G0 is. The evidence paragraph follows EVIDENCE.
+  - Note section 16: the gate paragraph, the step rule and the CONDITIONAL lists follow the new rule. The lists end: 'Where other
+    sections of this note call one of these clauses DERIVED, that is its status as written. As evidence it follows this list.'
+
+(B) The four minor items
+1. Note line 991, after the proof of Lemma 4.17. The review is right. Read exactly (out/close_exact.out):
+   - e^{0.114846769-1/8} is in [0.9898981390455552, 0.9898981390455553], so 'e^{0.114846769-1/8} <= 0.989898139' is false.
+   - lambda(0.114846768) <= 0.2499999999566904 and lambda(0.1148467681) >= 0.2500000001925241, so delta_crit,fin < 0.1148467681.
+   - e^{0.1148467681-1/8} <= 0.9898981381546469 <= 0.989898139, so the end bound holds.
+   A marked assembly note follows the line, and the canonical text is unchanged. The section 4 assembly note names the mark.
+   ym4c/pkg/repair/G1.md line 309 carries the same line. It is a manifest-listed scratch file, so it is unchanged.
+2. EVIDENCE computational_certificates and note section 0. The rule now reads 'every C_0 read, every read of the wall quantity
+   mu*e^{1/4}*eps_6 and every lambda or c_fin evaluation that a C row names'. The list adds the wall quantity at C04's bisection
+   pairs 0.02247/0.02248 and 0.02885/0.02886 and at C15's six couplings, and the number (512/e)c_fin(delta_1)^19*delta_1 at 1/100
+   (C16). 'two more reads' gives way to the list of item (A). That list adds C04's bisection pairs (through Lemma 3.32 and
+   Corollary 3.33), C15's wall reads (through Corollary 3.33) and C16's oscillation number (through Lemma 4.21 and
+   Corollary 4.20). SUMMARY evidence follows.
+3. per_step_status and the note's per-step paragraph: 'Remark 4.18a is not a step: no proof and no row cites it; the paragraph
+   after Lemma 4.13 and section 4.18 cite it only to explain the frozen bookkeeping.' Checked: outside its own statement, the note
+   names Remark 4.18a only in the paragraph after Lemma 4.13, in section 4.18 (finding M2), in section 0, in the section 4
+   assembly note and in section 16. No proof names it, and no C or W row does; in the prediction file only G_attack's
+   per_step_status and this pass's DISCLOSURE field name it.
+4. check_T4 and the note's T4 cell: 'Lemma 4.22's own proof states pi>333/106, that is abs(beta_k)<0.6245481delta_k, and through
+   8/(3pi)<8489/10000 only abs(beta_k)<0.62459delta_k'. The fix wrote 'gives pi>333/106'. This pass writes 'states', since the
+   proof takes pi>333/106 from Lemma 3.2 item 5, as the assembly note at Lemma 4.22 says. Read exactly:
+   (16/(3*333/106))e^{-1} is in [0.624548080307, 0.624548080308], below 0.6245481 and above 0.62454.
+   check_T3 and the note's T3 cell add after C10c's tail bound: '(row C10c, by the YM4-04A Cauchy argument: abs(X)<=4, so
+   abs(f)<1/2 on abs(s)<=1/16)'. Read exactly: e^{1/4}-1 < 0.2841 and e^{-1/2} < 0.7159, so abs(log E e^{sX}) <= -ln(1-0.2841) < 1/2
+   on abs(s) <= 1/16.
+
+(C) The engine plan's arithmetic line (engine_plan.txt line 12 and note section 12)
+- The line planned 'Python ints and fractions.Fraction (engine)'. The gate refuses fractions and decimal: both are in its
+  BAD_IMPORT set at 830fd3f.
+- It now plans integers only. Rationals are reduced integer numerator/denominator pairs, compared by cross-multiplying.
+  Large exact values come from residues modulo several 31-bit primes, recombined by the CRT, with rational reconstruction
+  (extended Euclid stopped at the first remainder below sqrt(M/2)) and one extra-prime confirmation. Interval enclosures are
+  dyadic integer pairs with directed rounding at 160 significant bits. The line says that the Rust part already uses integers only.
+- One departure from the task text. The task says the CRT route works 'as the finite YM repo's indep_verify.py does for
+  determinants', with rational reconstruction and an extra-prime confirmation. indep_verify.py (native/ym/independent/, the same
+  blob at origin/main and at 97fce29, read only) does the CRT part: residues modulo enough 31-bit primes to pass twice the
+  Hadamard bound, read in the balanced range. It does no rational reconstruction and no extra-prime confirmation, since its
+  determinants are integers. So the line credits indep_verify.py with the CRT part only, and says that the engine adds the other two.
+- The plan's first line adds 'After the second review of the integer-only rewrite, the arithmetic line plans integers only.'
+- The paragraph after the plan, 'An open decision', gives way to 'The arithmetic line'. It says why the line changed and what it
+  plans now, and that the owner can still change it before the freeze commit. engine_plan.txt stays byte-equal to the code block.
+
+(D) Other edits made to keep the files consistent
+- The header's version and lane fields, and the new DISCLOSURE field, record this pass. That field says that the new bounds were
+  read in exact rationals by a scratch script outside the manifests and are not predicted values.
+- Note section 0 has a new paragraph, 'What changed after the second review of the integer-only rewrite'. Note section 13 has a
+  new bullet, which names close_exact.py and close_exact.out with their sha256 values, and a sentence under Corrections.
+
+(E) Kept as written
+- Every predicted=, predicts_NOT_MET=, falsifier= and tag= field of every C and W row. The tags of C04 and C15 say DERIVED and
+  name Corollary 3.33. Under the step rule, DERIVED is the tag of the reads at their points, and the wall conclusions are on
+  rests_on_a_numbered_entry.
+- Note sections 3.12, 3.13, 4.15 and 4.16, and the DERIVED wording of sections 5 to 8. The new list in section 16 says how they read.
+- derive_checks.py, DERIVE-CHECKS.hbp, CRITIC-FINDINGS.txt and the three manifests.
+
+(F) The gate test
+- A temporary detached worktree of /home/user/yang-mills-4-dimensional-continum-proof at 830fd3f, in scratchpad/ym4c-close/wt.
+- Baseline, nothing staged: NO_FLOAT_DONE|code_files=136|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The test. Every file of final/docs/ (2 files) and final/reviews/ym4-04c-prediction/ (8 files) is copied to the same repo-relative
+  path. CHANGES.txt and the manifest-listed scratch trees are not copied. The files are staged with git add, not -N. The 10 staged
+  blobs each have the sha256 of their file here. python3 -I -X utf8 scripts/no_float_gate.py . from the worktree root ends (exit 0):
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The worktree was removed with git worktree remove --force, then git worktree prune. git worktree list shows only the main
+  checkout, at 830fd3f, and its status is clean.
+
+(G) The pin
+- head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = d5ceb714bcd0c7aa46e29180d6f720ae6f4bfbdcb290d28af76da3191d3e5610. Note section 15 carries it.
+- The pin rule: head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = d5ceb714bcd0c7aa46e29180d6f720ae6f4bfbdcb290d28af76da3191d3e5610.
+  The file still has 42 lines, so head -n 42 covers every frozen row, and appended rows start at line 43.
+  SUMMARY's pin field, G_replay and note section 15 already say so.
+
+Not done
+- The same round's consistency check left one optional item: the deliverables do not name pass 5's scratch script,
+  pass5_exact.py. This pass's task names only the checklist's findings, so that item is left. This pass names its own script
+  in note section 13.
+- How the freeze commit carries the 104 Python files that fail the gate (pass 5, minor item 7). That stays the owner's decision.
+- The owner's assent to pass 1's renames and the freeze commit stay the owner's decisions. Gate G_attack stays OPEN.
+
+PASS 5. THE REVIEW OF THE INTEGER-ONLY REWRITE
+
+Source: this directory after pass 4 (prediction pin 98f8b2a6463349937481ce6cdd45963379f19f2746c51cf6e9cdec82df3cec15).
+It was copied to scratchpad/ym4c-last/pass5/before/final/ before any edit.
+Findings: a review of the package after pass 4, with one blocking item and seven minor items.
+The blocking item and all seven minor items are applied. For two minor items (6 and 7) the review leaves the choice to the owner.
+For those two, the note now records the open decision, and nothing is decided for the owner.
+How: scratchpad/ym4c-last/pass5/scripts/build_pass5.py applies every edit as an exact replacement that must match once.
+It checks the before hashes and the manifest entries of the edge-case files. It checks that only lines 1, 7, 36, 40 and 41
+of the prediction file change, and the field count of each. It checks that note section 12's code block still equals
+engine_plan.txt. It computes the pin.
+scratchpad/ym4c-last/pass5/scripts/pass5_exact.py (output scratchpad/ym4c-last/pass5/out/pass5_exact.out) holds the new exact
+reads: Fractions, alternating series with bracketing partial sums, no floats.
+scratchpad/ym4c-last/pass5/scripts/changes_pass5.py checks the hashes and the saved outputs (in scratchpad/ym4c-last/pass5/out/)
+and writes this entry.
+No predicted value moved. Only files in this directory changed. No engine code exists and none ran.
+The repository was touched only through a temporary detached worktree at 830fd3f, removed afterwards. Nothing was committed or pushed.
+
+Result of pass 5 (pass 6 supersedes the pin, the prediction file, the note, engine_plan.txt and ledger_rows.txt)
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = c25227e0e97cfaf1cc146bf61645d4a0a5da69d3bb1c565999bc3fa972cc789c (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 4ee1a739a83d60aced781a90877fb30bc10a914a170605609dfae9dcf04fc995.
+- Unchanged: reviews/ym4-04c-prediction/derive_checks.py (725479144cb0903fc2ed914a7e8d3c833bcbf079500a50d7b03435803b806f23), DERIVE-CHECKS.hbp (19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c),
+  CRITIC-FINDINGS.txt (58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c), engine_plan.txt (646e339aa8946f5da39a14f8e9e9481c3ed943dee706aaacbbe8474446a634df; it still equals note section 12),
+  ledger_rows.txt (4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159).
+- python3 -I -B derive_checks.py reruns byte-identical to DERIVE-CHECKS.hbp (cmp; 54 checks, 0 failed, exit 0). So does python3 -I -B -X utf8.
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- Lines 2-6, 8-35, 37-39 and 42 of the prediction file are byte-identical to the before/ copy, so no C or W row changed at all.
+  A field-level diff (out/field_diff.out) shows changes only in: the header (version, lane); DISCLOSURE (the new field
+  corrections_after_the_review_of_the_integer-only_rewrite); G_attack (check_T3, check_T4, check_G1c, step_rule);
+  LEDGER (REPORTED_relied_on); EVIDENCE (computational_certificates, mathematical_derivations).
+- The note changes in sections 0 (two edits and a new paragraph), 4 (the assembly note, the paragraph after Lemma 4.13,
+  the proof of Lemma 4.18, and a new assembly note at Lemma 4.22), 12 (a paragraph after the plan), 13 (a bullet and a
+  sentence), 14 (a paragraph), 15 (the pin) and 16 (checks T3, T4 and G1c, and the step rule).
+
+(A) The blocking item: check T4's constant and Lemma 4.22
+- The review is right. Read exactly (out/pass5_exact.out):
+  - pi > 333/106 alone gives (16/(3pi))e^{-1} < (16/(3*333/106))e^{-1}, which is in [0.6245480803, 0.6245480804], above 0.62454.
+  - 8/(3pi) < 8489/10000 alone gives 2(8489/10000)e^{-1}, which is in [0.6245857152, 0.6245857153]. It is above 0.62454 and below 0.62459.
+  - 16(1/5 - 1/375 + 1/15625 - 1/546875) - 4/239 = 1231847548/392109375 exactly, and (5+i)^4(239-i) = 114244(1+i) in integer pairs.
+  - With pi >= 1231847548/392109375: (16/(3pi))e^{-1} <= (16/(3*1231847548/392109375))e^{-1}, in [0.6245317308, 0.6245317309],
+    so (16/(3pi))e^{-1} <= 0.6245318 < 0.62454.
+  So the constant 0.62454 is true, but only with the Machin bound of note Lemma 3.2 item 5. Lemma 4.22's proof does not derive it.
+- check_T4 and the note section 16 table (T4): after '(note Lemma 4.22)' the fix's text is added:
+  'with pi>=1231847548/392109375 from note Lemma 3.2 item 5; Lemma 4.22's own proof gives only 8/(3pi)<8489/10000,
+  that is abs(beta_k)<0.62459delta_k'. The clause that follows now opens with ';and the window edges'.
+  [corrected in pass 6: check T4 now says that the proof states pi>333/106, that is abs(beta_k)<0.6245481delta_k, and through 8/(3pi)<8489/10000 only 0.62459]
+- step_rule and the note's step-rule paragraph: Lemma 3.2 (items 1 and 5, through Lemma 4.22) joins the section-3 entries that G1 uses.
+- check_G1c and the note section 16 table (G1c): for the second part, the THEOREMS status names the exponential formula as G1's
+  one REPORTED input. That is right for Theorem G1 itself. But the section-4 entry Lemma 4.22 also uses the REPORTED Weyl
+  integration formula, through Lemma 3.2 item 1 (the Haar density (2/pi)sin^2 psi).
+- Both optional items are applied.
+  - A marked assembly note at Lemma 4.22, not part of the canonical text. It names the missing pi bound, the bounds above
+    (0.62459, 0.6245481 and 0.6245318), and the two uses of Lemma 3.2. The proof is unchanged.
+  - LEDGER REPORTED_relied_on: Weyl's formula now reads '(G0,C10c;Weyl's_formula_also_in_note_Lemma_4.22,through_Lemma_3.2_item_1)'.
+- The section 4 assembly note names the three new marks (this item and minor item 5).
+
+(B) The seven minor items
+1. EVIDENCE mathematical_derivations and note section 0 now say 'each CONDITIONAL until gate G_attack is filed with every
+   check and per-step entry it rests on marked reproduced (G_attack step_rule)'.
+2. EVIDENCE computational_certificates and note section 0.
+   - At the C13 and C14 edges, C_k is lambda(delta)<=kappa only. The words 'and c_fin' no longer apply there.
+   - One departure from the fix's literal text. Replacing 'and c_fin at the C13 and C14 edges' by 'at the C13 and C14 edges'
+     would also drop c_fin from the reads at 1/100, 1/64 and 1/50 through delta_2, at C13's named delta and at the delta_in of
+     C10b and C10c, which share that phrase. Those rows name c_fin there. So the field now reads 'C_k as lambda(delta)<=kappa
+     at the C13 and C14 edges; C_k as lambda(delta)<=kappa and c_fin at 1/100, ...'. The note says the same.
+   - Added, as the fix asks: the interval clause c_fin=e^{-1} for 0<delta<=0.078733761 (C13, and C10's optimality clause) is
+     a read at 0.078733761 that holds on the interval only through note Lemma 4.19 (G1, CONDITIONAL). The edge pairs give
+     windows (the largest beta_0 on the grid) only through note Lemma 3.32 (G0, CONDITIONAL). C13 writes 'delta<=0.078733761',
+     and C10 writes '0<delta<=0.078733761'; the field uses C10's form.
+     [corrected in pass 6: these clauses are now in G_attack's rests_on_a_numbered_entry, CONDITIONAL while their entry is open; EVIDENCE no longer writes '(G0, CONDITIONAL)' or '(G1, CONDITIONAL)' after the lemmas]
+3. check_T3 and the note section 16 table (T3).
+   - The step-k pointers add Propositions 4.14 (the regrouping of every Y and cluster) and 4.15 (the per-root sum's first line).
+   - Lemma 4.16's bound is 'uniformly in f and m': its closed form of Q(lambda) is a sup over f and m.
+   - The edge-case files are named by path and sha256, with the manifest that lists each: g1a_edges.py and .out,
+     g1b_edges.py and .out, and G1-repair-edges-extra.py and .out (MANIFEST-ym4c-pkg.sha256), and final-check/edges.py
+     (MANIFEST-ym4-04c-scratch.sha256), in Decimal and with no .out file. build_pass5.py checks each hash against its manifest line.
+   - The extra gate read below confirms that all four scripts draw a NO_FLOAT finding: final-check/edges.py (true division
+     at line 12), g1a_edges.py (import importlib.util at line 9), g1b_edges.py (true division at line 13) and
+     G1-repair-edges-extra.py (import fractions at line 4). Whether the commit carries them stays the owner's decision.
+     T3 does not say so; note section 14 records the extra read.
+4. step_rule and the note's step-rule paragraph: 'a refuted first part of G1c is the one exception: it makes only C19's
+   variant_that_fires_with_another_ratio field read UNSUPPORTED, and while that part is open or refuted, G1 stays
+   CONDITIONAL under G1_rule'. The fix said 'while it stays open'. 'open or refuted' is what G1_rule says, since G1_rule keeps
+   G1 CONDITIONAL when G1c fails or stays unchecked.
+   Read exactly: (e^{-3/4}+e^{-1/2})/2 is in [0.5394486062268, 0.5394486062269], inside [0.5394486, 0.5394487], as the review says.
+5. Note section 4. '(Remark 4.18)' after Lemma 4.13 now reads '(Remark 4.18a)'. The proof of Lemma 4.18 now reads 'Route A's
+   Lemma 4.17 (route A's numbering, in reviews/ym4-04c-prediction/ym4c/pkg/derive/G1-a.md; not this note's Lemma 4.17)'.
+   Each is marked as an assembly change, as for route B's Theorem 4.10.
+   Checked: pkg/derive/G1-a.md line 302 states route A's Lemma 4.17, 'If 2δ′ ≤ κ/2, then c*(δ) < c(δ)', and line 308 its
+   Remark 4.18. pkg/repair/G1.md carries '(Remark 4.18)' and 'Route A's Lemma 4.17' as the note did, so the canonical file is
+   unchanged and only the note carries the marks. The per-step claim 'Remark 4.18a is not a step' stays true.
+6. Note section 12 and engine_plan.txt: option 2. A paragraph after the plan, outside the code block, says that the plan's
+   line 'Python ints and fractions.Fraction (engine)' conflicts with gate G_nofloat and section 14, and that the owner decides
+   before any engine code. engine_plan.txt and the code block are unchanged and still byte-equal. Option 1 would decide for
+   the owner, so it is not taken.
+   [addressed in pass 6: the arithmetic line now plans integers only, as pass 6's task asks; engine_plan.txt and the code block are still byte-equal]
+7. Note section 14: a paragraph records the extra read (code_files=247, failed=104, ym4c/pkg/derive_checks.py among the 104),
+   says that the freeze commit as planned would fail CI step 1, names rows in scripts/FLOAT-EVIDENCE.txt as one route, says
+   that any route must stay consistent with the DISCLOSURE row, and says the decision is open. No row changes.
+
+(C) Other edits made to keep the files consistent
+- The header's version and lane fields, and a new DISCLOSURE field corrections_after_the_review_of_the_integer-only_rewrite,
+  record this pass. That field says that 0.62459 is 2(8489/10000)e^{-1}, read in exact rationals by a scratch script outside
+  the manifests, and that it is a gate constant, not a predicted value.
+- Note section 0 has a new paragraph, 'What changed after the review of the integer-only rewrite'. Note section 13 has a new
+  bullet, which names the new bounds and says where they were read, and a sentence under Corrections.
+
+(D) Kept as written
+- The HYPOTHESIS row (line 2) keeps 'abs(beta_k)<=(16/(3pi))e^{-4kappa}delta_k<0.62454delta_k_(note_Lemma_4.22)'. The constant
+  is true, and its pointer leads to Lemma 4.22, where the new assembly note names the pi bound. No finding asked for line 2.
+- The THEOREMS status and note section 4.16 keep 'G1's one REPORTED input is the exponential formula'. That is right for
+  Theorem G1 itself, as the review says. check_G1c now names Lemma 4.22's use of Weyl's formula.
+- Lemma 4.22's canonical statement and proof, and the 0.62454 of sections 4.13 and 4.16 and of L11. They are true.
+- derive_checks.py, DERIVE-CHECKS.hbp, engine_plan.txt, ledger_rows.txt, CRITIC-FINDINGS.txt and the three manifests.
+
+(E) The gate test
+- A temporary detached worktree of /home/user/yang-mills-4-dimensional-continum-proof at 830fd3f, in scratchpad/ym4c-last/pass5/wt.
+- Baseline, nothing staged: NO_FLOAT_DONE|code_files=136|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The test. Every file of final/docs/ (2 files) and final/reviews/ym4-04c-prediction/ (8 files) is copied to the same repo-relative path.
+  CHANGES.txt is not copied. The files are staged with git add, not -N. The 10 staged blobs each have the sha256 of their file here.
+  python3 -I -X utf8 scripts/no_float_gate.py . from the worktree root ends (exit 0):
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The negative control. pkg/derive_checks.py, the Fraction version (53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b),
+  is staged at reviews/ym4-04c-prediction/derive_checks.py. The gate fails it (exit 1):
+  NO_FLOAT|file=reviews/ym4-04c-prediction/derive_checks.py|first=import fractions at line 29|count=10|json=0
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+- The extra read, beyond the test, repeated from pass 4. With the integer version staged again, and the 210 files that the three
+  manifests list also staged under reviews/ym4-04c-prediction/ (the same 210 paths as pass 4, 110 of them Python), the gate ends (exit 1):
+  NO_FLOAT_DONE|code_files=247|listed_files=28|listed_folders=0|listed_findings=162|failed=104|json=0
+  ym4c/pkg/derive_checks.py is one of the 104.
+- The worktree was removed with git worktree remove --force, then git worktree prune. git worktree list shows only the main
+  checkout, at 830fd3f, and its status is clean.
+
+(F) The pin
+- head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = c25227e0e97cfaf1cc146bf61645d4a0a5da69d3bb1c565999bc3fa972cc789c. Note section 15 carries it.
+- The pin rule: head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = c25227e0e97cfaf1cc146bf61645d4a0a5da69d3bb1c565999bc3fa972cc789c.
+  The file still has 42 lines, so head -n 42 covers every frozen row, and appended rows start at line 43.
+  SUMMARY's pin field, G_replay and note section 15 already say so.
+
+Not done
+- Option 1 of minor item 6, a new arithmetic line in the plan. That is the owner's decision.
+  [addressed in pass 6: the line is rewritten in integers only, as pass 6's task asks; the owner can still change it before the freeze commit]
+- How the freeze commit carries the 104 Python files that fail the gate (minor item 7). That is the owner's decision.
+- The owner's assent to pass 1's renames and the freeze commit stay the owner's decisions. Gate G_attack stays OPEN.
+
+PASS 4. THE INTEGER-ONLY FREEZE CHECKS
+
+Source: this directory after pass 3 (prediction pin 5af1dc6e7aeb511fa3490728a9ac5f6c64fd6001bba9d871147f8d0da5224682).
+It was copied to scratchpad/ym4c-last/before/final/ before any edit.
+Why: the 4D repository's scripts/no_float_gate.py (base main 830fd3f) refuses any import of the fractions module.
+fractions is in the gate's BAD_IMPORT set. The Fraction version of derive_checks.py imports it at line 29, so the gate fails that file.
+What: reviews/ym4-04c-prediction/derive_checks.py is now the integer-only script, copied unchanged from scratchpad/ym4c-intdc/derive_checks.py.
+It holds each rational as a reduced pair of integers, numerator and denominator, with the denominator positive. It imports no fractions module.
+How: scratchpad/ym4c-last/scripts/build_pass4.py applies every edit to the prediction file and the note as an exact replacement that must match once.
+It checks the live script's sha256, checks that only lines 1 and 7 of the prediction file change, and computes the pin.
+scratchpad/ym4c-last/scripts/changes_pass4.py checks the hashes and the saved gate outputs (in scratchpad/ym4c-last/out/) and writes this entry.
+No new arithmetic was needed, and no predicted value moved. Only files in this directory changed. No engine code exists and none ran.
+The repository was touched only through a temporary detached worktree at 830fd3f, removed afterwards. Nothing was committed or pushed.
+
+Result of pass 4 (pass 5 supersedes the pin, the prediction file and the note)
+- reviews/ym4-04c-prediction/derive_checks.py: sha256 725479144cb0903fc2ed914a7e8d3c833bcbf079500a50d7b03435803b806f23 (was 53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b).
+- python3 -I -B -X utf8 derive_checks.py reruns byte-identical to DERIVE-CHECKS.hbp (54 checks, 0 failed, exit 0). So does python3 -I -B.
+  DERIVE-CHECKS.hbp is unchanged, sha256 19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c.
+- The self-check still fails a plant. A scratch copy with the line PLANT = 1.5 / 2 prints float_literals=1, true_division_ops=1 and failed=1,
+  and exits 1 (scratchpad/ym4c-last/plant/).
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = 98f8b2a6463349937481ce6cdd45963379f19f2746c51cf6e9cdec82df3cec15 (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 e81482658896e9ab8d80682c12aa10e1bc5b477ffe414003272ca653501c6a4d.
+- Unchanged: reviews/ym4-04c-prediction/CRITIC-FINDINGS.txt (58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c),
+  engine_plan.txt (646e339aa8946f5da39a14f8e9e9481c3ed943dee706aaacbbe8474446a634df; it still equals note section 12),
+  ledger_rows.txt (4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159).
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+  MANIFEST-ym4c-pkg.sha256 keeps its entry for the scratch copy ym4c/pkg/derive_checks.py, the Fraction version (53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b). That copy is unchanged.
+- Lines 2-6 and 8-42 of the prediction file are byte-identical to the before/ copy, so no C or W row changed at all.
+  A field-level diff shows changes only in: the header (version, lane) and DISCLOSURE (freeze_checks).
+- The note changes in sections 13 (one bullet), 14 and 15.
+
+(A) The edits
+1. derive_checks.py is the integer-only script.
+2. DISCLOSURE freeze_checks: 'integers_and_Fractions_only' now reads 'integers_only,with_rationals_as_reduced_integer_numerator/denominator_pairs'.
+   The field adds the new sha256. It names the Fraction version pkg/derive_checks.py with its sha256, which the package critic and the two verifiers reran.
+   It gives the reason: the gate refuses any import of the fractions module. It says that both versions print DERIVE-CHECKS.hbp byte for byte,
+   and that the printed field integers_and_fractions_only=1 names the rational arithmetic, not the module.
+3. Note section 14: 'uses integers and fractions.Fraction only' now reads 'uses integers only', with the integer-pair form and the reason.
+   Two new paragraphs follow the output block. The first says that the field integers_and_fractions_only=1 names the rational arithmetic,
+   not the fractions module. The second gives both sha256 values, says who reran the Fraction version, and states the two gate results below.
+4. Note section 13: the freeze-checks bullet adds 'in integers only, with rationals as reduced integer numerator/denominator pairs'.
+5. The header's version and lane fields record this pass.
+6. Note section 15 carries the new pin.
+
+(B) Kept as written
+- The printed field integers_and_fractions_only=1, since the output must not change. DISCLOSURE and note section 14 say what it names.
+- Every description of a scratch script that uses Fractions: the prefreeze rule's '(Fractions or Decimal)'; DISCLOSURE final_critic, v2_repair,
+  final_recompute, package_critic and final_fixes; C02's reach field; note section 3 on G0-repair-checks.py and section 4 on G1-repair-checks.py;
+  the lane list of note section 13; CRITIC-FINDINGS.txt; and passes 1-3 below.
+- The prefreeze rule also covers the COMPUTED reads that rows credit to derive_checks.py. The Fraction version made those reads before the freeze,
+  and the integer version prints the same bytes, so the rule stays as written.
+- DISCLOSURE float_runs and note section 13 already say that derive_checks.py redoes Machin's identity in integer pairs.
+- Gate G_nofloat (line 37) names the self-check, not the arithmetic, so it is unchanged.
+
+(C) The gate test
+- A temporary detached worktree of /home/user/yang-mills-4-dimensional-continum-proof at 830fd3f, in scratchpad/ym4c-last/wt.
+- Baseline, nothing staged: NO_FLOAT_DONE|code_files=136|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The test. Every file of final/docs/ (2 files) and final/reviews/ym4-04c-prediction/ (8 files) is copied to the same repo-relative path.
+  CHANGES.txt is not copied. The files are staged with git add, not -N, and each staged blob's sha256 equals its file in this directory.
+  python3 -I -X utf8 scripts/no_float_gate.py . from the worktree root ends (exit 0):
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+- The negative control. pkg/derive_checks.py, the Fraction version (53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b), is staged at reviews/ym4-04c-prediction/derive_checks.py.
+  The gate fails it (exit 1):
+  NO_FLOAT|file=reviews/ym4-04c-prediction/derive_checks.py|first=import fractions at line 29|count=10|json=0
+  NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=1|json=0
+- An extra read, beyond the test. With the integer version staged again, and the 210 files that the three manifests list also staged under
+  reviews/ym4-04c-prediction/, the gate ends (exit 1):
+  NO_FLOAT_DONE|code_files=247|listed_files=28|listed_folders=0|listed_findings=162|failed=104|json=0
+  104 of those 110 Python files draw a finding. The first finding is import fractions in 65, true division in 11, import decimal in 10,
+  import importlib.util in 9, import numpy in 3 and another rule in 6. ym4c/pkg/derive_checks.py is one of the 104.
+- The worktree was removed with git worktree remove --force, then git worktree prune. git worktree list shows only the main checkout, at 830fd3f.
+
+(D) The pin
+- head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = 98f8b2a6463349937481ce6cdd45963379f19f2746c51cf6e9cdec82df3cec15. Note section 15 carries it.
+- The pin rule: head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = 98f8b2a6463349937481ce6cdd45963379f19f2746c51cf6e9cdec82df3cec15.
+  The file still has 42 lines, so head -n 42 covers every frozen row, and appended rows start at line 43.
+  SUMMARY's pin field, G_replay and note section 15 already say so.
+
+Not done
+- engine_plan.txt line 12 and note section 12 still say 'Python ints and fractions.Fraction (engine)'. That line plans the engine, not the live checker,
+  so this pass leaves it. The same gate refuses the fractions module in an engine file too. The owner decides whether the plan changes before the freeze.
+  engine_plan.txt must stay equal to note section 12.
+  [addressed in pass 5: note section 12 now records the conflict as an open decision of the owner, after the plan; the plan is unchanged]
+- The freeze order (note section 12, item 1) says the commit carries every file the manifests list. The extra read above shows that the gate fails
+  104 of those Python files as they stand. The gate's own way to keep a finding is a row in scripts/FLOAT-EVIDENCE.txt. The owner decides how the
+  commit carries those files. This pass changes nothing there.
+  [addressed in pass 5: note section 14 now records this extra read and says the decision is open; no row changes]
+- The owner's assent to pass 1's renames and the freeze commit stay the owner's decisions. Gate G_attack stays OPEN.
+
+PASS 3. THE REVIEW OF THE FINAL ADDITIONS
+
+Source: this directory after pass 2 (prediction pin 721da6d5935399081371c54145ccc549b391c3f5894046dfbb05e6cdb7ac2e6d).
+It was copied to scratchpad/ym4c-final-add/pass3/before/final/ before any edit.
+Findings: a review of gate G_attack, the EVIDENCE row and the note, with four blocking items and eight minor items. All twelve are applied.
+How: scratchpad/ym4c-final-add/pass3/scripts/build_pass3.py applies every edit to the before/ copy as an exact replacement that must match once.
+It checks that every number in the new text already stands in the before/ prediction file or note, except the new counts 62 and 36.
+It checks that the note's per-step tables list the same 62 entries, in the same order, as the G_attack row. It computes the pin.
+scratchpad/ym4c-final-add/pass3/scripts/changes_pass3.py reruns the checks below (outputs in scratchpad/ym4c-final-add/pass3/out/) and writes this file.
+No new arithmetic was needed: every constant in the new text is copied from an existing row.
+Only files in this directory changed. No repository was touched. No engine code exists and none ran.
+
+Result of pass 3 (pass 4 supersedes the pin, the note and derive_checks.py)
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = 5af1dc6e7aeb511fa3490728a9ac5f6c64fd6001bba9d871147f8d0da5224682 (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 1fc33cc1c1269c1fca944ec0cd9e1e2f93bd73c49e18e1b898ca21ce1a2fd1fc.
+- Unchanged: reviews/ym4-04c-prediction/CRITIC-FINDINGS.txt (58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c),
+  engine_plan.txt (646e339aa8946f5da39a14f8e9e9481c3ed943dee706aaacbbe8474446a634df; it still equals note section 12),
+  ledger_rows.txt (4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159),
+  derive_checks.py (53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b) [superseded in pass 4: it is now the integer-only script, sha256 725479144cb0903fc2ed914a7e8d3c833bcbf079500a50d7b03435803b806f23],
+  DERIVE-CHECKS.hbp (19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c).
+  python3 -I -B derive_checks.py reruns byte-identical to DERIVE-CHECKS.hbp (54 checks, 0 failed).
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- Lines 2-6, 8-35 and 37-39 of the prediction file are byte-identical to the before/ copy, so no C or W row changed at all.
+  A field-level diff shows changes only in: the header (version, lane); DISCLOSURE (the new field corrections_after_the_review_of_the_final_additions);
+  G_attack (check_T1 to check_G1c, the new field step_rule, per_step_status, rests_on_G0_and_G1, rests_on_G1, rests_on_neither);
+  LEDGER's CONDITIONAL_here; EVIDENCE (frozen_commitments, computational_certificates, mathematical_derivations);
+  SUMMARY (G_attack_checklist, evidence, conditional_on_G0_and_G1, conditional_on_G1).
+- The note changes in sections 0, 1, 4 (the assembly note and section 4.0), 13, 15 and 16. Section 12 is unchanged.
+
+(A) The four blocking items
+1. Remarks 3.19 and 3.34 are steps.
+   - The review is right. Note section 3.16 (B2) says that Remark 3.19 states and proves the corollary with e^{d(X)} on the left,
+     and the proof of Theorem G0 cites it for (C4). Remark 3.34 proves the head-free lower limit on delta_1.
+     The CERTIFICATES row and C06 cite it, and C08, C12, C14 and C15 use it.
+   - per_step_status adds Remark_3.19:open after Proposition_3.18 and Remark_3.34:open after Corollary_3.33.
+     It has 62 entries: 36 for section 3 and 26 for section 4.
+   - The old sentence is replaced by 'Remark 4.18a is not a step: it compares with the frozen formula, and no row cites it.'
+     Checked: no other row of the file names Remark 4.18a.
+   - SUMMARY G_attack_checklist, note section 16 (the text and the section 3 table) and the new DISCLOSURE field say 62.
+2. When G0 and G1 stop being CONDITIONAL.
+   - EVIDENCE mathematical_derivations and note section 0 now say: G0 and G1 are CONDITIONAL until gate G_attack is filed with every check
+     and every per-step entry of that theorem marked reproduced. An open entry keeps it CONDITIONAL. A refuted entry is an unrepaired gap,
+     so the rows that rest on it read UNSUPPORTED (read_rule).
+   - G_attack has a new field, step_rule, after G1_rule. G0 needs T1-T4 and every section-3 entry, Remarks 3.19 and 3.34 included.
+     G1 needs T1-T4, G1a-G1c, every section-4 entry, and the section-3 entries it uses: Lemmas 3.15, 3.16 and 3.17, Proposition 3.18 and Lemma 3.20.
+     (Theorem 4.9 cites Proposition 3.18 and Lemma 3.15 and runs the argument of Lemma 3.20; Proposition 3.18 rests on Lemmas 3.16 and 3.17.)
+     A refuted check or entry is an unrepaired gap under the read rule until a repair is filed after line 42.
+   - G1_rule is kept as written. step_rule says that G1_rule states its CONDITIONAL part for G1a-G1c.
+   - LEDGER CONDITIONAL_here, SUMMARY evidence, note section 1 and the gate paragraph of note section 16 now say the same.
+     Note section 16 has a new paragraph, 'The step rule'.
+3. The EVIDENCE row's list of certificates.
+   - computational_certificates now opens with the rule: every C_0 read and every lambda or c_fin evaluation that a C row names.
+     The list follows it under 'among them'.
+   - Added: C09's six couplings 1/4000, 1/2000, 1/1000, 1/700, 1/600 and 1/100 (C_0 and the readout T);
+     lambda and c_fin at the named delta of C13 (delta_crit, 0.078733762, 1/10, 11/100, delta_crit^-, 49/1000 and 1/20)
+     and at the delta_in of C10b (s = 1/2000, 1/4096) and C10c (s = 1/8192, 1/65536). 1/50 is now credited to C05, C06 and C12.
+   - Also added: C19's faulted reads test the engine and certify nothing, so the rule does not make them certificates.
+   - Note section 0 and SUMMARY evidence say the same.
+4. The checks name their statements and constants.
+   - Each check keeps the task's wording first. A points_at clause and a constants clause follow, with the review's pointers and constants.
+   - T3 departs from the review in one place. The review said that the only omitted terms are step 0's tail and C10c's Taylor tail.
+     The field says that step k omits no term, and that the engine's cuts carry closed-form tail bounds: C10c's Taylor tail beyond s^6
+     and c_fin's scan over f (the certified tail cut of C07's method). It does not claim that these are the only cuts.
+   - T3 names the edge cases as the edge reads of the four files the review proposed. Some of them read the draft's constants, and the field says so.
+     final-check/edges.py has no .out file, so only the other three carry one.
+   - Every constant comes from an existing row: delta_crit and its fallback (HYPOTHESIS, C13), c_fin's flat range and c_fin(delta_crit^-) (C13),
+     c_fin <= max{e^{-4kappa}, e^{delta-kappa/2}} < 1 (CERTIFICATES), mu (HYPOTHESIS), C19's missing_tail reads, the bound on abs(beta_k) (HYPOTHESIS),
+     and the window edges (HYPOTHESIS, C13, C14).
+   - Note section 16's checklist table carries the same pointers and constants.
+
+(B) The eight minor items
+1. Note section 13: the pass-2 bullet now says 'no new predicted or computed value', and that the new numbers are file metadata, counts and the seat's pid.
+2. Note section 13: 'so no manifest lists its path'. The words 'like DERIVE-CHECKS.hbp' are dropped.
+3. C10's optimality clause joins rests_on_G1, SUMMARY conditional_on_G1 and note sections 0 and 16. rests_on_neither marks that clause.
+   The scope row's window beta_ind in [0.02074, 0.02075) joins rests_on_G0_and_G1, SUMMARY conditional_on_G0_and_G1 and note sections 0 and 16.
+4. EVIDENCE and note section 0: 'DERIVED as written by the authoring lanes; as evidence, CONDITIONAL' under the step rule.
+5. EVIDENCE frozen_commitments and note section 0: a prefreeze CROSS_READ or COMPUTED value stays a reproduction read,
+   and only prefreeze NONE values can enter a predictions-confirmed count.
+6. EVIDENCE and note section 0: delta_1/(1-c_fin(delta_1)) and c_fin(delta_1)^19*delta_1 are numbers the engine evaluates.
+   They bound sum_k delta_k and delta_20 only through Corollary 4.20 (G1, CONDITIONAL).
+7. check_G1c and note section 16: its first part tests C19's recorded fault variant, not a step of G1, and it still gates G1 under G1_rule.
+8. Note section 4.0: "route B's Theorem 4.10 (route B's numbering, not this note's Corollary 4.10; ...)", marked as an assembly change.
+   The section 4 assembly note names that clause.
+
+(C) Other edits made to keep the files consistent
+- The header's version and lane fields, and a new DISCLOSURE field corrections_after_the_review_of_the_final_additions, record this pass.
+- Note section 0 has a new paragraph, 'What changed after the review of the final additions'. Note section 13 has a new bullet and a sentence under Corrections.
+
+(D) The pin
+- head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = 5af1dc6e7aeb511fa3490728a9ac5f6c64fd6001bba9d871147f8d0da5224682. Note section 15 carries it.
+- The file still has 42 lines, so the pin rule is unchanged: head -n 42 covers every frozen row, and appended rows start at line 43.
+  SUMMARY's pin field, G_replay and note section 15 already say so.
+
+Not done
+- engine_plan.txt line 7 and note section 12 are unchanged. They ask for a status for each of the seven checks and for each step of sections 3 and 4,
+  which covers the two remarks.
+- The owner's assent to pass 1's renames and the freeze commit stay the owner's decisions. Gate G_attack stays OPEN.
+
+PASS 2. THE FINAL ADDITIONS AFTER THE TWO VERIFIERS
+
+Source: this directory as the two verifiers read it (prediction pin f2233fb6739b95e272ac05ee2336cf5d7980c29785d9c4f56f169a515ed789d3).
+It was copied to scratchpad/ym4c-final-add/before/final/ before any edit.
+Findings: the reports of the fidelity verifier and the recompute verifier. Both read PASS, with eleven minor items in all.
+How: scratchpad/ym4c-final-add/scripts/build_add.py applies every edit to the before/ copy as an exact string replacement that must match once.
+It writes CRITIC-FINDINGS.txt and computes the pin. scratchpad/ym4c-final-add/scripts/changes_add.py writes this file.
+scratchpad/ym4c-final-add/scripts/exact_checks.py (output exact_checks.out) holds the exact reads: Fractions with outward bounds, no floats.
+Only files in this directory changed. No repository was touched. No engine code exists and none ran.
+
+Result of pass 2 (pass 3 supersedes the pin and the note)
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 42 lines, pin head -n 42 | sha256sum = 721da6d5935399081371c54145ccc549b391c3f5894046dfbb05e6cdb7ac2e6d (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 9fb236defc8aac7c9ae0e90b93c161eac1d5224551480dff2d1138be37e2167c.
+- reviews/ym4-04c-prediction/CRITIC-FINDINGS.txt: new, 85 lines, sha256 58a74a1bf67ba024e83b385e3d65dfbd8e19f67ede1967a17aa11ad16d3a7d7c.
+- reviews/ym4-04c-prediction/engine_plan.txt: sha256 646e339aa8946f5da39a14f8e9e9481c3ed943dee706aaacbbe8474446a634df. It equals note section 12.
+- reviews/ym4-04c-prediction/ledger_rows.txt: unchanged, sha256 4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159.
+- reviews/ym4-04c-prediction/derive_checks.py: unchanged, sha256 53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b.
+- reviews/ym4-04c-prediction/DERIVE-CHECKS.hbp: unchanged, sha256 19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c.
+  python3 -I -B derive_checks.py reruns byte-identical to it (54 checks, 0 failed).
+- The three manifests are unchanged: cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41, 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17, 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+  From the scratchpad directory, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- No predicted=, predicts_NOT_MET=, falsifier= or tag= field of a C or W row changed. A field-level diff against the before/ copy
+  shows changes only in: the header (version, lane); DISCLOSURE (package_critic, cross_reads, manifests, and the new field
+  corrections_after_the_two_verifiers); C01's prefreeze; C19's variants_that_would_not_fire and the new field
+  variant_that_fires_with_another_ratio; G_attack; G_replay; LEDGER's CONDITIONAL_here; the new EVIDENCE row; SUMMARY.
+
+(A) The eleven minor items
+1. 'below 6F_20(n)' is now 'at most 6F_20(n)' in C01's prefreeze field and in DISCLOSURE cross_reads.
+   Read exactly: A_c(1) = 6 = 6F_20(1), and 6F_20(1..5) = 6, 120, 3540, 123240, 4705470.
+2. C19's coarse-norm one_position_support variant moves out of variants_that_would_not_fire into a new field,
+   variant_that_fires_with_another_ratio. It fires at C10, but not with the pinned ratio 1. It is recorded, not planted.
+   The plan's fault entry and note section 12 say the same.
+   Read exactly: (e^{-3/4} + e^{-1/2})/2 is in [0.5394486062, 0.5394486063], inside [0.5394486, 0.5394487], below e^{-1/4} and above e^{-1}.
+3. engine_plan.txt line 1 and its copy in note section 12 no longer claim 'the prefreeze tallies'.
+4. The section 4.5 heading and item 4 of the proof of Lemma 4.13 carry [CHANGED after the package critic].
+   The section 4 assembly note names both, and says these marks were added after the two verifiers.
+5. Section 4's references add Stanley, Enumerative Combinatorics vol. 2 (1999), Corollary 5.1.6, REPORTED (G1, through Lemma 3.15), marked.
+6. The section 4 assembly note lists section 4.15's stale THEOREMS bullet ('DERIVED ... on the REPORTED Theorem 4.9').
+   It now says that sections 4.15 and 4.17, and items 1 and 3 of section 4.16, are superseded, so it agrees with the 4.16 mark.
+   The 4.15 mark and note section 0 say the same.
+7. Named here, as the fidelity verifier asked. Pass 1 widened MANIFEST-ym4c-pkg.sha256 beyond fix 10, which asked only about pkg/critic3/.
+   The pre-critic manifest excluded the packaging directory pkg/assemble/ by name. Pass 1 included it.
+   The manifest now lists every file of ym4c/ except bytecode caches, pkg-wf.json and final/. It grew from 116 to 143 entries:
+   pkg/critic3/ (6 files), pkg/final-fixes/ (3), pkg/assemble/ (9), and the pre-critic deliverables and manifests in pkg/ (9).
+   Pass 1 also renamed engine_plan-final.txt and ledger_rows-final.txt to engine_plan.txt and ledger_rows.txt. No finding asked for that.
+   DISCLOSURE's manifests field and the note section 13 table now name pkg/assemble/. The renames need the owner's assent before the commit.
+8. reviews/ym4-04c-prediction/CRITIC-FINDINGS.txt is new. It carries the critic object of scratchpad/ym4c/pkg-wf.json as plain text, unchanged
+   (verdict, blocking, fixes, checked), and the summaries of the two verifiers, unchanged.
+   DISCLOSURE package_critic (with its sha256), note sections 0 and 13, the plan's freeze order and SUMMARY frozen_before_engine name it.
+9. The version field says 'two fault specifications (missing_tail, one_position_support)'. So does pass 1 below.
+10. Pass 1 below says 1.00035866. Read exactly: the wall quantity mu e^{1/4} eps_6 at 0.02248 is in [1.00035866802216, 1.00035866802217].
+    At 1/40 it is in [1.11252235446558, 1.11252235446559], so pass 1's 1.11252235 is a correct lower end.
+11. Other wording items from the two reports:
+    - The version field and note section 0 cited pkg/critic3/ as the source of the findings. They now name CRITIC-FINDINGS.txt for the text
+      and pkg/critic3/ for the scripts. Section 0 says 'the package critic', not 'the final critic of this package',
+      since section 13 uses 'the final critic' for final-check/.
+    - DISCLOSURE's manifests field and the section 13 table say that ym4c/final/ also holds this work log.
+    - Section 13 calls pass 1 'the fix pass', not 'this pass', and adds bullets for CRITIC-FINDINGS.txt and for pass 2.
+
+(B) The second seat
+- The G_attack row (new field second_seat) and note section 16 name it exactly: the local Opus 5.5 seat, pid 8467a937cba309f7.
+- The G_attack criterion points to that field. LEDGER's CONDITIONAL_here, note section 18 and the plan's freeze order refer to the seat named there.
+- Rows already filed under other seat names stay as written: the six pre-freeze lenses of note section 16 and the G_attack criterion.
+
+(C) The acceptance checklist
+- G_attack carries check_T1, check_T2, check_T3, check_T4, check_G1a, check_G1b and check_G1c, each open, with the wording of the task.
+- status_values: reproduced, refuted or open; all start open. The row is frozen, so the second seat files each status in rows appended
+  after line 42, one per check and one per step.
+- G1_rule: if G1a, G1b or G1c fails or stays unchecked, G1 stays CONDITIONAL, and so does every row and clause named in
+  rests_on_G0_and_G1, rests_on_G1 and rests_on_the_(1+t)^f_step.
+- per_step_status: 60 entries, one per numbered lemma, proposition, theorem and corollary of note sections 3 and 4, each open
+  (34 in section 3 with Theorem G0 and Corollary G0.C; 26 in section 4 with Theorem G1 and Corollary G1-frozen). Remarks 3.19, 3.34 and 4.18a are not steps.
+  [corrected in pass 3: Remarks 3.19 and 3.34 carry proof steps, so they are entries too, 62 in all; only Remark 4.18a is not a step]
+- Note section 16 carries the same checklist, the rule and the per-step table.
+
+(D) The EVIDENCE row
+- YM4_04C_EVIDENCE is line 41, before PREDICTION_SUMMARY. It separates frozen commitments (the 28 C and W rows, by id),
+  computational certificates (the finite C_0 and C_k reads at named beta_0 over finitely many steps) and mathematical derivations
+  (G0 and G1, CONDITIONAL until G_attack is filed) [corrected in pass 3: the certificates are every C_0 read and every lambda or c_fin
+  evaluation that a C row names, and G0 and G1 stay CONDITIONAL until every check and per-step entry they rest on reads reproduced]. It says that the all-k self-map is a scale-uniform statement about the trivial (Haar)
+  fixed point inside the window, not a continuum or weak-coupling theorem, that a finite-step engine read is not an all-k theorem,
+  and that no Aether or QNN result enters or counts toward Yang-Mills without a proven bridge.
+- Note section 0 has the matching paragraph, 'Three kinds of evidence'.
+
+(E) Counts and the pin
+- SUMMARY: lines=42; other_rows=10, with EVIDENCE; new fields G_attack_checklist and evidence; the pin rule head -n 42; appended rows from line 43;
+  frozen_before_engine names CRITIC-FINDINGS.txt.
+- The header version, G_replay, the G_attack criterion and note sections 0, 3 (assembly note), 12, 15 and 16 say 42 lines or line 42.
+  Section 4.15's canonical 'after line 41' is v2's procedure. It stays, and the section 4 assembly note already explains it.
+- The pin rule: head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = 721da6d5935399081371c54145ccc549b391c3f5894046dfbb05e6cdb7ac2e6d.
+  Note section 15 carries it.
+
+Not done
+- The owner's assent to pass 1's renames. That is the owner's decision.
+- CRITIC-FINDINGS.txt is not added to MANIFEST-ym4c-pkg.sha256, as the fidelity verifier's fix proposed. It sits in final/, outside that manifest's scope.
+  Its sha256 is in DISCLOSURE and note section 13 instead, so the three manifests stay unchanged.
+- This work log stays in final/. It is not moved into reviews/. The owner decides whether the commit carries it.
+- The recompute verifier noted that ledger_rows.txt's L06 reads 'note §4.5' where note section 11 reads '§4.5'. That was not a finding,
+  and both copies read correctly, so neither changed.
+- Gate G_attack stays OPEN. The freeze commit is the owner's decision.
+
+PASS 1. THE PACKAGE CRITIC'S FINDINGS, APPLIED
+
+Source: the pre-critic package in scratchpad/ym4c/pkg/ (prediction pin f77c51568fdf9eaec81010d7f6cff12811ac2da65be56cd7cd3a74e37518ad61).
+Findings: the critic block of scratchpad/ym4c/pkg-wf.json (verdict FIX_FIRST; scripts in pkg/critic3/).
+Pass 2 carries that text as reviews/ym4-04c-prediction/CRITIC-FINDINGS.txt.
+Files call that critic "the package critic", because note section 13 already uses "the final critic" for final-check/.
+How: pkg/final-fixes/build_final.py applies every edit below as an exact string replacement that must match once.
+It writes this directory, the three manifests and the pin. pkg/final-fixes/fix_checks.py (output fix_checks.out) holds the exact reads.
+No pkg/ file was changed. No repository was touched. No engine code exists and none ran.
+
+Result of pass 1 (pass 2 supersedes the pin, the line count, the note and engine_plan.txt)
+- docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp: 41 lines, pin head -n 41 | sha256sum = f2233fb6739b95e272ac05ee2336cf5d7980c29785d9c4f56f169a515ed789d3 (the whole file).
+- docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md: sha256 c7200e1ac7a7cfa7605d3c18f45eed4fbd5d338e90f8d6c2dbf748ead421b5c0.
+- reviews/ym4-04c-prediction/derive_checks.py: unchanged, sha256 53da67e4d6e7794ea85f0d605bc83c6ff238e62cda2245b932542edcb0081f5b.
+- reviews/ym4-04c-prediction/DERIVE-CHECKS.hbp: byte-identical to the script's output (54 checks, 0 failed), sha256 19da2467c1d14d9a78497eb3d6c716a79d22ee436b7f830a87829601422bfb2c.
+- reviews/ym4-04c-prediction/engine_plan.txt: sha256 754d1cc7f752b2230aa43077d17121f8fbc23eab64f7b9e4d8bd13c3398925bf. It equals note section 12.
+- reviews/ym4-04c-prediction/ledger_rows.txt: sha256 4aeb6933598df9e9a1593862fbd7f03fce7ef6ad16b8883791615dde73eed159.
+- MANIFEST-ym4-04c-scratch.sha256: 67 lines, sha256 cfa665bc95ab063d69a98313bea26ec9543df5cfdb57934fa115713c70068d41.
+- MANIFEST-ym4c-v2-checks.sha256: 19 lines, sha256 230a8fb9495cab2f9c6209e534d3215e955c94fad7aac22d9bfbf2375a278e17.
+- MANIFEST-ym4c-pkg.sha256: 143 lines, sha256 35d35c3d13ffd7dd77a46902dc476f83fcc76af2cd607859aad55fc69373560a.
+- Each manifest line is "sha256  path", with the path relative to the scratchpad directory (reviews/ym4-04c-prediction/ in the commit).
+  From there, sha256sum -c passes all three: 67/67, 19/19, 143/143.
+- No predicted value moved. Tags, scopes, method fields and two fault specifications (missing_tail, one_position_support) moved
+  [corrected in pass 2: this said 'one fault specification'].
+
+B1. Three NONE clauses were read before the freeze.
+- I checked the outputs. pkg/attack/G0-count-checks.out section C (through n = 5) and G0-count-checks-6-10.out (through n = 6) list
+  every class-1, 2 and 3 count, each "ok: True". Section E reads {4: 1, 8: 16}. pkg/attack/G1-channel-instances.out reads the C10 holonomy
+  line at 4 trials. pkg/derive/G0-b-checks.out block E reads the counts through n = 4.
+- C01, C09, C10: prefreeze NONE -> CROSS_READ, with the reading script named.
+- PREDICTION_SUMMARY: the three clauses move from prefreeze_NONE to prefreeze_CROSS_READ.
+  prefreeze_NONE now reads: row C18; C10c's moment reads, C19's engine exits, W06(a) in the sectors other than k'=0, W07's random tiles.
+- DISCLOSURE cross_reads names the three clauses. A new corrections_after_the_package_critic field lists them.
+- Note section 13 ("The prefreeze field" and "Cross-reads") is corrected. The note's status section gets "What changed after the package critic".
+- The pin is recomputed.
+
+B2. C19's missing_tail and the pole test.
+- Confirmed. In v2-checks/kp_exact.py S_and_xdS, the pole test sits inside "if tail:", so the pinning run removed it with the tail.
+- fix_checks.py, at theta = 1/4 and alpha = 2^-22, with the head-only C03 S. At 1/40 and 0.02248 the wall quantity is 1.11252235 and
+  1.00035866 (lower ends) [corrected in pass 2: this said 1.00035867, a rounded value]. So with the pole test kept, both guard reads stay NOT_MET. At 0.02076 the pole test passes and S^+ <= 9.27e-8 <= alpha,
+  so C06's NOT_MET would read MET. With the pole test removed, both guard reads are MET (S^+ = 1.95165e-7 and 1.27454e-7).
+- C19 statement, the engine plan's planted-fault entry and note section 12: the critic's clause is added word for word,
+  "and the pole test mu^+x^+ < 1, which belongs to the tail, is removed with it".
+- The pole-kept variant is recorded under variants_that_would_not_fire and in the plan. Recorded effect: the run passes the C04 guard and
+  fails at a later row, C06's NOT_MET at 0.02076 among them. "Stops at C06" is not claimed, since the read order of C05 under the fault is not pinned.
+- The pin is recomputed.
+
+Fix 1. Manifests.
+- All three are regenerated in "hash  path" form (sha256sum -c), over the same trees.
+- The ym4-04c and v2-checks file sets and hashes equal the old ones. The 116 old pkg entries keep their hashes.
+- Paths now carry the tree prefix (ym4-04c/..., ym4c/...), so one directory checks all three.
+- New sha256 values are in the DISCLOSURE manifests field and the note section 13 table.
+- CI step 3 (engine plan and note section 12) now reads:
+  cd reviews/ym4-04c-prediction && sha256sum -c MANIFEST-ym4-04c-scratch.sha256 MANIFEST-ym4c-v2-checks.sha256 MANIFEST-ym4c-pkg.sha256.
+- Freeze order 1 gives the new line counts.
+- The package manifest's scope is now every file of ym4c/ except bytecode caches, pkg-wf.json (the workflow rewrites it) and final/
+  (this directory). So it grows from 116 to 143. The new entries:
+  - pkg/critic3/ (fix 10);
+  - pkg/final-fixes/;
+  - the pre-critic package as the critic read it: pkg/assemble/, the old prediction, note, derive_checks.py, DERIVE-CHECKS.hbp,
+    engine_plan-final.txt, ledger_rows-final.txt and the three path-first manifests. They are kept as records.
+- The old manifests cannot be read by sha256sum -c. The note says so.
+
+Fix 2. Sections 4.15 to 4.17.
+- The section 4 assembly note now names them as superseded by section 6 and the prediction file. It lists the stale items:
+  - the factor-12 edges 0.02040/0.02041 and 0.01595/0.01596;
+  - C11's factor-12 c_fin;
+  - the surrogate range 0.01366-0.01595;
+  - 4.16 item 1, since Lemma 3.32 proves monotonicity;
+  - 4.16 item 3's TG list, since the G_attack list stands.
+- Each of the three sections gets a short superseded mark under its heading.
+
+Fix 3. Section 1.
+- It now reads "would close the gate at strong coupling only, and only once gate G_attack is filed".
+- It adds "With the crude counts, which are proved valid (Corollary 3.12), the window is beta_0 <= 0.01767 (C13's edge, CONDITIONAL on G0 and G1;
+  TG, fallback 0.01761)".
+
+Fix 4. C10b's moment identity: COMPUTED -> CROSS_READ.
+- It names pkg/attack/G1-channel-instances.py (6 rational (A, B), m = 1..6) and derive_checks.py (one configuration).
+- Also changed: DISCLOSURE freeze_checks and cross_reads, SUMMARY (C10b leaves the COMPUTED moment entry), note section 13.
+
+Fix 5. W06(a).
+- It is now NONE only in the sectors other than k'=0.
+- The k'=0 sector is CROSS_READ with (b), by smallfield-largefield/d2_fiber_k0.py.
+- Also changed: SUMMARY, DISCLOSURE cross_reads, ledger L19 (note section 11 and ledger_rows.txt).
+
+Fix 6. The chain method.
+- C07's method says every chain value is read from the engine's certified delta_1^+ = 6 alpha^+, not from the upper end of the frozen bracket.
+- C12's method adds the exact case: sum_k delta_k <= 5.7463e-2 holds at the certified delta_1 in [0.0363235365, 0.0363235366] and fails at 0.0363236,
+  where delta_1/(1-e^{-1}) is above 0.05746308.
+- C16's method adds: e^{-19} delta_1^+ <= 3.093991e-11 <= 3.0940e-11, while e^{-19}*0.0055223 is above 3.094032e-11.
+- The engine plan E4 and note section 6 say the same.
+- fix_checks.py checked every chain row. C07, C08, C11 and C14 hold even at their bracket ends. C12 and C16 fail there.
+  All hold at delta_1^+ + 6*2^-48, the engine's dyadic resolution.
+
+Fix 7. one_position_support.
+- The C19 statement, the engine plan (E6 and the fault entry) and note section 12 now say the faulted count acts in the fine-norm routine only.
+  The coarse norm keeps #Y''=4.
+- The variant that also counts the coarse Y by its position-1 links for the next blocking is recorded, computed exactly by fix_checks.py:
+  - the counts are 0, 1 or 2 per coarse plaquette;
+  - the maximizing link sees (1,1,1,2,2,2);
+  - the coarse norm is 6|s|(e^{kappa}+e^{2kappa});
+  - the ratio is (e^{-3kappa}+e^{-2kappa})/2, in [0.5394486, 0.5394487] at kappa=1/4, and 1 at kappa=0.
+  So it still fires at C10, as the critic says.
+- Deviation: the critic's bracket "between e^{-kappa} and 1" is wrong. The value lies below e^{-kappa} = 0.7788 and strictly between e^{-1} and 1.
+  The files state the computed value.
+
+Fix 8. G1 cites Proposition 3.18. Applied after a line-by-line check.
+- Section 3.6 is abstract and says "G1 can use it with other supports". G1's polymers carry nonempty off(Gamma), with incompatibility as off-overlap.
+- Lemma 4.13 items 2 and 3 give (KP_w) at every off link, with alpha = delta' and the weight omega e^{d}.
+- Proposition 3.18 item 2 with Gamma_0 = {Gamma} gives Corollary 4.10 (a) in the multiset language. Here phi = phi^T / prod m!.
+  Subtracting the n = 1 term gives (b).
+- Item 3, summed over the finitely many off links, gives absolute convergence.
+- The argument of Lemma 3.20, with Lemma 3.15, gives log Xi = sum_X Phi. Xi > 0 also follows from Lemma 4.7.
+- One correction to the critic's wording: G1 is not free of every REPORTED input. Through Lemma 3.15 it rests on the exponential formula
+  for connected graphs, which G0 already uses. The files say exactly that.
+- Note section 4 is rewritten in these places, each marked [CHANGED after the package critic]:
+  - Theorem 4.9 is now derived from Proposition 3.18, with a proof;
+  - Corollary 4.10 has a new proof;
+  - Lemma 4.13 item 4 now states (KP_w);
+  - Proposition 4.14's proof;
+  - the status paragraph, the opening of 4.16 (the "not re-read" caveat is removed) and the references.
+- Also changed: note section 0's REPORTED list, the THEOREMS row (G1 and status), the LEDGER row (Kotecky-Preiss moves to cross-references),
+  ledger L06 and L10, and the G_attack brief (new question 11).
+- Kotecky-Preiss stays a cross-reference.
+
+Fix 9. Ledger L16.
+- "Corner halves per step" -> "the corner obeys 2^k r_k = 15/14, 25823/24660 and [1.0196247, 1.0196248] at k = 1, 2, 3", as W01 states.
+- Checked exactly: 2*15/28 = 15/14, 4*25823/98640 = 25823/24660, and 8*[0.1274530942, 0.1274530943] is inside the bracket. The values strictly decrease.
+- Changed in both note section 11 and ledger_rows.txt.
+
+Fix 10. Packaging.
+- pkg/critic3/ (spot.py, kp.py, g1.py, wlane.py, c09.py, derive_checks_rerun.out) is now in the package manifest.
+- A new DISCLOSURE field, package_critic, and a note section 13 bullet describe it. Its scripts use Fractions with outward rounding and floats only in display.
+  They re-read only COMPUTED or CROSS_READ values, so no tag moves. Only derive_checks_rerun.out was saved.
+- pkg/final-fixes/ is disclosed the same way (DISCLOSURE final_fixes, note section 13).
+
+Other edits made to keep the files consistent
+- Header version, supersedes (now names the pre-critic final, f77c5156...) and lane fields.
+- The deliverable names engine_plan.txt and ledger_rows.txt replace engine_plan-final.txt and ledger_rows-final.txt in the note, the plan and DISCLOSURE.
+- Note section 11 says where the ledger is filed.
+
+Not done
+- The critic3 scripts were not rerun, and their outputs (other than derive_checks_rerun.out) are not saved.
+- Gate G_attack stays OPEN. The freeze commit is the owner's decision.
+
+
+====================================================================================================
+AT THE FREEZE (appended by the cloud seat when committing; the last checks read CHANGES.txt without this section)
+====================================================================================================
+
+Last gate: bookkeeping-close round 2, two fresh checks, both PASS, nothing blocking. The frozen prediction file is exactly the checked file:
+head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum = c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404.
+The checks' minor items are listed below, unapplied, so that the committed files are the checked ones. None moves a predicted, NOT_MET,
+falsifier or tag field; where two fields word a CONDITIONAL status differently, the stricter reading holds. Corrections go into rows appended
+after line 42 or into an addendum, never into the 42 frozen lines.
+
+M01 [minor] docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp line 36, G_attack rests_on_a_numbered_entry (the C04 item against the scope-row item); line 41 EVIDENCE computational_certificates (the C04 sentence); note section 0 lines 9 and 15; note section 16 line 1744
+    One bracket gets two entry sets. The bracket beta_wall(1/4) in [0.02247,0.02248] appears in C04's predicted field and in the scope row's windows field. - C04's crossings share one item with its every-beta NOT_MET, under Lemma 3.32, Corollary 3.33 and Lemma 3.11. EVIDENCE also says the bisection pairs 'place its crossings' only through all three. - The same lists put the scope row's beta_wall(1/4) under Lemma 3.32 alone.  Take the state where Lemma 3.32 is reproduced and Corollary 3.33 or Lemma 3.11 is open. Then C04's bracket stays CONDITIONAL and the scope row's copy does not.  Lemma 3.32 (note line 504) says the bisection of C04 is decided by its edge pairs. Corollary 3.33 and Lemma 3.11 are needed only for the NOT_MET above the wall. So for the bracket itself, the scope row's entry set is the right one. Ledger row L13 names all three entries for the NOT_MET above beta_wall, which is correct. This is the same kind of item as the previous round's minor 3.
+    Suggested: Split the C04 item in G_attack rests_on_a_numbered_entry, note section 0 and note section 16 into two: - 'C04's crossings (Lemma 3.32)' - 'its NOT_MET at every beta above beta_wall(1/4) (Lemma 3.32, Corollary 3.33, with Lemma 3.11 as L08)'  In EVIDENCE and in the evidence paragraph of note section 0, write: 'C04's bisection pairs place its crossings only through note Lemma 3.32, and give its NOT_MET at every beta above beta_wall(1/4) only through Lemma 3.32 and Corollary 3.33, with Lemma 3.11'.  If the owner reads the scope window as the wall itself, do the reverse instead: add Corollary 3.33 and Lemma 3.11 to the scope row's beta_wall(1/4) item. Either way, re-pin.
+
+M02 [minor] note section 0 line 9 ('on G1 alone, ... C13's δ_crit and c_fin values'); note section 16 line 1668 (the rule for G1: 'those on G1 alone') with line 1744 ('On G1: ... C13's δ_crit and c_fin values'); against G_attack rests_on_G0_and_G1 ('C13'), step_rule and C13's tag CONDITIONAL_G0_G1
+    Every list names row C13 whole under G0 and G1, and its frozen tag is CONDITIONAL_G0_G1. So under step_rule, C13's δ_crit and c_fin values stay CONDITIONAL while G0 is open.  Note section 0 calls them 'on G1 alone', and section 16's rule for G1 calls that list 'those on G1 alone'. Read that way, they are released once G1 is released, even with G0 still open. The prediction file never says 'alone', so the gate row itself gives one answer.  A related point is consistent across fields but stated nowhere. By content, these C13 clauses rest on G1 or on one entry. Their copies in other rows carry that status only: - δ_crit in the hypothesis row's admissible field is on the (1+t)^f list only. - The hypothesis row's clause c_fin<1 on the whole domain is under Lemma 4.17 only. - The interval clause inside C10's optimality clause is on G1, not G0. The C13 copies also wait for G0, because of C13's whole-row tag. C12's crude NOT_MET at 1/50, against C05's, is the same case.
+    Suggested: Note section 0: replace 'on G1 alone, ...' with 'on G1, ..., C13's δ_crit and c_fin values (as clauses of row C13 they also wait for G0), and C10's clause ...'.  Note section 16, the rule for G1: write 'those on G1'.  Optionally, add one sentence to section 16 (and to step_rule at the next re-pin): 'A row named whole on rests_on_G0_and_G1 holds every clause in it. So its copies of clauses that rest on G1 or on one entry alone wait for G0 too, as its frozen tag says.' The note-only edit does not move the pin.
+
+M03 [minor] line 36 rests_on_the_(1+t)^f_step and rests_on_a_numbered_entry (the Lemma 3.32 item of the 'also' group); line 42 SUMMARY conditional_on_the_(1+t)^f_step and conditional_on_a_numbered_entry; note section 16 line 1744 and section 0 line 9; against line 2 HYPOTHESIS regime and line 26 C17 predicted
+    Pass 7 put the scope row's copies of C13's and C14's edges on every list that names those edges. Two other copies sit on rests_on_G0_and_G1 only.  (a) The hypothesis row's crude boundary beta_0<=0.01767 is marked '(C13,TG,fallback_0.01761)' in its own row. No (1+t)^f list names it, although the lists do name the scope row's crude window and C19's upper end.  (b) The window clauses of the hypothesis row's regime clause (beta_0<=0.02074 and <=0.01767) and of C17's replacement clause (beta_0<=0.02074 at C14's edge) are missing from the Lemma 3.32 item. That item names the scope row's beta_ind and beta_ind^crude.  The CONDITIONAL status is the same for every copy. rests_on_G0_and_G1 holds them, and G0 is released only when every section 3 entry is reproduced. The lists name different copies only for two events: a rejected (1+t)^f step, where they differ on which copy carries a fallback, and a refuted Lemma 3.32.
+    Suggested: Add 'the crude boundary 0.01767 of the hypothesis row's regime clause (fallback 0.01761)' to the three (1+t)^f lists: G_attack, SUMMARY and note section 16.  Add 'the windows of the hypothesis row's regime clause and of C17's replacement clause' to the Lemma 3.32 item of the 'also' group, in G_attack and in note section 16, and to the ungrouped lists in SUMMARY and note section 0. Re-pin.
+
+M04 [minor] note section 16 step rule (line 1670) and 'CONDITIONAL rows, listed' (line 1744); note section 0 line 9; against step_rule ('for G0, with the H_1 meaning of meaning_only_through_G0') and G_attack meaning_only_through_G0
+    step_rule keeps the H_1 meaning CONDITIONAL on G0 for C04, C05, C06, C15 and for C19's iteration_cap_400 and missing_tail reads.  Section 16 says the G_attack row carries its rule as step_rule. But its own step rule keeps CONDITIONAL only what 'the lists below name under that theorem', and those lists have no meaning-only item. Note section 0 names C04, C05, C06 and C15, but not C19's two reads.  No field releases these clauses. The gate paragraph of section 16 ('every row that rests on G0 or G1 reads CONDITIONAL') still covers them. The two texts of the rule differ only in wording.
+    Suggested: In the step rule of note section 16, write: '... name under that theorem and, for G0, the H_1 meaning of rows C04, C05, C06 and C15 and of C19's iteration_cap_400 and missing_tail reads (the G_attack row's meaning_only_through_G0)'.  Add the same item to the section 16 CONDITIONAL lists. Add C19's two reads to the sentence in note section 0. The pin does not change.
+
+M05 [minor] line 40 LEDGER CONDITIONAL_here ('every_row_or_clause_listed_under_gate_G_attack')
+    Read literally, this phrase covers every list in the G_attack row. That includes the rows of rests_on_neither (C02, C03, C10, C18 and the W lane) and the read-point arithmetic of meaning_only_through_G0.  Those two fields say the rows keep their tags. Note section 0 calls the tree-level and Gaussian rows DERIVED. The rest of CONDITIONAL_here cites step_rule and gives the right statuses, so this is a wording point. The phrase is the same in both before/ copies, so pass 7 did not introduce it.
+    Suggested: Write: 'every row or clause named in rests_on_G0_and_G1, rests_on_G0, rests_on_G1, rests_on_the_(1+t)^f_step or rests_on_a_numbered_entry of gate G_attack, and the H_1 meaning of the rows of meaning_only_through_G0'. This can go into the next re-pin.
+
+M06 [minor] line 41 EVIDENCE computational_certificates; note section 0 line 15 (the evidence paragraph)
+    EVIDENCE lists the reads that carry a claim beyond their points. Two kinds are missing from that list. - The head-free reads hold for every count vector only through Remark 3.34: C06 at 0.02076, C08 at 1/100, C12 at 1/50, C14 at 0.02074/0.02075 and C15 at 1/45. - The c_fin reads give c_fin<1 on the whole domain, in the hypothesis row and in C13, only through Lemma 4.17.  The sentence defers to rests_on_a_numbered_entry, which names both, so no status changes. This is the same kind of item as the previous round's minor 6.
+    Suggested: Add to EVIDENCE and to the evidence paragraph of note section 0: 'the head-free reads of C06, C08, C12, C14 and C15 hold for every count vector only through note Remark 3.34; the c_fin reads give c_fin<1 on the whole domain (hypothesis row, C13) only through note Lemma 4.17'. Re-pin.
+
+M07 [minor] line 2 HYPOTHESIS: the H_k field ('at_k=1_the_filling_cluster_puts_2t_2(beta_0)^4_chi_1/2(V_P)_inside_R_1(boundary_of_P)'), the uniformity field and the gauge field; against the G_attack lists
+    Three clauses of the hypothesis row restate conclusions of G0 and G1: - The filling clause is the last sentence of Theorem G0 (C1) (note line 104; Lemma 3.25, Proposition 3.22). - 'No step bound involves N, K or the number of plaquettes' is the uniformity of G0 (C5) and of G1. - 'Every activity is coarse-gauge invariant' rests on Lemmas 3.21 and 4.3.  No list names these three, although the same row's regime clause, beta_k bound and c_fin<1 clause are listed. No field gives them a different status: they are statements of G0 and G1 themselves, and EVIDENCE mathematical_derivations holds those CONDITIONAL. Refix 6 left the CERTIFICATES and THEOREMS rows off the lists for this reason. That reason is in a scratch report only, and no deliverable states it.
+    Suggested: Add one sentence to G_attack, or to note section 16: 'The CERTIFICATES and THEOREMS rows, and the hypothesis row's statements of G0 and G1 conclusions (the filling at k=1, the uniformity and gauge fields), follow G0 and G1 directly.' Or name these clauses in rests_on_G0 and rests_on_G0_and_G1. Re-pin if the prediction file changes.
+
