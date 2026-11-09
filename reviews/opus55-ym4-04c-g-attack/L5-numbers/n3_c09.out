@@ -1,0 +1,11 @@
+NUM|id=C09_T_over_P10_1_4000|i_min=194|unique=1|T_over_P10=[5.2258750e-4,5.2258751e-4]|rel_gap_min=[9.1208e-4,9.1209e-4]|certified_i_count=283|i_range=0..282|uncertified_i_excluded=1|ok=1|json=0
+NUM|id=C19_readout_grid_128_1_4000|i_min=128|T_over_P10=[1.4715245e-2,1.4715246e-2]|ok=1|json=0
+NUM|id=C09_containment_1_4000|P10_minus_2t2_4=[7.4505804e-33,7.4505805e-33]|eta=[2.473e-8,2.474e-8]|T_over_diff=[2.140e12,2.141e12]|ok=1|json=0
+NUM|id=C09_T_over_P10_1_2000|i_min=150|unique=1|T_over_P10=[8.3610546e-3,8.3610547e-3]|rel_gap_min=[1.1475e-3,1.1476e-3]|certified_i_count=239|i_range=0..238|uncertified_i_excluded=1|ok=1|json=0
+NUM|id=C09_containment_1_2000|P10_minus_2t2_4=[1.9073484e-30,1.9073485e-30]|eta=[9.895e-8,9.896e-8]|T_over_diff=[2.140e12,2.141e12]|ok=1|json=0
+NUM|id=C09_T_over_P10_1_1000|i_min=105|unique=1|T_over_P10=[1.3382509e-1,1.3382510e-1]|rel_gap_min=[1.9684e-5,1.9685e-5]|certified_i_count=195|i_range=0..194|uncertified_i_excluded=1|ok=1|json=0
+NUM|id=C09_containment_1_1000|P10_minus_2t2_4=[4.8828105e-28,4.8828106e-28]|eta=[3.958e-7,3.959e-7]|T_over_diff=[2.141e12,2.142e12]|ok=1|json=0
+NUM|id=C09_T_over_P10_1_700|i_min=83|unique=1|T_over_P10=[5.5725410e-1,5.5725411e-1]|rel_gap_min=[5.3774e-4,5.3775e-4]|certified_i_count=172|i_range=0..171|uncertified_i_excluded=1|ok=1|json=0
+NUM|id=C09_T_over_P10_1_600|i_min=73|unique=1|T_over_P10=[1.0322642e0,1.0322643e0]|rel_gap_min=[9.7190e-4,9.7191e-4]|certified_i_count=162|i_range=0..161|uncertified_i_excluded=1|ok=1|json=0
+NUM|id=C09_T_over_P10_1_100|i_min=0|unique=1|T_over_P10=[6.9351713e3,6.9351714e3]|rel_gap_min=[5.8157e-2,5.8158e-2]|certified_i_count=47|i_range=0..46|uncertified_i_excluded=1|ok=1|json=0
+NUM_N3_END|fails=0||json=0

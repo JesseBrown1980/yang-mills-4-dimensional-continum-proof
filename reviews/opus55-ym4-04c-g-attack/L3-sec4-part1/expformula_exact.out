@@ -1,0 +1,9 @@
+L3_EXPFORMULA|system=path4|polymers=4|degree<=6|monomials_logXi=124|monomials_ursell=124|coefficients_equal=1|multiset_phi_eq_phiT_over_prod_m!=1|json=0
+L3_KP_TRUNCATED|system=path4|alpha=1/2|KPw_worst_link=equality_up_to_1e-30|cor4.10a_truncated_le_rhs=1|prop3.18_item3_truncated_le_alpha=1|json=0
+L3_EXPFORMULA|system=star4|polymers=4|degree<=6|monomials_logXi=209|monomials_ursell=209|coefficients_equal=1|multiset_phi_eq_phiT_over_prod_m!=1|json=0
+L3_KP_TRUNCATED|system=star4|alpha=1/2|KPw_worst_link=equality_up_to_1e-30|cor4.10a_truncated_le_rhs=1|prop3.18_item3_truncated_le_alpha=1|json=0
+L3_EXPFORMULA|system=triangle_pendant|polymers=4|degree<=6|monomials_logXi=194|monomials_ursell=194|coefficients_equal=1|multiset_phi_eq_phiT_over_prod_m!=1|json=0
+L3_KP_TRUNCATED|system=triangle_pendant|alpha=1/2|KPw_worst_link=equality_up_to_1e-30|cor4.10a_truncated_le_rhs=1|prop3.18_item3_truncated_le_alpha=1|json=0
+L3_EXPFORMULA|system=two_blocks|polymers=4|degree<=6|monomials_logXi=54|monomials_ursell=54|coefficients_equal=1|multiset_phi_eq_phiT_over_prod_m!=1|json=0
+L3_KP_TRUNCATED|system=two_blocks|alpha=1/2|KPw_worst_link=equality_up_to_1e-30|cor4.10a_truncated_le_rhs=1|prop3.18_item3_truncated_le_alpha=1|json=0
+L3_EXPFORMULA_END|systems=4|all_ok=1|tag=MEASURED|json=0

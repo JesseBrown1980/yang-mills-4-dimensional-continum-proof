@@ -1,0 +1,33 @@
+L31_N8|operp_same_at_both_ends|ok=1
+L31_N8|Op_same_at_all_corners|ok=1
+L31_N8|item1_link_count|ok=1|links=16384
+L31_N8|item1_each_link_in_6_plaquettes|ok=1
+L31_N8|item1_plaquette_4_distinct_links|ok=1
+L31_N8|item1_two_distinct_plaquettes_share_at_most_one_link|ok=1
+L31_N8|item2_quarters_and_classes|ok=1|quarters=6144
+L31_N8|item2_quarter_count_6N4_over_4|ok=1
+L31_N8|item3_fillings|ok=1|fillings=1536
+L31_N8|item3_every_quarter_in_exactly_one_filling|ok=1
+L31_N8|item4_class1_links|ok=1|class1=6144|class2=6144|class3=2048
+L31_N8|item8_coarse|ok=1|L=4|perp_unique=1|multi_edges=0|girth=4
+L31_N8|item5_quarter_holds_at_most_one_line_link_of_other_dP|ok=1
+L31_N8|item6_W_e0_12_distinct_Wprime_6_class1|ok=1
+L31_N8|item7_degree_5k|ok=1|degrees=[10, 20]
+L31_N8|lemma35_cube_example|ok=1|plaquettes=6|off_links=12|all_off=1|closed=1|connected=1
+L31_N10|operp_same_at_both_ends|ok=1
+L31_N10|Op_same_at_all_corners|ok=1
+L31_N10|item1_link_count|ok=1|links=40000
+L31_N10|item1_each_link_in_6_plaquettes|ok=1
+L31_N10|item1_plaquette_4_distinct_links|ok=1
+L31_N10|item1_two_distinct_plaquettes_share_at_most_one_link|ok=1
+L31_N10|item2_quarters_and_classes|ok=1|quarters=15000
+L31_N10|item2_quarter_count_6N4_over_4|ok=1
+L31_N10|item3_fillings|ok=1|fillings=3750
+L31_N10|item3_every_quarter_in_exactly_one_filling|ok=1
+L31_N10|item4_class1_links|ok=1|class1=15000|class2=15000|class3=5000
+L31_N10|item8_coarse|ok=1|L=5|perp_unique=1|multi_edges=0|girth=4
+L31_N10|item5_quarter_holds_at_most_one_line_link_of_other_dP|ok=1
+L31_N10|item6_W_e0_12_distinct_Wprime_6_class1|ok=1
+L31_N10|item7_degree_5k|ok=1|degrees=[10, 20]
+L31_N10|lemma35_cube_example|ok=1|plaquettes=6|off_links=12|all_off=1|closed=1|connected=1
+L31_SUMMARY|N=8,10|all_ok=1|tag=MEASURED|json=0

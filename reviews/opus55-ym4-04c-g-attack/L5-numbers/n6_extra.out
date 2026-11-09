@@ -1,0 +1,11 @@
+NUM|id=W03_corner_d3_by_cosines_b2|b_times_r=[0.749999999999,0.750000000001]|json=0
+NUM|id=W03_corner_d3_by_cosines_b4|b_times_r=[0.572115384615,0.572115384616]|json=0
+NUM|id=W03_corner_d3_by_cosines_b8|b_times_r=[0.458113448850,0.458113448851]|json=0
+NUM|id=W03_corner_b8_exact_rational|value=[0.45811344885058,0.45811344885059]|json=0
+NUM|id=C09_dyadic_resolution_1_4000|i=194|alpha=[7.8692156e-10,7.8692157e-10]|2^-48/alpha=[4.5146e-6,4.5147e-6]|ok=1|json=0
+NUM|id=C09_dyadic_resolution_1_2000|i=150|alpha=[8.2325392e-10,8.2325393e-10]|2^-48/alpha=[4.3154e-6,4.3155e-6]|ok=1|json=0
+NUM|id=C09_dyadic_resolution_1_1000|i=105|alpha=[7.6036792e-10,7.6036793e-10]|2^-48/alpha=[4.6723e-6,4.6724e-6]|ok=1|json=0
+NUM|id=C09_dyadic_resolution_1_700|i=83|alpha=[8.4301912e-10,8.4301913e-10]|2^-48/alpha=[4.2142e-6,4.2143e-6]|ok=1|json=0
+NUM|id=C09_dyadic_resolution_1_600|i=73|alpha=[8.2888453e-10,8.2888454e-10]|2^-48/alpha=[4.2861e-6,4.2862e-6]|ok=1|json=0
+NUM|id=C09_dyadic_resolution_1_100|i=0|alpha=[7.8599751e-7,7.8599752e-7]|2^-48/alpha=[4.5200e-9,4.5201e-9]|ok=1|json=0
+NUM|id=C09_four_times_4.7e-6|value=1.88e-5|le_1.9e-5=1|json=0

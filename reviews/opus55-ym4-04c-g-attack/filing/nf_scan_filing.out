@@ -1,0 +1,4 @@
+NF|file=c05_c06_edges.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=gen_filing.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF|file=nf_scan_filing.py|float_literals=0|true_division_ops=0|negative_powers=0|float_names=0|float_or_fraction_imports=0|json=0
+NF_END|total=0|json=0
