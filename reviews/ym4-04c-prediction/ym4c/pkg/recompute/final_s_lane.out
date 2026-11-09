@@ -1,0 +1,61 @@
+A e^{-1} in [0.3678794411714, 0.3678794411714]
+A delta_crit: lambda <= 1/4 certified at 0.114846768 ; lambda > 1/4 certified at 0.114846769 : True
+A at delta_crit^-: c_fin in [0.989898134, 0.989898134] ; analytic bound e^{d-1/8} <= 0.989898139
+A fallback domain 2delta' <= 1/4: certified at 0.111780108 ; > 1/4 at 0.111780109 : True
+A c_fin = e^{-1} through 0.078733761 (object channel upper 0.3678794375 ); at 0.078733762 object channel lower 0.3678794463 > e^{-1} upper: True
+A fallback factor = e^{-1} through 0.077320139 ; leaves it by 0.07732014
+A c_fin(0.049) in [0.3678794412, 0.3678794412], argmax f = 5, lambda in [0.1016412299, 0.1016412299]
+A c_fin(0.05) in [0.3678794412, 0.3678794412], argmax f = 5, lambda in [0.1037922242, 0.1037922242]
+A c_fin(0.08) in [0.3790855462, 0.3790855462], argmax f = 7, lambda in [0.1697744661, 0.1697744661]
+A c_fin(0.1) in [0.611173062, 0.611173062], argmax f = 9, lambda in [0.2153428471, 0.2153428471]
+A c_fin(0.11) in [0.8113101607, 0.8113101607], argmax f = 13, lambda in [0.2386077704, 0.2386077704]
+A c_fin(0.114) in [0.9437000402, 0.9437000402], argmax f = 19, lambda in [0.2480041984, 0.2480041984]
+B eps_6(1/100) in [0.006538419569879, 0.006538419569879]
+B eps_6(1/64) in [0.01021654437372, 0.01021654437372]
+B eps_6(1/50) in [0.01307754186435, 0.01307754186435]
+B C07 crude 1/100: delta_1 = 6alpha_- in [0.005522225339, 0.005522225339]; 12alpha_- in [0.01104445068, 0.01104445068]; 2delta' in [0.01110560933, 0.01110560933]; lambda in [0.01109024935, 0.01109024935]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 0.002031513172; sum_k delta_k <= 0.008736031856
+B C08 C03 1/100: delta_1 = 6alpha_- in [4.715985064e-06, 4.715985064e-06]; 12alpha_- in [9.431970129e-06, 9.431970129e-06]; 2delta' in [9.43201461e-06, 9.43201461e-06]; lambda in [9.432003489e-06, 9.432003489e-06]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 1.73491395e-06; sum_k delta_k <= 7.460578522e-06
+B C08 head-free 1/100: delta_1 = 6alpha_- in [4.686150839e-06, 4.686150839e-06]; 12alpha_- in [9.372301679e-06, 9.372301679e-06]; 2delta' in [9.372345599e-06, 9.372345599e-06]; lambda in [9.372334619e-06, 9.372334619e-06]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 1.723938552e-06; sum_k delta_k <= 7.413381473e-06
+B C11 crude 1/64: delta_1 = 6alpha_- in [0.05082652207, 0.05082652207]; 12alpha_- in [0.1016530441, 0.1016530441]; 2delta' in [0.1069532699, 0.1069532699]; lambda in [0.1055724104, 0.1055724104]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 0.01869803254; sum_k delta_k <= 0.08040637401
+B C14 C03 1/64: delta_1 = 6alpha_- in [0.001017385573, 0.001017385573]; 12alpha_- in [0.002034771146, 0.002034771146]; 2delta' in [0.002036842346, 0.002036842346]; lambda in [0.002036324107, 0.002036324107]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 0.000374275236; sum_k delta_k <= 0.001609480278
+B C12 head-free 1/50: delta_1 = 6alpha_- in [0.03632291217, 0.03632291217]; 12alpha_- in [0.07264582434, 0.07264582434]; 2delta' in [0.07533304055, 0.07533304055]; lambda in [0.07464098199, 0.07464098199]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 0.01336245263; sum_k delta_k <= 0.05746200098
+B C12 C03 1/50: delta_1 = 6alpha_- in [0.03632353653, 0.03632353653]; 12alpha_- in [0.07264707306, 0.07264707306]; 2delta' in [0.0753343825, 0.0753343825]; lambda in [0.07464229958, 0.07464229958]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}; delta_2 <= 0.01336268232; sum_k delta_k <= 0.0574629887
+B C12 crude 1/50: Newton from 0 finds no root (pole or g' >= 0): True
+B C08: 12e P_10(1/100) in [2.5483467e-09, 2.5483467e-09]; delta_1(C03)/(12e P_10) in [1850.60572, 1850.60572]; crude/C03 delta_1 ratio in [1170.95904, 1170.95904]
+B C16: delta_20 <= c_fin^19 delta_1^+ <= 3.093990446e-11 ; osc_V log rho_20 <= (512/e) delta_20 <= 5.827663238e-09
+C C09 beta=1/4000: certified theta indices 0..282 (283 values); argmin i=194 (expected 194), strict: True; T/P_10 in [0.0005225875, 0.0005225875]
+C   low power: T/(beta^8/2048) >= 2.14052e+12; P_10 - 2t_2^4 = (beta^8/2048)(1 - eta), eta in [0, 4e-7] (v2-checks/c09_readout_tail.out)
+C readout_grid_128 at 1/4000: argmin over i <= 128 is i=128; T/P_10 in [0.014715246, 0.014715246]
+C C09 beta=1/2000: certified theta indices 0..238 (239 values); argmin i=150 (expected 150), strict: True; T/P_10 in [0.0083610547, 0.0083610547]
+C   low power: T/(beta^8/2048) >= 2.14043e+12; P_10 - 2t_2^4 = (beta^8/2048)(1 - eta), eta in [0, 4e-7] (v2-checks/c09_readout_tail.out)
+C C09 beta=1/1000: certified theta indices 0..194 (195 values); argmin i=105 (expected 105), strict: True; T/P_10 in [0.1338251, 0.1338251]
+C   low power: T/(beta^8/2048) >= 2.1412e+12; P_10 - 2t_2^4 = (beta^8/2048)(1 - eta), eta in [0, 4e-7] (v2-checks/c09_readout_tail.out)
+C C09 beta=1/700: certified theta indices 0..171 (172 values); argmin i=83 (expected 83), strict: True; T/P_10 in [0.5572541, 0.5572541]
+C C09 beta=1/600: certified theta indices 0..161 (162 values); argmin i=73 (expected 73), strict: True; T/P_10 in [1.0322642, 1.0322642]
+C C09 beta=1/100: certified theta indices 0..46 (47 values); argmin i=0 (expected 0), strict: True; T/P_10 in [6935.1714, 6935.1714]
+D final lambda <= 1/4, factor 6, crude: MET at 0.01767 certified True (delta_1 in [0.114567562, 0.114567562] (certified)); NOT_MET at 0.01768 certified True (delta_1 in [0.115083068, 0.115083068] (certified))
+D final lambda <= 1/4, factor 6, C03: MET at 0.02074 certified True (delta_1 in [0.10885585, 0.10885585] (certified)); NOT_MET at 0.02075 certified True (delta_1 in [0.115891108, 0.115891108] (certified))
+D final lambda <= 1/4, factor 6, headfree: MET at 0.02074 certified True (delta_1 in [0.108852787, 0.108852787] (certified)); NOT_MET at 0.02075 certified True (delta_1 in [0.115886125, 0.115886125] (certified))
+D fallback 2delta' <= 1/4, factor 6, crude: MET at 0.01761 certified True (delta_1 in [0.111544501, 0.111544501] (certified)); NOT_MET at 0.01762 certified True (delta_1 in [0.112040202, 0.112040202] (certified))
+D fallback 2delta' <= 1/4, factor 6, C03: MET at 0.02074 certified True (delta_1 in [0.10885585, 0.10885585] (certified)); NOT_MET at 0.02075 certified True (delta_1 in [0.115891108, 0.115891108] (certified))
+D fallback 2delta' <= 1/4, factor 6, headfree: MET at 0.02074 certified True (delta_1 in [0.108852787, 0.108852787] (certified)); NOT_MET at 0.02075 certified True (delta_1 in [0.115886125, 0.115886125] (certified))
+D surrogate delta_1 <= 49/1000, factor 6, crude: MET at 0.01552 certified True (delta_1 in [0.0488790426, 0.0488790426] (certified)); NOT_MET at 0.01553 certified True (delta_1 in [0.0490610658, 0.0490610658] (certified))
+E C10b s=1/2000: delta_in in [0.0268901344, 0.0268901344]; lambda in [0.05487141429, 0.05487141429]; c_fin = e^{-1}; natural delta_out = slice bound in [4.0774224e-06, 4.07742342e-06]; delta_out/delta_in in [0.0001516327, 0.0001516327]
+E   delta_out/(c_fin delta_in) in [0.0004121803, 0.0004121804]; slack in [2426.1222, 2426.1228]; per-root factor in [0.043833704, 0.043833704]; per-root bound / natural delta_out in [289.07819, 289.07826]
+E   projection bound [4.00e-7, 4.01e-7] / (c_fin delta_in) in [4.04354e-05, 4.05365e-05]
+E C10b s=1/4096: delta_in in [0.0131299484, 0.0131299484]; lambda in [0.02651924725, 0.02651924725]; c_fin = e^{-1}; natural delta_out = slice bound in [9.72133317e-07, 9.72133375e-07]; delta_out/delta_in in [7.403939e-05, 7.403939e-05]
+E   delta_out/(c_fin delta_in) in [0.0002012599, 0.0002012599]; slack in [4968.699, 4968.6993]; per-root factor in [0.020303319, 0.020303319]; per-root bound / natural delta_out in [274.22321, 274.22322]
+E C10c s=1/8192: delta_in in [0.0356909003, 0.0356909003]; lambda in [0.07330785794, 0.07330785794]; 2delta' in [0.07397549154, 0.07397549154]; c_fin = e^{-1}; natural delta_out = slice bound in [0.00198995694, 0.00199190121]; delta_out/delta_in in [0.0557553, 0.05580978]
+E   delta_out/(c_fin delta_in) in [0.1515586, 0.1517067]; slack in [6.5916665, 6.5981068]; per-root factor in [0.26775219, 0.26775219]; per-root bound / natural delta_out in [4.7975857, 4.8022731]
+E   projection bound / delta_in in [0.03283139, 0.03288587]; projection bound / (c_fin delta_in) in [0.08924497, 0.08939306]
+E C10c s=1/65536: delta_in in [0.00446136253, 0.00446136253]; lambda in [0.008952610335, 0.008952610335]; 2delta' in [0.00896262151, 0.00896262151]; c_fin = e^{-1}; natural delta_out = slice bound in [0.000248850945, 0.000248881324]; delta_out/delta_in in [0.05577914, 0.05578594]
+E   delta_out/(c_fin delta_in) in [0.1516234, 0.1516419]; slack in [6.5944826, 6.5952876]; per-root factor in [0.22817705, 0.22817705]; per-root bound / natural delta_out in [4.0902247, 4.090724]
+E   projection bound / delta_in in [0.03285522, 0.03286204]; projection bound / (c_fin delta_in) in [0.08930975, 0.08932827]
+E e^{-3/2}/4 in [0.05578254004, 0.05578254004]
+F guard beta=0.025: mu e^{1/4} eps_6^- >= 1.1125224 (>= 1: True)
+F guard beta=0.02248: mu e^{1/4} eps_6^- >= 1.0003587 (>= 1: True)
+G ordering beta_ind^crude < beta_crude: 0.01767 < 0.01904: True
+G ordering beta_ind < beta_stop < beta_wall: 0.02074 < 0.02075 < 0.02247: True
+G beta_wall upper / Delta_beta lower = 0.087297 < 9/100: True
+G |beta_m| <= (16/(3 pi)) e^{-1} delta_m < 0.62454 delta_m; at delta_crit^+: 0.071726401
+H float literals in this file: 0

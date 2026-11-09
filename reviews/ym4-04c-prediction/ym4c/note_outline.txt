@@ -1,0 +1,101 @@
+docs/NOTE-YM4-04C-LOCAL-POLYMER-NORM-20261109.md (written in the freeze commit, before any engine code; canonical scratch copy of the prediction file: /tmp/claude-0/-home-user/b2fb539a-cb4d-5f0b-a22f-ca1a7fcb500d/scratchpad/ym4-04c/synth/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp, 40 lines, sha256 dbce1a28ff666f2a6a4706dd34ac7e4e59ab99637d887428525cc1f44f3d6140). The name YM4-04C is free: docs/ and README use YM4-04, YM4-04A and YM4-04B only.
+
+0. Status line. Quotes the operator's word of 2026-11-08 and gives the base, main 830fd3f. Says what is DERIVED (geometry, enclosures, wall, edges as arithmetic, line channel, two-object instance, tree-level and Gaussian rows), what is CONDITIONAL on G0 and G1 (C07, C08, C13, C14, C16, and C09 on G0), what is a CONJECTURE (counts, refined edges, readout ratios, W04), and what stays OPEN (all weak-coupling scale-to-scale control).
+
+1. Target and why this shape.
+- Issue #4's proof gate: an explicit H_k with norm, gauge, couplings, scales and constants; H_k => H_{k+1} with summable, volume-uniform errors; a theorem dependency ledger.
+- YM4-03C section 12 and YM4-04A name the next obligation: a local polymer bound uniform in the volume, in place of the global N_p-extensive Cauchy remainder.
+- Operator: the beta^10 table is an input, not scale-to-scale control.
+- One sentence on regime: this step closes that gate only at strong coupling, beta_0 <= 0.0196, where the flow runs to Haar.
+
+2. Definitions.
+- The lattices Lambda_k, the line map B, the line gauge and Lemma A, and rho_k by YM4-03 Theorem 4.
+- The polymer form of H_0: c_0, t_n and K.
+- The Y-object representation for k >= 1 and the norm norm_kappa.
+- The Banach space of families {R(Y)}, and the constants kappa = 1/4, D = 20, Finner exponent 6, #W = 12, F_20, mu and E|chi_1/2|.
+
+3. Theorem G0 (step 0), with full proof.
+- (a) Lemma B makes polymers closed, so #off(gamma) <= 2#gamma.
+- (b) Finner's inequality with exponent 6 gives sup|z_gamma| <= eps_6^{#gamma}.
+- (c) The BFS injection into the complete 20-ary tree, Fuss–Catalan counts, and F(n+1)/F(n) increasing to mu for all n.
+- (d) Kotecky–Preiss with a(gamma), d(gamma) and the test set W(e_0).
+- (e) Assembling R_1(Y): V-dependence only at size >= 4, and #Y'' <= #gamma.
+- (f) delta_1 and the readout T.
+
+4. Theorem G1 (step k to k+1), with full proof.
+- Y-objects in L^infinity, and the exact line channel: line-supported Y give factor e^{-kappa#Y/2} <= e^{-4kappa}.
+- The multi-object term: the tree-graph bound from sum_o omega_o e^{t s(o)} <= t, and the KP per-polymer corollary.
+- Root-object bookkeeping, and the formula c(delta).
+- c is increasing in delta, so the self-map propagates.
+- What carrying the Wilson term inside R_k costs (Lemma B is forfeited), and why that is harmless at these delta.
+
+5. The certificates as exact inequalities.
+- g(a) = S(eps e^{2a+b}) - a is convex in a. The certificate is the inequality at a rational a, and the search only proposes a.
+- Why a capped fixed-point iteration is not used: 400 plain iterations read the crude edge at 0.01901 instead of 0.01904.
+- Monotonicity in b: b = 1/4 decides existence, and every delta_1 optimum sits at b = 1/4.
+- The pinned grids: b up to 21/4, beta on 10^-5, delta_crit^- on 10^-9, and 160-bit upward rounding.
+- The tail bound.
+
+6. The self-map, summability and uniformity.
+- delta_crit in [0.0496174, 0.0496175], and the admissible window beta_0 <= beta_ind ~ 0.01959.
+- delta_k <= c^{k-1} delta_1 and sum_k delta_k <= delta_1/(1-c).
+- Uniformity in N and K. Fine sides >= 8 are needed only for the exact counts; the tail needs only degree 20.
+- The flow to Haar (C16), and why it says nothing about UV completeness of the theory.
+
+7. Where the method stops.
+- The wall at 0.02247 for any counts.
+- The crude, refined and head-free edges: 0.01904, 0.02075 and 0.02075.
+- The counting gap: 6F_20(n)/N(n) is 10^10 to 10^14, with closed-set growth of about 3 per plaquette against mu ~ 53. A growth bound on Lemma-B-closed sets is the only route to a wider window, and even that cannot reach weak coupling with sup norms.
+- NOT_MET above the window is a method failure, not physics.
+- Comparison with YM4-04B's Dobrushin reach of 1/18, and with the one-loop step 0.2575.
+
+8. Ties to exact data.
+- C09: the YM4-03C series P_10 lies inside the certified interval. This is low power, with slack of 10^12.
+- C10: the exact line channel bounds every valid c from below.
+- C10b: the two-object instance with the closed form log c_0(2s sqrt(2+chi_1/2)), the Catalan moment identity and the projection lower bound. This is low power: it can refute G1 only if G1 is wrong by a factor of 3x10^4.
+- State plainly that the real falsifier of G1 is the second-seat attack (gate G_attack).
+
+9. Gauge separation.
+- C18: the line gauge is computational.
+- W05: the longitudinal tree-level read is a gauge artifact and is refused.
+- The rule: no invariant statement fixes a gauge.
+
+10. Lane W: tree-level and Gaussian diagnostics, counted nowhere toward H_k => H_{k+1}.
+- H_k^W(M) conditions (i) to (iv).
+- W01 to W03: the line map is marginal, its irrelevant part grows like 2^k, and its corner halves per step; the linearized average converges; the dimension dependence.
+- W04: roughening.
+- W06: fiber positivity.
+- W07: the 16-per-step threshold recurrence.
+- What these mean for YM4-04: an averaging map is needed at least at tree level, and LF_{k+1} must come from rho_{k+1}'s own action. What they do not mean: nothing about finite beta, nothing about a non-abelian average, nothing about c0.
+
+11. The theorem dependency ledger: the ledger rows L01 to L28 (see ledger_rows).
+
+12. The engine, the independent check, planted faults and CI, as a plan in text only (see engine_plan).
+
+13. Pre-freeze disclosure.
+- Every scratch script that fixed a number (design lanes, judges, synthesis); floats appear only in display and in two numpy sanity runs.
+- The cross-reads: C03's counts were read by the judge prototype and rerun by the synthesis lane; W06(b) was read by exact inertia.
+- Corrections relative to the design lanes: C08's head-free value is 9.3723e-6; C12's is 0.0726458; the C13/C14 edges are 0.01369/0.01370 and 0.01959/0.01960 under the delta_crit test; the C09 grid mismatch.
+
+14. Small exact derive checks committed with the freeze, in reviews/ym4-04c-prediction/derive_checks.py (integers only, as in YM4-03C section 10): the Fuss–Catalan values, the aligned-tile rationals, the b = 2 and b = 4 alias rationals, the W05 longitudinal rationals, and the Catalan moment identity at one rational V.
+
+15. The evidence chain and the pin.
+- INDEX.hbi, RECORDS.hbp, SHA256SUMS and SEAL.hbp.
+- The pin is `head -n 40 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum`, held in the workflow.
+- Later rows, fallbacks (such as a smaller n_max) and corrections are appended after row 40.
+
+16. The second-seat attack brief: the questions G_attack must answer.
+- (i) Does the KP per-polymer corollary hold with these a(gamma) and d(gamma)?
+- (ii) Does the test set W(e_0) control the cluster sums of every Y through a line link?
+- (iii) Is the root-object bookkeeping behind c(delta) right, including the e^delta prefactor and the max over n >= 4?
+- (iv) Is the line-channel factor right, #Y'' <= #Y/2?
+- (v) Are the sup norms after integration finite, with V-dependence only at size >= 4?
+- (vi) Does carrying the Wilson term inside R_k break any step?
+
+17. Deferred to a separate diagnostic freeze (proposed YM4-04D), with reasons.
+- R03 with R05: a large-field bound from a NAMED chessboard with mixed reflections, tested only in 2D.
+- R06 to R08: one-link atoms in a frozen environment.
+- CT03 and CT04: scheme dependence. CT04 only with a built beta^12 three-polymer engine, and with no NOT_RUN escape in a frozen row.
+- R13: the 2D full step.
+
+18. OPEN: everything in the ledger's OPEN rows.

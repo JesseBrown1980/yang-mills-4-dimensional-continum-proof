@@ -1,0 +1,16 @@
+beta=1/40: mu*e^(1/4)*eps6^- = 1.11252235 (>=1 means the pinned S^+ is undefined at every alpha>=0, theta>=1/4)
+   pinned refined certificate (n<=48 + tail): NOT_MET proved=True pole_at_alpha=0
+   no-tail cut=10 head=C03: MET, S^+=1.9517e-07 <= alpha=1/4194304 (2.3842e-07)
+   no-tail cut=48 head=C03: NOT_MET proved=True ['S^-(x(0))>1/4', 0.9468716573508974]
+   no-tail cut=10 head=headfree: MET, S^+=0.0000e+00 <= alpha=0 (0.0000e+00)
+   no-tail cut=48 head=headfree: NOT_MET proved=True ['S^-(x(0))>1/4', 0.9468714621858861]
+   no-tail cut=10 head=crude: NOT_MET proved=True ["g'(0)>=0,min_g=g(0)>=", 0.1110436644358656]
+   no-tail cut=48 head=crude: NOT_MET proved=True ['S^-(x(0))>1/4', 1.0579151266217517]
+beta=281/12500: mu*e^(1/4)*eps6^- = 1.00035867 (>=1 means the pinned S^+ is undefined at every alpha>=0, theta>=1/4)
+   pinned refined certificate (n<=48 + tail): NOT_MET proved=True pole_at_alpha=0
+   no-tail cut=10 head=C03: MET, S^+=1.2745e-07 <= alpha=1/4194304 (2.3842e-07)
+   no-tail cut=48 head=C03: NOT_MET proved=True ["g'(0)>=0,min_g=g(0)>=", 0.042672601261018656]
+   no-tail cut=10 head=headfree: MET, S^+=0.0000e+00 <= alpha=0 (0.0000e+00)
+   no-tail cut=48 head=headfree: NOT_MET proved=True ["g'(0)>=0,min_g=g(0)>=", 0.04267247380762682]
+   no-tail cut=10 head=crude: NOT_MET proved=True ['alpha_m', 0.026839384285267442, 'lower_bound_on_min_g', 0.05241431119263609]
+   no-tail cut=48 head=crude: NOT_MET proved=True ["g'(0)>=0,min_g=g(0)>=", 0.09947201245273322]

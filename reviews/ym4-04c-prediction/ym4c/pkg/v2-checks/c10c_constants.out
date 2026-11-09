@@ -1,0 +1,11 @@
+leading ratio e^{-3/2}/4 in [ 5.578254004e-02 , 5.578254004e-02 ]
+s=1/8192: delta_in in [3.5690900e-02,3.5690900e-02]; 2delta' in [7.3975492e-02,7.3975492e-02]; C_k MET=True; c(delta_in) in [7.1181228e-01,7.1181228e-01]
+    natural delta_out in [1.9899569e-03,1.9919012e-03]; delta_out^nat/delta_in in [5.5755302e-02,5.5809778e-02]
+    (e^-1.5/4)(1-4s) = 5.575530247e-02, (e^-1.5/4)(1+4s) = 5.580977761e-02
+    every-decomposition lower bound >= 1.1716802e-03; lower bound/delta_in >= 3.2828541e-02; lower bound/(c delta_in) <= 4.6200306e-02 (upper side uses E|chi| >= 8/(3*3.1416))
+    slack c/(natural ratio) in [1.2754e+01,1.2767e+01]; slack c*delta_in/lower_bound <= 2.1683e+01
+s=1/65536: delta_in in [4.4613625e-03,4.4613625e-03]; 2delta' in [8.9626215e-03,8.9626215e-03]; C_k MET=True; c(delta_in) in [3.9699259e-01,3.9699259e-01]
+    natural delta_out in [2.4885094e-04,2.4888132e-04]; delta_out^nat/delta_in in [5.5779135e-02,5.5785945e-02]
+    (e^-1.5/4)(1-4s) = 5.577913534e-02, (e^-1.5/4)(1+4s) = 5.578594473e-02
+    every-decomposition lower bound >= 1.4656635e-04; lower bound/delta_in >= 3.2852373e-02; lower bound/(c delta_in) <= 8.2777641e-02 (upper side uses E|chi| >= 8/(3*3.1416))
+    slack c/(natural ratio) in [7.1164e+00,7.1172e+00]; slack c*delta_in/lower_bound <= 1.2084e+01

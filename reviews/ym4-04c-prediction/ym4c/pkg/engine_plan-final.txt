@@ -1,0 +1,91 @@
+ENGINE PLAN, final, for YM4-04C (text only; no engine code exists; note section 12). Carries the v2 plan to the constants proved in note sections 3 and 4: delta_1 and T with the factor 6, the C_k test lambda(delta) <= kappa, the factor c_fin(delta), the slice and per-root comparisons of C10b and C10c, and the recomputed fault values.
+
+Symbols, binding: the Kotecky-Preiss pair is (alpha, theta), a(gamma) = alpha*#off(gamma), d(gamma) = theta*#gamma, theta in {1/4 + i/64 : 0 <= i <= 320}; at step k, #gamma := (1/2)#line(supp gamma). a is (1/2)Re Tr only. b is the blocking factor only. kappa is the norm weight 1/4 only. delta' = delta e^delta and lambda(delta) = delta' + ln(1 + delta'). The W-lane momentum is q, with p = q*e_nu and t_W = tan(q/2).
+
+Freeze order:
+1. One commit carries the prediction file (41 lines, pinned by head -n 41 | sha256sum), the note sections 0-18 with G0 and G1 proved in full in sections 3 and 4, and reviews/ym4-04c-prediction/ with derive_checks.py and DERIVE-CHECKS.hbp, the three manifests (MANIFEST-ym4-04c-scratch.sha256, 67 files; MANIFEST-ym4c-v2-checks.sha256, 19 files; MANIFEST-ym4c-pkg.sha256, 116 files) and every file they list. Sections 3 and 4 end with constants tables. The constants the rows carry are the proved ones: the scalar inequality S(eps_6 e^{2alpha+theta}) <= alpha with a valid head, delta_1 = 6alpha e^{-4(theta-kappa)}, T = (8489/10000) 6alpha e^{-8theta}, lambda(delta) <= kappa, and c_fin(delta).
+2. A second seat of the owner's choosing attacks the final sections 3 and 4 as written, the (1+t)^f tree-graph step and the root restriction m >= 1 included, and files the attack (gate G_attack). No engine code before this filing.
+3. Engine commit.
+4. Independent check commit.
+5. CI.
+
+Arithmetic everywhere: Python ints and fractions.Fraction (engine) and Rust i128 with its own bigint (check). No floats, under scripts/no_float_gate.py and scripts/no_float_compiled.sh. Dyadic outward rounding helpers up(x) and down(x) at 160 significant bits. exp by Taylor series with a geometric remainder after range reduction; ln(1+x) by alternating partial sums (engine) and by the atanh series (check); pi by Machin with alternating tails; ln 2 by two series.
+
+ENGINE: tests/test_ym4_04c_polymer_norm.py (S lane) and tests/test_ym4_04c_tree_gaussian.py (W lane). They write tests/YM4_04C_RECEIPT.hbp, one row per read. Every receipt row carries its tag and its prefreeze field (CROSS_READ, COMPUTED or NONE). The receipt's tally of confirmed predictions counts only prefreeze=NONE rows and clauses. Every CROSS_READ or COMPUTED read is tallied as a reproduction.
+
+- E0 geometry (C01). Coordinate tuples on (Z/8)^4 and (Z/12)^4. Line and off links. Plaquette off-link lists. The adjacency census (D = 20, min 10), #W(e_0) = 12, #W'(l) = 6, the filling-membership histogram, and an exhaustive search of closed sets of at most 4 plaquettes. An exhaustive enumeration of all off-link-connected sets of n <= 5 plaquettes, closed or not, grown from the 6 plaquettes through one seed off link per class (c = 1, 2, 3), with no closure pruning and dedup by canonical form. It reads A_c(n) against 6F_20(n) = 6, 120, 3540, 123240, 4705470. The read is the inequality only; no count is frozen. The per-root count at n = 2 (20 = F_20(2) for a plaquette with 4 off links, against F_19(2) = 19). F_20 as exact binomials; F(n+1)/F(n) < mu checked for n <= 59 (the all-n statement is note Lemma 3.11).
+- E1 counts (C03, C09 exclusion, Finner guard). Closure-driven DFS growth from the 6 plaquettes through a seed off link of each class. Pruning: open links <= 4 x remaining size. Canonical forms under coarse translations x 384 signed permutations, keyed by hash; each class weighted by the number of its members that hold the seed link, since N_w(n) counts sets. Runs to n = 12 on both lattices. Also emits the held-coarse-link split for n <= 7 (C09) and the maximum off-link incidence per set (G_finner_guard).
+- E2 enclosures (C02, C04, C15). c_0 partial sums with geometric tails. eps_6^6 as an interval alternating sum, and its sixth root by dyadic bisection to 10^-12. Wall bisections on the 10^-5 grid.
+- E2g the C04 guard. Before E3 serves any row, E3 reads the refined C_0 (the C03 head, the pinned S) at beta_0 = 1/40 and at 0.02248, the upper end of the wall bracket. Both must read NOT_MET by the pole: mu e^{1/4} eps_6^- >= 1.1125 at 1/40 and >= 1.00035 at 0.02248, so mu x >= 1 for every alpha >= 0 and theta >= 1/4. A MET at either point exits 1 at C04.
+- E3 KP certificate (C05, C06, C09, C12, C15).
+  - S^+(x): the head counts, the series to n = 48 and the n = 49 tail. The test mu^+ x^+ < 1 comes first; its failure reads NOT_MET. 1 - mu^+ x^+ goes in the tail denominator, and every other operation rounds upward (note Lemma 3.30).
+  - For each theta on the grid i <= 320: ternary search for min g on dyadic alpha of denominator 2^48, then the least root by bisection. A MET read is the exact inequality S^+(eps^+ e^{2alpha+theta}) <= alpha <= 1/4 at that rational alpha.
+  - A NOT_MET read is a proof. It is one of: the pole at alpha = 0; S^-(x^-(0)) > 1/4; or the convex tangent bound g^-(alpha_m) - |g'|^+(alpha_m) max(alpha_m, 1/4 - alpha_m) > 0 at the ternary minimizer alpha_m, with g'(alpha) = 2x S'(x) - 1 enclosed from both sides. g is convex because S has nonnegative coefficients. theta = 1/4 decides every grid theta, because S(eps e^{2alpha+theta}) increases in theta. If no proof closes, the read is UNDECIDED and is filed, never rounded to NOT_MET.
+  - delta_1 = min 6alpha e^{-4(theta-kappa)}, read at theta = 1/4. T = (8489/10000) 6alpha e^{-8theta}, minimized over the whole grid.
+- E4 C_k and c_fin (C07, C08, C10b, C10c, C11-C14, C16). lambda(delta) from enclosures of e^delta and ln(1 + delta'). The test lambda^+ <= 1/4 reads MET; lambda^- > 1/4 reads NOT_MET. c_fin as the maximum of its three entries. The third entry is an exact maximum over integers f >= 4, scanned from f = 4 and stopped at the first f with e^{-(kappa - lambda^+)f} at or below the best upper value so far, which bounds every later term; the real maximizer f* = ln(kappa/(kappa - lambda))/lambda is a check. delta_crit^- and delta_crit^+ by bisection of lambda = kappa on the 10^-9 grid. The fallback 2delta' <= kappa and its factor are read beside the final ones and filed as separate receipt rows for the TG values.
+- E5 edges. At each predicted edge pair and listed point, read MET/NOT_MET on the 10^-5 grid. The admissibility read at beta: MET when S^+(x^+(alpha_c)) <= alpha_c at alpha_c = delta_crit^-/6; NOT_MET when g^-(alpha_c) > 0 and g'^+(alpha_c) < 0 at alpha_c = delta_crit^+/6, which by convexity puts the least root above alpha_c; a pole at x^-(alpha_c) is UNDECIDED. Bisection only locates; rows read the pair.
+- E6 exact integrals (C10, C10b, C10c, C18).
+  - Rational unit quaternions by the Cayley map, and exact holonomies.
+  - The engine's own one-link projector integrator to degree 12 (Weingarten over non-crossing matchings).
+  - C10: the line channel ratio at kappa = 1/4 and kappa = 0, under 4 coarse gauge transformations. The norm routine counts #Y as all links of Y; the planted one_position_support counts only its position-1 links.
+  - C10b: E_pi[(chi_b+chi_t)^{2m}] = Cat_m (2+chi)^m for m <= 6 at 4 rational V. The natural norm 3e^{4kappa} log c_0(4s), which the slice bound makes the every-representation bound, the per-root bound e^{delta-4kappa}(e^{2lambda}-1) delta_in, and the projection bound.
+  - C10c: mu_m(V) = E_pi[X^m], X = chi_1/2(A pi) chi_1/2(pi^{-1} B), for m = 1..6, at 7 rational coarse configurations with distinct chi_1/2(V_P'') and at 4 more under rational coarse gauge transformations. The two arm links are integrated one at a time, degree <= 2m <= 12 per link. Each mu_m is fixed as a polynomial of degree <= m in chi_1/2(V_P'') by the 7 values and checked at the 4 more. Then the cumulants, the s^1..s^6 Taylor polynomial of f = log E_pi[e^{sX}], the tail bound (1/2) sum_{m>=7} (16s)^m, osc(f) over chi_1/2 in [-2, 2], delta_out^nat = 6e osc(f)/2, the per-root bound e^{delta-6kappa+2lambda} delta_in, c_P = E[f chi_1/2] and the projection bound, at s = 1/8192 and 1/65536. The read compares them with the brackets, with the per-root bound and with c_fin(delta_in) delta_in.
+  - C18: Phi_S(j;V) for the YM4-03C classes in gauges (1,V) and (V,1), and under coarse gauge transformations.
+- E7 volume (C17). E0, E1 and E3 on both lattices, compared byte for byte. 1/(8N_p) exactly.
+- E8 W lane.
+  - W01-W03, W05: alias sums in exact rationals at b = 2, 4, with sqrt2 pairing. At b = 8, A in Q(sqrt2), where it is rational; the corner by dyadic intervals in Q(sqrt2, sqrt(2+-sqrt2)). Covariant-gauge G_munu(xi).
+  - W06: exact LDL^* inertia on the 45-dimensional physical fiber over Q (t_tw = 1/2 and phases +-1), Q(i) (t_tw = 1/4 and phases +-i) and Q(zeta_8) = Q(i, sqrt2) (t_tw = 1/8, phase e^{i pi/4}). Pivots of the Hermitian pencil lie in Q, Q and Q(sqrt2). The sign of u + v sqrt2 is decided exactly: by the signs of u and v when they agree, and by comparing u^2 with 2v^2 when they differ. Bisection to 10^-10.
+  - W04: orbit-reduced exact Poisson solve (70 and 495 unknowns), then loop sums. W04 is a reproduction row: its receipt row is tallied as a reproduction.
+  - W07: 10^4 tiles from a seeded integer LCG and the aligned family.
+- E9 receipts and sabotage. SABOTAGE=<name> is read once, and every guard runs before its quantity is used. Each fault recomputes only the sections it reaches; the others replay from the receipt by sha256 (the YM4-03 replay of PR 43). The evidence chain HBI -> HBP -> SHA -> SEAL follows YM4-03C.
+
+INDEPENDENT CHECK: reviews/ym4-04c-check/ym4_04c_check.rs. Rust 1.81, std only, sharing no code with the engine; it may copy the generic bigint of the merged YM4-03C engine. Every module uses a different algorithm.
+- X0: census through a link-plaquette incidence matrix and a union-find adjacency. A_c(n) for n <= 5 by breadth-first layered growth with a canonical deletion test.
+- X1: counts by layer-by-layer canonical augmentation (BFS over n, canonical deletion test) instead of DFS closure growth, on both lattices.
+- X2: c_0 also by the Bessel-ratio continued fraction; exp by binary splitting with range reduction; pi by two Machin formulas.
+- X3: KP by monotone Newton from alpha = 0 on the convex g, a different route from the engine's ternary search. Newton from the left on a convex decreasing g stays below the least root alpha_- and converges to it. When an iterate has g' >= 0 before g reaches 0, g has no root and the check proposes NOT_MET. A MET proposal alpha_N is read as the exact inequality at alpha_N + 2^-30. A NOT_MET proposal is read by the convex tangent bound at an alpha_m found by bisection on the sign of g'. The certifying alpha-intervals at the C_0 edges are 3.7e-3 to 7.7e-3 wide, so 2^-30 lands inside them. Demonstrated in scratch at the crude edge (v2-checks/x3_newton_demo.out), and used for every root bracket of pkg/recompute/final_s_lane.py.
+- X4: lambda(delta) through ln(1+x) = 2 atanh(x/(2+x)); c_fin through the closed-form maximizer f* and its two neighbouring integers; delta_crit by an independent bisection.
+- X5: exact integrals through 2I averages in Q(sqrt5) inside degree 11 and a separate Weingarten table at degree 12; C10b's and C10c's moments; C18 through the merged YM4-03C engine.
+- X6: W lane by the other route to E8's: route B Bloch KKT where E8 uses route A, and vice versa. Sturm sequences in place of LDL^* inertia, over Q(sqrt2) for the t_tw = 1/8 sectors (the characteristic polynomial of the Hermitian pencil has coefficients in the real subfield). A full 4096-unknown exact sparse solve on 8^4 against the orbit solve.
+
+Both write receipts. CI requires every read to agree.
+
+PLANTED FAULTS (C19), each to exit 1 on its named check.
+- finner_exponent_2 -> G_finner_guard. The guard reads the maximal off-link incidence of the 10-plaquette filling-plus-cube set, 4, and tests sum 1/q <= 1, which reads 2 > 1. A comparison of numbers on that set would not catch it (note §3.4).
+- degree_19 -> C01 (the degree census and the per-root count at n = 2).
+- missing_tail -> C04. The change: S is replaced by the head-only polynomial sum_{n=4..10} N(n) x^n with the C03 head; the terms n = 11..48 and the n = 49 tail are removed. Effect: the C04 guard (E2g) reads the refined C_0 MET at 1/40 and at 0.02248, certified at alpha = 2^-22 with S^+ <= 1.96e-7 and <= 1.28e-7. Variants that would not fire: a cut at 10 with the crude head, or a cut at 48 with any head, leave both reads NOT_MET.
+- one_position_support -> C10. The change: the norm routine sets #Y to the number of links of Y at position 1 (the links that carry V in the line gauge (1,V)) in place of all links of Y. Effect: C10's fine norm reads 12|s| e^{4kappa} and the ratio reads 1 in place of e^{-1} at kappa = 1/4. The drafted variant (a coarse link counted as held from one position) leaves #Y'' = 4 on C10's input and would not fire.
+- global_norm -> C17.
+- readout_without_tail -> C09. P_10 - 2t_2^4 = (beta^8/2048)(1 - eta), eta in [0, 4e-7], at the three containment couplings, so T := 0 fails containment at all three.
+- iteration_cap_400 -> C05. The change: at every grid theta the convex search and the exact read are replaced by the iteration alpha_0 = 0, alpha_{j+1} = s_j := S^+(up(eps_6^+ e^{2alpha_j+theta})). It reads MET at the first j with s_j <= alpha_j (1 + 10^-40), and NOT_MET when s_j is undefined or above 1/4, or after 400 evaluations of S^+. Effect: MET at 0.01901 (step 352), NOT_MET at 0.01902, 0.01903 and 0.01904 at every grid theta, so C05's MET at 0.01904 is lost. Variants that differ: alpha_{j+1} = up(s_j 10001/10000) with acceptance s_j <= alpha_j reads MET through 0.01904 and would not fire; alpha_{j+1} = s_j with acceptance s_j <= alpha_j loses MET from 0.01901 on.
+- delta_crit_surrogate -> C13. The change: delta_1 <= 49/1000 in place of delta_1 <= delta_crit^-. Effect: MET lost at 0.01553-0.01767, so the faulted crude edge reads 0.01552/0.01553 (TG; fallback range 0.01553-0.01761).
+- readout_grid_128 -> C09. The change: theta cut at i <= 128. Effect: T/P_10 in [1.47e-2, 1.48e-2] at 1/4000 (minimizing i = 128), outside [5.2e-4, 5.3e-4].
+- drop_alias_terms -> W01 (only the n = 0 alias kept: corner r_1 = 2).
+- longitudinal_read_unflagged -> W05.
+- float_literal -> G_nofloat.
+
+Planted false claims, read from a planted copy of the prediction file, must read NOT_MET:
+- C_0 crude MET at 1/50 (miss at C12)
+- C_0 head-free MET at 0.02076 (miss at C06)
+- r_2 = r_1 for the line map (25823/98640 ne 15/28)
+- the averaged corner equal to the line corner (2 ne 15/28)
+
+CI: .github/workflows/ym4-04c-polymer-norm.yml.
+1. The no-float gates (Python and compiled).
+2. The prediction pin: head -n 41 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | sha256sum against the pinned value. The 41 lines are every frozen row; appended rows start at line 42.
+3. The manifest check: sha256sum -c over reviews/ym4-04c-prediction/ against the three manifests.
+4. derive_checks.py, with its output compared byte for byte with DERIVE-CHECKS.hbp.
+5. The engine run, with the receipt sha256 compared to its pin.
+6. The check run, with its receipt and the cross-compare of reads.
+7. 12 sabotage runs, each required to exit 1 naming its check, with replay of untouched sections.
+8. 4 planted-claim passes.
+9. Evidence-chain verification.
+10. Two back-to-back clean runs, byte-identical.
+
+BUDGET on 4 CPUs:
+- C03 to n = 12 on both lattices: about 2 minutes in Python. A_c(n) through n = 5: at most 4705470 sets per class if the inequality holds, minutes.
+- About 40 C_0 reads x 321 theta values in exact rationals: an estimated 20-40 minutes, split across row groups. The scratch recompute scanned the whole theta grid at six couplings in about 100 seconds at 256 bits. The C04 guard adds 2 pole tests. X3's Newton reads cost tens of S evaluations each.
+- c_fin, integrals (C10c adds 11 configurations x 6 moments x 2 one-link integrals) and the W lane: minutes.
+- The whole run is under 1 hour wall-clock, with memory under 2 GB and disk under 100 MB.
+
+FAILURE HANDLING: any NOT_MET, UNDECIDED or UNSUPPORTED read stays in the receipt and the note. A fallback, a grid change or a repair is filed only as appended rows after line 41.

@@ -1,0 +1,13 @@
+delta_crit_B in 0.05580878011 0.05580878011 ok
+  2delta' at delta_crit_B hi: 0.118023902 (<= 1/8 needed)
+delta_crit_frozen in 0.04961749103 0.04961749103 ok
+delta_eq (frozen c == c_B for delta <= delta_eq) in 0.00702563432 0.00702563432 ok
+C_k edge (2 delta e^delta = kappa/2) in 0.05892367051 0.05892367051 ok
+C07 crude 1/100|frozen|c(delta1_hi)<=0.445051|delta2<=4.915586e-03|sum<=1.990272e-02|delta20 in [2.3055e-09,2.3065e-09]|osc20<=4.3443e-07
+C07 crude 1/100|c_B|c(delta1_hi)<=0.444737|delta2<=4.912120e-03|sum<=1.989147e-02|delta20 in [2.2748e-09,2.2758e-09]|osc20<=4.2865e-07
+C08 refined 1/100|frozen|c(delta1_hi)<=0.367939|delta2<=3.477019e-06|sum<=1.495108e-05|delta20 in [5.2939e-14,5.3108e-14]|osc20<=1.0003e-11
+C08 refined 1/100|c_B|c(delta1_hi)<=0.367939|delta2<=3.477019e-06|sum<=1.495108e-05|delta20 in [5.2939e-14,5.3108e-14]|osc20<=1.0003e-11
+C14 refined 1/64|frozen|c(delta1_hi)<=0.380853|delta2<=7.749595e-04|sum<=3.286456e-03|delta20 in [2.2023e-11,2.2025e-11]|osc20<=4.1484e-09
+C14 refined 1/64|c_B|c(delta1_hi)<=0.380853|delta2<=7.749595e-04|sum<=3.286456e-03|delta20 in [2.2023e-11,2.2025e-11]|osc20<=4.1484e-09
+C11 crude 1/64 2delta' >= 0.225052 C_k: False
+C12 headfree 1/50 2delta' >= 0.156237 C_k: False
