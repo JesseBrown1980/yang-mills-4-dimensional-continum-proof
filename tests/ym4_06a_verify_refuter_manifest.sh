@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Wrapper for YM4-06A review evidence: verifies every filed refuter file against REFUTER-MANIFEST.hbp (path, byte count, full
 # sha256), checks the manifest's own sha256 against the value recorded in the PR body (argument 1), and that the folder holds
-# nothing the manifest does not list apart from the filing extras. The evidence files are never edited.
+# nothing the manifest does not list apart from the filing extras (REFUTER-MANIFEST.hbp, FILED.hbp, README.md). The evidence files are never edited.
 # usage: tests/ym4_06a_verify_refuter_manifest.sh MANIFEST_SHA256
 set -euo pipefail
 d=reviews/opus55-ym4-06a-refute-20261110
@@ -10,7 +10,7 @@ want="$1"
 got=$(sha256sum "$m" | cut -c1-64)
 if [ "$got" != "$want" ]; then echo "FAILED|check=manifest_sha256|got=$got|want=$want|json=0"; exit 1; fi
 n=0
-listed=" REFUTER-MANIFEST.hbp FILED.hbp "
+listed=" REFUTER-MANIFEST.hbp FILED.hbp README.md "
 while IFS='|' read -r tag path bytes sha _; do
   [ "$tag" = REFUTER_FILE ] || continue
   p=${path#path=}; b=${bytes#bytes=}; h=${sha#sha256=}
