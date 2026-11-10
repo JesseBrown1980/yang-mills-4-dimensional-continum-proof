@@ -1,0 +1,14 @@
+replay_seconds8507584c49dda047459f6f7c6c71a4d8381d711885200969b5930984deea1e97  /mnt/c/tmp/opus55/ym4-06a-refute/replay.hbp
+8507584c49dda047459f6f7c6c71a4d8381d711885200969b5930984deea1e97  tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp
+CMP_IDENTICAL
+YM4_06A_GLOBAL_LOCK_RECEIPT.hbp: OK
+PLANT|name=broken_transport|rc=1|last=FAILED|check=RED_broken_transport|json=0|lines_before_fail=6
+PLANT|name=noncommuting_triple|rc=1|last=FAILED|check=RED_noncommuting_triple|json=0|lines_before_fail=3
+PLANT|name=wrong_chi|rc=1|last=FAILED|check=RED_wrong_chi|json=0|lines_before_fail=2
+PLANT|name=dropped_face|rc=1|last=FAILED|check=RED_dropped_face|json=0|lines_before_fail=6
+PLANT|name=missing_gauge_orbit|rc=1|last=FAILED|check=RED_missing_gauge_orbit|json=0|lines_before_fail=4
+PLANT|name=unreconstructible_flux|rc=1|last=FAILED|check=RED_unreconstructible_flux|json=0|lines_before_fail=42
+PLANT|name=twisted_as_periodic|rc=1|last=FAILED|check=RED_twisted_as_periodic|json=0|lines_before_fail=42
+NO_FLOAT_DONE|code_files=137|listed_files=28|listed_folders=0|listed_findings=162|failed=0|json=0
+
+[exited with code 0]

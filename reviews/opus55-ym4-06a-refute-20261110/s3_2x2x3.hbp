@@ -1,0 +1,6 @@
+S3_SEARCH|lattice=2x2x3|method=global_dfs_all_free_links_comb_tree|free_links=25|free_branch_positions=3|budget=7|nodes=90572|solutions=264|json=0
+S3_FLAT|lattice=2x2x3|tree_fixed_flat=48|gauge_orbits=21|json=0
+S3_NONFLAT|lattice=2x2x3|E=6|tree_fixed_all_translates=216|gauge_orbits_all_translates=36|supports=12|canonical_supports=2|canonical_tree_fixed=36|canonical_orbits=6|face_kinds=3-cycle,3-cycle|json=0
+S3_SUPPORT|lattice=2x2x3|E=6|canonical=P02(000);P02(010)|json=0
+S3_SUPPORT|lattice=2x2x3|E=6|canonical=P12(000);P12(100)|json=0
+S3_KAPPA_REFUTER|lattice=2x2x3|kappa_below_or_eq_budget=6|json=0
