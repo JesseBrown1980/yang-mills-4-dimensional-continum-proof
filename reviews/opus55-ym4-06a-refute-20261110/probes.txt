@@ -1,0 +1,7 @@
+PROBE|plant=wrong_chi|first_check_removed_line=99|rc=1|next_catch=FAILED|check=RED_wrong_chi|error=
+PROBE|plant=noncommuting_triple|first_check_removed_line=777|rc=1|next_catch=FAILED|check=RED_missing_gauge_orbit|error=
+PROBE|plant=dropped_face|first_check_removed_line=234|rc=1|next_catch=FAILED|check=RED_four_face|error=
+PROBE|plant=broken_transport|first_check_removed_line=281|rc=1|next_catch=FAILED|check=RED_broken_transport|error=
+PROBE|plant=missing_gauge_orbit|first_check_removed_line=756|rc=1|next_catch=FAILED|check=RED_missing_gauge_orbit|error=
+PROBE|plant=unreconstructible_flux|first_check_removed_line=830|rc=1|next_catch=|error=IndexError: list index out of range
+PROBE|plant=twisted_as_periodic|first_check_removed_line=730|rc=0|next_catch=|error=

@@ -1,0 +1,3 @@
+S3_SEARCH|lattice=3x3x5|method=global_dfs_all_free_links_comb_tree|free_links=91|free_branch_positions=3|budget=7|nodes=704899|solutions=48|json=0
+S3_FLAT|lattice=3x3x5|tree_fixed_flat=48|gauge_orbits=21|json=0
+S3_KAPPA_REFUTER|lattice=3x3x5|kappa_below_or_eq_budget=GT7|json=0

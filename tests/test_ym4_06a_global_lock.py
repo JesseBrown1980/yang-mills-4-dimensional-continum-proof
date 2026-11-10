@@ -29,7 +29,7 @@ sys.path.append(HERE)
 import test_exact_su2_4d as su2  # noqa: E402  (the repository's exact SU(2) quaternions, reused)
 
 SABOTAGE_NAMES = ("broken_transport", "noncommuting_triple", "wrong_chi", "dropped_face", "missing_gauge_orbit",
-                  "unreconstructible_flux", "twisted_as_periodic")
+                  "unreconstructible_flux", "twisted_as_periodic", "incomplete_solver")
 SABOTAGE = ""
 for argument in sys.argv[1:]:
     if not argument.startswith("sabotage=") or argument.split("=", 1)[1] not in SABOTAGE_NAMES:
@@ -37,9 +37,11 @@ for argument in sys.argv[1:]:
         sys.exit(2)
     SABOTAGE = argument.split("=", 1)[1]
 
-LATTICES = ((2, 2, 2), (2, 2, 3), (2, 3, 3), (3, 3, 3), (3, 3, 4))
+LATTICES = ((2, 2, 2), (2, 2, 3), (2, 3, 3), (3, 3, 3), (3, 3, 4),
+            # the refuter's extra lattices (REFUTE-YM4-06A), searched here by the same complete method
+            (2, 2, 4), (2, 3, 4), (2, 4, 4), (2, 5, 5), (3, 3, 5), (3, 4, 4), (3, 5, 5), (4, 4, 4))
 # Full support enumeration (no Bianchi prefilter) on these; the prefiltered run is done on every lattice and must agree.
-FULL_ENUMERATION = ((2, 2, 2), (2, 2, 3), (2, 3, 3), (3, 3, 3), (3, 3, 4))
+FULL_ENUMERATION = LATTICES
 BOUND = 8  # search every nonflat configuration with E < BOUND
 
 
@@ -277,6 +279,14 @@ def bianchi_holds(lat, vals):
 
 def section_bianchi_identity(lat):
     # The cube word reduces to the empty word in the free group on the links: it is e for every configuration.
+    # backup for a dropped face: every face of every cube is a face of the lattice, and each face bounds exactly two cubes
+    have = {tuple(w) for w in lat.fwords}
+    bounds = {}
+    for x in lat.sites:
+        for loop, _ in cube_terms(lat, x):
+            core = tuple(loop[1:5] if len(loop) == 6 else loop)
+            bounds[core] = bounds.get(core, 0) + 1
+    check(SABOTAGE == "broken_transport" or (set(bounds) <= have and all(v == 2 for v in bounds.values())), "dropped_face")
     empty = all(not free_reduce(cube_word(lat, x)) for x in lat.sites)
     check(empty, "broken_transport")
     # and evaluated on pseudo-random configurations (an LCG, the same on every Python)
@@ -404,7 +414,8 @@ class Solver:
         if l < 0:
             self.solutions.append(tuple(self.vals))
             return
-        for g in range(G.n):
+        values = range(G.n - 1) if SABOTAGE == "incomplete_solver" else range(G.n)  # the plant never tries the last element
+        for g in values:
             mark = len(trail)
             if self.assign(l, g, trail):
                 self.dfs(trail)
@@ -728,6 +739,16 @@ def section_su2():
         periodic.append(twisted[0][0])
     for vals in periodic:
         check(all(p == QONE for p in q_plaquettes(lat, vals)), "twisted_as_periodic")
+    for vals in periodic:
+        # backup: a periodic flat configuration has pairwise commuting axis windings; a twisted one has ab = -ba
+        w = []
+        for mu in range(3):
+            h, x = QONE, lat.sites[0]
+            for _ in range(lat.dims[mu]):
+                h = su2.multiply(h, vals[lat.link(x, mu)])
+                x = lat.shift(x, mu)
+            w.append(h)
+        check(all(su2.multiply(w[i], w[j]) == su2.multiply(w[j], w[i]) for i in range(3) for j in range(i + 1, 3)), "twisted_as_periodic")
     return rows
 
 
@@ -751,13 +772,13 @@ def section_2d():
             elif E == best:
                 nbest += 1
         dfs = Solver(lat).run()
-        check(sorted(dfs) == sorted(flat), "flat_solver")
+        check(sorted(dfs) == sorted(flat), "incomplete_solver")
         orb = gauge_orbits(flat)
         check(orb == 8, "missing_gauge_orbit")
         check(len(flat) == 18 and best == 3, "two_torus")
         # the support solver on the nonflat side: one free face, cost cap 3, summed over every face, against brute force
         by_support = sum(len(Solver(lat, free=(f,), cap=3).run()) for f in range(lat.nfaces))
-        check(by_support == nbest, "kappa_search")
+        check(by_support == nbest, "incomplete_solver")  # backup: the nonflat side against brute force
         out.append("TWO_TORUS|lattice=%dx%d|tree_fixed_configurations=%d|flat=%d|flat_orbits=%d|kappa_2D=%d|minimizers=%d|"
                    "solver_flat_set_equal_to_brute_force=1|support_solver_minimizers=%d|equal=1|json=0"
                    % (dims[0], dims[1], total, len(flat), orb, best, nbest, by_support))
@@ -775,6 +796,13 @@ def main():
     o2, o3 = conj_orbits(pairs), conj_orbits(triples)
     b2, b3 = burnside(2), burnside(3)
     check(len(triples) == 48 and len(pairs) == 18, "noncommuting_triple")
+    # backup, independent of the count: every counted tuple commutes pairwise, read straight from the permutations
+    perm = G.elements
+    for t in pairs + triples:
+        for i in range(len(t)):
+            for j in range(i + 1, len(t)):
+                a, b = perm[t[i]], perm[t[j]]
+                check(tuple(a[b[k]] for k in range(3)) == tuple(b[a[k]] for k in range(3)), "noncommuting_triple")
     check(o3 == b3 == 21 and o2 == b2 == 8, "missing_gauge_orbit")
     print("S3_FLAT_ALGEBRA|commuting_pairs=%d|pair_orbits=%d|burnside_pairs=%d|commuting_triples=%d|triple_orbits=%d|burnside_triples=%d|json=0"
           % (len(pairs), o2, b2, len(triples), o3, b3))
@@ -828,11 +856,16 @@ def main():
         if vals is None:
             vals_list = reconstruct(lat, flux_t)
             check(bool(vals_list), "unreconstructible_flux")
-            vals = vals_list[0]
+            vals = vals_list[0] if vals_list else None
+            # backup: a claimed excitation needs a link configuration whose derived faces are exactly its flux pattern
+            ps = plaquettes(lat, vals) if vals is not None else []
+            ok = vals is not None and all(ps[f] == flux_t.get(f, G.e) for f in range(lat.nfaces))
+            check(ok, "unreconstructible_flux")
         check(bianchi_holds(lat, vals), "unreconstructible_flux")
     for row in section_su2():
         print(row)
-    print("YM4_06A_LIMITS|kappa_formula=MEASURED_on_listed_lattices_only|all_L_statement=CONJECTURE_with_written_argument_in_NOTE|"
+    print("YM4_06A_LIMITS|kappa_formula=MEASURED_on_13_listed_lattices|all_L_with_every_side_ge_2=DERIVED_NOTE_section_4|"
+          "winding_lower_bound_3L_for_every_winding_configuration=NAMED|"
           "S3_sectors_identified_with_SU2=0|SU2_positive_lock_cost=NOT_APPLICABLE|continuum_gap=NOT_CLAIMED|issue_6=OPEN|json=0")
     print("YM4_06A_DONE|status=PASS_STRUCTURE_ONLY|failed=0|json=0")
 

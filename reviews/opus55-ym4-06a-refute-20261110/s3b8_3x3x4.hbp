@@ -1,0 +1,7 @@
+S3_SEARCH|lattice=3x3x4|method=global_dfs_all_free_links_comb_tree|free_links=73|free_branch_positions=3|budget=8|nodes=2300457|solutions=15600|json=0
+S3_FLAT|lattice=3x3x4|tree_fixed_flat=48|gauge_orbits=21|json=0
+S3_NONFLAT|lattice=3x3x4|E=8|tree_fixed_all_translates=15552|gauge_orbits_all_translates=3024|supports=108|canonical_supports=3|canonical_tree_fixed=432|canonical_orbits=84|face_kinds=transposition,transposition,transposition,transposition|json=0
+S3_SUPPORT|lattice=3x3x4|E=8|canonical=P01(000);P02(000);P02(003);P01(020)|json=0
+S3_SUPPORT|lattice=3x3x4|E=8|canonical=P01(000);P12(000);P12(003);P01(200)|json=0
+S3_SUPPORT|lattice=3x3x4|E=8|canonical=P02(000);P12(000);P12(020);P02(200)|json=0
+S3_KAPPA_REFUTER|lattice=3x3x4|kappa_below_or_eq_budget=8|json=0

@@ -1,0 +1,3 @@
+YM4_06A_BEGIN|scope=STRUCTURE_ONLY|group_finite=S3|group_continuous=SU2|spatial_dimension=3|arithmetic=EXACT_INTEGER|spectrum_computed=0|gap_computed=0|issue_6=SEPARATE|json=0
+S3_CHARACTER|chi_std_on_e,transposition,3-cycle=2,0,-1|norm=6/6|orthogonal_to_trivial=1|orthogonal_to_sign=1|face_cost_2-chi=0,2,3|commutator_subgroup=A3={e,3-cycles}|ok=1|json=0
+FAILED|check=RED_noncommuting_triple|json=0

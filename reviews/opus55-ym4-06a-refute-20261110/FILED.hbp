@@ -1,0 +1,1 @@
+FILED|by=PR47_author_seat|from=C:/tmp/opus55/ym4-06a-refute|manifest=REFUTER-MANIFEST.hbp|files_copied=44|excluded=repo_clone,probe_patched_copies|renamed=aux.hbp->aux_output.hbp|reason=AUX_is_a_reserved_device_name_on_Windows_so_git_for_Windows_cannot_index_it|content_unchanged=1|refuter_code_edited=0|json=0
