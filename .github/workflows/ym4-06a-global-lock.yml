@@ -1,0 +1,77 @@
+# YM4-06A: global-lock structure in three spatial dimensions, structure only. Replays the finite S3 control (flat sectors, the
+# complete kappa search, the link witnesses, the reconstruction gate) and the continuous SU(2) comparison byte for byte against the
+# filed receipt, and requires each planted fault to fail by name. No spectrum or gap is computed.
+name: YM4-06A global-lock structure
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tests/test_ym4_06a_global_lock.py'
+      - 'tests/test_exact_su2_4d.py'
+      - 'tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp'
+      - 'tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp.sha256'
+      - 'docs/NOTE-YM4-06A-GLOBAL-LOCK-20261110.md'
+      - '.github/workflows/ym4-06a-global-lock.yml'
+  pull_request:
+    paths:
+      - 'tests/test_ym4_06a_global_lock.py'
+      - 'tests/test_exact_su2_4d.py'
+      - 'tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp'
+      - 'tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp.sha256'
+      - 'docs/NOTE-YM4-06A-GLOBAL-LOCK-20261110.md'
+      - '.github/workflows/ym4-06a-global-lock.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ym4-06a-structure-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: No floating point
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: The receipt's sidecar holds
+        run: (cd tests && sha256sum --strict -c YM4_06A_GLOBAL_LOCK_RECEIPT.hbp.sha256)
+      - name: Structure checks, byte for byte against the receipt
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_06a
+          r=build/ym4_06a/REPLAY.hbp
+          python3 -I -B -X utf8 tests/test_ym4_06a_global_lock.py > "$r"
+          cmp "$r" tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp
+          grep -qF 'S3_FLAT_ALGEBRA|commuting_pairs=18|pair_orbits=8|burnside_pairs=8|commuting_triples=48|triple_orbits=21|burnside_triples=21|' "$r"
+          test "$(grep -c '^S3_FLAT_LATTICE|.*|tree_fixed_flat_configurations=48|windings_equal_commuting_triples=1|gauge_orbits=21|' "$r")" -eq 5
+          for row in 'lattice=2x2x2|' 'lattice=2x2x3|' 'lattice=2x3x3|'; do grep -F "S3_KAPPA|$row" "$r" | grep -qF '|kappa_3D=6|'; done
+          for row in 'lattice=3x3x3|' 'lattice=3x3x4|'; do grep -F "S3_KAPPA|$row" "$r" | grep -qF '|kappa_3D=8|'; done
+          test "$(grep -c '^S3_KAPPA|.*|solutions_below_8_equal=1|.*|agree=1|' "$r")" -eq 5
+          test "$(grep -c '^S3_KAPPA_WITNESS|.*|bianchi_every_cube=1|' "$r")" -eq 5
+          test "$(grep -c '^S3_TUBE|' "$r")" -eq 15
+          grep -qF '|transposition_flux_local_bianchi=PASS|transposition_flux_periodic_links=0|status=NOT_REALIZABLE_finding|' "$r"
+          grep -qF '|inf_above_flat=0|positive_lock_cost=NOT_APPLICABLE|' "$r"
+          grep -qF 'SU2_TWISTED_SECTOR|label=TWISTED_n01=1|' "$r"
+          grep -qF '|counted_as_periodic_flat=0|kept_separate=1|' "$r"
+          grep -qx 'YM4_06A_DONE|status=PASS_STRUCTURE_ONLY|failed=0|json=0' "$r"
+      - name: Each planted fault fails by name
+        run: |
+          set -euo pipefail
+          for case in broken_transport noncommuting_triple wrong_chi dropped_face missing_gauge_orbit unreconstructible_flux twisted_as_periodic; do
+            rc=0
+            python3 -I -B -X utf8 tests/test_ym4_06a_global_lock.py "sabotage=$case" > "build/ym4_06a/RED-$case.hbp" || rc=$?
+            test "$rc" -eq 1
+            grep -qx "FAILED|check=RED_$case|json=0" "build/ym4_06a/RED-$case.hbp"
+          done
+          (cd build/ym4_06a && sha256sum *.hbp > SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-06a-global-lock-structure
+          path: build/ym4_06a/
+          if-no-files-found: warn
