@@ -27,9 +27,9 @@ class Q:
         b=rat(b)
         assert b.n!=0
         return Q(self.n*b.d,self.d*b.n)
-    def __pow__(self,n):
+    def power_n(self,n):
         assert isinstance(n,int) and n>=0
-        return Q(self.n**n,self.d**n)
+        return Q(integer_power(self.n,n),integer_power(self.d,n))
     def __lt__(self,b):
         b=rat(b)
         return self.n*b.d<b.n*self.d
@@ -37,6 +37,16 @@ class Q:
         b=rat(b)
         return self.n*b.d<=b.n*self.d
 
+def integer_power(value,n):
+    assert isinstance(value,int) and isinstance(n,int) and n>=0
+    out=1
+    while n:
+        if n&1:out*=value
+        value*=value
+        n//=2
+    return out
+
+def qpower(v,n):return rat(v).power_n(n)
 def rat(x):return x if isinstance(x,Q) else Q(x)
 def quo(a,b):return rat(a).quotient(b)
 def add(a,b):return (a[0]+b[0],a[1]+b[1])
@@ -49,7 +59,7 @@ def div(a,b):
     return (quo(a[0],b[1]),quo(a[1],b[0]))
 def power(a,n):
     assert a[0].n>=0 and n>=0
-    return (a[0]**n,a[1]**n)
+    return (qpower(a[0],n),qpower(a[1],n))
 
 def c0(t):
     """Positive SU2 character series, with first-omitted-term tail."""
@@ -57,17 +67,17 @@ def c0(t):
     count=24
     s=Q(0)
     for m in range(count+1):
-        s+=quo(quo(t,2)**(2*m),Q(factorial(m)*factorial(m+1)))
-    following=quo(quo(t,2)**(2*count+2),Q(factorial(count+1)*factorial(count+2)))
-    r=quo(quo(t,2)**2,Q((count+2)*(count+3)))
+        s+=quo(qpower(quo(t,2),2*m),Q(factorial(m)*factorial(m+1)))
+    following=quo(qpower(quo(t,2),2*count+2),Q(factorial(count+1)*factorial(count+2)))
+    r=quo(qpower(quo(t,2),2),Q((count+2)*(count+3)))
     assert r<Q(1,100)
     return (s,s+quo(following,(Q(1)-r)))
 
 def exp_quarter():
     t,count=Q(1,4),80
     s=Q(0)
-    for k in range(count+1):s+=quo(t**k,Q(factorial(k)))
-    following=quo(t**(count+1),Q(factorial(count+1)))
+    for k in range(count+1):s+=quo(qpower(t,k),Q(factorial(k)))
+    following=quo(qpower(t,count+1),Q(factorial(count+1)))
     r=quo(t,Q(count+2))
     return (s,s+quo(following,(Q(1)-r)))
 
