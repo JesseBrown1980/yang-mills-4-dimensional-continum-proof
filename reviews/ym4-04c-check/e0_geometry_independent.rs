@@ -24,7 +24,7 @@ impl CubicFour {
         for v in 0..sites{
             let mut parity=0u8;
             for (axis,span) in spans.iter().enumerate(){
-                if (v/span)%n%2==1 {parity |= 1<<axis;}
+                if (v/(*span))%n%2==1 {parity |= 1<<axis;}
             }
             for axis in 0..4 {
                 kinds[4*v+axis]=(parity & !(1<<axis)).count_ones() as u8;
