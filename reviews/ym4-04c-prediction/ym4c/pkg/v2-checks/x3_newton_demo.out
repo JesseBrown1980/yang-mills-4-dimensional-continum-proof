@@ -1,0 +1,4 @@
+crude beta=1904e-5: Newton-from-0 iterate alpha_N=4.989675907227e-02; read at alpha_N+2^-30: MET=True (S^+=4.989675989279e-02)
+   convex tangent NOT_MET certificate at theta=1/4: proved=False ['alpha_m', 0.053909509093500674, 'lower_bound_on_min_g', -0.0002483425480353083]
+crude beta=1905e-5: Newton-from-0 stops (g'>=0 or alpha>1/4 or pole): no proposal
+   convex tangent NOT_MET certificate at theta=1/4: proved=True ['alpha_m', 0.05364693884621374, 'lower_bound_on_min_g', 1.422774285288414e-05]

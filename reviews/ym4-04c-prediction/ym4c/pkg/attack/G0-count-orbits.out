@@ -1,0 +1,4 @@
+stabilizer order of a class-1 link: 16
+n=4: 1 sets holding w, 1 orbits under the stabilizer of w
+n=6: 12 sets holding w, 2 orbits under the stabilizer of w
+n=8: 32 sets holding w, 4 orbits under the stabilizer of w

@@ -1,0 +1,45 @@
+C07 delta_1 lo: delta=0.011044 2d' in [0.02233329188,0.02233329188] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.445042988,0.445042988] n*=9 c_star=[0.3678794412,0.3678794412] f*=4
+C07 delta_1 hi: delta=0.011045 2d' in [0.02233533643,0.02233533643] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.4450508181,0.4450508181] n*=9 c_star=[0.3678794412,0.3678794412] f*=4
+C07 delta_1 crit-read: delta=0.0110444507 2d' in [0.02233421336,0.02233421336] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.445046517,0.445046517] n*=9 c_star=[0.3678794412,0.3678794412] f*=4
+C08 delta_1 lo: delta=9.42e-06 2d' in [1.884017747e-05,1.884017747e-05] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.3679383586,0.3679383586] n*=8 c_star=[0.3678794412,0.3678794412] f*=4
+C08 delta_1 hi: delta=9.45e-06 2d' in [1.890017861e-05,1.890017861e-05] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.3679385463,0.3679385463] n*=8 c_star=[0.3678794412,0.3678794412] f*=4
+C10b s=1/2000 lo: delta=0.02689 2d' in [0.05524576306,0.05524576306] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.5950951906,0.5950951906] n*=11 c_star=[0.3678794412,0.3678794412] f*=5
+C10b s=1/2000 hi: delta=0.026891 2d' in [0.05524787282,0.05524787282] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.5951068539,0.5951068539] n*=11 c_star=[0.3678794412,0.3678794412] f*=5
+C10b s=1/4096 lo: delta=0.013129 2d' in [0.02660501427,0.02660501427] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.461734701,0.461734701] n*=9 c_star=[0.3678794412,0.3678794412] f*=4
+C10b s=1/4096 hi: delta=0.013131 2d' in [0.02660912035,0.02660912035] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.4617510695,0.4617510695] n*=9 c_star=[0.3678794412,0.3678794412] f*=4
+C13 49/1000: delta=0.049 2d' in [0.1029215944,0.1029215944] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.9824884835,0.9824884835] n*=17 c_star=[0.3678794412,0.3678794412] f*=5
+C13 1/20: delta=0.05 2d' in [0.1051271096,0.1051271096] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[1.011066807,1.011066807] n*=17 c_star=[0.3678794412,0.3678794412] f*=5
+C13 delta_1 at 0.01369 hi: delta=0.049603 2d' in [0.1042510045,0.1042510045] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.9995840678,0.9995840678] n*=17 c_star=[0.3678794412,0.3678794412] f*=5
+C13 delta_1 at 0.01370 lo: delta=0.049788 2d' in [0.1046591806,0.1046591806] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[1.004912248,1.004912248] n*=17 c_star=[0.3678794412,0.3678794412] f*=5
+C14 delta_1 at 0.01959 hi: delta=0.049383 2d' in [0.1037657979,0.1037657979] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.9932990191,0.9932990191] n*=17 c_star=[0.3678794412,0.3678794412] f*=5
+C14 1/64 refined lo: delta=0.0020347 2d' in [0.004077688438,0.004077688438] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.3808522431,0.3808522431] n*=8 c_star=[0.3678794412,0.3678794412] f*=4
+C14 1/64 refined hi: delta=0.0020348 2d' in [0.004077889253,0.004077889253] frozenC_k(2d'<=1/8)=True provedC_k(2d'<=1/4)=True c_frozen=[0.380852893,0.380852893] n*=8 c_star=[0.3678794412,0.3678794412] f*=4
+C12 head-free lo: delta=0.072645 2d' in [0.1562374156,0.1562374156] frozenC_k(2d'<=1/8)=False provedC_k(2d'<=1/4)=True c_frozen=undefined(2d'>=k/2) c_star=[0.372726237,0.372726237] f*=6
+C12 head-free hi: delta=0.072646 2d' in [0.1562397225,0.1562397225] frozenC_k(2d'<=1/8)=False provedC_k(2d'<=1/4)=True c_frozen=undefined(2d'>=k/2) c_star=[0.3727350901,0.3727350901] f*=6
+C11 crude lo: delta=0.10165 2d' in [0.2250522777,0.2250522777] frozenC_k(2d'<=1/8)=False provedC_k(2d'<=1/4)=True c_frozen=undefined(2d'>=k/2) c_star=[0.7717123748,0.7717123748] f*=10
+C11 crude hi: delta=0.10166 2d' in [0.2250766684,0.2250766684] frozenC_k(2d'<=1/8)=False provedC_k(2d'<=1/4)=True c_frozen=undefined(2d'>=k/2) c_star=[0.7719305088,0.7719305088] f*=10
+C07 crude 1/100 [frozen]: c(delta_1)<=0.4450508181 delta_2<=0.004915586286 sum<=0.01990272328 delta_20<=2.306472019e-09 osc_20<=4.344338623e-07
+C07 crude 1/100 [proved]: c(delta_1)<=0.3678794412 delta_2<=0.004063228428 sum<=0.01747293273 delta_20<=6.188288665e-11 osc_20<=1.165590618e-08
+C08 refined 1/100 [frozen]: c(delta_1)<=0.3679385463 delta_2<=3.477019262e-06 sum<=1.495107785e-05 delta_20<=5.31082857e-14 osc_20<=1.000317259e-11
+C08 refined 1/100 [proved]: c(delta_1)<=0.3678794412 delta_2<=3.476460719e-06 sum<=1.494967988e-05 delta_20<=5.294642633e-14 osc_20<=9.972685687e-12
+C14 refined 1/64 [frozen]: c(delta_1)<=0.380852893 delta_2<=0.0007749594667 sum<=0.003286456445 delta_20<=2.202468208e-11 osc_20<=4.148443001e-09
+C14 refined 1/64 [proved]: c(delta_1)<=0.3678794412 delta_2<=0.0007485610869 sum<=0.003219006203 delta_20<=1.140057019e-11 osc_20<=2.14734612e-09
+frozen delta_crit: certified < 1 at 49617491/1000000000, not at 12404373/250000000 (c^- >= 1 or C_k fails there: True)
+proved delta_crit*: certified < 1 at 54765347/500000000, not at 21906139/200000000 (c^- >= 1 or condition fails there: True)
+at delta_crit*-: 2d'= 0.2444186894 c*= 0.9999999794 f*= 16 e^d e^{-5k+2d'}= 0.4081785342
+c_star = e^-1 exactly (upper enclosure not above e^-1) for delta <= 72094e-6; above from 72095e-6
+  there: e^d e^{-5k+2d'}= 0.3595378851  e^d max_f g= 0.367879837 f= 6
+C10b projection/(c*delta_in) [frozen]: [2.499528463e-05,2.505919583e-05]  slack 1/ratio in [39905.51041,40007.54602]
+C10b projection/(c*delta_in) [proved]: [4.043407576e-05,4.05366684e-05]  slack 1/ratio in [24669.02288,24731.61513]
+proved condition 2d'<=1/4: holds at 111780108e-9, fails at 111780109e-9 (lower side read)
+frozen condition 2d'<=1/8: holds at 58923670e-9, fails at 58923671e-9
+e^{-1} in 0.367879441171 0.367879441171
+delta=0.0001: c_frozen^+=0.3685054271 c_star^+=0.3678794412 (f*=4)
+delta=0.001: c_frozen^+=0.3741928428 c_star^+=0.3678794412 (f*=4)
+delta=0.01: c_frozen^+=0.4369581201 c_star^+=0.3678794412 (f*=4)
+delta=0.05: c_frozen^+=1.011066807 c_star^+=0.3678794412 (f*=5)
+delta=0.07: c_frozen^+=undef c_star^+=0.3678794412 (f*=6)
+delta=0.08: c_frozen^+=undef c_star^+=0.4451115498 (f*=7)
+delta=0.09: c_frozen^+=undef c_star^+=0.5676948824 (f*=8)
+delta=0.1: c_frozen^+=undef c_star^+=0.7365239135 (f*=10)
+delta=0.109: c_frozen^+=undef c_star^+=0.979370383 (f*=15)

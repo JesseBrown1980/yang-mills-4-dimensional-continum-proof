@@ -1,0 +1,14 @@
+C07 lo|c_sharp=[0.3678794412,0.3678794412]|argmax_n=9|equals_e^-4k=True
+C07 hi|c_sharp=[0.3678794412,0.3678794412]|argmax_n=9|equals_e^-4k=True
+C08 hi|c_sharp=[0.3678794412,0.3678794412]|argmax_n=9|equals_e^-4k=True
+C14 1/64 hi|c_sharp=[0.3678794412,0.3678794412]|argmax_n=9|equals_e^-4k=True
+C10b 1/2000 lo|c_sharp=[0.5091315743,0.5091315743]|argmax_n=9|equals_e^-4k=False
+C10b 1/2000 hi|c_sharp=[0.5091424949,0.5091424949]|argmax_n=9|equals_e^-4k=False
+C10b 1/4096 lo|c_sharp=[0.3792846449,0.3792846449]|argmax_n=9|equals_e^-4k=False
+C10b 1/4096 hi|c_sharp=[0.3793008485,0.3793008485]|argmax_n=9|equals_e^-4k=False
+C13 49/1000|c_sharp=[0.8208979027,0.8208979027]|argmax_n=9|equals_e^-4k=False
+C13 1/20|c_sharp=[0.8389969919,0.8389969919]|argmax_n=9|equals_e^-4k=False
+c_sharp = e^{-4k} exactly for delta <= 0.01169954816 (edge in [ 0.01169954816 , 0.01169954816 ]) ok
+delta_crit_sharp in 0.05776611410 0.05776611410 ok
+C07 c_sharp=e^-1: delta2<=4.063228e-03 sum<=1.747293e-02 delta20 in [6.1877e-11,6.1883e-11] osc20<=1.1656e-08
+C08 c_sharp=e^-1: delta2<=3.476461e-06 sum<=1.494968e-05 delta20 in [5.2778e-14,5.2946e-14] osc20<=9.9727e-12

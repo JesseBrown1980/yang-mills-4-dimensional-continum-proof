@@ -1,0 +1,12 @@
+seed 0: 1881 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7498 <= 1; item 2 holds at every link
+seed 1: 1777 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7551 <= 1; item 2 holds at every link
+seed 2: 1724 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7956 <= 1; item 2 holds at every link
+seed 3: 1917 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7615 <= 1; item 2 holds at every link
+seed 4: 1278 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.8384 <= 1; item 2 holds at every link
+seed 5: 1904 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7110 <= 1; item 2 holds at every link
+seed 6: 1695 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7455 <= 1; item 2 holds at every link
+seed 7: 1417 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.8237 <= 1; item 2 holds at every link
+seed 8: 1683 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7244 <= 1; item 2 holds at every link
+seed 9: 1719 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.8380 <= 1; item 2 holds at every link
+seed 10: 1523 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.7887 <= 1; item 2 holds at every link
+seed 11: 1707 connected sets; hypothesis (1+t)^f at equality; max T(e)/t = 0.8384 <= 1; item 2 holds at every link

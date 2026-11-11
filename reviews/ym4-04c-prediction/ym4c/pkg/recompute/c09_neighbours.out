@@ -1,0 +1,6 @@
+beta=1/4000 i*=194: alpha_-(i*)=7.86922e-10; min relative gap to a neighbour 0.0009121; 2^-48/alpha_- = 4.51e-06
+beta=1/2000 i*=150: alpha_-(i*)=8.23254e-10; min relative gap to a neighbour 0.001148; 2^-48/alpha_- = 4.32e-06
+beta=1/1000 i*=105: alpha_-(i*)=7.60368e-10; min relative gap to a neighbour 1.968e-05; 2^-48/alpha_- = 4.67e-06
+beta=1/700 i*=83: alpha_-(i*)=8.43019e-10; min relative gap to a neighbour 0.0005377; 2^-48/alpha_- = 4.21e-06
+beta=1/600 i*=73: alpha_-(i*)=8.28885e-10; min relative gap to a neighbour 0.0009719; 2^-48/alpha_- = 4.29e-06
+beta=1/4000 i*=128: alpha_-(i*)=5.78909e-12; min relative gap to a neighbour -0.0605; 2^-48/alpha_- = 0.000614

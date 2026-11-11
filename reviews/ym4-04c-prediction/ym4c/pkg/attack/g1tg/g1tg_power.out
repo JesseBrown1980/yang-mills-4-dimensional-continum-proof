@@ -1,0 +1,6 @@
+C10b s=1/2000: delta_in = 0.02689013442
+  frozen c*delta_in / projection bound >= 39905.81503
+  frozen multi-object part e^d max f <= 0.2171907864 ; times delta_in / natural delta_out in [ 1432.145523 , 1432.496797 ]; / projection bound <= 14600.7236
+  G1-a per-root factor for these roots <= 0.04414981698 ; times delta_in / natural delta_out <= 291.19316 ; / projection bound <= 2967.986284
+C10c s=1/8192: slack every-decomp vs frozen c >= 21.64484206; vs G1-a c* >= 11.18650615; vs G1-a per-root factor 0.2681099513 >= 7.031493599; natural vs per-root >= 4.143317096
+C10c s=1/65536: slack every-decomp vs frozen c >= 12.0805238; vs G1-a c* >= 11.19460782; vs G1-a per-root factor 0.2281816186 >= 6.820232625; natural vs per-root >= 4.017636119

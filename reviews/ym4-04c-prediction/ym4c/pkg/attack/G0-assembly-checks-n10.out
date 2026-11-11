@@ -1,0 +1,19 @@
+A G0-a lower bound on pi = 1231847548/392109375  > 333/106: True
+A G0-a 848/999 < 8489/10000: True  8/(3*333/106) == 848/999: True
+A G0-b lower bound 1231847548/392109375 equals G0-a's Machin sum: True
+A pi in [3.141592653590, 3.141592653590], width 1.5e-17
+A 8/(3 pi) in [0.84882636316, 0.84882636316]
+A 8/(3 pi) < 0.8488264 (so [0.8488264, 0.8488266] is not an enclosure): True
+A outward 7-digit enclosure [0.8488263, 0.8488264] valid: True
+A margin 8489/10000 - 8/(3 pi) in [7.363684e-05, 7.363684e-05]
+A ratio 2*(8489/10000)/(8/(3pi)) in [2.000174, 2.000174]
+B N=8: every link in 6 plaquettes True; off links per plaquette [2, 4]; #W(e_0)=12 at every coarse link True; #W'(l)=6 and each plaquette through e_0 or e_1 meets W'(l) once True; 6 fillings through l, each holding e_0, e_1, 2 links of W(e_0), 1 of W'(l) True (count [6])
+B coarse side L=4: a 3-cycle exists False; a double edge exists False; an odd cycle (L-cycle) exists, so not bipartite: False
+B N=10: every link in 6 plaquettes True; off links per plaquette [2, 4]; #W(e_0)=12 at every coarse link True; #W'(l)=6 and each plaquette through e_0 or e_1 meets W'(l) once True; 6 fillings through l, each holding e_0, e_1, 2 links of W(e_0), 1 of W'(l) True (count [6])
+B coarse side L=5: a 3-cycle exists False; a double edge exists False; an odd cycle (L-cycle) exists, so not bipartite: True
+C N=8 class 1: states 456873; closed sets n=4..10: [1, 0, 12, 0, 32, 32, 304]; C03 says [1, 0, 12, 0, 32, 32, 304]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(4, 1), (8, 32), (9, 32), (10, 124)]
+C N=8 class 2: states 356901; closed sets n=4..10: [0, 0, 12, 0, 12, 12, 240]; C03 says [0, 0, 12, 0, 12, 12, 240]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(8, 12), (9, 12), (10, 60)]
+C N=8 class 3: states 378071; closed sets n=4..10: [0, 0, 12, 0, 0, 0, 216]; C03 says [0, 0, 12, 0, 0, 0, 216]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(10, 36)]
+C N=10 class 1: states 456873; closed sets n=4..10: [1, 0, 12, 0, 32, 32, 304]; C03 says [1, 0, 12, 0, 32, 32, 304]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(4, 1), (8, 32), (9, 32), (10, 124)]
+C N=10 class 2: states 356901; closed sets n=4..10: [0, 0, 12, 0, 12, 12, 240]; C03 says [0, 0, 12, 0, 12, 12, 240]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(8, 12), (9, 12), (10, 60)]
+C N=10 class 3: states 378071; closed sets n=4..10: [0, 0, 12, 0, 0, 0, 216]; C03 says [0, 0, 12, 0, 0, 0, 216]; equal: True; sets below 4: 0; winding sets: 0; #Y''<=#line plaquettes<=#gamma and loops only with #Y''>=4: True; sets with a loop in Y'' by size: [(10, 36)]

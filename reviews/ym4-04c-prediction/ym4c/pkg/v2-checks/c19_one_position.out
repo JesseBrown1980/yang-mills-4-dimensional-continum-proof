@@ -1,0 +1,11 @@
+objects: 1536 (= 6 x 4^4); fine links in some Y: 2048 of 16384; max Y per fine link: 6; max P'' per coarse link: 6
+#Y over all links: [8]; #Y counting position-1 links only: [4]
+#Y'' (coarse links held at both positions): [4]; #Y'' (held from at least one position): [4]
+kappa=1/4: correct #Y=all links, Y''=both positions: fine norm = 12|s| e^(2), coarse norm = 12|s| e^(1), ratio = (1) * e^(-1)
+kappa=1/4: correct #Y=all links, Y''=one position (draft fault): fine norm = 12|s| e^(2), coarse norm = 12|s| e^(1), ratio = (1) * e^(-1)
+kappa=1/4: fault #Y=position-1 links, Y''=both positions: fine norm = 12|s| e^(1), coarse norm = 12|s| e^(1), ratio = (1) * e^(0)
+kappa=1/4: fault #Y=position-1 links, Y''=one position (draft fault): fine norm = 12|s| e^(1), coarse norm = 12|s| e^(1), ratio = (1) * e^(0)
+kappa=0: correct #Y=all links, Y''=both positions: fine norm = 12|s| e^(0), coarse norm = 12|s| e^(0), ratio = (1) * e^(0)
+kappa=0: correct #Y=all links, Y''=one position (draft fault): fine norm = 12|s| e^(0), coarse norm = 12|s| e^(0), ratio = (1) * e^(0)
+kappa=0: fault #Y=position-1 links, Y''=both positions: fine norm = 12|s| e^(0), coarse norm = 12|s| e^(0), ratio = (1) * e^(0)
+kappa=0: fault #Y=position-1 links, Y''=one position (draft fault): fine norm = 12|s| e^(0), coarse norm = 12|s| e^(0), ratio = (1) * e^(0)

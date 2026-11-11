@@ -1,0 +1,4 @@
+crude 1903 MET 5.797808e-01
+crude 1904 MET 5.987611e-01
+crude 1905 NOT_MET None
+crude 1906 NOT_MET None

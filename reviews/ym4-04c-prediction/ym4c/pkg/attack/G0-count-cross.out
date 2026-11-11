@@ -1,0 +1,5 @@
+1. brute force, sets holding a class-1 off link, n=1..5: [6, 85, 1648, 35478, 805720]
+2. closed counts N_w(1..8) at several links per class
+  class 1: 8 link types tried, distinct count vectors: [(0, 0, 0, 1, 0, 12, 0, 32)]
+  class 2: 8 link types tried, distinct count vectors: [(0, 0, 0, 0, 0, 12, 0, 12)]
+  class 3: 8 link types tried, distinct count vectors: [(0, 0, 0, 0, 0, 12, 0, 0)]

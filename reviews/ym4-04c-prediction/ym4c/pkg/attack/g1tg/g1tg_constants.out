@@ -1,0 +1,33 @@
+e^-1 in 0.367879441171 0.367879441171
+C07 crude 1/100 delta_1=0.0110444507 (critic's read): 2d'=[0.02233421336,0.02233421336] c_frozen=[0.445046517,0.445046517] argmax_n=9
+C07 lo 0.011044: 2d'=[0.02233329188,0.02233329188] c_frozen=[0.445042988,0.445042988] argmax_n=9
+C07 hi 0.011045: 2d'=[0.02233533643,0.02233533643] c_frozen=[0.4450508181,0.4450508181] argmax_n=9
+C08 lo 9.42e-6: 2d'=[1.884017747e-05,1.884017747e-05] c_frozen=[0.3679383586,0.3679383586] argmax_n=8
+C08 hi 9.45e-6: 2d'=[1.890017861e-05,1.890017861e-05] c_frozen=[0.3679385463,0.3679385463] argmax_n=8
+C13 49/1000: 2d'=[0.1029215944,0.1029215944] c_frozen=[0.9824884835,0.9824884835] argmax_n=17
+C13 1/20: 2d'=[0.1051271096,0.1051271096] c_frozen=[1.011066807,1.011066807] argmax_n=17
+C14 1/64 lo 2.0347e-3: 2d'=[0.004077688438,0.004077688438] c_frozen=[0.3808522431,0.3808522431] argmax_n=8
+C14 1/64 hi 2.0348e-3: 2d'=[0.004077889253,0.004077889253] c_frozen=[0.380852893,0.380852893] argmax_n=8
+C10b s=1/2000: delta_in=[0.02689013442,0.02689013442] c_frozen=[0.5950967584,0.5950967584] c*_A=[0.3678794412,0.3678794412] c#_B=[0.5091330422,0.5091330422] c_B=[0.587933465,0.587933465]
+C10b s=1/4096: delta_in=[0.01312994845,0.01312994845] c_frozen=[0.4617424632,0.4617424632] c*_A=[0.3678794412,0.3678794412] c#_B=[0.3792923289,0.3792923289] c_B=[0.461158093,0.461158093]
+C10c s=1/8192: delta_in=[0.03569090028,0.03569090028] 2d'=[0.07397549154,0.07397549154] c_frozen=[0.711812276,0.711812276] c*_A=[0.3678794412,0.3678794412] c#_B=[0.6151979617,0.6151979617] c_B=[0.6890060912,0.6890060912]
+C10c s=1/65536: delta_in=[0.004461362534,0.004461362534] 2d'=[0.00896262151,0.00896262151] c_frozen=[0.3969925892,0.3969925892] c*_A=[0.3678794412,0.3678794412] c#_B=[0.3678794412,0.3678794412] c_B=[0.3969925892,0.3969925892]
+frozen delta_crit (c^+<1 / c^->=1): at lower grid point -> True; at upper grid point -> True
+frozen C_k 2d'<=1/8 (holds / fails): at lower grid point -> True; at upper grid point -> True
+G1-a condition 2d'<=1/4 (holds / fails): at lower grid point -> True; at upper grid point -> True
+G1-a c*=e^-1 edge (e^d Q upper <= e^-1 / lower > e^-1): at lower grid point -> True; at upper grid point -> True
+   at 0.072094: e^{d+2d'-5k}^+ = 0.359536697  third^+ = 0.3678710667  argmax f = 6
+   at 0.072095: third^- = 0.367879837  argmax f = 6
+G1-a delta_crit* (c*^+<1 / c*^->=1): at lower grid point -> True; at upper grid point -> True
+   argmax f at delta_crit* = 16  c*^+ = 0.999999979424
+G1-b delta_eq (f(8)-f(9) >0 / <0): at lower grid point -> True; at upper grid point -> True
+G1-b c#=e^-1 edge (third^+<=e^-1 / third^->e^-1): at lower grid point -> True; at upper grid point -> True
+   argmax n at the edge = 9
+G1-b delta_crit(c_B) (c_B^+<1 / c_B^->=1): at lower grid point -> True; at upper grid point -> True
+G1-b delta_crit(c#) (c#^+<1 / c#^->=1): at lower grid point -> True; at upper grid point -> True
+C07 delta_2 <= 0.004915586286  sum <= 0.01990272328   C16 delta_20 <= 2.306472019e-09  osc_20 <= 4.344338623e-07
+C16 at the critic's delta_1: delta_20 in [ 2.305933854e-09 , 2.305933854e-09 ]
+G1-a c* at 0.072095: as written [0.367879837,0.367879837]; with m>=1 roots [0.3678794412,0.3678794412]
+G1-a c* at 0.09: as written [0.5676948824,0.5676948824]; with m>=1 roots [0.5009889753,0.5009889753]
+G1-a c* at 0.1: as written [0.7365239135,0.7365239135]; with m>=1 roots [0.6499800723,0.6499800723]
+G1-a with m>=1 roots: c*^+ < 1 up to delta >= 0.111780108 (or the condition 2d'<=1/4 binds first)

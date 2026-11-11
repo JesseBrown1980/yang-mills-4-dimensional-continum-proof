@@ -1,0 +1,82 @@
+Freeze order:
+1. Commit the prediction file (40 rows, pinned by head -n 40 | sha256sum), the note sections 0–17 with G0/G1 proved in full, and reviews/ym4-04c-prediction/derive_checks.py (integers only).
+2. The second seat attacks G0/G1 and files the attack (gate G_attack). No engine code before this filing.
+3. Engine commit.
+4. Independent check commit.
+5. CI.
+
+Arithmetic everywhere: Python ints and fractions.Fraction (engine) and Rust i128 with its own bigint (check). No floats, under scripts/no_float_gate.py and scripts/no_float_compiled.sh. Dyadic outward rounding helpers up(x) and down(x) at 160 significant bits. exp and log by Taylor or atanh series with Lagrange or geometric remainders. pi by Machin with alternating tails, ln 2 by two series.
+
+ENGINE: tests/test_ym4_04c_polymer_norm.py (S lane) and tests/test_ym4_04c_tree_gaussian.py (W lane). They write tests/YM4_04C_RECEIPT.hbp, one row per read, and every row carries its frozen tag.
+- E0 geometry (C01). Coordinate tuples on (Z/8)^4 and (Z/12)^4. Line and off links. Plaquette off-link lists. The adjacency census (D = 20, min 10), #W(e_0) = 12, the filling-membership histogram, and an exhaustive search of closed sets of at most 4 plaquettes. F_20 as exact binomials; F(n+1)/F(n) < mu checked for n <= 59 (the all-n statement is proved in the note).
+- E1 counts (C03, C09 exclusion, Finner guard). Closure-driven DFS growth from the 6 plaquettes through a seed off link of each class. Pruning: open links <= 4 x remaining size. Canonical forms under coarse translations x 384 signed permutations, keyed by hash. Runs to n = 12 on both lattices. Also emits the held-coarse-link split for n <= 7 (C09) and the maximum off-link multiplicity per set (G_finner_guard).
+- E2 enclosures (C02, C04, C15). c_0 partial sums with geometric tails. eps_6^6 as an interval alternating sum, and its sixth root by dyadic bisection to 10^-12. Wall bisections on the 10^-5 grid.
+- E3 KP certificate (C05, C06, C09, C12, C15).
+  - S^+(x): the head counts, the series to n = 48 and the n = 49 tail.
+  - For each b on the grid i <= 320: ternary search for min g on dyadic a of denominator 2^48, then the least root by bisection. The read is the exact inequality S^+(eps^+ e^{2a+b}) <= a <= 1/4 at that rational a.
+  - delta_1 = min 12a e^{-4(b-kappa)}. T = (8489/10000) 12a e^{-8b}.
+  - Shortcut proved in the note: existence is decided at b = 1/4.
+- E4 C_k and c(delta) (C07, C08, C10b, C11–C14, C16). Exact max over integer n in [4, n_hi]. n_hi comes from the real maximiser n* = ln((kappa/2)/r)/(kappa/2 - r) plus a monotone tail proof. Upper enclosure of c. delta_crit^- by bisection on the 10^-9 grid.
+- E5 edges. At each predicted edge pair and listed point, read MET/NOT_MET on the 10^-5 grid. Bisection only locates; rows read the pair.
+- E6 exact integrals (C10, C10b, C18).
+  - Rational unit quaternions by the Cayley map, and exact holonomies.
+  - The engine's own one-link projector integrator to degree 12 (Weingarten over non-crossing matchings).
+  - C10: the line channel ratio at kappa = 1/4 and kappa = 0, under 4 coarse gauge transformations.
+  - C10b: E_pi[(chi_b+chi_t)^{2m}] = Cat_m (2+chi)^m for m <= 6 at 4 rational V. Closed-form norms and the projection bound.
+  - C18: Phi_S(j;V) for the YM4-03C classes in gauges (1,V) and (V,1), and under coarse gauge transformations.
+- E7 volume (C17). E0, E1 and E3 on both lattices, compared byte for byte. 1/(8N_p) exactly.
+- E8 W lane.
+  - W01–W03, W05: alias sums in exact rationals at b = 2, 4, with sqrt2 pairing; b = 8 by dyadic intervals in Q(sqrt2, sqrt(2+-sqrt2)). Covariant-gauge G_munu(xi).
+  - W06: exact LDL^T inertia over Q and Q(i) on the 45-dimensional physical fiber, with bisection to 10^-10.
+  - W04: orbit-reduced exact Poisson solve (70 and 495 unknowns), then loop sums.
+  - W07: 10^4 tiles from a seeded integer LCG and the aligned family.
+- E9 receipts and sabotage. SABOTAGE=<name> is read once, and every guard runs before its quantity is used. Each fault recomputes only the sections it reaches; the others replay from the receipt by sha256 (the YM4-03 replay of PR #43). The evidence chain HBI -> HBP -> SHA -> SEAL follows YM4-03C.
+
+INDEPENDENT CHECK: reviews/ym4-04c-check/ym4_04c_check.rs. Rust 1.81, std only, sharing no code with the engine; it may copy the generic bigint of the merged YM4-03C engine. Every module uses a different algorithm.
+- X0: census through a link-plaquette incidence matrix and a union-find adjacency.
+- X1: counts by layer-by-layer canonical augmentation (BFS over n, canonical deletion test) instead of DFS closure growth, on both lattices.
+- X2: c_0 also by the Bessel-ratio continued fraction; exp by binary splitting with range reduction; pi by two Machin formulas.
+- X3: KP by a direct dyadic scan of a with step 2^-30 and the exact inequality, with no ternary search. This yields an upper bound on a_- within 2^-30, inside every bracket.
+- X4: c(delta) through the closed-form maximiser, checked on its two neighbouring integers; delta_crit by an independent bisection.
+- X5: exact integrals through 2I averages in Q(sqrt5) inside degree 11 and a separate Weingarten table at degree 12; C10b's moments; C18 through the merged YM4-03C engine.
+- X6: W lane by the other route to E8's: route B Bloch KKT where E8 uses route A, and vice versa. Sturm sequences in place of LDL^T inertia. A full 4096-unknown exact sparse solve on 8^4 against the orbit solve.
+
+Both write receipts. CI requires every read to agree.
+
+PLANTED FAULTS (C19), each to exit 1 on its named check:
+- finner_exponent_2 -> G_finner_guard
+- degree_19 -> C01
+- missing_tail -> C04
+- one_position_support -> C10
+- global_norm -> C17
+- readout_without_tail -> C09
+- iteration_cap_400 -> C05
+- delta_crit_surrogate -> C13
+- readout_grid_128 -> C09
+- drop_alias_terms -> W01
+- longitudinal_read_unflagged -> W05
+- float_literal -> G_nofloat
+
+Planted false claims, read from a planted copy of the prediction file, must read NOT_MET:
+- C_0 crude MET at 1/50
+- the head-free self-map MET at 1/50
+- r_2 = r_1 for the line map
+- the averaged corner equal to the line corner
+
+CI: .github/workflows/ym4-04c-polymer-norm.yml.
+1. The no-float gates (Python and compiled).
+2. The prediction pin: head -n 40 | sha256sum against the pinned value.
+3. The engine run, with the receipt sha256 compared to its pin.
+4. The check run, with its receipt and the cross-compare of reads.
+5. 12 sabotage runs, each required to exit 1 naming its check, with replay of untouched sections.
+6. 4 planted-claim passes.
+7. Evidence-chain verification.
+8. Two back-to-back clean runs, byte-identical.
+
+BUDGET on 4 CPUs:
+- C03 to n = 12 on both lattices: about 2 minutes in Python.
+- About 40 C_0 reads x 321 b values in exact rationals: an estimated 20–40 minutes, split across row groups.
+- c(delta), integrals and the W lane: minutes.
+- The whole run is under 1 hour wall-clock, with memory under 2 GB and disk under 100 MB.
+
+FAILURE HANDLING: any NOT_MET or UNSUPPORTED read stays in the receipt and the note. A fallback, a grid change or a repair is filed only as appended rows after row 40.

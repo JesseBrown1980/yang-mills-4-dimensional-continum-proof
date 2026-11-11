@@ -1,0 +1,33 @@
+A coarse links on fine 8^4: 1024
+A #W(e0)=12 and both off links of each plaquette through e0 in W(e0): True
+A each of the 12 plaquettes through e0 or e1 has exactly one off link in W'(l) (6 links at m_l): True
+A the 6 off-link pairs of the plaquettes through e0 are pairwise disjoint: True
+A each filling through l holds e0,e1, exactly 2 links of W(e0) and exactly 1 of W'(l): True
+B fillings-only gas: union bound over W(e0) / true holding-cluster sum = 2
+C beta=1/100 eps6 in [0.006538419569879, 0.006538419569879]
+C   crude: alpha_- in [0.000920370889802, 0.000920370889803]; 12 alpha in [0.0110444506776, 0.0110444506776]; 6 alpha in [0.00552222533881, 0.00552222533882]; 2d'(6) <= 0.01110561; 2d'(12) >= 0.02233421
+C   C03: alpha_- in [7.85997510716e-07, 7.85997510717e-07]; 12 alpha in [9.43197012859e-06, 9.4319701286e-06]; 6 alpha in [4.7159850643e-06, 4.7159850643e-06]; 2d'(6) <= 9.432015e-06; 2d'(12) >= 1.886412e-05
+C   headfree: alpha_- in [7.81025139892e-07, 7.81025139893e-07]; 12 alpha in [9.37230167871e-06, 9.37230167872e-06]; 6 alpha in [4.68615083935e-06, 4.68615083936e-06]; 2d'(6) <= 9.372346e-06; 2d'(12) >= 1.874478e-05
+C beta=1/64 eps6 in [0.01021654437372, 0.01021654437372]
+C   crude: alpha_- in [0.00847108701167, 0.00847108701168]; 12 alpha in [0.10165304414, 0.10165304414]; 6 alpha in [0.05082652207, 0.0508265220701]; 2d'(6) <= 0.1069533; 2d'(12) >= 0.2250597
+C   C03: alpha_- in [0.00016956426214, 0.000169564262141]; 12 alpha in [0.00203477114568, 0.00203477114569]; 6 alpha in [0.00101738557284, 0.00101738557284]; 2d'(6) <= 0.002036842; 2d'(12) >= 0.004077831
+C   headfree: alpha_- in [0.000169534417365, 0.000169534417365]; 12 alpha in [0.00203441300837, 0.00203441300838]; 6 alpha in [0.00101720650419, 0.00101720650419]; 2d'(6) <= 0.002036483; 2d'(12) >= 0.004077112
+C beta=1/50 eps6 in [0.01307754186435, 0.01307754186435]
+C   crude: no certificate
+C   C03: alpha_- in [0.00605392275471, 0.00605392275471]; 12 alpha in [0.0726470730565, 0.0726470730565]; 6 alpha in [0.0363235365282, 0.0363235365283]; 2d'(6) <= 0.07533438; 2d'(12) >= 0.1562422
+C   headfree: alpha_- in [0.00605381869501, 0.00605381869502]; 12 alpha in [0.0726458243401, 0.0726458243402]; 6 alpha in [0.0363229121701, 0.0363229121701]; 2d'(6) <= 0.07533304; 2d'(12) >= 0.1562393
+D delta_crit in [0.0496174910308, 0.0496174910308] (c(a)<1<c(b) certified)
+D delta_crit^- on the 1e-9 grid = 49617491/1000000000 ; C13 bracket lower end 0.0496174
+D c(49/1000) in [0.9824885, 0.9824885]; c(1/20) in [1.011067, 1.011067]
+E factor 12 crude dcrit^-=0.0496174: MET certified at 0.01369: True (factor*alpha <= 0.04960236566); NOT_MET certified at 0.0137: True (factor*alpha_- >= 0.04978864298)
+E factor 12 crude dcrit^-=grid: MET certified at 0.01369: True (factor*alpha <= 0.04960236566); NOT_MET certified at 0.0137: True (factor*alpha_- >= 0.04978864298)
+E factor 12 C03 dcrit^-=0.0496174: MET certified at 0.01959: True (factor*alpha <= 0.04938230569); NOT_MET certified at 0.0196: True (factor*alpha_- >= 0.04982653335)
+E factor 12 C03 dcrit^-=grid: MET certified at 0.01959: True (factor*alpha <= 0.04938230569); NOT_MET certified at 0.0196: True (factor*alpha_- >= 0.04982653335)
+E factor 12 headfree dcrit^-=0.0496174: MET certified at 0.01959: True (factor*alpha <= 0.04938126377); NOT_MET certified at 0.0196: True (factor*alpha_- >= 0.04982548747)
+E factor 12 headfree dcrit^-=grid: MET certified at 0.01959: True (factor*alpha <= 0.04938126377); NOT_MET certified at 0.0196: True (factor*alpha_- >= 0.04982548747)
+E factor 6 crude dcrit^-=0.0496174: MET certified at 0.01556: True (factor*alpha <= 0.04961144667); NOT_MET certified at 0.01557: True (factor*alpha_- >= 0.04979635623)
+E factor 6 crude dcrit^-=grid: MET certified at 0.01556: True (factor*alpha <= 0.04961144667); NOT_MET certified at 0.01557: True (factor*alpha_- >= 0.04979635623)
+E factor 6 C03 dcrit^-=0.0496174: MET certified at 0.02029: True (factor*alpha <= 0.04959827556); NOT_MET certified at 0.0203: True (factor*alpha_- >= 0.05018310027)
+E factor 6 C03 dcrit^-=grid: MET certified at 0.02029: True (factor*alpha <= 0.04959827556); NOT_MET certified at 0.0203: True (factor*alpha_- >= 0.05018310027)
+E factor 6 headfree dcrit^-=0.0496174: MET certified at 0.02029: True (factor*alpha <= 0.04959752152); NOT_MET certified at 0.0203: True (factor*alpha_- >= 0.05018233993)
+E factor 6 headfree dcrit^-=grid: MET certified at 0.02029: True (factor*alpha <= 0.04959752152); NOT_MET certified at 0.0203: True (factor*alpha_- >= 0.05018233993)

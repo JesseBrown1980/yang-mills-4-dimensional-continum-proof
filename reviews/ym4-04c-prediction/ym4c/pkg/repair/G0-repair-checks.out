@@ -1,0 +1,43 @@
+A F_20(4..12) equal frozen: True
+A mu in [53.00068,53.00069]: True
+A product formula, strict increase, below mu, n=0..400: True
+A F(n+2)/F(n), n=4..10: ['1546.397', '1708.964', '1834.885', '1935.161', '2016.843', '2084.632', '2141.778']
+A F(n+2)/F(n) > 2000 exactly from n = 8
+B (5+i)^4 (239-i) = (114244+114244j) (real part = imaginary part, so Machin holds)
+B pi_lo = 1231847548/392109375 > 333/106 : True
+B pi in [ 3.14159265358979 , 3.14159265358979 ], width 1.84e-35
+B 8/(3pi) in [ 0.848826363157 , 0.848826363157 ]; outward 7-digit: [0.8488263,0.8488264]: True
+B 848/999 < 8489/10000: True ; 8/(3pi) < 8489/10000: True
+B margin 8489/10000 - 8/(3pi) >= 7.36368e-05
+C eps6(1/100) in [0.006538419569879, 0.006538419569879]; inside C02 bracket: True
+C eps6(1/64) in [0.01021654437372, 0.01021654437372]; inside C02 bracket: True
+C eps6(1/50) in [0.01307754186435, 0.01307754186435]; inside C02 bracket: True
+C beta=1/100 crude: certified True; alpha_- in [0.000920370889802, 0.000920370889803]; 12alpha in [0.0110444506776, 0.0110444506776]; 6alpha in [0.00552222533881, 0.00552222533882]; 2delta'(6) in [0.0111056093335, 0.0111056093335]
+C beta=1/100 C03: certified True; alpha_- in [7.85997510716e-07, 7.85997510717e-07]; 12alpha in [9.43197012859e-06, 9.4319701286e-06]; 6alpha in [4.7159850643e-06, 4.7159850643e-06]; 2delta'(6) in [9.43201460973e-06, 9.43201460973e-06]
+C beta=1/100 headfree: certified True; alpha_- in [7.81025139892e-07, 7.81025139893e-07]; 12alpha in [9.37230167871e-06, 9.37230167872e-06]; 6alpha in [4.68615083935e-06, 4.68615083936e-06]; 2delta'(6) in [9.37234559883e-06, 9.37234559884e-06]
+C beta=1/64 crude: certified True; alpha_- in [0.00847108701167, 0.00847108701168]; 12alpha in [0.10165304414, 0.10165304414]; 6alpha in [0.05082652207, 0.0508265220701]; 2delta'(6) in [0.106953269879, 0.106953269879]
+C beta=1/64 C03: certified True; alpha_- in [0.00016956426214, 0.000169564262141]; 12alpha in [0.00203477114568, 0.00203477114569]; 6alpha in [0.00101738557284, 0.00101738557284]; 2delta'(6) in [0.00203684234592, 0.00203684234592]
+C beta=1/64 headfree: certified True; alpha_- in [0.000169534417365, 0.000169534417365]; 12alpha in [0.00203441300837, 0.00203441300838]; 6alpha in [0.00101720650419, 0.00101720650419]; 2delta'(6) in [0.00203648347939, 0.00203648347939]
+C beta=1/50 crude: lower iterate leaves the domain or passes 1/4 (no certificate)
+C beta=1/50 C03: certified True; alpha_- in [0.00605392275471, 0.00605392275471]; 12alpha in [0.0726470730565, 0.0726470730565]; 6alpha in [0.0363235365282, 0.0363235365283]; 2delta'(6) in [0.0753343824966, 0.0753343824967]
+C beta=1/50 headfree: certified True; alpha_- in [0.00605381869501, 0.00605381869502]; 12alpha in [0.0726458243401, 0.0726458243402]; 6alpha in [0.0363229121701, 0.0363229121701]; 2delta'(6) in [0.0753330405538, 0.0753330405539]
+D factor 6 crude at 0.01556: MET certified=True (6*alpha<=0.04961144667), NOT_MET certified=False (6*alpha_->=0.04961144667)
+D factor 6 crude at 0.01557: MET certified=False (6*alpha<=0.04979635623), NOT_MET certified=True (6*alpha_->=0.04979635623)
+D factor 6 C03 at 0.02029: MET certified=True (6*alpha<=0.04959827556), NOT_MET certified=False (6*alpha_->=0.04959827556)
+D factor 6 C03 at 0.0203: MET certified=False (6*alpha<=0.05018310027), NOT_MET certified=True (6*alpha_->=0.05018310027)
+D factor 6 headfree at 0.02029: MET certified=True (6*alpha<=0.04959752152), NOT_MET certified=False (6*alpha_->=0.04959752152)
+D factor 6 headfree at 0.0203: MET certified=False (6*alpha<=0.05018233993), NOT_MET certified=True (6*alpha_->=0.05018233993)
+D surrogate delta_1<=49/1000, factor 6, crude at 0.01552: MET certified=True (6*alpha<=0.04887904258), NOT_MET certified=False (6*alpha_->=0.04887904258)
+D surrogate delta_1<=49/1000, factor 6, crude at 0.01553: MET certified=False (6*alpha<=0.04906106578), NOT_MET certified=True (6*alpha_->=0.04906106578)
+D factor 12 crude at 0.01369: MET certified=True (12*alpha<=0.04960236566), NOT_MET certified=False (12*alpha_->=0.04960236566)
+D factor 12 crude at 0.0137: MET certified=False (12*alpha<=0.04978864298), NOT_MET certified=True (12*alpha_->=0.04978864298)
+D factor 12 C03 at 0.01959: MET certified=True (12*alpha<=0.04938230569), NOT_MET certified=False (12*alpha_->=0.04938230569)
+D factor 12 C03 at 0.0196: MET certified=False (12*alpha<=0.04982653335), NOT_MET certified=True (12*alpha_->=0.04982653335)
+F C08: 12e*P_10(1/100) in [2.5483467e-09, 2.5483467e-09]; 6alpha_-(C03)/(12e P_10) in [1850.6057, 1850.6057]; crude/C03 ratio in [1170.959, 1170.959]
+F C09 at beta=1/4000, i=194: certified True; T6/P_10 in [0.000522588, 0.000522588]; T12/P_10 in [0.00104518, 0.00104518]
+F C09 at beta=1/2000, i=150: certified True; T6/P_10 in [0.00836105, 0.00836105]; T12/P_10 in [0.0167221, 0.0167221]
+F C09 at beta=1/1000, i=105: certified True; T6/P_10 in [0.133825, 0.133825]; T12/P_10 in [0.26765, 0.26765]
+F C09 at beta=1/700, i=83: certified True; T6/P_10 in [0.557254, 0.557254]; T12/P_10 in [1.11451, 1.11451]
+F C09 at beta=1/600, i=73: certified True; T6/P_10 in [1.03226, 1.03226]; T12/P_10 in [2.06453, 2.06453]
+F C09 at beta=1/100, i=0: certified True; T6/P_10 in [6935.17, 6935.17]; T12/P_10 in [13870.3, 13870.3]
+E eps6 increasing on the sample grid: True

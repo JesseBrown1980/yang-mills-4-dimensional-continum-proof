@@ -1,0 +1,10 @@
+p0 links 4 off 2 line 2
+pA links 4 off 4 line 0
+pB links 4 off 4 line 0
+max norm over links <= 0.009999743362  delta = 1/100
+2 delta' in [ 0.02020100334 , 0.02020100334 ]  C_k (2 delta' <= kappa/2): True
+polymers incompatible with {p0}: [('p0',), ('pA',), ('pB',), ('p0', 'pA'), ('p0', 'pB'), ('p0', 'pA', 'pB')]
+literal d = kappa*#fine links: LHS in [ 0.02085955105 , 0.02085955105 ]  a({p0}) in [ 0.02020100334 , 0.02020100334 ]  KP fails: True
+route B d = (kappa/2)*#fine links: LHS <= 0.01267521953  KP holds: True
+route A d = (kappa/2)*#line links: LHS <= 0.007674078485  KP holds: True
+reading #G = #objects: C10c's object (8 line links, 2 off) has #Y'' = 4 and d = kappa*1, so e^{kappa #Y''} = e^{4 kappa} > e^{d} = e^{kappa}

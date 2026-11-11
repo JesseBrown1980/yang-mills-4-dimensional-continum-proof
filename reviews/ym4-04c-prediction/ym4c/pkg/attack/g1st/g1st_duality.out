@@ -1,0 +1,17 @@
+j=1: e^{3(j-1)/4} lower 1.000000 >= 1: True
+j=2: e^{3(j-1)/4} lower 2.117000 >= 2: True
+j=3: e^{3(j-1)/4} lower 4.481689 >= 3: True
+j=4: e^{3(j-1)/4} lower 9.487736 >= 4: True
+j=5: e^{3(j-1)/4} lower 20.085537 >= 5: True
+j=6: e^{3(j-1)/4} lower 42.521082 >= 6: True
+j=2 needs kappa >= ln(2)/3 ~ 0.231049 (display only)
+C10b s=1/2000 natural/(c delta_in) with frozen c: [0.000254748, 0.000254917], slack [3922.85, 3925.44]
+C10b s=1/2000 natural/(c delta_in) with route A c*: [0.000412092, 0.000412363], slack [2425.05, 2426.65]
+C10b s=1/2000 natural/(c delta_in) with route B c#: [0.000297761, 0.000297957], slack [3356.18, 3358.4]
+C10b frozen projection bound/(c delta_in): [2.49965e-05, 2.5059e-05], slack [39905.8, 40005.6]
+C10c s=1/8192 natural/(c delta_in) with frozen c: [0.0783287, 0.0784052], slack [12.7543, 12.7667]
+C10c s=1/8192 natural/(c delta_in) with route A c*: [0.151559, 0.151707], slack [6.59166, 6.59811]
+C10c s=1/8192 natural/(c delta_in) with route B c#: [0.0906299, 0.0907184], slack [11.0231, 11.0339]
+C10c s=1/65536 natural/(c delta_in) with frozen c: [0.140504, 0.140522], slack [7.11635, 7.11723]
+C10c s=1/65536 natural/(c delta_in) with route A c*: [0.151623, 0.151642], slack [6.59448, 6.59529]
+C10c s=1/65536 natural/(c delta_in) with route B c#: [0.151623, 0.151642], slack [6.59448, 6.59529]
