@@ -1,0 +1,3 @@
+YM4_04C_E0_RUST|N=8|links=16384|plaquettes=24576|link_classes=2048,6144,6144,2048|quarter_faces=6144|four_off_faces=18432|degrees=10,20|W=12|Wprime=6|closed_n4=1,0,0|json=0
+YM4_04C_E0_RUST|N=10|links=40000|plaquettes=60000|link_classes=5000,15000,15000,5000|quarter_faces=15000|four_off_faces=45000|degrees=10,20|W=12|Wprime=6|closed_n4=1,0,0|json=0
+YM4_04C_E0_RUST_RESULT|PASS|independent_algorithm=YES|C03_n12=OPEN|json=0
