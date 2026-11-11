@@ -1,0 +1,4 @@
+YM4_04C_E0_START|frozen_sha256=c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404|source=INDEPENDENT_IMPLEMENTATION|whole_engine=NO|json=0
+YM4_04C_E0|N=8|sites=4096|links=16384|plaquettes=24576|line_links=2048|off_classes=6144,6144,2048|quarter_faces=6144|four_off_faces=18432|adjacency_degrees=10,20|line_W=12|middle_Wprime=6|closed_n4_class1,2,3=1,0,0|n4_candidate_count=35478,47232,52200|source=RECALCULATED|prefreeze=CROSS_READ|json=0
+YM4_04C_E0|N=10|sites=10000|links=40000|plaquettes=60000|line_links=5000|off_classes=15000,15000,5000|quarter_faces=15000|four_off_faces=45000|adjacency_degrees=10,20|line_W=12|middle_Wprime=6|closed_n4_class1,2,3=1,0,0|n4_candidate_count=35478,47232,52200|source=RECALCULATED|prefreeze=CROSS_READ|json=0
+YM4_04C_E0_RESULT|PASS|lattices=8,10|geometry=EXHAUSTIVE|n4_closed=EXHAUSTIVE|n6_to_n12=NOT_DONE|C03_n12=OPEN|r9_runs=0|json=0
