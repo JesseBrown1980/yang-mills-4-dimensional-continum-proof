@@ -1,0 +1,16 @@
+YM4_06G_FREEZE|date=2026-11-11|prediction_only=YES|prior=YM4_06F|r9_runs=0|json=0
+MODEL|spatial_periodic_cubic=YES|group=SU2|beta_s=1/128|beta_t=1|classical_spatial_gibbs=YES|quantum_full_Wilson_transfer=SEPARATE|json=0
+PREDICT|L=2|vertices=8|links=24|plaquettes=24|faces_per_link=4|other_link_face_incidences_per_link=12|girth=2|json=0
+PREDICT|L=3|vertices=27|links=81|plaquettes=81|faces_per_link=4|other_link_face_incidences_per_link=12|girth=3|json=0
+PREDICT|L=4|vertices=64|links=192|plaquettes=192|faces_per_link=4|other_link_face_incidences_per_link=12|girth=4|json=0
+PREDICT|L=5|vertices=125|links=375|plaquettes=375|faces_per_link=4|other_link_face_incidences_per_link=12|girth=4|json=0
+PREDICT|L=9|vertices=729|links=2187|plaquettes=2187|faces_per_link=4|other_link_face_incidences_per_link=12|girth=4|json=0
+PREDICT|L=27|vertices=19683|links=59049|plaquettes=59049|faces_per_link=4|other_link_face_incidences_per_link=12|girth=4|json=0
+THEOREM|classical_Gibbs_single_link_conditional_TV_influence_c_ij_le_beta_s_face_coincidence|all_L_ge_2=YES|sum_row_and_column_c=12|alpha_le=12/128=3/32|json=0
+THEOREM|classical_random_scan_heatbath_gap_lower_ge=(1-alpha)/links|continuous_time_each_link_rate_one_gap_lower_ge=29/32|dimension=INDEPENDENT|number_plaquettes=INDEPENDENT|json=0
+THEOREM|classical_gauge_invariant_heatbath_restriction_gap_lower_ge=29/32|operator_is_not_4D_Quantum_Wilson_transfer|json=0
+CONTROL|beta_s=0|full_gauge_invariant_temporal_Wilson_B|rho=ell1/ell0|first_ratio=rho^girth|L2_ratio_lt=1/17|L3_ratio_lt=1/70|L_ge4_ratio_lt=1/300|all_L_ge2_ratio_lt=1/17|json=0
+CONTROL|beta_s=1/8|alpha_bound=3/2|Dobrushin_positive_condition=FAIL|json=0
+COUNTEREXAMPLE|independent_classical_spatial_gibbs_alpha=0|temporal_transfer_K_n=(1-1/n)I+(1/n)Pi|lambda2_over_lambda1=1-1/n|a_t=1|mass_limit=0|n=3^k|json=0
+NEGATIVE|missing_plaquette=REJECT|wrong_vertex_degree=REJECT|false_nonzero_beta_quantum_gap=REJECT|Dobrushin_above_threshold=REJECT|false_counter_mass=REJECT|tampered_HBP=REJECT|json=0
+SCOPE|volume_uniform_bound_is_CLASSICAL_HEATBATH_ONLY|volume_uniform_beta_s0_quantum_B_gap=EXACT|nonzero_beta_s_interacting_quantum_transfer_gap=OPEN|lattice_spacing_refinement=NOT_RUN|continuum_mass=OPEN|r9_runs=0|json=0
