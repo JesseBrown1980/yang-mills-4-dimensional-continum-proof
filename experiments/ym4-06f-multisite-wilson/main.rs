@@ -157,7 +157,7 @@ fn full_ratio()->String{
     // This compares the FULL interacting T=S B P_G S with B by min-max.
     assert!(5*28*lo*lo>8*n,"frozen full physical lower ratio refuted");
     assert!(8*10*hi*hi<5*n,"frozen full physical upper ratio refuted");
-    format!("FULL_PHYSICAL_TRANSFER|space=2x2x2|links=24|plaquettes=24|beta_s=1/128|beta_t=1|gauge_projector=ALL_VERTICES|B_first_nontrivial_spin_support=2|B_first_ratio=(ell1/ell0)^2|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|continuum_mass=NOT_COMPUTED|json=0\n")
+    "FULL_PHYSICAL_TRANSFER|space=2x2x2|links=24|plaquettes=24|beta_s=1/128|beta_t=1|gauge_projector=ALL_VERTICES|B_first_nontrivial_spin_support=2|B_first_ratio=(ell1/ell0)^2|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|continuum_mass=NOT_COMPUTED|json=0\n".to_string()
 }
 fn error_q3()->bool{
     // h_max=beta_s*N_faces/2=3/32, D=0, m=3.
@@ -167,7 +167,9 @@ fn error_q3()->bool{
 }
 fn error_q9()->bool{
     // D=2,m=7: delta=(3/32)^3/3!=9/65536<1/7000.
-    assert!(9u128*7000<65_536);
+    let delta_num=3u128.pow(3);
+    let delta_den=32u128.pow(3)*factorial(3);
+    assert!(delta_num*7000<delta_den);
     // sqrt(4/(3*2^7*8!))<1/1900.
     assert!(4u128*1900*1900<3*(1u128<<7)*factorial(8));
     // 2*(1/7000+1/1900)<1/700.
@@ -200,7 +202,7 @@ fn error_q81()->bool{
     assert!(fac21>50_000_000_000_000_000_000u128);
     assert!(fac22_42>20_000_000_000_000_000_000_000_000_000_000u128);
     assert!(twopow>2_000_000_000_000u128);
-    assert!(3*2*5*2>4); // normalizations 10^12*10^19*10^31.
+    // The lower factors imply 3*(2e12)*(5e19)*(2e31)>4e62.
     // Thus sqrt(b_41/b0)<1/10^31, and sqrt(b_61/b0) smaller.
     // 2*(delta+sqrt)<4/10^31<1/10^30.
     4u128<10
