@@ -54,7 +54,8 @@ def cfin(delta):
     cap=1024
     stop=0
     for f in range(4,cap+1):
-        u=es(E.mul(decay,E.rat(-f)))
+        r=E.mul(decay,E.rat(f))
+        u=es((-r[1],-r[0]))
         v=es(E.rat(-f,4))
         diff=E.sub(u,v)
         dlo=max(0,diff[0])
@@ -62,7 +63,8 @@ def cfin(delta):
         f_values.append((f,dlo,dhi))
         if dlo>lower:lower=dlo
         if dhi>upper:upper=dhi
-        future=es(E.mul(decay,E.rat(-(f+1))))[1]
+        rfuture=E.mul(decay,E.rat(f+1))
+        future=es((-rfuture[1],-rfuture[0]))[1]
         if future<=lower:
             stop=f
             break
