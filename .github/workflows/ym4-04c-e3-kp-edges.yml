@@ -88,17 +88,14 @@ jobs:
           sha256sum YM4_04C-E3-ENGINE.hbp YM4_04C-E3-SECOND.hbp > YM4_04C-E3-SHA256SUMS
           sha256sum -c YM4_04C-E3-SHA256SUMS
           EVIDENCE=work/reviews/ym4-04c-e3-kp/evidence
-          if test -f "$EVIDENCE/YM4_04C-E3-SHA256SUMS"; then
+          test -f "$EVIDENCE/YM4_04C-E3-SHA256SUMS"
             (cd "$EVIDENCE" && sha256sum -c YM4_04C-E3-SHA256SUMS)
             for NAME in YM4_04C-E3-ENGINE.hbp YM4_04C-E3-SECOND.hbp YM4_04C-E3-SHA256SUMS; do
               cmp "$NAME" "$EVIDENCE/$NAME"
             done
             echo 'E3_REPLAY|three_files=BYTE_IDENTICAL|json=0'
-          else
-            echo 'E3_REPLAY|filed_receipts=NOT_YET|json=0'
-          fi
+
       - name: Print canonical source receipts for immutable filing
-        if: always()
         shell: bash
         run: |
           set -euo pipefail
