@@ -1,0 +1,107 @@
+name: YM4-06E interacting SU2 Wilson transfer and ternary cutoff norm bounds
+
+on:
+  push:
+    branches: [gpt6-ym4-06e-interacting-wilson-20261111]
+    paths:
+      - '.github/workflows/ym4-06e-interacting-wilson.yml'
+      - 'experiments/ym4-06e-interacting-wilson/**'
+      - 'docs/PREDICTION-YM4-06E-INTERACTING-WILSON-20261111.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06e-wilson-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-interacting-transfer:
+    name: Native Rust1.81 SU2 interacting Wilson physical gap and four ternary cutoffs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Exact checkout and prediction-only freeze verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --branch gpt6-ym4-06e-interacting-wilson-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 89904ca89abc5962162e25509e5c20cf9588151e HEAD
+          git -C work show 89904ca89abc5962162e25509e5c20cf9588151e:docs/PREDICTION-YM4-06E-INTERACTING-WILSON-20261111.hbp > /tmp/frozen-ym4-06e.hbp
+          cmp /tmp/frozen-ym4-06e.hbp work/docs/PREDICTION-YM4-06E-INTERACTING-WILSON-20261111.hbp
+          echo 'YM4_06E_FREEZE|precode_prediction=89904ca89abc5962162e25509e5c20cf9588151e|unchanged=YES|r9_runs=0|json=0'
+      - name: Build Rust 1.81 with strict Clippy, exact integer unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SOURCE=work/experiments/ym4-06e-interacting-wilson/main.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06e_interacting --crate-type bin --emit metadata -o /tmp/ym4-06e.rmeta "$SOURCE"
+          rustc +1.81.0 --edition 2021 --test "$SOURCE" -o /tmp/ym4-06e-tests
+          /tmp/ym4-06e-tests
+          rustc +1.81.0 --edition 2021 -O "$SOURCE" -o /tmp/ym4-06e-native
+      - name: Certify FULL interacting gauge-invariant Wilson eigenratio and cutoff errors
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/ym4-06e-native run output | tee YM4-06E-RUN.log
+          /tmp/ym4-06e-native verify output | tee YM4-06E-VERIFY.log
+          grep -Fq 'YM4_06E_RESULT|PASS|' YM4-06E-RUN.log
+          grep -Fq 'YM4_06E_VERIFY|PASS|HBI=PASS|HBP=PASS|SHA=PASS|SH=PASS|HASH=PASS|' YM4-06E-VERIFY.log
+          grep -Fq 'FULL_SPECTRUM|space=1x1x1_SU2|beta_s=1/16|beta_t=1|full_gauge_projection=YES|lambda_2_over_lambda_1_gt=3/20|lambda_2_over_lambda_1_lt=2/5|' output/YM4-06E.hbp
+          grep -Fq 'q=3|D=0|m=3|per_link_dim=14|trits=3|' output/YM4-06E.hbp
+          grep -Fq 'q=9|D=2|m=5|per_link_dim=285|trits=6|' output/YM4-06E.hbp
+          grep -Fq 'q=27|D=6|m=15|per_link_dim=6930|trits=9|' output/YM4-06E.hbp
+          grep -Fq 'q=81|D=20|m=41|per_link_dim=180441|trits=12|' output/YM4-06E.hbp
+          grep -Fq 'q=3|D=0|m=3|per_link_dim=14|trits=3|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=3/8|' output/YM4-06E.hbp
+          grep -Fq 'q=9|D=2|m=5|per_link_dim=285|trits=6|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=1/60|' output/YM4-06E.hbp
+          grep -Fq 'q=27|D=6|m=15|per_link_dim=6930|trits=9|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=1/300000000|' output/YM4-06E.hbp
+          grep -Fq 'q=81|D=20|m=41|per_link_dim=180441|trits=12|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=1/1000000000000000000000000000000|' output/YM4-06E.hbp
+          grep -Fq 'q=27|lambda2_lambda1_gt=3/20|lambda2_lambda1_lt=2/5|' output/YM4-06E.hbp
+          grep -Fq 'q=81|lambda2_lambda1_gt=3/20|lambda2_lambda1_lt=2/5|' output/YM4-06E.hbp
+          grep -Fq 'spatial_lattice_refinement=NOT_COMPUTED' output/YM4-06E.hbp
+          (cd output && sha256sum YM4-06E.hbp YM4-06E.hbi YM4-06E.sha YM4-06E.sh YM4-06E.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06e-interacting-wilson/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06E.hbp YM4-06E.hbi YM4-06E.sha YM4-06E.sh YM4-06E.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06E_EVIDENCE|six_files=BYTE_IDENTICAL|r9_runs=0|json=0'
+      - name: Reject absent interaction, bad gauge projection, missing cutoff and invalid tail
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in no_spatial no_gauge_excitation drop_irrep wrong_tail; do
+            if /tmp/ym4-06e-native plant "$name" > "FAULT-${name}.log" 2>&1; then
+              echo "FAULT|name=$name|result=NOT_REJECTED|json=0"
+              exit 1
+            fi
+            case "$name" in
+              no_spatial) grep -Fq 'spatial plaquette interaction removed' "FAULT-${name}.log" ;;
+              no_gauge_excitation) grep -Fq 'missing physical fundamental Wilson excitation' "FAULT-${name}.log" ;;
+              drop_irrep) grep -Fq 'representation cutoff missing complete SU2 spin block' "FAULT-${name}.log" ;;
+              wrong_tail) grep -Fq 'invalid tighter cutoff error accepted' "FAULT-${name}.log" ;;
+            esac
+            echo "FAULT|name=$name|result=REJECTED|json=0"
+          done
+          cp -r output altered
+          sed -i 's/continuum_limit=OPEN/continuum_limit=SOLVED/' altered/YM4-06E.hbp
+          if /tmp/ym4-06e-native verify altered > FAULT-HBP.log 2>&1; then
+            echo 'FAULT|name=tampered_HBP|result=NOT_REJECTED|json=0'
+            exit 1
+          fi
+          grep -Fq 'spectral receipt changed without anchor' FAULT-HBP.log
+          echo 'FAULT|name=tampered_HBP|result=REJECTED|json=0'
+      - name: Print canonical HBI HBP SHA SH HASH for immutable filing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4-06E.hbp YM4-06E.hbi YM4-06E.sha YM4-06E.sh YM4-06E.hash SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "output/$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_06E_HOSTED|PASS|full_interacting_finite_SU2_spectrum=ENCLOSED|q3_q9_q27_q81_cutoff_error=BOUNDED|physical_continuum_mass_gap=OPEN|r9_runs=0|json=0'

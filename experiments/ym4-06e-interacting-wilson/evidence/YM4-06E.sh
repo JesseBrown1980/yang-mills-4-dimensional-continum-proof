@@ -1,0 +1,1 @@
+SH|slice=3PLUS1D_SU2_WILSON|global_sector=GAUGE_INVARIANT|trit_phases=minus,zero,plus|source_prediction=89904ca89abc5962162e25509e5c20cf9588151e|residuals=ANALYTIC_OPERATOR_NORM_INEQUALITIES|hash_is_metadata=YES|r9_runs=0|json=0

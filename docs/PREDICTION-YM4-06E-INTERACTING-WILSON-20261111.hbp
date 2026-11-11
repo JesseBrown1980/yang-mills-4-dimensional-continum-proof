@@ -1,0 +1,16 @@
+YM4_06E_PREDICTION|version=1|date=2026-11-11|status=FROZEN_BEFORE_CODE|r9_runs=0|json=0
+MODEL|group=SU2|space_periodic=1x1x1|spatial_links=3|spatial_plaquettes=3|beta_s=1/16|beta_t=1|A_s=exp(-beta_s_sum_(1-tr_comm/2))|physical=simultaneous_conjugation_gauge_invariants|json=0
+OPERATOR|T=A_s_half*B_t*P_G*A_s_half|B_t=three_wilson_one_link_convolutions|Wilson_link_ratio=ell_1/ell_0|full_interacting_positive=YES|json=0
+PREDICT|target=FULL_INTERACTING_PHYSICAL_GAP|ratio_lower_gt=3/20|ratio_upper_lt=2/5|lambda2_lambda1=full_gauge_invariant|a_t=REFERENCE_1|json=0
+PREDICT|target=FINITE_CUTOFF_NORM|q=3|D=0|m=3|error_over_b0_cubed_lt=3/8|per_link_dim=14|trits=3|json=0
+PREDICT|target=FINITE_CUTOFF_NORM|q=9|D=2|m=5|error_over_b0_cubed_lt=1/60|per_link_dim=285|trits=6|json=0
+PREDICT|target=FINITE_CUTOFF_NORM|q=27|D=6|m=15|error_over_b0_cubed_lt=1/300000000|per_link_dim=6930|trits=9|json=0
+PREDICT|target=FINITE_CUTOFF_NORM|q=81|D=20|m=41|error_over_b0_cubed_lt=1/1000000000000000000000000000000|per_link_dim=180441|trits=12|json=0
+PREDICT|target=PROJECTED_PHYSICAL_RATIO|q=9|lower_gt=1/8|upper_lt=1/2|certified_via_weyl_cutoff_error=YES|json=0
+PREDICT|target=PROJECTED_PHYSICAL_RATIO|q=27|lower_gt=3/20|upper_lt=2/5|certified_via_weyl_cutoff_error=YES|json=0
+PREDICT|target=PROJECTED_PHYSICAL_RATIO|q=81|lower_gt=3/20|upper_lt=2/5|certified_via_weyl_cutoff_error=YES|json=0
+CONTROL|spatial_interaction=NONCONSTANT_COMMUTATOR_ON_SU2|commutator_I_J=-I|plaquette_factor_not_one_link_product=YES|json=0
+CONTROL|SU2_CHAR_RATIO|ell1_ell0_lower=24019372/100000000|upper=24019373/100000000|from_06D_certified_beta1|json=0
+CONTROL|fixed_1x1x1_volume=YES|physical_spatial_refinement=NOT_RUN|coupling_running=NOT_RUN|full_4D_continuum_mass=OPEN|json=0
+NEGATIVE|operator_no_spatial_plaquette=REJECT|missing_gauge_excitation=REJECT|wrong_rep_cutoff=REJECT|wrong_tail=REJECT|tampered_HBP=REJECT|json=0
+INTEGRITY|Rust=1.81|no_float=YES|trits=minus,zero,plus|HBI_HBP_SHA_SH_HASH=YES|no_JSON_Node_V8=YES|r9_runs=0|json=0
