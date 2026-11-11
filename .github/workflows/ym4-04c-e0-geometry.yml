@@ -63,7 +63,7 @@ jobs:
           /tmp/ym4-04c-e0-native | tee YM4_04C-E0-RUST.hbp
           test "$(grep -Fc 'YM4_04C_E0_RUST|N=' YM4_04C-E0-RUST.hbp)" -eq 2
           grep -Fq 'YM4_04C_E0_RUST_RESULT|PASS|independent_algorithm=YES|' YM4_04C-E0-RUST.hbp
-      - name: Negative controls: degree, quarter and false class-2 closed polymers
+      - name: "Negative controls: degree, quarter and false class-2 closed polymers"
         shell: bash
         run: |
           set -euo pipefail
