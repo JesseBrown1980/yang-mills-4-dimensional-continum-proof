@@ -1,0 +1,95 @@
+name: YM4-06B finite 3D S3 two-gap exact-integer certificate
+
+on:
+  push:
+    branches: [gpt6-ym4-06b-two-gaps-20261111]
+    paths:
+      - '.github/workflows/ym4-06b-two-gaps.yml'
+      - 'experiments/ym4-06b-two-gaps/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06b-two-gaps-\${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  two-gap-proof:
+    name: Rust 1.81 clippy, exact S3, two finite gap bounds, faults
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Enforce frozen prediction exactly as first committed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code 3f397b14adeeef21960e8b00bdff58590e772292 HEAD -- experiments/ym4-06b-two-gaps/PREDICT-YM4-06B-20261111.hbp
+          test -f experiments/ym4-06b-two-gaps/PREDICT-YM4-06B-20261111.hbp
+      - name: Compile independent Rust 1.81 integer-only operator checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          cargo +1.81.0 clippy --all-targets --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml -- -D warnings
+          cargo +1.81.0 test --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml
+          cargo +1.81.0 build --release --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml
+      - name: Compute BOTH analytic spectral bounds with exact finite 3D checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          BIN=experiments/ym4-06b-two-gaps/target/release/ym4-06b-two-gaps
+          "$BIN" compute output | tee run.log
+          "$BIN" verify output | tee verify.log
+          grep -Fq 'YM4_06B_RUN|PASS|' run.log
+          grep -Fq 'YM4_06B_VERIFY|PASS|' verify.log
+          grep -Fq 'lower_JE=90|' output/TWO-GAPS.hbp
+          grep -Fq 'lower_JE=414|' output/TWO-GAPS.hbp
+          grep -Fq 'target=first_E2_minus_E1|r=27|strict_positive=YES|' output/TWO-GAPS.hbp
+          grep -Fq 'target=first_E2_minus_E1|r=81|strict_positive=YES|' output/TWO-GAPS.hbp
+          grep -Fq 'physical_mass=NOT_COMPUTED' output/TWO-GAPS.hbp
+          grep -Fq 'r9_runs=0' output/TWO-GAPS.hbp
+      - name: Four planted invalid inputs must fail; corrupt receipt must fail
+        shell: bash
+        run: |
+          set -euo pipefail
+          BIN=experiments/ym4-06b-two-gaps/target/release/ym4-06b-two-gaps
+          for name in wrong_magnetic_cost deleted_transposition missing_flat_sector; do
+            if "$BIN" plant "$name" > "plant-$name.log" 2>&1; then
+              echo "PLANT|name=$name|result=FAIL_NO_REJECTION|json=0"
+              exit 1
+            fi
+            echo "PLANT|name=$name|result=REJECTED|json=0"
+          done
+          if "$BIN" r 9 >plant-forbidden-r9.log 2>&1; then
+            echo "PLANT|name=forbidden_r9|result=FAIL_NO_REJECTION|json=0"
+            exit 1
+          fi
+          echo 'PLANT|name=forbidden_r9|result=REJECTED|json=0'
+          cp -r output corrupted
+          sed -i 's/lower_JE=90/lower_JE=91/' corrupted/TWO-GAPS.hbp
+          if "$BIN" verify corrupted > plant-corrupted-receipt.log 2>&1; then
+            echo 'PLANT|name=corrupted_HBP|result=FAIL_NO_REJECTION|json=0'
+            exit 1
+          fi
+          echo 'PLANT|name=corrupted_HBP|result=REJECTED|json=0'
+          sha256sum output/TWO-GAPS.hbp output/TWO-GAPS.hbi output/TWO-GAPS.anchor > output/SHA256SUMS.txt
+          sha256sum -c output/SHA256SUMS.txt
+          echo 'YM4_06B_HOSTED_GATE|PASS|two_gaps=FINITE_ANALYTIC_LOWER_BOUNDS|spectral_levels=NOT_MEASURED|r9_runs=0|json=0' | tee verdict.hbp
+      - name: Preserve complete native evidence, including failure logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-06b-two-gaps-exact-20261111
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            output/
+            run.log
+            verify.log
+            verdict.hbp
+            plant-*.log
