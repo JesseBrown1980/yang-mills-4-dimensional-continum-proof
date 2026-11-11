@@ -186,6 +186,40 @@ def e4(fault):
     assert E.rat(1,8)[1]<E.rat(1,4)[0]
     print("E4_ALL_K|delta_crit_lt_1/8=EXACT|lambda_monotone=DERIVED|cfin_monotone=DERIVED|cfin_lt_1_for_lambda_le_kappa=DERIVED|delta_k_le_delta1*q^(k-1)=ALGEBRA_CONDITIONAL_G1|weak_coupling_not_proved=YES|json=0",flush=True)
 
+def exact_sixth_root_scaled(value):
+    """Arbitrary magnitude: unlike the frozen E3 small-beta helper, this
+    bisection first doubles the upper bound until it encloses the root."""
+    assert value>=0
+    target=value*(E.ONE*E.ONE*E.ONE*E.ONE*E.ONE)
+    high=E.ONE
+    def sixth(y):
+        z=y*y*y
+        return z*z
+    while sixth(high)<=target:high*=2
+    low=0
+    while high-low>1:
+        mid=(low+high)//2
+        if sixth(mid)<=target:low=mid
+        else:high=mid
+    return low
+
+def eps6_unbounded(beta):
+    """Same positive Wilson c0 series but L6 root permitted above one."""
+    base=E.c0(beta)
+    lo=hi=0
+    for j in range(7):
+        bj=(j*beta[0],beta[1])
+        v=E.div(E.c0(bj),E.power(base,j))
+        coef=E.comb(6,j)
+        if j%2==0:
+            lo+=coef*v[0]
+            hi+=coef*v[1]
+        else:
+            lo-=coef*v[1]
+            hi-=coef*v[0]
+    assert lo>0 and hi>lo
+    return(exact_sixth_root_scaled(lo),exact_sixth_root_scaled(hi)+1)
+
 def c15(epsilon,fault=""):
     # head-independent mandatory pole upper-bound failure at beta>=1/40
     exponent=pos_exp(E.rat(1,4))
@@ -204,7 +238,7 @@ def e5(fault):
         ((4,1),2924,2925,10,True),
     ]
     for beta,low,high,den,pole in table:
-        eps=E.eps6(beta)
+        eps=eps6_unbounded(beta)
         wall=c15(eps,fault)
         assert enclosed(wall,low,high,den),"E5_REJECT: frozen C15 wall bracket/pole"
         if pole:
