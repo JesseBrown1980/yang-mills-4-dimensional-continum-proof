@@ -174,6 +174,7 @@ impl<'a> Counter<'a>{
         }
     }
     fn run(mut self,kind:usize)->String{
+        assert_eq!(self.g.links,4*self.g.side*self.g.side*self.g.side*self.g.side);
         let root=self.g.root(kind);
         assert_eq!(usize::from(self.g.classes[root]),kind);
         let first=self.g.incidence[root].clone();
