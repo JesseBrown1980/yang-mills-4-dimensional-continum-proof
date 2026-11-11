@@ -1,0 +1,1 @@
+SH|phase=0,1,2|global_sector=GAUGE_INVARIANT_CLASSICAL_SPATIAL_SLICE|fixed_beta_s=1/128|parent_prediction=19c9d0f78532e5b7bef1104fcbbcf89f1dd79940|local_TV_influence=CLASSICAL|quantum_transfer=SEPARATE|hash_is_metadata=YES|json=0
