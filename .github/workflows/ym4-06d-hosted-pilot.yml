@@ -62,7 +62,13 @@ jobs:
           test "$(grep -Fc 'LOCK_HASH|k=' output/YM4-06D.hbp)" -eq 4
           grep -Fq 'Wilson_4D_interacting_lowest_spectrum=NOT_COMPUTED' output/YM4-06D.hbp
           (cd output && sha256sum YM4-06D.hbp YM4-06D.hbi YM4-06D.sha YM4-06D.sh YM4-06D.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
-      - name: Reject four mathematical faults and one altered HBP
+          EVIDENCE=work/experiments/ym4-06d-hosted/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06D.hbp YM4-06D.hbi YM4-06D.sha YM4-06D.sh YM4-06D.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06D_EVIDENCE|six_files=BYTE_IDENTICAL|HBP_HBI_SHA_SH_HASH=PASS|json=0'
+      - name: Reject five mathematical faults and one altered HBP
         shell: bash
         run: |
           set -euo pipefail
