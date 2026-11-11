@@ -116,8 +116,8 @@ fn matmul(a: &Matrix, b: &Matrix) -> Matrix {
     let mut c = [[0; 6]; 6];
     for i in 0..6 {
         for j in 0..6 {
-            for k in 0..6 {
-                c[i][j] += a[i][k] * b[k][j];
+            for (k, row) in b.iter().enumerate() {
+                c[i][j] += a[i][k] * row[j];
             }
         }
     }
