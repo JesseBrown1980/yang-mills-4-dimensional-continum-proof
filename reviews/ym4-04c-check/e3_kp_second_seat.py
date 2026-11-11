@@ -6,7 +6,7 @@ Read frozen n49 upper-majorant (NOT the underlying infinite power series).
 from pathlib import Path
 import sys
 
-SRC=Path(__file__).resolve().parents[0]/"opus55-ym4-04c-g-attack"/"L5-numbers"
+SRC=Path(__file__).resolve().parents[1]/"opus55-ym4-04c-g-attack"/"L5-numbers"
 assert SRC.joinpath("polylib.py").is_file()
 sys.path.insert(0,str(SRC))
 import ilib as L
