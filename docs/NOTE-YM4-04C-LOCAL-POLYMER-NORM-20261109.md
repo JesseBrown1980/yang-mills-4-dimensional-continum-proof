@@ -878,7 +878,7 @@ Fix a total order on 𝒴_O. For a polymer Γ and a fine link e ∈ supp Γ, the
 Then:
 
 1. T_ν(e) := Σ_{Γ : e ∈ off(Γ)} ν(Γ) ≤ t for every off link e.
-2. For every fine link e, line or off, and every object o ∋ e, Σ_{Γ with root o at e, #Γ ≥ 2} ν(Γ) ≤ ν_o[(1 + t)^{s(o)} − 1].
+2. For every fine link e, line or off, and every object o ∋ e, Σ_{Γ with root o at e, Γ ≠ {o}} ν(Γ) ≤ ν_o[(1 + t)^{s(o)} − 1].
 
 *Proof.* 1. Let T_n(e) be the same sum over polymers of at most n objects, and T_0 := 0. Root Γ at e. By Lemma 4.11, and dropping every constraint among the components,
 
@@ -955,13 +955,13 @@ A_O := sum over clusters X with l in Y(X) and Y(X) holding a loop of  e^{kappa #
 
 *The line channel.* If ℓ ∈ Y″(Y′), then e_0 ∈ Y′. Lemma 4.5 gives A_L ≤ e^{−4κ}Σ_{Y′∈𝒴_L, Y′∋e_0} w(Y′).
 
-*The objects.* Let X enter A_O. Some Γ ∈ X has ℓ ∈ Y″(Γ), so e_0 ∈ supp Γ. Let o be the root of Γ at e_0. Since e_0 is a line link, m_o ≥ 1 **[CHANGED: route A's Q took m ≥ 0 (F5, M1)]**. Exactly one of three cases holds. (i) Γ = {o} and X = {Γ}. (ii) Γ = {o} and X ≠ {Γ}. (iii) #Γ ≥ 2. So every X of A_O is counted at least once in
+*The objects.* Let X enter A_O. Some Γ ∈ X has ℓ ∈ Y″(Γ), so e_0 ∈ supp Γ. Let o be the root of Γ at e_0. Since e_0 is a line link, m_o ≥ 1 **[CHANGED: route A's Q took m ≥ 0 (F5, M1)]**. Exactly one of three cases holds. (i) Γ = {o} and X = {Γ}. (ii) Γ = {o} and X ≠ {Γ}. (iii) Γ ≠ {o}. So every X of A_O is counted at least once in
 
 ```text
 A_O  <=  sum_{o in Y_O, o containing e_0} [ S_1(o) + S_2(o) + S_3(o) ],
 S_1(o) := e^{kappa #Y''(o)} omega_o * 1[ Y''(o) holds a loop ],
 S_2(o) := sum_{X containing {o}, X != {{o}}} e^{d(X)} PhiBar(X),
-S_3(o) := sum over Gamma with root o at e_0 and #Gamma >= 2 of  sum_{X containing Gamma} e^{d(X)} PhiBar(X).
+S_3(o) := sum over Gamma with root o at e_0 and Gamma != {o} of  sum_{X containing Gamma} e^{d(X)} PhiBar(X).
 ```
 
 Here S_2 and S_3 use e^{κ#Y(X)} ≤ e^{d(X)}. That holds because #Y(X) ≤ Σ_Γ m_X(Γ)#Y″(Γ) ≤ Σ_Γ m_X(Γ)#Γ. Write f := f_o and m := m_o.
@@ -1008,7 +1008,7 @@ At κ = 1/4 the domain is δ ≤ δ_crit,fin with δ_crit,fin ∈ [0.114846768, 
 
 **Lemma 4.19 (DERIVED).** c_fin is nondecreasing on {δ > 0 : λ(δ) ≤ κ}. It is constant, equal to e^{−4κ}, on an initial interval **[CHANGED: the frozen self_map clause says "c is increasing"; S4]**.
 
-*Proof.* δ′ and λ increase with δ. For fixed f, e^{−(κ−λ)f} − e^{−κf} increases with λ. A supremum of nondecreasing functions is nondecreasing, and so is a product of positive nondecreasing factors. The maximum of nondecreasing entries is nondecreasing. ∎
+*Proof.* δ′ and λ increase with δ. For fixed f, e^{−(κ−λ)f} − e^{−κf} increases with λ. A supremum of nondecreasing functions is nondecreasing, and so is a product of positive nondecreasing factors. The maximum of nondecreasing entries is nondecreasing. For the initial constant interval, as δ ↓ 0, entry two tends to e^{−5κ} < e^{−4κ}. For any λ < κ/2 and integer f ≥ 4, integrate the derivative of e^{−(κ−s)f} from s=0 to s=λ to obtain 0 ≤ e^{−(κ−λ)f} − e^{−κf} ≤ λ f e^{−(κ−λ)f}. The calculus bound sup_{t≥0} t e^{−(κ−λ)t} = 1/[e(κ−λ)] therefore bounds entry three by e^{δ−κ/2} λ/[e(κ−λ)], which tends to zero. Both entries are thus strictly below e^{−4κ} for all sufficiently small positive δ, and entry one equals e^{−4κ}. This establishes the asserted nonempty initial flat interval. ∎
 
 **Corollary 4.20 (the self-map, uniform in N and K; DERIVED).** Suppose H_k(κ, δ_k) holds and λ(δ_k) ≤ κ. Put δ_{j+1} := c_fin(δ_j)δ_j for k ≤ j ≤ K − 1. Then for every j with k ≤ j ≤ K, H_j(κ, δ_j) holds, and
 
