@@ -36,14 +36,15 @@ jobs:
         run: |
           set -euo pipefail
           rustup toolchain install 1.81.0 --profile minimal --component clippy
-          cargo +1.81.0 clippy --all-targets --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml -- -D warnings
-          cargo +1.81.0 test --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml
-          cargo +1.81.0 build --release --locked --manifest-path experiments/ym4-06b-two-gaps/Cargo.toml
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06b_two_gaps --crate-type bin --emit metadata -o /tmp/ym4-06b.rmeta experiments/ym4-06b-two-gaps/src/main.rs
+          rustc +1.81.0 --edition 2021 --test experiments/ym4-06b-two-gaps/src/main.rs -o /tmp/ym4-06b-tests
+          /tmp/ym4-06b-tests
+          rustc +1.81.0 --edition 2021 -O experiments/ym4-06b-two-gaps/src/main.rs -o /tmp/ym4-06b-native
       - name: Compute BOTH analytic spectral bounds with exact finite 3D checks
         shell: bash
         run: |
           set -euo pipefail
-          BIN=experiments/ym4-06b-two-gaps/target/release/ym4-06b-two-gaps
+          BIN=/tmp/ym4-06b-native
           "$BIN" compute output | tee run.log
           "$BIN" verify output | tee verify.log
           grep -Fq 'YM4_06B_RUN|PASS|' run.log
@@ -58,7 +59,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          BIN=experiments/ym4-06b-two-gaps/target/release/ym4-06b-two-gaps
+          BIN=/tmp/ym4-06b-native
           for name in wrong_magnetic_cost deleted_transposition missing_flat_sector; do
             if "$BIN" plant "$name" > "plant-$name.log" 2>&1; then
               echo "PLANT|name=$name|result=FAIL_NO_REJECTION|json=0"
