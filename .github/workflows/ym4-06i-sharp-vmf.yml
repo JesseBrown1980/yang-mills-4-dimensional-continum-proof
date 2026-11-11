@@ -2,9 +2,9 @@ name: YM4-06I 4D nonzero-coupling Wilson volume-uniform strong-coupling transfer
 
 on:
   push:
-    branches: [gpt6-ym4-06i-4d-volume-uniform-transfer-20261111]
+    branches: [gpt6-ym4-06i-sharp-vmf-influence-20261111]
     paths:
-      - '.github/workflows/ym4-06i-transfer.yml'
+      - '.github/workflows/ym4-06i-sharp-vmf.yml'
       - 'experiments/ym4-06i-sharp-vmf/**'
       - 'docs/PREDICTION-YM4-06I-SHARP-VMF-20261111.hbp'
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git clone -q --filter=blob:none --branch gpt6-ym4-06i-4d-volume-uniform-transfer-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git clone -q --filter=blob:none --branch gpt6-ym4-06i-sharp-vmf-influence-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
           git -C work checkout -q "$GITHUB_SHA"
           test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
           git -C work merge-base --is-ancestor 7f4da6d135978453d7eeddfd2a8396c183814387 HEAD
