@@ -184,7 +184,7 @@ fn vmf_covariance_gate(false_variance:bool,false_old_factor:bool)->String{
     // A co-plaquette neighbor changes |h-h'| by <=2 beta*c,
     // hence c_ij<= beta*c/2 at ALL external fields.
     if false_variance{
-        assert!(1u128*8<=4,"uniform S3 has directional variance 1/4 not 1/8");
+        panic!("uniform S3 has directional variance 1/4 not 1/8");
     }
     if false_old_factor{
         assert_eq!(1u128,2,"old beta per face is not the sharpened beta/2 certificate");
