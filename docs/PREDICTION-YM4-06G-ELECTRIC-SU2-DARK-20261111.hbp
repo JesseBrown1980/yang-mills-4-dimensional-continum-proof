@@ -1,0 +1,17 @@
+# YM4-06G frozen independent countercontrol: actual continuous SU2 anisotropic
+# 3+1D pure-electric Wilson transfer beta_t=2, beta_spatial=0.
+# Spatial fine side Lf=3 Lc, Lc>=4, factor-three spatial link blocking.
+PREDICT|id=G01|model=CONTINUOUS_SU2_TEMPORAL_WILSON|beta_t=2|beta_spatial=0|vacuum=HAAR_CONSTANT
+PREDICT|id=G02|coarse_B3_product_Haar=EXACT|J_f_after_B3_isometry=YES|vacuum_preserving=YES
+PREDICT|id=G03|one_temporal_tick_SU2_irrep_eigen=t_n=I_nplus1_over_I1|all_link_independent=YES
+PREDICT|id=G04|t1_beta2_between=43over100_and44over100|all_n_ge2_tn_le=1over6_lt_t1
+PREDICT|id=G05|gauge_invariant_nonconstant_spin_network_support_at_least=4_links|periodic_side_ge4
+PREDICT|id=G06|fine_all_physical_first_ratio=t1_power4|fine_plaquette_Wilson_character_is_eigenvector=YES
+PREDICT|id=G07|fine_plaquette_at_x_1_1_1_transverse_planes_0_1|links_off_all_coarse_paths=YES|Jadj_plaquette=0
+PREDICT|id=G08|coarse_one_fine_tick_character_eigen=t_n_power3_per_coarse_link|J_range_invariant=YES|zeta=0
+PREDICT|id=G09|coarse_three_fine_tick_all_physical_first_ratio=t1_power36|rcoarse_cuberoot=t1_power12
+PREDICT|id=G10|discarded_full_complement_rho=t1_power4|rho_gt_rcoarse_cuberoot=YES|Schur_false_fast_sector=REJECT
+PREDICT|id=G11|required_one_step_multiplicative_error_x_ge=t1_powerminus8_minus1|lower_strict_gt=710
+PREDICT|id=G12|induced_three_tick_semigroup=EXACT_IN_THIS_MODEL|memory=ZERO|still_hidden_slow_modes=YES
+PREDICT|id=G13|fault_false_2_link_cycle=REJECT|fault_missing_hidden_plaquette=REJECT|fault_false_low_error=REJECT|fault_nonzero_leakage=REJECT
+PREDICT|id=G14|not_isotropic_Wilson=YES|SU2_physical_continuum_gap=OPEN|all_scale_rho=OPEN|r9=UNTOUCHED
