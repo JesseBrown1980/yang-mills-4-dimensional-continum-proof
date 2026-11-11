@@ -1,0 +1,17 @@
+YM4_06I_FREEZE|date=2026-11-11|prediction_only_before_verifier=YES|source=YM4_06H|r9_runs=0|json=0
+MODEL|4D_SU2_Wilson_Haar=YES|space_L>=2|time_Nt>=2|anisotropic_spatial_beta_s=1/128|Wilson_transfer_OS_and_Follmer=IMPORTED_REVIEW|json=0
+THEOREM|SU2_identified_with_unit_S3|vMF_Z(r)=2I1(r)/r|mean_A(r)=I2(r)/I1(r)|Hessian_logZ=Cov(X)|max_eigenvalue_le=1/4|global_all_r_ge0=YES|json=0
+PROOF|A(r)/r_le_1/4|positive_Bessel_coefficients=YES|A_prime_le_1/4|Riccati_A_prime=1-A^2-3A/r|forbidden_upcrossing=YES|r0_series_A=r/4-r^3/96+O(r^5)|json=0
+IMPROVEMENT|TV_vMF_h_hprime_le=norm(h-hprime)/4|previous_le=norm(h-hprime)/2|per_shared_face_cij_le=beta_p/2|improvement_factor=2|json=0
+THEOREM|4D_spatial_link_Dobrushin_row_le=6beta_s+3beta_t|temporal_link_row_le=9beta_t|all_volume_alpha_le=max_of_two|no_total_plaquette_factor=YES|json=0
+PRIMARY|beta_s=1/128|beta_t=1/10|alpha_spatial=111/320|alpha_temporal=9/10|alpha_full=9/10|physical_transfer_ratio_le=9/10|m_at_1_ge=log(10/9)|L_uniform=YES|json=0
+ALT|beta_s=1/128|beta_t=1/16|alpha_spatial=15/64|alpha_temporal=9/16|alpha_full=9/16|m_at_1_ge=log(16/9)|json=0
+ALT|beta_s=1/128|beta_t=1/32|alpha_spatial=9/64|alpha_temporal=9/32|alpha_full=9/32|m_at_1_ge=log(32/9)|json=0
+LIMIT|beta_s=1/128|beta_t=1/9|alpha_temporal=1|criterion_not_strict=YES|json=0
+NEGATIVE|beta_s=1/128|beta_t=1/8|alpha_temporal=9/8|MUST_REJECT=YES|json=0
+NEGATIVE|beta_s=1/128|beta_t=1|alpha_temporal=9|MUST_REJECT=YES|json=0
+GEOMETRY|L=3|Nt=3|sites=81|links=324|plaquettes=486|spatial_link_4spatial_2temporal|temporal_link_6temporal|json=0
+GEOMETRY|L=9|Nt=3|sites=2187|links=8748|plaquettes=13122|spatial_link_4spatial_2temporal|temporal_link_6temporal|json=0
+GEOMETRY|L=27|Nt=2|sites=39366|links=157464|plaquettes=236196|spatial_link_4spatial_2temporal|temporal_link_6temporal|json=0
+FALSIFIER|old_TV_constant=REJECT_AS_OPTIMAL|upcrossing_derivative_wrong=REJECT|beta_t_1_8_pass=REJECT|beta_t_1_pass=REJECT|broken_local_face=REJECT|tampered_hbp=REJECT|json=0
+SCOPE|beta_t_extension_from_1/18_to_less_than_1/9|fixed_spacing_strong_coupling_only=YES|Dobrushin_Follmer_plus_OS_proof_review=REQUIRED|no_weak_coupling_continuum_result=YES|r9_runs=0|json=0
