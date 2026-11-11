@@ -127,7 +127,7 @@ The rank-one constant-temporal component is included in `Pi_N Bhat Pi_N`. Theref
 
 This elementary lower bound is exponentially bad in volume. It makes the finite theorem effective, but does **not** establish a uniform relative truncation error along a growing lattice family.
 
-**Independent finite matrix formulation.** If `phi_i` are full matrix-coefficient Peter–Weyl basis functions retained by `Pi_N`, and `t_i=prod_l t_(n_l)`, the nonzero eigenvalues of `T_N` equal those of the finite Gram matrix
+**Independent finite matrix formulation.** If `phi_i` are **orthonormal in the full product-Haar inner product** and form the complete retained Peter–Weyl matrix-coefficient basis of `Pi_N` (before optional gauge-invariant projection), and `t_i=prod_l t_(n_l)`, the nonzero eigenvalues of `T_N` equal those of the finite Gram matrix
 
 [
 G_{ij}=\sqrt{t_i t_j}\int\overline{\phi_i(U)}A(U)\phi_j(U)\,dHaar(U).
