@@ -1,0 +1,63 @@
+name: Independent YM4-06B S3 affine-group recheck
+
+on:
+  push:
+    branches: [gpt6-ym4-06b-independent-affine-20261111]
+    paths:
+      - '.github/workflows/ym4-06b-independent-affine.yml'
+      - 'reviews/ym4-06b-independent-affine-20261111/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06b-independent-affine-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-second-check:
+    name: Independent affine S3 integer recheck (48/21, 1512/52164, E polynomial)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Immutable native checkout without Node or V8 actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --filter=blob:none --no-checkout --branch gpt6-ym4-06b-independent-affine-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work sparse-checkout set reviews/ym4-06b-independent-affine-20261111
+          git -C work checkout --quiet "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Compile with Rust 1.81 and strict Clippy; independent affine representation
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SOURCE=work/reviews/ym4-06b-independent-affine-20261111/verify.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06b_indep_affine --crate-type bin --emit metadata -o /tmp/indep.rmeta "$SOURCE"
+          rustc +1.81.0 --edition 2021 -O "$SOURCE" -o /tmp/indep-ym4-06b
+      - name: Execute independent 3D S3 checks and require frozen mathematical quantities
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/indep-ym4-06b | tee INDEPENDENT-RECHECK.hbp
+          grep -Fq 'INDEPENDENT_AFFINE|PASS|model=S3_affine_on_Z3|flat_triples=48|flat_orbits=21|' INDEPENDENT-RECHECK.hbp
+          grep -Fq '|single_moves=1512|single_cost=8|double_moves=52164|' INDEPENDENT-RECHECK.hbp
+          grep -Fq '|electric_trace=18|electric_polynomial_nonzero=0|' INDEPENDENT-RECHECK.hbp
+          grep -Fq 'INDEPENDENT_BOUNDS|r=27|E22_E21_lower_JE=90|' INDEPENDENT-RECHECK.hbp
+          grep -Fq 'INDEPENDENT_BOUNDS|r=81|E22_E21_lower_JE=414|' INDEPENDENT-RECHECK.hbp
+          grep -Fq '|spectral_levels=NOT_COMPUTED|json=0' INDEPENDENT-RECHECK.hbp
+      - name: Missing-sector negative test and log-anchored receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          if /tmp/indep-ym4-06b plant > NEGATIVE-PLANT.log 2>&1; then
+            echo 'INDEPENDENT_NEGATIVE|FAIL|missing_sector_accepted=1|json=0'
+            exit 1
+          fi
+          grep -Fq "assertion" NEGATIVE-PLANT.log
+          sha256sum INDEPENDENT-RECHECK.hbp
+          echo "INDEPENDENT_SOURCE_SHA256|$(sha256sum work/reviews/ym4-06b-independent-affine-20261111/verify.rs | cut -d ' ' -f1)|json=0"
+          echo 'INDEPENDENT_NEGATIVE|PASS|missing_sector_rejected=1|json=0'
+          echo 'INDEPENDENT_3D_S3|PASS|first_gap=ANALYTIC_BOUND_ONLY|flat_cluster_gap=ANALYTIC_BOUND_ONLY|r9_runs=0|json=0'
