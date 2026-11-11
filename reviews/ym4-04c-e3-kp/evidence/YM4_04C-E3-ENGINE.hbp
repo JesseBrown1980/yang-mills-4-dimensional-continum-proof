@@ -1,0 +1,15 @@
+E3_FREEZE|sha256=c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404|C03_counts=VERIFIED_PR60|prefreeze=COMPUTED|r9_runs=0|json=0
+E3_DELTA_CRIT|lower=0.114846768|upper=0.114846769|lambda_bracket=PASS|kappa=1/4|json=0
+E3|head=crude|beta=1904/100000|read=MET|alpha=200/4000|bound=UPPER_CERTIFIED|frozen_n49_mu_tail=YES|json=0
+E3|head=crude|beta=1905/100000|read=NOT_MET|minimizer=53646938852/1000000000000|global_margin_ge=0.000014227943|frozen_n49_mu_tail=YES|json=0
+E3|head=crude|beta=1/50|read=NOT_MET|minimizer=29311030801/1000000000000|global_margin_ge=0.024350135988|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=1/50|read=MET|alpha=25/4000|bound=UPPER_CERTIFIED|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=2075/100000|read=MET|alpha=78/4000|bound=UPPER_CERTIFIED|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=2076/100000|read=NOT_MET|minimizer=20978393291/1000000000000|global_margin_ge=0.000112354444|frozen_n49_mu_tail=YES|json=0
+E3|head=headfree|beta=2076/100000|read=NOT_MET|minimizer=20978404725/1000000000000|global_margin_ge=0.000112244854|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=2074/100000|read=C14_MET|delta1_enclosed=[0.1088558495475,0.1088558495475]|delta_crit_separated=YES|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=2075/100000|read=C14_NOT_MET|delta1_enclosed=[0.1158911083192,0.1158911083193]|delta_crit_separated=YES|frozen_n49_mu_tail=YES|json=0
+E3|head=headfree|beta=2074/100000|read=C14_MET|delta1_enclosed=[0.1088527865196,0.1088527865197]|delta_crit_separated=YES|frozen_n49_mu_tail=YES|json=0
+E3|head=headfree|beta=2075/100000|read=C14_NOT_MET|delta1_enclosed=[0.1158861245891,0.1158861245892]|delta_crit_separated=YES|frozen_n49_mu_tail=YES|json=0
+E3|head=refined|beta=1/64|read=C14_MET|delta1_enclosed=[0.0010173855728,0.0010173855729]|delta_crit_separated=YES|frozen_n49_mu_tail=YES|json=0
+E3_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|C04_tail_guard=IMPORTED_FROM_PR58|weak_coupling=OPEN|r9_runs=0|json=0
