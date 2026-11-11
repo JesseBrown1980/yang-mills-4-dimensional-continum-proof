@@ -1,0 +1,118 @@
+name: YM4-04C E0 independent 4D off-link geometry and n4 polymers
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e0-geometry-census-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e0-geometry.yml'
+      - 'tests/test_ym4_04c_e0_geometry.py'
+      - 'reviews/ym4-04c-check/e0_geometry_independent.rs'
+      - 'reviews/ym4-04c-e0-geometry/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-04c-e0-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  e0-exhaustive-4d:
+    name: Frozen E0 4D Python+Rust1.81 independently enumerated geometry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Freeze and source provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e0-geometry-census-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git -C work merge-base --is-ancestor e8c3a962bb8020199bbed594c4d70075aa9189e8 HEAD
+          git -C work show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 >/tmp/YM4-04C-E0-FROZEN.hbp
+          head -n 42 work/docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp >/tmp/YM4-04C-E0-WORKING.hbp
+          cmp /tmp/YM4-04C-E0-FROZEN.hbp /tmp/YM4-04C-E0-WORKING.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/YM4-04C-E0-FROZEN.hbp' | sha256sum -c -
+          echo 'YM4_04C_E0_FREEZE|42_rows=UNCHANGED|original_sha=c74e6388|r9_runs=0|json=0'
+      - name: Strict no-float repository source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 work/scripts/no_float_gate.py work
+      - name: Independent Python E0 four-dimensional adjacency and n4 exhaustive counts
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/tests/test_ym4_04c_e0_geometry.py | tee YM4_04C-E0-PY.hbp
+          grep -Fq 'YM4_04C_E0_RESULT|PASS|lattices=8,10|geometry=EXHAUSTIVE|n4_closed=EXHAUSTIVE|' YM4_04C-E0-PY.hbp
+          test "$(grep -Fc 'YM4_04C_E0|N=' YM4_04C-E0-PY.hbp)" -eq 2
+          grep -Fq '|closed_n4_class1,2,3=1,0,0|' YM4_04C-E0-PY.hbp
+      - name: Rust 1.81 strict Clippy and independently constructed incidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SRC=work/reviews/ym4-04c-check/e0_geometry_independent.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_04c_e0 --crate-type bin --emit metadata -o /tmp/ym4-04c-e0.rmeta "$SRC"
+          rustc +1.81.0 --edition 2021 --test "$SRC" -o /tmp/ym4-04c-e0-tests
+          /tmp/ym4-04c-e0-tests
+          rustc +1.81.0 --edition 2021 -O "$SRC" -o /tmp/ym4-04c-e0-native
+          /tmp/ym4-04c-e0-native | tee YM4_04C-E0-RUST.hbp
+          test "$(grep -Fc 'YM4_04C_E0_RUST|N=' YM4_04C-E0-RUST.hbp)" -eq 2
+          grep -Fq 'YM4_04C_E0_RUST_RESULT|PASS|independent_algorithm=YES|' YM4_04C-E0-RUST.hbp
+      - name: Negative controls: degree, quarter and false class-2 closed polymers
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in degree_19 quarter_wrong closed_class2; do
+            if python3 -I -B work/tests/test_ym4_04c_e0_geometry.py --sabotage "$fault" > "YM4_04C-E0-FAULT-${fault}.txt" 2>&1; then
+              echo "YM4_04C_E0_FAULT|name=$fault|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$fault" in
+              degree_19) grep -Fq 'E0_FAIL: off-link adjacency degree differs from 5 times its support' "YM4_04C-E0-FAULT-${fault}.txt" ;;
+              quarter_wrong) grep -Fq 'E0_FAIL: planted quarter-count corruption' "YM4_04C-E0-FAULT-${fault}.txt" ;;
+              closed_class2) grep -Fq 'E0_FAIL: closed four-polymer count for class2' "YM4_04C-E0-FAULT-${fault}.txt" ;;
+            esac
+            echo "YM4_04C_E0_FAULT|name=$fault|rejected=YES|json=0"
+          done
+      - name: Verify independent agreement and replay filed evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          for N in 8 10; do
+            PY=$(grep "^YM4_04C_E0|N=$N|" YM4_04C-E0-PY.hbp)
+            RS=$(grep "^YM4_04C_E0_RUST|N=$N|" YM4_04C-E0-RUST.hbp)
+            PY_LINKS=$(printf '%s\n' "$PY" | sed -n 's/.*|links=\([0-9]*\)|.*/\1/p')
+            RS_LINKS=$(printf '%s\n' "$RS" | sed -n 's/.*|links=\([0-9]*\)|.*/\1/p')
+            PY_FACES=$(printf '%s\n' "$PY" | sed -n 's/.*|plaquettes=\([0-9]*\)|.*/\1/p')
+            RS_FACES=$(printf '%s\n' "$RS" | sed -n 's/.*|plaquettes=\([0-9]*\)|.*/\1/p')
+            test -n "$PY_LINKS" && test "$PY_LINKS" = "$RS_LINKS"
+            test -n "$PY_FACES" && test "$PY_FACES" = "$RS_FACES"
+            echo "YM4_04C_E0_CROSS|N=$N|links=$PY_LINKS|plaquettes=$PY_FACES|n4=1,0,0|MATCH|json=0"
+          done
+          sha256sum YM4_04C-E0-PY.hbp YM4_04C-E0-RUST.hbp > YM4_04C-E0-SHA256SUMS
+          sha256sum -c YM4_04C-E0-SHA256SUMS
+          EVIDENCE=work/reviews/ym4-04c-e0-geometry/evidence
+          if test -d "$EVIDENCE"; then
+            (cd "$EVIDENCE" && sha256sum -c YM4_04C-E0-SHA256SUMS)
+            for name in YM4_04C-E0-PY.hbp YM4_04C-E0-RUST.hbp YM4_04C-E0-SHA256SUMS; do
+              cmp "$name" "$EVIDENCE/$name"
+            done
+            echo 'YM4_04C_E0_REPLAY|all_three_files=BYTE_IDENTICAL|json=0'
+          else
+            echo 'YM4_04C_E0_REPLAY|filed_receipts=NOT_YET|json=0'
+          fi
+      - name: Print canonical independent receipts for filing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4_04C-E0-PY.hbp YM4_04C-E0-RUST.hbp YM4_04C-E0-SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_04C_E0_HOSTED|PASS|4D_E0=YES|C03_n12=NOT_RUN|full_04C_engine=NO|r9_runs=0|json=0'
