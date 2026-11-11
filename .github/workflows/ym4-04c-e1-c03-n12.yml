@@ -93,15 +93,13 @@ jobs:
           sha256sum "C03-N$N-C$C-PY.hbp" "C03-N$N-C$C-RUST.hbp" > "C03-N$N-C$C-SHA256SUMS"
           sha256sum -c "C03-N$N-C$C-SHA256SUMS"
           EVIDENCE=work/reviews/ym4-04c-e1-c03/evidence
-          if test -f "$EVIDENCE/C03-N$N-C$C-SHA256SUMS"; then
+          test -f "$EVIDENCE/C03-N$N-C$C-SHA256SUMS"
             (cd "$EVIDENCE" && sha256sum -c "C03-N$N-C$C-SHA256SUMS")
             for ENDING in PY.hbp RUST.hbp SHA256SUMS; do
               cmp "C03-N$N-C$C-$ENDING" "$EVIDENCE/C03-N$N-C$C-$ENDING"
             done
             echo "C03_REPLAY|N=$N|class=$C|files=BYTE_IDENTICAL|json=0"
-          else
-            echo "C03_REPLAY|N=$N|class=$C|filed=NOT_YET|json=0"
-          fi
+
       - name: Deliberately reject missing seed face and false complete census
         if: matrix.n == 8 && matrix.kind == 1
         shell: bash

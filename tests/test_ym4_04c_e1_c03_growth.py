@@ -27,9 +27,9 @@ def run():
               "|denominator="+str(v)+"|lower="+str(lo)+
               "|upper="+str(hi)+"|strict=PASS|json=0")
     a=f20(10);b=f20(8);c=f20(12)
-    assert 201684*a*0+201684*b < 100*a
+    assert 201684*b < 100*a
     assert 100*a<201685*b
-    assert 214177*b*0+214177*a < 100*c
+    assert 214177*a < 100*c
     assert 100*c<214178*a
     assert 304*2==32*19
     assert 2326*152==304*1163
