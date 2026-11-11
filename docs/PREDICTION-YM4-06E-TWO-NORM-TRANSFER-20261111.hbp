@@ -1,0 +1,16 @@
+# YM4-06E two-unknown closure of induced full-spectrum Schur certificate.
+# Predictions freeze before E-specific checker and theorem note.
+PREDICT|id=E01|actual_induced_coarse=P_c=Jadj_Sfine_cubed_J|B=Jadj_Sfine_J|Z=(I-JJadj)Sfine_J
+PREDICT|id=E02|two_tick_memory_operator=Zadj_Z|zeta_squared=operator_norm_two_tick_memory
+PREDICT|id=E03|three_tick_memory_norm_le=3zeta_squared|retained_block_norm_cubed_le=rcoarse_plus3zeta_squared
+PREDICT|id=E04|choose_u_with_u_cubed_ge=rcoarse_plus3zeta_squared|retained_block_norm_le=u
+PREDICT|id=E05|threshold_tau_ge_max_u_rho|Schur_product_ge_zeta_squared|full_fine_first_ratio_le_tau
+PREDICT|id=E06|mixed_3state|rcoarse=133/1024|zeta_squared=1/256|rcoarse_plus3zeta_squared=145/1024
+PREDICT|id=E07|mixed_3state|u=17/32|u_cubed=4913/32768_ge_4640/32768
+PREDICT|id=E08|mixed_3state|tau=35/64|Schur_product=19/4096_ge_16/4096|full_ratio_le_tau
+PREDICT|id=E09|mixed_3state|too_low_tau=17/32|Schur_product=0_lt_zeta_squared|reject
+PREDICT|id=E10|dark_3state|rcoarse=1/8|zeta_squared=0|discarded_rho=3/4|tau=1/2|reject
+PREDICT|id=E11|zero_leakage|exact_induced_semigroup=YES|full_ratio=max_rcoarse_root_and_fast
+PREDICT|id=E12|actual_wilson_relevant_unknowns=zeta_and_rho|vacuum_embedding=DERIVED|strict_budget=OPEN
+PREDICT|id=E13|fault_corrupt_memory=REJECT|fault_drop_fast=REJECT|fault_u_too_low=REJECT|fault_ignore_coupling=REJECT
+PREDICT|id=E14|full_continuum_SU2_gap=OPEN|all_k_uniform_bounds=OPEN|r9=UNTOUCHED

@@ -1,0 +1,71 @@
+name: YM4-06C full first-spectrum Schur triadic transfer theorem
+
+on:
+  push:
+    branches: [gpt6-ym4-06c-full-spectrum-schur-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.hbp'
+      - 'docs/NOTE-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.md'
+      - 'tests/test_ym4_06c_full_spectrum_schur.py'
+      - '.github/workflows/ym4-06c-full-spectrum-schur.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.hbp'
+      - 'docs/NOTE-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.md'
+      - 'tests/test_ym4_06c_full_spectrum_schur.py'
+      - '.github/workflows/ym4-06c-full-spectrum-schur.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact_full_spectrum_certificate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve prediction frozen before any new engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 13bbb8bc33c4b89b46c787f75b985554a79d381b HEAD
+          git show 13bbb8bc33c4b89b46c787f75b985554a79d381b:docs/PREDICTION-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.hbp > /tmp/YM4_06C_FROZEN.hbp
+          cmp /tmp/YM4_06C_FROZEN.hbp docs/PREDICTION-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.hbp
+          test "$(grep -c '^PREDICT|id=S' /tmp/YM4_06C_FROZEN.hbp)" -eq 16
+      - name: Whole repository strict integer-only and no-float source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Rational matrix Schur, two and three tick memory and dark sector
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06c_full_spectrum_schur.py | tee /tmp/YM4_06C_REPLAY.hbp
+          grep -Fq 'YM4_06C|MEMORY|two_step=1/256|three_step=5/1024|nonmarkov_exact=YES' /tmp/YM4_06C_REPLAY.hbp
+          grep -Fq 'YM4_06C|SCHUR|retained=1/2|discarded=1/4|cross=1/16|full_second_gt=1/2|full_second_le=33/64' /tmp/YM4_06C_REPLAY.hbp
+          grep -Fq 'YM4_06C|DARK|coarse_3step_second=1/8|visible_fine=1/2|actual_fine_first=3/4|complement_condition=REQUIRED' /tmp/YM4_06C_REPLAY.hbp
+          grep -Fq '|sum_xk_over_afine=1/128|ln2_gt_1/2|actual_4D_estimates=NOT_PROVED' /tmp/YM4_06C_REPLAY.hbp
+          grep -Fq 'YM4_06C|DONE|finite_exact_matrix_controls=PASS|theorem_proof=IN_NOTE|json=0' /tmp/YM4_06C_REPLAY.hbp
+      - name: Six direct calculation corruptions must fail with named cause
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in drop_dark drop_leakage too_small_threshold incorrect_triple_memory fake_markov_closure suppress_fast_block; do
+            if python3 -I -B tests/test_ym4_06c_full_spectrum_schur.py "$fault" > /tmp/YM4_06C_BAD.hbp 2>&1; then
+              echo "YM4_06C_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06C_REJECT|check=' /tmp/YM4_06C_BAD.hbp
+            echo "YM4_06C_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Physical proof remains explicitly open
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'actual 4D SU(2) operator estimates OPEN' docs/NOTE-YM4-06C-FULL-SPECTRUM-SCHUR-20261111.md
+          echo 'YM4_06C_RELEASE|THEOREM_CONDITIONAL=PASS|TRUE_4D_ALPHA=OPEN|TRUE_4D_LEAKAGE=OPEN|TRUE_4D_DARK_SPECTRUM=OPEN|CONTINUUM_GAP=OPEN'
