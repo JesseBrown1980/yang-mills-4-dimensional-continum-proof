@@ -5,6 +5,14 @@ not the full planned YM4-04C Rust checker. All arithmetic uses integer pairs.
 """
 from math import comb, factorial, gcd
 
+def ipow(base, exponent):
+    if exponent < 0:
+        raise AssertionError("negative integer exponent")
+    value = 1
+    for _ in range(exponent):
+        value *= base
+    return value
+
 def r(a, b=1):
     assert b>0
     k=gcd(a,b)
@@ -16,7 +24,7 @@ def times(x,y):return r(x[0]*y[0],x[1]*y[1])
 def ratio(x,y):
     assert y[0]>0
     return r(x[0]*y[1],x[1]*y[0])
-def pp(x,n):return r(x[0]**n,x[1]**n)
+def pp(x,n):return r(ipow(x[0],n),ipow(x[1],n))
 def less(x,y):return x[0]*y[1]<y[0]*x[1]
 
 def haar_exp_by_even_moments(beta):
@@ -28,11 +36,11 @@ def haar_exp_by_even_moments(beta):
     total=r(0)
     for m in range(12):
         cat=comb(2*m,m)//(m+1)
-        term=r(cat*b2[0]**m,b2[1]**m*4**m*factorial(2*m))
+        term=r(cat*ipow(b2[0],m),ipow(b2[1],m)*ipow(4,m)*factorial(2*m))
         total=plus(total,term)
     m=12
     cat=comb(2*m,m)//(m+1)
-    omitted=r(cat*b2[0]**m,b2[1]**m*4**m*factorial(2*m))
+    omitted=r(cat*ipow(b2[0],m),ipow(b2[1],m)*ipow(4,m)*factorial(2*m))
     # Every term after m=0 has ratio beta^2/[4(m+1)(m+2)] <= beta^2/8.
     future=ratio(b2,r(8))
     assert less(future,r(1))
@@ -41,7 +49,7 @@ def haar_exp_by_even_moments(beta):
 def exp_quarter_via_integral_series():
     total=r(0)
     for k in range(12):
-        total=plus(total,r(1,4**k*factorial(k)))
+        total=plus(total,r(1,ipow(4,k)*factorial(k)))
     omitted=r(1,4**12*factorial(12))
     # Future adjacent ratios <=1/(4*13).
     return total,plus(total,ratio(omitted,minus(r(1),r(1,52))))
