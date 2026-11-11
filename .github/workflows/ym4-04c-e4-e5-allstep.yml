@@ -91,15 +91,13 @@ jobs:
           sha256sum YM4_04C-E4-E5-ENGINE.hbp YM4_04C-E4-E5-SECOND.hbp > YM4_04C-E4-E5-SHA256SUMS
           sha256sum -c YM4_04C-E4-E5-SHA256SUMS
           EVIDENCE=work/reviews/ym4-04c-e4-e5/evidence
-          if test -f "$EVIDENCE/YM4_04C-E4-E5-SHA256SUMS"; then
+          test -f "$EVIDENCE/YM4_04C-E4-E5-SHA256SUMS"
             (cd "$EVIDENCE" && sha256sum -c YM4_04C-E4-E5-SHA256SUMS)
             for NAME in YM4_04C-E4-E5-ENGINE.hbp YM4_04C-E4-E5-SECOND.hbp YM4_04C-E4-E5-SHA256SUMS; do
               cmp "$NAME" "$EVIDENCE/$NAME"
             done
             echo 'E4_E5_REPLAY|all_three_receipts=BYTE_IDENTICAL|json=0'
-          else
-            echo 'E4_E5_REPLAY|receipts=NOT_YET_FILED|json=0'
-          fi
+
       - name: Print source receipts for sealed final-head filing
         if: always()
         shell: bash
