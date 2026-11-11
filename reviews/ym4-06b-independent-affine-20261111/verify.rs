@@ -99,7 +99,7 @@ fn electric_check()->(i64,usize){
     assert_eq!(tr,18);
     (tr,polynomial.iter().flatten().filter(|v|**v!=0).count())
 }
-fn compute(mut corrupted:bool){
+fn compute(corrupted:bool){
     for a in 0..6 {assert_eq!(product(a,inverse(a)),0);assert_eq!(product(inverse(a),a),0);}
     for a in 0..6 {for b in 0..6{for c in 0..6 {
         assert_eq!(product(product(a,b),c),product(a,product(b,c)));
@@ -152,8 +152,6 @@ fn compute(mut corrupted:bool){
         assert_eq!(cluster,if r==27{90}else{414});
         println!("INDEPENDENT_BOUNDS|r={r}|E22_E21_lower_JE={cluster}|first_gap_num={numerator}|first_gap_den=34*{c}^68|strict_positive=YES|spectral_levels=NOT_COMPUTED|json=0");
     }
-    corrupted=false;
-    assert!(!corrupted);
 }
 fn main(){
     let args:Vec<String>=env::args().collect();
