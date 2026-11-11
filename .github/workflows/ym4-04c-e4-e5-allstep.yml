@@ -1,0 +1,115 @@
+name: YM4-04C E4 all-step cfin and E5 weak-coupling barrier independent certificate
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e4-e5-allstep-weak-barrier-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e4-e5-allstep.yml'
+      - 'tests/test_ym4_04c_e4_e5_allstep.py'
+      - 'reviews/ym4-04c-check/e4_e5_independent.py'
+      - 'docs/PREDICTION-YM4-04C-E4-E5-20261111.hbp'
+      - 'reviews/ym4-04c-e4-e5/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-04c-e4-e5-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  e4-e5-physical-scope:
+    name: "E4 all-k algebra / E5 beta pole; 256-bit vs independent 640-bit"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Verify prediction-only freeze before implemented code and C03/E3 ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e4-e5-allstep-weak-barrier-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git -C work merge-base --is-ancestor 717ac4dedf844a963be8ea58af416e4e8cbf489a HEAD
+          git -C work merge-base --is-ancestor 70cceac39ef08bdee88a75bca82b9a9867502a97 HEAD
+          git -C work show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 >/tmp/04C-OLD-FROZEN.hbp
+          head -n 42 work/docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp >/tmp/04C-NEW-FROZEN.hbp
+          cmp /tmp/04C-OLD-FROZEN.hbp /tmp/04C-NEW-FROZEN.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/04C-NEW-FROZEN.hbp' | sha256sum -c -
+          git -C work show 70cceac39ef08bdee88a75bca82b9a9867502a97:docs/PREDICTION-YM4-04C-E4-E5-20261111.hbp > /tmp/E4-E5-PRED.hbp
+          cmp /tmp/E4-E5-PRED.hbp work/docs/PREDICTION-YM4-04C-E4-E5-20261111.hbp
+          echo 'E4_E5_FREEZE|PREDICTION_ONLY=BEFORE_NEW_CODE|original_42_lines=UNCHANGED|r9_runs=0|json=0'
+      - name: Whole-repository strict no-float source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/scripts/no_float_gate.py work
+      - name: Execute exact 256-bit E4 G1 coefficient and E5 weak-barrier proof checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/tests/test_ym4_04c_e4_e5_allstep.py | tee YM4_04C-E4-E5-ENGINE.hbp
+          grep -Fq 'E4_ALL_K|delta_crit_lt_1/8=EXACT|' YM4_04C-E4-E5-ENGINE.hbp
+          grep -Fq 'E4_C16|delta20_le=' YM4_04C-E4-E5-ENGINE.hbp
+          grep -Fq 'E5_WEAK_BARRIER|all_beta_ge_36|' YM4_04C-E4-E5-ENGINE.hbp
+          grep -Fq 'YM4_04C_E4_E5_RESULT|PASS|' YM4_04C-E4-E5-ENGINE.hbp
+          test "$(grep -Fc 'E5_C15|beta=' YM4_04C-E4-E5-ENGINE.hbp)" -eq 6
+          test "$(grep -Fc 'E4_CFIN|delta=' YM4_04C-E4-E5-ENGINE.hbp)" -eq 2
+      - name: Execute independent original second-seat 640-bit E4/E5
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/reviews/ym4-04c-check/e4_e5_independent.py | tee YM4_04C-E4-E5-SECOND.hbp
+          grep -Fq 'E4_INDEPENDENT_RESULT|PASS|' YM4_04C-E4-E5-SECOND.hbp
+          grep -Fq 'E5_INDEPENDENT_RESULT|PASS|' YM4_04C-E4-E5-SECOND.hbp
+          grep -Fq 'YM4_04C_E4_E5_INDEPENDENT_HOSTED|PASS|' YM4_04C-E4-E5-SECOND.hbp
+          test "$(grep -Fc 'E5_INDEPENDENT|beta=' YM4_04C-E4-E5-SECOND.hbp)" -eq 6
+      - name: Five deliberate fail-closed numeric or logical faults
+        shell: bash
+        run: |
+          set -euo pipefail
+          for FAULT in wrong_G0_six wrong_f_max delete_iteration ignore_pole false_weak_pass; do
+            if python3 -I -B work/tests/test_ym4_04c_e4_e5_allstep.py --sabotage "$FAULT" > "FAULT-$FAULT.log" 2>&1; then
+              echo "E4_E5_FAULT|name=$FAULT|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$FAULT" in
+              wrong_G0_six) grep -Fq 'E4_REJECT: frozen G0 factor-six delta1' "FAULT-$FAULT.log" ;;
+              wrong_f_max) grep -Fq 'E4_REJECT: independent integer-f maximum' "FAULT-$FAULT.log" ;;
+              delete_iteration) grep -Fq 'E4_REJECT: omitted 19 contraction steps' "FAULT-$FAULT.log" ;;
+              ignore_pole) grep -Fq 'E5_REJECT: frozen C15 wall bracket/pole' "FAULT-$FAULT.log" ;;
+              false_weak_pass) grep -Fq 'E5_REJECT: false weak-coupling pole acceptance' "FAULT-$FAULT.log" ;;
+            esac
+            echo "E4_E5_FAULT|name=$FAULT|rejected=YES|json=0"
+          done
+      - name: Validate and (once filed) replay independent evidence byte for byte
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum YM4_04C-E4-E5-ENGINE.hbp YM4_04C-E4-E5-SECOND.hbp > YM4_04C-E4-E5-SHA256SUMS
+          sha256sum -c YM4_04C-E4-E5-SHA256SUMS
+          EVIDENCE=work/reviews/ym4-04c-e4-e5/evidence
+          if test -f "$EVIDENCE/YM4_04C-E4-E5-SHA256SUMS"; then
+            (cd "$EVIDENCE" && sha256sum -c YM4_04C-E4-E5-SHA256SUMS)
+            for NAME in YM4_04C-E4-E5-ENGINE.hbp YM4_04C-E4-E5-SECOND.hbp YM4_04C-E4-E5-SHA256SUMS; do
+              cmp "$NAME" "$EVIDENCE/$NAME"
+            done
+            echo 'E4_E5_REPLAY|all_three_receipts=BYTE_IDENTICAL|json=0'
+          else
+            echo 'E4_E5_REPLAY|receipts=NOT_YET_FILED|json=0'
+          fi
+      - name: Print source receipts for sealed final-head filing
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          for NAME in YM4_04C-E4-E5-ENGINE.hbp YM4_04C-E4-E5-SECOND.hbp YM4_04C-E4-E5-SHA256SUMS; do
+            if test -f "$NAME"; then
+              echo "EVIDENCE_BEGIN|file=$NAME"
+              cat "$NAME"
+              echo "EVIDENCE_END|file=$NAME"
+            fi
+          done
+          echo 'E4_E5_HOSTED|RUN_COMPLETE|all_k=G1_CONDITIONAL|continuum_gap=OPEN|r9_runs=0|json=0'
