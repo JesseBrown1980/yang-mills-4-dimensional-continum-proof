@@ -1,0 +1,70 @@
+name: YM4-06E actual induced transfer two-norm complete spectral certificate
+
+on:
+  push:
+    branches: [gpt6-ym4-06c-full-spectrum-schur-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06E-TWO-NORM-TRANSFER-20261111.hbp'
+      - 'docs/NOTE-YM4-06E-TWO-NORM-TRANSFER-20261111.md'
+      - 'tests/test_ym4_06e_two_norm_transfer.py'
+      - '.github/workflows/ym4-06e-induced-two-norm.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06E-TWO-NORM-TRANSFER-20261111.hbp'
+      - 'docs/NOTE-YM4-06E-TWO-NORM-TRANSFER-20261111.md'
+      - 'tests/test_ym4_06e_two_norm_transfer.py'
+      - '.github/workflows/ym4-06e-induced-two-norm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical-spectrum-schur-two-norm:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check prediction pinned before independent math engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 98764e26125efdd1e6363ffc827686d024ed0e1e HEAD
+          git show 98764e26125efdd1e6363ffc827686d024ed0e1e:docs/PREDICTION-YM4-06E-TWO-NORM-TRANSFER-20261111.hbp > /tmp/YM4_06E_FROZEN.hbp
+          cmp /tmp/YM4_06E_FROZEN.hbp docs/PREDICTION-YM4-06E-TWO-NORM-TRANSFER-20261111.hbp
+          test "$(grep -c '^PREDICT|id=E' /tmp/YM4_06E_FROZEN.hbp)" -eq 14
+      - name: Strict no-floating-point source check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact rational two-norm and real induced compression control
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06e_two_norm_transfer.py | tee /tmp/YM4_06E_REPLAY.hbp
+          grep -Fq 'YM4_06E|INDUCED|r_coarse=133/1024|two_tick_leakage=1/256|three_tick_memory=5/1024|retained_cube_cap=145/1024' /tmp/YM4_06E_REPLAY.hbp
+          grep -Fq 'YM4_06E|SCHUR|cube_u=4913/32768|u=17/32|discarded_rho=1/4|zeta_squared=1/256|tau=35/64|determinant=19/4096|full_fine_second_ratio_le_tau=PASS' /tmp/YM4_06E_REPLAY.hbp
+          grep -Fq 'YM4_06E|DARK|coarse_r=1/8|zeta_squared=0|fast_rho=3/4|false_tau=1/2|REJECTED=YES' /tmp/YM4_06E_REPLAY.hbp
+          grep -Fq 'YM4_06E|DONE|full_spectrum_two_norm_exact_control=PASS|json=0' /tmp/YM4_06E_REPLAY.hbp
+      - name: Reject six altered operator constructions and threshold errors
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in corrupt_memory drop_fast u_too_low ignore_coupling too_small_tau fake_zero_leakage; do
+            if python3 -I -B tests/test_ym4_06e_two_norm_transfer.py "$fault" > /tmp/YM4_06E_BAD.hbp 2>&1; then
+              echo "YM4_06E_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06E_REJECT|check=' /tmp/YM4_06E_BAD.hbp
+            echo "YM4_06E_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Guard against false physical continuum release
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'no uniform all-scale SU(2) leakage or dark-sector norm established' docs/NOTE-YM4-06E-TWO-NORM-TRANSFER-20261111.md
+          echo 'YM4_06E_RELEASE|TWO_NORM_OPERATOR_THEOREM=DERIVED|SU2_ALL_K_ZETA=OPEN|SU2_ALL_K_RHO=OPEN|PHYSICAL_GAP=OPEN'
