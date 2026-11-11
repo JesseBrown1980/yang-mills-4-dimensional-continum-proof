@@ -35,15 +35,15 @@ Since \(\mathcal E\ge0\), the operator inequality \(H/J_E\ge r\mathcal M\) holds
  \boxed{(E_{22}-E_{21})/J_E\ \ge\ 6r-72.}
 \]
 
-For r=27 this is at least **90**. For r=81 it is at least **414**. These are lower bounds, **not measured spectral values** and not the first gap.
+For r=27 this is at least **90**. For r=81 it is at least **414**. At r ≤ 12, the expression 6r−72 is nonpositive and this lower bound is vacuous. These are lower bounds, **not measured spectral values** and not the first gap.
 
 ## Bound 2: strictly positive first gap (explicit, intentionally very weak)
 
-Fix a rooted spanning tree containing 7 links, gauge-fix it to identity while keeping the root gauge free. The rooted gauge-fixed configuration space has \(N=6^{17}=16,926,659,444,736\) points. The residual global-conjugation-invariant subspace is the physical Hilbert space. Burnside gives 2,821,153,019,713 physical gauge orbits.
+Fix a rooted spanning tree containing 7 links. Restrict the **original full-link Hamiltonian** to functions invariant under the seven non-root vertex gauge transformations, then identify that invariant space with functions of the 17 non-tree link values by fixing those tree links to identity. This is the rooted Hamiltonian: tree-link electric moves induce gauge-restored transitions on the free links; they are not omitted. The rooted gauge-fixed configuration space has \(N=6^{17}=16,926,659,444,736\) points. The residual global-conjugation-invariant subspace is the physical Hilbert space. Burnside gives 2,821,153,019,713 physical gauge orbits.
 
 The rooted electric operator is a real symmetric nonnegative weighted graph Laplacian. The independent 17 non-tree links can be multiplied by any of the three transpositions without changing the tree-gauge condition. Every S₃ element is a product of at most two transpositions, so **every pair of rooted configurations is connected by a path of at most \(D=34\) unit-weight moves**. The operators on the tree links provide further nonnegative off-diagonal connections; they are not required for this path bound.
 
-Set \(C=144+72r\) and \(A=CI-H/J_E\). Since \(0\le H/J_E\le CI\), \(A\) is positive semidefinite. It is also entrywise nonnegative in the rooted configuration basis: off-diagonal entries come from the positive transposition kernel, while each diagonal entry is at least \(C-(72+72r)=72\). Consequently, self-loop padding extends every path to exactly 34 steps, and
+Set \(C=144+72r\) and \(A=CI-H/J_E\). Since \(0\le H/J_E\le CI\), \(A\) is positive semidefinite. It is also entrywise nonnegative in the rooted configuration basis: off-diagonal entries come from the positive transposition kernel, while each diagonal entry is at least \(C-(72+72r)=72\). A move that maps a rooted gauge orbit to itself only adds nonnegative weight to \(A\)'s diagonal; **the claim does not require the absence of such self-orbit moves**. Consequently, self-loop padding extends every path to exactly 34 steps, and
 \[
  (A^{34})_{xy}\ge1\qquad \text{for all rooted }x,y.
 \]
