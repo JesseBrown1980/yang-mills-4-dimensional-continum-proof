@@ -107,7 +107,7 @@ fn interaction_gate(missing_spatial:bool,missing_gauge_excitation:bool)->String{
     }
     if missing_gauge_excitation{good=0;}
     assert_eq!(good,4,"missing physical fundamental Wilson excitation");
-    format!("INTERACTING_WILSON|spatial_sides=1,1,1|links=3|plaquettes=3|beta_s=1/16|beta_t=1|nonconstant_commutator=YES|comm_i_j=-identity|fundamental_trace_gauge_invariant=YES|physical_first_excitation_in_B=spin_half|json=0\n")
+    "INTERACTING_WILSON|spatial_sides=1,1,1|links=3|plaquettes=3|beta_s=1/16|beta_t=1|nonconstant_commutator=YES|comm_i_j=-identity|fundamental_trace_gauge_invariant=YES|physical_first_excitation_in_B=spin_half|json=0\n".to_string()
 }
 fn full_gap_gate()->String{
     let (l,h)=link_ratio();
@@ -160,10 +160,11 @@ fn lt_sum_bound_q81()->bool{
     // 42!=21! * product(22..42); two factors are separately within u128.
     let upper_product=(22u128..=42u128).product::<u128>();
     assert!(upper_product>20_000_000_000_000_000_000_000_000_000_000u128);
-    assert!((1u128<<41)>2_000_000_000_000u128);
+    let shift=41u32;
+    let two_power=1u128.checked_shl(shift).expect("valid SU2 Wilson high-spin exponent");
+    assert!(two_power>2_000_000_000_000u128);
     // Consequently 3*2^41*42! > 3*2e12*5e19*2e31 > 4*(10^31)^2.
     // sqrt(l41/l0) <10^-31.
-    assert!(3u128*2*5*2>4);
     // 2*(10^-31+10^-31)<10^-30.
     Rat::new(4,10u128.pow(31)).lt(Rat::new(1,10u128.pow(30)))
 }
