@@ -1,0 +1,14 @@
+# YM4-06D predictions for actual finite continuous-SU2 Wilson transfer.
+# Frozen before new proof addendum and independent finite-subgroup control code.
+PREDICT|id=H01|Wilson_beta_gt=0|finite_spatial_3D_L_divisible3_L_ge6|positive_unique_Perron_vacuum=YES
+PREDICT|id=H02|B3_spatial_parallel_transport|distinct_coarse_link_lines=DISJOINT|gauge_covariant=YES
+PREDICT|id=H03|Haar_pushforward_of_B3=coarse_product_Haar|induced_ground_density_rho=integral_fiber_Omega_f_squared|strict_positive=YES
+PREDICT|id=H04|mu_induced=B3_pushforward_Omega_f_squared_Haar|J_isometry=YES|J_vacuum=vacuum
+PREDICT|id=H05|raw_Haar_isometry_Jpsi=Omega_f_times_psi_after_B_div_sqrt_rho_after_B|J_sqrt_rho=Omega_f
+PREDICT|id=H06|induced_3tick_transfer=Jadj_Sf_cubed_J|positive_selfadjoint=YES|coarse_top=1
+PREDICT|id=H07|induced_3tick_r_coarse_le_r_fine_cubed|physical_gap_lower_inference=NOT_VALID
+PREDICT|id=H08|induced_transfer_semi_group_closure=ONLY_IF_LEAKAGE_ZERO|two_tick_memory=Zadj_Z
+PREDICT|id=H09|Q8_3link_fiber_count=64_per_V|product_assignments=512|weighted_isometry_exact=YES
+PREDICT|id=H10|negative_wrong_end_gauge=REJECT|negative_wrong_fiber_weight=REJECT|negative_ignore_ground_density=REJECT
+PREDICT|id=H11|genuine_coarse_Wilson_transfer_equals_induced_3tick=NOT_PROVED|true_alpha_zeta_rho_4D=OPEN
+PREDICT|id=H12|full_YM_gap=OPEN|OS_continuum=OPEN|finite_S3_r9=UNTOUCHED
