@@ -56,6 +56,12 @@ jobs:
           grep -Fq 'prefreeze=COMPUTED|confirmation_count=0|' YM4_04C_E2G-ENGINE.hbp
           sha256sum YM4_04C_E2G-ENGINE.hbp YM4_04C_E2G-INDEPENDENT.hbp > YM4_04C_E2G-SHA256SUMS
           sha256sum -c YM4_04C_E2G-SHA256SUMS
+          EVIDENCE=work/reviews/ym4-04c-e2g-engine/evidence
+          (cd "$EVIDENCE" && sha256sum -c YM4_04C_E2G-SHA256SUMS)
+          for name in YM4_04C_E2G-ENGINE.hbp YM4_04C_E2G-INDEPENDENT.hbp YM4_04C_E2G-SHA256SUMS; do
+            cmp "$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_04C_E2G_REPLAY|all_three_files=BYTE_IDENTICAL|json=0'
       - name: Reject missing tail, false wall and wrong Fuss-Catalan growth constant
         shell: bash
         run: |
