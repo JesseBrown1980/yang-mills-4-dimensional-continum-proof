@@ -1,115 +1,156 @@
-# DRAFT for correction — YM4-06D: the global lock under slice refinement (3+1 dimensions)
+# DRAFT for correction — YM4-06D: global lock under slice refinement (3+1 dimensions)
 
-**Status: DRAFT. Nothing in this file is frozen, and nothing was computed for it.** It is put up for the operator and GPT-6 to correct. A prediction file (`.hbp`, committed alone) follows only after the corrections, and before any run. The r = 9 one-shot of the finite repository is a separate lane with its own release gates and is untouched by this file.
+**Status: DRAFT, NOT FROZEN. No YM4-06D spectral computation was run.** Revision of the local-seat draft, with GPT-6's mathematical review applied 2026-11-11. The first prediction-only HBP commit must follow approval of the definitions, and must precede any measurement. The 3×4 r=9 blinded finite-model lane is untouched.
 
-Written 2026-11-11 by the local seat (Opus 5.5). Tags: **DERIVED** = follows by a written argument from stated inputs; **MEASURED** = a number in a named receipt; **NAMED** = stated from the literature or from a document, without a check here; **CONJECTURE** = a prediction that a run can refute; **OPEN** = undefined or undecided, a question to the reviewers.
+Tags: **DERIVED** (short proof from specified hypotheses); **MEASURED** (pinned prior result); **NAMED** (literature or repo statement not independently checked here); **CONJECTURE** (new refutable claim); **OPEN** (required construction or bound missing). A derived fact about a toy or finite model is never an established 4D continuum result.
 
-## 0. The claim under test, in the operator's terms and in testable terms
+## 0. The physical question and the two global records
 
-The operator's statement (2026-11-11): the universe is discrete and sliced frame by frame; a global hash lock is a global state that every local part answers to, as entanglement does; with it, a four-dimensional mass gap can be shown, and the discrete system looks continuous.
+The operator's hypothesis is that reality is discrete and advances in slices, with local changes consistent with a global state that behaves like a lock. Its mathematical test is whether an interacting gauge-invariant transfer operator can preserve a **positive physical first-excitation mass**, as spatial and temporal spacing tend to zero and the physical volume is controlled.
 
-The sources read for this draft: Law 34 (Brown–Schrödinger), Law 66 (the lighthouse loop), Law 67, Law 70 (levels of shadow cats) and Law 71 (hotter black), in `canon/` of the HTTP-0 repository.
+These are **different** objects:
 
-Testable form used here:
+1. **Gauge/global state:** for finite S₃ on a torus, the flat holonomy triple, modulo conjugation, gives 21 flat configuration orbits in three spatial dimensions. Local plaquette holonomies cannot determine which flat orbit holds. The *quantum* Hamiltonian may mix them through nonflat intermediate configurations; a flat configuration label is not automatically a quantum superselection charge. For continuous untwisted SU(2), the flat moduli are continuous, not 21 isolated sectors. Any SU(2) physical lock observable must be gauge invariant and defined separately.
+2. **SHA/SH/HASH records:** HBP holds the state/observable/residual tuples, HBI their ordered offsets, SHA the byte digests, SH the derived shadow/cycle/sector lineage, and HASH the canonical slice commitment. One local change can change the **metadata root** of a Merkle tree when the path is recomputed; this is not a physical force or an instantaneous signal between distant sites.
+3. **One frame:** define the physical temporal frame as **one application of a specified positive transfer operator**. The freeze → pump → verify → freeze chain is a data-provenance analogy, not a derivation of the Wilson action or a transfer law.
+4. **Observable:** if \(\lambda_1\ge\lambda_2\ge\cdots>0\) are eigenvalues on the **full gauge-invariant Hilbert space**, with multiplicities, set \(m_{\rm first}=-\log(\lambda_2/\lambda_1)/a_t\), where \(a_t\) is the *physical temporal spacing*. Do not use an observable's selected decay if it has zero overlap with the actual first excited state.
 
-1. **The lock.** The global state is the flat-sector label of a lattice gauge field: no single plaquette reads it, and it constrains every plaquette. In Law 71.9's ledgers it belongs to **SH** (shadow state and lineage). **SHA** is the byte-integrity commitment and is never an input to a spectral quantity.
-2. **Frame by frame.** One frame to the next is one application of a transfer operator T_a. Law 71.13's chain freeze(IS_k) → pump → verify → freeze(IS_{k+1}) is that step.
-3. **The mass.** m(a) = −log(λ₂(T_a)/λ₁(T_a)) / a, with the eigenvalues taken on the gauge-invariant space.
-4. **Law 70's form.** A pass with n equally populated levels keeps (n − 1)/n. With n = 3^k and slice spacing a₀/3^k the mass obeys 1/a₀ ≤ m_k ≤ 3^k/((3^k − 1)a₀) (GitRAM PR #7, a constructed noninteracting model). The form restates a gap; a₀ is the correlation time 1/m. Whether an interacting gauge operator has it is what the rows below ask.
+**Law 70 control, not a Yang–Mills premise.** GitRAM [PR #7](https://github.com/JesseBrown1980/GitRAM/pull/7) constructed a separate 3-state transfer operator with second eigenvalue \((n-1)/n\) and selected \(n=3^k,\ a_t=a_0/n\). It proves \(1/a_0\le m_k\le n/((n-1)a_0)\) for that operator. Here \(a_0\) is an externally chosen reference time, **not assumed to equal an unknown physical correlation time**. That transfer law has not been derived for the interacting gauge operator.
 
-## 1. Definitions
+## 1. Operators and units to compare — GPT-6 correction
 
-**Model.** Periodic cubic spatial lattice (ℤ/L)³ with N_ℓ = 3L³ links, gauge group G, and, as in YM4-06B,
+### 1A. Primary 4D SU(2) Wilson transfer
 
-```text
-H(r)/J_E = E + r·M,   E = Σ_links (3I − Σ_transpositions L_{link,τ}),   M = Σ_faces (2 − χ_std(U_face))      (G = S₃)
-```
+**Freeze this one as the primary physical comparison**, using the exact convention of [Lemma 0004](LEMMA-0004-REFLECTION-TRANSFER.md), §7, and [YM4-02d](NOTE-YM4-02d-QUANTITATIVE-GAP.md). On a periodic 3D spatial slice with spatial links \(U\), normalized SU(2) Haar integration, and gauge projector \(\mathcal P_G\), let
 
-Levels e₁ ≤ e₂ ≤ … of H/J_E on the gauge-invariant space, with multiplicity.
+\[
+w_\beta(g)=\exp[-\beta(1-\tfrac12{\rm Re\,Tr}\,g)],\quad
+A_{\beta_s}(U)=\prod_{p\ \mathrm{spatial}}w_{\beta_s}(U_p),
+\]
+\[
+B_{\beta_t}(U,V)=\prod_{\ell\ \mathrm{spatial}}w_{\beta_t}(U_\ell V_\ell^{-1}),\qquad
+T_W=A_{\beta_s}^{1/2}B_{\beta_t}\mathcal P_G A_{\beta_s}^{1/2}.
+\]
 
-**Transfer operator (proposed; to be corrected).** In units J_E = 1 and temporal step a:
+Here \(B_{\beta_t}\) is an **integral kernel**, not pointwise multiplication. The gauge projector integrates the gauge transform of \(V\). Use the physical gauge-invariant subspace throughout; do not count gauge-variant modes. The existing lemma establishes reflection/transfer positivity for Wilson weights \(\beta_s,\beta_t>0\) at **fixed** finite lattice and coupling. Its result is the right starting point, not a uniform continuum proof.
 
-```text
-T_a = exp(−a·r·M/2) · exp(−a·E) · exp(−a·r·M/2)
-```
+The **anisotropic** Wilson couplings \(\beta_s,\beta_t\), spatial spacing \(a_s\), temporal spacing \(a_t\), and any renormalized anisotropy require a declared matching convention. They are *not* all interchangeable. Use \(m_{\rm first}^{W}=-\log(\lambda_2(T_W)/\lambda_1(T_W))/a_t\). For an infinite-volume claim also control the spatial size \(R=L a_s\) as \(R\to\infty\).
 
-It is symmetric, positive definite and gauge invariant; exp(−a·E) is a product over links because the link terms commute. Eigenvalues λ₁ ≥ λ₂ ≥ … > 0. Define μ_j(a) = −log(λ_j/λ₁)/a.
+### 1B. Separate finite S₃ Hamiltonian/Suzuki–Trotter control
 
-**The two observables, never merged** (GPT-6's ruling of 2026-11-11):
+For the finite S₃ controls, use the already specified Hamiltonian
 
-- first excitation: δ₁ = e₂ − e₁, and m_first(a) = μ₂(a);
-- separation above the flat cluster: δ_flat = e_{F+1} − e_F with F the number of flat sectors (F = 21 for S₃ in three dimensions, 8 in two), and m_lock(a) = μ_{F+1}(a) − μ_F(a).
+\[
+H_{S_3}/J_E=\mathcal E+r\mathcal M,\quad
+\mathcal E=\sum_\ell(3I-\sum_{\tau\,{\rm transposition}}L_{\ell,\tau}),\quad
+\mathcal M=\sum_p(2-\chi_{\rm std}(U_p)).
+\]
 
-**Lock cost.** κ(G, L) = the smallest magnetic cost of a nonflat configuration. MEASURED and DERIVED in YM4-06A for S₃: κ = min(8, 3·L_min). It is a classical quantity and enters no row as a spectral scale; it appears only as a diagnostic.
+Its **separate** symmetric split is
 
-**Refinement step k.** Level count n = 3^k.
-- *Time only:* spatial lattice fixed, a_k = a₀/3^k.
-- *Space and time:* L_k = 3^k·L₀ at fixed physical side, with a coupling r_k and an energy unit J_{E,k} to be specified by a trajectory. Physical masses are M_first(k) = J_{E,k}·δ₁(L_k, r_k) and M_lock(k) = J_{E,k}·δ_flat(L_k, r_k).
+\[
+T^{S_3}_{\rm Strang}(a_t)=
+e^{-a_tJ_E r\mathcal M/2}
+e^{-a_tJ_E\mathcal E}
+e^{-a_tJ_E r\mathcal M/2}.
+\]
 
-**Ledgers per frame (Law 71.9).** HBP: the tuple body with the measured values. HBI: its row index. SHA: sha256 of every frozen and derived object. SH: for each frame, the sector label, the level k, the cycle state (C0, C1, C2 with R³ = identity), and the hash of the frame it was derived from.
+For fixed finite lattice and \(r,J_E\), it is positive and gauge invariant. As \(a_t\to0\), \(-a_t^{-1}\log T^{S_3}_{\rm Strang}=H_{S_3}+O(a_t^2)\); **it is not exactly \(e^{-a_tH}\)**. This makes the controlled small-\(a_t\) limit an independent falsifier.
 
-## 2. Rows proposed for the freeze
+For \(F=21\) flat orbits on the 3D S₃ torus, keep **two observables**:
 
-### A. Time refinement (controls; expected to hold)
+\[
+m_{\rm first}^{S_3}=-a_t^{-1}\log(\lambda_2/\lambda_1),\qquad
+m_{\rm cluster}^{S_3}=-a_t^{-1}\log(\lambda_{F+1}/\lambda_F).
+\]
 
-| Row | Statement | Tag | Falsifier |
-|---|---|---|---|
-| A1 | For fixed L and r, A(k) := 3^k·(1 − λ₂(T_{a_k})/λ₁(T_{a_k})) converges to a₀·δ₁, from below once k is large. Equivalently a₀*(k) := 3^k·log(3^k/(3^k − 1))/m_first(a_k) converges to 1/δ₁: Law 70's form holds in the limit with a₀ the correlation time. | DERIVED (symmetric splitting, finite dimension) | A limit outside the enclosure of a₀·δ₁ |
-| A2 | The same for the lock: 3^k·(1 − λ_{F+1}/λ_F) converges to a₀·δ_flat. | DERIVED | as A1 |
-| A3 | If the spacing is held at a₀ while n = 3^k grows, a spectrum of the form (n − 1)/n has mass tending to 0 (the control of GitRAM PR #7). A run that reports a positive limit without shrinking the spacing is rejected. | DERIVED | — (a gate on the readout) |
+They converge for fixed lattice and fixed couplings to \(J_E(e_2-e_1)\) and \(J_E(e_{F+1}-e_F)\), respectively. Do **not** transfer the fixed integer \(F=21\) to SU(2); there is no analogous finite flat-cluster count there.
 
-### B. Equal population (Law 70's condition)
+### 1C. Refinement, coupling and physical units
 
-Slice the interval a₀ into n steps of two sizes, b/2 and 3b/2 alternating, with b = a₀/n, and compare with n equal steps. The uneven mass is read from the symmetric two-step block P = T_{3b/2}^{1/2}·T_{b/2}·T_{3b/2}^{1/2}, which covers the time 2b: m_uneven = −log(λ₂(P)/λ₁(P))/(2b).
+For spatial refinement index \(k\), set \(L_k=3^kL_0,\ a_{s,k}=a_{s,0}/3^k\) so the initial physical side \(R=L_ka_{s,k}\) remains fixed. Keep \(a_{t,k}\) separately specified (e.g. fixed anisotropy \(a_s/a_t\) after calibration).
 
-| Row | Statement | Tag | Falsifier |
-|---|---|---|---|
-| B1 | The deviation of the mass from δ₁ under the uneven slicing, divided by the deviation under equal slicing, tends to 7/4 as k grows (the ratio of Σ b_i³). | DERIVED at leading order | A limit other than 7/4 |
-| B2 | Direction, as in Law 70 ("uneven levels survive more than the law allows"): the uneven slicing gives the larger survival λ₂/λ₁ per interval, which is the smaller mass. | CONJECTURE | The uneven slicing gives the smaller survival |
+In **standard 3+1D Kogut–Susskind SU(2) conventions**, the continuous-group Hamiltonian has \(J_E=c_Eg^2/a_s\) and \(J_B=c_B/(g^2a_s)\), with positive constants \(c_E,c_B\) determined by the precise definitions. Thus \(r=J_B/J_E=(c_B/c_E)g^{-4}\) **for that matched SU(2) Hamiltonian**. S₃ has no matching Lie algebra/Casimir normalization, so the \(r\) in \(H_{S_3}\) is an independent simulation coupling until a map is derived. **Do not extrapolate S₃ \(r\)-rows as a bare-SU(2) renormalization trajectory.**
 
-### C. Space and time refinement (the rows that decide the claim)
+The S₃ magnetic minimum \(\kappa=\min(8,3L_{\min})\) is a **classical diagnostic** from YM4-06A, not a spectral mass or an independently adjustable SU(2) alphabet resolution.
 
-| Row | Statement | Tag | Falsifier or what is missing |
-|---|---|---|---|
-| C0 | The trajectory. In the Kogut–Susskind normalisation of a gauge Hamiltonian in 3+1 dimensions, J_E ∝ g²/a and J_B ∝ 1/(g²a), so r = J_B/J_E ∝ 1/g⁴ and both scales grow like 1/a. | NAMED; the S₃ model has no Lie-algebra normalisation, so the map (g, a) → (r, J_E) for it is **OPEN** | Reviewers to fix the convention before the freeze |
-| C1 | Fixed alphabet. For a fixed finite group, M_lock(k) = J_{E,k}·δ_flat ≈ κ·J_{B,k}, which grows without bound along any trajectory with J_B ∝ 1/a. The lock of a fixed finite alphabet gives an infinite mass in the limit, and the model leaves the continuum theory (the freezing of finite-subgroup approximations, NAMED). | CONJECTURE beyond 2×2×2; on 2×2×2 it rests on δ_flat ≥ 6r − 72 (YM4-06B) and on the two-sided bounds of GitRAM PR #6, both awaiting review | M_lock bounded along such a trajectory |
-| C2 | The scaling Law 70 needs. A finite, positive lock mass in the limit requires the lock's log-ratio per slice, a_k·M_lock(k), to fall like 1/3^k. With a fixed alphabet it stays of order κ·(J_B·a) ∝ κ/g², which does not fall: the level count n of Law 70 does not grow when only the slices are tripled. It grows only if the alphabet is refined with the slices, with lock cost κ_k ∝ 3^{−k}. | DERIVED from the definitions and C0 | — |
-| C3 | The operator's mechanism, in this form: there is a sequence of alphabets A_k for SU(2), refined with the slices, with κ(A_k)·3^k → κ* in (0, ∞); along it M_lock → κ*·(J_B·a)/a₀, finite and positive. | CONJECTURE, and **OPEN in its definition**: S₃, 2T, 2O and 2I are four separate examples and no refining sequence (GPT-6); an admissible sequence A_k (finite partitions of SU(2) compatible with gauge invariance) has to be defined before this row can be frozen | To be written once A_k is defined |
-| C4 | First excitation at fixed alphabet. δ₁ is the splitting inside the flat cluster (fourth order on 2×2×2 for S₃, GitRAM PR #6, exploratory). Along growing L_k the splitting closes, so M_first is the tunnelling rate between lock sectors and no mass gap; the mass of the locked phase is M_lock. | CONJECTURE | M_first bounded below along the trajectory |
-| C5 | Continuous SU(2) control. YM4-06A gives exact families with action tending to 0 above the flat set, so κ = 0 and there is no classical lock mass. A positive SU(2) gap, where one is proved (YM4-02d, YM4-02e at tanh β < 1/14), is a quantum transfer-operator bound and no lock effect. | DERIVED from the cited results | — |
-| C6 | Counter-family control. The exact family of YM4 PR #34 (positive gap at every level, the power-of-three jump law holds, physical gap tends to 0) must be read as "gap closes" by the same readout that reads rows C1 to C4. | control | The readout reports a positive limit for that family |
+## 2. Rows for eventual pre-run freeze (revised)
 
-### D. The lock as a state (the SH ledger)
+### A. Time refinement controls — finite, fixed spatial lattice
 
-| Row | Statement | Tag | Falsifier |
-|---|---|---|---|
-| D1 | The sector label is exactly conserved by exp(−a·r·M) and is changed by exp(−a·E) only through paths that leave the flat set; on 2×2×2 for S₃ the flat levels first split at fourth order (NAMED from GitRAM PR #6, exploratory and awaiting review). The off-diagonal part of the effective F×F block is the per-frame lock-violation amplitude. | DERIVED in structure; the order and the size to be MEASURED under a frozen row | A splitting of the flat levels at an order below the one frozen |
-| D2 | The residue (C0 + C1 + C2) mod 3 of Law 71.13 is unchanged by the blocking 27 → 9 → 3 → 1 and by the cycle R (YM4 PR #34, hosted). It is recorded per frame in SH. | anchor, already MEASURED there | — |
-| D3 | A change of one local trit changes the SHA Merkle root of the frame and leaves distant trits unchanged (GitRAM PR #7). This is a property of the commitment and is recorded as such; no row reads a mass from it. | anchor | — |
-
-## 3. What can be computed, and where
-
-Orbit counts by Burnside, (1/|G|)·Σ_g |C(g)|^(E − V + 1). The formula reproduces the 3×4 count 2,177,317,873 (MEASURED in the finite repository). The three-dimensional figures are DERIVED from it and unmeasured.
-
-| Lattice, group | Gauge orbits | Route |
+| Row | Test | Status and falsifier |
 |---|---|---|
-| 2×2 (two dimensions), S₃ | 1,393 | exact T_a; rows A1, A2, B1, B2 can be measured in full |
-| 2×2×2, ℤ₃ | about 1.3 × 10⁸ | exact, abelian control |
-| 2×2×2, S₃ | 2,821,153,019,713 | the F = 21 effective block with remainder bounds (as GitRAM PR #6); one symmetry sector of about 7 × 10⁹ states would need a key table of roughly 59 GB, which the 300 GB Host8 store can hold, with rows computed on the fly |
-| 2×2×2, Q8 and larger | about 2.8 × 10¹⁴ and up | no exact route; series, no-store vector bounds, transfer bounds |
-| any 6×6×6 | — | no exact route; rows C1 to C4 at k ≥ 1 rest on bounds and series |
+| A1 | For fixed S₃ \(L,r,J_E\), \(n=3^k,\ a_t=a_0/n\): \(n[1-\lambda_2(T^{S_3})/\lambda_1(T^{S_3})]\to a_0J_E(e_2-e_1)\). Independently the logarithmic mass tends to \(J_E(e_2-e_1)\). | **DERIVED** from finite-dimensional Strang consistency. Falsify by a persistent discrepancy from independently bounded Hamiltonian levels. Not an exact Law 70 ratio at finite \(k\). |
+| A2 | Replace \(\lambda_2/\lambda_1\) by \(\lambda_{22}/\lambda_{21}\) and \(e_2-e_1\) by \(e_{22}-e_{21}\). | **DERIVED**, same caveat. Keep a separate spectral enclosure. |
+| A3 | In the *constructed Law 70 transfer*, retaining \(\lambda_n=(n-1)/n\) while holding \(a_t=a_0\) makes \(m_n\to0\). | **DERIVED**, negative toy control; it says nothing by itself about Wilson SU(2). |
+| A4 | For the Wilson operator, compare its anisotropic transfer spectrum to a separately declared Hamiltonian continuum-time limit, **not** to an assumed S₃-to-SU(2) parameter identity. | **OPEN** matching requirement; discrepancy falsifies the chosen matching. |
 
-So rows A and B are measurable now on small lattices. Rows C are measurable at k = 0 and, beyond it, only through bounds; C3 cannot be measured until its alphabet sequence is defined.
+### B. Unequal temporal slicing: an error-control test, not Law 70 population physics
 
-## 4. Questions for the operator and GPT-6
+At a fixed finite S₃ Hamiltonian set \(b=a_0/n\). Compare two equal Strang steps \(P_{\rm eq}=T_b^2\) to the **defined** symmetric unequal block \(P_{\rm un}=T_{3b/2}^{1/2}T_{b/2}T_{3b/2}^{1/2}\). Both have leading generator \(-2bH\), although \(T_h^{1/2}\ne T_{h/2}\) for finite \(h\). Read masses per **total clock time \(2b\)**.
 
-1. Is the transfer operator of section 1 the one to freeze, or the Wilson Euclidean transfer matrix of Lemma 0004 with an anisotropy parameter?
-2. Row C0: which map from (g, a) to (r, J_E) for the finite-group models?
-3. Row C3: what is an admissible alphabet sequence A_k? Without it the operator's mechanism has no frozen row.
-4. Row B2 and row C4 are stated as conjectures with a direction. Are the directions the ones the operator predicts?
-5. Row C1 says a fixed finite alphabet gives an infinite lock mass in the limit. If the operator's picture is that the alphabet is fixed (ternary) while only the slices refine, then C1 is the prediction to test and C3 is withdrawn; which is it?
-6. Should the SH row carry anything beyond sector label, level, cycle state and parent hash?
+| Row | Test | Status and falsifier |
+|---|---|---|
+| B1 | Under a nonzero leading second-order mass error and the appropriate symmetric-composition BCH expansion, test whether \([m_{\rm un}-\Delta]/[m_{\rm eq}-\Delta]\to7/4\), since \(((3/2)^3+(1/2)^3)/2=7/4\). | **CONJECTURE pending an explicit BCH derivation** and nonzero-denominator gate. A zero leading coefficient makes this ratio undefined, not a failure. |
+| B2 | Measure the sign of \(m_{\rm un}-m_{\rm eq}\); allow either sign. | **OPEN**, prediction direction not supplied. Law 70's unequal **population** observation is not a derivation of this temporal-step sign. |
 
-## 5. Scope
+### C. Space/time and representation refinement — the decisive physics rows
 
-Each row is a statement about a finite lattice or about a stated sequence of them. The Clay problem (target 3 of the README) is OPEN. Nothing here is a measurement, and no row is frozen.
+| Row | Refined claim | Status and falsifier |
+|---|---|---|
+| C0 | Record the full trajectory \((a_{s,k},a_{t,k},L_k,\beta_{s,k},\beta_{t,k})\), with SU(2) physical scale/anisotropy setting independent of the measured gap. Keep S₃ \(r,J_E\) as independent controls. | **REQUIRED BEFORE FREEZE.** Kogut–Susskind \(g^2/a_s\) versus \(1/(g^2a_s)\) scaling is NAMED and convention-checked; **no S₃ map is implied**. |
+| C1 | With a fixed finite group S₃ and a specifically chosen \(r_k,J_{E,k},L_k\), test whether \(m_{\rm cluster}\) grows without bound. | **CONJECTURE, trajectory-dependent.** It is **not** a theorem for every fixed finite alphabet; \(\kappa\) alone does not imply a gap. |
+| C2 | For **any** transfer spectrum, a nonzero finite limiting mass \(m\) requires \(-\log(\lambda_2/\lambda_1)=a_t m+o(a_t)\), or equivalently \(1-\lambda_2/\lambda_1=a_tm+o(a_t)\). For the distinct S₃ cluster ratio use \(\lambda_{22}/\lambda_{21}\). | **DERIVED spectral requirement.** It does **not** require classical \(\kappa_k\sim3^{-k}\) or a changing trit symbol set. |
+| C3 | **Concrete candidate for the operator's “fixed ternary symbols, more structure at each level”:** retain the digits \((-1,0,+1)\) for coding, and use the SU(2) Peter–Weyl representation cutoff \(q_k=3^k,\ j_{\max,k}=(q_k-1)/2\). On each link keep matrix-coefficient irreps \(j\le j_{\max,k}\), dimension \(d_k=\sum_{d=1}^{q_k}d^2=q_k(q_k+1)(2q_k+1)/6\), encoded in enough trits. | **PROPOSED DEFINITION, NOT AN ATTRIBUTED USER CHOICE OR A FROZEN PREDICTION.** The cutoff projector commutes with left/right gauge transformations; test projected-transfer positivity, gauge covariance, tail error and recovery as \(q_k\to\infty\). |
+| C4 | On the gauge-invariant truncated SU(2) space, examine \(T_{W,k}^{(q)}=P_{q_k}T_{W,k}P_{q_k}\). Require errors between its first physical spectral ratios and the untruncated Wilson operator to be bounded independently of the measured gap. | **OPEN** quantitative cutoff/volume/spacing bounds. Projection preserves positivity and gauge symmetry, but locality and the continuum theory are **not proved** by this fact. |
+| C5 | Continuous SU(2) has \(\inf_{U:\mathcal M(U)>0}\mathcal M(U)=0\) in the finite spatial geometry of YM4-06A. Therefore no positive **classical** nonflat-cost floor exists. | **DERIVED there.** This neither disproves nor establishes a quantum physical gap; a finite-box transfer bound is not a continuum-mass certificate. |
+| C6 | Feed YM4 PR #34's exact counterfamily (positive finite gaps and valid ternary jumps, but vanishing physical gap) into the identical spectral readout. | **MANDATORY CONTROL.** The readout must return \(m_{\rm phys}\to0\). |
+| C7 | At a declared SU(2) coupling/spacing trajectory, certify a strictly positive lower bound on \(-\log(\lambda_2/\lambda_1)/a_t\) uniform as \(a_s,a_t\to0\), *including representation truncation error and excited-state visibility*. Then control \(R\to\infty\) and the reconstruction/continuum limit. | **OPEN target.** No C3 representation cutoff, finite S₃ cluster gap, SHA digest or positive single-lattice gap discharges it. |
+| C8 | Compare a **separate** family of finite SU(2) subgroup actions with the Wilson SU(2) control at matched finite lattice/coupling, recording any weak-coupling freezing. | **NAMED literature-backed negative control**, not an approximation sequence converging to SU(2). S₃, 2T, 2O, 2I are separate models. |
+
+**Why C3 is a better-defined candidate than finite subgroups.** The Peter–Weyl link spaces form a nested sequence inside \(L^2(SU(2))\); the continuous SU(2) gauge action is preserved at each cutoff, and only the **number of trits needed to encode basis states** grows. For \(q=3,9,27\), the per-link dimensions are \(14,285,6930\) (requiring 3, 6 and 9 trits respectively). This is a finite-dimensional representation truncation, **not a new finite subgroup or a globally injective 256-bit hash**. Existing research notes that subgroup digitizations freeze at weak coupling and representation cutoffs need separate continuum error control.
+
+### D. Lock, residuals and shadow-cat ledger
+
+| Row | Statement | Status and falsifier |
+|---|---|---|
+| D1 | In S₃, the magnetic multiplication operator preserves flat basis configurations individually. Electric dynamics can connect flat states through nonflat paths. The 2×2×2 fourth-order **large-\(r\)** splitting from GitRAM PR #6 is a candidate effective off-diagonal amplitude; it is not fourth order in temporal frame spacing. | **MEASURED effective finite-model input awaiting independent spectral proof review**. A lower nonzero order in the same expansion falsifies it. |
+| D2 | The order-three SH action \(C_0\to C_1\to C_2\to C_0\) and any \(27\to9\to3\to1\) modular residue preservation are ledger identities; a proposed physical SU(2) shadow observable must **independently pass exact local gauge invariance**. | **Existing finite bookkeeping control; physical operator OPEN.** Raw signed S₃ 3-cycle orientation fails gauge invariance under transposition conjugation (YM4 PR #34). |
+| D3 | A leaf mutation can change the recomputed Merkle root, while an unmodified distant trit remains unchanged. | **MEASURED GitRAM PR #7 fixture property**, not instantaneous propagation, mass generation or a universal no-collision theorem. |
+| D4 | Attach to each spectral row the exact transfer/Hamiltonian source and coupling, eigenvector or interval witness, a **norm residual and enclosure**, gauge projector/sector, temporal spacing, parent hash and shadow derivation. | **REQUIRED ACCEPTANCE.** HBI/HBP/SHA/SH/HASH proves provenance of a claimed residual; the residual bound itself must be mathematically checked. |
+
+## 3. Computational plan and sizing (no execution in this PR)
+
+The exact finite S₃ Burnside formula is \(|G|^{-1}\sum_{g\in G}|C(g)|^{E-V+1}\) on a connected graph. On a periodic 2×2×2 3D lattice \(E-V+1=17\).
+
+| Space/group | Gauge orbit count or cutoff | Planned use |
+|---|---:|---|
+| 2D 2×2 S₃ | 1,393 | Entire matrix; time-splitting/BCH and shadow operator controls. |
+| 3D 2×2×2 \(\mathbb Z_3\) | 129,140,163 | Abelian no-store / sector-controlled comparison; do not call full diagonalization easy. |
+| 3D 2×2×2 S₃ | 2,821,153,019,713 | Effective 21-state spectral work and certified matrix-free enclosures in GitRAM PR #6. |
+| 3D 2×2×2 Q8 | 562,962,838,323,200 | No full stored spectrum; rational series and no-store bounds. |
+| SU(2) representation cutoff | \(d_k=q_k(q_k+1)(2q_k+1)/6\) per link | Gauge-invariant truncated transfers; no claim that full state space fits Host8. |
+| 3D spatial \(6^3\) or larger | model dependent | Bounds, blocking and controlled truncations only; not a promised exact whole-spectrum run. |
+
+The ~7-billion-size S₃ *symmetry* subspace and ~59-GB key-table estimate in the earlier draft are only feasibility hypotheses pending an independent exact sector-dimension calculation. Fits-in-300GB does not imply an eigensolver certificate. Host8 can stream bounded slices and their receipts, while matrix laws shorten permitted linear operations; a nonlinear jump needs its own reduction theorem.
+
+Run order **after** the corrections are approved: (i) one isolated HBP prediction-only commit with both observable definitions and negative controls; (ii) 2D S₃ exact operator/time-refinement controls; (iii) fixed 3D S₃ and continuous SU(2) controls; (iv) SU(2) nested representation cutoffs with measured projection errors; (v) a conditional scale-uniform bound attempt with PR #34's vanishing-gap counterfamily. No row is to be silently converted from CONJECTURE or OPEN to DERIVED after seeing a result.
+
+## 4. Resolution of the six reviewer questions
+
+1. **Transfer:** Wilson/Lemma 0004 on gauge-invariant SU(2) is primary. The symmetric S₃ Strang split is a separate finite-model control.
+2. **Coupling:** the \(g^2/a_s,\ 1/(g^2a_s)\) convention applies to an explicitly normalized SU(2) Kogut–Susskind Hamiltonian. S₃ \(r,J_E\) remain independent until a derived matching map exists.
+3. **Growing state space:** adopt **as a candidate for operator approval** the nested SU(2) Peter–Weyl cutoff \(q_k=3^k\) while the underlying digital symbols remain ternary. No finite SU(2) subgroup sequence is asserted to converge to the group.
+4. **Signs:** B1 needs a BCH coefficient and nonzero denominator; B2 and finite-volume C1/C4 gap directions remain genuinely refutable/open. No unsupported direction is attributed to Law 70.
+5. **Fixed versus refining:** **fixed three-symbol encoding and a growing number of trits/basis states are compatible**, so the binary choice is false. A *fixed finite physical S₃ gauge group* remains a distinct negative/control lane.
+6. **SH:** include sector and local-gauge witness, level/clock, C0/C1/C2 phase, immutable parent/derived hashes, source operator/couplings, eigenvalue/residual proof links, and an explicit tag distinguishing physical observables from metadata. SH does not change the dynamics.
+
+## 5. Scope and references
+
+The preceding definitions make the problem **testable**; they do not establish the Wilson transfer-spectrum scaling, the reconstructed continuum theory, a positive 4D infinite-volume Yang–Mills mass gap, or instantaneous physical signaling. They preserve the r=9 freeze separately.
+
+Repository inputs: [Lemma 0004](LEMMA-0004-REFLECTION-TRANSFER.md), [YM4-02d](NOTE-YM4-02d-QUANTITATIVE-GAP.md), [YM4-03 blocking](NOTE-YM4-03-ONE-SCALE-BLOCKING.md), [YM4-06A](NOTE-YM4-06A-GLOBAL-LOCK-20261110.md), [counterfamily PR #34](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/34), [finite 3D spectral GitRAM PR #6](https://github.com/JesseBrown1980/GitRAM/pull/6), [Law 70 transfer GitRAM PR #7](https://github.com/JesseBrown1980/GitRAM/pull/7).
+
+External convention and control sources (background, not a substitute for the repo proofs): Kogut–Susskind, *Phys. Rev. D* **11** (1975) 395; Hartung et al., *Digitising SU(2) gauge fields and the freezing transition*, *Eur. Phys. J. C* **82** (2022) 237; *Quantum simulation of lattice gauge theories in more than one space dimension—requirements, challenges and methods*, *Phil. Trans. R. Soc. A* (2022), representation cutoff section.
+
+**NO PREDICTION FROZEN. NO YM4-06D RUN. NO 4D MASS-GAP CLAIM.**
