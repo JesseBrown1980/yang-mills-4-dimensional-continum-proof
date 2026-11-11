@@ -1,0 +1,99 @@
+name: YM4-06F exact interacting multi-site SU2 Wilson physical spectrum
+
+on:
+  push:
+    branches: [gpt6-ym4-06f-multisite-wilson-20261111]
+    paths:
+      - '.github/workflows/ym4-06f-multisite-wilson.yml'
+      - 'experiments/ym4-06f-multisite-wilson/**'
+      - 'docs/PREDICTION-YM4-06F-MULTISITE-WILSON-20261111.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06f-exact-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  multisite-transfer:
+    name: Rust 1.81 exact physical 2x2x2 SU2 transfer and cutoff enclosures
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Native Git checkout; prediction-before-code immutable freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --branch gpt6-ym4-06f-multisite-wilson-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 955a997687d6220fa2ce60c36f97419934b4e06e HEAD
+          git -C work show 955a997687d6220fa2ce60c36f97419934b4e06e:docs/PREDICTION-YM4-06F-MULTISITE-WILSON-20261111.hbp > /tmp/frozen-ym4-06f.hbp
+          cmp /tmp/frozen-ym4-06f.hbp work/docs/PREDICTION-YM4-06F-MULTISITE-WILSON-20261111.hbp
+          echo 'YM4_06F_FREEZE|first_commit=955a997687d6220fa2ce60c36f97419934b4e06e|prediction_unchanged=YES|r9_runs=0|json=0'
+      - name: Strict Clippy and standalone Rust 1.81 all exact-integer tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SOURCE=work/experiments/ym4-06f-multisite-wilson/main.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06f_multisite --crate-type bin --emit metadata -o /tmp/ym4-06f.rmeta "$SOURCE"
+          rustc +1.81.0 --edition 2021 --test "$SOURCE" -o /tmp/ym4-06f-tests
+          /tmp/ym4-06f-tests
+          rustc +1.81.0 --edition 2021 -O "$SOURCE" -o /tmp/ym4-06f-native
+      - name: Check frozen interacting physical-gap and four ternary cutoffs
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/ym4-06f-native run output | tee YM4-06F-RUN.log
+          /tmp/ym4-06f-native verify output | tee YM4-06F-VERIFY.log
+          grep -Fq 'YM4_06F_EXECUTE|PASS|' YM4-06F-RUN.log
+          grep -Fq 'YM4_06F_VERIFY|PASS|HBI=YES|HBP=YES|SHA=YES|SH=YES|HASH=YES' YM4-06F-VERIFY.log
+          grep -Fq 'GEOMETRY|spatial=2x2x2|vertices=8|links=24|plaquettes=24|face_distinct_links=4|faces_per_link=4|two_link_cycles=12|' output/YM4-06F.hbp
+          grep -Fq 'FULL_PHYSICAL_TRANSFER|space=2x2x2|links=24|plaquettes=24|beta_s=1/128|beta_t=1|gauge_projector=ALL_VERTICES|B_first_nontrivial_spin_support=2|B_first_ratio=(ell1/ell0)^2|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|' output/YM4-06F.hbp
+          grep -Fq 'q=3|D=0|m=3|dimension=14|trits=3|full_interacting_transfer_error_over_b0^24_lt=3/8|' output/YM4-06F.hbp
+          grep -Fq 'q=9|D=2|m=7|dimension=285|trits=6|full_interacting_transfer_error_over_b0^24_lt=1/700|' output/YM4-06F.hbp
+          grep -Fq 'q=27|D=6|m=21|dimension=6930|trits=9|full_interacting_transfer_error_over_b0^24_lt=1/30000000000|' output/YM4-06F.hbp
+          grep -Fq 'q=81|D=20|m=61|dimension=180441|trits=12|full_interacting_transfer_error_over_b0^24_lt=1/1000000000000000000000000000000|' output/YM4-06F.hbp
+          grep -Fq 'CUTOFF_SPECTRUM|q=9|lambda2_lambda1_gt=1/30|lambda2_lambda1_lt=1/10|' output/YM4-06F.hbp
+          grep -Fq 'CUTOFF_SPECTRUM|q=27|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|' output/YM4-06F.hbp
+          grep -Fq 'CUTOFF_SPECTRUM|q=81|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|' output/YM4-06F.hbp
+          grep -Fq 'physical_volume_to_infinity=NOT_RUN' output/YM4-06F.hbp
+          (cd output && sha256sum YM4-06F.hbp YM4-06F.hbi YM4-06F.sha YM4-06F.sh YM4-06F.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+      - name: Reject four mathematical faults and one tampered receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in no_spatial open_link_physical missing_irrep overstrong_tail; do
+            if /tmp/ym4-06f-native plant "$name" > "FAULT-${name}.log" 2>&1; then
+              echo "FAULT|name=$name|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$name" in
+              no_spatial) grep -Fq 'nonzero spatial Wilson plaquettes must be retained' "FAULT-${name}.log" ;;
+              open_link_physical) grep -Fq 'open-link fundamental is not gauge invariant' "FAULT-${name}.log" ;;
+              missing_irrep) grep -Fq 'missing complete SU2 representation block' "FAULT-${name}.log" ;;
+              overstrong_tail) grep -Fq 'overstrong cutoff tail must be rejected' "FAULT-${name}.log" ;;
+            esac
+            echo "FAULT|name=$name|rejected=YES|json=0"
+          done
+          cp -r output tampered
+          sed -i 's/continuum_mass=NOT_COMPUTED/continuum_mass=PROVEN/' tampered/YM4-06F.hbp
+          if /tmp/ym4-06f-native verify tampered > FAULT-TAMPERED.log 2>&1; then
+            echo 'FAULT|name=tampered_HBP|rejected=NO|json=0'
+            exit 1
+          fi
+          grep -Fq 'HBP HBI SHA SH HASH mismatch' FAULT-TAMPERED.log
+          echo 'FAULT|name=tampered_HBP|rejected=YES|json=0'
+      - name: Print all SHA256-canonical receipt files for filing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4-06F.hbp YM4-06F.hbi YM4-06F.sha YM4-06F.sh YM4-06F.hash SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "output/$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_06F_HOSTED|PASS|FULL_INTERACTING_MULTI_SITE_SU2=ENCLOSED|L=2|continuum_YM_gap=OPEN|r9_runs=0|json=0'
