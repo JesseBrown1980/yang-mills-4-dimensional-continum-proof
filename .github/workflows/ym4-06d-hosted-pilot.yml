@@ -68,7 +68,12 @@ jobs:
               echo "FAULT|name=$name|result=NOT_REJECTED|json=0"
               exit 1
             fi
-            grep -Fq 'assertion' "FAULT-${name}.log"
+            case "$name" in
+              missing_representation) grep -Fq 'full SU2 irrep cutoff has dropped an irrep' "FAULT-${name}.log" ;;
+              wrong_center_parity) grep -Fq 'incorrect central parity' "FAULT-${name}.log" ;;
+              wrong_wilson_tail) grep -Fq 'Wilson tail cannot be identically zero' "FAULT-${name}.log" ;;
+              vanishing_mass_misread) grep -Fq 'vanishing family cannot have a uniform positive first mass' "FAULT-${name}.log" ;;
+            esac
             echo "FAULT|name=$name|result=REJECTED|json=0"
           done
           cp -r output altered
