@@ -7,6 +7,14 @@ COMPUTED pre-freeze C04 as a blind prediction.
 import argparse
 from math import comb, factorial, gcd
 
+def ipow(base, exponent):
+    if exponent < 0:
+        raise AssertionError("negative integer exponent")
+    value = 1
+    for _ in range(exponent):
+        value *= base
+    return value
+
 def q(n, d=1):
     if d <= 0:
         raise AssertionError("nonpositive denominator")
@@ -33,7 +41,7 @@ def div(a, b):
 def power(a, n):
     if n < 0:
         raise AssertionError("negative exponent")
-    return q(a[0] ** n, a[1] ** n)
+    return q(ipow(a[0], n), ipow(a[1], n))
 
 def lt(a, b):
     return a[0] * b[1] < b[0] * a[1]
@@ -90,18 +98,18 @@ def eps_sixth_power(beta):
 
 def root_floor(score, digits=9):
     """Floor(10^digits * score^(1/6)) by exact cross-products."""
-    scale = 10 ** digits
+    scale = ipow(10, digits)
     low, high = 0, 2 * scale
     while high - low > 1:
         mid = (low + high) // 2
-        if le(q(mid ** 6, scale ** 6), score):
+        if le(q(ipow(mid, 6), ipow(scale, 6)), score):
             low = mid
         else:
             high = mid
     return low
 
 def scaled_decimal(n, digits=9):
-    scale = 10 ** digits
+    scale = ipow(10, digits)
     return str(n // scale) + "." + str(n % scale).zfill(digits)
 
 def trial(label, beta, threshold, wall_below=False, sabotage=None):
