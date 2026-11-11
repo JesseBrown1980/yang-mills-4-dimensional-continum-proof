@@ -38,6 +38,7 @@ class Q:
         return self.n*b.d<=b.n*self.d
 
 def rat(x):return x if isinstance(x,Q) else Q(x)
+def quo(a,b):return rat(a).__truediv__(b)
 def add(a,b):return (a[0]+b[0],a[1]+b[1])
 def neg(a):return (-a[1],-a[0])
 def mul(a,b):
@@ -45,7 +46,7 @@ def mul(a,b):
     return (a[0]*b[0],a[1]*b[1])
 def div(a,b):
     assert b[0].n>0
-    return (a[0]/b[1],a[1]/b[0])
+    return (quo(a[0],b[1]),quo(a[1],b[0]))
 def power(a,n):
     assert a[0].n>=0 and n>=0
     return (a[0]**n,a[1]**n)
@@ -56,19 +57,19 @@ def c0(t):
     count=24
     s=Q(0)
     for m in range(count+1):
-        s+=(t/2)**(2*m)/Q(factorial(m)*factorial(m+1))
-    following=(t/2)**(2*count+2)/Q(factorial(count+1)*factorial(count+2))
-    r=(t/2)**2/Q((count+2)*(count+3))
+        s+=quo(quo(t,2)**(2*m),Q(factorial(m)*factorial(m+1)))
+    following=quo(quo(t,2)**(2*count+2),Q(factorial(count+1)*factorial(count+2)))
+    r=quo(quo(t,2)**2,Q((count+2)*(count+3)))
     assert r<Q(1,100)
-    return (s,s+following/(Q(1)-r))
+    return (s,s+quo(following,(Q(1)-r)))
 
 def exp_quarter():
     t,count=Q(1,4),80
     s=Q(0)
-    for k in range(count+1):s+=t**k/Q(factorial(k))
-    following=t**(count+1)/Q(factorial(count+1))
-    r=t/Q(count+2)
-    return (s,s+following/(Q(1)-r))
+    for k in range(count+1):s+=quo(t**k,Q(factorial(k)))
+    following=quo(t**(count+1),Q(factorial(count+1)))
+    r=quo(t,Q(count+2))
+    return (s,s+quo(following,(Q(1)-r)))
 
 def floor_sixth(z):
     assert z>=0
