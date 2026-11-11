@@ -23,7 +23,7 @@ const ONE:Quat=[1,0,0,0];
 const I:Quat=[0,1,0,0];
 const J:Quat=[0,0,1,0];
 const Q8:[Quat;8]=[
-    ONE,[-1,0,0,0],I,[-0,-1,0,0],
+    ONE,[-1,0,0,0],I,[0,-1,0,0],
     J,[0,0,-1,0],[0,0,0,1],[0,0,0,-1]
 ];
 fn qm(a:Quat,b:Quat)->Quat{
@@ -149,8 +149,11 @@ fn budget(beta_num:u64,beta_den:u64)->String {
     assert!(alpha_num<beta_den,
         "Dobrushin contractivity threshold violated");
     let gamma_num=beta_den-alpha_num;
-    let n=32u64;
-    assert_eq!(gamma_num*n,beta_den*29,
+    let alpha_g=gcd(u128::from(alpha_num),u128::from(beta_den)) as u64;
+    let gamma_g=gcd(u128::from(gamma_num),u128::from(beta_den)) as u64;
+    assert_eq!((alpha_num/alpha_g,beta_den/alpha_g),(3,32),
+        "wrong local Dobrushin coefficient");
+    assert_eq!((gamma_num/gamma_g,beta_den/gamma_g),(29,32),
         "wrong normalized spatial heatbath gap");
     // Conditional law at one link has density exp(h dot U), |h|<=4 beta.
     // Altering neighbor j in c plaquettes changes |h| by <=2c beta.
@@ -160,7 +163,8 @@ fn budget(beta_num:u64,beta_den:u64)->String {
     // 1-(1-alpha)/N. Its reversible L2 spectral bound is the same.
     // Continuous-time generator sum_i(P_i-I) thus has gap >=1-alpha.
     format!(
-        "LOCAL_DOBRUSHIN|beta_s={beta_num}/{beta_den}|conditional_SU2_von_Mises_Fisher=YES|TV_single_neighbour_le=beta_s_times_shared_faces|row_and_column_influence_budget=12|alpha_le={alpha_num}/{beta_den}|rate_one_per_link_classical_heatbath_gap_ge={gamma_num}/{beta_den}|ALL_L_GE2=YES|quantum_Wilson_transfer_GAP=NOT_PROVED|json=0\n"
+        "LOCAL_DOBRUSHIN|beta_s={beta_num}/{beta_den}|conditional_SU2_von_Mises_Fisher=YES|TV_single_neighbour_le=beta_s_times_shared_faces|row_and_column_influence_budget=12|alpha_le={}/{}|rate_one_per_link_classical_heatbath_gap_ge={}/{}|ALL_L_GE2=YES|quantum_Wilson_transfer_GAP=NOT_PROVED|json=0\n",
+        alpha_num/alpha_g,beta_den/alpha_g,gamma_num/gamma_g,beta_den/gamma_g
     )
 }
 fn factorial(n:u32)->u128{(1..=u128::from(n)).product()}
@@ -364,7 +368,7 @@ mod tests{
     #[test]fn spatial_l9(){let c=Cubic::new(9);assert_eq!(c.faces.len(),2187);assert_eq!(c.other_face_counts(false),(4,12));}
     #[test]fn spatial_l27(){let c=Cubic::new(27);assert_eq!(c.faces.len(),59049);assert_eq!(c.other_face_counts(false),(4,12));}
     #[test]fn independent_gauge_transform(){assert_eq!(Cubic::new(3).gauge_and_nonflat(),27);}
-    #[test]fn volume_independent_coefficient(){assert!(budget(1,128).contains("29/128"));}
+    #[test]fn volume_independent_coefficient(){assert!(budget(1,128).contains("29/32"));}
     #[test]fn exact_bessel_control(){let (a,b,c)=rho_interval();assert_eq!((a,b,c),(24_019_372,24_019_373,100_000_000));}
     #[test]fn temporal_beta_zero_uniform(){assert!(b_transfer(false).contains("ratio_lt=1/17"));}
     #[test]fn counterexample_necessary(){assert!(counterexample().contains("static_gap_implies_physical_mass=FALSE"));}
