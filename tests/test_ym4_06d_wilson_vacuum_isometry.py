@@ -41,6 +41,10 @@ def mul(a,b):
 def eq(a,b):
     return a[0]*b[1]==b[0]*a[1]
 
+def quot(a,b):
+    check(b[0]!=0,"nonzero_rational_denominator")
+    return rat(a[0]*b[1],a[1]*b[0])
+
 def sum_rat(values):
     s=rat(0)
     for v in values:
@@ -128,8 +132,8 @@ def test_fiber():
     # || Omega_f f(B)/sqrt(rho(B)) ||_Hf^2
     # = 1/8 sum_v f(v)^2, verified by cancellation per fiber.
     for v in Q8:
-        per_fiber=rat(weights[v]*8,weights[v]*8)
-        check(eq(per_fiber,rat(1)),"raw_Haar_isometry_per_fiber")
+        per_fiber=quot(rat(weights[v],normalizer),rat(8*weights[v],normalizer))
+        check(eq(per_fiber,rat(1,8)),"raw_Haar_isometry_per_fiber")
     emit("ISOMETRY","induced_weighted_norm_squared=315/88"+
          "|raw_Haar_square_root_free_identity=PASS"+
          "|induced_vacuum_maps_to_fine_vacuum=PASS")
