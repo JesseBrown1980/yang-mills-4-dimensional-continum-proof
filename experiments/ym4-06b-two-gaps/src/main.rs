@@ -263,7 +263,7 @@ fn make_receipts(out: &Path) {
     println!("YM4_06B_RUN|PASS|r=27,81|first_gap=POSITIVE_FACTORED_BOUND|flat_cluster_gap=POSITIVE_BOUND|spectral_diagonalization=0|r9_runs=0|json=0");
 }
 fn value<'a>(line: &'a str, field: &str) -> &'a str {
-    line.split('|').skip(1).find_map(|s| s.split_once('='))
+    line.split('|').skip(1).filter_map(|s| s.split_once('='))
         .find_map(|(k, v)| (k == field).then_some(v))
         .expect("missing HBI/HBP/anchor field")
 }
