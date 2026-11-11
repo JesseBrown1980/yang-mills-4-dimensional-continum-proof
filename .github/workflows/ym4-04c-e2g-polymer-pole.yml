@@ -1,0 +1,84 @@
+name: YM4-04C stage E2g exact polymer pole and independent Haar moment gate
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e2g-polymer-pole-engine-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e2g-polymer-pole.yml'
+      - 'tests/test_ym4_04c_polymer_norm.py'
+      - 'reviews/ym4-04c-check/e2g_c04_independent.py'
+      - 'docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-04c-e2g-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  exact-c04-polymer-tail:
+    name: Frozen C04 exact-integer engine and independent Haar moment check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact SHA and independently verify 42 frozen prediction rows
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e2g-polymer-pole-engine-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git -C work merge-base --is-ancestor d073f8882af4f59023235617c444c6feec7cb87e HEAD
+          git -C work show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 > /tmp/YM4-04C-FROZEN.hbp
+          head -n 42 work/docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp > /tmp/YM4-04C-WORKING.hbp
+          cmp /tmp/YM4-04C-FROZEN.hbp /tmp/YM4-04C-WORKING.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/YM4-04C-FROZEN.hbp' | sha256sum -c -
+          test "$(wc -l </tmp/YM4-04C-FROZEN.hbp)" -eq 42
+          echo 'YM4_04C_E2G_FREEZE|original_commit=6ebf632|attack_PR46=ANCESTOR|rows=42|unchanged=YES|json=0'
+      - name: No-float gate on authored exact-integer stage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 work/scripts/no_float_gate.py work
+      - name: Execute first engine stage and independent source-disjoint Haar check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/tests/test_ym4_04c_polymer_norm.py | tee YM4_04C_E2G-ENGINE.hbp
+          python3 -I -B work/reviews/ym4-04c-check/e2g_c04_independent.py | tee YM4_04C_E2G-INDEPENDENT.hbp
+          test "$(grep -Fc 'YM4_04C_E2G|row=C04|beta=' YM4_04C_E2G-ENGINE.hbp)" -eq 3
+          test "$(grep -Fc 'YM4_04C_E2G_INDEPENDENT|row=C04|' YM4_04C_E2G-INDEPENDENT.hbp)" -eq 3
+          grep -Fq 'YM4_04C_E2G_RESULT|PASS|C04_pole=NOT_MET_at_1/40_and_0.02248|wall_0.02247_below_pole=YES|' YM4_04C_E2G-ENGINE.hbp
+          grep -Fq 'YM4_04C_E2G_INDEPENDENT_RESULT|PASS|three_C04_checks=3|shared_code=NO|' YM4_04C_E2G-INDEPENDENT.hbp
+          grep -Fq 'prefreeze=COMPUTED|confirmation_count=0|' YM4_04C_E2G-ENGINE.hbp
+          sha256sum YM4_04C_E2G-ENGINE.hbp YM4_04C_E2G-INDEPENDENT.hbp > YM4_04C_E2G-SHA256SUMS
+          sha256sum -c YM4_04C_E2G-SHA256SUMS
+      - name: Reject missing tail, false wall and wrong Fuss-Catalan growth constant
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in missing_tail false_wall wrong_mu; do
+            if python3 -I -B work/tests/test_ym4_04c_polymer_norm.py --sabotage "$fault" > "YM4_04C_FAULT-${fault}.log" 2>&1; then
+              echo "YM4_04C_E2G_FAULT|name=$fault|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$fault" in
+              missing_tail) grep -Fq 'C04_FAIL: missing Fuss-Catalan tail and mandatory pole test' "YM4_04C_FAULT-${fault}.log" ;;
+              false_wall) grep -Fq 'C04_FAIL: frozen polymer pole guard lower bracket not certified' "YM4_04C_FAULT-${fault}.log" ;;
+              wrong_mu) grep -Fq 'C04_FAIL: frozen polymer pole guard lower bracket not certified' "YM4_04C_FAULT-${fault}.log" ;;
+            esac
+            echo "YM4_04C_E2G_FAULT|name=$fault|rejected=YES|json=0"
+          done
+      - name: Emit permanent C04 stage receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4_04C_E2G-ENGINE.hbp YM4_04C_E2G-INDEPENDENT.hbp YM4_04C_E2G-SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_04C_E2G_HOSTED|PASS|C04_only=YES|all_C_and_W_rows=NOT_RUN|evidence_PR45=NOT_MERGED|G_attack_PR46=FILED|weak_coupling=OPEN|r9_runs=0|json=0'
