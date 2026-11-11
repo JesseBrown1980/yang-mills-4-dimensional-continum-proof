@@ -1,0 +1,1 @@
+SH|model=SU2_PW_gauge_cutoff_and_S3_controls|cycle=0,1,2|trit=minus,zero,plus|parent_prediction=b63a2848fd23bc3a9cffc464c93036f2b92c3dbe|physical_sector=NOT_IDENTIFIED_WITH_SHA|data_only=YES|json=0
