@@ -1,0 +1,67 @@
+name: YM4-04C E5 global C15 pole monotonicity and third exact route
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e5-global-pole-monotonicity-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e5-global-pole.yml'
+      - 'tests/test_ym4_04c_e5_global_pole.py'
+      - 'docs/NOTE-YM4-04C-E5-GLOBAL-POLE-20261111.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-04c-e5-global-pole-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  e5-unique-pole:
+    name: "Third exact SU2 endpoint route and all-beta analytic release scope"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify stack and original unchanged source predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 8559a6f22784eb4e4140e07f7d95f83a60e1790f HEAD
+          git merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git merge-base --is-ancestor 70cceac39ef08bdee88a75bca82b9a9867502a97 HEAD
+          git show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 > /tmp/YM4-04C-ORIGINAL.hbp
+          head -n 42 docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp > /tmp/YM4-04C-CURRENT.hbp
+          cmp /tmp/YM4-04C-ORIGINAL.hbp /tmp/YM4-04C-CURRENT.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/YM4-04C-CURRENT.hbp' | sha256sum -c -
+      - name: Strict whole-repo integer-only source scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Third independent exact rational Wilson-Haar interval route
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_04c_e5_global_pole.py | tee /tmp/YM4-04C-E5-POLE-THIRD.hbp
+          grep -Fq 'E5_GLOBAL_POLE|unique_crossing_in=(0.02247,0.02248)' /tmp/YM4-04C-E5-POLE-THIRD.hbp
+          grep -Fq '|all_beta_ge_0.02248=POLE_NOT_MET|' /tmp/YM4-04C-E5-POLE-THIRD.hbp
+          test "$(grep -Fc 'E5_POLE_THIRD|name=' /tmp/YM4-04C-E5-POLE-THIRD.hbp)" -eq 3
+      - name: Reject planted false inversion of the global pole endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          if python3 -I -B tests/test_ym4_04c_e5_global_pole.py --sabotage > /tmp/E5-POLE-FAULT.log 2>&1; then
+            echo 'E5_POLE_FAULT|inverted_endpoint|rejected=NO|json=0'
+            exit 1
+          fi
+          grep -Fq 'E5_REJECT: inverted pole boundary' /tmp/E5-POLE-FAULT.log
+          echo 'E5_POLE_FAULT|inverted_endpoint|rejected=YES|json=0'
+      - name: Preserve physical and CI release boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'E5_GLOBAL_POLE|CERTIFICATE_NOT_MET_FOR_BETA_GE_0.02248'
+          echo 'E5_GLOBAL_POLE|NOT_PHYSICAL_GAP|NOT_CONTINUUM_THEOREM|NO_RELEASE_MERGE'
