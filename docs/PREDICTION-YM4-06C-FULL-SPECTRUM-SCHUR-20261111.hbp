@@ -1,0 +1,19 @@
+# YM4-06C frozen predictions, 2026-11-11
+# One-step full first-gap block-Schur theorem; finite exact toy controls.
+# No physical 4D SU2 interscale inequality is asserted.
+PREDICT|id=S01|normalized_positive_transfer_vacuum=1|coarse_vacuum_preserving_J=isometry|P_f=positive_contraction
+PREDICT|id=S02|Jadj_Pf_power2_J_minus_Bpower2=Zadj_Z|positive_semidefinite=YES
+PREDICT|id=S03|Jadj_Pf_power3_J_minus_Bpower3=B_Zadj_Z_plus_Zadj_Z_B_plus_Zadj_D_Z|norm_le=3_zeta_squared
+PREDICT|id=S04|Schur_threshold=t|t_ge=u_and_rho|test=(t-u)(t-rho)_ge_zeta_squared|full_first_ratio_le_t
+PREDICT|id=S05|coarse_root_ratio=1/2|alpha=0|rho=1/4|zeta=1/16|t_pass=33/64|Schur_product=17/4096_ge_16/4096
+PREDICT|id=S06|t_fail=65/128|Schur_product=33/16384_lt_64/16384|false_certificate=REJECT
+PREDICT|id=S07|exact_mixed_3state|coarse_2step_memory=1/256|coarse_3step_memory=5/1024
+PREDICT|id=S08|exact_mixed_3state|full_second_ratio_gt=1/2|full_second_ratio_lt=33/64
+PREDICT|id=S09|hidden_dark_3state|fine_second=3/4|visible_second=1/2|coarse_exact_3step_second=1/8
+PREDICT|id=S10|hidden_dark_3state|Schur_rho=3/4|necessary_target=1/2|reject_full_spectrum=YES
+PREDICT|id=S11|coarse_compression_3step|r_coarse_le_r_fine_cubed|cannot_upper_bound_rfine=YES
+PREDICT|id=S12|one_step_threshold_t=33/64|r_coarse_root=1/2|multiplicative_1_plus_x=33/32|x=1/32
+PREDICT|id=S13|ternary_spacings_a0=1|xk=a_kplus1_squared_over64|sum_all_xk_over_a_kplus1=1/128|ln2_gt_1/2
+PREDICT|id=S14|full_spectral_coverage=REQUIRED|vacuum_intertwining=REQUIRED|gauge_block_operator_norms=UNPROVED
+PREDICT|id=S15|fault_drop_dark=REJECT|fault_drop_leakage=REJECT|fault_too_small_threshold=REJECT|fault_incorrect_triple_memory=REJECT
+PREDICT|id=S16|actual_4D_SU2_all_scale_schur_bounds=OPEN|physical_gap=OPEN|OS_continuum=OPEN|r9=UNTOUCHED
