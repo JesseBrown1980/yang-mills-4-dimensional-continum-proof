@@ -1,0 +1,78 @@
+name: YM4-07 weak Wilson conditional-network and all-k illustrated trajectory
+
+on:
+  push:
+    branches: [gpt6-ym4-07-weak-conditional-network-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.hbp'
+      - 'docs/PREDICTION-YM4-07B-CONDITIONAL-TRAJECTORY-20261111.hbp'
+      - 'docs/NOTE-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.md'
+      - 'tests/test_ym4_07_weak_conditional.py'
+      - '.github/workflows/ym4-07-weak-conditional-network.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.hbp'
+      - 'docs/PREDICTION-YM4-07B-CONDITIONAL-TRAJECTORY-20261111.hbp'
+      - 'docs/NOTE-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.md'
+      - 'tests/test_ym4_07_weak_conditional.py'
+      - '.github/workflows/ym4-07-weak-conditional-network.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-conditional-weak-field:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Frozen predictions must remain byte identical
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 4ef2b3cf99ad44b50354028ae21c41e48592c6a6 HEAD
+          git merge-base --is-ancestor 85b67aa9893bb78fd749ff995d215ff0684ff48c HEAD
+          git show 4ef2b3cf99ad44b50354028ae21c41e48592c6a6:docs/PREDICTION-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.hbp > /tmp/YM4_07_A.hbp
+          cmp /tmp/YM4_07_A.hbp docs/PREDICTION-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.hbp
+          git show 85b67aa9893bb78fd749ff995d215ff0684ff48c:docs/PREDICTION-YM4-07B-CONDITIONAL-TRAJECTORY-20261111.hbp > /tmp/YM4_07_B.hbp
+          cmp /tmp/YM4_07_B.hbp docs/PREDICTION-YM4-07B-CONDITIONAL-TRAJECTORY-20261111.hbp
+          test "$(grep -c '^PREDICT|id=W07-' /tmp/YM4_07_A.hbp)" -eq 10
+          test "$(grep -c '^PREDICT|id=W07B-' /tmp/YM4_07_B.hbp)" -eq 6
+      - name: Strict source no-floating-point check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Recompute independent integer 4D pair-network and all-k ratios
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_07_weak_conditional.py | tee /tmp/YM4_07_REPLAY.hbp
+          grep -Fq 'YM4_07|GEOMETRY|incident=6|unordered_pairs=15|cross_plane=12' /tmp/YM4_07_REPLAY.hbp
+          grep -Fq 'YM4_07|NETWORK|Q_direct=2|Q_all_15_pairs=2|two_sided_gauge_invariance=PASS' /tmp/YM4_07_REPLAY.hbp
+          grep -Fq 'YM4_07|COUNTEREXAMPLE|4D_side=3|positive=3|negative=3|Q=0|conditional=HAAR' /tmp/YM4_07_REPLAY.hbp
+          grep -Fq 'q_lt=146205/230144|all_k_geometric_good_field_term=PASS' /tmp/YM4_07_REPLAY.hbp
+          test "$(grep -c '^YM4_07|TAIL|' /tmp/YM4_07_REPLAY.hbp)" -eq 3
+          grep -Fq 'YM4_07|DONE|result=PASS_CONDITIONAL_WEAK_FIELD_ONLY|weak_trajectory_certificate=NOT_YET' /tmp/YM4_07_REPLAY.hbp
+      - name: Six corruptions of computed evidence must fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in drop_cross_plane flip_one_staple cancel_background_link corrupt_exp_tail wrong_plaquette_count wrong_volume_factor corrupt_exp_partial; do
+            if python3 -I -B tests/test_ym4_07_weak_conditional.py "$fault" > /tmp/YM4_07_FAULT.log 2>&1; then
+              echo "YM4_07_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_07_REJECT|reason=' /tmp/YM4_07_FAULT.log
+            echo "YM4_07_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Check scientific release boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'bad_field_probability=OPEN' docs/NOTE-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.md || grep -Fq 'bad_field_probability' docs/NOTE-YM4-07-WEAK-CONDITIONAL-NETWORK-20261111.md
+          echo 'YM4_07_RELEASE|LOCAL_CONDITIONAL=DERIVED|ALL_K_ILLUSTRATION=CONDITIONAL|BAD_FIELD=OPEN|PHYSICAL_GAP=OPEN'
