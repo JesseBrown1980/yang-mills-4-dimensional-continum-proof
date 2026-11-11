@@ -62,6 +62,12 @@ jobs:
           grep -Fq 'CUTOFF_SPECTRUM|q=81|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|' output/YM4-06F.hbp
           grep -Fq 'physical_volume_to_infinity=NOT_RUN' output/YM4-06F.hbp
           (cd output && sha256sum YM4-06F.hbp YM4-06F.hbi YM4-06F.sha YM4-06F.sh YM4-06F.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06f-multisite-wilson/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06F.hbp YM4-06F.hbi YM4-06F.sha YM4-06F.sh YM4-06F.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06F_EVIDENCE|all_six_files=BYTE_IDENTICAL|json=0'
       - name: Reject four mathematical faults and one tampered receipt
         shell: bash
         run: |
