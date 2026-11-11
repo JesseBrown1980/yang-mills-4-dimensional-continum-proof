@@ -64,6 +64,12 @@ jobs:
           grep -Fq 'q=81|lambda2_lambda1_gt=3/20|lambda2_lambda1_lt=2/5|' output/YM4-06E.hbp
           grep -Fq 'spatial_lattice_refinement=NOT_COMPUTED' output/YM4-06E.hbp
           (cd output && sha256sum YM4-06E.hbp YM4-06E.hbi YM4-06E.sha YM4-06E.sh YM4-06E.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06e-interacting-wilson/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06E.hbp YM4-06E.hbi YM4-06E.sha YM4-06E.sh YM4-06E.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06E_EVIDENCE|six_files=BYTE_IDENTICAL|r9_runs=0|json=0'
       - name: Reject absent interaction, bad gauge projection, missing cutoff and invalid tail
         shell: bash
         run: |
