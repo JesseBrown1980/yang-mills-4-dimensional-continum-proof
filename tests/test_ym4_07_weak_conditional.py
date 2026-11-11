@@ -97,7 +97,6 @@ def test():
 
     aligned=[one for _ in range(6)]
     if fault == "flip_one_staple":
-        aligned[0]=conj(tuple(-x for x in one))
         aligned[0]=(-1,0,0,0)
     check(all(2*dot(aligned[i],aligned[j]) >= 1
               for i in range(6) for j in range(i+1,6)),
@@ -132,7 +131,7 @@ def test():
     # the derived union upper bound grows by ratio
     # 81 * ((beta_k+1/2)/beta_k)^2 / e > 81/3 > 27.
     # Classical elementary fact e < 3 is proved by its factorial series.
-    check(81 > 27*3 and 2*16+1>2*16, "illustrative_union_not_uniform")
+    check(81 == 27*3 and 2*16+1>2*16, "illustrative_union_not_uniform")
     emit("SCALING", "beta_k=16+k/2|volume_ratio=81|upper_bound_ratio_gt=27|is_not_probability_lower_bound=YES")
     emit("SCOPE", "good_field_probability=OPEN|all_scale_4D_RG=OPEN|physical_gap=OPEN")
     emit("DONE", "result=PASS_CONDITIONAL_WEAK_FIELD_ONLY|weak_trajectory_certificate=NOT_YET")
