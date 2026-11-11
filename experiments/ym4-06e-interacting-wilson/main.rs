@@ -10,11 +10,11 @@ use std::fs;
 use std::path::Path;
 
 const FIRST_FREEZE:&str="89904ca89abc5962162e25509e5c20cf9588151e";
-const QROWS:[(u64,u32,u32,u64,u32,u128);4]=[
-    (3,0,3,14,3,8),
-    (9,2,5,285,6,60),
-    (27,6,15,6930,9,300_000_000),
-    (81,20,41,180_441,12,1_000_000_000_000_000_000_000_000_000_000),
+const QROWS:[(u64,u32,u32,u64,u32,u128,u128);4]=[
+    (3,0,3,14,3,3,8),
+    (9,2,5,285,6,1,60),
+    (27,6,15,6930,9,1,300_000_000),
+    (81,20,41,180_441,12,1,1_000_000_000_000_000_000_000_000_000_000),
 ];
 
 fn gcd(mut x:u128,mut y:u128)->u128{
@@ -171,7 +171,7 @@ fn lt_sum_bound_q81()->bool{
 fn cutoff_gate(wrong_cutoff:bool,wrong_tail:bool)->String{
     let mut out=String::new();
     let mut previous=0u64;
-    for (q,d,m,dim,trits,eps_inv) in QROWS{
+    for (q,d,m,dim,trits,eps_num,eps_den) in QROWS{
         let q_effective=if wrong_cutoff && q==9 {q-1}else{q};
         assert_eq!(pw_dim(q_effective),dim,"representation cutoff missing complete SU2 spin block");
         assert_eq!(trit_width(dim-1),trits);
@@ -196,20 +196,20 @@ fn cutoff_gate(wrong_cutoff:bool,wrong_tail:bool)->String{
         // Thus (I-P_q)S_D P_m=0 for m+2D=q. The high B tail is
         // b_m/b0 <= 4/[3*2^m*(m+1)!].
         // Consequently ||T-P_q T P_q||/b0^3 <=
-        // 2[delta_D+sqrt(b_m/b0)] <1/eps_inv.
+        // 2[delta_D+sqrt(b_m/b0)] <eps_num/eps_den.
         out.push_str(&format!(
-            "INTERACTING_CUTOFF|q={q}|D={d}|m={m}|per_link_dim={dim}|trits={trits}|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=1/{eps_inv}|proof=Taylor_PeterWeyl_spin_support_and_Wilson_B_tail|json=0\n"
+            "INTERACTING_CUTOFF|q={q}|D={d}|m={m}|per_link_dim={dim}|trits={trits}|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt={eps_num}/{eps_den}|proof=Taylor_PeterWeyl_spin_support_and_Wilson_B_tail|json=0\n"
         ));
         if q==81 {
             // The q=81 error is <10^-30, smaller than q=27's
             // certified 1/300000000. The same rational first-gap
             // bracket thus follows monotonically, avoiding a huge
             // (>u128) intermediate common denominator.
-            assert!(eps_inv>300_000_000);
+            assert!(eps_num==1 && eps_den>300_000_000);
             out.push_str("CUTOFF_SPECTRUM|q=81|lambda2_lambda1_gt=3/20|lambda2_lambda1_lt=2/5|Weyl_bound_monotone_from_q27=PASS|full_4D_continuum=OPEN|json=0\n");
         } else if q>=9 {
             let (rlo,rhi)=link_ratio();
-            let eps=Rat::new(1,eps_inv);
+            let eps=Rat::new(eps_num,eps_den);
             let wlo=Rat::new(5,8).mul(rlo);
             let lower_num=Rat::new(wlo.a*eps.b - eps.a*wlo.b, wlo.b*eps.b);
             let lower=lower_num.div(Rat::new(1,1).add(eps));
