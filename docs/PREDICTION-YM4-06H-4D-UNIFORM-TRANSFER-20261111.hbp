@@ -1,0 +1,17 @@
+YM4_06H_FREEZE|date=2026-11-11|prediction_only=YES|source=YM4_06G|model=4D_INTERACTING_SU2_WILSON|r9_runs=0|json=0
+PRIMARY|spatial_beta_s=1/128|temporal_beta_t=1/32|Wilson_transfer=Anisotropic_3plus1D|all_vertex_gauge_projector=YES|spatial_plaquettes_NONZERO=YES|temporal_plaquettes_NONZERO=YES|json=0
+LOCAL_BOUND|spatial_link_faces_spatial=4|spatial_link_faces_temporal=2|temporal_link_faces_temporal=6|neighbours_per_face=3|all_dimensions_ge2=YES|json=0
+DOBRUSHIN|alpha_spatial_le=12_beta_s_plus_6_beta_t=9/32|alpha_temporal_le=18_beta_t=9/16|alpha_full_le=9/16|independent_of_all_link_and_plaquette_counts=YES|json=0
+PHYSICAL_TRANSFER|positive_Wilson_reflection=REQUIRED|Dobrushin_Follmer_covariance=REQUIRED|temporal_influence_path_delta_time_at_most_1=REQUIRED|finite_L_ratio_lambda2_over_lambda1_le=9/16|reference_a_t_1_first_mass_ge=log(16/9)|uniform_in_L=YES|continuum=NOT_PROVEN|json=0
+PARAMETER|beta_s=1/128|beta_t=1/64|alpha_spatial=3/16|alpha_temporal=9/32|alpha=9/32|mass_ge=log(32/9)|json=0
+PARAMETER|beta_s=1/128|beta_t=1/128|alpha_spatial=9/64|alpha_temporal=9/64|alpha=9/64|mass_ge=log(64/9)|json=0
+NEGATIVE|beta_s=1/128|beta_t=1/16|alpha_temporal=9/8|criterion=FAIL|json=0
+NEGATIVE|beta_s=1/128|beta_t=1|alpha_temporal=18|criterion=FAIL|previous_beta_t1_not_covered=YES|json=0
+GEOMETRY|L=2|Nt=3|sites=24|links=96|plaquettes=144|faces_per_link=6|other_link_incidences=18|json=0
+GEOMETRY|L=3|Nt=3|sites=81|links=324|plaquettes=486|faces_per_link=6|other_link_incidences=18|json=0
+GEOMETRY|L=3|Nt=6|sites=162|links=648|plaquettes=972|faces_per_link=6|other_link_incidences=18|json=0
+GEOMETRY|L=5|Nt=3|sites=375|links=1500|plaquettes=2250|faces_per_link=6|other_link_incidences=18|json=0
+GEOMETRY|L=9|Nt=3|sites=2187|links=8748|plaquettes=13122|faces_per_link=6|other_link_incidences=18|json=0
+GEOMETRY|L=27|Nt=2|sites=39366|links=157464|plaquettes=236196|faces_per_link=6|other_link_incidences=18|json=0
+FALSIFIER|delete_temporal_face=REJECT|temporal_link_with_spatial_faces=REJECT|break_time_locality=REJECT|beta_t_above_threshold=REJECT|transfer_claim_at_beta_t1=REJECT|alter_HBP=REJECT|json=0
+SCOPE|exact_integer_certificate_of_local_influence_budget=YES|Dobrushin_covariance_and_OS_spectral_bridge=ANALYTIC_TO_REVIEW|physical_a_t_scale=NOT_CALIBRATED|lattice_a_to_zero=NOT_RUN|continuum_SU2_mass_gap=OPEN|r9_runs=0|json=0
