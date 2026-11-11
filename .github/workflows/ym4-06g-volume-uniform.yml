@@ -1,0 +1,97 @@
+name: YM4-06G L3-to-L27 volume-uniform Wilson local influence and temporal controls
+
+on:
+  push:
+    branches: [gpt6-ym4-06g-volume-uniform-local-20261111]
+    paths:
+      - '.github/workflows/ym4-06g-volume-uniform.yml'
+      - 'experiments/ym4-06g-volume-uniform/**'
+      - 'docs/PREDICTION-YM4-06G-VOLUME-UNIFORM-LOCAL-20261111.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06g-volume-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  volume-independent-bound:
+    name: Native Rust 1.81 cubic L3..27 Dobrushin and beta-s-zero SU2 transfer
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - name: Native Git source checkout and precode prediction freeze verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-06g-volume-uniform-local-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 19c9d0f78532e5b7bef1104fcbbcf89f1dd79940 HEAD
+          git -C work show 19c9d0f78532e5b7bef1104fcbbcf89f1dd79940:docs/PREDICTION-YM4-06G-VOLUME-UNIFORM-LOCAL-20261111.hbp > /tmp/FROZEN-06G.hbp
+          cmp /tmp/FROZEN-06G.hbp work/docs/PREDICTION-YM4-06G-VOLUME-UNIFORM-LOCAL-20261111.hbp
+          echo 'YM4_06G_FREEZE|commit=19c9d0f78532e5b7bef1104fcbbcf89f1dd79940|unchanged=YES|r9_runs=0|json=0'
+      - name: Strict Clippy and exact integer Rust 1.81 regression tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SOURCE=work/experiments/ym4-06g-volume-uniform/main.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06g_volume_uniform --crate-type bin --emit metadata -o /tmp/ym4-06g.rmeta "$SOURCE"
+          rustc +1.81.0 --edition 2021 --test "$SOURCE" -o /tmp/ym4-06g-tests
+          /tmp/ym4-06g-tests
+          rustc +1.81.0 --edition 2021 -O "$SOURCE" -o /tmp/ym4-06g-native
+      - name: Execute L2 L3 L4 L5 L9 L27 local influence and closed-loop spectra
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/ym4-06g-native run output | tee YM4-06G-RUN.log
+          /tmp/ym4-06g-native verify output | tee YM4-06G-REPLAY.log
+          grep -Fq 'YM4_06G_RESULT|PASS|L=2,3,4,5,9,27|classical_heatbath_uniform_gap=29/32|quantum_beta_s0_uniform_mass_gt=log(17)|interacting_SU2_quantum_gap=OPEN|' YM4-06G-RUN.log
+          grep -Fq 'YM4_06G_VERIFY|PASS|HBI=PASS|HBP=PASS|SHA=PASS|SH=PASS|HASH=PASS|' YM4-06G-REPLAY.log
+          test "$(grep -Fc 'GEOMETRY|L=' output/YM4-06G.hbp)" -eq 6
+          test "$(grep -Fc 'PURE_TEMPORAL_B|L=' output/YM4-06G.hbp)" -eq 6
+          grep -Fq 'GEOMETRY|L=3|vertices=27|links=81|plaquettes=81|faces_per_link=4|other_link_face_incidences_per_link=12|girth=3|' output/YM4-06G.hbp
+          grep -Fq 'GEOMETRY|L=27|vertices=19683|links=59049|plaquettes=59049|faces_per_link=4|other_link_face_incidences_per_link=12|girth=4|' output/YM4-06G.hbp
+          grep -Fq 'LOCAL_DOBRUSHIN|beta_s=1/128|conditional_SU2_von_Mises_Fisher=YES|TV_single_neighbour_le=beta_s_times_shared_faces|row_and_column_influence_budget=12|alpha_le=3/32|rate_one_per_link_classical_heatbath_gap_ge=29/32|ALL_L_GE2=YES|quantum_Wilson_transfer_GAP=NOT_PROVED|' output/YM4-06G.hbp
+          grep -Fq 'PURE_TEMPORAL_UNIFORM|beta_s=0|ALL_L_GE2=YES|lambda2_over_lambda1_lt=1/17|reference_a_t=1|first_mass_gt=log(17)|interacting_beta_s_positive=NOT_INFERRED|' output/YM4-06G.hbp
+          grep -Fq 'LOGICAL_COUNTERCONTROL|k=8|n=6561|spatial_alpha=0|temporal_lambda2_lambda1=6560/6561|' output/YM4-06G.hbp
+          grep -Fq 'beta_s_positive_interacting_Wilson_T_uniform_mass=OPEN' output/YM4-06G.hbp
+          (cd output && sha256sum YM4-06G.hbp YM4-06G.hbi YM4-06G.sha YM4-06G.sh YM4-06G.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+      - name: Fail-closed geometric, local-influence, physical-transfer and HBP faults
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in missing_face wrong_incidence high_beta false_transfer_gap; do
+            if /tmp/ym4-06g-native plant "$fault" > "FAULT-${fault}.log" 2>&1; then
+              echo "FAULT|name=$fault|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$fault" in
+              missing_face) grep -Fq 'link face incidence must be four' "FAULT-${fault}.log" ;;
+              wrong_incidence) grep -Fq 'twelve other-link face incidences per link' "FAULT-${fault}.log" ;;
+              high_beta) grep -Fq 'Dobrushin contractivity threshold violated' "FAULT-${fault}.log" ;;
+              false_transfer_gap) grep -Fq 'alpha=0 does not imply a positive mass for an arbitrary temporal transfer' "FAULT-${fault}.log" ;;
+            esac
+            echo "FAULT|name=$fault|rejected=YES|json=0"
+          done
+          cp -r output tampered
+          sed -i 's/beta_s_positive_interacting_Wilson_T_uniform_mass=OPEN/beta_s_positive_interacting_Wilson_T_uniform_mass=PROVEN/' tampered/YM4-06G.hbp
+          if /tmp/ym4-06g-native verify tampered > FAULT-TAMPER.log 2>&1; then
+            echo 'FAULT|name=altered_HBP|rejected=NO|json=0'
+            exit 1
+          fi
+          grep -Fq 'HBI/HBP/SHA/SH/HASH evidence differs from source replay' FAULT-TAMPER.log
+          echo 'FAULT|name=altered_HBP|rejected=YES|json=0'
+      - name: Emit all canonical HBI HBP SHA SH HASH receipts for filing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4-06G.hbp YM4-06G.hbi YM4-06G.sha YM4-06G.sh YM4-06G.hash SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "output/$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_06G_HOSTED|PASS|LOCAL_CLASSICAL_GAP=VOLUME_UNIFORM|PURE_TEMPORAL_QUANTUM_GAP=VOLUME_UNIFORM|NONZERO_SPATIAL_INTERACTING_QUANTUM_GAP=OPEN|r9_runs=0|json=0'
