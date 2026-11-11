@@ -7,6 +7,7 @@ on:
       - '.github/workflows/ym4-04c-e2g-polymer-pole.yml'
       - 'tests/test_ym4_04c_polymer_norm.py'
       - 'reviews/ym4-04c-check/e2g_c04_independent.py'
+      - 'reviews/ym4-04c-e2g-engine/**'
       - 'docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp'
   workflow_dispatch:
 
