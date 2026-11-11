@@ -231,6 +231,73 @@ WILSON_LINK_TAIL|beta=1|q=81|upper_less_than=1/{target}|proof=monotone_tail_from
     )
 }
 
+
+#[derive(Clone,Copy)]
+struct Rational { num:u128, den:u128 }
+impl Rational {
+    fn new(num:u128,den:u128)->Self {
+        assert!(den>0);
+        let g=gcd(num,den);
+        Self{num:num/g,den:den/g}
+    }
+    fn add(self,other:Self)->Self {
+        let g=gcd(self.den,other.den);
+        let l=self.den/g;
+        Self::new(self.num*(other.den/g)+other.num*l,l*other.den)
+    }
+    fn mul(self,other:Self)->Self {
+        Self::new(self.num*other.num,self.den*other.den)
+    }
+    fn div(self,other:Self)->Self {
+        assert!(other.num>0);
+        Self::new(self.num*other.den,self.den*other.num)
+    }
+    fn less(self,other:Self)->bool {
+        self.num*other.den<other.num*self.den
+    }
+}
+fn bessel_term(spin_twice:u32,s:u32)->Rational {
+    let exponent=2*s+spin_twice;
+    Rational::new(1,(1u128<<exponent)*factorial(s)*factorial(s+spin_twice+1))
+}
+fn bessel_partial(spin_twice:u32,through:u32)->Rational{
+    let mut result=Rational::new(0,1);
+    for s in 0..=through {
+        result=result.add(bessel_term(spin_twice,s));
+    }
+    result
+}
+fn bessel_tail(spin_twice:u32,through:u32)->Rational{
+    let s=through+1;
+    let first=bessel_term(spin_twice,s);
+    // t_(s+1)/t_s = 1/[4(s+1)(s+n+2)], decreasing in s.
+    let den=4u128*u128::from(s+1)*u128::from(s+spin_twice+2);
+    first.mul(Rational::new(den,den-1))
+}
+fn wilson_ratio_gate(wrong_rounding:bool)->String {
+    // Wilson SU2 beta=1 single-link convolution kernel eigenvalues:
+    // exp(-1)*l_n, l_n=sum_{s>=0}2^(-2s-n)/(s!(s+n+1)!).
+    // The exp(-1) factor cancels from l_1/l_0.
+    let l0=bessel_partial(0,4);
+    let l1=bessel_partial(1,4);
+    let t0=bessel_tail(0,4);
+    let t1=bessel_tail(1,4);
+    let lower=l1.div(l0.add(t0));
+    let upper=l1.add(t1).div(l0);
+    let frozen_lower=Rational::new(24_019_372,100_000_000);
+    let frozen_upper=Rational::new(24_019_373,100_000_000);
+    assert!(frozen_lower.less(lower),"frozen Wilson link ratio lower failed");
+    assert!(upper.less(frozen_upper),"frozen Wilson link ratio upper failed");
+    assert!(lower.less(upper));
+    if wrong_rounding {
+        assert!(upper.less(frozen_lower),"wrong Wilson spectral ratio must fail");
+    }
+    format!(
+        "WILSON_LINK_EIGENRATIO|beta=1|spin_half_to_trivial_lower=24019372/100000000|spin_half_to_trivial_upper=24019373/100000000|rigorous_series_lower={}/{}|rigorous_series_upper={}/{}|truncation_s=4|SU2_gauge_full_transfer=NOT_COMPUTED|json=0\n",
+        lower.num,lower.den,upper.num,upper.den
+    )
+}
+
 type Mat=[[i64;6];6];
 fn mm(a:&Mat,b:&Mat)->Mat {
     let mut o=[[0i64;6];6];
@@ -358,6 +425,7 @@ fn body()->String{
     s.push_str(&group_gate());
     s.push_str(&representation_gate(false,false));
     s.push_str(&wilson_gate(false));
+    s.push_str(&wilson_ratio_gate(false));
     s.push_str(&bch_gate());
     s.push_str(&scaling_gate(false));
     s.push_str(&shadow_gate());
@@ -412,6 +480,7 @@ fn main(){
                 Some("missing_representation")=>{let _=representation_gate(true,false);},
                 Some("wrong_center_parity")=>{let _=representation_gate(false,true);},
                 Some("wrong_wilson_tail")=>{let _=wilson_gate(true);},
+                Some("wrong_ratio_rounding")=>{let _=wilson_ratio_gate(true);},
                 Some("vanishing_mass_misread")=>{let _=scaling_gate(true);},
                 _=>panic!("unknown mathematical plant"),
             }
@@ -425,6 +494,7 @@ mod tests{
     #[test] fn s3_orbits(){assert!(group_gate().contains("physical=1393"));}
     #[test] fn su2_projector(){assert!(representation_gate(false,false).contains("q=81"));}
     #[test] fn wilson_one_link(){assert!(wilson_gate(false).contains("25/329204736"));}
+    #[test] fn certified_wilson_link_spectrum(){assert!(wilson_ratio_gate(false).contains("24019373/100000000"));}
     #[test] fn bch_formal(){assert!(bch_gate().contains("7/4"));}
     #[test] fn counterfamily(){assert!(scaling_gate(false).contains("counter_limit=ZERO"));}
     #[test] fn sha_global_metadata(){assert!(shadow_gate().contains("instant_physical_influence=NOT_TESTED"));}
