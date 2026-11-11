@@ -8,7 +8,8 @@ from pathlib import Path
 import sys
 
 FAULTS = ("drop_cross_plane", "flip_one_staple",
-          "cancel_background_link", "corrupt_exp_tail", "wrong_plaquette_count")
+          "cancel_background_link", "corrupt_exp_tail", "wrong_plaquette_count",
+          "wrong_volume_factor", "corrupt_exp_partial")
 if len(sys.argv) > 2 or (len(sys.argv) == 2 and sys.argv[1] not in FAULTS):
     raise SystemExit("usage: test_ym4_07_weak_conditional.py [fault-name]")
 fault = sys.argv[1] if len(sys.argv) == 2 else ""
@@ -133,6 +134,27 @@ def test():
     # Classical elementary fact e < 3 is proved by its factorial series.
     check(81 == 27*3 and 2*16+1>2*16, "illustrative_union_not_uniform")
     emit("SCALING", "beta_k=16+k/2|volume_ratio=81|upper_bound_ratio_gt=27|is_not_probability_lower_bound=YES")
+
+    # A DIFFERENT illustrative refinement: beta_k=16+3k, L_k=L0*3^k.
+    # exp(6) exceeds its positive Taylor sum n=0..5, exactly 899/5.
+    # In a local good-field environment, the all-link union term has
+    # geometric ratio <= q=(81*(19/16)^2)*(5/899)<1.
+    common = factorial(5)
+    exp6_numer = sum((power(6,j)*common)//factorial(j) for j in range(6))
+    if fault == "corrupt_exp_partial":
+        exp6_numer -= power(6,5)
+    check(5*exp6_numer == 899*common, "exp_six_exact_fifth_partial")
+    volume = 243 if fault == "wrong_volume_factor" else 81
+    q_num = volume*19*19*5
+    q_den = 16*16*899
+    check(q_num == 146205 and q_den == 230144 and q_num < q_den,
+          "all_scale_positive_trajectory_ratio")
+    for k in (0, 1, 2, 4, 9, 81):
+        bk = 16 + 3*k
+        check(volume*(bk+3)*(bk+3)*5*q_den <= q_num*899*bk*bk,
+              "geometric_ratio_at_scale_" + str(k))
+    emit("TRAJECTORY", "illustrative_beta_k=16+3k|lattice_spacing_factor=3|fourD_link_growth=81|q_lt=146205/230144|all_k_geometric_good_field_term=PASS")
+    emit("TRAJECTORY_SCOPE", "summable_good_field_link_events=CONDITIONAL|bad_field_probabilities=NOT_BOUNDED|beta_flow_not_physical_RG=YES")
     emit("SCOPE", "good_field_probability=OPEN|all_scale_4D_RG=OPEN|physical_gap=OPEN")
     emit("DONE", "result=PASS_CONDITIONAL_WEAK_FIELD_ONLY|weak_trajectory_certificate=NOT_YET")
 
