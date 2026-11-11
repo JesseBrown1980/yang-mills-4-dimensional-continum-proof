@@ -61,6 +61,12 @@ jobs:
           test "$(grep -Fc '4D_COVARIANCE_TAIL|' output/YM4-06H.hbp)" -eq 4
           grep -Fq 'beta_t_1=NOT_COVERED' output/YM4-06H.hbp
           (cd output && sha256sum YM4-06H.hbp YM4-06H.hbi YM4-06H.sha YM4-06H.sh YM4-06H.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06h-transfer/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06H.hbp YM4-06H.hbi YM4-06H.sha YM4-06H.sh YM4-06H.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06H_EVIDENCE|all_six_files=BYTE_IDENTICAL|r9_runs=0|json=0'
       - name: Reject omitted 4D face, wrong time classification, nonlocal jump and threshold failures
         shell: bash
         run: |
