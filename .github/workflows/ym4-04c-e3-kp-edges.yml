@@ -48,6 +48,7 @@ jobs:
           python3 -I -B work/tests/test_ym4_04c_e3_kp_edges.py | tee YM4_04C-E3-ENGINE.hbp
           grep -Fq 'E3_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|' YM4_04C-E3-ENGINE.hbp
           test "$(grep -Fc 'E3|head=' YM4_04C-E3-ENGINE.hbp)" -eq 12
+          test "$(grep -Fc 'E3_C04|beta=' YM4_04C-E3-ENGINE.hbp)" -eq 2
           grep -Fq 'E3|head=crude|beta=1904/100000|read=MET|' YM4_04C-E3-ENGINE.hbp
           grep -Fq 'E3|head=crude|beta=1905/100000|read=NOT_MET|' YM4_04C-E3-ENGINE.hbp
           grep -Fq 'E3|head=refined|beta=2075/100000|read=MET|' YM4_04C-E3-ENGINE.hbp
@@ -73,7 +74,7 @@ jobs:
               exit 1
             fi
             case "$FAULT" in
-              missing_tail) grep -Fq 'E3_FAULT: deleted mandatory Fuss-Catalan tail' "FAULT-$FAULT.log" ;;
+              missing_tail) grep -Fq 'E3_C04_REJECT: false MET from removing Fuss-Catalan tail AND pole gate' "FAULT-$FAULT.log" ;;
               wrong_head) grep -Fq 'E3_MET: no certified alpha witness' "FAULT-$FAULT.log" ;;
               false_notmet) grep -Fq 'E3_MET: no certified alpha witness' "FAULT-$FAULT.log" ;;
               bad_crit) grep -Fq 'E3_FAULT: false upper delta_crit side' "FAULT-$FAULT.log" ;;
