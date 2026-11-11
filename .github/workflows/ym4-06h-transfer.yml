@@ -1,0 +1,105 @@
+name: YM4-06H 4D nonzero-coupling Wilson volume-uniform strong-coupling transfer criterion
+
+on:
+  push:
+    branches: [gpt6-ym4-06h-4d-volume-uniform-transfer-20261111]
+    paths:
+      - '.github/workflows/ym4-06h-transfer.yml'
+      - 'experiments/ym4-06h-transfer/**'
+      - 'docs/PREDICTION-YM4-06H-4D-UNIFORM-TRANSFER-20261111.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06h-transfer-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  anisotropic-4d-geometry:
+    name: Rust1.81 4D SU2 local influence and physical-transfer covariance gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Native Git and immutable prediction before verifier code
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-06h-4d-volume-uniform-transfer-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor fbac66298dcf6a9b0c1bde42eced49b886ba5b3e HEAD
+          git -C work show fbac66298dcf6a9b0c1bde42eced49b886ba5b3e:docs/PREDICTION-YM4-06H-4D-UNIFORM-TRANSFER-20261111.hbp >/tmp/ym4-06h-frozen.hbp
+          cmp /tmp/ym4-06h-frozen.hbp work/docs/PREDICTION-YM4-06H-4D-UNIFORM-TRANSFER-20261111.hbp
+          echo 'YM4_06H_FREEZE|commit=fbac66298dcf6a9b0c1bde42eced49b886ba5b3e|unchanged=YES|r9_runs=0|json=0'
+      - name: Rust 1.81 strict Clippy exact integers and regression unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SRC=work/experiments/ym4-06h-transfer/main.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06h_transfer --crate-type bin --emit metadata -o /tmp/ym4-06h.rmeta "$SRC"
+          rustc +1.81.0 --edition 2021 --test "$SRC" -o /tmp/ym4-06h-tests
+          /tmp/ym4-06h-tests
+          rustc +1.81.0 --edition 2021 -O "$SRC" -o /tmp/ym4-06h-native
+      - name: Reconstruct full four-dimensional SU2 Wilson incidence and rational transfer rates
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/ym4-06h-native run output | tee YM4-06H-RUN.log
+          /tmp/ym4-06h-native verify output | tee YM4-06H-REPLAY.log
+          grep -Fq 'YM4_06H_EXECUTE|PASS|4D_geometry_L=2,3,5,9,27|alpha_primary=9/16|all_volume_interacting_transfer_ratio_le=9/16|beta_t_1=NOT_COVERED|' YM4-06H-RUN.log
+          grep -Fq 'YM4_06H_VERIFY|PASS|HBI=PASS|HBP=PASS|SHA=PASS|SH=PASS|HASH=PASS|' YM4-06H-REPLAY.log
+          test "$(grep -Fc '4D_GEOMETRY|L=' output/YM4-06H.hbp)" -eq 6
+          grep -Fq '4D_GEOMETRY|L=3|Nt=3|sites=81|links=324|plaquettes=486|faces_per_link=6|other_link_incidences=18|' output/YM4-06H.hbp
+          grep -Fq '4D_GEOMETRY|L=27|Nt=2|sites=39366|links=157464|plaquettes=236196|faces_per_link=6|other_link_incidences=18|' output/YM4-06H.hbp
+          grep -Fq '4D_ALPHA|beta_s=1/128|beta_t=1/32|spatial_link_alpha_le=9/32|temporal_link_alpha_le=9/16|all_link_alpha_le=9/16|' output/YM4-06H.hbp
+          grep -Fq '4D_ALPHA|beta_s=1/128|beta_t=1/64|spatial_link_alpha_le=3/16|temporal_link_alpha_le=9/32|all_link_alpha_le=9/32|' output/YM4-06H.hbp
+          grep -Fq '4D_ALPHA|beta_s=1/128|beta_t=1/128|spatial_link_alpha_le=9/64|temporal_link_alpha_le=9/64|all_link_alpha_le=9/64|' output/YM4-06H.hbp
+          grep -Fq '4D_PHYSICAL_TRANSFER|beta_s=1/128|beta_t=1/32|all_spatial_L_ge2=YES|Wilson_transfer_positive=OS_INPUT|Dobrushin_covariance=FOLLMER_INPUT|time_anchor_one_step=GEOMETRY_CERTIFIED|full_physical_lambda2_over_lambda1_le=9/16|reference_a_t_1_mass_ge=log(16/9)|volume_independent=YES|' output/YM4-06H.hbp
+          test "$(grep -Fc '4D_COVARIANCE_TAIL|' output/YM4-06H.hbp)" -eq 4
+          grep -Fq 'beta_t_1=NOT_COVERED' output/YM4-06H.hbp
+          (cd output && sha256sum YM4-06H.hbp YM4-06H.hbi YM4-06H.sha YM4-06H.sh YM4-06H.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06h-transfer/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06H.hbp YM4-06H.hbi YM4-06H.sha YM4-06H.sh YM4-06H.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06H_EVIDENCE|all_six_files=BYTE_IDENTICAL|r9_runs=0|json=0'
+      - name: Reject omitted 4D face, wrong time classification, nonlocal jump and threshold failures
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in missing_temporal_face wrong_temporal_type wrong_time_locality beta_above_threshold old_beta_t_one; do
+            if /tmp/ym4-06h-native plant "$fault" > "FAULT-${fault}.log" 2>&1; then
+              echo "FAULT|name=$fault|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$fault" in
+              missing_temporal_face) grep -Fq 'six Wilson faces per oriented 4D link' "FAULT-${fault}.log" ;;
+              wrong_temporal_type) grep -Fq 'temporal link was misclassified' "FAULT-${fault}.log" ;;
+              wrong_time_locality) grep -Fq 'temporal face jump cannot be erased' "FAULT-${fault}.log" ;;
+              beta_above_threshold) grep -Fq 'four-dimensional Dobrushin threshold violated' "FAULT-${fault}.log" ;;
+              old_beta_t_one) grep -Fq 'four-dimensional Dobrushin threshold violated' "FAULT-${fault}.log" ;;
+            esac
+            echo "FAULT|name=$fault|rejected=YES|json=0"
+          done
+          cp -r output tampered
+          sed -i 's/continuum_YM_mass=OPEN/continuum_YM_mass=SOLVED/' tampered/YM4-06H.hbp
+          if /tmp/ym4-06h-native verify tampered > FAULT-TAMPERED.log 2>&1; then
+            echo 'FAULT|name=tampered_HBP|rejected=NO|json=0'
+            exit 1
+          fi
+          grep -Fq 'HBI HBP SHA SH HASH evidence mismatch' FAULT-TAMPERED.log
+          echo 'FAULT|name=tampered_HBP|rejected=YES|json=0'
+      - name: Print canonical HBI HBP SHA SH HASH files for permanent source replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4-06H.hbp YM4-06H.hbi YM4-06H.sha YM4-06H.sh YM4-06H.hash SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "output/$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
+          echo 'YM4_06H_HOSTED|PASS|4D_BETA_S_POSITIVE=YES|4D_BETA_T_POSITIVE=YES|ALL_VOLUME_ALPHA_LE=9/16|PHYSICAL_TRANSFER_BRIDGE=STANDARD_THEOREMS_TO_REVIEW|CONTINUUM=OPEN|r9_runs=0|json=0'
