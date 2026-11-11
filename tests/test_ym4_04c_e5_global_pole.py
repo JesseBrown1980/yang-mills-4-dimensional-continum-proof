@@ -23,7 +23,7 @@ class Q:
         b=rat(b)
         return Q(self.n*b.n,self.d*b.d)
     def __rmul__(self,b):return self*b
-    def __truediv__(self,b):
+    def quotient(self,b):
         b=rat(b)
         assert b.n!=0
         return Q(self.n*b.d,self.d*b.n)
@@ -38,7 +38,7 @@ class Q:
         return self.n*b.d<=b.n*self.d
 
 def rat(x):return x if isinstance(x,Q) else Q(x)
-def quo(a,b):return rat(a).__truediv__(b)
+def quo(a,b):return rat(a).quotient(b)
 def add(a,b):return (a[0]+b[0],a[1]+b[1])
 def neg(a):return (-a[1],-a[0])
 def mul(a,b):
