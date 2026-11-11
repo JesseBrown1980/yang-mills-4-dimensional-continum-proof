@@ -98,6 +98,7 @@ jobs:
             echo 'E3_REPLAY|filed_receipts=NOT_YET|json=0'
           fi
       - name: Print canonical source receipts for immutable filing
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
