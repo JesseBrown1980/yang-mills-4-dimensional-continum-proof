@@ -1,0 +1,12 @@
+YM4_06F_PREDICTION|2026-11-11|status=FROZEN_BEFORE_VERIFIER|model=INTERACTING_SU2_WILSON_2x2x2|r9_runs=0|json=0
+LATTICE|spatial_sites=8|spatial_links=24|spatial_plaquettes=24|faces_per_link=4|parallel_two_link_cycles=12|girth=2|json=0
+TRANSFER|group=SU2|gauge_invariant=ALL_EIGHT_VERTICES|beta_s=1/128|beta_t=1|T=A_half*B*P_G*A_half|normalized_Haar=YES|json=0
+SPECTRAL_CONTROL|B_first_physical_ratio=(ell1/ell0)^2|ell1/ell0_lower=24019372/100000000|ell1/ell0_upper=24019373/100000000|open_link_one_spin_forbidden_by_gauge=YES|json=0
+FULL_SPECTRUM|lambda2_lambda1_gt=1/28|lambda2_lambda1_lt=1/10|proof=min_max_with_24_plaquettes|physical_transfer_mass=REFERENCE_a_t_only|json=0
+CUTOFF|q=3|D=0|m=3|per_link_dimension=14|trits=3|full_operator_norm_error_over_b0^24_lt=3/8|physical_ratio=UNENCLOSED|json=0
+CUTOFF|q=9|D=2|m=7|per_link_dimension=285|trits=6|full_operator_norm_error_over_b0^24_lt=1/700|physical_lambda2_lambda1_gt=1/30|physical_lambda2_lambda1_lt=1/10|json=0
+CUTOFF|q=27|D=6|m=21|per_link_dimension=6930|trits=9|full_operator_norm_error_over_b0^24_lt=1/30000000000|physical_lambda2_lambda1_gt=1/28|physical_lambda2_lambda1_lt=1/10|json=0
+CUTOFF|q=81|D=20|m=61|per_link_dimension=180441|trits=12|full_operator_norm_error_over_b0^24_lt=1/1000000000000000000000000000000|physical_lambda2_lambda1_gt=1/28|physical_lambda2_lambda1_lt=1/10|json=0
+SEPARATE_CONTROLS|no_spatial_coupling=REJECT|one_link_gauge_excitation=REJECT|missing_SU2_irrep=REJECT|overstrong_cutoff_bound=REJECT|tampered_HBP=REJECT|json=0
+DATA|HBI=ORDERED|HBP=EVIDENCE|SHA=SHA256|SH=SHADOW_LINEAGE|HASH=GLOBAL_COMMITMENT|global_change_not_remote_physical_signal=YES|json=0
+SCOPE|spatial_L=2|physical_spacing_refinement=NOT_RUN|beta_running=NOT_RUN|infinite_volume=NOT_RUN|continuum_mass_gap=OPEN|status=FINITE_ANALYTIC_TEST|json=0

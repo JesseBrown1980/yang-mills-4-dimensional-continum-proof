@@ -1,0 +1,1 @@
+SH|spatial_2x2x2=SU2_PHYSICAL|local_cycles=12|phase=0,1,2|frozen_source=955a997687d6220fa2ce60c36f97419934b4e06e|hash_is_metadata=YES|rooted_gauge_8_vertices=YES|json=0
