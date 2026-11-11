@@ -1,0 +1,107 @@
+name: YM4-04C E3 independent exact C05 C06 C14 frozen coupling boundaries
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e3-kp-certified-edges-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e3-kp-edges.yml'
+      - 'tests/test_ym4_04c_e3_kp_edges.py'
+      - 'reviews/ym4-04c-check/e3_kp_second_seat.py'
+      - 'reviews/ym4-04c-e3-kp/**'
+      - 'docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  certified-frozen-kp-edges:
+    name: E3 exact 256-bit KP vs independent 640-bit L5 + faults
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Freeze and E1/C03 ancestry gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e3-kp-certified-edges-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git -C work merge-base --is-ancestor 270345ed57db42a410904d2cf85fc7016ee05693 HEAD
+          git -C work show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 >/tmp/E3-FROZEN.hbp
+          head -n 42 work/docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp >/tmp/E3-HEAD.hbp
+          cmp /tmp/E3-FROZEN.hbp /tmp/E3-HEAD.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/E3-HEAD.hbp' | sha256sum -c -
+          for ROW in C03 C05 C06 C14; do grep -Fq "PREDICT|id=$ROW|" /tmp/E3-HEAD.hbp; done
+          test "$(find work/reviews/ym4-04c-e1-c03/evidence/ -type f | wc -l)" -eq 18
+          echo 'YM4_04C_E3_FROZEN|42_lines=UNCHANGED|C03_18_receipts=AVAILABLE|json=0'
+      - name: Strict no-float repository source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 work/scripts/no_float_gate.py work
+      - name: Run new integer dyadic 256-bit convex KP certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/tests/test_ym4_04c_e3_kp_edges.py | tee YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|' YM4_04C-E3-ENGINE.hbp
+          test "$(grep -Fc 'E3|head=' YM4_04C-E3-ENGINE.hbp)" -eq 12
+          test "$(grep -Fc 'E3_C04|beta=' YM4_04C-E3-ENGINE.hbp)" -eq 2
+          grep -Fq 'E3|head=crude|beta=1904/100000|read=MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3|head=crude|beta=1905/100000|read=NOT_MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3|head=refined|beta=2075/100000|read=MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3|head=refined|beta=2076/100000|read=NOT_MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3|head=refined|beta=2074/100000|read=C14_MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3|head=refined|beta=2075/100000|read=C14_NOT_MET|' YM4_04C-E3-ENGINE.hbp
+          grep -Fq 'E3_DELTA_CRIT|lower=0.114846768|upper=0.114846769|' YM4_04C-E3-ENGINE.hbp
+      - name: Run source-disjoint existing second-seat 640-bit certified majorant
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/reviews/ym4-04c-check/e3_kp_second_seat.py | tee YM4_04C-E3-SECOND.hbp
+          grep -Fq 'E3_INDEP_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|' YM4_04C-E3-SECOND.hbp
+          test "$(grep -Fc 'E3_INDEP|head=' YM4_04C-E3-SECOND.hbp)" -eq 8
+          test "$(grep -Fc 'E3_INDEP_C14|' YM4_04C-E3-SECOND.hbp)" -eq 3
+      - name: Four fail-closed planted certificate faults
+        shell: bash
+        run: |
+          set -euo pipefail
+          for FAULT in missing_tail wrong_head false_notmet bad_crit; do
+            if python3 -I -B work/tests/test_ym4_04c_e3_kp_edges.py --sabotage "$FAULT" > "FAULT-$FAULT.log" 2>&1; then
+              echo "E3_FAULT|name=$FAULT|rejected=NO|json=0"
+              exit 1
+            fi
+            case "$FAULT" in
+              missing_tail) grep -Fq 'E3_C04_REJECT: false MET from removing Fuss-Catalan tail AND pole gate' "FAULT-$FAULT.log" ;;
+              wrong_head) grep -Fq 'E3_MET: no certified alpha witness' "FAULT-$FAULT.log" ;;
+              false_notmet) grep -Fq 'E3_MET: no certified alpha witness' "FAULT-$FAULT.log" ;;
+              bad_crit) grep -Fq 'E3_FAULT: false upper delta_crit side' "FAULT-$FAULT.log" ;;
+            esac
+            echo "E3_FAULT|name=$FAULT|rejected=YES|json=0"
+          done
+      - name: Compare exact receipt SHA256 and require filed byte replay when available
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum YM4_04C-E3-ENGINE.hbp YM4_04C-E3-SECOND.hbp > YM4_04C-E3-SHA256SUMS
+          sha256sum -c YM4_04C-E3-SHA256SUMS
+          EVIDENCE=work/reviews/ym4-04c-e3-kp/evidence
+          test -f "$EVIDENCE/YM4_04C-E3-SHA256SUMS"
+            (cd "$EVIDENCE" && sha256sum -c YM4_04C-E3-SHA256SUMS)
+            for NAME in YM4_04C-E3-ENGINE.hbp YM4_04C-E3-SECOND.hbp YM4_04C-E3-SHA256SUMS; do
+              cmp "$NAME" "$EVIDENCE/$NAME"
+            done
+            echo 'E3_REPLAY|three_files=BYTE_IDENTICAL|json=0'
+
+      - name: Print canonical source receipts for immutable filing
+        shell: bash
+        run: |
+          set -euo pipefail
+          for NAME in YM4_04C-E3-ENGINE.hbp YM4_04C-E3-SECOND.hbp YM4_04C-E3-SHA256SUMS; do
+            echo "EVIDENCE_BEGIN|file=$NAME"
+            cat "$NAME"
+            echo "EVIDENCE_END|file=$NAME"
+          done
+          echo 'YM4_04C_E3_HOSTED|PASS|C05_C06_C14=EXACT_CERTIFICATES|G0_G1=CONDITIONAL|weak_coupling=OPEN|r9_runs=0|json=0'

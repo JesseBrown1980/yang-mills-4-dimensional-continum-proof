@@ -1,0 +1,14 @@
+E3_INDEP_START|source=PREEXISTING_SECOND_SEAT_L5|P_bits=640|frozen_n49_majorant=YES|json=0
+E3_INDEP|head=crude|beta=1904/100000|read=MET|alpha=1/20|json=0
+E3_INDEP|head=C03|beta=1/50|read=MET|alpha=1/160|json=0
+E3_INDEP|head=C03|beta=2075/100000|read=MET|alpha=39/2000|json=0
+E3_INDEP|head=C03|beta=1/64|read=MET|alpha=1/4000|json=0
+E3_INDEP|head=crude|beta=1905/100000|read=NOT_MET|alpha=53646938852/1000000000000|positive_global_tangent=YES|json=0
+E3_INDEP|head=crude|beta=1/50|read=NOT_MET|alpha=29311030801/1000000000000|positive_global_tangent=YES|json=0
+E3_INDEP|head=C03|beta=2076/100000|read=NOT_MET|alpha=20978393291/1000000000000|positive_global_tangent=YES|json=0
+E3_INDEP|head=headfree|beta=2076/100000|read=NOT_MET|alpha=20978404725/1000000000000|positive_global_tangent=YES|json=0
+E3_INDEP_C14|head=C03|beta=2075/100000|read=NOT_MET|least_root_above_delta_crit=YES|json=0
+E3_INDEP_C14|head=headfree|beta=2075/100000|read=NOT_MET|least_root_above_delta_crit=YES|json=0
+E3_INDEP_C14|head=C03|beta=2074/100000|read=MET|delta1_lt_delta_crit=YES|json=0
+E3_INDEP_CRIT|lambda=ATANH_SERIES_ROUTE|delta_crit=[0.114846768,0.114846769]|PASS|json=0
+E3_INDEP_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|independent_library=YES|json=0
