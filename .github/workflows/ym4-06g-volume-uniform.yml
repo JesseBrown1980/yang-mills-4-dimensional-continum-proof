@@ -60,6 +60,12 @@ jobs:
           grep -Fq 'LOGICAL_COUNTERCONTROL|k=8|n=6561|spatial_alpha=0|temporal_lambda2_lambda1=6560/6561|' output/YM4-06G.hbp
           grep -Fq 'beta_s_positive_interacting_Wilson_T_uniform_mass=OPEN' output/YM4-06G.hbp
           (cd output && sha256sum YM4-06G.hbp YM4-06G.hbi YM4-06G.sha YM4-06G.sh YM4-06G.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+          EVIDENCE=work/experiments/ym4-06g-volume-uniform/evidence
+          (cd "$EVIDENCE" && sha256sum -c SHA256SUMS)
+          for name in YM4-06G.hbp YM4-06G.hbi YM4-06G.sha YM4-06G.sh YM4-06G.hash SHA256SUMS; do
+            cmp "output/$name" "$EVIDENCE/$name"
+          done
+          echo 'YM4_06G_EVIDENCE|six_files=BYTE_IDENTICAL|r9_runs=0|json=0'
       - name: Fail-closed geometric, local-influence, physical-transfer and HBP faults
         shell: bash
         run: |
