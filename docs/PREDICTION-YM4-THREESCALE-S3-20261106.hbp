@@ -1,0 +1,19 @@
+# PREDICTION-YM4-THREESCALE-S3-20261106.hbp
+# FROZEN BEFORE ANY TEST IMPLEMENTATION OR EXECUTION ON THIS BRANCH.
+# TAGS: DERIVED for exact algebraic formulas; RED for falsifier hypotheses; OPEN for 4D/continuum.
+# Model is exactly 1+1 dimensional S3 Wilson-type gauge transfer on a periodic 9-link spatial circle.
+# Wilson magnetic class factor w(g)=exp[-ln(2)*(2-chi_std(g))] is 1 on e, 1/4 transpositions, 1/8 3cycles.
+# Integer scale 8w: [8(e),2(trans),1(cycle)] total over all 6 elements =16.
+PREDICT|id=01|check=ONE_PLAQUETTE_CHARACTER_RATIOS|trivial=1/1|sign=1/4|standard=7/16|status=DERIVED|json=0
+PREDICT|id=02|check=FINE_SPATIAL_CIRCLE|fine_cells=9|q_standard=(7/16)^9|q_sign=(1/4)^9|status=DERIVED|json=0
+PREDICT|id=03|check=SCALE3_PLAQUETTE|block_area=9|fine_cells=9|coarse_cells=3|effective_weight=p_convolution_power_9|status=DERIVED|json=0
+PREDICT|id=04|check=SCALE9_PLAQUETTE|block_area=81|fine_cells=9|coarse_cells=1|effective_weight=p_convolution_power_81|status=DERIVED|json=0
+PREDICT|id=05|check=FULL_TRANSFER_OPERATOR|T_fine^3=T_scale3|T_fine^9=T_scale9|status=DERIVED|json=0
+PREDICT|id=06|check=GAUGE_INVARIANT_CORRELATIONS|observables=chi_std,sign|fine_ticks=9,27,81,243|coarse_ticks_scale3=t/3|coarse_ticks_scale9=t/9|result=EXACT_EQUAL|status=DERIVED|json=0
+PREDICT|id=07|check=PHYSICAL_MASS_GAP|gap_first=9*ln(16/7)/a_t|gap_sign=9*ln(4)/a_t|all_three_scales=EXACT_EQUAL|status=DERIVED|json=0
+PREDICT|id=08|check=TRIADIC_JUMP|n=3,9,27,81,243|exact_integer_rational_vs_sequential_small=EQUAL|status=DERIVED|json=0
+PREDICT|id=09|check=ONE_WILSON_COUPLING_CLOSURE|block_area=9|test=p_trans^3-p_e*p_cycle^2|expected=NEGATIVE_NONZERO|status=DERIVED|json=0
+PREDICT|id=10|check=NEGATIVE_CONTROLS|wrong_area_3=REJECT|unblocked_weight=REJECT|one_entry_corruption=REJECT|wrong_time_units=REJECT|status=RED|json=0
+PREDICT|id=11|check=NOISE_FREE_REFERENCE|injected_noise=0|not_physical_quantum_vacuum=1|status=DERIVED|json=0
+PREDICT|id=12|check=CONTINUUM_INTERPRETATION|same_finite_group_as_H_E_plus_H_M=YES|identical_hamiltonian=NO|dimension=1+1|SU2_4D_gap=OPEN|discreteness_of_nature=NOT_SHOWN|json=0
+PREDICTION_SUMMARY|rows=12|frozen_before_test=1|actual_measured_results=NOT_YET_RUN|json=0

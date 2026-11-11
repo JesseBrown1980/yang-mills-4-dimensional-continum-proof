@@ -1,0 +1,61 @@
+name: YM4-03b S3 triadic three-scale transfer
+
+on:
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-THREESCALE-S3-20261106.hbp'
+      - 'docs/NOTE-YM4-03b-S3-THREESCALE-TRIADIC.md'
+      - 'tests/test_s3_three_scale_triadic.py'
+      - 'tests/MEASURED-YM4-THREESCALE-S3-20261106.hbp'
+      - '.github/workflows/ym4-s3-three-scale.yml'
+  push:
+    branches:
+      - main
+      - gpt6-s3-three-scale-triadic-transfer-20261106
+    paths:
+      - 'docs/PREDICTION-YM4-THREESCALE-S3-20261106.hbp'
+      - 'docs/NOTE-YM4-03b-S3-THREESCALE-TRIADIC.md'
+      - 'tests/test_s3_three_scale_triadic.py'
+      - 'tests/MEASURED-YM4-THREESCALE-S3-20261106.hbp'
+      - '.github/workflows/ym4-s3-three-scale.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-three-scale:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact integer 6-state transfer and preregistered predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-s3-three-scale
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          t=ast.parse(Path('tests/test_s3_three_scale_triadic.py').read_text())
+          assert not any(isinstance(v,ast.Constant) and isinstance(v.value,float) for v in ast.walk(t))
+          assert not any(isinstance(v,ast.BinOp) and isinstance(v.op,ast.Div) for v in ast.walk(t))
+          print('YM3_INTEGER_AUDIT|floating_literals=0|true_division=0|status=PASS|json=0')
+          PY
+          python3 -I tests/test_s3_three_scale_triadic.py > build/ym4-s3-three-scale/REPLAY.hbp
+          cmp tests/MEASURED-YM4-THREESCALE-S3-20261106.hbp build/ym4-s3-three-scale/REPLAY.hbp
+          test "$(wc -l < build/ym4-s3-three-scale/REPLAY.hbp)" -eq 35
+          test "$(grep -c '^YM3_JUMP|' build/ym4-s3-three-scale/REPLAY.hbp)" -eq 6
+          test "$(grep -c '^YM3_CORRELATION|' build/ym4-s3-three-scale/REPLAY.hbp)" -eq 8
+          test "$(grep -c '^YM3_RED|' build/ym4-s3-three-scale/REPLAY.hbp)" -eq 4
+          grep -F 'YM3_COMMUTE|fine_cubed_equals_coarse3=1|fine_ninth_equals_coarse9=1|coarse3_cubed_equals_coarse9=1|' build/ym4-s3-three-scale/REPLAY.hbp
+          grep -F 'YM3_WILSON_CLOSURE|area=9|unblocked_family_identity=1|blocked_family_identity=0|negative_residual=1|' build/ym4-s3-three-scale/REPLAY.hbp
+          grep -F 'YM3_VERIFY|status=PASS|predictions=12|missing=0|red_controls=4|' build/ym4-s3-three-scale/REPLAY.hbp
+          test "$(grep -c '^PREDICT|' docs/PREDICTION-YM4-THREESCALE-S3-20261106.hbp)" -eq 12
+          grep -F 'PREDICTION_SUMMARY|rows=12|frozen_before_test=1|actual_measured_results=NOT_YET_RUN|' docs/PREDICTION-YM4-THREESCALE-S3-20261106.hbp
+          echo 'f7bb80e132c41519a1304185ef1087f887382e5e7e59445b3f78153e58513e37  build/ym4-s3-three-scale/REPLAY.hbp' | sha256sum -c -
+          sha256sum build/ym4-s3-three-scale/REPLAY.hbp tests/MEASURED-YM4-THREESCALE-S3-20261106.hbp > build/ym4-s3-three-scale/SHA256SUMS
+      - name: Publish exact receipt and provenance
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-s3-three-scale-exact-receipt
+          path: build/ym4-s3-three-scale/
+          if-no-files-found: error
