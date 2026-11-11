@@ -1,0 +1,1 @@
+SH|phase=0,1,2|global_physical_sector=SU2_ALL_VERTEX_GAUGE_INVARIANTS|source=7f4da6d135978453d7eeddfd2a8396c183814387|beta_s=1/128|beta_t=1/10|time_frame=ONE_WILSON_TRANSFER|SHA=EVIDENCE_METADATA|json=0
