@@ -1,0 +1,12 @@
+# YM4-07D prediction freeze: bad-field finite-energy lower bound
+# Predictions committed before new D engine. Gauge-invariant SU2 Wilson L>=3.
+PREDICT|id=W07D-01|neighbor_link_j_appears_in_exactly_one_staple_of_target_ell|j_conditional_Wilson_staples=6|dimension=4
+PREDICT|id=W07D-02|arbitrary_two_unit_four_vectors_h_n_have_common_orthogonal_z|radius=1over8|half_ball_Haar_mass_ge=1over24576
+PREDICT|id=W07D-03|for_every_external_environment|P_G_bad_ell_ge=exp_minus_27beta_over4_div24576|beta_ge=0|category=UNCONDITIONAL_LOWER
+PREDICT|id=W07D-04|periodic_L_ge=3|disjoint_neighborhood_anchors=floor_L_over3_to_fourth|conditional_FKG_independence_NOT_ASSUMED
+PREDICT|id=W07D-05|P_all_links_good_le=exp_minus_floorLover3_to4_expminus27betaover4_div24576|fixed_beta_L_to_infinity=ZERO
+PREDICT|id=W07D-06|Lk=L0_3powerk|beta_k=beta0_plus_c_k|if_c_lt=16ln3over27|all_good_probability_to_zero=YES
+PREDICT|id=W07D-07|SU2_one_loop_c=11ln3_over3pi_squared|c_lt_16ln3over27_from_pi_gt3|physical_trajectory=NOT_PROVED
+PREDICT|id=W07D-08|r=1over8|volume_count_3power4=81|conditional_beta_t_max=6beta|cost_exponent=27over4
+PREDICT|id=W07D-09|fault_drop_one_staple=REJECT|fault_wrong_half_ball=REJECT|fault_incomplete_neighbor_geometry=REJECT|fault_underestimate_cost=REJECT|fault_wrong_disjoint_spacing=REJECT
+PREDICT|id=W07D-10|global_all_good_on_AF_slope=NO_GO_FOR_THIS_CONDITION|local_bad_cluster_norm=OPEN|physical_continuum_gap=OPEN
