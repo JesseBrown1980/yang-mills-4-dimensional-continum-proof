@@ -1,0 +1,7 @@
+YM4_06D_SUPPLEMENT_PREDICT|date=2026-11-11|independent_row=SU2_WILSON_SINGLE_LINK_SPECTRUM|before_code=YES|r9_runs=0|json=0
+MODEL|group=SU2|beta_t=1|weight=w_beta(g)=exp(-beta*(1-ReTr(g)/2))|Wilson_link_convolution=YES|full_spatial_4D_interacting=NO|json=0
+EXACT|l_n=sum_s_2^(-2s-n)/(s!*(s+n+1)!)|eigenvalue_per_matrix_coefficient=exp(-1)*l_n|n=0,1|json=0
+PREDICT|row=LINK_NONVACUUM_RATIO|lower=24019372/100000000|upper=24019373/100000000|ratio=lambda_spin_half/lambda_spin_zero|bounded_by_truncated_series=YES|json=0
+PREDICT|row=LINK_CUTOFF_INVARIANCE|q=3,9,27,81|ratio_unchanged=YES|basis_spin_half_included=YES|json=0
+NEGATIVE|wrong_ratio_rounding=REJECT|no_SU2_4D_mass_claim=YES|json=0
+SCOPE|anisotropic_interacting_Wilson_transfer=NOT_COMPUTED|physical_m_first=OPEN|continuum_mass_gap=OPEN|hash_only_tracks_residuals=YES|json=0
