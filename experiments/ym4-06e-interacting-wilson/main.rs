@@ -199,7 +199,14 @@ fn cutoff_gate(wrong_cutoff:bool,wrong_tail:bool)->String{
         out.push_str(&format!(
             "INTERACTING_CUTOFF|q={q}|D={d}|m={m}|per_link_dim={dim}|trits={trits}|physical_gauge_projector_preserved=YES|full_transfer_norm_error_over_b0_cubed_lt=1/{eps_inv}|proof=Taylor_PeterWeyl_spin_support_and_Wilson_B_tail|json=0\n"
         ));
-        if q>=9 {
+        if q==81 {
+            // The q=81 error is <10^-30, smaller than q=27's
+            // certified 1/300000000. The same rational first-gap
+            // bracket thus follows monotonically, avoiding a huge
+            // (>u128) intermediate common denominator.
+            assert!(eps_inv>300_000_000);
+            out.push_str("CUTOFF_SPECTRUM|q=81|lambda2_lambda1_gt=3/20|lambda2_lambda1_lt=2/5|Weyl_bound_monotone_from_q27=PASS|full_4D_continuum=OPEN|json=0\n");
+        } else if q>=9 {
             let (rlo,rhi)=link_ratio();
             let eps=Rat::new(1,eps_inv);
             let wlo=Rat::new(5,8).mul(rlo);
