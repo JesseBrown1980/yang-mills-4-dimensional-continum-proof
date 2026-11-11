@@ -1,0 +1,15 @@
+YM4_04C_E4_E5_FREEZE|date=2026-11-11|source_frozen_42line_sha256=c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404|before_new_code=YES|r9_runs=0|json=0
+E4|kappa=1/4|delta_prime=delta*exp(delta)|lambda=delta_prime+ln(1+delta_prime)|admissible=lambda<=kappa|delta_crit_in=(0.114846768,0.114846769)|json=0
+E4|cfin=max(exp(-1),exp(delta+lambda-5/4),exp(delta-1/8)*sup_integer_f_ge4(exp(-(1/4-lambda)*f)-exp(-f/4)))|json=0
+E4|rate_less_than_one_for_all_delta_le_delta_crit=DERIVE|cfin_monotone_in_delta=DERIVE|delta_k_le_delta1*cfin(delta1)^(k-1)=DERIVE_CONDITIONAL_G1|sum_k_delta_k_le_delta1/(1-cfin(delta1))=DERIVE_CONDITIONAL_G1|json=0
+E4_C07|beta=1/100|head=crude|delta1_in=(0.0055222,0.0055223)|lambda_in=(0.0110902,0.0110903)|cfin=exp(-1)|delta2_le=0.0020316|sum_le=0.008737|json=0
+E4_C08|beta=1/100|head=refined|delta1_in=(0.0000047159,0.0000047160)|lambda_in=(0.0000094320,0.0000094321)|cfin=exp(-1)|delta2_le=0.0000017350|sum_le=0.000007461|crude_refined_ratio_in=(1170,1172)|json=0
+E4_C11|beta=1/64|head=crude|delta1_in=(0.0508265,0.0508266)|lambda_in=(0.1055724,0.1055725)|cfin=exp(-1)|delta2_le=0.018699|sum_le=0.08041|json=0
+E4_C12|beta=1/50|head=refined|delta1_in=(0.0363235,0.0363236)|lambda_in=(0.0746422,0.0746423)|cfin=exp(-1)|delta2_le=0.013363|sum_le=0.057463|json=0
+E4_C13|beta=0.01767|head=crude|delta1_in=(0.1145675,0.1145676)|selfmap_MET|beta=0.01768|selfmap_NOT_MET|json=0
+E4_C14|beta=0.02074|head=refined|delta1_in=(0.1088558,0.1088559)|selfmap_MET|beta=0.02075|selfmap_NOT_MET|json=0
+E4_CFIN|delta=0.078733761|cfin=exp(-1)|delta=0.078733762|cfin_gt_exp_minus1|delta=1/10|cfin_in=(0.611173,0.611174)|maximizing_f=9|delta=11/100|cfin_in=(0.811310,0.811311)|maximizing_f=13|json=0
+E4_C16|beta=1/100|head=crude|delta20_le=3.0940e-11|oscillation_coarse_4power4_le=5.828e-9|json=0
+E5_C15|beta=1/45|wall_in=(0.9888,0.9889)|headfree_n10=NOT_MET|beta=1/40|wall_in=(1.1125,1.1126)|beta=1/18|wall_in=(2.473,2.474)|beta=1/10|wall_in=(4.4575,4.4576)|beta=1|wall_in=(50.40,50.41)|beta=4|wall_in=(292.4,292.5)|json=0
+E5_NEW_THEOREM_FALSIFIER|beta_ge36|c0(beta)_le_6*exp(beta)*beta^(-3/2)|c0(6beta)_ge_exp(6beta)*beta^(-3/2)/720|L6(exp(beta*a)/c0)_gt_beta/18|eps6_gt_beta/18-1_ge1|mu*exp(1/4)*eps6_gt1|KP_F20_tail_FAILS|continuum_mass_gap_NOT_REFUTED|json=0
+SCOPE|G0_G1_analytic_proof_acceptance_requires_separate_imported_lemma_review|all_k_assertion_CONDITIONAL|weak_coupling_extension_NOT_PROVED|physical_mass_NOT_PROVED|finite_r9_UNTOUCHED|no_float_no_json=YES|json=0
