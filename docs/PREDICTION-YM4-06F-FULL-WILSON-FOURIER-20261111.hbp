@@ -1,0 +1,25 @@
+# YM4-06F frozen predictions, 2026-11-11.
+# NEW independent finite-volume SU2 Wilson transfer full-spectrum Fourier enclosure.
+# Predictions must predate checker. Certified no all-scale uniform mass gap.
+PREDICT|id=F01|temporal_single_link_SU2_Fourier_eigenvalue=b_n=e_minusbeta_times_2_I_nplus1(beta)_over_beta|normalized_t_n=I_nplus1(beta)_over_I1(beta)
+PREDICT|id=F02|positive_Su2_Bessel_series|t_n_le=(beta_over2)_power_n_over_factorial_nplus1|all_n_ge0
+PREDICT|id=F03|cutoff_N_plus3_ge_beta_over2|all_n_ge_Nplus1|tail_operator_norm_le=(beta_over2)_power_Nplus1_over_factorial_Nplus2
+PREDICT|id=F04|full_temporal_tensor_normalized|cutoff_error_independent_of_number_spatial_links=YES|error_positive_semidefinite=YES
+PREDICT|id=F05|spatial_Wilson_A_between_exp_minus2betaNp_and_1|T_hat_minus_T_N_positive_semidefinite=YES|norm_le_delta
+PREDICT|id=F06|gauge_covariant_irrep_cutoff_commutes_3D_site_gauge_action=YES|full_physical_vacuum_complement_covered=YES
+PREDICT|id=F07|full_spectral_eigenvalues_lambda_jN_le_lambda_j_le_lambda_jN_plus_delta|all_j=YES
+PREDICT|id=F08|physical_ratio_bound_lower=lambda1N_over_lambda0Nplusdelta|upper=lambda1Nplusdelta_over_lambda0N|requires_lambda0N_positive
+PREDICT|id=F09|finite_rank_Gram_matrix=diagsqrt_temporal_eigen_PiNA_PiN_diagsqrt|all_physical_eigenvalues_not_chosen_observable
+PREDICT|id=F10|beta=2_N=8|delta_exact=1/3628800|delta_lt=1e_minus6
+PREDICT|id=F11|beta=4_N=12|delta_exact=4/42567525|delta_lt=1e_minus7
+PREDICT|id=F12|beta=8_N=20|delta_exact=8388608/2143861251406875|delta_lt=1e_minus8
+PREDICT|id=F13|beta=16_N=40|delta_lt=1e_minus13
+PREDICT|id=F14|one_link_t1_beta2_between=43over100_and_44over100|all_rational_interval=YES
+PREDICT|id=F15|one_link_t1_beta4_between=65over100_and_66over100|all_rational_interval=YES
+PREDICT|id=F16|one_link_t1_beta8_between=81over100_and_83over100|all_rational_interval=YES
+PREDICT|id=F17|two_Z2_link_spatial_nonconstant_finite_control|q=1over8|lambda0_rank1=205over576|full_second_ratio_upper=72over205
+PREDICT|id=F18|two_Z2_link_spatial_nonconstant_finite_control|positive_Loewner_tail=YES|lambda1_full_le=1over8|lambda0_full_ge=205over576
+PREDICT|id=F19|fault_invert_Loewner=REJECT|fault_omit_tail=REJECT|fault_false_factorial=REJECT|fault_bad_gauge_twist=REJECT
+PREDICT|id=F20|rank_per_link=SUM_n0toN_nplus1_squared|full_3D_Nlinks=3L_cubed|cost_EXPONENTIAL
+PREDICT|id=F21|absolute_cutoff_error_volume_uniform_in_temporal_normalization=YES|relative_gap_certificate_volume_uniform=NOT_PROVED
+PREDICT|id=F22|actual_fourD_SU2_all_scale_gap=OPEN|weak_running_coupling=UNCONTROLLED|r9_launch=UNTOUCHED

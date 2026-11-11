@@ -1,0 +1,71 @@
+name: YM4-06H actual isotropic SU2 Wilson Haar-moment Perron floor
+
+on:
+  push:
+    branches: [gpt6-ym4-06f-full-wilson-temporal-fourier-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06H-ISOTROPIC-VACUUM-20261111.hbp'
+      - 'docs/NOTE-YM4-06H-ISOTROPIC-VACUUM-20261111.md'
+      - 'tests/test_ym4_06h_isotropic_vacuum.py'
+      - '.github/workflows/ym4-06h-isotropic-vacuum.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06H-ISOTROPIC-VACUUM-20261111.hbp'
+      - 'docs/NOTE-YM4-06H-ISOTROPIC-VACUUM-20261111.md'
+      - 'tests/test_ym4_06h_isotropic_vacuum.py'
+      - '.github/workflows/ym4-06h-isotropic-vacuum.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isotropic_hilbert_space_floor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify original sixteen predictions were committed before the checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 0326f97ec5e50e3f134dd7c59515689d35e68d37 HEAD
+          git show 0326f97ec5e50e3f134dd7c59515689d35e68d37:docs/PREDICTION-YM4-06H-ISOTROPIC-VACUUM-20261111.hbp > /tmp/YM4_06H_FROZEN.hbp
+          cmp /tmp/YM4_06H_FROZEN.hbp docs/PREDICTION-YM4-06H-ISOTROPIC-VACUUM-20261111.hbp
+          test "$(grep -c '^PREDICT|id=J' /tmp/YM4_06H_FROZEN.hbp)" -eq 16
+      - name: Whole-repo exact integer and no-float source check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact spatial Haar geometry, isotropic Wilson Perron floor, rational cutoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06h_isotropic_vacuum.py | tee /tmp/YM4_06H_REPLAY.hbp
+          grep -Fq 'YM4_06H|ISOTROPIC|L=2|beta=2|Ns=24|E_X=0|E_X_squared=6|old_floor=exp_minus96|Jensen_floor=exp_minus48|Haar_variance_floor=37/25_times_exp_minus48' /tmp/YM4_06H_REPLAY.hbp
+          grep -Fq 'YM4_06H|CUT|L=2|beta=2|N=20|delta=1/22factorial|rational_Perron_lower=37/25_times_32over87_power48|strict_delta_lt_lower=PASS' /tmp/YM4_06H_REPLAY.hbp
+          grep -Fq 'YM4_06H|F12|basis_orthonormal=REQUIRED|nonorthonormal_uses_generalized_eigenproblem=PASS' /tmp/YM4_06H_REPLAY.hbp
+          grep -Fq 'YM4_06H|DONE|exact_rational_census_and_cutoff_control=PASS|json=0' /tmp/YM4_06H_REPLAY.hbp
+          test "$(grep -c '^YM4_06H|GEOMETRY|' /tmp/YM4_06H_REPLAY.hbp)" -eq 3
+      - name: Six direct corruptions fail with named diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_census cross_moment wrong_variance false_exp_bound claim_N19_enough nonorthonormal_Gram; do
+            if python3 -I -B tests/test_ym4_06h_isotropic_vacuum.py "$fault" > /tmp/YM4_06H_BAD.hbp 2>&1; then
+              echo "YM4_06H_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06H_REJECT|check=' /tmp/YM4_06H_BAD.hbp
+            echo "YM4_06H_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Preserve honest gap and review boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'not a practical full-spectrum diagonalization' docs/NOTE-YM4-06H-ISOTROPIC-VACUUM-20261111.md
+          echo 'YM4_06H_RELEASE|ISOTROPIC_PERRON_FLOOR=DERIVED|FIRST_SPECTRAL_GAP=OPEN|CONTINUUM=OPEN|REVIEW_MERGE=HOLD|R9=UNTOUCHED'

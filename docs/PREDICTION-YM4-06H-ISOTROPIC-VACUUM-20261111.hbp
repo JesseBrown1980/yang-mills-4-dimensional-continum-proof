@@ -1,0 +1,19 @@
+# YM4-06H frozen actual isotropic spatial-Wilson vacuum bound, 2026-11-11.
+# Exact independent Haar 2nd moment, Jensen, global elementary exponential remainder.
+# No true finite SU2 spectral diagonalization or continuum result is asserted.
+PREDICT|id=J01|periodic_spatial_L_ge2|Ns=3L_cubed|all_plaquette_link_sets_distinct=YES
+PREDICT|id=J02|each_plaquette_4_distinct_links=YES|Haar_mean_a_p=0|Haar_second_moment_a_p=1/4
+PREDICT|id=J03|distinct_pq_share_no_more_than_2_links_when_L2|Haar_cross_E_a_p_a_q=0
+PREDICT|id=J04|X=sum_p_a_p|Haar_E_X=0|Haar_E_X_squared=Ns/4
+PREDICT|id=J05|all_real_t|exp_t_ge_1_plus_t_plus_t_squared_over_2_plus_abs_t=PROVED
+PREDICT|id=J06|actual_isotropic_A=exp_minusbetaNs_times_exp_betaX|integral_A_ge_exp_minusbetaNs_times_1_plus_beta_squared_Ns_over_4_times_2_plus_betaNs
+PREDICT|id=J07|T_hat_N_top_lambda_ge_integral_A|improves_old_F11_exp_minus2betaNs=YES
+PREDICT|id=J08|L=2|Ns=24|beta=2|old_lower=exp_minus96|Jensen_lower=exp_minus48
+PREDICT|id=J09|L=2_beta=2|second_moment_lower=37over25_times_exp_minus48
+PREDICT|id=J10|rational_exp_upper=e_lt_87over32|derived_from_factorial_terms_first_6_plus_geometric_tail
+PREDICT|id=J11|beta=2_N=20|delta=1over22factorial|delta_lt_37over25_times_32over87_power48
+PREDICT|id=J12|beta=2_N=19|delta=1over21factorial|delta_gt_37over25_times_32over87_power48
+PREDICT|id=J13|rank_per_link_N20=3311|spatial_links_L2=24|global_rank=3311_power24|infeasible=YES
+PREDICT|id=J14|actual_isotropic_SU2_complete_eigenvalues=NOT_COMPUTED|physical_gap=OPEN
+PREDICT|id=J15|fault_wrong_census=REJECT|fault_cross_moment=REJECT|fault_variance=REJECT|fault_exp_bound=REJECT|fault_N19_is_enough=REJECT
+PREDICT|id=J16|original_F_and_G_predictions=UNMODIFIED|r9=UNTOUCHED|PR67=STILL_DRAFT

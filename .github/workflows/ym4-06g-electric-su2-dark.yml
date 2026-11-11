@@ -1,0 +1,71 @@
+name: YM4-06G actual SU2 electric-only physical dark-mode tripling negative control
+
+on:
+  push:
+    branches: [gpt6-ym4-06f-full-wilson-temporal-fourier-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06G-ELECTRIC-SU2-DARK-20261111.hbp'
+      - 'docs/NOTE-YM4-06G-ELECTRIC-SU2-DARK-20261111.md'
+      - 'tests/test_ym4_06g_electric_su2_dark.py'
+      - '.github/workflows/ym4-06g-electric-su2-dark.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06G-ELECTRIC-SU2-DARK-20261111.hbp'
+      - 'docs/NOTE-YM4-06G-ELECTRIC-SU2-DARK-20261111.md'
+      - 'tests/test_ym4_06g_electric_su2_dark.py'
+      - '.github/workflows/ym4-06g-electric-su2-dark.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  continuous_SU2_dark_sector:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Frozen prediction precedes checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 1cd8592f7f04c6b7e90ed63ddfdaa3e241b3f7fe HEAD
+          git show 1cd8592f7f04c6b7e90ed63ddfdaa3e241b3f7fe:docs/PREDICTION-YM4-06G-ELECTRIC-SU2-DARK-20261111.hbp > /tmp/YM4_06G_FROZEN.hbp
+          cmp /tmp/YM4_06G_FROZEN.hbp docs/PREDICTION-YM4-06G-ELECTRIC-SU2-DARK-20261111.hbp
+          test "$(grep -c '^PREDICT|id=G' /tmp/YM4_06G_FROZEN.hbp)" -eq 14
+      - name: Whole repository exact integer/no-float source scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Continuous SU2 representation bounds, graph cycles and Q8 central-noise algebra
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06g_electric_su2_dark.py | tee /tmp/YM4_06G_REPLAY.hbp
+          grep -Fq 'YM4_06G|SPECTRUM|beta_t=2|t1_between=43/100_and_44/100|n_ge2_le_1/6|fine_first=t1^4|coarse_first=t1^36|dark_rho=t1^4|required_x_gt_710' /tmp/YM4_06G_REPLAY.hbp
+          grep -Fq 'YM4_06G|GRAPH|L=4|no_cycles_of_length_below_4=PASS' /tmp/YM4_06G_REPLAY.hbp
+          grep -Fq 'YM4_06G|OFFPATH|fine_side=12|coarse_side=4|coarse_line_links=576|disjoint_fine_plaquette_links=4' /tmp/YM4_06G_REPLAY.hbp
+          grep -Fq 'YM4_06G|NOISE|noncommuting_Q8_base_triples=256|three_noise_configs_per_base=512|central_histogram_exact=PASS|block_subspace_invariant=PASS' /tmp/YM4_06G_REPLAY.hbp
+          grep -Fq 'YM4_06G|DONE|actual_SU2_dark_sector_countercontrol=DERIVED|json=0' /tmp/YM4_06G_REPLAY.hbp
+      - name: Eight direct geometric and algebraic corruptions must fail
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in noncentral_noise wrong_product_order false_short_cycle wrong_off_plaquette false_dark_bound false_zero_leakage false_small_budget drop_high_spin; do
+            if python3 -I -B tests/test_ym4_06g_electric_su2_dark.py "$fault" > /tmp/YM4_06G_BAD.hbp 2>&1; then
+              echo "YM4_06G_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06G_REJECT|check=' /tmp/YM4_06G_BAD.hbp
+            echo "YM4_06G_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Keep isotropic continuum physics outside the negative control
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'is not isotropic Wilson YM' docs/NOTE-YM4-06G-ELECTRIC-SU2-DARK-20261111.md
+          echo 'YM4_06G_RELEASE|ELECTRIC_ONLY_SU2_DARK_CONTROL=DERIVED|ISOTROPIC_SU2_RHO=OPEN|CONTINUUM_GAP=OPEN'

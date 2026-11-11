@@ -1,0 +1,74 @@
+name: YM4-06F full SU2 Wilson temporal Fourier spectral enclosure
+
+on:
+  push:
+    branches: [gpt6-ym4-06f-full-wilson-temporal-fourier-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06F-FULL-WILSON-FOURIER-20261111.hbp'
+      - 'docs/NOTE-YM4-06F-FULL-WILSON-FOURIER-20261111.md'
+      - 'tests/test_ym4_06f_full_wilson_fourier.py'
+      - '.github/workflows/ym4-06f-full-wilson-fourier.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06F-FULL-WILSON-FOURIER-20261111.hbp'
+      - 'docs/NOTE-YM4-06F-FULL-WILSON-FOURIER-20261111.md'
+      - 'tests/test_ym4_06f_full_wilson_fourier.py'
+      - '.github/workflows/ym4-06f-full-wilson-fourier.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full_SU2_Wilson_analytic_tail:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prediction-first freeze, no file mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 16224bc38cd21d67817539be407ca92b691949ad HEAD
+          git show 16224bc38cd21d67817539be407ca92b691949ad:docs/PREDICTION-YM4-06F-FULL-WILSON-FOURIER-20261111.hbp > /tmp/YM4_06F_FROZEN.hbp
+          cmp /tmp/YM4_06F_FROZEN.hbp docs/PREDICTION-YM4-06F-FULL-WILSON-FOURIER-20261111.hbp
+          test "$(grep -c '^PREDICT|id=F' /tmp/YM4_06F_FROZEN.hbp)" -eq 22
+      - name: Full repository integer/no-floating-point source scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Recompute complete SU2 temporal tail and rational all-state control
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06f_full_wilson_fourier.py | tee /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq 'YM4_06F|TAIL|beta=2|N=8|delta=1/3628800|strict_lt_10powminus=6' /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq 'YM4_06F|TAIL|beta=4|N=12|delta=4/42567525|strict_lt_10powminus=7' /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq 'YM4_06F|TAIL|beta=8|N=20|delta=8388608/2143861251406875|strict_lt_10powminus=8' /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq '|lambda0_N=205/576|lambda1_all_states_le=1/8|ratio_le=72/205' /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq 'YM4_06F|GAUGE|fundamental_SU2_matrix_coefficients_under_left_right|Q8_512_exact_controls=PASS' /tmp/YM4_06F_REPLAY.hbp
+          grep -Fq 'YM4_06F|DONE|all_exact_rational_controls=PASS|physical_gap=NOT_PROVED|json=0' /tmp/YM4_06F_REPLAY.hbp
+          test "$(grep -c '^YM4_06F|TAIL|' /tmp/YM4_06F_REPLAY.hbp)" -eq 4
+          test "$(grep -c '^YM4_06F|BESSEL|' /tmp/YM4_06F_REPLAY.hbp)" -eq 3
+      - name: Eight altered computed inputs must fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in drop_tail wrong_volume_factor wrong_cutoff_condition false_rank false_lambda false_bessel_ratio broken_end_gauge false_loewner; do
+            if python3 -I -B tests/test_ym4_06f_full_wilson_fourier.py "$fault" > /tmp/YM4_06F_BAD.hbp 2>&1; then
+              echo "YM4_06F_BAD|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06F_REJECT|check=' /tmp/YM4_06F_BAD.hbp
+            echo "YM4_06F_BAD|name=$fault|rejected=YES"
+          done
+      - name: Physical proof boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'not a volume-uniform physical spectral gap' docs/NOTE-YM4-06F-FULL-WILSON-FOURIER-20261111.md
+          echo 'YM4_06F_RELEASE|FULL_FINITE_SU2_SPECTRAL_TAIL=DERIVED|WEAK_SCALE_UNIFORM_RATIO=OPEN|ALL_K_MASS_GAP=OPEN|R9_LAUNCH=UNTOUCHED'
