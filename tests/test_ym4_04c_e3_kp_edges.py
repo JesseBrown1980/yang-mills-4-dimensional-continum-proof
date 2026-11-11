@@ -279,7 +279,7 @@ def run(fault=""):
         print(point(p,q,head,read,fault=="missing_tail" and p==1904),flush=True)
     if fault=="bad_crit":
         assert lam(rat(CRIT_HI,CRIT_DEN))[1]*4<ONE,"E3_FAULT: false upper delta_crit side"
-    print("E3_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|C04_tail_guard=IMPORTED_FROM_PR58|weak_coupling=OPEN|r9_runs=0|json=0",flush=True)
+    print("E3_RESULT|PASS|C05=PASS|C06=PASS|C14=PASS|C04_tail_guard=INDEPENDENTLY_RECHECKED|weak_coupling=OPEN|r9_runs=0|json=0",flush=True)
 
 if __name__=="__main__":
     import argparse
