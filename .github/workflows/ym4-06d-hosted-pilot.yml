@@ -1,0 +1,91 @@
+name: YM4-06D frozen SU2 cutoff and S3 scaling pilot (native integer)
+
+on:
+  push:
+    branches: [gpt6-ym4-06d-hosted-pilot-20261111]
+    paths:
+      - ".github/workflows/ym4-06d-hosted-pilot.yml"
+      - "experiments/ym4-06d-hosted/**"
+      - "docs/PREDICTION-YM4-06D-HOSTED-PILOT-20261111.hbp"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-06d-pilot-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  frozen-06d-pilot:
+    name: Exact SU2 Peter-Weyl and S3 Wilson-link scaling controls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Native Git checkout, verify prediction frozen before code
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --branch gpt6-ym4-06d-hosted-pilot-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work show b63a2848fd23bc3a9cffc464c93036f2b92c3dbe:docs/PREDICTION-YM4-06D-HOSTED-PILOT-20261111.hbp > /tmp/PREDICT-ORIGINAL.hbp
+          cmp /tmp/PREDICT-ORIGINAL.hbp work/docs/PREDICTION-YM4-06D-HOSTED-PILOT-20261111.hbp
+          test "$(git -C work rev-list --ancestry-path b63a2848fd23bc3a9cffc464c93036f2b92c3dbe..HEAD | wc -l)" -ge 2
+          echo "FREEZE|prediction=b63a2848fd23bc3a9cffc464c93036f2b92c3dbe|unchanged=YES|before_code=YES|r9_runs=0|json=0"
+      - name: Rust 1.81 exact, strict Clippy and six mathematical tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SOURCE=work/experiments/ym4-06d-hosted/main.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_06d_hosted --crate-type bin --emit metadata -o /tmp/ym4-06d.rmeta "$SOURCE"
+          rustc +1.81.0 --edition 2021 --test "$SOURCE" -o /tmp/ym4-06d-tests
+          /tmp/ym4-06d-tests
+          rustc +1.81.0 --edition 2021 -O "$SOURCE" -o /tmp/ym4-06d-native
+      - name: Run precommitted mathematical predictions and replay five receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/ym4-06d-native compute output | tee RESULT.hbp
+          /tmp/ym4-06d-native verify output | tee REPLAY.hbp
+          grep -Fq 'YM4_06D_EXECUTE|PASS|' RESULT.hbp
+          grep -Fq 'YM4_06D_VERIFY|PASS|HBI=PASS|HBP=PASS|SHA=PASS|SH=PASS|HASH=PASS|' REPLAY.hbp
+          grep -Fq 'space=2D_2x2|rooted=7776|physical=1393|flat_raw=18|flat_orbits=8|' output/YM4-06D.hbp
+          grep -Fq 'space=3D_2x2x2|rooted=16926659444736|physical=2821153019713|flat_raw=48|flat_orbits=21|' output/YM4-06D.hbp
+          grep -Fq 'SU2_CUTOFF|q=81|highest_twice_spin=80|dimension=180441|trits=12|' output/YM4-06D.hbp
+          grep -Fq 'q=9|upper=25/329204736|' output/YM4-06D.hbp
+          grep -Fq 'relative_leading_coefficient=7/4|' output/YM4-06D.hbp
+          test "$(grep -Fc 'LOCK_HASH|k=' output/YM4-06D.hbp)" -eq 4
+          grep -Fq 'Wilson_4D_interacting_lowest_spectrum=NOT_COMPUTED' output/YM4-06D.hbp
+          (cd output && sha256sum YM4-06D.hbp YM4-06D.hbi YM4-06D.sha YM4-06D.sh YM4-06D.hash > SHA256SUMS && sha256sum -c SHA256SUMS)
+      - name: Reject four mathematical faults and one altered HBP
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in missing_representation wrong_center_parity wrong_wilson_tail vanishing_mass_misread; do
+            if /tmp/ym4-06d-native plant "$name" > "FAULT-${name}.log" 2>&1; then
+              echo "FAULT|name=$name|result=NOT_REJECTED|json=0"
+              exit 1
+            fi
+            grep -Fq 'assertion' "FAULT-${name}.log"
+            echo "FAULT|name=$name|result=REJECTED|json=0"
+          done
+          cp -r output altered
+          sed -i 's/counter_limit=ZERO/counter_limit=POSITIVE/' altered/YM4-06D.hbp
+          if /tmp/ym4-06d-native verify altered > FAULT-modified-hbp.log 2>&1; then
+            echo 'FAULT|name=corrupt_HBP_receipt|result=NOT_REJECTED|json=0'
+            exit 1
+          fi
+          grep -Fq 'receipt tampering' FAULT-modified-hbp.log
+          echo 'FAULT|name=corrupt_HBP_receipt|result=REJECTED|json=0'
+          echo 'YM4_06D_PILOT|PASS|finite_controls=VERIFIED|PW_cutoff=VERIFIED|Wilson_link_tail=VERIFIED|YM4D_continuum_mass=OPEN|r9_runs=0|json=0'
+      - name: Expose complete HBI HBP SHA SH HASH for independent records
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in YM4-06D.hbp YM4-06D.hbi YM4-06D.sha YM4-06D.sh YM4-06D.hash SHA256SUMS; do
+            printf 'EVIDENCE_BEGIN|file=%s\n' "$name"
+            cat "output/$name"
+            printf 'EVIDENCE_END|file=%s\n' "$name"
+          done
