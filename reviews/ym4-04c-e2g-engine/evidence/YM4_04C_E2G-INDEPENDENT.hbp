@@ -1,0 +1,4 @@
+YM4_04C_E2G_INDEPENDENT|row=C04|point=quarter_beta|route=HAAR_EVEN_MOMENTS_CATALAN|status=PASS|frozen_prefreeze=COMPUTED|json=0
+YM4_04C_E2G_INDEPENDENT|row=C04|point=wall_lower|route=HAAR_EVEN_MOMENTS_CATALAN|status=PASS|frozen_prefreeze=COMPUTED|json=0
+YM4_04C_E2G_INDEPENDENT|row=C04|point=wall_upper|route=HAAR_EVEN_MOMENTS_CATALAN|status=PASS|frozen_prefreeze=COMPUTED|json=0
+YM4_04C_E2G_INDEPENDENT_RESULT|PASS|three_C04_checks=3|shared_code=NO|full_04C_Rust_checker=NOT_RUN|json=0
