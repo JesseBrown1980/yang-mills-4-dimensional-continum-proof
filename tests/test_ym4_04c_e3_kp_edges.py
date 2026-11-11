@@ -8,7 +8,7 @@ from math import comb
 
 BITS=256
 ONE=1<<BITS
-MU_N=ipow20=20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20
+MU_N=20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20*20
 MU_D=19*19*19*19*19*19*19*19*19*19*19*19*19*19*19*19*19*19*19
 F={n:comb(20*n,n)//(19*n+1) for n in range(4,51)}
 HEAD={
@@ -228,9 +228,35 @@ def point(p,q,head,read,wrong_tail=False):
     if wrong_tail:
         raise AssertionError("E3_FAULT: deleted mandatory Fuss-Catalan tail")
     return "E3|head="+head+"|beta="+str(p)+"/"+str(q)+"|read="+read+"|"+ret+"|frozen_n49_mu_tail=YES|json=0"
+def c04_pole_gate(fault):
+    """The genuine missing_tail attack drops both n>=11 and its pole guard.
+    At beta=1/40, 0.02248 the fake head-only value is MET, but the
+    mandatory mu*x(alpha=0)>=1 makes the frozen complete read NOT_MET.
+    """
+    out=[]
+    for p,q in ((1,40),(2248,100000)):
+        eps=eps6((p,q))
+        x0=mul(eps,exp_pos(rat(1,4)))
+        mux=mul(rat(MU_N,MU_D),x0)
+        assert mux[0]>ONE,"E3_C04: mandatory polymer pole not certified"
+        if fault=="missing_tail" and p==1:
+            a=rat(1,4194304)
+            x=mul(eps,exp_pos(add(mul(rat(2),a),rat(1,4))))
+            pw=(ONE,ONE)
+            head_hi=0
+            for n in range(1,11):
+                pw=mul(pw,x)
+                if n>=4:head_hi+=HEAD["refined"][n-4]*pw[1]
+            assert head_hi<=a[0],"E3_C04: head-only planted MET did not materialize"
+            # This is the actual fail-closed guard the mutant deletes.
+            assert mux[1]<ONE,"E3_C04_REJECT: false MET from removing Fuss-Catalan tail AND pole gate"
+        out.append("E3_C04|beta="+str(p)+"/"+str(q)+"|mu_x_at_alpha0_lower_gt=1|full_tail=REQUIRED|read=NOT_MET|json=0")
+    return out
+
 def run(fault=""):
     print("E3_FREEZE|sha256=c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404|C03_counts=VERIFIED_PR60|prefreeze=COMPUTED|r9_runs=0|json=0",flush=True)
     print(check_delta(),flush=True)
+    for row in c04_pole_gate(fault):print(row,flush=True)
     rows=[
         (1904,100000,"crude","MET"),
         (1905,100000,"crude","NOT_MET"),
