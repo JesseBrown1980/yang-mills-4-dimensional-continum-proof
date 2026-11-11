@@ -1,0 +1,8 @@
+# YM4-07D2 prediction freeze: adaptive-radius bad-field lower estimate
+# Mathematical sharpening independent of old cross-Catalan norm, before checker.
+PREDICT|id=W07D2-01|beta_ge=1|radius=1_over_6beta|Haar_half_ball_ge=1_over_10368beta_cubed
+PREDICT|id=W07D2-02|conditional_probability_bad_ge=exp_minus_6beta_minus1_over_10368beta_cubed|all_environments=YES
+PREDICT|id=W07D2-03|using_e_lt3|conditional_probability_bad_gt=exp_minus_6beta_over_31104beta_cubed|all_environments=YES
+PREDICT|id=W07D2-04|Lk=L0_times_3powerk|beta_k=beta0_plus_c_k_plus_littleo_k|if_c_lt=2ln3over3|all_links_good_probability_to_zero=YES
+PREDICT|id=W07D2-05|SU2_one_loop_c=11ln3_over3pi_squared|c_lt_2ln3over3_from_pi_squared_gt_11over2|physical_RG=NOT_CERTIFIED
+PREDICT|id=W07D2-06|separated_anchor_count=floor_L_over3_power4|lower_bound_not_mass_gap=YES|clusters=OPEN

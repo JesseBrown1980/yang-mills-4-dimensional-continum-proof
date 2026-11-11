@@ -1,0 +1,15 @@
+# YM4-07 prediction freeze, 2026-11-11
+# Separate weak-coupling route; independent branch from main 05de0ff7.
+# Prediction only: do not describe as measurement before tests.
+# 4D continuous SU2 Wilson measure, one link and six oriented staples.
+# Every threshold here is a mathematical claim for independent checking.
+PREDICT|id=W07-01|6_staples=6|unordered_pair_networks=15|cross_plane_pairs=12|category=GEOMETRY
+PREDICT|id=W07-02|quaternion_resultant_Q=6_plus_2_sum_15_pair_products|one_link_Haar=series_sum_beta2Q_over_4m_factorials|category=IDENTITY
+PREDICT|id=W07-03|if_all_15_pair_products_ge=1/2|Q_ge=21|R_gt=4|beta_ge=1/4|category=GOOD_FIELD
+PREDICT|id=W07-04|tail_threshold=1/2|beta=16|upper_lt=1e-6|certificate_exp32_term=20|category=RIGOROUS_BOUND
+PREDICT|id=W07-05|tail_threshold=1/2|beta=32|upper_lt=1e-15|certificate_exp64_term=29|category=RIGOROUS_BOUND
+PREDICT|id=W07-06|tail_threshold=1/2|beta=64|upper_lt=1e-24|certificate_exp128_term=31|category=RIGOROUS_BOUND
+PREDICT|id=W07-07|realizable_on_4D_L_ge=3|positive_staples=3|negative_staples=3|Q=0|conditional_law=HAAR_ALL_BETA|category=NEGATIVE_CONTROL
+PREDICT|id=W07-08|illustrative_beta_k=16_plus_k_over_2|link_volume_factor=81_per_step|naive_union_bound_ratio_gt=27|category=SCALING_FAILURE
+PREDICT|id=W07-09|pair_invariants=GAUGE_INVARIANT|conditional_bound=ENVIRONMENT_BY_ENVIRONMENT|bad_field_probability=OPEN|full_4D_RG=OPEN|physical_gap=OPEN|category=SCOPE
+PREDICT|id=W07-10|plant_constant_epsilon_inversion=REJECT|plant_mixed_staple_sign=REJECT|plant_wrong_plaquette_count=REJECT|category=FALSE_CONTROLS
