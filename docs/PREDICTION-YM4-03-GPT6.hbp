@@ -1,0 +1,11 @@
+YM4_03_PREDICTION|date=2026-11-05|seat=GPT-6|base=b453fd6502728e6843aeb0ae7eb065e15822765b|issue=3|prediction_before_test_code=1|model=continuous_SU2_Wilson|b=2|integer_only_tests=1|json=0
+YM4_03_BLOCK|fine_sides=4,4,4,4|fine_sites=256|fine_links=1024|coarse_sides=2,2,2,2|coarse_sites=16|coarse_links=64|coarse_plaquettes=96|ordered_two_fine_edges=1|json=0
+YM4_03_COVARIANCE|fine_gauge_to_coarse_endpoints=EXACT|intermediate_gauge_cancels=1|coarse_edge_checks=64|noncommuting_SU2_rational_quaternions=1|json=0
+YM4_03_LOOP|coarse_plaquettes=96|fine_2x2_boundaries=96|ordered_holonomy_equal=1|traces_gauge_invariant=1|json=0
+YM4_03_HAAR|variable_substitution=U_first_equals_V_times_W_inverse,U_second_equals_W|dU_first_dU_second=dV_dW|disjoint_two_link_paths=1|coarse_Haar_base=normalized_product|pushforward_normalized=1|json=0
+YM4_03_Q8|purpose=nonabelian_convolution_control_not_SU2_Haar_approximation|t=1/4|weight=1+t_chi_f|fourfold=1+chi_f/2048|at_identity=1025/1024|at_minus_identity=1023/1024|at_six_other_elements=1|normalization=1|json=0
+YM4_03_SU2_BLOCK|scope=one_isolated_2x2_fine_plaquette_tile_in_4D_with_other_plaquette_couplings_zero|beta_range=0_to_1|normalized_wilson_weight=exp(beta_chi_f/2)_over_Haar_average|coarse_weight=convolution_four_of_normalized_weight|characters=n=0,1,2|coefficient_n=(n+1)_times_(f_n/f_0)^4|f_n=sum_k_(beta/2)^(n+2k)/(k!(n+k+1)!)|json=0
+YM4_03_SU2_TAIL|beta_range=0_to_1|truncation_n_le_2|density_sup_error_upper=25/671741424|density_error_lt=1/25000000|truncated_density_lower=11087/11664|truncated_density_gt=19/20|effective_action_error_upper=25/638511392|effective_action_error_lt=1/20000000|outward_rational=1|json=0
+YM4_03_LOW_BETA|coarse_character_spin_half_leading=beta^4/128_times_chi_half|order=4|higher_rep_and_corrections_follow_character_expansion|json=0
+YM4_03_NEGATIVE|swap_order=REJECT|wrong_endpoint=REJECT|drop_inverse_loop=REJECT|wrong_convolution=REJECT|json=0
+YM4_03_SCOPE|full_4D_pushforward=exact_for_each_finite_even_periodic_lattice|character_formula=only_isolated_2x2_block|full_4D_effective_action_can_contain_multi_plaquette_and_nonlocal_terms|uniform_all_scales=OPEN|physical_gap_continuum=OPEN|json=0
