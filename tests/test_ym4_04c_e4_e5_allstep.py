@@ -171,7 +171,7 @@ def e4(fault):
     d20=E.mul(delta,E.power(q,19))
     osc=E.mul(E.rat(512),E.mul(q,d20))
     assert d20[1]*100000000000000<E.ONE*3094,"E4_REJECT: frozen C16 delta20"
-    assert osc[1]*10000000000<E.ONE*5828,"E4_REJECT: frozen C16 oscillation"
+    assert osc[1]*1000000000000<E.ONE*5828,"E4_REJECT: frozen C16 oscillation"
     if fault=="delete_iteration":
         d20=delta
         assert d20[1]*100000000000000<E.ONE*3094,"E4_REJECT: omitted 19 contraction steps"
@@ -188,7 +188,7 @@ def c15(epsilon,fault=""):
     # head-independent mandatory pole upper-bound failure at beta>=1/40
     exponent=pos_exp(E.rat(1,4))
     wall=E.mul(E.rat(E.MU_N,E.MU_D),E.mul(exponent,epsilon))
-    if fault=="ignore_pole":
+    if fault=="ignore_pole" and epsilon[0]>E.rat(1,100)[0]:
         wall=(0,0)
     return wall
 
