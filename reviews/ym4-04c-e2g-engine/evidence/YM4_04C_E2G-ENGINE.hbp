@@ -1,0 +1,5 @@
+YM4_04C_E2G|stage=C04_ONLY|frozen_first_42_lines_sha256=c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404|G_attack_PR46=FILED|engine_only=YES|json=0
+YM4_04C_E2G|row=C04|beta=1/40|pole_quantity=mu*exp(1/4)*eps6|root_bracket=[1.112522354,1.112522355]|read=NOT_MET_BY_FUSS_CATALAN_POLE|method=EXACT_HAAR_BESSEL_SERIES_INTERVAL|prefreeze=COMPUTED|confirmation_count=0|json=0
+YM4_04C_E2G|row=C04|beta=2247/100000|pole_quantity=mu*exp(1/4)*eps6|root_bracket=[0.999913588,0.999913589]|read=NO_POLE_AT_ALPHA_0|method=EXACT_HAAR_BESSEL_SERIES_INTERVAL|prefreeze=COMPUTED|confirmation_count=0|json=0
+YM4_04C_E2G|row=C04|beta=281/12500|pole_quantity=mu*exp(1/4)*eps6|root_bracket=[1.000358668,1.000358669]|read=NOT_MET_BY_FUSS_CATALAN_POLE|method=EXACT_HAAR_BESSEL_SERIES_INTERVAL|prefreeze=COMPUTED|confirmation_count=0|json=0
+YM4_04C_E2G_RESULT|PASS|C04_pole=NOT_MET_at_1/40_and_0.02248|wall_0.02247_below_pole=YES|complete_polymer_engine=NO|weak_coupling=OPEN|r9_runs=0|json=0
