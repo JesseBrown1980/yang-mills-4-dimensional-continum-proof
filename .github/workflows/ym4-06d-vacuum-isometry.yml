@@ -1,0 +1,71 @@
+name: YM4-06D actual finite SU2 induced vacuum block isometry and memory
+
+on:
+  push:
+    branches: [gpt6-ym4-06c-full-spectrum-schur-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.hbp'
+      - 'docs/NOTE-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.md'
+      - 'tests/test_ym4_06d_wilson_vacuum_isometry.py'
+      - '.github/workflows/ym4-06d-vacuum-isometry.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.hbp'
+      - 'docs/NOTE-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.md'
+      - 'tests/test_ym4_06d_wilson_vacuum_isometry.py'
+      - '.github/workflows/ym4-06d-vacuum-isometry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-induction-and-memory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Immutable actual SU2 Wilson isometry predictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor dc9a7ff89c6ae2fd7a70e50a654f36439a779127 HEAD
+          git show dc9a7ff89c6ae2fd7a70e50a654f36439a779127:docs/PREDICTION-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.hbp > /tmp/YM4_06D_FROZEN.hbp
+          cmp /tmp/YM4_06D_FROZEN.hbp docs/PREDICTION-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.hbp
+          test "$(grep -c '^PREDICT|id=H' /tmp/YM4_06D_FROZEN.hbp)" -eq 12
+      - name: Strict no-float source check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact Haar disintegration control and six-time memory leakage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06d_wilson_vacuum_isometry.py | tee /tmp/YM4_06D_REPLAY.hbp
+          grep -Fq 'YM4_06D|GAUGE|Q8_noncommuting=YES|three_link_trials=2560|endpoint_covariance=PASS' /tmp/YM4_06D_REPLAY.hbp
+          grep -Fq 'YM4_06D|FIBER|group=Q8|fine_assignments=512|preimages_per_V=64|sum_weight=704|rho_identity=25/11|rho_other=9/11' /tmp/YM4_06D_REPLAY.hbp
+          grep -Fq 'YM4_06D|ISOMETRY|induced_weighted_norm_squared=315/88|raw_Haar_square_root_free_identity=PASS' /tmp/YM4_06D_REPLAY.hbp
+          grep -Fq 'YM4_06D|MEMORY|time_block=3|three_tick_induced=133/1024|six_tick_minus_two_coarse=12769/16777216' /tmp/YM4_06D_REPLAY.hbp
+          grep -Fq 'YM4_06D|DONE|exact_finite_control=PASS|physics_released=NO|json=0' /tmp/YM4_06D_REPLAY.hbp
+      - name: Six changed inputs must be rejected
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_end_gauge wrong_order wrong_fiber_weight ignore_ground_density bad_pushforward_norm fake_semigroup; do
+            if python3 -I -B tests/test_ym4_06d_wilson_vacuum_isometry.py "$fault" > /tmp/YM4_06D_FAULT.log 2>&1; then
+              echo "YM4_06D_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06D_REJECT|check=' /tmp/YM4_06D_FAULT.log
+            echo "YM4_06D_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Enforce physical all-scale proof boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'hard spectral comparison remains OPEN' docs/NOTE-YM4-06D-WILSON-VACUUM-ISOMETRY-20261111.md
+          echo 'YM4_06D_RELEASE|FINITELY_INDUCED_ISOMETRY=DERIVED|TRUE_ALPHA=OPEN|TRUE_ZETA=OPEN|TRUE_RHO=OPEN|4D_CONTINUUM=OPEN'
