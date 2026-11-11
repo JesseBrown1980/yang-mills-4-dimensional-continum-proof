@@ -1,0 +1,141 @@
+name: YM4-04C E1/C03 exact refined n12 closed polymers
+
+on:
+  push:
+    branches: [gpt6-ym4-04c-e1-c03-closed-polymer-n12-20261111]
+    paths:
+      - '.github/workflows/ym4-04c-e1-c03-n12.yml'
+      - 'tests/test_ym4_04c_e1_c03_closed_polymers.py'
+      - 'tests/test_ym4_04c_e1_c03_growth.py'
+      - 'reviews/ym4-04c-check/e1_c03_closed_independent.rs'
+      - 'reviews/ym4-04c-check/e1_c03_sha256.rs'
+      - 'reviews/ym4-04c-e1-c03/**'
+      - 'docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ym4-04c-e1-c03-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  all-classes-all-lattices:
+    name: "C03 N${{ matrix.n }} class-${{ matrix.kind }} Python+Rust"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - {n: 8, kind: 1}
+          - {n: 8, kind: 2}
+          - {n: 8, kind: 3}
+          - {n: 12, kind: 1}
+          - {n: 12, kind: 2}
+          - {n: 12, kind: 3}
+    env:
+      N: ${{ matrix.n }}
+      C: ${{ matrix.kind }}
+    steps:
+      - name: Confirm 42-line frozen predictions and SHA
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e1-c03-closed-polymer-n12-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work merge-base --is-ancestor 6ebf63272ae230bfb08ef48b3156cb4202c24627 HEAD
+          git -C work merge-base --is-ancestor 91645246653e3a8dc2ca8d2c65735ee5dbe29a48 HEAD
+          git -C work show 6ebf63272ae230bfb08ef48b3156cb4202c24627:docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp | head -n 42 > /tmp/C03-FROZEN.hbp
+          head -n 42 work/docs/PREDICTION-YM4-04C-LOCAL-POLYMER-NORM-20261109.hbp > /tmp/C03-HEAD.hbp
+          cmp /tmp/C03-FROZEN.hbp /tmp/C03-HEAD.hbp
+          echo 'c74e6388295a6309674268dd18deba3728a4eb627a1530c42054182b2fadc404  /tmp/C03-HEAD.hbp' | sha256sum -c -
+          grep -Fq 'PREDICT|id=C03|' /tmp/C03-HEAD.hbp
+          echo 'C03_FREEZE|original=6ebf632|unchanged=YES|prefreeze=CROSS_READ|json=0'
+      - name: Strict no-float repository source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 work/scripts/no_float_gate.py work
+      - name: Exhaustive closure-driven Python n12
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B work/tests/test_ym4_04c_e1_c03_closed_polymers.py --n "$N" --class "$C" | tee "C03-N$N-C$C-PY.hbp"
+          grep -Fq "C03|N=$N|class=$C|counts_n4_to_n12=" "C03-N$N-C$C-PY.hbp"
+          grep -Fq 'YM4_04C_E1_C03_RESULT|PASS|' "C03-N$N-C$C-PY.hbp"
+      - name: Independent Rust1.81 strict Clippy and exhaustive n12
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustup toolchain install 1.81.0 --profile minimal --component clippy
+          SRC=work/reviews/ym4-04c-check/e1_c03_closed_independent.rs
+          rustup run 1.81.0 clippy-driver --edition 2021 -D warnings --crate-name ym4_04c_e1_c03 --crate-type bin --emit metadata -o /tmp/c03.rmeta "$SRC"
+          rustc +1.81.0 --edition 2021 -O "$SRC" -o /tmp/c03-rust
+          /tmp/c03-rust --n "$N" --class "$C" | tee "C03-N$N-C$C-RUST.hbp"
+          grep -Fq "C03_RUST|N=$N|class=$C|counts_n4_to_n12=" "C03-N$N-C$C-RUST.hbp"
+          grep -Fq 'YM4_04C_E1_C03_RUST_RESULT|PASS|' "C03-N$N-C$C-RUST.hbp"
+      - name: Compare exact closed-set SHA membership and every count/state total
+        shell: bash
+        run: |
+          set -euo pipefail
+          PY=$(grep "^C03|N=$N|class=$C|" "C03-N$N-C$C-PY.hbp")
+          RS=$(grep "^C03_RUST|N=$N|class=$C|" "C03-N$N-C$C-RUST.hbp")
+          for KEY in counts_n4_to_n12 states_by_n states_exact closed_set_sha256; do
+            A=$(echo "$PY" | tr '|' '\n' | grep "^$KEY=")
+            B=$(echo "$RS" | tr '|' '\n' | grep "^$KEY=")
+            test -n "$A" && test "$A" = "$B"
+          done
+          echo "C03_CROSS|N=$N|class=$C|exact_sets=SHA256_MATCH|all_counts=MATCH|all_states=MATCH|json=0"
+          sha256sum "C03-N$N-C$C-PY.hbp" "C03-N$N-C$C-RUST.hbp" > "C03-N$N-C$C-SHA256SUMS"
+          sha256sum -c "C03-N$N-C$C-SHA256SUMS"
+          EVIDENCE=work/reviews/ym4-04c-e1-c03/evidence
+          test -f "$EVIDENCE/C03-N$N-C$C-SHA256SUMS"
+            (cd "$EVIDENCE" && sha256sum -c "C03-N$N-C$C-SHA256SUMS")
+            for ENDING in PY.hbp RUST.hbp SHA256SUMS; do
+              cmp "C03-N$N-C$C-$ENDING" "$EVIDENCE/C03-N$N-C$C-$ENDING"
+            done
+            echo "C03_REPLAY|N=$N|class=$C|files=BYTE_IDENTICAL|json=0"
+
+      - name: Deliberately reject missing seed face and false complete census
+        if: matrix.n == 8 && matrix.kind == 1
+        shell: bash
+        run: |
+          set -euo pipefail
+          for FAULT in missing_root_face skip_closed_extensions wrong_frozen_n12; do
+            if python3 -I -B work/tests/test_ym4_04c_e1_c03_closed_polymers.py --n 8 --class 1 --sabotage "$FAULT" > "FAULT-$FAULT.log" 2>&1; then
+              echo "C03_FAULT|name=$FAULT|rejected=NO|json=0"
+              exit 1
+            fi
+            grep -Fq 'C03_REJECT:' "FAULT-$FAULT.log"
+            echo "C03_FAULT|name=$FAULT|rejected=YES|json=0"
+          done
+      - name: Emit canonical E1 C03 source receipts
+        shell: bash
+        run: |
+          set -euo pipefail
+          for ENDING in PY.hbp RUST.hbp SHA256SUMS; do
+            NAME="C03-N$N-C$C-$ENDING"
+            echo "EVIDENCE_BEGIN|file=$NAME"
+            cat "$NAME"
+            echo "EVIDENCE_END|file=$NAME"
+          done
+          echo "C03_HOSTED|PASS|N=$N|class=$C|n12=EXACT|weak_coupling=OPEN|r9_runs=0|json=0"
+  growth-fanin:
+    name: "Six complete C03 shards and exact Fuss-Catalan growth gate"
+    needs: all-classes-all-lattices
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Strict frozen C03 counting-gap inequalities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone -q --filter=blob:none --branch gpt6-ym4-04c-e1-c03-closed-polymer-n12-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
+          git -C work checkout -q "$GITHUB_SHA"
+          python3 -I -B work/tests/test_ym4_04c_e1_c03_growth.py | tee C03-GROWTH.hbp
+          grep -Fq 'YM4_04C_C03_GAP_RESULT|PASS|' C03-GROWTH.hbp
+          echo 'C03_FANIN|PASS|six_shards=PASS|exact_integer_growth=PASS|r9_runs=0|json=0'
