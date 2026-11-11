@@ -29,6 +29,8 @@ jobs:
           git clone -q --branch gpt6-ym4-06d-hosted-pilot-20261111 https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof.git work
           git -C work checkout -q "$GITHUB_SHA"
           test "$(git -C work rev-parse HEAD)" = "$GITHUB_SHA"
+          git -C work show d426b0916f988084942433c71638f4485044059b:docs/PREDICTION-YM4-06D-WILSON-LINK-RATIO-20261111.hbp > /tmp/PREDICT-WILSON.hbp
+          cmp /tmp/PREDICT-WILSON.hbp work/docs/PREDICTION-YM4-06D-WILSON-LINK-RATIO-20261111.hbp
           git -C work show b63a2848fd23bc3a9cffc464c93036f2b92c3dbe:docs/PREDICTION-YM4-06D-HOSTED-PILOT-20261111.hbp > /tmp/PREDICT-ORIGINAL.hbp
           cmp /tmp/PREDICT-ORIGINAL.hbp work/docs/PREDICTION-YM4-06D-HOSTED-PILOT-20261111.hbp
           test "$(git -C work rev-list --ancestry-path b63a2848fd23bc3a9cffc464c93036f2b92c3dbe..HEAD | wc -l)" -ge 2
@@ -55,6 +57,7 @@ jobs:
           grep -Fq 'space=3D_2x2x2|rooted=16926659444736|physical=2821153019713|flat_raw=48|flat_orbits=21|' output/YM4-06D.hbp
           grep -Fq 'SU2_CUTOFF|q=81|highest_twice_spin=80|dimension=180441|trits=12|' output/YM4-06D.hbp
           grep -Fq 'q=9|upper=25/329204736|' output/YM4-06D.hbp
+          grep -Fq 'WILSON_LINK_EIGENRATIO|beta=1|spin_half_to_trivial_lower=24019372/100000000|spin_half_to_trivial_upper=24019373/100000000|' output/YM4-06D.hbp
           grep -Fq 'relative_leading_coefficient=7/4|' output/YM4-06D.hbp
           test "$(grep -Fc 'LOCK_HASH|k=' output/YM4-06D.hbp)" -eq 4
           grep -Fq 'Wilson_4D_interacting_lowest_spectrum=NOT_COMPUTED' output/YM4-06D.hbp
@@ -63,7 +66,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in missing_representation wrong_center_parity wrong_wilson_tail vanishing_mass_misread; do
+          for name in missing_representation wrong_center_parity wrong_wilson_tail wrong_ratio_rounding vanishing_mass_misread; do
             if /tmp/ym4-06d-native plant "$name" > "FAULT-${name}.log" 2>&1; then
               echo "FAULT|name=$name|result=NOT_REJECTED|json=0"
               exit 1
@@ -72,6 +75,7 @@ jobs:
               missing_representation) grep -Fq 'full SU2 irrep cutoff has dropped an irrep' "FAULT-${name}.log" ;;
               wrong_center_parity) grep -Fq 'incorrect central parity' "FAULT-${name}.log" ;;
               wrong_wilson_tail) grep -Fq 'Wilson tail cannot be identically zero' "FAULT-${name}.log" ;;
+              wrong_ratio_rounding) grep -Fq 'wrong Wilson spectral ratio must fail' "FAULT-${name}.log" ;;
               vanishing_mass_misread) grep -Fq 'vanishing family cannot have a uniform positive first mass' "FAULT-${name}.log" ;;
             esac
             echo "FAULT|name=$name|result=REJECTED|json=0"
