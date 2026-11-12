@@ -1,0 +1,20 @@
+# YM4-06I physical first-spectrum benchmark — predictions frozen before code.
+# New staged branch from PR #67 head 689fbc6de8da23301db7c2ff7c1979f3d046c69d.
+# Actual isotropic continuous SU2 Wilson 3D spatial L=2, beta_s=beta_t=1/8.
+# Every eigenvalue bound concerns complete gauge-invariant physical Hilbert space.
+PREDICT|id=I01|spatial_L=2|spatial_links=24|spatial_plaquettes=24|isotropic_beta=1_over8
+PREDICT|id=I02|physical_pure_electric_first_nontrivial_mode=two_link_noncontractible_winding|t1=I2_over_I1|ratio_B=t1_squared
+PREDICT|id=I03|physical_periodic_spatial_girth|L2=2|L3=3|L4=4|L5=4
+PREDICT|id=I04|normalized_temporal_PeterWeyl_tn|n_ge2_lt_t1_at_beta1over8|t1_lt=1over32|t1_gt=511over16384
+PREDICT|id=I05|full_physical_isotropic_Wilson_nonzero_spectrum_equal_Bsqrt_A_Bsqrt|pointwise_A_ge=exp_minus6|pointwise_A_le=1
+PREDICT|id=I06|every_eigenvalue|exp_minus6_times_lambda_jB_le_lambda_jT_le_lambda_jB|including_dark=YES
+PREDICT|id=I07|true_first_eigenvalue|lambda1_le=t1_squared|lambda1_ge=exp_minus6_times_t1_squared
+PREDICT|id=I08|Haar_variance_real_isotropic_Perron_floor|lambda0_ge=163over160_times_exp_minus3|lambda0_le=1
+PREDICT|id=I09|strict_complete_first_ratio_upper=6655over333824_lt_1over50|gamma_gt_ln50
+PREDICT|id=I10|strict_complete_first_ratio_lower=261121over116101021696_gt_0
+PREDICT|id=I11|Fourier_cutoff_N=3|delta=1over7864320|retained_rank_per_link=30|full_pre_gauge_rank=30power24
+PREDICT|id=I12|N3_relative_tail_using_Haar_Perron_floor_lt=1over380000|exact_fraction_upper=1331over512753664
+PREDICT|id=I13|sector_orthogonality|two_link_winding_vacuum_overlap=ZERO|spatial_Wilson_center_one_form=CHARGED
+PREDICT|id=I14|countercontrol_wrong_four_link_L2=REJECT|countercontrol_drop_Haar_floor=REJECT|countercontrol_incorrect_cutoff=REJECT
+PREDICT|id=I15|countercontrol_false_high_spin=REJECT|countercontrol_wrong_winding_support=REJECT|countercontrol_false_N3_ratio=REJECT
+PREDICT|id=I16|no_actual_isotropic_Su2_Gram_diagonalization=YES|uniform_volume_gap=OPEN|4D_continuum=OPEN|r9=HOLD
