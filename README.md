@@ -1,5 +1,8 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+> **External research update, November 12, 2026:** The independent [Yang–Mills working group](https://github.com/yang-mills-group/YM) has accepted the scoped **existence/construction** claim of OpenAI's October 28 Lean formalization for continuous 4D Yang–Mills, while explicitly **not** claiming uniqueness or a positive **mass gap**. This external judgment has **not** been reproduced or independently imported into this repository. It does not promote our finite `S3` spectra or fixed-strong-coupling `SU(2)` bounds to a continuum gap. Prioritize matching the external Wilson-lattice/OS interfaces and deriving an independent, all-sector, weak-coupling physical-time gap certificate. [Full proof-boundary and bridge note](docs/EXTERNAL-YM-EXISTENCE-ASSESSMENT-20261112.md). **Our Clay gap target is OPEN; protected coupling `r=9` is on HOLD.**
+
+
 > **Connected research index (2026-11-04):** [17-repository evidence map](https://github.com/JesseBrown1980/Hard-drive-and-USB-as-GPU/blob/main/ECOSYSTEM-RESEARCH-MAP-20261104.md) · [exact Google qsim QNN gate test](https://github.com/JesseBrown1980/GGUF-files-operating-as-trained-quantum-neural-network-models/blob/main/docs/GOOGLE-QSIM-LIKE-FOR-LIKE-20261104.md) · [physical HTTP-0 96³ timings](https://github.com/JesseBrown1980/qoled-internet-HEB-C-revisted-HTTP---free-0-hbi-hbp-sha-sh-hash/blob/main/engine96/MEASURED-20261104.hbp). These navigation links do not alter the finite-lattice results. YM4-02e PR #26 was merged with its stated strong-coupling hypotheses; the zero-spacing continuum trajectory remains OPEN.
 
 ## November 11, 2026: status refresh (YM4-06A merged, YM4-04C frozen and attacked)
