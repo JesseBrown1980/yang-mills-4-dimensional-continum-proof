@@ -76,5 +76,5 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          grep -Fq 'not a continuum or Clay solution' docs/NOTE-YM4-06I-J-ISOTROPIC-FIRST-RATIO-20261111.md
+          grep -Fq '**not** a continuum or Clay solution' docs/NOTE-YM4-06I-J-ISOTROPIC-FIRST-RATIO-20261111.md
           echo 'YM4_06IJ_RELEASE|ACTUAL_ISOTROPIC_L2_STRONG_BETA=DERIVED|TRUE_FIRST_CENTER_CHARGED=DERIVED|LOCAL_GLUEBALL_GAP=OPEN|WEAK_COUPLING=OPEN|R9=HOLD'
