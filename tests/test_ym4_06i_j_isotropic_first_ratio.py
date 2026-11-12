@@ -158,8 +158,10 @@ def spatial_geometry():
             if len(links)!=2:
                 continue
             winding.add((i,links))
-    count=12 if fault=="wrong_winding_support" else len(winding)
-    check(count==12 and len(winding)==12,
+    if fault=="wrong_winding_support":
+        winding.pop()
+    count=len(winding)
+    check(count==12,
           "twelve_two_link_periodic_fundamental_windings")
     for i,links in winding:
         parity=sum(1 for x,axis in links if axis==i and x[i]==1)%2
@@ -308,7 +310,7 @@ def main():
     emit("SCOPE","actual_beta_1over8_complete_physical_spectrum=ENCLOSED"+
          "|separate_local_center_neutral_gap=NOT_COMPUTED"+
          "|actual_beta_2_spectrum=OPEN|all_scale_4D_gap=OPEN|r9=HOLD")
-    emit("DONE","independent_integer_all_sector_controls=PASS|json=0")
+    emit("DONE","independent_integer_all_sector_controls=PASS")
 
 if __name__=="__main__":
     main()
