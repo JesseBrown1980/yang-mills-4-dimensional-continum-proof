@@ -40,16 +40,28 @@ def d(x,y):
 def lt(x,y): return x[0]*y[1]<y[0]*x[1]
 def le(x,y): return x[0]*y[1]<=y[0]*x[1]
 def eq(x,y): return x[0]*y[1]==y[0]*x[1]
+def ipow(base, exponent):
+    check(type(base) is int and type(exponent) is int and exponent>=0,
+          'strict_integer_exponent')
+    value=1
+    while exponent:
+        if exponent&1:
+            value*=base
+        exponent//=2
+        if exponent:
+            base*=base
+    return value
+
 def power(x,n):
     check(type(n) is int and n>=0,'integer_exponent')
-    return r(pow(x[0],n),pow(x[1],n))
+    return r(ipow(x[0],n),ipow(x[1],n))
 
 def modified_Bessel_interval(beta,order,terms=42):
     # beta is an even positive integer in this control: x=beta/2 integer.
     x = beta//2
     check(beta>0 and beta%2==0 and type(order) is int and order>=0,
           'positive_even_beta_for_rational_Bessel')
-    term=r(pow(x,order),factorial(order))
+    term=r(ipow(x,order),factorial(order))
     lower=r(0)
     for k in range(terms):
         lower=a(lower,term)
@@ -112,8 +124,8 @@ def full_physical_time_scaling():
     # B: ratio n*n/(n*n+1) -> physical mass 0, and is the hidden slow state.
     # C: constant ratio 1/2 -> infinite mass, vanishing complement for t>0.
     for k in range(0,8):
-        n=pow(3,k)
-        steps=pow(2,k) if (fault=='wrong_time_scale' and k==2) else n
+        n=ipow(3,k)
+        steps=ipow(2,k) if (fault=='wrong_time_scale' and k==2) else n
         check(steps==n,'number_of_steps_per_fixed_physical_time')
         q_massive=r(n,n+1)
         q_massless=r(n*n,n*n+1)
@@ -151,7 +163,7 @@ def volume_and_Dobrushin_gate():
     # beta_k=2+k is ONLY a rational monotone-growing proxy for AF beta(a).
     # Classical sufficient Dobrushin criterion from PR 57: alpha_UB=9 beta.
     for k in range(0,8):
-        n=pow(3,k)
+        n=ipow(3,k)
         side_fixed=2*n
         physical_fixed=r(side_fixed,n)
         growing=2*n*n
@@ -166,8 +178,8 @@ def volume_and_Dobrushin_gate():
         if fault=='bad_Dobrushin_acceptance' and k==2:
             check(alpha_upper<1,'Dobrushin_sufficient_criterion_must_hold')
         check(alpha_upper>=18,'existing_strong_coupling_Dobrushin_bound_not_useful')
-        Ns=3*pow(growing,3)
-        check(Ns==24*pow(3,6*k),
+        Ns=3*ipow(growing,3)
+        check(Ns==24*ipow(3,6*k),
               'growing_box_actual_spatial_plaquette_census')
         show('VOLUME','k='+str(k)+'|fixed_box_physical_length=2'+
              '|growing_box_physical_length='+str(2*n)+
