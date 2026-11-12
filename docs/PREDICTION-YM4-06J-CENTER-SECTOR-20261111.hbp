@@ -1,0 +1,12 @@
+# YM4-06J new explicit center-charge selection predictions, same isotropic L2 beta=1/8.
+# Frozen separately before independent checker. No prediction change to 06F/G/H/I.
+PREDICT|id=C01|spatial_periodic_L2_graph=BIPARTITE|two_edge_cycles=noncontractible_axis_winding
+PREDICT|id=C02|center_one_form_symmetry_Z2_cubed|spatial_Wilson_A_invariant=YES|temporal_B_commutes=YES
+PREDICT|id=C03|two_edge_fundamental_winding_center_charge=ODD|vacuum_charge=EVEN|vacuum_overlap=ZERO
+PREDICT|id=C04|neutral_nonconstant_electric_spectrum_upper=t1_power4|all_other_physical_modes=INCLUDED
+PREDICT|id=C05|neutral_two_edge_even_irrep_n_ge2|t_n_squared_le_1over1536_squared_lt_t1_power4
+PREDICT|id=C06|charged_eigen_lower=exp_minus6_times_t1_squared|neutral_excited_eigen_upper=t1_power4
+PREDICT|id=C07|strict_order|exp_minus6_gt_t1_squared|physical_first_state_center_CHARGED
+PREDICT|id=C08|all_contractible_Wilson_loop_observables=ONE_FORM_NEUTRAL|overlap_with_first_center_CHARGED=ZERO
+PREDICT|id=C09|false_gauge_neutral_winding=REJECT|false_two_edge_glueball=REJECT|false_high_spin_order=REJECT
+PREDICT|id=C10|isotropic_finite_volume_selection=DERIVED|local_glueball_mass=NOT_COMPUTED|continuum_YM=OPEN
