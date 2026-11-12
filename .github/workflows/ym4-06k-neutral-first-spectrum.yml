@@ -1,0 +1,73 @@
+name: YM4-06K actual isotropic SU2 complete center-neutral gap and Wilson correlators
+
+on:
+  push:
+    branches: [gpt6-ym4-06k-isotropic-l2-neutral-spectrum-20261112]
+    paths:
+      - 'docs/PREDICTION-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.hbp'
+      - 'docs/NOTE-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.md'
+      - 'tests/test_ym4_06k_neutral_first_spectrum.py'
+      - '.github/workflows/ym4-06k-neutral-first-spectrum.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.hbp'
+      - 'docs/NOTE-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.md'
+      - 'tests/test_ym4_06k_neutral_first_spectrum.py'
+      - '.github/workflows/ym4-06k-neutral-first-spectrum.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual_isotropic_SU2_neutral_gap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Freeze 22 independent 06K predictions before code
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 37d7253215f81394355a446e73824a4008920ca3 HEAD
+          git show 37d7253215f81394355a446e73824a4008920ca3:docs/PREDICTION-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.hbp > /tmp/YM4_06K_FROZEN.hbp
+          cmp /tmp/YM4_06K_FROZEN.hbp docs/PREDICTION-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.hbp
+          test "$(grep -c '^PREDICT|id=K' /tmp/YM4_06K_FROZEN.hbp)" -eq 22
+      - name: Full repository no-float exact source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Recompute all-neutral SU2 spectrum, geometry and full Wilson correlation bound
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06k_neutral_first_spectrum.py | tee /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|GEOMETRY|L=2|sites=8|oriented_links=24|plaquettes=24|girth=2|two_link_windings=12|no_odd_cycle=YES|fundamental_two_link_center=ODD|fundamental_four_link_plaquette_center=EVEN' /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|BESSEL|beta=1/8|t1_between_511/16384_and_1/32=YES|higher_tn_le_1/1536|two_even_link_below_four_fundamental=YES' /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|SPECTRUM|actual_isotropic_SU2=YES|L=2|beta=1/8|neutral_second_B=t1_power4|neutral_ratio_gt=68184176641/31165630701031653376|neutral_ratio_lt=6655/341835776_lt_1/50000|neutral_gap_gt_ln50000|charged_first_distinct_from_neutral=YES' /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|CORRELATOR|real_nonconstant_contractible_Wilson_C1_positive=ANALYTIC|C_t_le_C0_times_1over50000_power_t_all_t_ge1=YES|first_neutral_spectral_overlap=NOT_PROVED' /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|FOURIER|N=3|delta=1/7864320|relative_delta_lt=1331/512753664_lt_1/380000|not_a_truncated_matrix_diagonalization=YES' /tmp/YM4_06K_REPLAY.hbp
+          grep -Fq 'YM4_06K|DONE|rational_geometry_and_center_neutral_controls=PASS|json=0' /tmp/YM4_06K_REPLAY.hbp
+      - name: Eight real mutated inputs must all reject
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in fake_high_spin_first false_loop_girth wrong_center_parity bad_Haar_floor invalid_neutral_ratio dropped_tail false_correlator_bound claim_first_Wilson_overlap; do
+            if python3 -I -B tests/test_ym4_06k_neutral_first_spectrum.py "$fault" > /tmp/YM4_06K_BAD.hbp 2>&1; then
+              echo "YM4_06K_BAD|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06K_REJECT|check=' /tmp/YM4_06K_BAD.hbp
+            echo "YM4_06K_BAD|name=$fault|rejected=YES"
+          done
+      - name: Preserve continuum and actual overlap holds
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'first-specific local spectral overlap' docs/NOTE-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.md
+          grep -Fq 'infinite-volume' docs/NOTE-YM4-06K-NEUTRAL-FIRST-SPECTRUM-20261112.md
+          echo 'YM4_06K_RELEASE|ACTUAL_SU2_ISOTROPIC_STRONG_NEUTRAL_FIRST_RATIO=DERIVED|LOCAL_WILSON_DECAY=BOUND|FIRST_OVERLAP=OPEN|WEAK_COUPLING=OPEN|CONTINUUM=OPEN|R9=HOLD'
