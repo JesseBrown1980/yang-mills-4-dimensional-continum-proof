@@ -1,0 +1,74 @@
+name: YM4-07B actual interacting SU2 finite gap and its continuum failure
+
+on:
+  push:
+    branches: [gpt6-ym4-07a-weak-coupling-continuum-gate-20261112]
+    paths:
+      - 'docs/PREDICTION-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.hbp'
+      - 'docs/NOTE-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.md'
+      - 'tests/test_ym4_07b_doeblin_finite_wilson.py'
+      - '.github/workflows/ym4-07b-doeblin-finite-wilson.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.hbp'
+      - 'docs/NOTE-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.md'
+      - 'tests/test_ym4_07b_doeblin_finite_wilson.py'
+      - '.github/workflows/ym4-07b-doeblin-finite-wilson.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full_SU2_Doeblin:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Confirm 07B immutable prediction before verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 884d8fd9729c3fc806a734ceb974f75b4fce6939 HEAD
+          git show 884d8fd9729c3fc806a734ceb974f75b4fce6939:docs/PREDICTION-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.hbp > /tmp/YM4_07B_FROZEN.hbp
+          cmp /tmp/YM4_07B_FROZEN.hbp docs/PREDICTION-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.hbp
+          test "$(grep -c '^PREDICT|id=B' /tmp/YM4_07B_FROZEN.hbp)" -eq 12
+      - name: Whole repository source no-float gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact kernel Doob mixing physical gap and continuum scaling failure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_07b_doeblin_finite_wilson.py | tee /tmp/YM4_07B_REPLAY.hbp
+          grep -Fq 'YM4_07B|EXP|e_lt_87over32=EXACT_RATIONAL|e_gt2=EXACT_RATIONAL' /tmp/YM4_07B_REPLAY.hbp
+          grep -Fq 'YM4_07B|ALGEBRA|toy_only=YES|Doob_P00=6/7|P01=1/7|P10=2/5|P11=3/5|minorization_eps=1/3|eigen=16/35|pass=YES' /tmp/YM4_07B_REPLAY.hbp
+          grep -Fq 'YM4_07B|BETA2|L=2|isotropic_beta=2|full_eigenratio_lt=1_minus_32over87_power96|mass_lattice_gt=32over87_power96|tiny_nonuniform_gap=YES' /tmp/YM4_07B_REPLAY.hbp
+          test "$(grep -c '^YM4_07B|SU2|' /tmp/YM4_07B_REPLAY.hbp)" -eq 3
+          test "$(grep -c '^YM4_07B|SCALE|' /tmp/YM4_07B_REPLAY.hbp)" -eq 6
+          grep -Fq 'YM4_07B|BOUNDARY|actual_finite_beta2_gap=ANALYTIC_BUT_NOT_SCALE_UNIFORM|interacting_neutral_beta2_eigenvalue=NOT_COMPUTED|weak_continuum_mass_gap=OPEN|nontrivial_OS=OPEN|r9=HOLD' /tmp/YM4_07B_REPLAY.hbp
+          grep -Fq 'YM4_07B|DONE|exact_rational_kernel_controls_and_five_faults=PASS|json=0' /tmp/YM4_07B_REPLAY.hbp
+      - name: Five independent malicious inputs must all fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_Doeblin_ratio wrong_M wrong_physical_scaling false_uniform_bound wrong_e_upper; do
+            if python3 -I -B tests/test_ym4_07b_doeblin_finite_wilson.py "$fault" > /tmp/YM4_07B_FAULT.hbp 2>&1; then
+              echo "YM4_07B_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_07B_REJECT|check=' /tmp/YM4_07B_FAULT.hbp
+            echo "YM4_07B_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Fail closed on any claimed continuum promotion
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq '**not a continuum mass-gap solution**' docs/NOTE-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.md
+          grep -Fq 'full physical' docs/NOTE-YM4-07B-DOEBLIN-FINITE-WILSON-20261112.md
+          echo 'YM4_07B_RELEASE|BETA2_FINITE_SU2_PHYSICAL_GAP=DERIVED|VOLUME_UNIFORM=NOT_PROVED|CONTINUUM=OPEN|R9=HOLD'
