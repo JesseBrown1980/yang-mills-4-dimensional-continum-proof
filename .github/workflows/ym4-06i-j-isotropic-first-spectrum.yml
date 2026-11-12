@@ -1,0 +1,80 @@
+name: YM4-06I-J real isotropic SU2 complete first-gap and center charge
+
+on:
+  push:
+    branches: [gpt6-ym4-06i-isotropic-l2-full-first-ratio-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-06I-ISOTROPIC-FIRST-RATIO-20261111.hbp'
+      - 'docs/PREDICTION-YM4-06J-CENTER-SECTOR-20261111.hbp'
+      - 'docs/NOTE-YM4-06I-J-ISOTROPIC-FIRST-RATIO-20261111.md'
+      - 'tests/test_ym4_06i_j_isotropic_first_ratio.py'
+      - '.github/workflows/ym4-06i-j-isotropic-first-spectrum.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-06I-ISOTROPIC-FIRST-RATIO-20261111.hbp'
+      - 'docs/PREDICTION-YM4-06J-CENTER-SECTOR-20261111.hbp'
+      - 'docs/NOTE-YM4-06I-J-ISOTROPIC-FIRST-RATIO-20261111.md'
+      - 'tests/test_ym4_06i_j_isotropic_first_ratio.py'
+      - '.github/workflows/ym4-06i-j-isotropic-first-spectrum.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full_isotropic_first_ratio:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Prediction-first immutable 06I and 06J freezes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor cea436e6b399293493f308cf41c8f5bd1dac5677 HEAD
+          git merge-base --is-ancestor 39504e4a9ca334d1e0184de8ea459de6a9a5b1e6 HEAD
+          git show cea436e6b399293493f308cf41c8f5bd1dac5677:docs/PREDICTION-YM4-06I-ISOTROPIC-FIRST-RATIO-20261111.hbp > /tmp/I_FROZEN.hbp
+          git show 39504e4a9ca334d1e0184de8ea459de6a9a5b1e6:docs/PREDICTION-YM4-06J-CENTER-SECTOR-20261111.hbp > /tmp/J_FROZEN.hbp
+          cmp /tmp/I_FROZEN.hbp docs/PREDICTION-YM4-06I-ISOTROPIC-FIRST-RATIO-20261111.hbp
+          cmp /tmp/J_FROZEN.hbp docs/PREDICTION-YM4-06J-CENTER-SECTOR-20261111.hbp
+          test "$(grep -c '^PREDICT|id=I' /tmp/I_FROZEN.hbp)" -eq 16
+          test "$(grep -c '^PREDICT|id=C' /tmp/J_FROZEN.hbp)" -eq 10
+      - name: Repository no-float exact source gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Actual isotropic SU2 full physical spectrum and center-sector verifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_06i_j_isotropic_first_ratio.py | tee /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|GIRTH|L=2|girth=2' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|GIRTH|L=3|girth=3' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|GIRTH|L=4|girth=4' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|CENTER|winding_lines=12|plaquettes=24|fundamental_winding_charge=ODD|plaquette_charge=EVEN|vacuum_to_winding_overlap=ZERO' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|BESSEL|isotropic_beta=1/8|fundamental_gt=511/16384|fundamental_lt=1/32|n_ge2_le=1/1536' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|SPECTRUM|L=2|beta=1/8|actual_isotropic_SU2=YES|first_physical_ratio_gt=261121/116101021696|first_physical_ratio_lt=6655/333824_lt_1/50|gamma_gt_ln50|first_sector=CENTER_CHARGED' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|FOURIER|N=3|delta=1/7864320|relative_delta_over_lambda0_lt=1331/512753664_lt_1/380000|per_link_rank=30|whole_pre_gauge_rank=30_power24' /tmp/YM4_06IJ_REPLAY.hbp
+          grep -Fq 'YM4_06IJ|DONE|independent_integer_all_sector_controls=PASS|json=0' /tmp/YM4_06IJ_REPLAY.hbp
+      - name: Eight falsifiers must fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_four_link_L2 drop_Haar_floor incorrect_cutoff false_high_spin wrong_winding_support false_N3_ratio false_center_charge false_two_edge_glueball; do
+            if python3 -I -B tests/test_ym4_06i_j_isotropic_first_ratio.py "$fault" > /tmp/YM4_06IJ_BAD.hbp 2>&1; then
+              echo "YM4_06IJ_BAD|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_06IJ_REJECT|check=' /tmp/YM4_06IJ_BAD.hbp
+            echo "YM4_06IJ_BAD|name=$fault|rejected=YES"
+          done
+      - name: Keep full isotropic continuum and local glueball obligations open
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq '**not** a continuum or Clay solution' docs/NOTE-YM4-06I-J-ISOTROPIC-FIRST-RATIO-20261111.md
+          echo 'YM4_06IJ_RELEASE|ACTUAL_ISOTROPIC_L2_STRONG_BETA=DERIVED|TRUE_FIRST_CENTER_CHARGED=DERIVED|LOCAL_GLUEBALL_GAP=OPEN|WEAK_COUPLING=OPEN|R9=HOLD'
