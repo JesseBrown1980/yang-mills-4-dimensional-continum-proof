@@ -1,0 +1,75 @@
+name: YM4-07A continuum weak-coupling physical-time acceptance gate
+
+on:
+  push:
+    branches: [gpt6-ym4-07a-weak-coupling-continuum-gate-20261112]
+    paths:
+      - 'docs/PREDICTION-YM4-07A-CONTINUUM-WEAK-GATE-20261112.hbp'
+      - 'docs/NOTE-YM4-07A-CONTINUUM-WEAK-GATE-20261112.md'
+      - 'tests/test_ym4_07a_continuum_gate.py'
+      - '.github/workflows/ym4-07a-continuum-weak-gate.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-07A-CONTINUUM-WEAK-GATE-20261112.hbp'
+      - 'docs/NOTE-YM4-07A-CONTINUUM-WEAK-GATE-20261112.md'
+      - 'tests/test_ym4_07a_continuum_gate.py'
+      - '.github/workflows/ym4-07a-continuum-weak-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical_time_weak_gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify 24 first-file prediction rows frozen at immutable ancestor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor b99c9dbf21e2c93c2946c50fdacfa231b9704c9f HEAD
+          git show b99c9dbf21e2c93c2946c50fdacfa231b9704c9f:docs/PREDICTION-YM4-07A-CONTINUUM-WEAK-GATE-20261112.hbp > /tmp/YM4_07A_FROZEN.hbp
+          cmp /tmp/YM4_07A_FROZEN.hbp docs/PREDICTION-YM4-07A-CONTINUUM-WEAK-GATE-20261112.hbp
+          test "$(grep -c '^PREDICT|id=W' /tmp/YM4_07A_FROZEN.hbp)" -eq 24
+      - name: Strict source and self-test no-floating-point gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact continuous SU2 Bessel order and physical-time continuum controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_07a_continuum_gate.py | tee /tmp/YM4_07A_REPLAY.hbp
+          test "$(grep -c '^YM4_07A|BESSEL|' /tmp/YM4_07A_REPLAY.hbp)" -eq 4
+          test "$(grep -c '^YM4_07A|SCALE|' /tmp/YM4_07A_REPLAY.hbp)" -eq 8
+          test "$(grep -c '^YM4_07A|VOLUME|' /tmp/YM4_07A_REPLAY.hbp)" -eq 8
+          grep -Fq 'YM4_07A|OBSTRUCTION|beta=2|spatial_isotropic=YES|old_ratio_upper_gt1=YES|true_interacting_neutral_second=NOT_COMPUTED' /tmp/YM4_07A_REPLAY.hbp
+          grep -Fq 'YM4_07A|LIMIT|massive_m_k=n_log_1plus1overn_to_1|massless_m_k=n_log_1plus1overn_squared_to_0|static_m_k=n_log2_to_infinity|full_spectrum_dark_counterexample=PASS' /tmp/YM4_07A_REPLAY.hbp
+          grep -Fq 'YM4_07A|BOUNDARY|weak_coupling_actual_interacting_full_spectrum=OPEN|volume_uniform_physical_mass=OPEN|OS_continuum_construction=OPEN|no_Clay_solution_claim=YES|r9=HOLD' /tmp/YM4_07A_REPLAY.hbp
+          grep -Fq 'YM4_07A|DONE|exact_integer_controls_and_seven_falsifiers=PASS|json=0' /tmp/YM4_07A_REPLAY.hbp
+      - name: Seven tampered calculations must reject with named diagnostics
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_time_scale ignore_dark_state false_finite_box_infinite_volume bad_neutral_irrep fake_Turan_reverse false_static_ratio_continuum bad_Dobrushin_acceptance; do
+            if python3 -I -B tests/test_ym4_07a_continuum_gate.py "$fault" > /tmp/YM4_07A_FAULT.hbp 2>&1; then
+              echo "YM4_07A_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_07A_REJECT|check=' /tmp/YM4_07A_FAULT.hbp
+            echo "YM4_07A_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Enforce explicit open continuum obligations
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq '**does not solve**' docs/NOTE-YM4-07A-CONTINUUM-WEAK-GATE-20261112.md
+          grep -Fq 'not a weak-coupling interacting spectral bound' docs/NOTE-YM4-07A-CONTINUUM-WEAK-GATE-20261112.md
+          grep -Fq 'r=9' docs/NOTE-YM4-07A-CONTINUUM-WEAK-GATE-20261112.md
+          echo 'YM4_07A_GATE|ALL_BETA_PURE_ELECTRIC_ORDERING=CLASSICAL|BETA2_INTERACTING_NEUTRAL_GAP=OPEN|PHYSICAL_MASS_SCALE=OPEN|CONTINUUM_OS=OPEN|R9=HOLD'
