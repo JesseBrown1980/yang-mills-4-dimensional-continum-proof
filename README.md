@@ -2,6 +2,14 @@
 
 > **Connected research index (2026-11-04):** [17-repository evidence map](https://github.com/JesseBrown1980/Hard-drive-and-USB-as-GPU/blob/main/ECOSYSTEM-RESEARCH-MAP-20261104.md) · [exact Google qsim QNN gate test](https://github.com/JesseBrown1980/GGUF-files-operating-as-trained-quantum-neural-network-models/blob/main/docs/GOOGLE-QSIM-LIKE-FOR-LIKE-20261104.md) · [physical HTTP-0 96³ timings](https://github.com/JesseBrown1980/qoled-internet-HEB-C-revisted-HTTP---free-0-hbi-hbp-sha-sh-hash/blob/main/engine96/MEASURED-20261104.hbp). These navigation links do not alter the finite-lattice results. YM4-02e PR #26 was merged with its stated strong-coupling hypotheses; the zero-spacing continuum trajectory remains OPEN.
 
+## November 16, 2026 — physical-unit continuum bridge and finite-lattice cross-check
+
+The separate [finite 3×4 `S₃` repository](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C) has now authenticated **20,738,636** source states, enumerated **1,493,181,792** raw electric transitions, and verified **201,994,944** supported unordered weighted-reciprocal pairs. Its two-energy complete signed `8×8` third-moment matrices satisfy **128/128 exact ordered-row versus pair comparisons**. Their exact-rational four-moment Schur brackets narrow the previous bracket widths to **60.0184%** and **60.0451%**, retaining negative inertias **1** and **2**. The finite model's actual first-excitation Wilson weight remains **HOLD** (strict normalization error target `< 1/700`). These are provenance and finite-spectral controls for other research tracks, not a continuum `SU(2)` result.
+
+The four-dimensional **continuous `SU(2)`** target retains the strong-coupling finite-volume and local-cluster controls documented below. The missing physical theorem is a volume-uniform bound along the **weak-coupling** renormalization trajectory `β(a)→∞`, combined with a nontrivial Osterwalder–Schrader continuum reconstruction. [YM4-07B quantified bridge note](docs/NOTE-YM4-07B-QUANTIFIED-CONTINUUM-BRIDGE-20261116.md) records the correct lower-bound direction for finite-volume errors and the necessary **physical-unit** step-scaling condition: a positive single-step ratio alone does not prevent the gap from vanishing under repeated refinement. It also states a conditional semigroup-gap passage theorem and exact counterexample.
+
+**Current status:** the continuum-existence obligation YM4-05 and full physical mass-gap obligation YM4-06 remain **OPEN**. Previously accepted finite `SU(2)` and strong-coupling certificates keep their original scope. This November 16 note supersedes older dated status descriptions only where new evidence is explicitly reported.
+
 ## November 11, 2026: status refresh (YM4-06A merged, YM4-04C frozen and attacked)
 
 This section brings the map below up to date with the work of November 9 to 11. The Clay problem, target 3, is OPEN, as before.
