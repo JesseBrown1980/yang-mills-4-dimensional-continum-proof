@@ -45,6 +45,7 @@ jobs:
           grep -Fq '|matched_source_squared_loss=ZERO|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
           grep -Fq '|mixed_plane=12|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
           grep -Fq '|dark_first_state=PRESENT|full_gap=OPEN|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|whole_space_operator_norm=1|cyclic_restricted_norm=0|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
           grep -Fq '|active_false_claims=9_REJECTED|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
           grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
       - name: Optimized Python identical to ordinary execution
