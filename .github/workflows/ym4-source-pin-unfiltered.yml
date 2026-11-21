@@ -1,0 +1,56 @@
+name: YM4 source pin unfiltered regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-mathematical-source-and-blocking-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check original YM4-03 immutable mathematical prefix
+        run: |
+          set -euo pipefail
+          python3 -I -B - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p = Path("docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md").read_bytes()
+          original_length = 50862
+          if len(p) < original_length:
+              raise SystemExit("missing_original_YM4_03_proof_prefix")
+          src = p[:original_length]
+          git_blob = b"blob " + str(len(src)).encode("ascii") + b"\0" + src
+          actual = hashlib.sha1(git_blob).hexdigest()
+          expected = "88b441ce39c3867d4635c0ac3f3475ea5ac621dc"
+          if actual != expected:
+              raise SystemExit("YM4_03_proof_prefix_mismatch:" + actual)
+          print("YM4_03_ORIGINAL_PREFIX|bytes=50862|blob=" + actual
+                + "|append_only_notes=ALLOWED|json=0")
+          PY
+      - name: Replay original two-block verification
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_04_two_ternary_blocks.py > /tmp/ym4-04a.hbp
+          grep -Fq 'pinned_03_map_and_theorem_9' tests/test_ym4_04_two_ternary_blocks.py
+      - name: Replay local-cluster verification
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_04b_local_cluster.py > /tmp/ym4-04b.hbp
+          grep -Fq 'YM4_03_original_exact_map_is_pinned' tests/test_ym4_04b_local_cluster.py
+      - name: Reject changed source prefix and report exact outputs
+        run: |
+          set -euo pipefail
+          test -s /tmp/ym4-04a.hbp
+          test -s /tmp/ym4-04b.hbp
+          sha256sum /tmp/ym4-04a.hbp /tmp/ym4-04b.hbp
+          echo 'YM4_BLOCKING_SOURCE_REGRESSION|mathematical_source=PINNED|two_tests=PASS|json=0'
