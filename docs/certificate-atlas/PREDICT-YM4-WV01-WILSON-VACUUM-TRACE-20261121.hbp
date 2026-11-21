@@ -1,0 +1,14 @@
+PREDICTION|id=YM4-WV01|date=2026-11-21|phase=FROZEN_BEFORE_PRODUCER_AND_TESTS|input=ORIGINAL_4D_WC01_AND_YM4_02C_02D|json=0
+TRANSFER|spatial_sites=8|spatial_links=24|spatial_plaquettes=24|gauge_group=continuous_SU2|operator=Bhalf_P_K24_P_Bhalf|K1=normalized_original_Wilson_Haar_convolution|json=0
+SPECTRAL|lambda0_lower=1_minus_48beta|lambda_j_over_lambda0_upper=q_equals_24beta|all_j_ge1|source_theorem=YM4_02D|json=0
+TRACE|y=beta2_over4|single_link_TrK2_upper=1_plus_y_over_1_minus_y_cubed|full_24_link_TrK2_upper=single_link_bound_power24|json=0
+TRACE|M=Tr_T2_over_lambda0_sq_upper=TrK2_bound_over_1_minus_48beta_squared|excited_square_trace_E=M_minus1|json=0
+TAIL|delta_k=sum_jge1_lambda_j_over_lambda0_power_k|delta_k_upper=E_times_q_power_k_minus2|k_ge2|json=0
+VACUUM_BRIDGE|finite_time_T=10|t=0,2,4|abs_periodic_pair_minus_vacuum_pair_le=delta_T_minus_t_plus_delta_T|json=0
+VACUUM_BRIDGE|abs_periodic_mean_minus_vacuum_mean_le=2delta_T|abs_connected_diff_le=delta_T_minus_t_plus5delta_T|json=0
+ACCEPTANCE|beta=1/10000|E_lt=1/100|err_C0_lt=1/100000000000000000000|err_C4_lt=1/1000000000000|json=0
+ACCEPTANCE|beta=1/100000|E_lt=1/1000|err_C0_lt=1/100000000000000000000000000000|err_C4_lt=1/100000000000000000|json=0
+VACUUM|beta=1/10000|C0_within_quarter=1/10000|C2_upper_lt=1/50000|C4_upper_lt=1/50000|json=0
+VACUUM|beta=1/100000|C0_within_quarter=1/10000000|C2_upper_lt=1/50000000|C4_upper_lt=1/50000000|json=0
+ADVERSARIAL|wrong_spatial_link_count=REJECT|wrong_magnetic_count=REJECT|nonphysical_beta=REJECT|wrong_trace_multiplicity=REJECT|time_too_close_to_T=REJECT|discard_thermal_trace=REJECT|json=0
+SCOPE|original_four_dimensional_fixed_spatial_lattice_vacuum_Wilson_C0_C2_C4=EXACT_RATIONAL_BOUNDS|first_state_Wilson_weight=OPEN|continuum_uniform_gap=OPEN|json=0
