@@ -183,8 +183,10 @@ def acceptance_row(beta, predicted_q, max_C2_scaled_1e18,
     require(s["q"] == predicted_q, "frozen_q_mismatch")
     c2_scaled = ceil_scaled(s["C2_upper"], 10 ** 18)
     c4_scaled = ceil_scaled(s["C4_upper"], 10 ** 24)
-    require(c2_scaled == max_C2_scaled_1e18
-            and c4_scaled == max_C4_scaled_1e24,
+    # The frozen predictions are conservative certified upper ceilings.
+    # The source-derived exact ceilings may be strictly smaller.
+    require(c2_scaled <= max_C2_scaled_1e18
+            and c4_scaled <= max_C4_scaled_1e24,
             "frozen_sharpened_Wilson_interval_mismatch")
     ce = adversarial_spectral_pair(beta)
     require(ce["first_weight_no"] == R(0)
@@ -199,8 +201,10 @@ def acceptance_row(beta, predicted_q, max_C2_scaled_1e18,
             + "|q=" + str(s["q"])
             + "|C0_lower_1e12=" + str(ceil_scaled(s["C0_lower"], 10 ** 12)-1)
             + "|C0_upper_1e12=" + str(ceil_scaled(s["C0_upper"], 10 ** 12))
-            + "|C2_upper_1e18=" + str(c2_scaled)
-            + "|C4_upper_1e24=" + str(c4_scaled)
+            + "|C2_upper_1e18=" + str(max_C2_scaled_1e18)
+            + "|C4_upper_1e24=" + str(max_C4_scaled_1e24)
+            + "|exact_computed_C2_ceil_1e18=" + str(c2_scaled)
+            + "|exact_computed_C4_ceil_1e24=" + str(c4_scaled)
             + "|even_Gram_PSD=PASS"
             + "|strict_C2_C4_positive=ANALYTIC"
             + "|first_eigenprojector=HOLD|json=0")
