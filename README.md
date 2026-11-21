@@ -1,5 +1,23 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — YM4-07H: weak-coupling SU(2) Fourier transfer approximation and Haar-cap Perron floor
+
+A new [original 4D continuous-SU(2) Peter–Weyl certificate](docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md) now works at **arbitrarily large finite Wilson coupling \(\beta\ge1\)**. It retains the full spatial Wilson action \(A\), the physical gauge projector \(P\) and the continuous gauge group, while truncating the **temporal convolution** to exact SU(2) matrix coefficients of representation dimensions \(1,\ldots,N\). This gives a finite-rank positive, gauge-covariant \(T_N=A^{1/2}B_NA^{1/2}\) approximating the *original* \(T=A^{1/2}BA^{1/2}\), with the rigorous absolute transfer error
+\[
+\boxed{\quad \|T-T_N\|_1<2N_\ell(N+1)(3/8)^N,\quad N\ge4\beta.\quad}
+\]
+For four temporal steps, \(|Z_4-\operatorname{Tr}(T_N^4P)|<8N_\ell(N+1)(3/8)^N\). At spatial \(L=6\), exact **power-of-three** representation cutoffs give \(\beta=4,N=27\): trace error \(<10^{-6}\); \(\beta=9,N=81\): \(<10^{-20}\); and \(\beta=64,N=729\): \(<10^{-100}\). The intermediate \(N=243\) at \(\beta=64\) correctly goes on HOLD because \(243<4\beta\). The per-link retained dimensions \(14,285,6{,}930,180{,}441\) at \(N=3,9,27,81\) match the exact SU(2) character-matrix cutoff census.
+
+The same proof gives a separate **true physical Perron** lower bound from a continuous-SU(2) Haar-cap trial: on \(6^3\), for every integer \(k\ge\sqrt\beta\),
+\[
+\boxed{\quad\lambda_0(T)>[3^{405}(3072\,k^3)^{648}]^{-1}.\quad}
+\]
+This is polynomial in \(\beta\) at fixed spatial volume. At \(\beta=64\), it improves sharply on the earlier Jensen exponential floor, with \(\lambda_0>3^{-9477}>e^{-82944}\).
+
+The certificate gives **absolute transfer-trace error** and a substantially better large-\(\beta\) vacuum floor; the current pair of bounds still leaves **relative physical spectral/projector accuracy on HOLD**. Actual finite-rank vacuum/Wilson Gram production, cost controls, all-scale RG, volume uniformity and nontrivial continuum mass gap remain **OPEN**. [Prediction-first HBP](docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp) · [exact integer checker](tests/test_ym4_07h_allbeta_su2_peter_weyl.py) · [hosted workflow](.github/workflows/ym4-07h-allbeta-peter-weyl.yml).
+
+
+
 ## November 21, 2026 — YM4-07G: original four-dimensional Wilson transfer-trace and blocked-source Gram certificate
 
 The next [genuine SU(2) original-transfer proof](docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md) uses the actual spatial 6³ Wilson transfer \(T=A^{1/2}BA^{1/2}\) and gauge projector \(P\), with four Euclidean time slices, **5,184 four-dimensional plaquettes**, and normalized *continuous* SU(2) Haar measure. Analytic transfer identities yield \(\operatorname{Tr}(T^4P)\le1\) and \(\lambda_0(T)\ge e^{-6\beta V}\). At \(V=216\), \(\beta=1/(2000V)=1/432000\), a positive rational margin \(10209575321/40500000000000\) proves the **full finite-volume gauge-invariant** ratio \(\lambda_1/\lambda_0<1/3\), i.e. a physical gap \(>\log(3)/a\). This is a very-strong-coupling **trace-method calibration**; the already accepted YM4-02d contraction result is stronger on fixed lattices.

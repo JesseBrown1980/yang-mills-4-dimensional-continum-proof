@@ -1,5 +1,26 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 21: YM4-07H — original SU(2) weak-coupling Fourier control and high-\(\beta\) Perron cap
+
+For the **true original finite-volume 4D continuous-SU(2) Wilson transfer**, with normalized Haar and the full gauge projector, the linkwise central convolution has irreducible dimension-\(d\) eigenvalue \(b_d=e^{-\beta}(2/\beta)I_d(\beta)\) with multiplicity \(d^2\). Truncating **exact representation matrix coefficients**, dimension \(d\le N\), produces a positive finite-rank gauge-invariant transfer \(T_N=A^{1/2}B_NA^{1/2}\) with the full **spatial** Wilson action intact. For every finite \(\beta\ge1\) and integer \(N\ge4\beta\), exact positive-series factorial bounds give
+\[
+\|T-T_N\|_1<2N_\ell(N+1)(3/8)^N,\qquad
+0\le Z_n-\operatorname{Tr}(T_N^nP)<2nN_\ell(N+1)(3/8)^N.
+\]
+This is an **actual operator-level approximation of the physical 4D Wilson transfer**, with a closed rational error budget (no finite gauge-group replacement). At \(L=6\), the frozen predictions require PASS for \(\beta=4,N=27,n=4,\ \mathrm{error}<10^{-6}\); \(\beta=9,N=81,\ \mathrm{error}<10^{-20}\); and \(\beta=64,N=729,\ \mathrm{error}<10^{-100}\); but **HOLD** for \(\beta=64,N=243\).
+
+The independent normalized-Haar cap variational estimate gives, for \(k^2\ge\beta\ge1\) at \(L=6\),
+\[
+\lambda_0(T) >[3^{405}(3072\,k^3)^{648}]^{-1}.
+\]
+At \(\beta=64,k=8\), this exceeds \(3^{-9477}\), whereas the previous Jensen bound \(e^{-82944}<3^{-41472}\). The new high-\(\beta\) Perron floor is **much stronger**, but the certified *absolute* transfer approximation upper is still larger than this very small *vacuum lower*; **relative vacuum/projector gate: HOLD**.
+
+A power-of-three representation cutoff can be selected at every finite scale so \(\sum_j\) of absolute transfer errors is summable, using \(2n_jN_{\ell,j}(N_j+1)(3/8)^{N_j}<3^{-j}\). That is a **per-scale approximation budget**, rather than a cross-cutoff renormalization theorem. Actual physical relative spectral estimates, a practical finite-rank transfer evaluator, uniform spatial-volume/UV estimates, nontrivial continuum OS reconstruction and the full mass gap remain **OPEN**.
+
+[Analytic proof](NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md) · [prediction-first controls](PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp) · [integer test](../tests/test_ym4_07h_allbeta_su2_peter_weyl.py).
+
+
+
 ## November 21: YM4-07G — first certified original 4D SU(2) transfer trace and positive-beta Wilson Gram
 
 On the **original** 4D continuous-SU(2) Wilson lattice at spatial \(6^3\) and time length four, \(N_\ell=N_s=648\) and there are **5,184 total plaquettes**. With normalized Haar and physical transfer \(T=A^{1/2}BA^{1/2}\) on the gauge-invariant Hilbert space, \(Z_{\Lambda,4}=\operatorname{Tr}(T^4P)\le1\) and the constant-trial Jensen bound \(\lambda_0(T)\ge e^{-6\beta V}\) hold. At \(\beta V=1/2000\), \(L=997/1000<\lambda_0\) and the exact fourth-moment residual upper bound \(1-L^4\) is strictly smaller than \((L/3)^4\) by **10209575321/40500000000000**. Therefore the genuine **full finite-volume** gauge-invariant spectral ratio satisfies \(\lambda_1/\lambda_0<1/3\). This is a **very-strong-coupling**, volume-dependent calibration and is weaker than the earlier YM4-02d positive-kernel contraction bound at that coupling.

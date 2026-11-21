@@ -1,0 +1,64 @@
+name: YM4-07H all-beta 4D SU2 Peter-Weyl and Haar-cap bounds
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp'
+      - 'docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md'
+      - 'tests/test_ym4_07h_allbeta_su2_peter_weyl.py'
+      - '.github/workflows/ym4-07h-allbeta-peter-weyl.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp'
+      - 'docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md'
+      - 'tests/test_ym4_07h_allbeta_su2_peter_weyl.py'
+      - '.github/workflows/ym4-07h-allbeta-peter-weyl.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-representation-tail-and-cap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify prediction-first byte identity
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp)" = '0450459e18867b94b4809633b06be284bc73d900'
+          grep -Fq '|phase=BEFORE_CHECKER|' docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp
+      - name: Existing strict no-floating-point rule
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact high-beta Haar-cap and ternary representation budgets
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07h
+          python3 -I -B -X utf8 tests/test_ym4_07h_allbeta_su2_peter_weyl.py | tee build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|one_link_dims=14_285_6930_180441|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|beta=4|N=27|n=4|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|beta=9|N=81|n=4|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|beta=64|N=729|n=4|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|cap_floor_stronger=YES|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|relative_vacuum_error=HOLD|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|false_claims=12_REJECTED|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp
+      - name: Optimized byte-identical receipt
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07h_allbeta_su2_peter_weyl.py > build/ym4_07h/OPTIMIZED.hbp
+          cmp build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp build/ym4_07h/OPTIMIZED.hbp
+          sha256sum build/ym4_07h/EXACT-4D-SU2-PETER-WEYL.hbp > build/ym4_07h/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07h-exact-4d-SU2-Peter-Weyl-cap
+          path: build/ym4_07h/
+          if-no-files-found: warn
