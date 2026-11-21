@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_su2_wilson_symmetric_rankone.py'
       - 'docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg08-symmetric-wilson-rankone.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_su2_wilson_symmetric_rankone.py'
       - 'docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg08-symmetric-wilson-rankone.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_su2_wilson_symmetric_rankone.py > build/ym4-wg08/FIRST.hbp
           python3 -B tests/ym4_su2_wilson_symmetric_rankone.py > build/ym4-wg08/REPLAY.hbp
           cmp build/ym4-wg08/FIRST.hbp build/ym4-wg08/REPLAY.hbp
+          cmp build/ym4-wg08/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp
+          echo '23ded69cf70855bda91ed1f7f4907e068c021739770c1af7545426559e55e1a1  build/ym4-wg08/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=23ded69cf70855bda91ed1f7f4907e068c021739770c1af7545426559e55e1a1' \
+            docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp
           grep -Fq 'original_spatial_group_order=48' build/ym4-wg08/FIRST.hbp
           grep -Fq 'symmetric_first_slope_weight=1/192' build/ym4-wg08/FIRST.hbp
           grep -Fq 'physical_six_symmetric_invariant_rank=1' build/ym4-wg08/FIRST.hbp
