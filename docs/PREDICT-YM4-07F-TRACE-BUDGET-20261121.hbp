@@ -1,0 +1,17 @@
+YM4_07F_PREDICTION|date=2026-11-21|phase=BEFORE_NEW_CHECKER|gauge=CONTINUOUS_SU2|scope=FINITE_SPATIAL_LATTICE|json=0
+YM4_07F_ASSUME|transfer=T_POSITIVE_SELFADJOINT_TRACE_CLASS|vacuum=SIMPLE_MAXIMAL|cyclic_K=REDUCING|json=0
+YM4_07F_TRACE|A=T_OVER_LAMBDA0|power=2m|gram=G|moment=M|residual=TR_A2m_MINUS_TR_GINV_M|json=0
+YM4_07F_THEOREM|dark_norm_power_le_residual=YES|threshold_R_lt_q_power_implies_dark_bound=YES|json=0
+YM4_07F_UNNORMALIZED|lambda0_lower=L|R_T_lt_qL_power_implies_dark_over_lambda0_lt_q|json=0
+YM4_07F_WITNESS|orthogonal_increment=SCHUR_RESIDUAL_U|reduction=INNER_U_T2m_U_OVER_NORM_U2|json=0
+YM4_07F_RATIONAL_MATRIX|fine_spectrum=1_3OVER4_1OVER2_1OVER4|cyclic=E0_E2|nonorthogonal_gram=1_1_1_2|json=0
+YM4_07F_BENCH|m=1|E=VACUUM_ONLY|R=7_OVER_8|q=4_OVER_5|gate=HOLD|json=0
+YM4_07F_BENCH|m=1|E=VACUUM_AND_BLOCK_WITNESS|R=5_OVER_8|q=4_OVER_5|gate=PASS|json=0
+YM4_07F_BENCH|m=2|E=VACUUM_AND_BLOCK_WITNESS|R=41_OVER_128|q=4_OVER_5|gate=PASS|json=0
+YM4_07F_BENCH|m=4|E=VACUUM_AND_BLOCK_WITNESS|R=3281_OVER_32768|q=4_OVER_5|gate=PASS|json=0
+YM4_07F_BENCH|m=1|E=VACUUM_AND_BLOCK_WITNESS|R=5_OVER_8|q=3_OVER_4|gate=HOLD|json=0
+YM4_07F_SCHUR|m=1|residual_reduction=1_OVER_4|json=0
+YM4_07F_UNNORMALIZED|lambda0=4|L=4|q=4_OVER_5|m=1|R_T=10|gate=PASS|json=0
+YM4_07F_UNNORMALIZED|lambda0=4|L=3|q=4_OVER_5|m=1|R_T=10|gate=HOLD|json=0
+YM4_07F_ADVERSARIES|false_claims=10_REJECTED|no_floats=YES|json=0
+YM4_07F_SCOPE|continuous_SU2_transfer_trace=REPRESENTATION_UNCOMPUTED|uniform_volume_limit=OPEN|weak_RG=OPEN|full_gap=OPEN|json=0
