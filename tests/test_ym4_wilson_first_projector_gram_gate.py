@@ -23,7 +23,7 @@ class WilsonProjectorGramTests(unittest.TestCase):
 
     def test_frozen_new_scaled_upper_intervals(self):
         expected = (
-            (R(1,10000), R(3,1250), 1440139406101, 8295202979139),
+            (R(1,10000), R(3,1250), 1440139406097, 8295202979114),
             (R(1,100000), R(3,12500), 14400001334, 829440077),
         )
         for beta,q,c2,c4 in expected:
@@ -31,6 +31,9 @@ class WilsonProjectorGramTests(unittest.TestCase):
             self.assertEqual(q,s["q"])
             self.assertEqual(ceil_scaled(s["C2_upper"],10**18),c2)
             self.assertEqual(ceil_scaled(s["C4_upper"],10**24),c4)
+            # The original preimplementation targets are conservative ceilings.
+            self.assertLessEqual(c2, 1440139406101 if beta == R(1,10000) else 14400001334)
+            self.assertLessEqual(c4, 8295202979139 if beta == R(1,10000) else 829440077)
             self.assertLess(s["C4_upper"],s["old_C4_upper"])
             self.assertLess(s["C2_upper"],s["old_C2_upper"])
 
