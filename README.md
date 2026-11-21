@@ -1,5 +1,13 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Exact continuous-SU(2) Wilson local transfer and certified moments
+
+**[YM4-SU2-WT01 mathematical note](docs/NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md)** · [Prediction frozen before source](docs/certificate-atlas/PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp) · [SHA-pinned acceptance](docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp) · [Hosted production verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44917457160).
+
+The original **continuous SU(2)** Wilson plaquette weight yields an exact one-spatial-link Haar-convolution transfer, with physical conjugation-Gauss projection in this one-link geometry. Its normalized character eigenvalues are \(I_{r+1}(\beta)/I_1(\beta)\). The normalized fundamental Wilson moments follow \(C_n=(I_2(\beta)/I_1(\beta))^n/4\), and exact integer-rational enclosures for \(C_0,C_2,C_4\) have passed at genuine Wilson couplings \(\beta=1,4\). Uniform pointwise character tails are below \(10^{-12}\) at cutoffs 12 and 24. An independent Chebyshev/Catalan Haar check and the existing genuine 4D **six aligned staples** local factor agree at local \(\beta=1/6,2/3\). All outputs are SHA-frozen, with an explicit error bound.
+
+**Acceptance scope:** single-link Wilson-action transfer and conditional 4D local Haar calculations. The *full interacting 3+1D* physical Gauss-projected Wilson transfer, its original \(C_0,C_2,C_4\), uniform continuum mass gap and Clay objective remain **OPEN**. This is a useful exact Q02/Q03/Q04 source-normalization benchmark, not a replacement for the pending 4D network source.
+
 ## November 21, 2026 — Certificate search round two: exact SU(2) recoupling and Wilson spectral dual
 
 **[▶ Updated live 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)** · [Nine newly matched external sources](docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md) · [Exact Wilson spectral-window dual](docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md).
