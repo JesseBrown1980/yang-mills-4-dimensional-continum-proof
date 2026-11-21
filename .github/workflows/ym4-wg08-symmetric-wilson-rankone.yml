@@ -1,0 +1,89 @@
+name: YM4 WG08 original full SU2 symmetric rank-one Wilson eigenmode
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wilson_symmetric_rankone.py'
+      - 'tests/test_ym4_su2_wilson_symmetric_rankone.py'
+      - 'docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wg08-symmetric-wilson-rankone.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wilson_symmetric_rankone.py'
+      - 'tests/test_ym4_su2_wilson_symmetric_rankone.py'
+      - 'docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wg08-symmetric-wilson-rankone.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-SU2-symmetric-rankone-Wilson:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify symmetric rank-one predictions frozen before implementation
+        run: |
+          set -euo pipefail
+          PIN=75ada3a718af022660d10ee55b1df7ad7893a6eb
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_wilson_symmetric_rankone.py" 2>/dev/null; then
+            echo "WG08 producer predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_wilson_symmetric_rankone.py" 2>/dev/null; then
+            echo "WG08 verifier predates prediction" >&2
+            exit 1
+          fi
+      - name: Strict no floating point source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original G48 spatial symmetry and physical SU2 eigenmode tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_wilson_symmetric_rankone.py -v
+      - name: Byte-identical actual symmetric rank-one Wilson source HBP
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg08
+          python3 -B tests/ym4_su2_wilson_symmetric_rankone.py > build/ym4-wg08/FIRST.hbp
+          python3 -B tests/ym4_su2_wilson_symmetric_rankone.py > build/ym4-wg08/REPLAY.hbp
+          cmp build/ym4-wg08/FIRST.hbp build/ym4-wg08/REPLAY.hbp
+          cmp build/ym4-wg08/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp
+          echo '23ded69cf70855bda91ed1f7f4907e068c021739770c1af7545426559e55e1a1  build/ym4-wg08/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=23ded69cf70855bda91ed1f7f4907e068c021739770c1af7545426559e55e1a1' \
+            docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp
+          grep -Fq 'original_spatial_group_order=48' build/ym4-wg08/FIRST.hbp
+          grep -Fq 'symmetric_first_slope_weight=1/192' build/ym4-wg08/FIRST.hbp
+          grep -Fq 'physical_six_symmetric_invariant_rank=1' build/ym4-wg08/FIRST.hbp
+          grep -Fq 'single_symmetric_physical_eigenvector_weight_gt=1/289' build/ym4-wg08/FIRST.hbp
+          grep -Fq 'individual_first_neutral_energy_order=OPEN' build/ym4-wg08/FIRST.hbp
+          grep -Fq 'continuum_gap=OPEN' build/ym4-wg08/FIRST.hbp
+          sha256sum build/ym4-wg08/FIRST.hbp > build/ym4-wg08/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg08/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG08-original-SU2-symmetric-rankone-Wilson-weight
+          path: build/ym4-wg08/
+          retention-days: 90
+          if-no-files-found: warn
