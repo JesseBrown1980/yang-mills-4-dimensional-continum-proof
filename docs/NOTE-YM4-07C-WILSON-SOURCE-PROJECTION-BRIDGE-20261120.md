@@ -107,7 +107,7 @@ The next physical experiment should therefore specify a *genuine continuous-SU(2
 
 ## 6. Executable acceptance
 
-[The independent exact-integer verifier](../tests/test_ym4_07c_wilson_projection_bridge.py) checks the square-root interval, strict conditional weight bounds, factor-three/four scale-tail algebra and both physical-gap falsifiers. It requires eight deliberately corrupted continuum claims to fail closed: missing SU(2) source, wrong gauge group, unproved spectral projector, fixed strong coupling labeled UV, finite-only gap, missing OS construction, missing infinite-volume control and exhausted amplitude tolerance.
+[The independent exact-integer verifier](../tests/test_ym4_07c_wilson_projection_bridge.py) checks the square-root interval, strict conditional weight bounds, factor-three/four scale-tail algebra and both physical-gap falsifiers. It requires nine deliberately corrupted continuum claims to fail closed: missing SU(2) source, wrong gauge group, unproved spectral projector, fixed strong coupling labeled UV, finite-only gap, missing OS construction, missing infinite-volume control exhausted amplitude tolerance, and a forged record whose seven status fields all say PASS.
 
 Scientific status emitted on success:
 
