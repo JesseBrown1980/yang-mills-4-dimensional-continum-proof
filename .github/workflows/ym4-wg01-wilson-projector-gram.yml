@@ -1,0 +1,74 @@
+name: YM4 WG01 first physical Wilson Gram and projector gate
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_wilson_first_projector_gram_gate.py'
+      - 'tests/test_ym4_wilson_first_projector_gram_gate.py'
+      - 'docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp'
+      - '.github/workflows/ym4-wg01-wilson-projector-gram.yml'
+  push:
+    paths:
+      - 'tests/ym4_wilson_first_projector_gram_gate.py'
+      - 'tests/test_ym4_wilson_first_projector_gram_gate.py'
+      - 'docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp'
+      - '.github/workflows/ym4-wg01-wilson-projector-gram.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-physical-Wilson-Gram-and-first-projector:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify original frozen target predates code and verifier
+        run: |
+          set -euo pipefail
+          PIN=f39c00fc7c0dc9a7cab962af490dc941d95d38c0
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_wilson_first_projector_gram_gate.py" 2>/dev/null; then
+            echo "WG01 producer existed at freeze" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_wilson_first_projector_gram_gate.py" 2>/dev/null; then
+            echo "WG01 verifier existed at freeze" >&2
+            exit 1
+          fi
+      - name: Repository strict integer/no-float source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent first-state ambiguity and original Wilson Gram tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_wilson_first_projector_gram_gate.py -v
+      - name: Deterministic source-specific original 4D HBP and HOLD
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg01
+          python3 -B tests/ym4_wilson_first_projector_gram_gate.py > build/ym4-wg01/FIRST.hbp
+          python3 -B tests/ym4_wilson_first_projector_gram_gate.py > build/ym4-wg01/REPLAY.hbp
+          cmp build/ym4-wg01/FIRST.hbp build/ym4-wg01/REPLAY.hbp
+          grep -Fq 'C4_upper_1e24=8295202979139' build/ym4-wg01/FIRST.hbp
+          grep -Fq 'C4_upper_1e24=829440077' build/ym4-wg01/FIRST.hbp
+          grep -Fq 'same_C0_C2_C4=PASS|first_weight_fixture_A=0|first_weight_fixture_B=21/4000' build/ym4-wg01/FIRST.hbp
+          grep -Fq 'first_eigenprojector=HOLD' build/ym4-wg01/FIRST.hbp
+          grep -Fq 'first_excited_Wilson_weight=HOLD|continuum_uniform_mass_gap=OPEN' build/ym4-wg01/FIRST.hbp
+          sha256sum build/ym4-wg01/FIRST.hbp > build/ym4-wg01/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg01/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG01-original-Wilson-Gram-projector-gate
+          path: build/ym4-wg01/
+          retention-days: 90
+          if-no-files-found: warn
