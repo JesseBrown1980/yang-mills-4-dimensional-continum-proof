@@ -1,5 +1,16 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 20, 2026 — YM4-07D: polynomial all-beta SU(2) local Wilson-source floor (independent review pending)
+
+A new [analytical source estimate](docs/NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md) strengthens the accepted YM4-07C **genuine continuous-SU(2) finite-lattice** plaquette-variance result on four-dimensional periodic lattices of side lengths at least three:
+\[
+\operatorname{Var}(W_p)>\frac{1}{2^{18}(1+6\beta)^2}\qquad\text{for every finite }\beta\ge0,
+\]
+uniformly in lattice volume. Its all-real-\(\beta\) proof uses the six-staple conditional SU(2) Haar measure and two elementary spherical-cap events. The prior \(e^{-12\beta}/4\) floor remains valid and may be combined with this bound. The polynomial floor still decreases as \(\beta\to\infty\).
+
+The same genuine SU(2) one-link integral keeps **15 staple-pair Wilson networks**, split into **3 coplanar rectangles and 12 mixed-plane chairs**. An exact pair of six-staple configurations with identical individual plaquette traces but \(Q=36\) versus \(Q=0\) falsifies plaquette-only closure for every \(\beta>0\). This extends the YM4-05A local decimation diagnostic and is distinct from the whole-lattice \(b=2\) YM4-03C calculation. [Predictions were frozen](docs/PREDICT-YM4-07D-ALLBETA-SU2-20261120.hbp) before new checker construction; the [integer-only checker](tests/test_ym4_07d_su2_allbeta_source.py) and [dedicated hosted gate](.github/workflows/ym4-07d-su2-allbeta-source.yml) compare constants, moments, rational benchmarks and ten adversarial inputs. **Local analytic theorem and local test: PASS locally; hosted CI / independent external audit: PENDING.** Source RG transport, OS physical spectral projector, all-scale renormalization and continuum full-spectrum gap: **OPEN**.
+
+
 ## November 20, 2026 — YM4-07C: exact finite-Wilson source-to-continuous-SU(2) transfer gate
 
 The companion [finite S₃ original Wilson certificate, PR #350](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/pull/350), is independently accepted **for its specified finite model**: original first-to-second Wilson squared weight is strictly greater than **17,074,763/10¹²**. In 4D, [YM4-07C](docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md) proves an exact conditional source/projection transport lemma: an explicitly supplied W-compatible isometry, true continuous-SU(2) gauge-invariant Wilson source, and physical-energy spectral projector preserve a nonzero visible weight whenever their combined certified amplitude error is below **4,132,162,024/10¹²**. A new integer checker verifies the bound, factor-three summable-error accounting, and two rational transfer counterexamples that distinguish Wilson visibility from the **full physical mass gap**. Nine deceptive inputs—including an all-PASS status-only record—are rejected by the fail-closed verifier.
