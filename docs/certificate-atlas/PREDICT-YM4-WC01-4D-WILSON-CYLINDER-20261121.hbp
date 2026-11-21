@@ -1,0 +1,12 @@
+PREDICTION|id=YM4-WC01|date=2026-11-21|phase=FROZEN_BEFORE_PRODUCER_AND_TESTS|original_model=continuous_SU2_4D_periodic_Wilson|json=0
+GEOMETRY|spatial=2,2,2|time=10|sites=80|positive_links=320|plaquettes=480|spatial_plaquettes=240|timelike_plaquettes=240|each_link_in_6=PASS|json=0
+SOURCE|W=one_spatial_plaquette_halftrace|t=0,2,4|time_separation_supports=DISJOINT|full_4D_action=beta_sum_1_minus_halftrace|json=0
+HAAR|E_A=0|E_A2=120|E_W=0|E_W2=1/4|E_WA=1/4|E_W2A=0|E_WA2=0|json=0
+HAAR|E_W2A2=481/16|E_W0Wt=0|E_W0WtA=0|E_W0WtA2=1/8|t=2,4|json=0
+TAYLOR|x=480beta|remainder3_le=x3_over_6_times_1_minus_x|betaNp_lt_1=REQUIRED|json=0
+NUMERATORS|Z=1_plus_60beta2_plus_R3|NW=beta_over4_plus_R3|NW2=1_over4_plus_481beta2_over32_plus_R3|NWWt=beta2_over16_plus_R3|json=0
+CANCELLATION|connected_C2_and_C4_beta2_coeff=0|C0_beta2_coeff=-1/32|json=0
+ACCEPTANCE|beta=1/10000|abs_connected_C2_lt=1/50000|abs_connected_C4_lt=1/50000|abs_C0_minus_quarter_lt=1/10000|json=0
+ACCEPTANCE|beta=1/100000|abs_connected_C2_lt=1/50000000|abs_connected_C4_lt=1/50000000|abs_C0_minus_quarter_lt=1/10000000|json=0
+ADVERSARIAL|missing_temporal_plaquettes=REJECT|wrong_link_orientation=REJECT|unmatched_loop=REJECT|duplicated_plaquette=REJECT|missing_centred_subtraction=REJECT|beta_too_large=REJECT|json=0
+SCOPE|certificate=ORIGINAL_4D_WILSON_FINITE_PERIODIC_CYLINDER_CONNECTED_CORRELATOR_INTERVAL|vacuum_infinite_time_Cn=OPEN|physical_full_transfer_spectrum=OPEN|continuum_gap=OPEN|json=0
