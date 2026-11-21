@@ -1,5 +1,5 @@
 """Independent exact rational physical SU2 Wilson 42-band weight tests."""
-from fractions import Fraction as F
+from math import gcd
 import unittest
 
 import ym4_su2_wilson_42band_positive_weight as S
@@ -11,26 +11,48 @@ from ym4_wilson_vacuum_trace_bridge import vacuum_wilson_intervals
 
 class OriginalSU2Physical42BandWeightTests(unittest.TestCase):
     def test_uniform_envelope_independently_as_python_integers(self):
-        q=F(1,10000)
-        y=q*q/4
-        b=1-48*q
-        d=(1-b)/b
-        k1upper=q/(4*(1-y))
-        e=k1upper*k1upper/b
-        D=6*e+3*d
-        C0upper=F(1,4)+4*e+2*d
-        ray_coeff=(1-y)**4*(F(1,2)-D)**2/256
-        tail_coeff=C0upper/(576*(1-y)**2)
-        numerator=ray_coeff-tail_coeff
-        denom=1/(256*(1-y)**4)-F(1,576)
-        self.assertEqual(b,F(622,625))
-        self.assertEqual(d,F(3,622))
-        self.assertGreater(numerator,F(0))
-        self.assertGreater(denom,F(0))
-        self.assertGreater(numerator/denom,F(1,5))
+        # Independent exact-rational integer-pair kernel with all four
+        # operations separately authored, rather than importing producer R.
+        def p(n, d=1):
+            g=gcd(n,d)
+            return (n//g,d//g)
+        def add(a,b):
+            return p(a[0]*b[1]+b[0]*a[1],a[1]*b[1])
+        def neg(a):
+            return (-a[0],a[1])
+        def sub(a,b):
+            return add(a,neg(b))
+        def mul(a,b):
+            return p(a[0]*b[0],a[1]*b[1])
+        def div(a,b):
+            return p(a[0]*b[1],a[1]*b[0])
+        def fourth(a):
+            square=mul(a,a)
+            return mul(square,square)
+        def greater(a,b):
+            return a[0]*b[1]>b[0]*a[1]
+        q=p(1,10000)
+        y=div(mul(q,q),p(4))
+        om=sub(p(1),y)
+        b=sub(p(1),mul(p(48),q))
+        d=div(sub(p(1),b),b)
+        k1upper=div(q,mul(p(4),om))
+        e=div(mul(k1upper,k1upper),b)
+        D=add(mul(p(6),e),mul(p(3),d))
+        C0upper=add(p(1,4),add(mul(p(4),e),mul(p(2),d)))
+        half_minus=sub(p(1,2),D)
+        ray_coeff=div(mul(fourth(om),mul(half_minus,half_minus)),p(256))
+        tail_coeff=div(C0upper,mul(p(576),mul(om,om)))
+        numerator=sub(ray_coeff,tail_coeff)
+        denom=sub(div(p(1),mul(p(256),fourth(om))),p(1,576))
+        self.assertEqual(b,p(622,625))
+        self.assertEqual(d,p(3,622))
+        self.assertTrue(greater(numerator,p(0)))
+        self.assertTrue(greater(denom,p(0)))
+        self.assertTrue(greater(div(numerator,denom),p(1,5)))
         w=S.uniformly_frozen_positive_witness()
-        self.assertEqual(F(w["weight_lower"].n,w["weight_lower"].d),
-                         numerator/denom)
+        self.assertEqual((w["weight_lower"].n,w["weight_lower"].d),
+                         div(numerator,denom))
 
     def test_true_vacuum_rank_one_error_and_variance(self):
         for beta in (R(1,10000),R(1,100000)):
