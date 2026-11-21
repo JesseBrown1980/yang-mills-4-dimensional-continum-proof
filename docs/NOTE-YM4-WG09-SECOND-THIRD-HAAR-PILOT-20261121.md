@@ -34,3 +34,28 @@ Both leading splitting signs are strictly positive. This gives **asymptotic posi
 The hosted source in `tests/ym4_su2_six_perturbative_haar.py`, using the standard library and the repository-approved integer-pair `R` arithmetic, recomputes the 42-state and 48-action structure, exact linkwise second/fourth SU(2) moments, all 42x42 V² Haar elements, the three V³ orbitals, the vacuum and 36-state mixing coefficients. Its replayed deterministic HBP receipt has SHA-256 \`4ce90dd38ee088e580b4b95bbf549f88379f3a8a1e8dd0b0425b9c20537f53b4\`. Its source and HBP are committed in the atlas, and the dedicated [hosted WG09 original-SU2 Haar workflow](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44947346077) has passed duplicate replay, exact receipt comparison, SHA-256 verification and the repository no-floating-point source gate. A separate independently authored clean-room third-order Haar calculation and the finite-beta full-operator remainder remain OPEN.
 
 **Next:** bound the exact fourth-order remainder of the full physical transfer and Schur complement (including the 12 spin-one states and the complete higher-spin tail) with constants strong enough to preserve the strict third-order gaps at a specified rational beta cutoff. Then combine that finite-beta ordering with WG08's positive true-vacuum Wilson overlap. Large volume, continuum limit, OS reconstruction, and uniform mass gap remain OPEN.
+
+## Explicit fourth-order acceptance budget
+
+Let the fully symmetry-reduced, vacuum-and-tail-corrected six-mode effective transfer divided by the electric scale t be compared with the exact third-order polynomial
+
+    I + (sqrt(2)/4) beta I + (381/128) beta^2 I
+      + beta^3 sqrt(2) [ (36499/49152) I + (1/32) O + (1/64) X ].
+
+A sufficient final gate is a *proved* operator-norm remainder
+
+    ||H_six(beta) - H_poly(beta)|| <= C beta^4,
+
+valid for 0<beta<=beta0, with the precise energy-dependent Schur/Feshbach identification and all physical tail sectors controlled. This formula is a target, not an established remainder estimate.
+
+The smallest third-order symmetry splitting is 3sqrt(2)/32, strictly larger than 21/160 because sqrt(2)>7/5 (verified by 2>49/25). Weyl's inequality gives the guaranteed leading-sector separation
+
+    normalized_gap > beta^3 [21/160 - 2 C beta].
+
+Therefore, once an exact rational constant C>0 and its validity interval beta0 are accepted, taking
+
+    0<beta <= min(beta0, 1/1000000, 21/(640 C))
+
+makes the bracket strictly larger than 21/320 and yields a strictly positive symmetry-order gap in the normalized six-mode transfer. The actual physical eigenvalue gap is that estimate multiplied by t and the common positive Wilson magnetic factor.
+
+This is a ready-to-check acceptance inequality for the next WG09 certificate. The unresolved work is to produce **C** and prove its uniform validity from the original infinite-dimensional operator; no numerical value for C is asserted here.
