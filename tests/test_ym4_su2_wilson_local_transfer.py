@@ -4,13 +4,10 @@ Independent checks use Chebyshev polynomials and Catalan Haar moments rather
 than calling the producer's character derivation. No stochastic numerics.
 """
 from math import comb, factorial
-from pathlib import Path
-import runpy
 import unittest
+import ym4_su2_wilson_local_transfer as M
 
-M = runpy.run_path(str(Path(__file__).with_name(
-    "ym4_su2_wilson_local_transfer.py")))
-R = M["R"]
+R = M.R
 
 
 def poly_add(a, b, scale=1):
@@ -114,9 +111,9 @@ class SU2WilsonLocalTests(unittest.TestCase):
             (4, ((658046, 658049), (108255, 108258),
                  (46876, 46880))),
         ):
-            lo, hi = M["character_eigen_interval"](1, R(beta), 20)
-            lo2, hi2 = M["connected_wilson_interval"](beta, 2)
-            lo4, hi4 = M["connected_wilson_interval"](beta, 4)
+            lo, hi = M.character_eigen_interval(1, R(beta), 20)
+            lo2, hi2 = M.connected_wilson_interval(beta, 2)
+            lo4, hi4 = M.connected_wilson_interval(beta, 4)
             for pair, endpoints in zip(
                 ((lo, hi), (lo2, hi2), (lo4, hi4)), brackets
             ):
@@ -126,19 +123,19 @@ class SU2WilsonLocalTests(unittest.TestCase):
             self.assertLess(lo, hi)
 
     def test_beta1_and_4_uniform_character_tail(self):
-        self.assertLess(M["character_sup_tail"](1, 12), R(1, 10**12))
-        self.assertLess(M["character_sup_tail"](4, 24), R(1, 10**12))
-        self.assertGreater(M["character_sup_tail"](4, 4),
+        self.assertLess(M.character_sup_tail(1, 12), R(1, 10**12))
+        self.assertLess(M.character_sup_tail(4, 24), R(1, 10**12))
+        self.assertGreater(M.character_sup_tail(4, 4),
                            R(1, 10**12))
-        self.assertGreater(M["character_sup_tail"](1, 2),
+        self.assertGreater(M.character_sup_tail(1, 2),
                            R(1, 10**12))
 
     def test_physical_W_normalization_and_character_dimension(self):
-        self.assertEqual(M["connected_wilson_interval"](1, 0),
+        self.assertEqual(M.connected_wilson_interval(1, 0),
                          (R(1, 4), R(1, 4)))
         for beta in (1, 4):
-            lo, hi = M["character_eigen_interval"](1, beta)
-            c2lo, c2hi = M["connected_wilson_interval"](beta, 2)
+            lo, hi = M.character_eigen_interval(1, beta)
+            c2lo, c2hi = M.connected_wilson_interval(beta, 2)
             self.assertEqual(c2lo, (lo.power(2)).div(4))
             self.assertEqual(c2hi, (hi.power(2)).div(4))
             # A missed factor dim(fundamental)=2 doubles eigenvalue.
@@ -148,10 +145,10 @@ class SU2WilsonLocalTests(unittest.TestCase):
 
     def test_all_order_ratios_positive_and_lambda0_one(self):
         for beta in (1, 4):
-            self.assertEqual(M["character_eigen_interval"](0, beta),
+            self.assertEqual(M.character_eigen_interval(0, beta),
                              (R(1), R(1)))
             for index in range(1, 11):
-                lo, hi = M["character_eigen_interval"](index, beta)
+                lo, hi = M.character_eigen_interval(index, beta)
                 self.assertLess(R(0), lo)
                 self.assertLess(lo, hi)
                 self.assertLess(hi, R(1))
@@ -165,12 +162,12 @@ class SU2WilsonLocalTests(unittest.TestCase):
                 ((t.power(k)).div(factorial(k) * factorial(k+1))
                  for k in range(21)), R(0)
             )
-            j_lower, j_upper = M["bessel_j_interval"](1, R(kappa))
+            j_lower, j_upper = M.bessel_j_interval(1, R(kappa))
             self.assertEqual(from_four_dim, j_lower)
             self.assertLess(j_lower, j_upper)
             self.assertEqual(
-                M["aligned_six_staple_mean"](beta_four),
-                M["character_eigen_interval"](1, R(kappa))
+                M.aligned_six_staple_mean(beta_four),
+                M.character_eigen_interval(1, R(kappa))
             )
 
     def test_gauge_nonclass_source_rejected_by_exact_conjugation(self):
@@ -186,16 +183,16 @@ class SU2WilsonLocalTests(unittest.TestCase):
 
     def test_negative_inputs_and_underestimated_tail_rejected(self):
         with self.assertRaisesRegex(ValueError, "invalid_Wilson_beta"):
-            M["character_eigen_interval"](1, R(-1))
+            M.character_eigen_interval(1, R(-1))
         with self.assertRaisesRegex(ValueError, "beta_outside_certified_range"):
-            M["character_sup_tail"](5, 24)
-        self.assertGreater(M["character_sup_tail"](4, 1), R(1, 10**12))
+            M.character_sup_tail(5, 24)
+        self.assertGreater(M.character_sup_tail(4, 1), R(1, 10**12))
         with self.assertRaisesRegex(ValueError, "invalid_time"):
-            M["connected_wilson_interval"](1, -1)
+            M.connected_wilson_interval(1, -1)
         with self.assertRaisesRegex(ValueError, "uncontrolled_bessel_tail"):
-            M["bessel_j_interval"](1, 8, 0)
+            M.bessel_j_interval(1, 8, 0)
         with self.assertRaisesRegex(ValueError, "frozen_ratio_interval_miss"):
-            M["check_frozen_row"](
+            M.check_frozen_row(
                 4, 24, R(2, 3),
                 (R(1, 2), R(3, 5)),
                 (R(108255, 10**6), R(108258, 10**6)),
@@ -203,13 +200,13 @@ class SU2WilsonLocalTests(unittest.TestCase):
             )
 
     def test_receipt_exact_and_scopes(self):
-        data = M["receipt"]()
+        data = M.receipt()
         self.assertIn("Haar_convolution=Wilson_plaquette", data)
         self.assertIn("C0=1/4|C2_lower=", data)
         self.assertIn("|uniform_tail_lt_1e-12=PASS", data)
         self.assertIn("physical_full4D_moments=OPEN", data)
         self.assertIn("continuum_mass_gap=OPEN", data)
-        self.assertEqual(data, M["receipt"]())
+        self.assertEqual(data, M.receipt())
 
 
 if __name__ == "__main__":
