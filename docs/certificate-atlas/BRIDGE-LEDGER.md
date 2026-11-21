@@ -18,6 +18,12 @@ An external candidate becomes an accepted mathematical input only after recordin
 
 These checks implement the same independent provenance principle as the finite S₃ certificate atlas.
 
+## Internal original-SU(2) Wilson local-transfer acceptance — 21 November 2026
+
+[YM4-SU2-WT01 exact Wilson local transfer](../NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md) has a committed [pre-implementation prediction](PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp), [hosted independent exact acceptance](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44917457160) and [cryptographic receipt pointer](YM4-WT01-ACCEPTANCE-20261121.hbp). It derives the *Wilson-action*, rather than ad hoc, one-link continuous-SU(2) Haar-convolution transfer, with conjugation-Gauss projection on the one-link spatial circle. It certifies exact rational \(I_2/I_1\) and Wilson \(C_0,C_2,C_4\) enclosures at \(\beta=1,4\), each with a uniform single-kernel character tail below \(10^{-12}\). A separate original 4D six-aligned-staple conditional one-link Haar expectation matches its coupling normalization at local \(\beta=1/6,2/3\).
+
+**Queue impact:** YM4-Q02 gains an accepted *single-link* character-coefficient and tail benchmark; YM4-Q03 gains a checked conjugation/Gauss projector for that minimal spatial circle; YM4-Q04 gains actual Wilson moments **in the minimal Wilson one-link model**. All three **original interacting 4D** requirements remain **OPEN**, including a physical 4D Wilson-network source, the complete 3D-spatial Gauss constraints, magnetic potential and the full transfer. Q05–Q11 remain OPEN. The certificate is scoped to a local exact calculation and supplies no nonperturbative all-volume continuum gap.
+
 ## Explicit OPEN certificate queue
 
 | ID | Needed certificate | Existing source investigated | Match verdict / acceptance gate |
