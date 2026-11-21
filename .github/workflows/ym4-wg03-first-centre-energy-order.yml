@@ -1,0 +1,75 @@
+name: YM4 WG03 first physical SU2 centre-sector energy ordering
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_first_centre_energy_order.py'
+      - 'tests/test_ym4_su2_first_centre_energy_order.py'
+      - 'docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp'
+      - '.github/workflows/ym4-wg03-first-centre-energy-order.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_first_centre_energy_order.py'
+      - 'tests/test_ym4_su2_first_centre_energy_order.py'
+      - 'docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp'
+      - '.github/workflows/ym4-wg03-first-centre-energy-order.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-SU2-first-centre-order:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify original energy-order predictions frozen before code
+        run: |
+          set -euo pipefail
+          PIN=3c4f01ea3360cdf39e1f830295e2f07aa0221430
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_first_centre_energy_order.py" 2>/dev/null; then
+            echo "producer predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_first_centre_energy_order.py" 2>/dev/null; then
+            echo "verifier predates prediction" >&2
+            exit 1
+          fi
+      - name: Strict integer only original full repository
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original Gauss physical centre ordering
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_first_centre_energy_order.py -v
+      - name: Exact first Wilson spectral weight and separation replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg03
+          python3 -B tests/ym4_su2_first_centre_energy_order.py > build/ym4-wg03/FIRST.hbp
+          python3 -B tests/ym4_su2_first_centre_energy_order.py > build/ym4-wg03/REPLAY.hbp
+          cmp build/ym4-wg03/FIRST.hbp build/ym4-wg03/REPLAY.hbp
+          grep -Fq 'two_link_Gauss_admissible_winding_pairs=12' build/ym4-wg03/FIRST.hbp
+          grep -Fq 'lambda_charged_lower_gt=13/62500000000' build/ym4-wg03/FIRST.hbp
+          grep -Fq 'lambda_neutral_second_upper_lt=1/27000000000000' build/ym4-wg03/FIRST.hbp
+          grep -Fq 'original_local_Wilson_first_weight=0' build/ym4-wg03/FIRST.hbp
+          grep -Fq '=EXACT_ZERO_FOR_ALL_BETA_LE_1OVER100' build/ym4-wg03/FIRST.hbp
+          grep -Fq 'continuum_gap=OPEN' build/ym4-wg03/FIRST.hbp
+          sha256sum build/ym4-wg03/FIRST.hbp > build/ym4-wg03/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg03/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG03-first-physical-centre-energy-Wilson-weight
+          path: build/ym4-wg03/
+          retention-days: 90
+          if-no-files-found: warn
