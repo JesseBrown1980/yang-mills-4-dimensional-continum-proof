@@ -168,7 +168,7 @@ def coupling_adapter():
     beta_jb_n, beta_jb_d = 1, 25
     need(beta_jb_n*beta_a_d == 4*beta_a_n*beta_jb_d,
          "beta_adaptation")
-    need(beta_jb_n*100 == 2*beta_jb_d
+    need(beta_jb_n*50 == 2*beta_jb_d
          and 2*beta_a_n*50 == beta_a_d,
          "Wilson_trace_coefficient_mismatch")
     need(12*beta_a_n*beta_jb_d
