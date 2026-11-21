@@ -1,5 +1,16 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 20: YM4-07E — exact induced-block Wilson source and physical cyclic-projector theorem
+
+For the *genuine continuous-SU(2)* four-dimensional finite Wilson theory and the explicit factor-two line block, the induced coarse measure is the exact Haar-fiber pushforward. This **retains all nonplaquette Wilson networks** and makes the matched blocked-Wilson source pullback an isometry with **zero \(L^2\) error**, uniformly as an identity at every finite coupling.
+
+Within the existing positive finite-lattice OS transfer representation, the observable-generated cyclic subspace \(\mathcal K\) is reducing for \(T^2\), hence for \(T\ge0\); after dividing the physical time step by the same factor used in the transfer power, \(J\mathbf1_I(H_c)=\mathbf1_I(H_f)J\) for every *fixed physical-energy interval* \(I\). Thus the matched **physical source/projector** defects \(\delta,\epsilon\) are both **exactly zero on \(\mathcal K\)**. This is an intra-SU(2), same-cutoff exact-induced-action result, not a finite-\(S_3\) transfer, not a comparison of independently running \(\beta_k\) and \(\beta_{k+1}\), and not a uniform full-spectrum gap.
+
+An ordinary fine elementary plaquette has two off-line links at an even base. Orthogonal projection onto the coarse-block \(\sigma\)-algebra loses squared \(L^2\) norm at least \(e^{-12\beta}/4\) by the **merged YM4-07C** local theorem; at \(\beta=0\), this loss is **exactly \(1/4\)**. This is a concrete falsifier of replacing matched block Wilson sources with unaligned fine plaquettes. An adversarial positive rational transfer matrix has zero cyclic spectral-projector discrepancy yet a lower dark first state, showing why the full physical gap remains a separate obligation.
+
+[Proof and distinction](NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md) · [frozen predictions](PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp) · [exact arithmetic and nine active negative controls](../tests/test_ym4_07e_exact_block_projector.py). **Status:** analytical finite-step identities DERIVED; local checker PASS; hosted CI and independent proof review pending at submission. **YM4-04/05/06 remain OPEN** for an independently renormalized weak-coupling trajectory, dark-state/full-spectrum gap control, and nontrivial continuum reconstruction.
+
+
 ## November 20: YM4-07C — exact Wilson source/projection transfer interface
 
 **New mathematical lemma PASS; actual 4D source/continuum application OPEN.** The independently accepted original 3×4 finite S₃ Wilson squared weight > 17,074,763/10¹² provides a mathematically certified **amplitude comparator** > 4,132,162,024/10¹². For an explicitly defined isometry J to the genuine physical 4D continuous-SU(2) Hilbert space, SU2 source x and physical spectral projector Q, the estimates ||x−Jx_F|| ≤ δ and ||QJx_F−JP_Fx_F|| ≤ ε imply ||Qx|| > 0 whenever δ+ε is below that finite amplitude threshold. This is **conditional spectral visibility**, not an SU2 group embedding, not a continuum construction, and not a full-spectrum mass-gap statement. The finite source and the SU2 vacuum/source identification must be compared as actual operators, not by relabeling their spectra.
