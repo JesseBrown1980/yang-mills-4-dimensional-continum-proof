@@ -167,7 +167,9 @@ def six_cluster_schur_certificate(beta):
     require(tau <= rho*lo and rho < R(9,20),
             "all_spin_tail_over_band_ratio_failed")
     q = R(1).div(R(1)-24*beta)
-    require((R(1)-24*beta)-hi*(R(1)+beta.div(6))
+    # The complement inverse is used at every true six-eigenvalue
+    # lambda in [theta,q*t], so check the worst upper endpoint q*t.
+    require((R(1)-24*beta)-q*hi
             >=R(99,100), "vacuum_Schur_gap_not_certified")
     require(R(1)+beta.div(6)-q*rho>=R(1,2),
             "tail_Schur_gap_not_certified")
@@ -242,9 +244,18 @@ def original_interacting_six_Wilson_weight(beta):
             "wrong_first_slope_Wilson_source_projection")
     require(R(1500)*beta.power(2) <=R(1500)*SIX_BETA_MAX.power(2),
             "Schur_error_beta_regression")
-    require(R(25)*beta*(R(1)+R(100,99)*R(25)*beta)
-            <R(26)*beta,
+    # Vacuum component after tail elimination:
+    # (100/99)*epsilon*[1+sqrt(rho)*36beta], with sqrt(rho)<7/10.
+    require(R(100,99)*R(25)*(
+                R(1)+R(7,10)*R(36)*SIX_BETA_MAX) <R(26),
             "vacuum_eigenvector_six_angle_bound")
+    # Polar transfer eigenvector: 13beta magnetic-half factor,
+    # 24beta electric-band normalization, 26beta vacuum,
+    # 36beta tail. Independent spectral upper q ensures lambda>=t.
+    require(R(12).div((R(1)-12*SIX_BETA_MAX).power(2))
+            <R(13), "polar_magnetic_half_exponential")
+    require(R(13)+R(24)+R(26)+R(36) <R(100),
+            "polar_operator_eigenvector_angle_overbudget")
     # The following are deliberately conservative exact-rational
     # inequalities supporting the full proof in the module docstring.
     p6J_gap = 22750*beta
