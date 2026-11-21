@@ -1,0 +1,8 @@
+YM4_07I2_PREDICTION|date=2026-11-21|phase=POST_07I_PRE_NEW_CHECKER|original_07I_prediction=UNCHANGED|gauge=CONTINUOUS_SU2|json=0
+YM4_07I2_NORMALIZATION|physical_time_transfer=T_OVER_lambda0|truncated_transfer=TN_OVER_lambda0N|time_step=a|json=0
+YM4_07I2_TRANSFER|beta=64|L=6|N=177147|delta_over_lambda0_lt=1_OVER_1000000|norm_tildeT_minus_tildeTN_lt=1_OVER_500000|json=0
+YM4_07I2_VACUUM|norm_Pi_minus_PiN_lt=1_OVER_500000|Wilson_mean_error_lt=1_OVER_250000|json=0
+YM4_07I2_PHYSICAL|n=4|time_distance=4a|normalized_W_T4_W_error_lt=3_OVER_250000|json=0
+YM4_07I2_CONNECTED|n=4|time_distance=4a|subtract_vacuum_mean_squared=YES|connected_W_error_lt=1_OVER_50000|json=0
+YM4_07I2_FALSIFIERS|count=8|json=0
+YM4_07I2_SCOPE|physical_normalized_correlation=FINITE_4D_BOUND|first_Wilson_excited_weight=OPEN|actual_correlator=NOT_COMPUTED|volume_uniform=OPEN|continuum_mass_gap=OPEN|json=0
