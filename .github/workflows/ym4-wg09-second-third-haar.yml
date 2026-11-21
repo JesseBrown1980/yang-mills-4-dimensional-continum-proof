@@ -1,0 +1,49 @@
+name: YM4 WG09 exact SU2 second-third Haar pilot
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_six_perturbative_haar.py'
+      - 'docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp'
+      - '.github/workflows/ym4-wg09-second-third-haar.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_six_perturbative_haar.py'
+      - 'docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp'
+      - '.github/workflows/ym4-wg09-second-third-haar.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-su2-Haar-second-third:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact integer Haar replay and frozen receipt
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg09-haar
+          python3 -I -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/FIRST.hbp
+          python3 -I -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/REPLAY.hbp
+          cmp build/ym4-wg09-haar/FIRST.hbp build/ym4-wg09-haar/REPLAY.hbp
+          cmp build/ym4-wg09-haar/FIRST.hbp docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp
+          echo '4ce90dd38ee088e580b4b95bbf549f88379f3a8a1e8dd0b0425b9c20537f53b4  build/ym4-wg09-haar/FIRST.hbp' | sha256sum -c
+          grep -Fq 'Schur_beta2=381/128_I6' build/ym4-wg09-haar/FIRST.hbp
+          grep -Fq 'full_finite_beta_order_remainder=OPEN' build/ym4-wg09-haar/FIRST.hbp
+      - name: Source-only no-floating-point gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG09-original-SU2-second-third-Haar-pilot
+          path: build/ym4-wg09-haar/
+          retention-days: 90
+          if-no-files-found: warn
