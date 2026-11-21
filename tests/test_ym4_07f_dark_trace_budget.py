@@ -138,6 +138,9 @@ def report_rational_model():
     for n, target in expected:
         r = residual(2 * n)
         need(eq(r, target), "trace_residual_exact")
+        dark_direct = add(rp(EIG[1], 2 * n), rp(EIG[3], 2 * n))
+        need(eq(r, dark_direct), "independent_dark_spectral_trace")
+        need(not lt(r, rat(0)), "trace_residual_positive")
         need(threshold(r, q, 2 * n), "certified_dark_bound")
         print("YM4_07F_BENCH|m=" + str(n)
               + "|E=VACUUM_AND_BLOCK_WITNESS|R_NUM=" + str(r[0])
