@@ -17,7 +17,7 @@ If \(C\) is a closed coarse path, then as a noncommutative ordered group product
 For a coarse plaquette, \(2C\) is exactly the fine \(2\times2\) rectangle, never an individual fine elementary plaquette.
 
 Define the **actual induced** coarse measure
-\(\nu_{\beta,c}:=B_*\mu_{\beta,f}\). The conditional-Haar-fiber integral from YM4-03 is an explicit exact density \(\rho_\beta(V)\) for this measure. Its effective action is \(-\log\rho_\beta+\mathrm{constant}\). In \(d=4\), this generally contains a complete Wilson-network hierarchy: the one-link six-staple integral has **15 pair interactions, three coplanar and twelve mixed-plane** ([YM4-05A](NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md); [YM4-07D draft](NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md) on its branch). We retain the **full integral** rather than selecting a Wilson-only effective coupling \(\beta'\).
+\(\nu_{\beta,c}:=B_*\mu_{\beta,f}\). The conditional-Haar-fiber integral from YM4-03 is an explicit exact density \(\rho_\beta(V)\) for this measure. Its effective action is \(-\log\rho_\beta+\mathrm{constant}\). In \(d=4\), this generally contains a complete Wilson-network hierarchy: the one-link six-staple integral has **15 pair interactions, three coplanar and twelve mixed-plane** ([YM4-05A](NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md); [YM4-07D draft](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/75) on its branch). We retain the **full integral** rather than selecting a Wilson-only effective coupling \(\beta'\).
 
 For every bounded gauge-invariant coarse observable \(F\), and every finite collection \(F_1,\dots,F_n\),
 \[
