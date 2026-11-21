@@ -94,7 +94,7 @@ Prediction artifact [PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp](certifi
 
 The independent checker constructs SU(2) Chebyshev characters by an integer recurrence and integrates their products with independent exact Catalan Haar monomial moments. It checks up to 81 orthogonality cases plus 45 distinct Wilson exponential coefficients, including the d_r character factor. It separately checks the existing 4D Q=36 Haar partition from the six-staple sum. Deliberate wrong-beta, insufficient-tail, wrong half-trace, wrong representation dimension, and non-class-matrix-entry controls are recorded.
 
-    python3 -I -B tests/test_ym4_su2_wilson_local_transfer.py
+    python3 -B tests/test_ym4_su2_wilson_local_transfer.py
     python3 -I -B tests/ym4_su2_wilson_local_transfer.py
 
 The dedicated workflow confirms the historical prediction commit predates both implementation files, runs exact tests, matches two unmodified production transcripts and stores a SHA-256 receipt.
