@@ -1826,9 +1826,9 @@
       "category": "spectrum",
       "scope": "Any positive physical normalized transfer and vacuum-centered Wilson spectral measure",
       "result": "Lower bound on total spectral weight t>q from connected Cn,C0 intervals; one-eigenstate identification needs isolation",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/51bada86e7e899bfcc803f52f23d39b30d321ab0/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3a3a86789ef8f5306f2efb551fd245d8d8f5bd64/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "51bada86e7e899bfcc803f52f23d39b30d321ab0",
+      "ref": "3a3a86789ef8f5306f2efb551fd245d8d8f5bd64",
       "dependencies": [
         "YM4-Q05",
         "YM4-24"
@@ -5258,11 +5258,11 @@
     },
     {
       "path": "docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
-      "blob": "9201a504e596afdd3fb2412d9385b757f27b5725",
+      "blob": "00a3bacde00e78f3d15da8775b2838e9e4c56cfc",
       "origin": "atlas_search_round2",
-      "ref": "51bada86e7e899bfcc803f52f23d39b30d321ab0",
+      "ref": "3a3a86789ef8f5306f2efb551fd245d8d8f5bd64",
       "kind": "proof_or_note",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/51bada86e7e899bfcc803f52f23d39b30d321ab0/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3a3a86789ef8f5306f2efb551fd245d8d8f5bd64/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md"
     },
     {
       "path": "tests/test_ym4_certificate_spectral_window_dual.py",
