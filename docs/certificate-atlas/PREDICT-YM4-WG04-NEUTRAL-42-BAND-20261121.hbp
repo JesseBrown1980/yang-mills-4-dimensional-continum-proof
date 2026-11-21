@@ -8,7 +8,7 @@ SPECTRAL_TAIL|neutral_K_after_42_upper_le=beta4_over_576_times_1_minus_y_squared
 PHYSICAL_TRANSFER|B_min_ge_1_minus_48beta|B_max_le_1|neutral_physical_42_band_lower_gt=beta4_over500|neutral_physical_complement_upper_lt=beta4_over550|json=0
 PROJECTOR|physical_neutral_band_rank=42|physical_neutral_vacuum_lambda_gt=1/2|band_interval=(beta4/550,1/2)|gap_lower_gt=beta4_over5500|json=0
 BETA|beta=1/100|42_band_lower_gt=1/50000000000|tail_upper_lt=1/55000000000|json=0
-BETA|beta=1/10000|42_band_lower_gt=1/500000000000000000000|tail_upper_lt=1/550000000000000000000|json=0
-BETA|beta=1/100000|42_band_lower_gt=1/5000000000000000000000000|tail_upper_lt=1/5500000000000000000000000|json=0
+BETA|beta=1/10000|42_band_lower_gt=1/5000000000000000000|tail_upper_lt=1/5500000000000000000|json=0
+BETA|beta=1/100000|42_band_lower_gt=1/50000000000000000000000|tail_upper_lt=1/55000000000000000000000|json=0
 ADVERSARIAL|wrong_four_link_count=REJECT|charged_support_in_neutral_band=REJECT|noncycle_support=REJECT|wrong_42_rank=REJECT|magnetic_B_removed=REJECT|unbounded_spin_tail=REJECT|json=0
 SCOPE|original_SU2_physical_neutral_band_projector_rank42=PASS|original_Wilson_electric_source_band_vector=PASS|interacting_physical_band_source_overlap_positive=OPEN|individual_first_neutral_eigenweight=OPEN|continuum_gap=OPEN|json=0
