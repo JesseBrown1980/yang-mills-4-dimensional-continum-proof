@@ -1,0 +1,16 @@
+YM4_07H_PREDICTION|date=2026-11-21|phase=BEFORE_CHECKER|group=CONTINUOUS_SU2|dimension=4|original_Wilson=YES|json=0
+YM4_07H_TRANSFER|spatial_side=6|V=216|Nl=648|Ns=648|T=A_HALF_B_A_HALF|gauge=P|json=0
+YM4_07H_BESSEL|b_d=e_minus_beta_2_OVER_beta_I_d_beta|multiplicity=d_SQUARED|trace_B_link=1|json=0
+YM4_07H_CUTOFF|beta_ge=1|N_ge=4beta|N_power3=YES|single_link_tail_lt=2_Nplus1_3OVER8_POWER_N|json=0
+YM4_07H_TENSOR|Tr_B_MINUS_BN_le=Nl_epsilon|Tr_T_MINUS_TN_le=Nl_epsilon|operator_norm_le=Nl_epsilon|json=0
+YM4_07H_MOMENT|n_ge=1|abs_Tr_PTn_MINUS_PTnN_le=n_Nl_epsilon|source_moment_error_le=n_Nl_epsilon_norm_source_squared|json=0
+YM4_07H_BETA4|beta=4|N=27|n=4|moment_error_lt=1_OVER_1000000|gate=PASS|json=0
+YM4_07H_BETA9|beta=9|N=81|n=4|moment_error_lt=1_OVER_10POWER20|gate=PASS|json=0
+YM4_07H_BETA64_HOLD|beta=64|N=243|reason=N_LT_4BETA|gate=HOLD|json=0
+YM4_07H_BETA64_PASS|beta=64|N=729|n=4|moment_error_lt=1_OVER_10POWER100|gate=PASS|json=0
+YM4_07H_HAAR_CAP|beta_in_1_TO_kSQUARED|r=1_OVER_8k|cap_mass_gt=r_CUBED_OVER_6|json=0
+YM4_07H_PERRON|lambda0_gt=3_POWER_MINUS_405_TIMES_3072kCUBED_POWER_MINUS_648|spatial_side=6|json=0
+YM4_07H_BETA64_PERRON|beta=64|k=8|L_gt=3_POWER_MINUS_9477|Jensen_lt=3_POWER_MINUS_41472|new_floor_stronger=YES|json=0
+YM4_07H_RANK|one_link_rank=SUM_d2_TO_N=N_NPLUS1_2NPLUS1_OVER6|full_rank=one_link_rank_POWER648|large_explicit_matrix=NOT_BUILT|json=0
+YM4_07H_FALSIFIERS|count=12|type=active|json=0
+YM4_07H_SCOPE|true_original_4D_transfer=YES|error_norm=ABSOLUTE|relative_gap_from_trace=OPEN|source_vacuum_computation=OPEN|volume_uniform=OPEN|continuum_mass_gap=OPEN|json=0
