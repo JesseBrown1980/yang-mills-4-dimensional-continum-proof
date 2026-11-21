@@ -1,0 +1,15 @@
+YM4_07D_PREDICTION|date=2026-11-20|phase=BEFORE_NEW_CHECKER|group=CONTINUOUS_SU2|dimension=4|scope=FINITE_WILSON_LATTICE_SIDES_GE_3|json=0
+YM4_07D_TARGET|method=EXACT_SIX_STAPLE_ONE_LINK_CONDITIONING|genuine_SU2=YES|beta=ALL_FINITE_NONNEGATIVE|volume_uniform=YES|json=0
+YM4_07D_NETWORK|staples=6|pair_terms=15|coplanar=3|mixed_plane=12|retain=ALL_NETWORKS|json=0
+YM4_07D_HAAR|moment2=1_OVER_4|moment4=1_OVER_8|mixed_moment4=1_OVER_24|json=0
+YM4_07D_SERIES|Z_beta_Q_order2=PLUS_Q_OVER_8|order4=PLUS_Q_SQUARED_OVER_192|logZ_order4=MINUS_Q_SQUARED_OVER_384|json=0
+YM4_07D_NONCLOSURE|six_individual_plaquette_traces=ALL_ZERO|Q_case_A=36|Q_case_B=0|positive_beta_local_link_integrals=DIFFERENT|json=0
+YM4_07D_CAPS|t_ge_1|radial_variance_lower=1_OVER_165888_TIMES_C_SQUARED|tangential_variance_lower=1_OVER_432_TIMES_C|c=1_OVER_1_PLUS_T|json=0
+YM4_07D_LOW_T|t_le_1|variance_lower=1_OVER_36|json=0
+YM4_07D_MAIN_BOUND|for_all_beta_ge_0|Var_Wp_gt=1_OVER_262144_TIMES_1_OVER_1_PLUS_6BETA_SQUARED|weak_beta_to_infinity_uniform=NO|json=0
+YM4_07D_BENCH|beta=0|floor=1_OVER_262144|json=0
+YM4_07D_BENCH|beta=1_OVER_8|floor=1_OVER_802816|json=0
+YM4_07D_BENCH|beta=1|floor=1_OVER_12845056|json=0
+YM4_07D_BENCH|beta=16|floor=1_OVER_2466512896|json=0
+YM4_07D_BENCH|beta=64|floor=1_OVER_38856294400|json=0
+YM4_07D_SCOPE|finite_Wilson_local_Gibbs_source=PROPOSED_THEOREM|exact_one_link_network=PROPOSED_DERIVATION|physical_OS_projector=OPEN|weak_allscale_RG=OPEN|continuum_gap=OPEN|json=0
