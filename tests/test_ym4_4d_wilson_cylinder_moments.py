@@ -162,8 +162,11 @@ class FullWilsonCylinderTests(unittest.TestCase):
         self.assertLessEqual(a["C0hi"], R(hi, scale))
 
     def test_duplicate_plaquette_rejected(self):
-        p = M.plaquettes()
-        mutated = p[:-1] + (p[0],)
+        p = list(M.plaquettes())
+        # Duplicate a spatial plaquette by replacing another spatial
+        # plaquette; plane counts remain correct so the support gate reads it.
+        p[1] = p[0]
+        mutated = tuple(p)
         with self.assertRaisesRegex(ValueError, "duplicate_plaquette_support"):
             M.geometry(mutated)
 
