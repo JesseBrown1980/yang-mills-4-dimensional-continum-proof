@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_su2_center_flux_projectors.py'
       - 'docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg02-centre-flux-projectors.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_su2_center_flux_projectors.py'
       - 'docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg02-centre-flux-projectors.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_su2_center_flux_projectors.py > build/ym4-wg02/FIRST.hbp
           python3 -B tests/ym4_su2_center_flux_projectors.py > build/ym4-wg02/REPLAY.hbp
           cmp build/ym4-wg02/FIRST.hbp build/ym4-wg02/REPLAY.hbp
+          cmp build/ym4-wg02/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp
+          echo 'c8df3a8672c0692b142665a75316fe0c5965cb797d37faa5b24fe0f37d89b4c4  build/ym4-wg02/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=c8df3a8672c0692b142665a75316fe0c5965cb797d37faa5b24fe0f37d89b4c4' \
+            docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp
           grep -Fq 'sector_projectors=8|each_spatial_slice_cut_links=4' build/ym4-wg02/FIRST.hbp
           grep -Fq 'each_axis_plaquettes_0_cuts=360|2_cuts=120|odd=0' build/ym4-wg02/FIRST.hbp
           grep -Fq 'all_charged_sectors_local_Wilson_overlap=EXACT_ZERO' build/ym4-wg02/FIRST.hbp
