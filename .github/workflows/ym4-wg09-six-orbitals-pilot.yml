@@ -1,0 +1,50 @@
+name: YM4 WG09 six-orbital structural pilot
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_six_symmetry_orbitals.py'
+      - 'docs/NOTE-YM4-WG09-SIX-ORBITALS-PILOT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-STRUCTURAL-PILOT-20261121.hbp'
+      - '.github/workflows/ym4-wg09-six-orbitals-pilot.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_six_symmetry_orbitals.py'
+      - 'docs/NOTE-YM4-WG09-SIX-ORBITALS-PILOT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-STRUCTURAL-PILOT-20261121.hbp'
+      - '.github/workflows/ym4-wg09-six-orbitals-pilot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-six-block-symmetry-orbitals:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Run exact integer-only structural pilot twice
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg09
+          python3 -B tests/ym4_su2_six_symmetry_orbitals.py > build/ym4-wg09/FIRST.hbp
+          python3 -B tests/ym4_su2_six_symmetry_orbitals.py > build/ym4-wg09/REPLAY.hbp
+          cmp build/ym4-wg09/FIRST.hbp build/ym4-wg09/REPLAY.hbp
+          cmp build/ym4-wg09/FIRST.hbp docs/certificate-atlas/YM4-WG09-STRUCTURAL-PILOT-20261121.hbp
+          echo '8260b45074a4e23c54edca3e0e5591baf0284ad722f3d930a6f6ca7782a02475  build/ym4-wg09/FIRST.hbp' | sha256sum -c
+          grep -Fq 'pair_orbitals=6,6,24' build/ym4-wg09/FIRST.hbp
+          grep -Fq 'Haar_coefficients=OPEN' build/ym4-wg09/FIRST.hbp
+          grep -Fq 'first_neutral_energy_order=OPEN' build/ym4-wg09/FIRST.hbp
+      - name: Repository no-floating-point source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG09-six-orbital-structural-pilot
+          path: build/ym4-wg09/
+          retention-days: 90
+          if-no-files-found: warn
