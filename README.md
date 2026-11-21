@@ -1,5 +1,13 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Original 4D physical Wilson first-state projector/Gram acceptance
+
+**[YM4-WG01 physical Wilson Gram and projector note](docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md)** · [Prediction frozen before source](docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp) · [Original-source HBP](docs/certificate-atlas/YM4-WG01-HOSTED-GRAM-RECEIPT-20261121.hbp) · [SHA-pinned acceptance](docs/certificate-atlas/YM4-WG01-ACCEPTANCE-20261121.hbp) · [Independent hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44920901270).
+
+The original **full-interacting four-dimensional SU(2) physical Wilson vacuum** certificates WV01/02d now give a sharper *source-normalized positive even-time Gram*: \\(C_0 C_4-C_2^2\\ge0\\), \\(0<C_2\\le(24\\beta)^2 C_0\\), and \\(0<C_4\\le(24\\beta)^4 C_0\\). On the same fixed spatial 2³ lattice at β=1/10000, the newly certified **C4 upper bound is 0.000000000008295202979139**; at β=1/100000 it is **0.000000000000000829440077**. These are integer-rational outward caps verified by the original source, independent suite and SHA-locked replay.
+
+**Projector finding:** exact counterexamples show *identical physical-style C0/C2/C4, global trace/eigenratio envelopes and first eigenvalue* with either zero or positive first-state Wilson weight. A conditional exact rank-one projector dual passes its separate toy test with lower bound 1/20, while the original first physical Wilson eigenstate acceptance remains **HOLD**, awaiting a true source-adapted positive C2 lower and eigenstate/complement isolation. The confirmed original fixed-L Wilson excited spectral weight exists somewhere; source overlap with the *first* eigenstate and all weak-coupling/volume-uniform continuum objectives retain OPEN status. The full eleven-obligation continuum atlas remains in scope.
+
 ## November 21, 2026 — Original physical 4D Wilson fixed-lattice vacuum C0/C2/C4
 
 **[YM4-WV01 exact physical transfer/trace theorem](docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md)** · [Frozen prediction](docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp) · [Hosted exact rational vacuum receipt](docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp) · [SHA-pinned acceptance](docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp) · [Independent hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44919760722).
