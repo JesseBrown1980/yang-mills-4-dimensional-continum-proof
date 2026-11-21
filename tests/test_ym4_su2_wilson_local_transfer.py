@@ -162,7 +162,7 @@ class SU2WilsonLocalTests(unittest.TestCase):
         for beta_four, kappa in ((R(1, 6), 1), (R(2, 3), 4)):
             t = beta_four * beta_four * 9
             from_four_dim = sum(
-                ((t**k).div(factorial(k) * factorial(k+1))
+                ((t.__pow__(k)).div(factorial(k) * factorial(k+1))
                  for k in range(21)), R(0)
             )
             j_lower, j_upper = M["bessel_j_interval"](1, R(kappa))
