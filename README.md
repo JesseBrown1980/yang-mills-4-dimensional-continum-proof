@@ -1,5 +1,18 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Exact original SU(2) Wilson 42×42 magnetic Gram and quantitative positive C2/C4
+
+**[YM4-WG06 exact source-adapted 42×42 first magnetic derivative](docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md)** · [Frozen predictions before code](docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp) · [Hosted original-source HBP](docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp) · [SHA-verified acceptance](docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp) · [Independent hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44932014371).
+
+For the **original 3+1D continuous-SU(2) Wilson L=2 spatial Gauss-invariant theory**, the complete 42-dimensional neutral spin-network Haar Gram is exactly the identity. The **first magnetic derivative** of the original full 24-spatial-plaquette Wilson multiplier, compressed to that exact original 42-state electric space, has **48** off-diagonal couplings, **each exactly 1/8** by a mathematically exact SU2 quadratic quaternion Haar integration, and zero diagonal couplings after removing the common scalar. The resulting 42×42 adjacency splits into **six K4,2 blocks and six isolated vertices**, with integer matrix identity A³=8A. Its first-order relative magnetic eigenvalues have multiplicities **6 positive, 30 zero and 6 negative**. The original local Wilson halftrace has **squared electric first-order positive six-mode projection exactly 1/32**. This is a strict *first magnetic-order projection*; the full physical **finite-β first-six Feshbach projector and individual first neutral eigenstate weight remain OPEN**.
+
+**New positive exact original physical Wilson vacuum moment lower bounds**, derived from WG04's full magnetic interacting rank42 spectral band and WG05's >1/5 positive centered true-vacuum Wilson source weight, hold for all 0<β≤1/10000 on the same original physical model:
+
+    C2 > β^8/1,250,000,
+    C4 > β^16/312,500,000,000.
+
+These quantitative lower bounds complete WG01's prior upper-only C2/C4 enclosures at the stated small couplings, while keeping all original eleven larger-volume, weak-coupling and 4D continuum obligations OPEN. The next exact target is an actual **finite-β original neutral interacting rank-six Feshbach cluster**, followed by source-sensitive isolation inside that cluster.
+
 ## November 21, 2026 — Original full SU(2) true-vacuum Wilson 42-band spectral weight exceeds 1/5
 
 **[YM4-WG05 source-sensitive physical Wilson weight theorem](docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md)** · [Prediction frozen before code](docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp) · [Canonical hosted HBP](docs/certificate-atlas/YM4-WG05-HOSTED-WILSON-WEIGHT-RECEIPT-20261121.hbp) · [SHA-backed acceptance](docs/certificate-atlas/YM4-WG05-ACCEPTANCE-20261121.hbp) · [Independent hosted verification](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44928950946).
