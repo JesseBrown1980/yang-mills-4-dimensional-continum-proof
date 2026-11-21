@@ -29,8 +29,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p build/ym4-wg09-haar
-          python3 -I -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/FIRST.hbp
-          python3 -I -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/REPLAY.hbp
+          python3 -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/FIRST.hbp
+          python3 -B tests/ym4_su2_six_perturbative_haar.py > build/ym4-wg09-haar/REPLAY.hbp
           cmp build/ym4-wg09-haar/FIRST.hbp build/ym4-wg09-haar/REPLAY.hbp
           cmp build/ym4-wg09-haar/FIRST.hbp docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp
           echo '4ce90dd38ee088e580b4b95bbf549f88379f3a8a1e8dd0b0425b9c20537f53b4  build/ym4-wg09-haar/FIRST.hbp' | sha256sum -c
