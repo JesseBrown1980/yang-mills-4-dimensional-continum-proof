@@ -1,5 +1,15 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Certificate search round two: exact SU(2) recoupling and Wilson spectral dual
+
+**[▶ Updated live 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)** · [Nine newly matched external sources](docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md) · [Exact Wilson spectral-window dual](docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md).
+
+A second source audit adds nine specifically matched candidate proof artifacts: Lean strong-coupling U(n) plaquette decay, abstract RG scale transfer, machine-checked normalized Wilson area laws, exact Rust SU(2) Clebsch–Gordan/6j recoupling, an independent Racah arithmetic comparator, two 2026 spectral dual/kernel methodologies, formal 3D U(1) Wilson area-law techniques, and certified local-Hamiltonian algorithms. The graph now indexes **76 proof and provenance nodes, 22 external candidate sources, 11 explicit OPEN 4D certificate gates and 430 source files**. Every external proof retains its actual model, parameter window and checker status.
+
+The new [YM4-SW01](docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md) is an **exact, positive-measure spectral dual** for physically normalized, connected Wilson moments: at \(0<q<1\), \(n\ge1\), \(\nu((q,1])\ge\max(0,[\underline C_n-q^n\overline C_0]/[1-q^n])\). A prediction-first rational fixture certifies an \(n=2\) HOLD and \(n=4\) PASS with interval errors; it is **a mathematical certificate algorithm, not a measured original 4D Wilson spectrum**. Only an independent eigenvalue-isolation proof can identify an individual first spectral weight. Original 4D connected moments, weak-scale uniformity and the physical continuum mass gap remain **OPEN**.
+
+
+
 ## November 21, 2026 — 4D certificate atlas and connected finite Yang–Mills proof map
 
 **[▶ OPEN THE RENDERED 4D 3D CERTIFICATE ATLAS](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)** · [Alternate renderer](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) · [Atlas guide](docs/certificate-atlas/README.md) · [11 OPEN certificate gates and external search ledger](docs/certificate-atlas/BRIDGE-LEDGER.md) · [Pinned JSON/HBP inventory](docs/certificate-atlas/certificates.json) · [Original finite S₃ 3D atlas](https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html).
