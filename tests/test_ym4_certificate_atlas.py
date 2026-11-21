@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 55, "atlas_expected_nodes")
+    require(len(rows) == 66, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -137,13 +137,18 @@ def hbp_nodes(text):
             require("Finite-universe-Yang-mills" in row["source"],
                     "wrong_group_for_finite_certificate")
         if row["status"] == "CANDIDATE":
-            require("2610.00341v4" in row["source"]
-                    or "2611.00492v1" in row["source"],
+            require(uid.startswith("EXT-"), "external_source_id_required")
+            require("github.com/" in row["source"]
+                    or "arxiv.org/" in row["source"]
+                    or "hexagonmath.org/" in row["source"],
                     "unsupported_external_proof_promotion")
+            if "/blob/" in row["source"]:
+                require("/blob/main/" not in row["source"],
+                        "external_candidate_must_pin_commit")
     require(sum(1 for uid in rows if uid.startswith("YM4-Q")) == 11,
             "open_subgates_missing")
     require(sum(1 for v in rows.values()
-                if v["status"] == "CANDIDATE") == 2,
+                if v["status"] == "CANDIDATE") == 13,
             "external_search_node_mismatch")
     require(rows["YM4-Q10"]["status"] == "OPEN",
             "continuum_gap_must_remain_open")
@@ -156,6 +161,85 @@ def verify_no_runtime_code(page):
     require("javascript:" not in lower, "javascript_scheme_in_atlas")
     require("onload=" not in lower, "runtime_handler_in_atlas")
     require("onerror=" not in lower, "runtime_handler_in_atlas")
+
+
+def quaternion_mul(a, b):
+    w, x, y, z = a
+    bw, bx, by, bz = b
+    return (
+        rsub(rsub(rsub(rmul(w, bw), rmul(x, bx)), rmul(y, by)),
+             rmul(z, bz)),
+        radd(rsub(radd(rmul(w, bx), rmul(x, bw)), rmul(z, by)),
+             rmul(y, bz)),
+        radd(radd(rsub(rmul(w, by), rmul(x, bz)), rmul(y, bw)),
+             rmul(z, bx)),
+        radd(rsub(radd(rmul(w, bz), rmul(x, by)), rmul(y, bx)),
+             rmul(z, bw)),
+    )
+
+
+def quaternion_inverse(a):
+    return a[0], rneg(a[1]), rneg(a[2]), rneg(a[3])
+
+
+def quaternion_equal(a, b):
+    return all(req(x, y) for x, y in zip(a, b))
+
+
+def quaternion_product(items):
+    result = rat(1), rat(0), rat(0), rat(0)
+    for item in items:
+        result = quaternion_mul(result, item)
+    return result
+
+
+def exact_jacobian_su2_fixture():
+    # Reconstruct the source's fixed rational quaternion example, no remote
+    # code executed, and prove Wilson trace algebra on the same inputs.
+    links = (
+        (rat(3, 5), rat(4, 5), rat(0), rat(0)),
+        (rat(5, 13), rat(0), rat(12, 13), rat(0)),
+        (rat(8, 17), rat(0), rat(0), rat(15, 17)),
+        (rat(0), rat(1), rat(0), rat(0)),
+    )
+    gauges = (
+        (rat(4, 5), rat(3, 5), rat(0), rat(0)),
+        (rat(12, 13), rat(0), rat(5, 13), rat(0)),
+        (rat(15, 17), rat(0), rat(0), rat(8, 17)),
+        (rat(0), rat(0), rat(1), rat(0)),
+    )
+    for q in links + gauges:
+        norm = rat(0)
+        for t in q:
+            norm = radd(norm, rmul(t, t))
+        require(req(norm, rat(1)), "nonunit_SU2_quaternion")
+    original = quaternion_product(links)
+    transformed = quaternion_product(tuple(
+        quaternion_mul(quaternion_mul(gauges[i], links[i]),
+                       quaternion_inverse(gauges[(i + 1) % 4]))
+        for i in range(4)))
+    conjugate = quaternion_mul(
+        quaternion_mul(gauges[0], original),
+        quaternion_inverse(gauges[0]))
+    require(quaternion_equal(transformed, conjugate),
+            "finite_SU2_gauge_conjugacy")
+    require(req(original[0], transformed[0]),
+            "Wilson_scalar_conjugacy")
+    # Tr(U)Tr(V) = Tr(UV) + Tr(U V^-1), unnormalized SU2 traces.
+    u, v = links[0], links[1]
+    tr_left = rmul(rmul(rat(2), u[0]), rmul(rat(2), v[0]))
+    tr_right = radd(
+        rmul(rat(2), quaternion_mul(u, v)[0]),
+        rmul(rat(2), quaternion_mul(u, quaternion_inverse(v))[0]),
+    )
+    require(req(tr_left, tr_right), "SU2_single_trace_closure")
+    wrong = quaternion_product((links[0], quaternion_inverse(links[1]),
+                                links[2], links[3]))
+    require(not quaternion_equal(wrong, original),
+            "orientation_negative_control")
+    print("ATLAS4D_SU2|source=JACOBIAN_EXACT_RATIONAL_FIXTURE"
+          "|gauge_conjugacy=PASS|quaternion_and_traces=PASS"
+          "|SU2_loop_identity=PASS|Haar_integral=NOT_CLAIMED|json=0")
 
 
 def atlas_provenance():
@@ -171,7 +255,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 55,
+    require(page.count('<article class="entry" id="') == 66,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -224,16 +308,17 @@ def atlas_provenance():
         except ValueError:
             failures += 1
     require(failures == 4, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=55|open_gates=11|external_leads=2"
+    print("ATLAS4D_INDEX|nodes=66|open_gates=11|external_leads=13"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=55|json=0")
+          "|script_free=YES|source_cards=66|json=0")
     print("ATLAS4D_ADVERSARIES|negative_controls=4_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
 def main():
     external_one_cube_exact_rational()
+    exact_jacobian_su2_fixture()
     atlas_provenance()
     print("ATLAS4D_VERDICT|source_ledger=PASS|external_exact_constants=PASS"
           "|3D_graph=PASS|open_dependencies=VISIBLE"
