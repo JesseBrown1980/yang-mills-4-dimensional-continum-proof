@@ -1,0 +1,75 @@
+name: YM4 WG06 exact original SU2 magnetic 42-Gram and positive Wilson moments
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wilson_first_magnetic_42gram.py'
+      - 'tests/test_ym4_su2_wilson_first_magnetic_42gram.py'
+      - 'docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp'
+      - '.github/workflows/ym4-wg06-magnetic-42gram.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wilson_first_magnetic_42gram.py'
+      - 'tests/test_ym4_su2_wilson_first_magnetic_42gram.py'
+      - 'docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp'
+      - '.github/workflows/ym4-wg06-magnetic-42gram.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-SU2-magnetic-Haar-42-Gram:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify prediction frozen before producer and tests
+        run: |
+          set -euo pipefail
+          PIN=92f66c0decd53fcc78d532ec36abb1781af5cb78
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_SOURCE_AND_INDEPENDENT_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_wilson_first_magnetic_42gram.py" 2>/dev/null; then
+            echo "WG06 producer preceded prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_wilson_first_magnetic_42gram.py" 2>/dev/null; then
+            echo "WG06 independent verifier preceded prediction" >&2
+            exit 1
+          fi
+      - name: Full repository source no-float audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent exact SU2 Haar and physical Wilson moment tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_wilson_first_magnetic_42gram.py -v
+      - name: Deterministic original SU2 magnetic 42x42 Gram HBP
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg06
+          python3 -B tests/ym4_su2_wilson_first_magnetic_42gram.py > build/ym4-wg06/FIRST.hbp
+          python3 -B tests/ym4_su2_wilson_first_magnetic_42gram.py > build/ym4-wg06/REPLAY.hbp
+          cmp build/ym4-wg06/FIRST.hbp build/ym4-wg06/REPLAY.hbp
+          grep -Fq 'exact_each_nonzero_Mij=1/8' build/ym4-wg06/FIRST.hbp
+          grep -Fq 'components_K4_2=6|isolated_vertices=6' build/ym4-wg06/FIRST.hbp
+          grep -Fq 'first_magnetic_order_top6_cluster_weight=1/32' build/ym4-wg06/FIRST.hbp
+          grep -Fq 'original_normalized_Wilson_C2_C4_lower=POSITIVE' build/ym4-wg06/FIRST.hbp
+          grep -Fq 'true_interacting_top6_Feshbach_projector=OPEN' build/ym4-wg06/FIRST.hbp
+          grep -Fq 'continuum_mass_gap=OPEN' build/ym4-wg06/FIRST.hbp
+          sha256sum build/ym4-wg06/FIRST.hbp > build/ym4-wg06/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg06/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG06-original-SU2-first-magnetic-42gram
+          path: build/ym4-wg06/
+          retention-days: 90
+          if-no-files-found: warn
