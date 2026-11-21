@@ -147,7 +147,7 @@ This is the orthogonal conditional-expectation projector onto functions of the r
 =\mathbb E_\mu[\operatorname{Var}(W_p\mid U_{\ne\ell})]
 >\frac1{2^{18}(1+6\beta)^2}.}
 \]
-Thus exact elimination of one link necessarily removes a nonzero \(L^2\) component of its plaquette source at every finite \(\beta\), even if all 15 induced staple-pair interactions are retained in the effective weight. This is a **measured mathematical source-defect floor** for one-link conditional projection; the projection is onto a link-variable sigma algebra, not onto a physical Hamiltonian energy window. It does not furnish either of the \(\delta,\epsilon\) *upper* bounds in YM4-07C, and it is not a lower bound on the error of every possible enriched RG map.
+Thus exact elimination of one link necessarily removes a nonzero \(L^2\) component of its plaquette source at every finite \(\beta\), even if all 15 induced staple-pair interactions are retained in the effective weight. This is a **rigorously derived source-defect floor** for one-link conditional projection; the projection is onto a link-variable sigma algebra, not onto a physical Hamiltonian energy window. It does not furnish either of the \(\delta,\epsilon\) *upper* bounds in YM4-07C, and it is not a lower bound on the error of every possible enriched RG map.
 
 ## 7. Research handoff: where the physical projector must enter
 
