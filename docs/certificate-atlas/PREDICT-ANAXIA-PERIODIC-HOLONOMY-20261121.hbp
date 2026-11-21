@@ -1,0 +1,10 @@
+YM4-ANAXIA-FOREST|date=2026-11-21|phase=FROZEN_BEFORE_INDEPENDENT_CHECKER|source_repo=anaxia-research/4Y-M|source_sha=df315270aafd456068783359cf0d07e6f3d76de8|proof_scope=LOCAL_PARITY_COUNTS_ONLY|json=0
+YM4-ANAXIA-FOREST|table=0,0,2,3,3,1,2,1,1,2,1,3,3,2,0,0|sites=16|directions=4|plaquette_checks=96|fixed_links=16|unfixed_links=48|json=0
+YM4-ANAXIA-FOREST|all_plaquettes_have_one_fixed_link=PASS|all_unfixed_links_have_twelve_partners=PASS|two_opposite_fixed_plaquettes_per_unfixed_link=PASS|straight_line_fixed_edges=PASS|json=0
+YM4-ANAXIA-FOREST|periodic_even_L=2|example_start=0|example_direction=0|next_site=1|fixed_both_edges=YES|cycle_length=2|json=0
+YM4-ANAXIA-FOREST|unit_quaternion_q=3/5,4/5,0,0|q_square=-7/25,24/25,0,0|q_square_equal_identity=NO|simultaneous_gauge_fix_identity=REJECT|json=0
+YM4-ANAXIA-FOREST|periodic_odd_L=3|parity_pattern_well_defined_on_quotient=NO|boundary_condition=REJECT|json=0
+YM4-ANAXIA-FOREST|beta_anaxia=1/100|beta_JB=1/25|source_trace_coefficient_Anaxia=1/50|source_trace_coefficient_JB=1/50|adapter=beta_JB_4_beta_Anaxia|json=0
+YM4-ANAXIA-FOREST|raw_local_bound=12_beta_Anaxia=3_beta_JB|strengthened_periodic_mass_gap=NOT_DERIVED|metric_adapter=OPEN|json=0
+YM4-ANAXIA-FOREST|analytic_contact_variance=UNFORMALIZED|single_cube_bridge=CONDITIONAL|tuned_weak_cube_input=OPEN|physical_gap=OPEN|json=0
+YM4-ANAXIA-FOREST|negative_controls=4|continuum_mass_gap=OPEN|json=0
