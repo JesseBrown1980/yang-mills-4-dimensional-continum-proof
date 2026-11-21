@@ -101,7 +101,7 @@ Exact monotonicity gives d<=d_max, e<=e_max, D<=D_max and C₀^up<=C₀^max over
 
     H_max=1/[256(1−Y)^4]−1/576.
 
-The exact comparison, independently checked with native Python integer Fractions rather than the producer's R class, gives
+The exact comparison, independently checked with a separate exact integer numerator/denominator kernel rather than the producer's R class, gives
 
     N_min>0, H_max>0, N_min/H_max>1/5.
 
@@ -124,7 +124,7 @@ This is a **positive individual Wilson-visible physical excitation existence cer
 
 ## 5. Independent reproduction and next Feshbach problem
 
-[Prediction freeze](certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp) predates the producer and independent tests. The verifier independently reconstructs the uniform exact rational inequality with Python Fraction, checks true-vacuum L² and source centering, compares the accepted parent WV01 actual vacuum C₀ interval, confirms WG03's charged-first zero source weight, challenges parameter substitutions, and uses a separate 44-dimensional exact diagonal spectral fixture.
+[Prediction freeze](certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp) predates the producer and independent tests. The verifier independently reconstructs the uniform exact rational inequality with its own integer numerator/denominator operations, checks true-vacuum L² and source centering, compares the accepted parent WV01 actual vacuum C₀ interval, confirms WG03's charged-first zero source weight, challenges parameter substitutions, and uses a separate 44-dimensional exact diagonal spectral fixture.
 
     python3 -B tests/test_ym4_su2_wilson_42band_positive_weight.py -v
     python3 -B tests/ym4_su2_wilson_42band_positive_weight.py
