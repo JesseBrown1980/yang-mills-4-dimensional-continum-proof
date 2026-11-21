@@ -1,0 +1,6 @@
+YM4_WG09_HAAR|continuous_SU2_link_fourth_moments=EXACT|chi_W2_chi_fixture=1/2|source_G42=42|json=0
+YM4_WG09_SECOND|projected_V2_diagonal=445/64|offdiagonal=1|vacuum_rankone=1/2_J6|Schur_beta2=381/128_I6|json=0
+YM4_WG09_TAIL|leading_two_link_spinone_neutral=12|E_to_spinone_V=ZERO_BY_SELECTION|higher_tail_relative=O_beta2|json=0
+YM4_WG09_THIRD|V3_PD_plus_DP_diagonal=40|offdiagonal=6|H2_internal_mixing_opposite=1/32_sqrt2|other=1/64_sqrt2|json=0
+YM4_WG09_THIRD_SPLIT|matrix=sqrt2_(36499/49152_I+1/32_O+1/64_X)|symmetric_minus_even=3sqrt2/32|symmetric_minus_odd=sqrt2/8|json=0
+YM4_WG09_VERDICT|third_order_signs=POSITIVE|full_finite_beta_order_remainder=OPEN|continuum_mass_gap=OPEN|json=0
