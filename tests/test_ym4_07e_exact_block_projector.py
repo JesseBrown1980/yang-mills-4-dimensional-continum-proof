@@ -115,6 +115,18 @@ def physical_toy():
     need([fine_Q[i] for i in image] == coarse_Q,
          "physical_energy_projector_intertwining")
     need(numer[1] > numer[2], "dark_first_state")
+    # A different physical energy band catches only the lower dark state.
+    # Ratios [2/3,4/5] correspond to physical energies
+    # [log(5/4)/a,log(3/2)/a] without evaluating any logarithm.
+    dark_window = [3 * n >= 2 * 4 and 5 * n <= 4 * 4 for n in numer]
+    need(dark_window == [False, True, False], "dark_energy_band")
+    need([dark_window[i] for i in image] == [False, False],
+         "dark_component_orthogonal_to_cyclic_subspace")
+    # The unmatched difference is a nonzero orthogonal projector,
+    # hence its operator norm equals exactly one.
+    print("YM4_07E_DARK_PROJECTOR|difference=RANK_ONE_PROJECTOR"
+          "|whole_space_operator_norm=1|cyclic_restricted_norm=0"
+          "|dark_band_full_gap_gate=OPEN|json=0")
     print("YM4_07E_SPECTRUM|fine=DIAG_1_3over4_1over2"
           "|coarse=DIAG_1_1over4|projectors=INTERTWINED"
           "|matched_delta=0|cyclic_epsilon=0"
