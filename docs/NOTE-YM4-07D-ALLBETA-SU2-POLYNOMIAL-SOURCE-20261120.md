@@ -135,7 +135,21 @@ The polynomial bound, as rational numbers, reads:
 
 The [integer-only independent control](../tests/test_ym4_07d_su2_allbeta_source.py) checks the cap-bound constants, two- and four-degree Haar moments using the 24 exact binary-tetrahedral quaternions as a *finite exact design control*, all 15 pair interactions, the distinct nonplaquette endpoint configurations, the rational benchmarks, and ten false claims. The continuous Haar integral and all-real-\(\beta\) inequalities are proven analytically above; finite design tests corroborate moments, rather than replacing the continuous measure.
 
-## 6. Research handoff: where the projector must enter
+## 6. Exact one-link Euclidean conditional-projection residual
+
+There is also an **actual orthogonal projector** available at this local step, though it is **not the physical-energy spectral projector**. In the genuine finite-lattice Gibbs Hilbert space \(L^2(\mu_{\Lambda,\beta})\), let
+\[
+P_\ell f=\mathbb E_{\mu_{\Lambda,\beta}}[f\mid\text{all links except }\ell].
+\]
+This is the orthogonal conditional-expectation projector onto functions of the retained links. For \(\ell\) one of the four links of \(p\), the exact conditional-variance identity and section 3 give
+\[
+\boxed{\|(I-P_\ell)W_p\|_{L^2(\mu)}^2
+=\mathbb E_\mu[\operatorname{Var}(W_p\mid U_{\ne\ell})]
+>\frac1{2^{18}(1+6\beta)^2}.}
+\]
+Thus exact elimination of one link necessarily removes a nonzero \(L^2\) component of its plaquette source at every finite \(\beta\), even if all 15 induced staple-pair interactions are retained in the effective weight. This is a **measured mathematical source-defect floor** for one-link conditional projection; the projection is onto a link-variable sigma algebra, not onto a physical Hamiltonian energy window. It does not furnish either of the \(\delta,\epsilon\) *upper* bounds in YM4-07C, and it is not a lower bound on the error of every possible enriched RG map.
+
+## 7. Research handoff: where the physical projector must enter
 
 The following is now available: a genuine SU(2) finite-lattice source floor with volume-independent explicit polynomial dependence on \(\beta\), plus exact retention of nonplaquette interactions at the one-link level.
 
