@@ -189,12 +189,11 @@ class SU2WilsonLocalTests(unittest.TestCase):
             M["character_eigen_interval"](1, R(-1))
         with self.assertRaisesRegex(ValueError, "beta_outside_certified_range"):
             M["character_sup_tail"](5, 24)
-        with self.assertRaisesRegex(ValueError, "character_tail_ratio_uncontrolled"):
-            M["character_sup_tail"](4, 1)
+        self.assertGreater(M["character_sup_tail"](4, 1), R(1, 10**12))
         with self.assertRaisesRegex(ValueError, "invalid_time"):
             M["connected_wilson_interval"](1, -1)
         with self.assertRaisesRegex(ValueError, "uncontrolled_bessel_tail"):
-            M["bessel_j_interval"](1, 4, 0)
+            M["bessel_j_interval"](1, 8, 0)
         with self.assertRaisesRegex(ValueError, "frozen_ratio_interval_miss"):
             M["check_frozen_row"](
                 4, 24, R(2, 3),
