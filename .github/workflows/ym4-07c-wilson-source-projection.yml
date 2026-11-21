@@ -43,7 +43,7 @@ jobs:
             build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
           grep -Fq '|uniform_gap_from_first_weight=REJECTED|' \
             build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
-          grep -Fq '|count=8|' build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
+          grep -Fq '|count=9|' build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
           grep -Fq '|weak_coupling_all_scale_RG=OPEN|' \
             build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
           grep -Fq '|physical_full_spectrum_mass_gap=OPEN|' \
