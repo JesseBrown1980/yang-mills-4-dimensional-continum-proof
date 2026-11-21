@@ -91,10 +91,10 @@ def geometry(candidate_plaquettes=None):
             spatial += 1
     require(spatial == 240 and timelike == 240,
             "missing_spatial_or_timelike_plaquettes")
-    require(all(v == 6 for v in incidences.values()),
-            "link_six_staple_incidence_failure")
     require(len(set(masks)) == PLAQUETTE_COUNT,
             "duplicate_plaquette_support")
+    require(all(v == 6 for v in incidences.values()),
+            "link_six_staple_incidence_failure")
     return pls, tuple(masks)
 
 
