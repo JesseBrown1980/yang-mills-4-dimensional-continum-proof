@@ -1,5 +1,20 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Original physical 4D Wilson fixed-lattice vacuum C0/C2/C4
+
+**[YM4-WV01 exact physical transfer/trace theorem](docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md)** · [Frozen prediction](docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp) · [Hosted exact rational vacuum receipt](docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp) · [SHA-pinned acceptance](docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp) · [Independent hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44919760722).
+
+The **complete original continuous-SU(2) four-dimensional Wilson finite-lattice positive transfer** now has explicit fixed-lattice *physical vacuum* source bounds. YM4-WV01 combines the merged original 480-plaquette WC01 connected finite-periodic correlators with the physical Gauss projector, all **24 spatial magnetic plaquettes**, the **24 spatial-link Wilson temporal convolution factors**, and the existing YM4-02c/02d spectral theorem. A new exact SU(2) character Hilbert–Schmidt trace bound controls **every excited physical mode**, permitting a rigorous finite-T=10 to infinite-time **fixed spatial lattice** transfer trace limit.
+
+At β=1/10000 the certified correction to the t=4 connected correlator is **strictly below 10⁻¹²**; at β=1/100000 it is **strictly below 10⁻¹⁷**. Hence, for the original **infinite-time fixed-spatial-lattice vacuum** Wilson source, the verified rational intervals are:
+
+| Wilson β | Vacuum C0 | Vacuum C2 and C4 |
+|---|---|---|
+| 1/10000 | [0.249975797146, 0.250024202448] | each in [0, 0.000019363801] |
+| 1/100000 | [0.249999976845, 0.250000023155] | each in [0, 0.000000018521] |
+
+These are outward-rounded, exact-rational enclosures from the complete physical gauge-projected Wilson transfer with all spatial magnetic interactions. The positive vacuum spectral measure supplies the lower bounds zero for C2/C4; the new trace bound transfers the original periodic Wilson source to vacuum. **The first excited Wilson spectral weight, useful-coupling/high-volume relative precision, weak-coupling continuum trajectory and continuum mass gap remain OPEN.** The eleven certificate-atlas continuum obligations retain their original target scope. A first-state projector/Gram comparison is the next physical Wilson source gate.
+
 ## November 21, 2026 — Original full 4D Wilson periodic-cylinder C0/C2/C4 certificates
 
 **[YM4-WC01 full-action mathematical note](docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md)** · [Prediction frozen before implementation](docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp) · [Exact hosted HBP receipt](docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp) · [SHA and acceptance record](docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp) · [Hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44918913104).
@@ -8,7 +23,7 @@ The **original continuous-SU(2), four-dimensional Wilson plaquette measure** is 
 
 The hosted transcript reports strict outward rational intervals for the original finite-periodic **C_T(0), C_T(2), C_T(4)**: at β=1/10000, **0.249975797146 ≤ C_T(0) ≤ 0.250024202448** and **|C_T(2)|, |C_T(4)| ≤ 0.000019363801**; at β=1/100000, the corresponding C_T(0) interval is **[0.249999976845,0.250000023155]** and the absolute time-separated bound is **0.000000018521**. These are strict fixed-volume/fixed-period certified intervals with the genuine interacting spatial magnetic and time-like Wilson factors.
 
-**Certificate boundary:** the time direction here is **periodic of length 10**, so these are finite-T Euclidean connected observables, distinguished from infinite-time physical-vacuum moments C_n=<Omega,W T^n W Omega> and the complete 4D gauge-projected transfer spectrum. Those spectral reconstruction, continuum and mass-gap gates remain **OPEN**; all eleven certificate-atlas continuum obligations retain their status. The next proof task is a source-authenticated transfer-trace-to-vacuum bound or an independent full gauge-projected transfer calculation that closes this finite-T-to-vacuum distinction.
+**Certificate boundary:** the time direction here is **periodic of length 10**, so these are finite-T Euclidean connected observables, distinguished from infinite-time physical-vacuum moments C_n=<Omega,W T^n W Omega> and the complete 4D gauge-projected transfer spectrum. Those spectral reconstruction, continuum and mass-gap gates remain **OPEN**; all eleven certificate-atlas continuum obligations retain their status. The follow-on YM4-WV01 certificate above has now bounded this finite-T-to-vacuum difference at the stated small beta and spatial size, with the full physical Gauss-projected transfer. Larger couplings, larger volumes and source-resolved spectral weights remain the next gates.
 
 ## November 21, 2026 — Exact continuous-SU(2) Wilson local transfer and certified moments
 
@@ -16,7 +31,7 @@ The hosted transcript reports strict outward rational intervals for the original
 
 The original **continuous SU(2)** Wilson plaquette weight yields an exact one-spatial-link Haar-convolution transfer, with physical conjugation-Gauss projection in this one-link geometry. Its normalized character eigenvalues are \(I_{r+1}(\beta)/I_1(\beta)\). The normalized fundamental Wilson moments follow \(C_n=(I_2(\beta)/I_1(\beta))^n/4\), and exact integer-rational enclosures for \(C_0,C_2,C_4\) have passed at genuine Wilson couplings \(\beta=1,4\). Uniform pointwise character tails are below \(10^{-12}\) at cutoffs 12 and 24. An independent Chebyshev/Catalan Haar check and the existing genuine 4D **six aligned staples** local factor agree at local \(\beta=1/6,2/3\). All outputs are SHA-frozen, with an explicit error bound.
 
-**Acceptance scope:** single-link Wilson-action transfer and conditional 4D local Haar calculations. The *full interacting 3+1D* physical Gauss-projected Wilson transfer, its original \(C_0,C_2,C_4\), uniform continuum mass gap and Clay objective remain **OPEN**. This is a useful exact Q02/Q03/Q04 source-normalization benchmark, not a replacement for the pending 4D network source.
+**Acceptance scope:** single-link Wilson-action transfer and conditional 4D local Haar calculations. For the original *full interacting 3+1D* physical Gauss-projected Wilson transfer, the later WC01/WV01 certificates now bound fixed-spatial-lattice vacuum \(C_0,C_2,C_4\) at two very small beta. First-state isolation, useful higher-coupling/volume bounds, continuum mass gap and Clay objective remain **OPEN**. This is a useful exact Q02/Q03/Q04 source-normalization benchmark, not a replacement for the pending 4D network source.
 
 ## November 21, 2026 — Certificate search round two: exact SU(2) recoupling and Wilson spectral dual
 
@@ -24,7 +39,7 @@ The original **continuous SU(2)** Wilson plaquette weight yields an exact one-sp
 
 A second source audit adds nine specifically matched candidate proof artifacts: Lean strong-coupling U(n) plaquette decay, abstract RG scale transfer, machine-checked normalized Wilson area laws, exact Rust SU(2) Clebsch–Gordan/6j recoupling, an independent Racah arithmetic comparator, two 2026 spectral dual/kernel methodologies, formal 3D U(1) Wilson area-law techniques, and certified local-Hamiltonian algorithms. The graph now indexes **76 proof and provenance nodes, 22 external candidate sources, 11 explicit OPEN 4D certificate gates and 430 source files**. Every external proof retains its actual model, parameter window and checker status.
 
-The new [YM4-SW01](docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md) is an **exact, positive-measure spectral dual** for physically normalized, connected Wilson moments: at \(0<q<1\), \(n\ge1\), \(\nu((q,1])\ge\max(0,[\underline C_n-q^n\overline C_0]/[1-q^n])\). A prediction-first rational fixture certifies an \(n=2\) HOLD and \(n=4\) PASS with interval errors; it is **a mathematical certificate algorithm, not a measured original 4D Wilson spectrum**. Only an independent eigenvalue-isolation proof can identify an individual first spectral weight. Original 4D connected moments, weak-scale uniformity and the physical continuum mass gap remain **OPEN**.
+The new [YM4-SW01](docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md) is an **exact, positive-measure spectral dual** for physically normalized, connected Wilson moments: at \(0<q<1\), \(n\ge1\), \(\nu((q,1])\ge\max(0,[\underline C_n-q^n\overline C_0]/[1-q^n])\). A prediction-first rational fixture certifies an \(n=2\) HOLD and \(n=4\) PASS with interval errors; it is **a mathematical certificate algorithm, not a measured original 4D Wilson spectrum**. Only an independent eigenvalue-isolation proof can identify an individual first spectral weight. The later WC01/WV01 fixed-small-beta original 4D source and vacuum moment bounds are now internally accepted; their first-level spectral isolation, usable higher-coupling/volume precision, weak-scale uniformity and the continuum mass gap remain **OPEN**.
 
 
 
