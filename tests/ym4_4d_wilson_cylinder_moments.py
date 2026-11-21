@@ -65,9 +65,9 @@ def verify_closed_word(word):
     return True
 
 
-def geometry():
+def geometry(candidate_plaquettes=None):
     links = positive_links()
-    pls = plaquettes()
+    pls = plaquettes() if candidate_plaquettes is None else tuple(candidate_plaquettes)
     require(len(sites()) == SITE_COUNT and len(links) == LINK_COUNT,
             "source_site_link_count_mismatch")
     require(len(pls) == PLAQUETTE_COUNT, "source_plaquette_count_mismatch")
