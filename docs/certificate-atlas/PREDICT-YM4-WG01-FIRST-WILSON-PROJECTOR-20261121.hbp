@@ -1,0 +1,12 @@
+PREDICTION|id=YM4-WG01|date=2026-11-21|phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS|source=YM4_WV01_ORIGINAL_4D_PHYSICAL_VACUUM|json=0
+SPECTRAL|L=2|continuous_SU2=YES|beta=1/10000,1/100000|excited_eigenratio_upper=q=24beta|C0_C2_C4=POSITIVE_MEASURE|json=0
+GRAM|G_even=rows_C0_C2_and_C2_C4|determinant_C0C4_minus_C2sq_ge0|C4_le_q2_C2|C2_le_q2_C0|C4_le_q4_C0|json=0
+CERTIFIED|beta=1/10000|q=3/1250|C2_upper_scaled_1e18=1440139406101|C4_upper_scaled_1e24=8295202979139|json=0
+CERTIFIED|beta=1/100000|q=3/12500|C2_upper_scaled_1e18=14400001334|C4_upper_scaled_1e24=829440077|json=0
+POSITIVITY|original_Wilson_C0_lower_gt0=PASS|positive_injective_transfer=YES|original_C2_gt0_analytically=YES|original_C4_gt0_analytically=YES|explicit_rational_positive_lower=OPEN|json=0
+FIRST_STATE_GATE|source_first_excitation_weight=HOLD|rank_one_physical_eigenprojector=ABSENT|rest_spectrum_isolation=ABSENT|C2_positive_numerical_lower=ABSENT|json=0
+COUNTEREXAMPLE|spectrum_over_q=3/4,1/2,1/3,1/4|measure_A_weights=0,1/12,1/12,1/12|measure_B_weights=21/4000,1/12_minus_182/4000,1/12_plus_486/4000,1/12_minus_325/4000|json=0
+COUNTEREXAMPLE|moments_n0_n2_n4_A_equal_B=EXACT|first_eigenvalue_weight_A=0|first_eigenvalue_weight_B=21/4000|both_respect_4D_WV01_upper_enclosures=YES|json=0
+ISOLATION_FIXTURE|spectrum_over_q=3/4,1/4|weights=1/8,1/8|rest_limit_over_q=1/2|C2_C0_dual_first_weight_lower=1/20|json=0
+FALSIFIERS|nonpositive_source=REJECT|unordered_spectral_isolation=REJECT|first_state_from_moments_only=REJECT|wrong_q=REJECT|counterexample_distinct_moments=REJECT|json=0
+SCOPE|original_4D_physical_C2_C4_upper=IMPROVED|first_excited_Wilson_weight=HOLD|original_4D_Gauss_source=UNCHANGED|continuum_mass_gap=OPEN|json=0
