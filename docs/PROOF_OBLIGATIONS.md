@@ -1,5 +1,15 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 21: YM4-07G — first certified original 4D SU(2) transfer trace and positive-beta Wilson Gram
+
+On the **original** 4D continuous-SU(2) Wilson lattice at spatial \(6^3\) and time length four, \(N_\ell=N_s=648\) and there are **5,184 total plaquettes**. With normalized Haar and physical transfer \(T=A^{1/2}BA^{1/2}\) on the gauge-invariant Hilbert space, \(Z_{\Lambda,4}=\operatorname{Tr}(T^4P)\le1\) and the constant-trial Jensen bound \(\lambda_0(T)\ge e^{-6\beta V}\) hold. At \(\beta V=1/2000\), \(L=997/1000<\lambda_0\) and the exact fourth-moment residual upper bound \(1-L^4\) is strictly smaller than \((L/3)^4\) by **10209575321/40500000000000**. Therefore the genuine **full finite-volume** gauge-invariant spectral ratio satisfies \(\lambda_1/\lambda_0<1/3\). This is a **very-strong-coupling**, volume-dependent calibration and is weaker than the earlier YM4-02d positive-kernel contraction bound at that coupling.
+
+A fine 2×2 spatial Wilson loop, matched through the exact factor-two block, has eight exclusive Haar links, mean zero and squared Haar norm \(1/4\). At \(\beta=0\), the physical transfer is rank-one and the exact two-witness Gram/moment residual is **zero**. For \(\beta>0\), Perron positivity and the kernel range show the **true vacuum-centered** Wilson-source Gram determinant \(\det G_\beta\ge e^{-24\beta V}/4\); at \(\beta V=1/2000\), \(\det G_\beta>247/1000\). **Post-freeze YM4-07G2:** the genuine one-link SU(2) Peter–Weyl fundamental eigenvalue and a quantitative Perron-source overlap now give a strict rational lower bound on the original 4D Wilson fourth-moment Schur decrement, \(d_4>1997^4/(12500^4\,1728000^{32})\) at \(\beta=1/432000\). The *exact value* of the positive-beta moment and the weak-coupling useful bound remain **OPEN**; see the [analytic follow-up](NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md) and [second frozen prediction](PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp).
+
+[Mathematical proof and clean scope](NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md) · [prediction](PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp) · [integer checker](../tests/test_ym4_07g_original4d_transfer.py). **Next target:** a certified rigorous upper envelope for the original 4D \(\operatorname{Tr}(T^{2m}P)\) and matching vacuum-source Gram moments as \(\beta(a)\to\infty\), stable in volume and physical energy units; the all-scale RG and nontrivial continuum OS mass gap remain **OPEN**.
+
+
+
 ## November 21: YM4-07F — full-spectrum dark trace budget from Wilson Gram moments
 
 For the **positive trace-class continuous-SU(2) physical transfer at fixed spatial volume**, YM4-07E supplies a reducing coarse spatial-slice cyclic subspace \(\mathcal K\). If \(E\subseteq\mathcal K\) is the span of independent Wilson-network witnesses (including vacuum) with Gram \(G\) and \(2m\)-step transfer moment matrix \(M\), then the exact **full-dark-sector norm** obeys

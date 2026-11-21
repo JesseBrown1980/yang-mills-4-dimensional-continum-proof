@@ -1,0 +1,16 @@
+YM4_07G_PREDICTION|date=2026-11-21|phase=BEFORE_NEW_CHECKER|group=GENUINE_CONTINUOUS_SU2|space=FOUR_DIMENSIONAL_PERIODIC_WILSON|json=0
+YM4_07G_GEOMETRY|spatial_side=6|spatial_volume=216|time_slices=4|spatial_links_per_slice=648|spatial_plaquettes_per_slice=648|timelike_plaquettes_per_slice=648|all_plaquettes=5184|json=0
+YM4_07G_TRANSFER|weight=EXP_MINUS_BETA_TIMES_1_MINUS_HALF_TRACE|T=A_HALF_B_A_HALF|gauge_projector=P|Tr_T4P_le=1|Tr_T_le=1|json=0
+YM4_07G_PERRON|lambda0_ge=EXP_MINUS_6_BETA_V|beta_num=1|beta_den=432000|rational_L=997_OVER_1000|json=0
+YM4_07G_BUDGET|moment_power=4|trace_upper=1|vacuum_moment_lower=L_POWER_4|R_upper=1_MINUS_L_POWER_4|json=0
+YM4_07G_GATE|q=1_OVER_3|status=PASS|exact_margin=10209575321_OVER_40500000000000|json=0
+YM4_07G_PHYSICAL_GAP|finite_volume=YES|lower_strict=LOG_3_PER_a|beta_scales=1_OVER_2000V|json=0
+YM4_07G_COUNTER|betaV=1_OVER_1000|q=1_OVER_3|gate=HOLD|json=0
+YM4_07G_COUNTER|betaV=1_OVER_2000|q=1_OVER_4|gate=HOLD|json=0
+YM4_07G_COUNTER|betaV=1_OVER_2000|wrong_Jensen_coefficient=12|q=1_OVER_3|gate=HOLD|json=0
+YM4_07G_WILSON|F=FINE_SPATIAL_TWO_BY_TWO_RECTANGLE|fine_edges=8|Haar_mean=0|Haar_second=1_OVER_4|json=0
+YM4_07G_WITNESS|v0=PHYSICAL_PERRON_VACUUM|v1=F_TIMES_VACUUM|in_block_cyclic_K=YES|json=0
+YM4_07G_GRAM|positive_beta_G_det_gt=247_OVER_1000|source_centre=VACUUM_EXPECTATION|json=0
+YM4_07G_BETA_ZERO|T=RANK_ONE_CONSTANT|G00=1|G01=0|G11=1_OVER_4|M4_00=1|M4_01=0|M4_11=0|trace_residual=0|json=0
+YM4_07G_SOURCE_JUMP|beta_positive=STRICT_REDUCTION|numeric_jumped_moment=OPEN|json=0
+YM4_07G_SCOPE|finite_volume_strong_coupling=THEOREM_TARGET|4D_original_transfer=YES|weak_coupling_running_to_infinity=OPEN|volume_uniform=OPEN|continuum_OS=OPEN|continuum_gap=OPEN|json=0

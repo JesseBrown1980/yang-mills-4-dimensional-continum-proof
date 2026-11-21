@@ -1,5 +1,15 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — YM4-07G: original four-dimensional Wilson transfer-trace and blocked-source Gram certificate
+
+The next [genuine SU(2) original-transfer proof](docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md) uses the actual spatial 6³ Wilson transfer \(T=A^{1/2}BA^{1/2}\) and gauge projector \(P\), with four Euclidean time slices, **5,184 four-dimensional plaquettes**, and normalized *continuous* SU(2) Haar measure. Analytic transfer identities yield \(\operatorname{Tr}(T^4P)\le1\) and \(\lambda_0(T)\ge e^{-6\beta V}\). At \(V=216\), \(\beta=1/(2000V)=1/432000\), a positive rational margin \(10209575321/40500000000000\) proves the **full finite-volume gauge-invariant** ratio \(\lambda_1/\lambda_0<1/3\), i.e. a physical gap \(>\log(3)/a\). This is a very-strong-coupling **trace-method calibration**; the already accepted YM4-02d contraction result is stronger on fixed lattices.
+
+The matched fine 2×2 spatial Wilson rectangle has eight independent links and Haar variance \(1/4\). At \(\beta=0\), its genuine-SU(2) Wilson-source Gram matrix is \(\operatorname{diag}(1,1/4)\) and fourth transfer moment \(\operatorname{diag}(1,0)\), giving zero exact residual. At the stated **positive** coupling, a pointwise Perron-eigenfunction bound proves the **actual cyclic Wilson-source Gram determinant \(>247/1000\)**. **Post-freeze YM4-07G2:** the [exact SU(2) character-projection calculation](docs/NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md) now supplies an explicit positive-beta lower bound on the actual fourth-moment Schur decrement: \(d_4>1997^4/(12500^4\,1728000^{32})\). The full numerical moment and large-coupling envelope remain open. [Second frozen prediction](docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp) · [second hosted checker](tests/test_ym4_07g2_positive_beta_wilson_moment.py).
+
+[Prediction-first frozen HBP](docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp) · [exact integer checker](tests/test_ym4_07g_original4d_transfer.py) · [hosted workflow](.github/workflows/ym4-07g-original4d-transfer.yml). **Status:** analytical finite-volume, volume-dependent strong-coupling results **DERIVED**, hosted/independent review **PENDING**. Actual large-\(\beta\) four-dimensional transfer moments, running-coupling all-scale estimates, nontrivial continuum OS construction and full physical continuum gap remain **OPEN**.
+
+
+
 ## November 21, 2026 — YM4-07F: small-Gram dark-sector trace certificate and continuous SU(2) calibration
 
 The next [exact matrix-free spectral certificate](docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md) converts control of all fine physical states **outside** the matched Wilson-network cyclic sector into a **positive transfer-trace budget**, without constructing a basis for those unseen states. For a positive trace-class physical transfer \(A=T/\lambda_0\), witness vectors \(v_i\) inside the cyclic sector, Gram \(G_{ij}=\langle v_i,v_j\rangle\) and moments \(M_{ij}^{(2m)}=\langle v_i,A^{2m}v_j\rangle\), the certified inequality is
