@@ -50,7 +50,7 @@ jobs:
       - name: Independent Chebyshev and Haar monomial verification
         run: |
           set -euo pipefail
-          python3 -I -B tests/test_ym4_su2_wilson_local_transfer.py -v
+          python3 -B tests/test_ym4_su2_wilson_local_transfer.py -v
       - name: Exact production local transfer receipt and replay
         run: |
           set -euo pipefail
