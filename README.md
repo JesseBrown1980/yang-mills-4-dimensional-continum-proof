@@ -1,5 +1,13 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 20, 2026 — YM4-07C: exact finite-Wilson source-to-continuous-SU(2) transfer gate
+
+The companion [finite S₃ original Wilson certificate, PR #350](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/pull/350), is independently accepted **for its specified finite model**: original first-to-second Wilson squared weight is strictly greater than **17,074,763/10¹²**. In 4D, [YM4-07C](docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md) proves an exact conditional source/projection transport lemma: an explicitly supplied W-compatible isometry, true continuous-SU(2) gauge-invariant Wilson source, and physical-energy spectral projector preserve a nonzero visible weight whenever their combined certified amplitude error is below **4,132,162,024/10¹²**. A new integer checker verifies the bound, factor-three summable-error accounting, and two rational transfer counterexamples that distinguish Wilson visibility from the **full physical mass gap**. Nine deceptive inputs—including an all-PASS status-only record—are rejected by the fail-closed verifier.
+
+The actual finite S₃→continuous-SU(2) map, weak-coupling source/projector errors, uniform physical full-spectrum gap and nontrivial 4D Osterwalder–Schrader construction remain **OPEN**. A new genuine SU2 weak-coupling one-step source/projection comparison, retaining six-staple mixed-plane chairs, is the next producer target. [YM4-07B quantified full-spectrum bridge](docs/NOTE-YM4-07B-QUANTIFIED-CONTINUUM-BRIDGE-20261116.md) remains the separate physical-gap condition; Clay continuum status unchanged.
+
+
+
 > **Connected research index (2026-11-04):** [17-repository evidence map](https://github.com/JesseBrown1980/Hard-drive-and-USB-as-GPU/blob/main/ECOSYSTEM-RESEARCH-MAP-20261104.md) · [exact Google qsim QNN gate test](https://github.com/JesseBrown1980/GGUF-files-operating-as-trained-quantum-neural-network-models/blob/main/docs/GOOGLE-QSIM-LIKE-FOR-LIKE-20261104.md) · [physical HTTP-0 96³ timings](https://github.com/JesseBrown1980/qoled-internet-HEB-C-revisted-HTTP---free-0-hbi-hbp-sha-sh-hash/blob/main/engine96/MEASURED-20261104.hbp). These navigation links do not alter the finite-lattice results. YM4-02e PR #26 was merged with its stated strong-coupling hypotheses; the zero-spacing continuum trajectory remains OPEN.
 
 ## November 16, 2026 — physical-unit continuum bridge and finite-lattice cross-check
