@@ -4,11 +4,13 @@ on:
   push:
     paths:
       - 'tests/test_ym4_07c_wilson_projection_bridge.py'
+      - 'tests/test_ym4_07c_su2_local_wilson_variance.py'
       - 'docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md'
       - '.github/workflows/ym4-07c-wilson-source-projection.yml'
   pull_request:
     paths:
       - 'tests/test_ym4_07c_wilson_projection_bridge.py'
+      - 'tests/test_ym4_07c_su2_local_wilson_variance.py'
       - 'docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md'
       - '.github/workflows/ym4-07c-wilson-source-projection.yml'
   workflow_dispatch:
@@ -48,12 +50,30 @@ jobs:
             build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
           grep -Fq '|physical_full_spectrum_mass_gap=OPEN|' \
             build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp
+      - name: Genuine 4D continuous SU2 local Wilson variance and exact quaternion Haar control
+        run: |
+          set -euo pipefail
+          python3 -I -B -X utf8 tests/test_ym4_07c_su2_local_wilson_variance.py \
+            | tee build/ym4_07c/SU2-LOCAL-WILSON.hbp
+          grep -Fq '|second_normalized_trace_moment=1_OVER_4|' \
+            build/ym4_07c/SU2-LOCAL-WILSON.hbp
+          grep -Fq '|variance_lower_numer=247|variance_lower_denom=1000|' \
+            build/ym4_07c/SU2-LOCAL-WILSON.hbp
+          grep -Fq '|variance_lower_numer=1|variance_lower_denom=32|' \
+            build/ym4_07c/SU2-LOCAL-WILSON.hbp
+          grep -Fq '|invalid_claims=9_REJECTED|' \
+            build/ym4_07c/SU2-LOCAL-WILSON.hbp
+          grep -Fq '|weak_coupling_uniform_gap=OPEN|' \
+            build/ym4_07c/SU2-LOCAL-WILSON.hbp
       - name: Optimized and ordinary execution have identical source verdict
         run: |
           set -euo pipefail
           python3 -O -I -B -X utf8 tests/test_ym4_07c_wilson_projection_bridge.py \
             > build/ym4_07c/OPTIMIZED.hbp
           cmp build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp build/ym4_07c/OPTIMIZED.hbp
+          python3 -O -I -B -X utf8 tests/test_ym4_07c_su2_local_wilson_variance.py \
+            > build/ym4_07c/SU2-OPTIMIZED.hbp
+          cmp build/ym4_07c/SU2-LOCAL-WILSON.hbp build/ym4_07c/SU2-OPTIMIZED.hbp
           sha256sum build/ym4_07c/EXACT-WILSON-SOURCE-BRIDGE.hbp \
             > build/ym4_07c/RECEIPT.sha256
       - uses: actions/upload-artifact@v4
