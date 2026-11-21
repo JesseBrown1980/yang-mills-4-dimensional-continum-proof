@@ -1,0 +1,76 @@
+name: YM4 WG07 original SU2 six-state physical Feshbach projector
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wilson_six_feshbach.py'
+      - 'tests/test_ym4_su2_wilson_six_feshbach.py'
+      - 'docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp'
+      - '.github/workflows/ym4-wg07-six-feshbach.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wilson_six_feshbach.py'
+      - 'tests/test_ym4_su2_wilson_six_feshbach.py'
+      - 'docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp'
+      - '.github/workflows/ym4-wg07-six-feshbach.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-SU2-six-Feshbach-Wilson:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify six-state Feshbach and fourth Haar predictions frozen first
+        run: |
+          set -euo pipefail
+          PIN=2a1f9b5a37970dd6a5acbbe47f01adf22d7640f5
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_INDEPENDENT_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_wilson_six_feshbach.py" 2>/dev/null; then
+            echo "WG07 producer predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_wilson_six_feshbach.py" 2>/dev/null; then
+            echo "WG07 independent verifier predates prediction" >&2
+            exit 1
+          fi
+      - name: Strict no-floating-point source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original full SU2 quartic Haar and Schur projector tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_wilson_six_feshbach.py -v
+      - name: Canonical original SU2 physical six-eigenstate source HBP
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg07
+          python3 -B tests/ym4_su2_wilson_six_feshbach.py > build/ym4-wg07/FIRST.hbp
+          python3 -B tests/ym4_su2_wilson_six_feshbach.py > build/ym4-wg07/REPLAY.hbp
+          cmp build/ym4-wg07/FIRST.hbp build/ym4-wg07/REPLAY.hbp
+          grep -Fq '24_point_Hurwitz_quaternion_fourth_tensor=EXACT' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'effective_42_Schur_norm_le=1500beta2_times_t' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'actual_interacting_six_projector=PASS' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'actual_interacting_six_spectral_weight_gt=9/400' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'one_eigenmode_of_six_weight_gt=3/800' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'individual_first_neutral_Wilson_overlap=OPEN' build/ym4-wg07/FIRST.hbp
+          grep -Fq 'continuum_gap=OPEN' build/ym4-wg07/FIRST.hbp
+          sha256sum build/ym4-wg07/FIRST.hbp > build/ym4-wg07/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg07/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG07-original-full-SU2-six-Feshbach-positive-Wilson
+          path: build/ym4-wg07/
+          retention-days: 90
+          if-no-files-found: warn
