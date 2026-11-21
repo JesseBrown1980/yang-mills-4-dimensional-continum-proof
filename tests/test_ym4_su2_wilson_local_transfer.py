@@ -36,7 +36,7 @@ def haar_monomial(power):
         return R(0)
     m = power // 2
     catalan = comb(2 * m, m) // (m + 1)
-    return R(catalan, 4 ** m)
+    return R(catalan, R(4).__pow__(m).n)
 
 
 def polynomial_haar(poly):
@@ -98,7 +98,7 @@ class SU2WilsonLocalTests(unittest.TestCase):
                 a = polynomial_haar(multiply_poly(polys[r], {degree: 1}))
                 direct = a.div(factorial(degree))
                 bessel = R(r + 1,
-                           2**degree * factorial(k) * factorial(k+r+1))
+                           R(2).__pow__(degree).n * factorial(k) * factorial(k+r+1))
                 self.assertEqual(direct, bessel, (r, k))
                 if degree > 0:
                     other_degree = degree - 1
