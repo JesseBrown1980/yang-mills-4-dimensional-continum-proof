@@ -151,7 +151,7 @@ def independently_checked_isolation_fixture(beta):
     q = q_for_beta(beta)
     values = (R(3, 4) * q, R(1, 4) * q)
     weights = (R(1, 8), R(1, 8))
-    require(values[0] > values[1] and len(set(values)) == 2,
+    require(values[0] > values[1] and len(values) == 2,
             "fixture_rank_one_not_isolated")
     c0 = moment_power(values, weights, 0)
     c2 = moment_power(values, weights, 2)
