@@ -114,7 +114,12 @@ Trace positivity follows from min–max eigenvalue monotonicity on the invariant
 |\langle v,(T^n-T_N^n)v\rangle|
 \le2nN_\ell(N+1)(3/8)^N\,\|v\|^2.
 \]
-Also \(0\le\lambda_0(T)-\lambda_0(T_N)\le N_\ell\varepsilon_N\). Controlling the *physical spectral projector* or *relative* vacuum error requires an additional spectral-separation estimate; the absolute bound above is not silently promoted.
+On the **physical gauge-invariant subspace** \(PH\), min–max and the operator-norm estimate likewise give
+\[
+0\le\lambda_{0,\mathrm{phys}}(T)-\lambda_{0,\mathrm{phys}}(T_N)
+\le N_\ell\varepsilon_N.
+\]
+The leading eigenvalue of the original \(T\) is the same on \(H\) and \(PH\) because its simple positive Perron eigenfunction is gauge invariant. For **the truncated** \(T_N\), we explicitly take its top **physical-sector** eigenvalue; positivity in the *operator* sense does not assert that the truncated kernel remains pointwise strictly positive or that its unrestricted top eigenfunction is gauge invariant. Controlling the *physical spectral projector* or *relative* vacuum error requires an additional spectral-separation estimate; the absolute bound above is not silently promoted.
 
 ## 4. Exact ternary cutoff jumps at nontrivial \(\beta\)
 
