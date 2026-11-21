@@ -31,6 +31,19 @@ jobs:
           set -euo pipefail
           python3 -I -X utf8 scripts/no_float_gate.py --selftest
           python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Cryptographically pin original finite Wilson certificate source at accepted merge commit
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07c
+          curl -fLsS --retry 3 --connect-timeout 15 \
+            'https://raw.githubusercontent.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/1f8fb0c72ef9f25d067bedee94e1cdbf6836583e/independent/y137-dual-cleanroom-20261120/final_accept.py' \
+            -o build/ym4_07c/FINITE-PINNED-SOURCE.py
+          test "$(git hash-object build/ym4_07c/FINITE-PINNED-SOURCE.py)" = \
+            '6e5463a7912de49e336133a7faf151720a46ea2e'
+          grep -Fq 'ppt==17074763' build/ym4_07c/FINITE-PINNED-SOURCE.py
+          grep -Fq 'margin==9285530088' build/ym4_07c/FINITE-PINNED-SOURCE.py
+          echo 'YM4_07C_FINITE_SOURCE_PIN|upstream_original_finite_Wilson=#350|git_blob_SHA1=6e5463a7912de49e336133a7faf151720a46ea2e|source=PINNED_ONLY|continuum_SU2=SEPARATE|json=0' \
+            > build/ym4_07c/FINITE-SOURCE.hbp
       - name: Original finite Wilson amplitude tolerance and 4D full-gap adversarial check
         run: |
           set -euo pipefail
