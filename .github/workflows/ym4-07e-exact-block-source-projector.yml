@@ -1,0 +1,61 @@
+name: YM4-07E exact SU2 block source and physical projector
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp'
+      - 'docs/NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md'
+      - 'tests/test_ym4_07e_exact_block_projector.py'
+      - '.github/workflows/ym4-07e-exact-block-source-projector.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp'
+      - 'docs/NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md'
+      - 'tests/test_ym4_07e_exact_block_projector.py'
+      - '.github/workflows/ym4-07e-exact-block-source-projector.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ym4-07e-finite-step-source-and-cyclic-spectrum:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Freeze prediction provenance
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp)" = '0375c37bf6c414c1443cc2327e0463229bc860bd'
+          grep -Fq '|physical_units=FIXED|' docs/PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp
+      - name: Strict no-floating-point gate
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact SU2 source and projector diagnostics
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07e
+          python3 -I -B -X utf8 tests/test_ym4_07e_exact_block_projector.py | tee build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|noncommuting_word_checks=18|off_line_edges=2|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|matched_source_squared_loss=ZERO|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|mixed_plane=12|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|dark_first_state=PRESENT|full_gap=OPEN|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|active_false_claims=9_REJECTED|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp
+      - name: Optimized Python identical to ordinary execution
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07e_exact_block_projector.py > build/ym4_07e/OPTIMIZED.hbp
+          cmp build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp build/ym4_07e/OPTIMIZED.hbp
+          sha256sum build/ym4_07e/EXACT-INDUCED-OS-BLOCK.hbp > build/ym4_07e/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07e-exact-induced-SU2-source-cyclic-spectrum
+          path: build/ym4_07e/
+          if-no-files-found: warn
