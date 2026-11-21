@@ -208,7 +208,7 @@ def neutral_tail_character_envelope(beta):
             "three_edge_neutral_excitation_found")
     y = beta.power(2).div(4)
     om = R(1) - y
-    k1_lower = beta * om / 4
+    k1_lower = (beta * om).div(4)
     k1_upper = beta.div(4 * om)
     k2_upper = beta.power(2).div(24 * om)
     require(k2_upper < k1_lower.power(2),
