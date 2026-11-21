@@ -112,7 +112,10 @@ def gate(candidate):
     require(candidate["group"]=="CONTINUOUS_SU2_4D","discrete_group_not_continuum_SU2")
     for k in names[1:]:
         require(candidate[k]=="INDEPENDENT_THEOREM_PASS","unproved_"+k)
-    return True
+    # Strings and status labels alone NEVER authenticate a physical
+    # SU(2) operator, continuum state map, or nonperturbative RG estimate.
+    # There is no validated source-file/replay interface for this model yet.
+    raise ValueError("source_labels_without_actual_su2_source_replay")
 
 def negative_controls():
     required={
@@ -141,17 +144,23 @@ def negative_controls():
         else:
             raise ValueError("continuum_false_promotion_accepted")
     try:
+        gate(required)
+    except ValueError:
+        rejected+=1
+    else:
+        raise ValueError("forged_all_pass_labels_accepted")
+    try:
         bound_row("TOO_LARGE_TRANSFER_ERROR",EXPECTED_AMP_FLOOR_PPT)
     except ValueError:
         rejected+=1
     else:
         raise ValueError("zero_transfer_weight_accepted")
-    require(rejected==8,"negative_controls_count")
+    require(rejected==9,"negative_controls_count")
     print("YM4_07C_NEGATIVE_CONTROLS|unproved_source=REJECTED"+
           "|wrong_group=REJECTED|unproved_projection=REJECTED"+
           "|wrong_beta=REJECTED|finite_positive_gap=REJECTED"+
           "|missing_OS=REJECTED|missing_infinite_volume=REJECTED"+
-          "|exhausted_wilson_margin=REJECTED|count=8|json=0")
+          "|exhausted_wilson_margin=REJECTED|forged_all_pass_labels=REJECTED|count=9|json=0")
 
 def main():
     a=amplitude_floor(WILSON_WEIGHT_PPT)
