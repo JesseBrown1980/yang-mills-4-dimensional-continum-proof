@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_su2_wilson_first_magnetic_42gram.py'
       - 'docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg06-magnetic-42gram.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_su2_wilson_first_magnetic_42gram.py'
       - 'docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg06-magnetic-42gram.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_su2_wilson_first_magnetic_42gram.py > build/ym4-wg06/FIRST.hbp
           python3 -B tests/ym4_su2_wilson_first_magnetic_42gram.py > build/ym4-wg06/REPLAY.hbp
           cmp build/ym4-wg06/FIRST.hbp build/ym4-wg06/REPLAY.hbp
+          cmp build/ym4-wg06/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp
+          echo '4147be0a6cf88510bca562d12c1db12199bf06534c7b0a333fa1fa1b0d105e35  build/ym4-wg06/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=4147be0a6cf88510bca562d12c1db12199bf06534c7b0a333fa1fa1b0d105e35' \
+            docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp
           grep -Fq 'exact_each_nonzero_Mij=1/8' build/ym4-wg06/FIRST.hbp
           grep -Fq 'components_K4_2=6|isolated_vertices=6' build/ym4-wg06/FIRST.hbp
           grep -Fq 'first_magnetic_order_top6_cluster_weight=1/32' build/ym4-wg06/FIRST.hbp
