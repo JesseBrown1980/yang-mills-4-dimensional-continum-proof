@@ -274,9 +274,9 @@ def atlas_provenance():
             require('href="#' + uid + '"' in page,
                     "open_work_not_clickable_" + uid)
             require(uid in ledger, "open_gate_absent_from_ledger_" + uid)
-    require("EXT-FUSION-6J" in rows and "YM4-SW01" in rows,
+    require("EXT-FUSION-6J" in records and "YM4-SW01" in records,
             "new_exact_SU2_spectral_sources_missing")
-    require(rows["YM4-SW01"]["status"] == "DRAFT_CHECKED",
+    require(records["YM4-SW01"]["status"] == "DRAFT_CHECKED",
             "exact_dual_verification_tier")
     require("EXTERNAL-SEARCH-ROUND2-20261121.md" in manifest,
             "external_round2_references_missing")
