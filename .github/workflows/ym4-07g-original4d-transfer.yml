@@ -1,0 +1,61 @@
+name: YM4-07G original four-dimensional continuous SU2 transfer
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp'
+      - 'docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md'
+      - 'tests/test_ym4_07g_original4d_transfer.py'
+      - '.github/workflows/ym4-07g-original4d-transfer.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp'
+      - 'docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md'
+      - 'tests/test_ym4_07g_original4d_transfer.py'
+      - '.github/workflows/ym4-07g-original4d-transfer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-4d-su2-transfer-trace:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify prediction committed before new checker
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp)" = '051a898ba191b152f3101f1749684309bf4ef98a'
+          grep -Fq '|phase=BEFORE_NEW_CHECKER|' docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp
+          grep -Fq '|continuum_gap=OPEN|' docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp
+      - name: Existing strict no-float rule
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact original 4D SU2 and matched Wilson Gram diagnostics
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07g
+          python3 -I -B -X utf8 tests/test_ym4_07g_original4d_transfer.py | tee build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+          grep -Fq '|total_plaquettes=5184|blocked_Wilson_edges=8_DISTINCT|' build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+          grep -Fq '|margin_num=10209575321|margin_den=40500000000000|gate=PASS|' build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+          grep -Fq '|det_G_gt=247_OVER_1000|' build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+          grep -Fq '|false_claims=10_REJECTED|' build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp
+      - name: Deterministic optimized receipt
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07g_original4d_transfer.py > build/ym4_07g/OPTIMIZED.hbp
+          cmp build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp build/ym4_07g/OPTIMIZED.hbp
+          sha256sum build/ym4_07g/EXACT-ORIGINAL-4D-SU2-TRANSFER.hbp > build/ym4_07g/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07g-original-four-dimensional-transfer
+          path: build/ym4_07g/
+          if-no-files-found: warn
