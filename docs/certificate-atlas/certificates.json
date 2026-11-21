@@ -14,28 +14,30 @@
     "source_immutable": true,
     "search_date": "2026-11-21",
     "open_certificates": 11,
-    "external_candidates": 13,
+    "external_candidates": 22,
     "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open",
     "sources_last_checked": "2026-11-21",
-    "verified_external_repository_count": 10
+    "verified_external_repository_count": 10,
+    "second_search_date": "2026-11-21",
+    "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input"
   },
   "summary": {
-    "curated_records": 66,
+    "curated_records": 76,
     "physical_gap_claims": 0,
-    "resource_files": 425,
+    "resource_files": 430,
     "pr_events": 74,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 13,
       "CONDITIONAL": 3,
-      "DRAFT_CHECKED": 12,
+      "DRAFT_CHECKED": 13,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 5,
       "HOLD": 2,
-      "CANDIDATE": 13
+      "CANDIDATE": 22
     },
-    "linked_resources": 425
+    "linked_resources": 430
   },
   "records": [
     {
@@ -1588,6 +1590,261 @@
       ],
       "verification_tier": "UNRELATED_GEOMETRIC_ARITHMETIC_METHOD",
       "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-LGT-STRONG",
+      "title": "Lean strong-coupling plaquette decay",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "4D periodic U(2), beta <1/192; SU2 requires matching group instance",
+      "result": "Lean U(n) connected plaquette covariance decays geometrically in strong-coupling range; physical Hamiltonian gap and UV limit separate",
+      "source": "https://github.com/mrdouglasny/lgt/blob/b8793ccf6a51e00e9e2b1685ba191b8626e37137/LGT/MassGap/StrongCoupling.lean",
+      "repository": "mrdouglasny/lgt",
+      "ref": "b8793ccf6a51e00e9e2b1685ba191b8626e37137",
+      "dependencies": [
+        "YM4-Q07"
+      ],
+      "point": [
+        6,
+        4,
+        5
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "LEAN_STRONG_COUPLING_CORRELATOR",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-LGT-RG",
+      "title": "Lean abstract RG correlation scale transfer",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Abstract coarse/fine covariance bound; original 4D SU2 block unproved",
+      "result": "Zero-sorry abstract distance and covariance transfer; concrete RGBlockingData includes missing specifics",
+      "source": "https://github.com/mrdouglasny/lgt/blob/b8793ccf6a51e00e9e2b1685ba191b8626e37137/LGT/Bridge/ScaleTransfer.lean",
+      "repository": "mrdouglasny/lgt",
+      "ref": "b8793ccf6a51e00e9e2b1685ba191b8626e37137",
+      "dependencies": [
+        "YM4-Q08"
+      ],
+      "point": [
+        8,
+        3,
+        4
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "LEAN_ABSTRACT_CONDITIONAL",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-ERIKSSON-AREA",
+      "title": "Lean volume-uniform exact Wilson area law",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Finite strong-coupling SU(N) Wilson activities under explicit KP smallness hypotheses",
+      "result": "Exact-activity normalized Wilson area-law and polymer controls; not a UV gap or first physical spectral weight",
+      "source": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/357ef54cc7fc3f2190fab7d2daa7357ded7a2edf/YangMills/L1_GibbsMeasure/RestrictedGate.lean",
+      "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+      "ref": "357ef54cc7fc3f2190fab7d2daa7357ded7a2edf",
+      "dependencies": [
+        "YM4-Q07"
+      ],
+      "point": [
+        6,
+        4,
+        4
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "LEAN_STRONG_COUPLING_AREA_LAW",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-FUSION-6J",
+      "title": "Exact Rust SU2 recoupling and intertwiner provider",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "SU2 algebraic representation coefficients, not complete lattice transfer",
+      "result": "Exact signed-square-root-rational Wigner 3j/6j and CG/F coefficients for character-sparse gauge-invariant bases",
+      "source": "https://github.com/Ryo-wtnb11/fusion-symbols/blob/f56244fe1bcf6038043a2afa695ea3afb7ea072e/src/lie/su2.rs",
+      "repository": "Ryo-wtnb11/fusion-symbols",
+      "ref": "f56244fe1bcf6038043a2afa695ea3afb7ea072e",
+      "dependencies": [
+        "YM4-Q02",
+        "YM4-Q01"
+      ],
+      "point": [
+        5,
+        7,
+        5
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "EXACT_ALGEBRAIC_LIBRARY_NEEDS_INDEPENDENT_CHECKER",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-LIBWIGNER",
+      "title": "Independent Wigner symbol arithmetic engine",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Integer Racah sums; public output converts to floating point",
+      "result": "Use as comparator for exact SU2 recoupling, not as no-float standalone certificate",
+      "source": "https://github.com/susilehtola/libwignernj/blob/529ab42bdb31a34bb2bfa0a77a36f2a3a646202e/README.md",
+      "repository": "susilehtola/libwignernj",
+      "ref": "529ab42bdb31a34bb2bfa0a77a36f2a3a646202e",
+      "dependencies": [
+        "YM4-Q02"
+      ],
+      "point": [
+        6,
+        7,
+        4
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "EXACT_INTERMEDIATES_FLOAT_OUTPUT_NOT_PROOF",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-CAUSAL-BOOTSTRAP",
+      "title": "Causal bootstrap dual spectral bounds",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Euclidean nonperturbative spectral data and energy-smearing; not direct SU2 source certificate",
+      "result": "Finite Euclidean correlators constrain smeared spectral observables via dual kernel bounds; requires certified Wilson moments",
+      "source": "https://doi.org/10.1103/m9kj-y6t3",
+      "repository": "external_publication",
+      "ref": "PhysRevD114_074510_2026",
+      "dependencies": [
+        "YM4-Q05",
+        "YM4-Q04"
+      ],
+      "point": [
+        7,
+        9,
+        4
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "PUBLISHED_SPECTRAL_METHOD_UNIMPLEMENTED",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-KERNEL-TRANS",
+      "title": "Spectral smearing kernel transformation",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "General Euclidean-to-spectral smearing change, published 20 Nov 2026",
+      "result": "Kernel transform/bounds method; a concrete exact rational/interval dual feasibility certificate still needed",
+      "source": "https://doi.org/10.1103/f4h2-pg8m",
+      "repository": "external_publication",
+      "ref": "PhysRevD114_094510_2026",
+      "dependencies": [
+        "YM4-Q05"
+      ],
+      "point": [
+        8,
+        9,
+        4
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "PUBLISHED_SPECTRAL_METHOD_UNIMPLEMENTED",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-U1-LEAN-AREA",
+      "title": "Formal all-coupling U1 Wilson area-law proof",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "3D U(1) all beta, not non-Abelian 4D SU2",
+      "result": "Lean certified numerical constants and uniform finite-box Wilson area law; transferable proof engineering only",
+      "source": "https://doi.org/10.5281/zenodo.23480809",
+      "repository": "external_publication",
+      "ref": "zenodo_23480809_2026",
+      "dependencies": [
+        "YM4-Q08"
+      ],
+      "point": [
+        8,
+        4,
+        5
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "LEAN_FORMAL_OTHER_GAUGE_GROUP",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "EXT-SCALET-QHAM",
+      "title": "Certified local-Hamiltonian equilibrium observables",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "General local Hamiltonians, not the original gauge-reduced Wilson transfer",
+      "result": "Convex/certified observable bounds potentially reusable after locality and physical projector hypotheses matched",
+      "source": "https://doi.org/10.1038/s41467-024-51592-3",
+      "repository": "external_publication",
+      "ref": "NatureCommunications2024_51592",
+      "dependencies": [
+        "YM4-Q06"
+      ],
+      "point": [
+        7,
+        6,
+        4
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "PUBLISHED_OTHER_MODEL_METHOD",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "YM4-SW01",
+      "title": "Exact Wilson spectral-window dual polynomial",
+      "status": "DRAFT_CHECKED",
+      "category": "spectrum",
+      "scope": "Any positive physical normalized transfer and vacuum-centered Wilson spectral measure",
+      "result": "Lower bound on total spectral weight t>q from connected Cn,C0 intervals; one-eigenstate identification needs isolation",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/51bada86e7e899bfcc803f52f23d39b30d321ab0/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "51bada86e7e899bfcc803f52f23d39b30d321ab0",
+      "dependencies": [
+        "YM4-Q05",
+        "YM4-24"
+      ],
+      "point": [
+        8,
+        9,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "ANALYTIC_POSITIVE_MEASURE_DUAL_EXACT_RATIONAL_CALIBRATION",
+      "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
     }
   ],
   "resources": [
@@ -4990,6 +5247,46 @@
       "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
       "kind": "other",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/tests/ym4_06a_verify_refuter_manifest.sh"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-SPECTRAL-WINDOW-DUAL-20261121.hbp",
+      "blob": "a8d582d2dcf5608b475800e76b2cce7e6d43cff0",
+      "origin": "atlas_search_round2",
+      "ref": "9d0e6a791de88d6d87bb770b6046b46c66557012",
+      "kind": "prediction_or_receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/9d0e6a791de88d6d87bb770b6046b46c66557012/docs/certificate-atlas/PREDICT-SPECTRAL-WINDOW-DUAL-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
+      "blob": "9201a504e596afdd3fb2412d9385b757f27b5725",
+      "origin": "atlas_search_round2",
+      "ref": "51bada86e7e899bfcc803f52f23d39b30d321ab0",
+      "kind": "proof_or_note",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/51bada86e7e899bfcc803f52f23d39b30d321ab0/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md"
+    },
+    {
+      "path": "tests/test_ym4_certificate_spectral_window_dual.py",
+      "blob": "3f158eec3ed72350edc76ebf7d83b99cbbb8dd64",
+      "origin": "atlas_search_round2",
+      "ref": "cec481fd1c149e07abaf25042fd6179877c0b5ff",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/cec481fd1c149e07abaf25042fd6179877c0b5ff/tests/test_ym4_certificate_spectral_window_dual.py"
+    },
+    {
+      "path": "docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md",
+      "blob": "e04833129747afdeb4a7b97dfb8efed49f0bb8bf",
+      "origin": "atlas_search_round2",
+      "ref": "3e0aa20d39ce75b48b5db0accec7cb87815bbbe6",
+      "kind": "proof_or_note",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3e0aa20d39ce75b48b5db0accec7cb87815bbbe6/docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md"
+    },
+    {
+      "path": ".github/workflows/ym4-spectral-window-dual.yml",
+      "blob": "89afda86cefa04d8eb93b1d8bed80850aa05e1be",
+      "origin": "atlas_search_round2",
+      "ref": "3f3dd921d485e485b3ccba51a41a817528cd236c",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3f3dd921d485e485b3ccba51a41a817528cd236c/.github/workflows/ym4-spectral-window-dual.yml"
     }
   ],
   "pr_events": [
@@ -5803,5 +6100,12 @@
       "tier": "UNRELATED_GEOMETRIC_ARITHMETIC_METHOD",
       "status": "CANDIDATE"
     }
-  ]
+  ],
+  "search_round2": {
+    "new_sources": 9,
+    "atlas_nodes_added": 10,
+    "source_ledger": "docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md",
+    "open_subgates_unchanged": 11,
+    "first_Wilson_weight": "OPEN"
+  }
 }
