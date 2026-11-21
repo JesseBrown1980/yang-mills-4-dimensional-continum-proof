@@ -36,7 +36,7 @@ def haar_monomial(power):
         return R(0)
     m = power // 2
     catalan = comb(2 * m, m) // (m + 1)
-    return R(catalan, R(4).__pow__(m).n)
+    return R(catalan, R(4).power(m).n)
 
 
 def polynomial_haar(poly):
@@ -98,7 +98,7 @@ class SU2WilsonLocalTests(unittest.TestCase):
                 a = polynomial_haar(multiply_poly(polys[r], {degree: 1}))
                 direct = a.div(factorial(degree))
                 bessel = R(r + 1,
-                           R(2).__pow__(degree).n * factorial(k) * factorial(k+r+1))
+                           R(2).power(degree).n * factorial(k) * factorial(k+r+1))
                 self.assertEqual(direct, bessel, (r, k))
                 if degree > 0:
                     other_degree = degree - 1
@@ -139,8 +139,8 @@ class SU2WilsonLocalTests(unittest.TestCase):
         for beta in (1, 4):
             lo, hi = M["character_eigen_interval"](1, beta)
             c2lo, c2hi = M["connected_wilson_interval"](beta, 2)
-            self.assertEqual(c2lo, (lo ** 2).div(4))
-            self.assertEqual(c2hi, (hi ** 2).div(4))
+            self.assertEqual(c2lo, (lo.power(2)).div(4))
+            self.assertEqual(c2hi, (hi.power(2)).div(4))
             # A missed factor dim(fundamental)=2 doubles eigenvalue.
             self.assertNotEqual(2*lo, lo)
             # A missed half-trace factor changes C0 by exactly four.
@@ -162,7 +162,7 @@ class SU2WilsonLocalTests(unittest.TestCase):
         for beta_four, kappa in ((R(1, 6), 1), (R(2, 3), 4)):
             t = beta_four * beta_four * 9
             from_four_dim = sum(
-                ((t.__pow__(k)).div(factorial(k) * factorial(k+1))
+                ((t.power(k)).div(factorial(k) * factorial(k+1))
                  for k in range(21)), R(0)
             )
             j_lower, j_upper = M["bessel_j_interval"](1, R(kappa))
