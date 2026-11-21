@@ -39,3 +39,7 @@ Tap a colored point to scroll directly to its source card. The original 4D notes
 The source of truth for the atlas is `certificates.json` plus `ATLAS-INDEX.hbp`. Run `python3 -I -B -X utf8 tests/test_ym4_certificate_atlas.py` after editing. The test enforces unique IDs, dependency consistency, immutable external sources, 12 selectable SVG panels, count consistency, visible OPEN nodes, reciprocal finite link, and fail-closed scope rules. The workflow produces a byte-identical HBP receipt and checks optimized replay.
 
 To add evidence, preserve prior pinned records, add a dated node, update the linked proof obligations and statuses, and keep a distinct machine or theorem acceptance gate. If an external paper addresses an OPEN node, mark **CANDIDATE** until its mathematical object and proof checker are compatible. The known 4D continuum existence and full physical mass gap remain **OPEN**.
+
+### Expanded external certificate audit (November 21)
+
+**13 attributed external candidate nodes**, including the originally identified conditional proofs, are source-pinned in the 3D graph. [The external match ledger](BRIDGE-LEDGER.md) ranks the Lean Wilson construction, OS reconstruction, O(N) RG reference, exact rational quaternion code, SU(2) loop identity, statement anti-vacuity and dual spectral methods. We have incorporated a clean-room **integer-only SU(2) holonomy and normalized trace-closure check**, documented in [the exact algebra certificate](EXACT-SU2-WILSON-ALGEBRA.md). The eleven red OPEN mathematical requirements are preserved.
