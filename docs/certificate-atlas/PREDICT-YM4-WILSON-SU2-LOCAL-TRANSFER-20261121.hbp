@@ -1,0 +1,12 @@
+PREDICTION|id=YM4-SU2-WILSON-LOCAL-TRANSFER-V1|phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS|date=2026-11-21|json=0
+PREDICTION|source=original_SU2_Wilson_plaquette_w_beta_of_g_equals_exp_beta_cos_theta|local_geometry=one_closed_spatial_link_and_one_temporal_plaquette|json=0
+PREDICTION|normalized_convolution=Haar_w_beta_over_Z_beta|Z_beta=2I1_beta_over_beta|character_lambda_r=I_rplus1_beta_over_I1_beta|Gauss=conjugation_average|json=0
+PREDICTION|W=half_trace=chi1_over_2|C0=1/4|Cn=1/4_times_lambda1_power_n|nonzero_W_weight=1/4|json=0
+PREDICTION|beta=1|Taylor_terms_k0_to20=21|character_cutoff_r=12|character_sup_tail_lt=1e-12|lambda1_interval_width_lt=1e-25|json=0
+PREDICTION|beta=4|Taylor_terms_k0_to20=21|character_cutoff_r=24|character_sup_tail_lt=1e-12|lambda1_interval_width_lt=1e-25|json=0
+PREDICTION|beta=1|ratio_lambda1_between=240193/1000000,240195/1000000|C2_between=14422/1000000,14425/1000000|C4_between=831/1000000,834/1000000|json=0
+PREDICTION|beta=4|ratio_lambda1_between=658046/1000000,658049/1000000|C2_between=108255/1000000,108258/1000000|C4_between=46876/1000000,46880/1000000|json=0
+PREDICTION|aligned_4D_six_staples|beta=1/6|effective_kappa=1|conditional_mean_halftrace=I2_over_I1_at1|json=0
+PREDICTION|aligned_4D_six_staples|beta=2/3|effective_kappa=4|conditional_mean_halftrace=I2_over_I1_at4|json=0
+PREDICTION|negative_controls=truncated_tail_underestimate_REJECT,wrong_halftrace_normalization_REJECT,wrong_character_dimension_REJECT,invalid_beta_REJECT,gauge_nonclass_input_REJECT|json=0
+SCOPE|proof=ONE_SPATIAL_CIRCLE_ONE_TIMELIKE_WILSON_PLAQUETTE_AND_LOCAL_4D_ALIGNED_STAPLES|full_4D_Wilson_Gauss_transfer=OPEN|four_dimensional_C0_C2_C4=OPEN|continuum_gap=OPEN|json=0

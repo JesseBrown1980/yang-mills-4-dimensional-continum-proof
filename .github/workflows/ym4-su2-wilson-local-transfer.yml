@@ -1,0 +1,83 @@
+name: YM4 SU2 Wilson local transfer exact rational
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wilson_local_transfer.py'
+      - 'tests/test_ym4_su2_wilson_local_transfer.py'
+      - 'docs/NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp'
+      - '.github/workflows/ym4-su2-wilson-local-transfer.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wilson_local_transfer.py'
+      - 'tests/test_ym4_su2_wilson_local_transfer.py'
+      - 'docs/NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp'
+      - '.github/workflows/ym4-su2-wilson-local-transfer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-Haar-character-Wilson-and-six-staple:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify predictions frozen before source and verifier
+        run: |
+          set -euo pipefail
+          PIN=62287cd957d361a69dd257faadd6daf44dba3ec9
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_wilson_local_transfer.py" 2>/dev/null; then
+            echo 'FAIL: implementation predates freeze' >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_wilson_local_transfer.py" 2>/dev/null; then
+            echo 'FAIL: verifier predates freeze' >&2
+            exit 1
+          fi
+      - name: Original full-repository floating-point source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent Chebyshev and Haar monomial verification
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_wilson_local_transfer.py -v
+      - name: Exact production local transfer receipt and replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-su2-wilson-local
+          python3 -I -B tests/ym4_su2_wilson_local_transfer.py \
+            > build/ym4-su2-wilson-local/FIRST.hbp
+          python3 -I -B tests/ym4_su2_wilson_local_transfer.py \
+            > build/ym4-su2-wilson-local/REPLAY.hbp
+          cmp build/ym4-su2-wilson-local/FIRST.hbp \
+              build/ym4-su2-wilson-local/REPLAY.hbp
+          grep -Fq 'C0=1/4|C2_lower=' build/ym4-su2-wilson-local/FIRST.hbp
+          grep -Fq '|uniform_tail_lt_1e-12=PASS' build/ym4-su2-wilson-local/FIRST.hbp
+          grep -Fq '|Gauss_full4D=OPEN|physical_full4D_moments=OPEN|continuum_mass_gap=OPEN|' \
+            build/ym4-su2-wilson-local/FIRST.hbp
+          echo 'aa7702fd1a6260a4e521ae24dda242f7bcf8c987a09ad0c63505c9e0d136cb7d  build/ym4-su2-wilson-local/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'canonical_hbp_sha256=aa7702fd1a6260a4e521ae24dda242f7bcf8c987a09ad0c63505c9e0d136cb7d' \
+            docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp
+          sha256sum build/ym4-su2-wilson-local/FIRST.hbp \
+            > build/ym4-su2-wilson-local/SHA256SUMS
+          git rev-parse HEAD > build/ym4-su2-wilson-local/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-exact-su2-Wilson-local-transfer
+          path: build/ym4-su2-wilson-local/
+          if-no-files-found: warn
+          retention-days: 90
