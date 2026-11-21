@@ -11,10 +11,14 @@
     "live_preview": "https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html",
     "finite_viewer": "https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html",
     "continuum_mass_gap": "OPEN",
-    "source_immutable": true
+    "source_immutable": true,
+    "search_date": "2026-11-21",
+    "open_certificates": 11,
+    "external_candidates": 2,
+    "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open"
   },
   "summary": {
-    "curated_records": 42,
+    "curated_records": 55,
     "physical_gap_claims": 0,
     "resource_files": 425,
     "pr_events": 74,
@@ -23,10 +27,11 @@
       "FINITE_PASS": 13,
       "CONDITIONAL": 3,
       "DRAFT_CHECKED": 12,
-      "OPEN": 5,
+      "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 5,
-      "HOLD": 2
+      "HOLD": 2,
+      "CANDIDATE": 2
     }
   },
   "records": [
@@ -991,6 +996,321 @@
       ],
       "views": [
         "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-Q01",
+      "title": "Sparse gauge-invariant character evaluator",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Gauge-invariant spin-network basis, exact sparse Wilson action and Gauss-law tests",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-25"
+      ],
+      "point": [
+        9,
+        7,
+        1
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q01"
+    },
+    {
+      "id": "YM4-Q02",
+      "title": "Exact SU(2) recoupling and Haar coefficients",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "General exact positive representation coefficient and Wilson network moment proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-Q01"
+      ],
+      "point": [
+        8,
+        8,
+        1
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q02"
+    },
+    {
+      "id": "YM4-Q03",
+      "title": "Forest-gauge to physical-sector equivalence",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Certified external forest-gauge-to-periodic physical OS map",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-01"
+      ],
+      "point": [
+        7,
+        3,
+        1
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q03"
+    },
+    {
+      "id": "YM4-Q04",
+      "title": "Computed original 4D Wilson transfer moments",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Enclosed normalized physical Wilson Gram, T^2/T^4 moments and vacuum level",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-24"
+      ],
+      "point": [
+        9,
+        9,
+        1
+      ],
+      "views": [
+        "proof",
+        "wilson"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q04"
+    },
+    {
+      "id": "YM4-Q05",
+      "title": "Original first excited SU(2) Wilson weight",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Certified first physical excited overlap, not a vacuum projector bound",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-26"
+      ],
+      "point": [
+        9,
+        9,
+        0
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q05"
+    },
+    {
+      "id": "YM4-Q06",
+      "title": "Efficient relative Fourier-tail certificate",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Character-sparse relative truncation with usable rank and vacuum control",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-22"
+      ],
+      "point": [
+        8,
+        6,
+        1
+      ],
+      "views": [
+        "proof",
+        "cutoff"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q06"
+    },
+    {
+      "id": "YM4-Q07",
+      "title": "Weak-coupling volume-uniform mixing",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Exponential correlation decay uniform in growing physical volume",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-28"
+      ],
+      "point": [
+        9,
+        4,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q07"
+    },
+    {
+      "id": "YM4-Q08",
+      "title": "Physical-cube RG contraction along tuning",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Uniform physical-size one-cube estimate for all weak-coupling scales",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-27"
+      ],
+      "point": [
+        9,
+        3,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q08"
+    },
+    {
+      "id": "YM4-Q09",
+      "title": "Nontrivial ultraviolet OS continuum",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Verify RG and field reconstruction conditions for the actual Wilson sequence",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-29"
+      ],
+      "point": [
+        10,
+        5,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q09"
+    },
+    {
+      "id": "YM4-Q10",
+      "title": "Full physical continuum mass-gap certificate",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Positive physical-energy gap uniform in continuum and infinite-volume limits",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-29"
+      ],
+      "point": [
+        10,
+        7,
+        0
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q10"
+    },
+    {
+      "id": "YM4-Q11",
+      "title": "Finite-S3 to continuous-SU2 certificate map",
+      "status": "OPEN",
+      "category": "open_gate",
+      "scope": "Original continuous SU(2) 4D Wilson transfer / continuum acceptance obligation",
+      "result": "Source/projector intertwiner with quantitative compatible action and group errors",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-15"
+      ],
+      "point": [
+        8,
+        5,
+        0
+      ],
+      "views": [
+        "bridges",
+        "wilson"
+      ],
+      "search": "docs/certificate-atlas/BRIDGE-LEDGER.md#ym4-q11"
+    },
+    {
+      "id": "EXT-ONE-CUBE",
+      "title": "Published physical-size one-cube criterion",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Externally published conditional SU(2) construction, 2026-10 v4",
+      "result": "Strong-coupling finite gap and conditional one-cube criterion; whole tuned path open",
+      "source": "https://hexagonmath.org/2610.00341v4",
+      "repository": "external_publication",
+      "ref": "2610.00341v4",
+      "dependencies": [
+        "YM4-Q08"
+      ],
+      "point": [
+        6,
+        3,
+        5
+      ],
+      "views": [
+        "bridges",
+        "proof"
+      ]
+    },
+    {
+      "id": "EXT-LEAN-OS",
+      "title": "External Lean construction under 16 inputs",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "Published formal conditional construction, November 2026 v1",
+      "result": "Lean kernel result conditional on registered RG/UV inputs; counterexample excludes automatic mass gap",
+      "source": "https://hexagonmath.org/2611.00492v1",
+      "repository": "yang-mills-group/YM",
+      "ref": "2611.00492v1",
+      "dependencies": [
+        "YM4-Q09",
+        "YM4-Q10"
+      ],
+      "point": [
+        7,
+        5,
+        5
+      ],
+      "views": [
+        "bridges",
+        "proof"
       ]
     }
   ],
@@ -4653,6 +4973,44 @@
       "verification": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/VERIFICATION.md",
       "license": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/LICENSE",
       "mathematical_formalization_scope": "finite/conditional Lean; some analytic and numerical components outside formal library"
+    }
+  ],
+  "search_matches": [
+    {
+      "gate": "YM4-Q03",
+      "result": "FINITE_CONDITIONAL_FOUND",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/YangMills/StrongCoupling/GaugeFix.lean",
+      "transplant": "requires original physical Hilbert map"
+    },
+    {
+      "gate": "YM4-Q07",
+      "result": "STRONG_COUPLING_ONLY",
+      "source": "https://hexagonmath.org/2610.00341v4",
+      "transplant": "does not cover beta(a)->infinity"
+    },
+    {
+      "gate": "YM4-Q08",
+      "result": "CONDITIONAL_ONE_CUBE_FOUND",
+      "source": "https://hexagonmath.org/2610.00341v4",
+      "transplant": "uniform tuned one-cube estimate open"
+    },
+    {
+      "gate": "YM4-Q09",
+      "result": "CONDITIONAL_LEAN_CONSTRUCTION_FOUND",
+      "source": "https://hexagonmath.org/2611.00492v1",
+      "transplant": "16 registered hypotheses need physical verification"
+    },
+    {
+      "gate": "YM4-Q10",
+      "result": "NO_ACCEPTED_FULL_GAP",
+      "source": "https://www.claymath.org/millennium-problems/",
+      "transplant": "positive uniform physical clustering rate missing"
+    },
+    {
+      "gate": "YM4-Q11",
+      "result": "FINITE_S3_SOURCE_FOUND",
+      "source": "https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/docs/certificate-atlas/WILSON-FORMAL-ACCEPTANCE-20261120.md",
+      "transplant": "no continuous SU2 group/source intertwiner proved"
     }
   ]
 }
