@@ -14,11 +14,13 @@
     "source_immutable": true,
     "search_date": "2026-11-21",
     "open_certificates": 11,
-    "external_candidates": 2,
-    "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open"
+    "external_candidates": 13,
+    "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open",
+    "sources_last_checked": "2026-11-21",
+    "verified_external_repository_count": 10
   },
   "summary": {
-    "curated_records": 55,
+    "curated_records": 66,
     "physical_gap_claims": 0,
     "resource_files": 425,
     "pr_events": 74,
@@ -31,7 +33,7 @@
       "FINITE_S3": 2,
       "EXTERNAL": 5,
       "HOLD": 2,
-      "CANDIDATE": 2
+      "CANDIDATE": 13
     },
     "linked_resources": 425
   },
@@ -1313,6 +1315,279 @@
         "bridges",
         "proof"
       ]
+    },
+    {
+      "id": "EXT-OPENAI-LEAN",
+      "title": "October Lean Wilson-scaling construction",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Yang–Mills Wilson scaling limit and Wightman hierarchy; theorem-specific assumptions/limits must match original SU2 target",
+      "source": "https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/README.md",
+      "repository": "yang-mills-group/OpenAI-YM-20261028",
+      "ref": "3456e5e75cf8d4cd558955a5c7638fba2d68f464",
+      "dependencies": [
+        "YM4-Q09"
+      ],
+      "point": [
+        6,
+        6,
+        5
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "FORMAL_REPLAY_REPORTED",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-OPENAI-VERIFY",
+      "title": "Lean challenge/solution type and axiom replay",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Challenge comparator, 100168 reachable declarations logged; reproducing pinned toolchain and theorem meaning separately required",
+      "source": "https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/VerifyJoint.lean",
+      "repository": "yang-mills-group/OpenAI-YM-20261028",
+      "ref": "3456e5e75cf8d4cd558955a5c7638fba2d68f464",
+      "dependencies": [
+        "YM4-Q09"
+      ],
+      "point": [
+        5,
+        4,
+        5
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "KERNEL_REPLAY_PROVENANCE",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-INFORMAL",
+      "title": "32-unit formal-construction dependency map",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Dependency graph and 278-page draft help route OS and RG obligations; mathematical statements trace back to Lean",
+      "source": "https://github.com/scottnarmstrong/yang-mills-informalization/blob/86d5be312abafa24eef6d92c90ed0e7599a17c0c/outline/units.md",
+      "repository": "scottnarmstrong/yang-mills-informalization",
+      "ref": "86d5be312abafa24eef6d92c90ed0e7599a17c0c",
+      "dependencies": [
+        "YM4-Q09"
+      ],
+      "point": [
+        5,
+        5,
+        5
+      ],
+      "views": [
+        "bridges"
+      ],
+      "verification_tier": "HUMAN_EXPLANATION_NOT_CERTIFICATE",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-OS-LEAN",
+      "title": "Revised Lean OS reconstruction package",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "OS-to-Wightman reconstruction from stated axioms and growth; corrected earlier forward-tube/Growth contracts; Wilson SU2 inputs still OPEN",
+      "source": "https://github.com/xiyin137/OSreconstruction/blob/cf0904e34a7c146a9f312f601e3707dca4a87697/os-reconstruction/README.md",
+      "repository": "xiyin137/OSreconstruction",
+      "ref": "cf0904e34a7c146a9f312f601e3707dca4a87697",
+      "dependencies": [
+        "YM4-Q09"
+      ],
+      "point": [
+        7,
+        6,
+        6
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "FORMAL_PROOF_CONDITIONAL_INTERFACE",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-GFF",
+      "title": "Dimension-generic Gaussian OS formalization",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Free-field positivity and OS axioms; useful anti-vacuity/free-vs-interacting comparison, not SU2 Yang–Mills dynamics",
+      "source": "https://github.com/mrdouglasny/OSforGFF/blob/fef84a82937dfd2bb7f672108a72da329d3ef0fd/README.md",
+      "repository": "mrdouglasny/OSforGFF",
+      "ref": "fef84a82937dfd2bb7f672108a72da329d3ef0fd",
+      "dependencies": [
+        "YM4-Q09"
+      ],
+      "point": [
+        7,
+        5,
+        6
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "FORMAL_GAUSSIAN_MODEL_ONLY",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-BALABAN",
+      "title": "Balaban O(N) RG Lean formalization in progress",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "One-step polymer/localization interfaces for O(N) spin models; Yang–Mills gauge connection requires new proof",
+      "source": "https://github.com/scottnarmstrong/balaban-lean/blob/493e9eb97292ebf6070c1c217a09bcf1adc23857/docs/PROGRESS.md",
+      "repository": "scottnarmstrong/balaban-lean",
+      "ref": "493e9eb97292ebf6070c1c217a09bcf1adc23857",
+      "dependencies": [
+        "YM4-Q08"
+      ],
+      "point": [
+        8,
+        3,
+        6
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "FORMAL_RG_METHOD_UNFINISHED",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-JACOBIAN",
+      "title": "Exact rational quaternion Wilson holonomy fixture",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Four-link unit-quaternion transport and gauge-conjugacy check; finite algebra only, not Haar path integration",
+      "source": "https://github.com/morluto/jacobian/blob/f693b76a600f8ee0d95a4e429a53bb576e9aeac1/benchmarks/datasets/conjecture-probes-v1/yang-mills-gauge-invariance-certificate/solution/solve.py",
+      "repository": "morluto/jacobian",
+      "ref": "f693b76a600f8ee0d95a4e429a53bb576e9aeac1",
+      "dependencies": [
+        "YM4-Q02"
+      ],
+      "point": [
+        6,
+        8,
+        6
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "EXACT_FINITE_GAUGE_ARITHMETIC",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-LOOP",
+      "title": "SU(2) exact single-trace loop closure",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Tr(U)Tr(V)=Tr(UV)+Tr(UV^-1) exact SU2 algebra; SDP output requires independent rigorous dual certificate",
+      "source": "https://arxiv.org/abs/2404.16925",
+      "repository": "external_paper",
+      "ref": "arxiv:2404.16925",
+      "dependencies": [
+        "YM4-Q02"
+      ],
+      "point": [
+        7,
+        8,
+        6
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "EXACT_LOOP_IDENTITIES_NUMERIC_SDP_SEPARATE",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-STATEMENT",
+      "title": "Yang–Mills Lean anti-vacuity suite",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Warns YM target is statement_incomplete; toy-model counterexamples expose unbound Hamiltonian/curvature",
+      "source": "https://github.com/lean-dojo/LeanMillenniumPrizeProblems/blob/603053dc267cf3efe422f438eb78098c0ececd6/Problems/YangMills/Millennium.lean",
+      "repository": "lean-dojo/LeanMillenniumPrizeProblems",
+      "ref": "603053dc267cf3efe422f438eb78098c0ececd6",
+      "dependencies": [
+        "YM4-Q10"
+      ],
+      "point": [
+        9,
+        7,
+        6
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ],
+      "verification_tier": "FORMAL_SPEC_INCOMPLETE",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-CFT-DUAL",
+      "title": "Primal/dual spectral certificate separation",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "Exact dual feasibility/postcheck architecture useful; 2D CFT spectrum and high-precision SDP not 4D SU2 physical bound",
+      "source": "https://github.com/Kevin-Langhoff/cft-gap/blob/30c5483861be8dc71b37e22e79325c6bc9a3572e/dual/README.md",
+      "repository": "Kevin-Langhoff/cft-gap",
+      "ref": "30c5483861be8dc71b37e22e79325c6bc9a3572e",
+      "dependencies": [
+        "YM4-Q05"
+      ],
+      "point": [
+        8,
+        9,
+        6
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ],
+      "verification_tier": "METHOD_TEMPLATE_2D_CFT_NOT_YM",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
+    },
+    {
+      "id": "EXT-ANAXIA-D4",
+      "title": "Anaxia companion rational D4 certificates",
+      "status": "CANDIDATE",
+      "category": "external_candidate",
+      "scope": "External original reference; model/axiom map still required for 4D continuous SU2",
+      "result": "D4 root/spectral polynomial exact rational and Lean receipts; useful provenance pattern only, no Wilson gauge content",
+      "source": "https://github.com/anaxia-research/anaxia-certificates/blob/1c49a75d8d45a6499e3a71e78655e2f4d4d8f280/PROOF-SCOPE.md",
+      "repository": "anaxia-research/anaxia-certificates",
+      "ref": "1c49a75d8d45a6499e3a71e78655e2f4d4d8f280",
+      "dependencies": [
+        "YM4-Q11"
+      ],
+      "point": [
+        8,
+        4,
+        4
+      ],
+      "views": [
+        "bridges"
+      ],
+      "verification_tier": "UNRELATED_GEOMETRIC_ARITHMETIC_METHOD",
+      "acceptance": "Reproduce exact theorem/fixture and prove model, normalization, sector and limit compatibility"
     }
   ],
   "resources": [
@@ -5437,6 +5712,96 @@
       "result": "FINITE_S3_SOURCE_FOUND",
       "source": "https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/main/docs/certificate-atlas/WILSON-FORMAL-ACCEPTANCE-20261120.md",
       "transplant": "no continuous SU2 group/source intertwiner proved"
+    }
+  ],
+  "external_sources_addendum": [
+    {
+      "id": "EXT-OPENAI-LEAN",
+      "repository": "yang-mills-group/OpenAI-YM-20261028",
+      "ref": "3456e5e75cf8d4cd558955a5c7638fba2d68f464",
+      "source": "https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/README.md",
+      "tier": "FORMAL_REPLAY_REPORTED",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-OPENAI-VERIFY",
+      "repository": "yang-mills-group/OpenAI-YM-20261028",
+      "ref": "3456e5e75cf8d4cd558955a5c7638fba2d68f464",
+      "source": "https://github.com/yang-mills-group/OpenAI-YM-20261028/blob/3456e5e75cf8d4cd558955a5c7638fba2d68f464/VerifyJoint.lean",
+      "tier": "KERNEL_REPLAY_PROVENANCE",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-INFORMAL",
+      "repository": "scottnarmstrong/yang-mills-informalization",
+      "ref": "86d5be312abafa24eef6d92c90ed0e7599a17c0c",
+      "source": "https://github.com/scottnarmstrong/yang-mills-informalization/blob/86d5be312abafa24eef6d92c90ed0e7599a17c0c/outline/units.md",
+      "tier": "HUMAN_EXPLANATION_NOT_CERTIFICATE",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-OS-LEAN",
+      "repository": "xiyin137/OSreconstruction",
+      "ref": "cf0904e34a7c146a9f312f601e3707dca4a87697",
+      "source": "https://github.com/xiyin137/OSreconstruction/blob/cf0904e34a7c146a9f312f601e3707dca4a87697/os-reconstruction/README.md",
+      "tier": "FORMAL_PROOF_CONDITIONAL_INTERFACE",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-GFF",
+      "repository": "mrdouglasny/OSforGFF",
+      "ref": "fef84a82937dfd2bb7f672108a72da329d3ef0fd",
+      "source": "https://github.com/mrdouglasny/OSforGFF/blob/fef84a82937dfd2bb7f672108a72da329d3ef0fd/README.md",
+      "tier": "FORMAL_GAUSSIAN_MODEL_ONLY",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-BALABAN",
+      "repository": "scottnarmstrong/balaban-lean",
+      "ref": "493e9eb97292ebf6070c1c217a09bcf1adc23857",
+      "source": "https://github.com/scottnarmstrong/balaban-lean/blob/493e9eb97292ebf6070c1c217a09bcf1adc23857/docs/PROGRESS.md",
+      "tier": "FORMAL_RG_METHOD_UNFINISHED",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-JACOBIAN",
+      "repository": "morluto/jacobian",
+      "ref": "f693b76a600f8ee0d95a4e429a53bb576e9aeac1",
+      "source": "https://github.com/morluto/jacobian/blob/f693b76a600f8ee0d95a4e429a53bb576e9aeac1/benchmarks/datasets/conjecture-probes-v1/yang-mills-gauge-invariance-certificate/solution/solve.py",
+      "tier": "EXACT_FINITE_GAUGE_ARITHMETIC",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-LOOP",
+      "repository": "external_paper",
+      "ref": "arxiv:2404.16925",
+      "source": "https://arxiv.org/abs/2404.16925",
+      "tier": "EXACT_LOOP_IDENTITIES_NUMERIC_SDP_SEPARATE",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-STATEMENT",
+      "repository": "lean-dojo/LeanMillenniumPrizeProblems",
+      "ref": "603053dc267cf3efe422f438eb78098c0ececd6",
+      "source": "https://github.com/lean-dojo/LeanMillenniumPrizeProblems/blob/603053dc267cf3efe422f438eb78098c0ececd6/Problems/YangMills/Millennium.lean",
+      "tier": "FORMAL_SPEC_INCOMPLETE",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-CFT-DUAL",
+      "repository": "Kevin-Langhoff/cft-gap",
+      "ref": "30c5483861be8dc71b37e22e79325c6bc9a3572e",
+      "source": "https://github.com/Kevin-Langhoff/cft-gap/blob/30c5483861be8dc71b37e22e79325c6bc9a3572e/dual/README.md",
+      "tier": "METHOD_TEMPLATE_2D_CFT_NOT_YM",
+      "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-ANAXIA-D4",
+      "repository": "anaxia-research/anaxia-certificates",
+      "ref": "1c49a75d8d45a6499e3a71e78655e2f4d4d8f280",
+      "source": "https://github.com/anaxia-research/anaxia-certificates/blob/1c49a75d8d45a6499e3a71e78655e2f4d4d8f280/PROOF-SCOPE.md",
+      "tier": "UNRELATED_GEOMETRIC_ARITHMETIC_METHOD",
+      "status": "CANDIDATE"
     }
   ]
 }
