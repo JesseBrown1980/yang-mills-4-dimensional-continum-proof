@@ -1,0 +1,4 @@
+YM4_WG09_AUDIT|original_SU2=YES|spatial_L=2|electric_spin4_neutral=42|spinone_two_link=12|all_remaining_spin_index_ge6=YES|json=0
+YM4_WG09_FESHBACH|beta_analysis_le=1/1000000|E42_4th_remainder_le=2000000_beta4|tail_spinone_ratio_lt=9/20|deep_tail_ratio_le=10_beta2|full_6mode_4th_remainder_le=20000000000_beta4|exact_6mode_ledger=16243906348|json=0
+YM4_WG09_FIRST_NEUTRAL|beta_le=1/1000000000000|symmetric_gap_gt=21_beta3_over320_times_electric_scale|single_Wilson_weight_gt=1/289|source_WG08=REQUIRED|json=0
+YM4_WG09_VERDICT|small_beta_L2_first_neutral_order=PASS|all_volume_and_continuum_mass_gap=OPEN|json=0
