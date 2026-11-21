@@ -20,4 +20,4 @@ The [open-gate matching ledger](BRIDGE-LEDGER.md) records exact external source 
 
 The 4D continuum Yang–Mills problem remains OPEN.
 
-**New gold-ring external references:** The atlas now displays 13 candidate proof sources alongside 11 red OPEN tasks. Click a gold node to see its original pinned theorem or code, and read its acceptance obligations before reusing any statement.
+**New gold-ring external references:** The atlas now displays 22 candidate proof sources alongside 11 red OPEN tasks. Click a gold node to see its original pinned theorem or code, and read its acceptance obligations before reusing any statement.
