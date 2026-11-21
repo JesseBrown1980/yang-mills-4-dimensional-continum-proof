@@ -119,3 +119,47 @@ Scientific status emitted on success:
 - Physical full-spectrum continuum mass gap: **OPEN**.
 
 This is an actionable next theorem interface, not a claim that the continuum problem has been solved.
+
+
+## 7. A genuine continuous-SU(2) four-dimensional finite-scale source theorem
+
+We can also establish an **actual continuous-SU(2) result**, independent of the finite S₃ numerical input. Let \(\Lambda\) be a four-dimensional periodic hypercubic Wilson lattice with each side at least two, \(\beta\ge0\) finite, normalized Haar links, and normalized Wilson plaquette \(W_p(U)=\frac12\operatorname{Re}\operatorname{Tr}U_p\in[-1,1]\). Let \(\mu_{\Lambda,\beta}\) be its actual Wilson Gibbs probability measure.
+
+**Theorem (local Wilson Gibbs variance).** For every such lattice and every plaquette,
+\[
+\boxed{\quad\operatorname{Var}_{\mu_{\Lambda,\beta}}(W_p)
+\ge\frac14 e^{-12\beta}>0,\quad}
+\]
+**independent of the number of lattice sites and plaquettes**.
+
+**Proof.** Choose one of the four links in \(p\), and condition on all other link variables. In four dimensions that link participates in exactly **six** distinct plaquettes. Their part of the Wilson Boltzmann weight is a continuous positive function \(f(U)\) with \(e^{-12\beta}\le f(U)\le1\) after removing fixed factors, since each of the six terms has action between \(0\) and \(2\beta\). Its normalized conditional density relative to Haar is \(f(U)/\int f\,dU\ge e^{-12\beta}\).
+
+For the selected plaquette, fixing the other three links turns its normalized trace into \(\frac12\operatorname{Re}\operatorname{Tr}(UA)\) or an equivalent inverse/orientation, with \(A\in\mathrm{SU}(2)\) fixed. By Haar invariance and character orthogonality,
+\[
+\int W_p(U)\,dU=0,\qquad
+\int W_p(U)^2\,dU=\frac14.
+\]
+Therefore for every real conditional center \(c\),
+\[
+\int(W_p(U)-c)^2\,d\mu(U\mid\mathrm{other\ links})
+\ge e^{-12\beta}\int(W_p(U)-c)^2\,dU
+=e^{-12\beta}\left(\frac14+c^2\right).
+\]
+Minimizing over \(c\) shows that the conditional variance is at least \(e^{-12\beta}/4\); the law of total variance proves the theorem. The bound is independent of volume because it conditions only on the six incident plaquettes. For a fixed \(\beta\), the same local variance inequality persists under any weak infinite-volume Gibbs limit with that fixed coupling, since \(W_p\) and \(W_p^2\) are bounded local continuous functions.
+
+**Machine-checkable exact controls.** [The new integer checker](../tests/test_ym4_07c_su2_local_wilson_variance.py) enumerates all 24 binary-tetrahedral quaternion points \(Q_8\cup\{(\pm1\pm i\pm j\pm k)/2\}\), proves their coordinate covariance exactly \(\delta_{ij}/4\), and checks the normalized character second moment \(1/4\). The finite 24-point second-moment design is an independent **control for the degree-two continuous Haar identity**, not a replacement for the continuous measure in the theorem. To avoid floating-point exponentials, for rational \(x=12\beta\) and integer \(n>x\) it proves
+\[
+ \frac14e^{-x}\ge\frac14\left(1-\frac{x}{n}\right)^n.
+\]
+Examples:
+- \(\beta=0\): variance \(\ge1/4\), in fact equality;
+- \(\beta=1/1000,\ n=1\): variance \(\ge247/1000\);
+- \(\beta=1/8,\ n=3\): variance \(\ge1/32\);
+- \(\beta=1,\ n=24\): variance \(\ge1/67\,108\,864\);
+- \(\beta=16,\ n=384\): variance \(\ge2^{-386}\).
+
+Nine altered-claim controls reject wrong link incidence, negative coupling, invalid exponential enclosure, finite-group substitution, missing plaquette dependence, mistaking nonzero variance for a full gap, asserting weak-coupling uniformity, assuming an OS source identification, and changing the Haar second moment.
+
+**Interpretation.** This establishes a **nonconstant genuine SU(2) local Wilson observable at every fixed lattice and finite coupling**, with a volume-independent quantitative variance floor. The floor decays as \(\beta\to\infty\); a renormalized ultraviolet source norm therefore still needs a separate scale-uniform estimate. Moreover, equal-time Euclidean Gibbs variance must be connected to the gauge-invariant Osterwalder–Schrader transfer Hilbert space by a genuine source identification before being called a spectral weight. The operator/projection transport theorem in section 2 and full-gap requirements in section 5 remain distinct.
+
+**Next physical gate sharpened:** construct the genuine SU(2) time-zero Wilson source in the positive transfer representation, prove an appropriate cutoff-uniform *renormalized* source norm and projector comparison that accounts for mixed-plane network terms, then combine it with a physical full-spectrum gap estimate along the actual \(\beta(a)\) flow.
