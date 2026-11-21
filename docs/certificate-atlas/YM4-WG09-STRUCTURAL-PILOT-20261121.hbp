@@ -1,0 +1,5 @@
+YM4_WG09_STRUCTURE|original_L2_SU2_supports=42|magnetic_edges=48|six_K4_2=YES|isolates=6
+YM4_WG09_SYMMETRY|48_affine_spatial_actions=EXACT|six_block_action=FAITHFUL|pair_orbitals=6,6,24
+YM4_WG09_ALGEBRA|commutant_basis=I,O,X|ranks=1,2,3|eigenvalues=a+b+4c,a+b-2c,a-b
+YM4_WG09_V2_PARITY|ordered_support_candidates_diagonal=200|offdiagonal=32|Haar_coefficients=OPEN
+YM4_WG09_VERDICT|symmetry_reduction=PASS|effective_b_c=OPEN|full_beta3_remainder=OPEN|first_neutral_energy_order=OPEN
