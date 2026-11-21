@@ -1,0 +1,74 @@
+name: YM4 WG04 original SU2 neutral 42-dimensional Wilson band
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_neutral_42_band.py'
+      - 'tests/test_ym4_su2_neutral_42_band.py'
+      - 'docs/NOTE-YM4-WG04-NEUTRAL-42-WILSON-BAND-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG04-NEUTRAL-42-BAND-20261121.hbp'
+      - '.github/workflows/ym4-wg04-neutral-42-band.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_neutral_42_band.py'
+      - 'tests/test_ym4_su2_neutral_42_band.py'
+      - 'docs/NOTE-YM4-WG04-NEUTRAL-42-WILSON-BAND-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG04-NEUTRAL-42-BAND-20261121.hbp'
+      - '.github/workflows/ym4-wg04-neutral-42-band.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-full-SU2-physical-neutral-Wilson-42-band:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check prediction frozen prior to producer and verifier
+        run: |
+          set -euo pipefail
+          PIN=64c75bbf78bffe03c6b5b89832ff95026a9d9868
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG04-NEUTRAL-42-BAND-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_neutral_42_band.py" 2>/dev/null; then
+            echo "producer predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_neutral_42_band.py" 2>/dev/null; then
+            echo "independent verifier predates prediction" >&2
+            exit 1
+          fi
+      - name: Strict repository rational-only source audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independently reconstruct 42 SU2 neutral Wilson spin networks
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_neutral_42_band.py -v
+      - name: Canonical original full magnetic Wilson 42-band receipt
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg04
+          python3 -B tests/ym4_su2_neutral_42_band.py > build/ym4-wg04/FIRST.hbp
+          python3 -B tests/ym4_su2_neutral_42_band.py > build/ym4-wg04/REPLAY.hbp
+          cmp build/ym4-wg04/FIRST.hbp build/ym4-wg04/REPLAY.hbp
+          grep -Fq 'neutral_electric_Wilson_band_rank=42' build/ym4-wg04/FIRST.hbp
+          grep -Fq '42_dimensional_neutral_projector=EXACT_BY_MINMAX' build/ym4-wg04/FIRST.hbp
+          grep -Fq '42_eigenvalues_band_gt=1/5000000000000000000' build/ym4-wg04/FIRST.hbp
+          grep -Fq 'physical_band_Wilson_overlap=OPEN' build/ym4-wg04/FIRST.hbp
+          grep -Fq 'continuum_mass_gap=OPEN' build/ym4-wg04/FIRST.hbp
+          sha256sum build/ym4-wg04/FIRST.hbp > build/ym4-wg04/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg04/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG04-original-SU2-neutral-Wilson-42band
+          path: build/ym4-wg04/
+          if-no-files-found: warn
+          retention-days: 90
