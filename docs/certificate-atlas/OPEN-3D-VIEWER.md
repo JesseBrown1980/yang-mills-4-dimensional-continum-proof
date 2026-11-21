@@ -1,5 +1,9 @@
 # Open the clickable 4D Yang–Mills Certificate Atlas
 
+**Latest viewer revision:** 76 proof points, **22 gold external candidates** and 11 red OPEN certificate subgates. The new blue YM4-SW01 point is a verified-design spectral-window dual that awaits original 4D Wilson connected moments. [Source-matching notes](EXTERNAL-SEARCH-ROUND2-20261121.md).
+
+
+
 ## [▶ OPEN THE LIVE 4D 3D ATLAS](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)
 
 [▶ Alternative HTML viewer](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)
