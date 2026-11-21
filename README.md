@@ -1,5 +1,20 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — WG09 independently audited first center-neutral Wilson excitation at fixed spatial L=2
+
+**[WG09 full-operator finite-beta theorem](docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md)** · [Exact third-order SU(2) Haar note](docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md) · [Finite-beta SHA-pinned receipt](docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp) · [Independent spin-state enumeration](docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp) · [Coefficient PR #96](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/96) · [Independent audit and bound PR #97](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/97) · [Hosted exact norm and SHA replay PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803).
+
+For the **original full continuous-SU(2), Gauss-projected 3+1D Wilson transfer on a periodic L=2 spatial lattice**, two separately authored exact arithmetic Haar/Schur audits reproduced WG09's six-mode second- and third-order coefficients. A separate exact low-spin SU(2) Gauss-invariant enumeration finds 42 fundamental neutral electric states plus 12 two-link spin-one neutral states at representation index four; all remaining neutral nonvacuum electric states have index at least six.
+
+The full infinite-dimensional vacuum, leading spin-one and higher-spin remainder was bounded with exact rational inequalities: **42-state Schur remainder ≤ 2,000,000 β⁴**, and **six-mode symmetry-resolved Feshbach remainder ≤ 20,000,000,000 β⁴**. The exact third-order symmetry split therefore identifies the **first center-neutral individual excited physical eigenmode** as WG08's fully spatial-symmetric Wilson-coupled eigenvector, for **every 0<β≤1/10¹²**, with certified original physical gap
+
+    λ_sym − λ_next,neutral > exp(−24β) κ₁(β)^4 (21/320) β³.
+
+WG08's true interacting-vacuum centered original local Wilson halftrace has **squared weight >1/289 on this individual first-neutral mode** throughout that interval. WG03's **first physical nonvacuum level overall remains center-charged and has exact zero contractible local Wilson overlap** at these parameters.
+
+**Evidence scope:** This is an internally verified fixed-L strong-coupling/small-β spectral-order and Wilson-source certificate. Independent external peer review is a separate step. Original large-volume uniformity, weak-coupling scaling, 4D continuum reconstruction and the Yang–Mills continuum mass gap remain OPEN.
+
+
 ## November 21, 2026 — Original SU(2) individual spatial-symmetric physical Wilson eigenmode with positive weight
 
 **[YM4-WG08 exact full physical symmetry-selected rank-one Wilson eigenvector](docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md)** · [Preimplementation freeze](docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp) · [Hosted canonical HBP](docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp) · [SHA acceptance](docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp) · [Independent hosted verification](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44935262194).
