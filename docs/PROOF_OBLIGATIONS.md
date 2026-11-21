@@ -1,5 +1,12 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 20: YM4-07D — polynomial local SU2 source and retained network interactions
+
+**New analytic local theorem, independent review pending.** For the genuine continuous-SU(2) finite-volume 4D Wilson measure with periodic sides at least three, conditional Haar integration of the six staples yields the volume-independent variance estimate \(\operatorname{Var}(W_p)>[2^{18}(1+6\beta)^2]^{-1}\) at every finite \(\beta\ge0\). A spherical-cap argument supplies its all-real-\(\beta\) proof. The exact one-link integral retains 15 pair networks: 3 coplanar and 12 mixed-plane chairs. Equal individual plaquette traces with different staple-pair Gram data falsify closure at \(\beta>0\). This is a quantitative improvement of the *local* YM4-07C floor; it still decays with running \(\beta\).
+
+[Proof and limitations](NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md) · [frozen predictions](PREDICT-YM4-07D-ALLBETA-SU2-20261120.hbp) · [exact-integer local controls](../tests/test_ym4_07d_su2_allbeta_source.py). Local controls: PASS; hosted run and external proof review: PENDING. The one-link orthogonal conditional-expectation projector in Euclidean (L^2(mu)) has an exact source residual norm squared bounded below by the same polynomial floor. It is a retained-links sigma-algebra projection, **not** the OS physical-energy spectral projector. **Open RG task:** construct the actual all-links weak-coupling block source, physical-energy spectral projector and volume-uniform transport defect, keeping higher-character and network remainders. YM4-04/05/06: OPEN.
+
+
 ## November 20: YM4-07C — exact Wilson source/projection transfer interface
 
 **New mathematical lemma PASS; actual 4D source/continuum application OPEN.** The independently accepted original 3×4 finite S₃ Wilson squared weight > 17,074,763/10¹² provides a mathematically certified **amplitude comparator** > 4,132,162,024/10¹². For an explicitly defined isometry J to the genuine physical 4D continuous-SU(2) Hilbert space, SU2 source x and physical spectral projector Q, the estimates ||x−Jx_F|| ≤ δ and ||QJx_F−JP_Fx_F|| ≤ ε imply ||Qx|| > 0 whenever δ+ε is below that finite amplitude threshold. This is **conditional spectral visibility**, not an SU2 group embedding, not a continuum construction, and not a full-spectrum mass-gap statement. The finite source and the SU2 vacuum/source identification must be compared as actual operators, not by relabeling their spectra.
