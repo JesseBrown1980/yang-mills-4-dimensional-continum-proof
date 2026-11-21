@@ -1,0 +1,59 @@
+name: YM4 WG09 independently audited full-operator finite-beta bound
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wg09_full_operator_remainder.py'
+      - 'tests/ym4_su2_wg09_independent_spin_enumeration.py'
+      - 'docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp'
+      - '.github/workflows/ym4-wg09-audit-finite-beta.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wg09_full_operator_remainder.py'
+      - 'tests/ym4_su2_wg09_independent_spin_enumeration.py'
+      - 'docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md'
+      - 'docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp'
+      - '.github/workflows/ym4-wg09-audit-finite-beta.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-full-operator-norm-ledger:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact spin enumeration and deterministic double replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg09-audit
+          python3 -B tests/ym4_su2_wg09_independent_spin_enumeration.py > build/ym4-wg09-audit/SPIN.hbp
+          python3 -B tests/ym4_su2_wg09_independent_spin_enumeration.py > build/ym4-wg09-audit/SPIN-REPLAY.hbp
+          cmp build/ym4-wg09-audit/SPIN.hbp build/ym4-wg09-audit/SPIN-REPLAY.hbp
+          cmp build/ym4-wg09-audit/SPIN.hbp docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp
+          echo 'cab29b4e1cb7651a843a609959464cb07d8ba2d6a8fe87bb78d5e628c86a2487  build/ym4-wg09-audit/SPIN.hbp' | sha256sum -c
+      - name: Full original SU2 Feshbach remainder and finite-beta gap
+        run: |
+          set -euo pipefail
+          python3 -B tests/ym4_su2_wg09_full_operator_remainder.py > build/ym4-wg09-audit/ORDER.hbp
+          python3 -B tests/ym4_su2_wg09_full_operator_remainder.py > build/ym4-wg09-audit/ORDER-REPLAY.hbp
+          cmp build/ym4-wg09-audit/ORDER.hbp build/ym4-wg09-audit/ORDER-REPLAY.hbp
+          cmp build/ym4-wg09-audit/ORDER.hbp docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp
+          echo '5b53b5a6bd2acfb7f0501dc075931bca63cb4d0f44517a243c9cd7591a112d48  build/ym4-wg09-audit/ORDER.hbp' | sha256sum -c
+          grep -Fq 'small_beta_L2_first_neutral_order=PASS' build/ym4-wg09-audit/ORDER.hbp
+          grep -Fq 'all_volume_and_continuum_mass_gap=OPEN' build/ym4-wg09-audit/ORDER.hbp
+      - name: Repository source no-floating-point audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG09-independent-spin-and-full-operator-order
+          path: build/ym4-wg09-audit/
+          retention-days: 90
+          if-no-files-found: warn
