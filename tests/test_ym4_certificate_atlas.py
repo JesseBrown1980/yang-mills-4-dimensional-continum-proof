@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 66, "atlas_expected_nodes")
+    require(len(rows) == 76, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -140,7 +140,8 @@ def hbp_nodes(text):
             require(uid.startswith("EXT-"), "external_source_id_required")
             require("github.com/" in row["source"]
                     or "arxiv.org/" in row["source"]
-                    or "hexagonmath.org/" in row["source"],
+                    or "hexagonmath.org/" in row["source"]
+                    or "doi.org/" in row["source"],
                     "unsupported_external_proof_promotion")
             if "/blob/" in row["source"]:
                 require("/blob/main/" not in row["source"],
@@ -148,7 +149,7 @@ def hbp_nodes(text):
     require(sum(1 for uid in rows if uid.startswith("YM4-Q")) == 11,
             "open_subgates_missing")
     require(sum(1 for v in rows.values()
-                if v["status"] == "CANDIDATE") == 13,
+                if v["status"] == "CANDIDATE") == 22,
             "external_search_node_mismatch")
     require(rows["YM4-Q10"]["status"] == "OPEN",
             "continuum_gap_must_remain_open")
@@ -255,7 +256,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 66,
+    require(page.count('<article class="entry" id="') == 76,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -273,6 +274,16 @@ def atlas_provenance():
             require('href="#' + uid + '"' in page,
                     "open_work_not_clickable_" + uid)
             require(uid in ledger, "open_gate_absent_from_ledger_" + uid)
+    require("EXT-FUSION-6J" in rows and "YM4-SW01" in rows,
+            "new_exact_SU2_spectral_sources_missing")
+    require(rows["YM4-SW01"]["status"] == "DRAFT_CHECKED",
+            "exact_dual_verification_tier")
+    require("EXTERNAL-SEARCH-ROUND2-20261121.md" in manifest,
+            "external_round2_references_missing")
+    require("PREDICT-SPECTRAL-WINDOW-DUAL-20261121.hbp" in manifest,
+            "spectral_prediction_not_indexed")
+    require("source_cards=76" not in page,
+            "runtime_receipts_must_not_be_claimed_in_viewer")
     require("OPEN CERTIFICATES" in page, "no_open_certificates_section")
     require("Certificate" in page, "missing_header")
     require("Finite-universe-Yang-mills" in page,
@@ -308,10 +319,10 @@ def atlas_provenance():
         except ValueError:
             failures += 1
     require(failures == 4, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=66|open_gates=11|external_leads=13"
+    print("ATLAS4D_INDEX|nodes=76|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=66|json=0")
+          "|script_free=YES|source_cards=76|json=0")
     print("ATLAS4D_ADVERSARIES|negative_controls=4_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
