@@ -1,5 +1,13 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 21 — Second certified-source survey
+
+The live atlas now contains **76 source-linked graph nodes**, including **22 external candidate references** and the unchanged **11 OPEN proof tasks**. [The new cross-repository search ledger](EXTERNAL-SEARCH-ROUND2-20261121.md) records Lean strong-coupling correlations, exact SU(2) Racah/6j coefficients, Wilson cluster-area bounds, Euclidean spectral dual methods, and formal comparison targets; each source links to its exact original repository commit or published DOI. None is automatically promoted to a continuum SU(2) result.
+
+We also added [YM4-SW01](NOTE-SPECTRAL-WINDOW-DUAL-20261121.md), a genuine *positive spectral measure* dual-polynomial inequality with an [exact-integer checker](../../tests/test_ym4_certificate_spectral_window_dual.py) and [frozen prediction](PREDICT-SPECTRAL-WINDOW-DUAL-20261121.hbp). It operates on **certified physically normalized connected Wilson moments**; its calibration test uses an explicitly labelled toy spectrum. A positive result proves **total window weight**, while the first excited Wilson state remains a distinct eigenvalue-isolation gate.
+
+
+
 **Pinned audit: November 21, 2026.** Companion to the [finite 3D Yang–Mills certificate atlas](https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html) and its original-source finite S₃ Wilson weight acceptance.
 
 ## [▶ OPEN THE LIVE 4D CERTIFICATE ATLAS](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)
