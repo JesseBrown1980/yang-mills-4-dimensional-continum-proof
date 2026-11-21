@@ -1,0 +1,6 @@
+beta=1900e-5 J:MET@316(alpha~4.530437e-02) W:MET@25(alpha~4.530788e-02) P:MET@377(alpha~4.530437e-02)
+beta=1901e-5 J:MET@352(alpha~4.615431e-02) W:MET@27(alpha~4.615807e-02) P:NOT_MET@400(cap_reached)
+beta=1902e-5 J:NOT_MET@400(cap_reached) W:MET@29(alpha~4.713343e-02) P:NOT_MET@400(cap_reached)
+beta=1903e-5 J:NOT_MET@400(cap_reached) W:MET@34(alpha~4.831899e-02) P:NOT_MET@400(cap_reached)
+beta=1904e-5 J:NOT_MET@400(cap_reached) W:MET@42(alpha~4.989783e-02) P:NOT_MET@400(cap_reached)
+beta=1905e-5 J:NOT_MET@202(s_undefined_or_above_1/4) W:NOT_MET@171(s_undefined_or_above_1/4) P:NOT_MET@202(s_undefined_or_above_1/4)

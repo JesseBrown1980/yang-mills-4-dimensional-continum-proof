@@ -1,0 +1,4 @@
+plaquettes 124416 offcount hist [2, 4] deg max 20 deg min 10
+class(odd transverse)= 1 seed 4 counts {4: 1, 6: 12, 8: 32, 9: 32, 10: 304} states 76891 time 1.0s
+class(odd transverse)= 2 seed 52 counts {6: 12, 8: 12, 9: 12, 10: 240} states 61763 time 0.9s
+class(odd transverse)= 3 seed 628 counts {6: 12, 10: 216} states 79308 time 1.1s

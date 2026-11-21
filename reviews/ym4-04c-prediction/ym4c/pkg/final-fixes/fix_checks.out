@@ -1,0 +1,49 @@
+YM4-04C fix pass checks. e^{-1} in [0.36787944117144, 0.36787944117144]
+== fix 6: chain bounds at the certified delta_1^+ = 6 alpha^+ and at the bracket end
+C07 beta_0=1/100 head=crude: delta_1 in [0.00552222533881, 0.00552222533881] inside the frozen [0.0055222, 0.0055223]: True; c_fin = e^{-1}: True
+   at the certified delta_1^+: delta_2 <= 0.002031513172 (bound 0.0020316: True); sum_k delta_k <= 0.008736031856 (bound 0.008737: True); margins 8.683e-08 and 9.681e-07
+   at delta_1^+ + 6*2^-48: delta_2 <= 0.002031513172 (True); sum <= 0.008736031856 (True)
+   at the bracket end 0.0055223: delta_2 in [0.002031540638, 0.002031540638] (holds); sum in [0.008736149968, 0.008736149968] (holds)
+C08 beta_0=1/100 head=C03: delta_1 in [4.7159850643e-06, 4.7159850643e-06] inside the frozen [4.7159e-06, 4.716e-06]: True; c_fin = e^{-1}: True
+   at the certified delta_1^+: delta_2 <= 1.73491395e-06 (bound 1.735e-06: True); sum_k delta_k <= 7.460578522e-06 (bound 7.461e-06: True); margins 8.605e-11 and 4.215e-10
+   at delta_1^+ + 6*2^-48: delta_2 <= 1.734913958e-06 (True); sum <= 7.460578555e-06 (True)
+   at the bracket end 4.716e-06: delta_2 in [1.734919445e-06, 1.734919445e-06] (holds); sum in [7.46060215e-06, 7.46060215e-06] (holds)
+C11 beta_0=1/64 head=crude: delta_1 in [0.05082652207, 0.05082652207] inside the frozen [0.0508265, 0.0508266]: True; c_fin = e^{-1}: True
+   at the certified delta_1^+: delta_2 <= 0.01869803254 (bound 0.018699: True); sum_k delta_k <= 0.08040637401 (bound 0.08041: True); margins 9.675e-07 and 3.626e-06
+   at delta_1^+ + 6*2^-48: delta_2 <= 0.01869803254 (True); sum <= 0.08040637401 (True)
+   at the bracket end 0.0508266: delta_2 in [0.0186980612, 0.0186980612] (holds); sum in [0.08040649729, 0.08040649729] (holds)
+C14 beta_0=1/64 head=C03: delta_1 in [0.00101738557284, 0.00101738557284] inside the frozen [0.00101738, 0.00101739]: True; c_fin = e^{-1}: True
+   at the certified delta_1^+: delta_2 <= 0.000374275236 (bound 0.00037428: True); sum_k delta_k <= 0.001609480278 (bound 0.0016095: True); margins 4.764e-09 and 1.972e-08
+   at delta_1^+ + 6*2^-48: delta_2 <= 0.000374275236 (True); sum <= 0.001609480278 (True)
+   at the bracket end 0.00101739: delta_2 in [0.0003742768647, 0.0003742768647] (holds); sum in [0.001609487282, 0.001609487282] (holds)
+C12 beta_0=1/50 head=C03: delta_1 in [0.0363235365282, 0.0363235365282] inside the frozen [0.0363235, 0.0363236]: True; c_fin = e^{-1}: True
+   at the certified delta_1^+: delta_2 <= 0.01336268232 (bound 0.013363: True); sum_k delta_k <= 0.0574629887 (bound 0.057463: True); margins 3.177e-07 and 1.13e-08
+   at delta_1^+ + 6*2^-48: delta_2 <= 0.01336268232 (True); sum <= 0.0574629887 (True)
+   at the bracket end 0.0363236: delta_2 in [0.01336270567, 0.01336270567] (holds); sum in [0.05746308911, 0.05746308911] (FAILS)
+C16 from C07: delta_20 <= e^{-19} delta_1^+ <= 3.093990446e-11 (bound 3.0940e-11: True, margin 9.554e-17); osc <= 5.827663238e-09 (bound 5.828e-9: True)
+   at delta_1^+ + 6*2^-48: delta_20 <= 3.093990446e-11 (True)
+   at the bracket end 0.0055223: e^{-19}*0.0055223 in [3.094032277e-11, 3.094032277e-11] (FAILS); osc >= 5.827742028e-09 (holds or undecided)
+C12 certified delta_1 in [0.03632353652823, 0.03632353652823] (10-digit grid: inside [0.0363235365, 0.0363235366]: True)
+C07 certified delta_1 in [0.005522225338811, 0.005522225338811] (inside [0.0055222253, 0.0055222254]: True)
+== B2: missing_tail (S -> the head-only sum_{n=4..10} N(n) x^n with the C03 head), theta = 1/4
+1/40 (C04 guard): mu e^{1/4} eps_6 in [1.11252235, 1.11252235]; at alpha = 2^-22: mu^+ x^+ < 1: False; S_head^+ = 1.95165e-07 <= alpha: True
+   pole test kept: mu x >= mu eps_6^- e^{1/4} >= 1 at every alpha >= 0 and theta >= 1/4, so the read is NOT_MET by the pole and the fault does not fire here; pole test removed with the tail: MET at alpha = 2^-22
+281/12500 (C04 guard): mu e^{1/4} eps_6 in [1.00035867, 1.00035867]; at alpha = 2^-22: mu^+ x^+ < 1: False; S_head^+ = 1.27454e-07 <= alpha: True
+   pole test kept: mu x >= mu eps_6^- e^{1/4} >= 1 at every alpha >= 0 and theta >= 1/4, so the read is NOT_MET by the pole and the fault does not fire here; pole test removed with the tail: MET at alpha = 2^-22
+519/25000 (C06 NOT_MET point): mu e^{1/4} eps_6 in [0.923806466, 0.923806466]; at alpha = 2^-22: mu^+ x^+ < 1: True; S_head^+ = 9.26362e-08 <= alpha: True
+   pole test kept: it passes, and the head-only S reads MET at alpha = 2^-22: True
+== fix 7: C10 line channel on fine (Z/8)^4 -> coarse (Z/4)^4 -> next blocking (Z/2)^4
+fine: max Y per fine line link 6; #Y = [8]; #Y at position 1 = [4]; coarse: P'' per coarse link [6]
+position-1 counts of the coarse Y = boundary of P'' for the next blocking: [0, 1, 2]
+multisets of these counts over the 6 P'' through a coarse link: [(0, 0, 0, 0, 0, 0), (0, 0, 0, 0, 0, 1), (0, 0, 0, 0, 1, 2), (0, 0, 0, 1, 1, 1), (1, 1, 1, 2, 2, 2)]
+kappa=1/4: variant coarse norm / (2|s|) = sum over (1, 1, 1, 2, 2, 2) of e^{kappa n} in [8.798240062, 8.798240062]; faulted fine norm / (2|s|) = 6e^{4kappa}; variant ratio in [0.5394486062, 0.5394486062]
+   closed form (e^{-3kappa} + e^{-2kappa})/2 in [0.5394486062, 0.5394486062]; strictly between e^{-1} and 1: True; above e^{-kappa} = 0.7788007831: False
+kappa=0: variant coarse norm / (2|s|) = sum over (0, 0, 0, 0, 0, 0) of e^{kappa n} in [6, 6]; faulted fine norm / (2|s|) = 6e^{4kappa}; variant ratio in [1, 1]
+pinned fault (fine-norm routine only, coarse #Y'' = 4): ratio = e^{kappa(4-4)} = 1; correct: e^{kappa(4-8)} = e^{-1}
+== fix 9: W01 corners
+2 r_1 = 15/14; 4 r_2 = 25823/24660; 8 r_3 in [637265471/625000000, 1274530943/1250000000] inside [1.0196247, 1.0196248]: True; strictly decreasing: True
+== exact statements quoted in the rows
+C12: sum at the certified delta_1^+ <= 5.7463e-2: True; at 0.0363236 the lower enclosure of 0.0363236/(1-e^{-1}) is above 0.05746308: True
+C16: e^{-19} delta_1^+ <= 3.093991e-11: True; e^{-19}*0.0055223 is above 3.094032e-11: True
+fix 7 variant ratio (e^{-3/4} + e^{-1/2})/2 inside [0.5394486, 0.5394487]: True
+B2 variant at 0.02076: mu^+ x^+ < 1 at alpha = 2^-22: True; S_head^+ <= 9.27e-8 <= alpha: True

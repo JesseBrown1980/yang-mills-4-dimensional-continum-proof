@@ -1,0 +1,40 @@
+A F_20(4..12) equal to draft: True
+A mu in [53.00068,53.00069]: True
+A F(n+1)/F(n) = 20 prod_{j=1..19}(20n+j)/(19n+j+1) for n=0..120: True
+A strictly increasing n=0..120: True ; below mu: True
+A F(1),F(2),F(3) = 1 20 590
+B pi in [1231847548/392109375, 5277328977275528/1679825970703125] (decimal 3.141591675, 3.141592682)
+B 8/(3 pi_lo) <= 8489/10000: True  8/(3 pi) in [0.8488264, 0.8488266]
+C plaquettes 24576 links 16384 every link in 6 plaquettes: True
+C off links per plaquette: [2, 4]
+C off-link degree max 20 min 10
+C two distinct off-link neighbours share exactly one link: True
+C link classes (0 = line): [(0, 2048), (1, 6144), (2, 6144), (3, 2048)]
+C plaquette link-class patterns: [((0, 0, 1, 1), 6144), ((1, 1, 2, 2), 12288), ((2, 2, 3, 3), 6144)]
+C each line plaquette has one corner with two odd coordinates, and both its off links end there: True
+C fillings: count 1536 each of 4 plaquettes: True
+C off links by number of fillings holding them, per class: [((1, 1), 6144), ((2, 0), 6144), ((3, 0), 2048)]
+C |W(e0)| over all line links: [12] ; each plaquette through e0 has 2 off links, both in W(e0): True
+C the 6 fillings through the coarse link each hold exactly 2 links of W(e0): True
+D search states 72624 ; closed sets through a plaquette of e0, up to 8: 126
+D closed sets holding all 8 line links of dP, by size: [(4, 1), (8, 16)]
+D the size-4 one is F_P: True
+D size-8 holders by number of F_P quadrants kept: [(3, 16)]
+E class 1 connected sets through the link, n=1..4: [6, 85, 1648, 35478] ; 6F_20(n): [6, 120, 3540, 123240] ; all below: True
+E class 2 connected sets through the link, n=1..4: [6, 105, 2138, 47232] ; 6F_20(n): [6, 120, 3540, 123240] ; all below: True
+E class 3 connected sets through the link, n=1..4: [6, 105, 2282, 52200] ; 6F_20(n): [6, 120, 3540, 123240] ; all below: True
+F beta=1/100 eps6 in [6.538419569879e-03, 6.538419569879e-03]
+F beta=1/100 least root alpha_- in [9.2037088980e-04, 9.2037089080e-04]
+F C07 draft 12*alpha_- inside [0.011044, 0.011045]: True ; proved 6*alpha_- in [0.0055222253, 0.0055222253]
+F C07 proved 2*delta_1*e^delta_1 <= 0.011106 (draft 12-form: 0.022334); 1/8 = 0.125
+F beta=1/64 eps6 in [1.021654437372e-02, 1.021654437372e-02]
+F beta=1/64 least root alpha_- in [8.4710870117e-03, 8.4710870127e-03]
+F C11 draft 12*alpha_- inside [0.10165, 0.10166]: True ; proved 6*alpha_- in [0.0508265221, 0.0508265221]
+F C11 proved 2*delta_1*e^delta_1 <= 0.106953 (draft 12-form: 0.225060); 1/8 = 0.125
+G crude self-map edge with the draft's factor 12: MET at 0.01369, NOT_MET at 0.01370
+G C03 self-map edge with the draft's factor 12: MET at 0.01959, NOT_MET at 0.01960
+G crude self-map edge with the proved factor 6: MET at 0.01556, NOT_MET at 0.01557
+G C03 self-map edge with the proved factor 6: MET at 0.02029, NOT_MET at 0.02030
+G headfree self-map edge with the proved factor 6: MET at 0.02029, NOT_MET at 0.02030
+G beta=1/50 headfree: factor-6 admissible True; 6*alpha_- <= 0.03632291
+G beta=1/50 C03: factor-6 admissible True; 6*alpha_- <= 0.03632354

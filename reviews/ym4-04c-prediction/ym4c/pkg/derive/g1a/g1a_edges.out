@@ -1,0 +1,5 @@
+crude / delta_1 frozen / dcrit 0.109530694: MET at 1582/100000 (delta_1=0.1093334); not at 1583/100000 (delta_1=0.1097438)
+refined(C03) / delta_1 frozen / dcrit 0.109530694: MET at 2037/100000 (delta_1=0.1092399); not at 2038/100000 (delta_1=0.1106172)
+head-free / delta_1 frozen / dcrit 0.109530694: MET at 2037/100000 (delta_1=0.1092383); not at 2038/100000 (delta_1=0.1106156)
+crude / delta_1 proved / dcrit 0.109530694: MET at 1756/100000 (delta_1=0.1091129); not at 1757/100000 (delta_1=0.1095931)
+refined(C03) / delta_1 proved / dcrit 0.109530694: MET at 2074/100000 (delta_1=0.1088558); not at 2075/100000 (delta_1=0.1158911)

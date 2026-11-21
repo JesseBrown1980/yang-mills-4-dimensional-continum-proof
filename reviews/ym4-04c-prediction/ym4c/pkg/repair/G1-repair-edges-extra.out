@@ -1,0 +1,12 @@
+E beta=0.01595 crude: alpha_- in [0.00956682501, 0.009566825011] (upper certified True); 12alpha in [0.1148019, 0.1148019]; 6alpha in [0.0574009501, 0.0574009501]
+E beta=0.01596 crude: alpha_- in [0.00960290019, 0.009602900191] (upper certified True); 12alpha in [0.115234802, 0.115234802]; 6alpha in [0.0576174011, 0.0576174011]
+E beta=0.0204 C03: alpha_- in [0.009455473544, 0.009455473545] (upper certified True); 12alpha in [0.113465683, 0.113465683]; 6alpha in [0.0567328413, 0.0567328413]
+E beta=0.02041 C03: alpha_- in [0.009578293999, 0.009578293999] (upper certified True); 12alpha in [0.114939528, 0.114939528]; 6alpha in [0.057469764, 0.057469764]
+E beta=0.0204 headfree: alpha_- in [0.009455334243, 0.009455334244] (upper certified True); 12alpha in [0.113464011, 0.113464011]; 6alpha in [0.0567320055, 0.0567320055]
+E beta=0.02041 headfree: alpha_- in [0.009578153174, 0.009578153175] (upper certified True); 12alpha in [0.114937838, 0.114937838]; 6alpha in [0.057468919, 0.057468919]
+E beta=0.01767 crude: alpha_- in [0.01909459365, 0.01909459365] (upper certified True); 12alpha in [0.229135124, 0.229135124]; 6alpha in [0.114567562, 0.114567562]
+E beta=0.01768 crude: alpha_- in [0.01918051127, 0.01918051127] (upper certified True); 12alpha in [0.230166135, 0.230166135]; 6alpha in [0.115083068, 0.115083068]
+E beta=0.02074 C03: alpha_- in [0.01814264159, 0.01814264159] (upper certified True); 12alpha in [0.217711699, 0.217711699]; 6alpha in [0.10885585, 0.10885585]
+E beta=0.02075 C03: alpha_- in [0.01931518472, 0.01931518472] (upper certified True); 12alpha in [0.231782217, 0.231782217]; 6alpha in [0.115891108, 0.115891108]
+S surrogate delta_1 <= 49/1000, factor 12, crude: MET at 0.01365 (certified True), NOT_MET at 0.01366 (certified True)
+S surrogate delta_1 <= 49/1000, factor 6, crude: MET at 0.01552 (certified True), NOT_MET at 0.01553 (certified True)

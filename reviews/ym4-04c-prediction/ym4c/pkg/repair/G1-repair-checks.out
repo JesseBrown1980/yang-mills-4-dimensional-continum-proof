@@ -1,0 +1,106 @@
+e^{-1} in [0.3678794411714, 0.3678794411714]
+1 KP edge: 2d'<=1/4 certified at 0.111780108 ; 2d'>1/4 certified at 0.111780109 : True
+1 frozen C_k edge: 2d'<=1/8 certified at 0.05892367 ; 2d'>1/8 certified at 0.058923671 : True
+1 analytic bound at the KP edge: e^{d-1/8} at d=0.111780109 is <= 0.986867108 < 1
+1 c_1(0.1117801) in [0.9868655878, 0.9868655878], argmax f = 65
+1 c_1(0.11178) in [0.9868512449, 0.9868512449], argmax f = 55
+1 c_1(0.111) in [0.9419571044, 0.9419571044], argmax f = 20
+1 c_1(0.11) in [0.8998255021, 0.8998255021], argmax f = 16
+2 c_1 = e^{-1}: object channel upper <= e^{-1} lower at 0.077320139 (upper 0.3678794338 ); at 0.07732014 object channel lower 0.3678794429 > e^{-1} upper: True argmax f = 7
+2 second entry e^{d+2d'-5/4} at 0.077320139 is <= 0.3658220096
+2 route A c* (m>=0) at 0.072094 in [0.3678794412, 0.3678794412]; c_1 upper 0.3678794412
+2 route A c* (m>=0) at 0.072095 in [0.367879837, 0.367879837]; c_1 upper 0.3678794412
+3 C07 crude 1/100 bracket: 2d' in [0.0223332919, 0.0223353364]; frozen c in [0.445042988, 0.4450508181] (n=9); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C07 point 0.0110444507: 2d' in [0.0223342134, 0.0223342134]; frozen c in [0.445046517, 0.445046517] (n=9); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C08 refined 1/100: 2d' in [1.88401775e-05, 1.89001786e-05]; frozen c in [0.3679383586, 0.3679385463] (n=8); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C10b s=1/2000: 2d' in [0.0552457631, 0.0552478728]; frozen c in [0.5950951906, 0.5951068539] (n=11); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C10b s=1/4096: 2d' in [0.0266050143, 0.0266091204]; frozen c in [0.461734701, 0.4617510695] (n=9); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C10c s=1/8192: 2d' in [0.0739754909, 0.0739757056]; frozen c in [0.7118122718, 0.7118137902] (n=12); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C10c s=1/65536: 2d' in [0.00896249532, 0.00896269711]; frozen c in [0.3969921636, 0.3969928442] (n=8); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C13 49/1000: 2d' in [0.102921594, 0.102921594]; frozen c in [0.9824884835, 0.9824884835] (n=17); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C13 1/20: 2d' in [0.10512711, 0.10512711]; frozen c in [1.011066807, 1.011066807] (n=17); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C13 delta_1 at 0.01369 (upper): 2d' in [0.104251005, 0.104251005]; frozen c in [0.9995840678, 0.9995840678] (n=17); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C14 delta_1 at 0.01959 (upper): 2d' in [0.103765798, 0.103765798]; frozen c in [0.9932990191, 0.9932990191] (n=17); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C14 refined 1/64: 2d' in [0.00407768844, 0.00407788925]; frozen c in [0.3808522431, 0.380852893] (n=8); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C12 head-free 1/50: 2d' in [0.156237416, 0.156239723]; frozen C_k NOT_MET (2d' > 1/8: True); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C12 refined 1/50: 2d' in [0.156239723, 0.156244336]; frozen C_k NOT_MET (2d' > 1/8: True); c_1 in [0.3678794412, 0.3678794412] = e^{-1}
+3 C11 crude 1/64: 2d' in [0.225052278, 0.225076668]; frozen C_k NOT_MET (2d' > 1/8: True); c_1 in [0.6810337804, 0.681226283] (argmax f=10)
+4 C07 crude 1/100: c_1(delta_1) <= 0.3678794412; delta_2 <= 0.0040632284; sum_k delta_k <= 0.017472933
+4 C08 refined 1/100: c_1(delta_1) <= 0.3678794412; delta_2 <= 3.4764607e-06; sum_k delta_k <= 1.494968e-05
+4 C14 refined 1/64: c_1(delta_1) <= 0.3678794412; delta_2 <= 0.00074856109; sum_k delta_k <= 0.0032190062
+4 C11 crude 1/64: c_1(delta_1) <= 0.681226283; delta_2 <= 0.069253464; sum_k delta_k <= 0.3189096
+4 C12 refined 1/50: c_1(delta_1) <= 0.3678794412; delta_2 <= 0.026725706; sum_k delta_k <= 0.11492744
+4 C16: delta_20 <= c_1^19 delta_1 <= 6.1882887e-11 ; osc_V log rho_20 <= (512/e) delta_20 <= 1.1655906e-08
+4 C16 frozen reproduction: delta_20 <= 2.306472e-09 ; osc <= 4.3443386e-07
+4 C07 frozen reproduction: delta_2 <= 0.0049155863 ; sum <= 0.019902723
+5 C10b s=1/2000: delta_in in [0.026890134422, 0.026890134422]; slice bound = natural delta_out in [4.0774224e-06, 4.0774234e-06]; c_1 = e^{-1}
+5   delta_out/(c_1 delta_in) in [0.0004121803, 0.0004121804], slack in [2426.122, 2426.123]
+5   per-root factor e^{d-4k}(e^{4d'}-1) in [0.044149817, 0.044149817]; per-root bound / natural delta_out in [291.1629, 291.163]
+5   frozen projection bound [4.00e-7, 4.01e-7] / (c_1 delta_in) in [4.04354e-05, 4.05365e-05]; the frozen clause asks <= 3e-5
+5 C10b s=1/4096: delta_in in [0.013129948448, 0.013129948448]; slice bound = natural delta_out in [9.7213332e-07, 9.7213338e-07]; c_1 = e^{-1}
+5   delta_out/(c_1 delta_in) in [0.0002012599, 0.0002012599], slack in [4968.699, 4968.699]
+5   per-root factor e^{d-4k}(e^{4d'}-1) in [0.020372276, 0.020372276]; per-root bound / natural delta_out in [275.1546, 275.1546]
+5 C10c s=1/8192: delta_in in [0.0356909003, 0.0356909003]; slice bound = natural delta_out in [0.0019899569, 0.0019919012]; c_1 = e^{-1}
+5   delta_out/(c_1 delta_in) in [0.1515586, 0.1517067], slack in [6.591666, 6.598107]
+5   per-root factor e^{d-6k+4d'} in [0.26810995, 0.26810995]; per-root bound / natural delta_out in [4.803996, 4.80869]
+5 C10c s=1/65536: delta_in in [0.00446136253, 0.00446136253]; slice bound = natural delta_out in [0.00024885094, 0.00024888132]; c_1 = e^{-1}
+5   delta_out/(c_1 delta_in) in [0.1516234, 0.1516419], slack in [6.594483, 6.595288]
+5   per-root factor e^{d-6k+4d'} in [0.22818162, 0.22818162]; per-root bound / natural delta_out in [4.090307, 4.090806]
+6 F1 instance, final a and d: KP left side at {p_0} <= 0.0076740784 ; a({p_0}) = 2d' >= 0.020201003 : True
+6 F1 instance: norm at a shared off link <= 0.0099997434 <= 1/100: True
+8 lambda edge: dp+ln(1+dp) <= 1/4 certified at 0.114846768 ; > 1/4 certified at 0.114846769 : True
+8 at the lambda edge: 2dp in [0.2576475939, 0.2576475964] (> 1/4: True); delta < 1/8: True; e^{d-1/8} <= 0.989898139
+8 c_fin(0.1145) in [0.9679708623, 0.9679708623], argmax f = 23
+8 c_fin(0.114) in [0.9437000402, 0.9437000402], argmax f = 19
+8 c_fin(0.11178) in [0.8624013814, 0.8624013814], argmax f = 15
+8 c_fin(0.111) in [0.8389968851, 0.8389968851], argmax f = 14
+8 c_fin(0.11) in [0.8113101607, 0.8113101607], argmax f = 13
+8 c_fin = e^{-1} through 0.078733761 (object channel upper 0.3678794375 ); at 0.078733762 object channel lower 0.3678794463 > e^{-1}: True argmax f = 7
+8 C07 crude 1/100 bracket: lambda in [0.0222714052, 0.0222734384]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C07 point 0.0110444507: lambda in [0.0222723216, 0.0222723216]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C08 refined 1/100: lambda in [1.88401331e-05, 1.8900134e-05]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C10b s=1/2000: lambda in [0.0548711345, 0.0548732159]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C10b s=1/4096: lambda in [0.0265173128, 0.026521392]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C10c s=1/8192: lambda in [0.0733078574, 0.0733080682]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C10c s=1/65536: lambda in [0.00895248443, 0.00895268577]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C13 49/1000: lambda in [0.10164123, 0.10164123]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C13 1/20: lambda in [0.103792224, 0.103792224]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C13 delta_1 at 0.01369 (upper): lambda in [0.102937908, 0.102937908]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C14 delta_1 at 0.01959 (upper): lambda in [0.102464694, 0.102464694]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C14 refined 1/64: lambda in [0.00407561282, 0.00407581343]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C12 head-free 1/50: lambda in [0.153336293, 0.153338516]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C12 refined 1/50: lambda in [0.153338516, 0.153342963]; c_fin in [0.3678794412, 0.3678794412] = e^{-1}
+8 C11 crude 1/64: lambda in [0.219159369, 0.219182526]; c_fin in [0.6374716724, 0.6376442579] (argmax f=10)
+8 chain C07: c_fin <= 0.3678794412; delta_2 <= 0.0040632284; sum <= 0.017472933
+8 chain C08: c_fin <= 0.3678794412; delta_2 <= 3.4764607e-06; sum <= 1.494968e-05
+8 chain C14 1/64: c_fin <= 0.3678794412; delta_2 <= 0.00074856109; sum <= 0.0032190062
+8 chain C11: c_fin <= 0.6376442579; delta_2 <= 0.064822915; sum <= 0.28055303
+8 chain C12 refined: c_fin <= 0.3678794412; delta_2 <= 0.026725706; sum <= 0.11492744
+9 delta=0.01: brute sup over 1<=f<=60, 1<=m<=40 in [0.2923365225, 0.2923365225] at (f,m)=(1, 8); closed form in [0.2923365225, 0.2923365225]; enclosures overlap within 1e-50: True
+9 delta=0.05: brute sup over 1<=f<=60, 1<=m<=40 in [0.3178398066, 0.3178398066] at (f,m)=(1, 8); closed form in [0.3178398066, 0.3178398066]; enclosures overlap within 1e-50: True
+9 delta=0.07: brute sup over 1<=f<=60, 1<=m<=40 in [0.3320288328, 0.3320288328] at (f,m)=(1, 8); closed form in [0.3320288328, 0.3320288328]; enclosures overlap within 1e-50: True
+9 delta=0.08: brute sup over 1<=f<=60, 1<=m<=40 in [0.3499400644, 0.3499400644] at (f,m)=(7, 1); closed form in [0.3499400644, 0.3499400644]; enclosures overlap within 1e-50: True
+9 delta=0.1: brute sup over 1<=f<=60, 1<=m<=40 in [0.5530122554, 0.5530122554] at (f,m)=(9, 1); closed form in [0.5530122554, 0.5530122554]; enclosures overlap within 1e-50: True
+9 delta=0.11: brute sup over 1<=f<=60, 1<=m<=40 in [0.7267993363, 0.7267993363] at (f,m)=(13, 1); closed form in [0.7267993363, 0.7267993363]; enclosures overlap within 1e-50: True
+9 C10b s=1/2000: per-root factor e^d q(2,4) under lambda in [0.043833704, 0.043833704]; per-root bound / natural delta_out in [289.0782, 289.0783]
+9 C10b s=1/4096: per-root factor e^d q(2,4) under lambda in [0.020303319, 0.020303319]; per-root bound / natural delta_out in [274.2232, 274.2232]
+9 C10c s=1/8192: per-root factor e^d q(2,8) under lambda in [0.26775219, 0.26775219]; per-root bound / natural delta_out in [4.797586, 4.802273]
+9 C10c s=1/65536: per-root factor e^d q(2,8) under lambda in [0.22817705, 0.22817705]; per-root bound / natural delta_out in [4.090225, 4.090724]
+7 frozen c, factor 12, crude: MET at 0.01369 (certified True), NOT_MET at 0.0137 (certified True)
+7 frozen c, factor 12, C03: MET at 0.01959 (certified True), NOT_MET at 0.0196 (certified True)
+7 frozen c, factor 12, headfree: MET at 0.01959 (certified True), NOT_MET at 0.0196 (certified True)
+7 route A c*, factor 12, crude: MET at 0.01582 (certified True), NOT_MET at 0.01583 (certified True)
+7 route A c*, factor 12, C03: MET at 0.02037 (certified True), NOT_MET at 0.02038 (certified True)
+7 route A c*, factor 12, headfree: MET at 0.02037 (certified True), NOT_MET at 0.02038 (certified True)
+7 c_1 (2d' <= k), factor 12, crude: MET at 0.01587 (certified True), NOT_MET at 0.01588 (certified True)
+7 c_1 (2d' <= k), factor 12, C03: MET at 0.02038 (certified True), NOT_MET at 0.02039 (certified True)
+7 c_1 (2d' <= k), factor 12, headfree: MET at 0.02038 (certified True), NOT_MET at 0.02039 (certified True)
+7 c_1 (2d' <= k), factor 6, crude: MET at 0.01761 (certified True), NOT_MET at 0.01762 (certified True)
+7 c_1 (2d' <= k), factor 6, C03: MET at 0.02074 (certified True), NOT_MET at 0.02075 (certified True)
+7 c_1 (2d' <= k), factor 6, headfree: MET at 0.02074 (certified True), NOT_MET at 0.02075 (certified True)
+7 final c_fin (lambda <= k), factor 12, crude: MET at 0.01595 (certified True), NOT_MET at 0.01596 (certified True)
+7 final c_fin (lambda <= k), factor 12, C03: MET at 0.0204 (certified True), NOT_MET at 0.02041 (certified True)
+7 final c_fin (lambda <= k), factor 12, headfree: MET at 0.0204 (certified True), NOT_MET at 0.02041 (certified True)
+7 final c_fin (lambda <= k), factor 6, crude: MET at 0.01767 (certified True), NOT_MET at 0.01768 (certified True)
+7 final c_fin (lambda <= k), factor 6, C03: MET at 0.02074 (certified True), NOT_MET at 0.02075 (certified True)
+7 final c_fin (lambda <= k), factor 6, headfree: MET at 0.02074 (certified True), NOT_MET at 0.02075 (certified True)

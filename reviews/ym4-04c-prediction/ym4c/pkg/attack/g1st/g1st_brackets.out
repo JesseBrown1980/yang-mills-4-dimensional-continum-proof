@@ -1,0 +1,28 @@
+A C07 2d'            exact [0.0223332919, 0.0223353364] shown [0.0223332, 0.0223354] contains
+A C07 c              exact [0.4450429880, 0.4450508181] shown [0.4450429, 0.4450509] contains
+A C08 2d'            exact [0.0000188402, 0.0000189002] shown [1.88401e-5, 1.89002e-5] contains
+A C08 c              exact [0.3679383586, 0.3679385463] shown [0.3679383, 0.3679386] contains
+A C10b 1/2000 2d'    exact [0.0552457631, 0.0552478728] shown [0.0552457, 0.0552479] contains
+A C10b 1/2000 c      exact [0.5950951906, 0.5951068539] shown [0.5950951, 0.5951069] contains
+A C10b 1/4096 2d'    exact [0.0266050143, 0.0266091204] shown [0.0266050, 0.0266092] contains
+A C10b 1/4096 c      exact [0.4617347010, 0.4617510695] shown [0.4617347, 0.4617511] contains
+A C14 1/64 2d'       exact [0.0040776884, 0.0040778893] shown [4.07768e-3, 4.07789e-3] contains
+A C14 1/64 c         exact [0.3808522431, 0.3808528930] shown [0.3808522, 0.3808529] contains
+A C12 2d'            exact [0.1562374156, 0.1562397225] shown [0.1562374, 0.1562398] contains
+A C12 c*             exact [0.3727262370, 0.3727350901] shown [0.3727262, 0.3727351] contains
+A C11 2d'            exact [0.2250522777, 0.2250766684] shown [0.2250522, 0.2250767] contains
+A C11 c*             exact [0.7717123748, 0.7719305088] shown [0.7717123, 0.7719306] contains
+B C07 c              exact [0.4450429880, 0.4450508181] shown [0.4450430, 0.4450509] DOES NOT CONTAIN
+B C07 c_B            exact [0.4447292251, 0.4447369440] shown [0.4447292, 0.4447370] contains
+B C07 2d'            exact [0.0223332919, 0.0223353364] shown [0.0223333, 0.0223353] DOES NOT CONTAIN
+B C08 c=c_B          exact [0.3679383586, 0.3679385463] shown [0.3679383, 0.3679386] contains
+B C10b 1/2000 c      exact [0.5950951906, 0.5951068539] shown [0.595095, 0.595107] contains
+B C10b 1/2000 c_B    exact [0.5879320521, 0.5879425632] shown [0.587932, 0.587943] contains
+B C10b 1/2000 c#     exact [0.5091315743, 0.5091424949] shown [0.509131, 0.509143] contains
+B C10b 1/2000 2d'    exact [0.0552457631, 0.0552478728] shown [0.0552458, 0.0552479] DOES NOT CONTAIN
+B C10b 1/4096 c      exact [0.4617347010, 0.4617510695] shown [0.461734, 0.461752] contains
+B C10b 1/4096 c_B    exact [0.4611504720, 0.4611665427] shown [0.461150, 0.461167] contains
+B C10b 1/4096 c#     exact [0.3792846449, 0.3793008485] shown [0.379284, 0.379301] contains
+B C14 1/64 c_B       exact [0.3808522431, 0.3808528930] shown [0.3808522, 0.3808529] contains
+B c_B-e^-1 at C08 exact [5.89174535e-05, 5.91051054e-05] shown [5.892e-5, 5.912e-5] DOES NOT CONTAIN
+brackets that do not contain the exact enclosure: 4

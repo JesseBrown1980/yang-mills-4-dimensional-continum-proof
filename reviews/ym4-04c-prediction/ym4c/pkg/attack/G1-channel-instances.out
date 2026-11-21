@@ -1,0 +1,12 @@
+fine links 16384 line 2048 off 14336
+every midpoint meets exactly the two line links of its coarse link: True
+line links touching a site with >= 2 odd coordinates: 0
+C10: #Y = {8} | multiplicity on line links: {6} | on off links: {0}
+C10: Y'' = boundary for every P'': True | 2#Y'' = #Y: True | coarse plaquettes per coarse link: {6}
+C10 ratio: (6 * 2|s| e^{4k}) / (6 * 2|s| e^{8k}) = e^{-4k}; exponents: 1 - 2
+C10 holonomy: fine 2x2 loop in the line gauge equals V_P'': True | trace unchanged under a rational fine gauge transformation, through BU: True
+C10b: each rectangle 6 links (4 line, 2 arm off links shared): True
+C10b: Y'' of each rectangle alone is 1 coarse link (no loop); of the pair, the boundary of P'': True
+C10b: rectangles per line link: {6} | per off link: [0, 2]
+C10b moments E[X^{2m}] = Cat_m (2 + chi_1/2(V_P''))^m, m = 1..6, 6 rational (A, B): True
+slice: with every coarse link but l at 1, the 6 plaquettes through l read chi(V_l) and the rest read 2: True

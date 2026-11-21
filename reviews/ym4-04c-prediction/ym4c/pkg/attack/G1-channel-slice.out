@@ -1,0 +1,13 @@
+delta 0.1117801 2d' upper 0.24999997778831898 <= 1/4: True
+   c*_(m>=1) in [0.98686559, 0.98686559], argf 65
+delta 0.11178 2d' upper 0.24999972913495946 <= 1/4: True
+   c*_(m>=1) in [0.98685124, 0.98685124], argf 55
+e^{0.111780108 - 1/8} <= 0.9868671069779094
+C10b s=1/2000: delta_in [0.0268901344,0.0268901344] delta_out [4.077422e-06,4.077424e-06]
+   slack c*delta_in/delta_out: frozen >= 3924.6, route A >= 2426.1, route B c_sharp >= 3357.7
+C10b s=1/4096: delta_in [0.0131299484,0.0131299484] delta_out [9.721333e-07,9.721334e-07]
+   slack c*delta_in/delta_out: frozen >= 6236.4, route A >= 4968.7, route B c_sharp >= 5122.8
+C10c s=1/8192: delta_in [0.03569090,0.03569090] frozen c [0.7118123,0.7118123] c*_A >= 0.3678794 c_sharp >= 0.6151980
+   slack against every decomposition (slice bound = natural): frozen >= 12.754, route A >= 6.592, route B c_sharp >= 11.023
+C10c s=1/65536: delta_in [0.00446136,0.00446136] frozen c [0.3969926,0.3969926] c*_A >= 0.3678794 c_sharp >= 0.3678794
+   slack against every decomposition (slice bound = natural): frozen >= 7.116, route A >= 6.594, route B c_sharp >= 6.594

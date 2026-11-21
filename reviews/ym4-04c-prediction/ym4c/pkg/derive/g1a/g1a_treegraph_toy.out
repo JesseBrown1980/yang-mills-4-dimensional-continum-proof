@@ -1,0 +1,12 @@
+seed 0: 1921 connected sets; max T(e)/t = 0.7192 <= 1; item 2 holds at every link
+seed 1: 1903 connected sets; max T(e)/t = 0.7401 <= 1; item 2 holds at every link
+seed 2: 2017 connected sets; max T(e)/t = 0.7506 <= 1; item 2 holds at every link
+seed 3: 1780 connected sets; max T(e)/t = 0.7052 <= 1; item 2 holds at every link
+seed 4: 786 connected sets; max T(e)/t = 0.8094 <= 1; item 2 holds at every link
+seed 5: 1664 connected sets; max T(e)/t = 0.8301 <= 1; item 2 holds at every link
+seed 6: 1488 connected sets; max T(e)/t = 0.7453 <= 1; item 2 holds at every link
+seed 7: 1289 connected sets; max T(e)/t = 0.7448 <= 1; item 2 holds at every link
+seed 8: 1809 connected sets; max T(e)/t = 0.7521 <= 1; item 2 holds at every link
+seed 9: 971 connected sets; max T(e)/t = 0.7933 <= 1; item 2 holds at every link
+seed 10: 1963 connected sets; max T(e)/t = 0.7677 <= 1; item 2 holds at every link
+seed 11: 1967 connected sets; max T(e)/t = 0.7560 <= 1; item 2 holds at every link

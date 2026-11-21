@@ -1,0 +1,41 @@
+crude 1369 True
+crude 1905 False
+crude 1637 False
+crude 1503 False
+crude 1436 False
+crude 1402 False
+crude 1385 True
+crude 1393 True
+crude 1397 True
+crude 1399 True
+crude 1400 True
+crude 1401 False
+EDGE|crude|delta_crit^-=2790439/50000000|MET_at=0.01400|NOT_MET_at=0.01401
+headfree 1959 True
+headfree 2076 False
+headfree 2017 False
+headfree 1988 False
+headfree 1973 False
+headfree 1966 True
+headfree 1969 True
+headfree 1971 True
+headfree 1972 True
+EDGE|headfree|delta_crit^-=2790439/50000000|MET_at=0.01972|NOT_MET_at=0.01973
+refined 1959 True
+refined 2076 False
+refined 2017 False
+refined 1988 False
+refined 1973 False
+refined 1966 True
+refined 1969 True
+refined 1971 True
+refined 1972 True
+EDGE|refined|delta_crit^-=2790439/50000000|MET_at=0.01972|NOT_MET_at=0.01973
+headfree 1959 True
+headfree 1961 False
+headfree 1960 False
+EDGE|headfree|delta_crit^-=49617491/1000000000|MET_at=0.01959|NOT_MET_at=0.01960
+refined 1959 True
+refined 1961 False
+refined 1960 False
+EDGE|refined|delta_crit^-=49617491/1000000000|MET_at=0.01959|NOT_MET_at=0.01960

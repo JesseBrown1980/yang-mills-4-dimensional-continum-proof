@@ -1,0 +1,24 @@
+== W03 (d = 3) ==
+A(2,3) = 3/32 q = 0  expected 3/32: True
+A(4,3) = 73/384 q = 0  expected 73/384: True
+A(8,3) = 54335/182784 + (0)*sqrt2 ; in [0.2972634366, 0.2972634367] (grid 1/10000000000)
+increment A(4,3)-A(2,3) = 37/384 (37/384: True )
+increment A(8,3)-A(4,3) = 6529/60928 + (0)*sqrt2 ; in [0.1071592699, 0.1071592700] (grid 1/10000000000)
+new bracket [0.1071592, 0.1071593] contains it: True (strict: True )
+old bracket [0.10716, 0.10717] contains it: False
+both increments inside [0.09, 0.12]: True
+== W01 (d = 4) ==
+A_1 = A(2,4) = 23/96  (23/96: True )
+A_2 = A(4,4) = 1367/1920  (1367/1920: True )
+A_3 = A(8,4) = 113360987/66106880 + (0)*sqrt2 ; in [1.7148137531, 1.7148137532] (grid 1/10000000000)
+A_3 in [1.7148137531, 1.7148137532]: True
+A_1/2 = 23/192 = 0.119792 ; A_2/4 = 1367/7680 = 0.177995
+A_3/8 = 113360987/528855040 + (0)*sqrt2 ; in [0.2143517191, 0.2143517192] (grid 1/10000000000)
+A_k/2^k strictly increasing: True
+A_3/8 < 0.2527: True
+== W07 aligned-tile polynomial ==
+cos theta = 63/65: (1-cos4theta)/eps = 4064256/274625 ; 16-40eps+32eps^2-8eps^3 = 4064256/274625 ; equal: True ; < 16: True
+cos theta = 255/257: (1-cos4theta)/eps = 266342400/16974593 ; 16-40eps+32eps^2-8eps^3 = 266342400/16974593 ; equal: True ; < 16: True
+cos theta = 1023/1025: (1-cos4theta)/eps = 17146331136/1076890625 ; 16-40eps+32eps^2-8eps^3 = 17146331136/1076890625 ; equal: True ; < 16: True
+== drop_alias_terms corner (b=2, d=4, q=pi, keep n=0 only) ==
+r_1 with only n = 0 kept: 2 ; full alias sum r_1 = 15/28 (W01)
