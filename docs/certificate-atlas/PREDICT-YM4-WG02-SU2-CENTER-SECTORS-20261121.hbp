@@ -1,0 +1,13 @@
+PREDICTION|id=YM4-WG02|date=2026-11-21|phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS|source=ORIGINAL_CONTINUOUS_SU2_WILSON_4D_GAUSS|json=0
+GEOMETRY|spatial=2,2,2|periodic_time=10|sites=80|positive_links=320|plaquettes=480|cut_direction_count=3|json=0
+CENTER|group=Z2_CUBED|element_count=8|physical_charge_sector_count=8|involution_each=PASS|commutation_all=PASS|json=0
+CENTER|each_spatial_slice_links=24|cut_flipped_links_per_spatial_slice=4|all_time_flipped_links_per_cut=40|json=0
+CENTER|for_each_cut_plaquettes_with_0_flipped_links=360|with_2_flipped_links=120|odd=0|source_action_invariant=YES|json=0
+PHYSICAL|full_Wilson_spatial_magnetic_multiplier=COMMUTES_CENTER|temporal_Haar_convolution=COMMUTES_CENTER|Gauss_projector=COMMUTES_CENTER|transfer=COMMUTES_CENTER|json=0
+PROJECTORS|P_e=one_over8_sum_s_chi_e_s_Z_s|eight_orthogonal_selfadjoint_idempotents=YES|sum_to_I=YES|json=0
+WILSON|contractible_spatial_plaquette_charge=+++|centered_Wilson_source_charge=+++|vacuum_charge=+++|json=0
+WILSON|noncontractible_winding_line_dir0_charge=-++|dir1_charge=+-+|dir2_charge=++-|json=0
+WILSON|eight_products_of_winding_lines_cover_all_center_sectors=YES|nontrivial_electric_flux_sector_overlap_with_local_Wilson=EXACT_ZERO|json=0
+FIRST_STATE|center_charged_physical_eigenprojector_Wilson_overlap=ZERO|lowest_excited_energy_center_sector=UNDETERMINED|first_center_neutral_excitation_isolation=OPEN|json=0
+NEGATIVE|omit_second_spatial_edge=REJECT|odd_center_plaquette=REJECT|inverted_nonwinding_charge=REJECT|misclassified_local_source=REJECT|wrong_Gauss_commutation=REJECT|json=0
+SCOPE|exact_4D_center_symmetry_projectors=ANALYTIC|first_Wilson_weight=SECTOR_CONDITIONAL|relative_first_level_ordering=OPEN|continuum_gap=OPEN|json=0
