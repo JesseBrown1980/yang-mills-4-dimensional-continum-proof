@@ -156,6 +156,8 @@ class NeutralSU2BandTests(unittest.TestCase):
         self.assertEqual(s,W.receipt())
         self.assertIn("neutral_electric_Wilson_band_rank=42",s)
         self.assertIn("42_dimensional_neutral_projector=EXACT_BY_MINMAX",s)
+        self.assertIn("44th_neutral_eigenvalue_lt=",s)
+        self.assertNotIn("45th_neutral_eigenvalue_lt=",s)
         self.assertIn("physical_band_Wilson_overlap=OPEN",s)
         self.assertIn("continuum_mass_gap=OPEN",s)
         self.assertIn("beta=1/10000|42_eigenvalues_band_gt=1/5000000000000000000",s)
