@@ -69,9 +69,9 @@ q=\frac13,\qquad L_0=\frac{997}{1000}.
 \]
 Since \(e^{-x}>1-x\) for \(x>0\), the Perron bound gives
 \[
-\lambda_0>e^{-3/1000}>L_0.
+\lambda_0\ge e^{-3/1000}>L_0.
 \]
-The first strict inequality is unnecessary; the correct statement is \(\lambda_0\ge e^{-3/1000}>L_0\). Let \(\lambda_1\) denote the largest nonvacuum eigenvalue of \(T\) on the **full gauge-invariant** Hilbert space. Its fourth power obeys
+Let \(\lambda_1\) denote the largest nonvacuum eigenvalue of \(T\) on the **full gauge-invariant** Hilbert space. Its fourth power obeys
 \[
 \lambda_1^4
 \le\operatorname{Tr}(T^4P)-\lambda_0^4
