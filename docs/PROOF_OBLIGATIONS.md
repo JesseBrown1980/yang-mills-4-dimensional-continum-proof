@@ -6,6 +6,8 @@
 
 [Exact theorem, current obstacle and two physical-gap falsifiers](NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md) · [integer-only test and nine negative controls](../tests/test_ym4_07c_wilson_projection_bridge.py) · [original finite source acceptance](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/pull/350).
 
+**New real continuous SU(2) source theorem:** on every finite 4D Wilson lattice with all sides at least two, actual normalized plaquette Gibbs variance is at least **e^(−12β)/4**, by conditioning on the selected plaquette link's six neighboring faces and exact continuous Haar moment 1/4. The volume-independent lower bound is rigorous for finite β≥0. [Exact integer/rational checker](../tests/test_ym4_07c_su2_local_wilson_variance.py) gives nine source/coupling false controls. The lower bound degenerates as β→∞ and needs correct OS transfer-source and renormalization handling.
+
 **Next YM4-04/06 gate:** freeze one actual continuous SU2 weak-coupling four-dimensional source map retaining nonplaquette chair/network terms, independently calculate physical-energy spectral projector and source transport errors, then establish summable error bounds *and* a uniform full physical spectral gap. The actual weak-coupling continuum premises remain OPEN in the existing ledger.
 
 
