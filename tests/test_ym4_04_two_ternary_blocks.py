@@ -230,7 +230,9 @@ def geom():
 
 def source_proofs(root):
     path=root.joinpath("docs","NOTE-YM4-03-ONE-SCALE-BLOCKING.md")
-    raw=path.read_bytes()
+    # Pin the exact original 50,862-byte YM4-03 theorem source, not later
+    # append-only CI documentation. Git blob 88b441ce... stays unchanged.
+    raw=path.read_bytes()[:50862]
     blob=b"blob "+str(len(raw)).encode("ascii")+bytes((0,))+raw
     check(hashlib.sha1(blob).hexdigest()==
           "88b441ce39c3867d4635c0ac3f3475ea5ac621dc",
