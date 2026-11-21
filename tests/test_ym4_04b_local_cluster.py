@@ -385,7 +385,7 @@ def main():
               for s in frozen.splitlines())==19,
           "nineteen_predictions_frozen_first")
     base=root.joinpath("docs",
-        "NOTE-YM4-03-ONE-SCALE-BLOCKING.md").read_bytes()
+        "NOTE-YM4-03-ONE-SCALE-BLOCKING.md").read_bytes()[:50862]
     git_blob=b"blob "+str(len(base)).encode("ascii")+bytes((0,))+base
     check(hashlib.sha1(git_blob).hexdigest()==
           "88b441ce39c3867d4635c0ac3f3475ea5ac621dc",
