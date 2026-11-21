@@ -1,0 +1,4658 @@
+{
+  "metadata": {
+    "version": "2026-11-21",
+    "title": "Four-dimensional continuous-SU(2) Yang–Mills certificate atlas",
+    "graph_coordinates": "Ordinal navigation only; x,y,z are NOT physical measurements",
+    "main_4d_commit": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+    "combined_draft_commit": "ed6851e499c98e351816e9134d15d52e500f2577",
+    "finite_commit": "e1ed2f0f700ef7523b5c8577f9927976d14d0342",
+    "anaxia_commit": "df315270aafd456068783359cf0d07e6f3d76de8",
+    "source_scope": "4D main + stacked PR #75-#80; finite S3 source atlas; Anaxia-research public reference",
+    "live_preview": "https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html",
+    "finite_viewer": "https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html",
+    "continuum_mass_gap": "OPEN",
+    "source_immutable": true
+  },
+  "summary": {
+    "curated_records": 42,
+    "physical_gap_claims": 0,
+    "resource_files": 425,
+    "pr_events": 74,
+    "review_receipts": 310,
+    "status_counts": {
+      "FINITE_PASS": 13,
+      "CONDITIONAL": 3,
+      "DRAFT_CHECKED": 12,
+      "OPEN": 5,
+      "FINITE_S3": 2,
+      "EXTERNAL": 5,
+      "HOLD": 2
+    }
+  },
+  "records": [
+    {
+      "id": "YM4-01",
+      "title": "Gauge invariance",
+      "status": "FINITE_PASS",
+      "category": "foundation",
+      "scope": "4D continuous SU(2), finite lattice",
+      "result": "Gauge-projector and lattice symmetry lemma",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [],
+      "point": [
+        1,
+        2,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-02",
+      "title": "Haar moment identities",
+      "status": "FINITE_PASS",
+      "category": "foundation",
+      "scope": "Continuous SU(2) Haar",
+      "result": "Exact low-order SU(2) normalized trace moments",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-01"
+      ],
+      "point": [
+        1,
+        5,
+        8
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-03",
+      "title": "Finite subgroup designs",
+      "status": "FINITE_PASS",
+      "category": "foundation",
+      "scope": "Haar moment control",
+      "result": "Finite subgroup design checks with exact scope",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-02"
+      ],
+      "point": [
+        1,
+        7,
+        6
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-04",
+      "title": "Positive reflection transfer",
+      "status": "FINITE_PASS",
+      "category": "transfer",
+      "scope": "Original 4D continuous SU(2), finite volume",
+      "result": "Gauge-invariant positive transfer, trace class, Wilson normalization",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0004-REFLECTION-TRANSFER.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-01",
+        "YM4-02"
+      ],
+      "point": [
+        2,
+        6,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson"
+      ]
+    },
+    {
+      "id": "YM4-05",
+      "title": "Site-sign control",
+      "status": "FINITE_PASS",
+      "category": "transfer",
+      "scope": "4D finite SU(2)",
+      "result": "Exact site-sign and positivity controls",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-02c-SITE-SIGN.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-04"
+      ],
+      "point": [
+        2,
+        3,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-06",
+      "title": "Quantitative fixed-volume gap",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "4D SU(2) fixed finite spatial volume",
+      "result": "Positive-kernel transfer spectral ratio bound",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-04"
+      ],
+      "point": [
+        3,
+        7,
+        8
+      ],
+      "views": [
+        "proof",
+        "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-07",
+      "title": "K-step locality",
+      "status": "FINITE_PASS",
+      "category": "transfer",
+      "scope": "4D finite lattice",
+      "result": "Transfer locality and k-step verification",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-04"
+      ],
+      "point": [
+        3,
+        5,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-08",
+      "title": "One-scale blocking",
+      "status": "CONDITIONAL",
+      "category": "blocking",
+      "scope": "4D finite scale",
+      "result": "Exact one-scale maps with specified hypotheses",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-04"
+      ],
+      "point": [
+        3,
+        4,
+        5
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-09",
+      "title": "Blocked action",
+      "status": "FINITE_PASS",
+      "category": "blocking",
+      "scope": "4D finite scale",
+      "result": "Exact blocked Wilson action terms and consistency",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-03C-BLOCKED-ACTION.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-08"
+      ],
+      "point": [
+        4,
+        5,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-10",
+      "title": "Two ternary blocks",
+      "status": "FINITE_PASS",
+      "category": "blocking",
+      "scope": "4D finite SU(2) construction",
+      "result": "Two exact ternary block checks",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-04-TWO-TERNARY-BLOCKS-20261107.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-08"
+      ],
+      "point": [
+        4,
+        6,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-11",
+      "title": "Local SU(2) cluster bound",
+      "status": "FINITE_PASS",
+      "category": "cluster",
+      "scope": "Finite-volume strong coupling",
+      "result": "Local cluster/Dobrushin control",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-02"
+      ],
+      "point": [
+        3,
+        7,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-12",
+      "title": "SU(2) character weak-coupling checks",
+      "status": "FINITE_PASS",
+      "category": "representation",
+      "scope": "Exactly specified 2D and local 4D tests",
+      "result": "Character Haar/Bessel identities, six-staple local controls",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-02",
+        "YM4-09"
+      ],
+      "point": [
+        5,
+        5,
+        7
+      ],
+      "views": [
+        "proof",
+        "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-13",
+      "title": "Cantor27 nonlinear checks",
+      "status": "FINITE_PASS",
+      "category": "representation",
+      "scope": "Finite multi-block counterexample",
+      "result": "27/243 update nonlinear scalar-reduction falsifier",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-05B-CANTOR27-20261107.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-10"
+      ],
+      "point": [
+        5,
+        4,
+        7
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-14",
+      "title": "Global-lock structural probe",
+      "status": "CONDITIONAL",
+      "category": "blocking",
+      "scope": "Finite structure and controls",
+      "result": "Cross-scale locking hypotheses and controls",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-06A-GLOBAL-LOCK-20261110.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-10"
+      ],
+      "point": [
+        6,
+        5,
+        4
+      ],
+      "views": [
+        "proof"
+      ]
+    },
+    {
+      "id": "YM4-15",
+      "title": "Quantified continuum-bridge obligations",
+      "status": "CONDITIONAL",
+      "category": "bridge",
+      "scope": "4D continuum conditional",
+      "result": "Source, projector and full-spectrum error conditions",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-07B-QUANTIFIED-CONTINUUM-BRIDGE-20261116.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-06",
+        "YM4-14"
+      ],
+      "point": [
+        7,
+        6,
+        4
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-16",
+      "title": "Four-dimensional Wilson local variance",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Continuous SU(2) Euclidean Gibbs, finite beta",
+      "result": "Var(Wp) >= exp(-12 beta)/4; conditional OS bridge",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-02",
+        "YM4-04"
+      ],
+      "point": [
+        4,
+        9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-17",
+      "title": "All-beta polynomial source floor",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "4D finite SU(2), all finite beta",
+      "result": "Var(Wp)>1/[2^18(1+6 beta)^2]",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/1816b01a594e209a2be450088af805951a17d4b4/docs/NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "1816b01a594e209a2be450088af805951a17d4b4",
+      "dependencies": [
+        "YM4-16"
+      ],
+      "point": [
+        5,
+        9,
+        6
+      ],
+      "views": [
+        "proof",
+        "wilson"
+      ]
+    },
+    {
+      "id": "YM4-18",
+      "title": "Exact factor-two Wilson block",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "4D finite SU(2) blocked cyclic OS sector",
+      "result": "Matched Wilson pullback and cyclic spectral isometry; dark sector visible as obstruction",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-08",
+        "YM4-16"
+      ],
+      "point": [
+        5,
+        8,
+        6
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-19",
+      "title": "Dark-sector Gram trace budget",
+      "status": "DRAFT_CHECKED",
+      "category": "spectrum",
+      "scope": "Positive trace-class physical transfer, conditional inputs",
+      "result": "||T_dark||^(2m) <= trace(T^(2m))-tr(G^-1 M)",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-18"
+      ],
+      "point": [
+        6,
+        8,
+        6
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-20",
+      "title": "Original 4D strong-coupling transfer",
+      "status": "DRAFT_CHECKED",
+      "category": "transfer",
+      "scope": "4D continuous SU(2), 6^3 at beta=1/432000",
+      "result": "Physical lambda1/lambda0<1/3; Wilson Gram determinant >247/1000",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-04",
+        "YM4-19"
+      ],
+      "point": [
+        6,
+        7,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-21",
+      "title": "Positive-beta Wilson fourth moment",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "4D continuous SU(2), finite strong coupling",
+      "result": "Strict rational positive source fourth-moment Schur decrement",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-20"
+      ],
+      "point": [
+        7,
+        8,
+        6
+      ],
+      "views": [
+        "proof",
+        "wilson"
+      ]
+    },
+    {
+      "id": "YM4-22",
+      "title": "Peter-Weyl power-of-three cutoffs",
+      "status": "DRAFT_CHECKED",
+      "category": "representation",
+      "scope": "4D continuous SU(2), all finite beta >=1",
+      "result": "Trace-norm absolute bound; beta=64 cutoff 729 error<1e-100",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-12",
+        "YM4-20"
+      ],
+      "point": [
+        7,
+        7,
+        6
+      ],
+      "views": [
+        "proof",
+        "cutoff",
+        "wilson"
+      ]
+    },
+    {
+      "id": "YM4-23",
+      "title": "Physical vacuum projector comparison",
+      "status": "DRAFT_CHECKED",
+      "category": "spectrum",
+      "scope": "4D continuous SU(2), 6^3 beta64",
+      "result": "N=177147 physical vacuum projector error <1/500000",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-06",
+        "YM4-22"
+      ],
+      "point": [
+        8,
+        8,
+        7
+      ],
+      "views": [
+        "proof",
+        "cutoff",
+        "wilson"
+      ]
+    },
+    {
+      "id": "YM4-24",
+      "title": "Connected physical Wilson correlation",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "4D continuous SU(2), beta64 at finite volume",
+      "result": "At separation 4a, matched connected correlator comparison error <1/50000",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-23"
+      ],
+      "point": [
+        8,
+        9,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff"
+      ]
+    },
+    {
+      "id": "YM4-25",
+      "title": "Sparse gauge-invariant transfer evaluator",
+      "status": "OPEN",
+      "category": "implementation",
+      "scope": "4D physical continuous SU(2), future production",
+      "result": "Practical spin-network/character-sparse Wilson moments and certified first weight",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-22",
+        "YM4-24"
+      ],
+      "point": [
+        9,
+        8,
+        1
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-26",
+      "title": "First excited Wilson spectral weight",
+      "status": "OPEN",
+      "category": "spectrum",
+      "scope": "Original 4D SU(2) physical spectrum",
+      "result": "Actual first source-overlap/spectral weight required",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-24",
+        "YM4-25"
+      ],
+      "point": [
+        9,
+        9,
+        1
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-27",
+      "title": "Weak-coupling all-scale RG",
+      "status": "OPEN",
+      "category": "continuum",
+      "scope": "a->0, beta(a)->infinity",
+      "result": "Summable cross-cutoff errors and UV tuning",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-14",
+        "YM4-22"
+      ],
+      "point": [
+        9,
+        5,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-28",
+      "title": "Uniform infinite-volume physical gap",
+      "status": "OPEN",
+      "category": "continuum",
+      "scope": "L->infinity at physical scale",
+      "result": "Nonzero uniform full-spectrum gap",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-23",
+        "YM4-27"
+      ],
+      "point": [
+        9,
+        7,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-29",
+      "title": "Nontrivial OS continuum construction",
+      "status": "OPEN",
+      "category": "continuum",
+      "scope": "4D interacting continuum",
+      "result": "OS/Wightman reconstruction with nontrivial fields",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/PROOF_OBLIGATIONS.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "dependencies": [
+        "YM4-27",
+        "YM4-28"
+      ],
+      "point": [
+        9,
+        6,
+        0
+      ],
+      "views": [
+        "proof",
+        "bridges"
+      ]
+    },
+    {
+      "id": "FINITE-350",
+      "title": "Original finite first Wilson weight",
+      "status": "FINITE_S3",
+      "category": "crossrepo",
+      "scope": "Finite 3x4 S3 at r=9 only",
+      "result": "Squared original first Wilson weight >17074763/10^12; finite acceptance PASS",
+      "source": "https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/e1ed2f0f700ef7523b5c8577f9927976d14d0342/docs/certificate-atlas/WILSON-FORMAL-ACCEPTANCE-20261120.md",
+      "repository": "JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C",
+      "ref": "e1ed2f0f700ef7523b5c8577f9927976d14d0342",
+      "dependencies": [],
+      "point": [
+        4,
+        9,
+        9
+      ],
+      "views": [
+        "wilson",
+        "bridges"
+      ]
+    },
+    {
+      "id": "FINITE-ATLAS",
+      "title": "Finite certificate atlas master ledger",
+      "status": "FINITE_S3",
+      "category": "crossrepo",
+      "scope": "Finite S3 certificate source-of-truth",
+      "result": "Original 80 records; later receipts and PR audit in finite repo",
+      "source": "https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/e1ed2f0f700ef7523b5c8577f9927976d14d0342/docs/certificate-atlas/certificates-current-20261120.json",
+      "repository": "JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C",
+      "ref": "e1ed2f0f700ef7523b5c8577f9927976d14d0342",
+      "dependencies": [
+        "FINITE-350"
+      ],
+      "point": [
+        2,
+        6,
+        8
+      ],
+      "views": [
+        "bridges"
+      ]
+    },
+    {
+      "id": "EXT-LEAN",
+      "title": "Anaxia Lean proof modules",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External SU(2) finite and conditional results",
+      "result": "34 modules, 1192 declarations audited per external verification report",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/VERIFICATION.md",
+      "repository": "anaxia-research/4Y-M",
+      "ref": "df315270aafd456068783359cf0d07e6f3d76de8",
+      "dependencies": [],
+      "point": [
+        5,
+        3,
+        5
+      ],
+      "views": [
+        "bridges",
+        "proof"
+      ]
+    },
+    {
+      "id": "EXT-W",
+      "title": "Anaxia quaternion Lemma W",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External SU(2) quaternion identities",
+      "result": "Formal Gram expansion; global inequality beyond formalized scope",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/YangMills/OneCube/LemmaW.lean",
+      "repository": "anaxia-research/4Y-M",
+      "ref": "df315270aafd456068783359cf0d07e6f3d76de8",
+      "dependencies": [
+        "EXT-LEAN"
+      ],
+      "point": [
+        6,
+        4,
+        5
+      ],
+      "views": [
+        "bridges",
+        "wilson"
+      ]
+    },
+    {
+      "id": "EXT-BE",
+      "title": "Anaxia line-field rational certificates",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External four-dimensional 48-link line-field",
+      "result": "Exact rational Rayleigh R+ >=1397/100 and R- >=1394/100",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/julia/onecube/be_certificates.jl",
+      "repository": "anaxia-research/4Y-M",
+      "ref": "df315270aafd456068783359cf0d07e6f3d76de8",
+      "dependencies": [
+        "EXT-LEAN"
+      ],
+      "point": [
+        7,
+        3,
+        5
+      ],
+      "views": [
+        "bridges",
+        "proof"
+      ]
+    },
+    {
+      "id": "EXT-CHAR",
+      "title": "Anaxia one-plaquette character solver",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External 1-plaquette numerical SU(2) class model",
+      "result": "Floating-point character-basis experiment; validation reference only",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/scripts/check_isotropic_plaquette.py",
+      "repository": "anaxia-research/4Y-M",
+      "ref": "df315270aafd456068783359cf0d07e6f3d76de8",
+      "dependencies": [
+        "EXT-W"
+      ],
+      "point": [
+        6,
+        7,
+        3
+      ],
+      "views": [
+        "bridges",
+        "wilson"
+      ]
+    },
+    {
+      "id": "EXT-SEAM",
+      "title": "Anaxia seam criteria and continuum obstacle",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External conditional one-cube/seam bounds",
+      "result": "Open tuned Wilson seam probability and nontrivial continuum limit",
+      "source": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/Paper-2/PROGRESS.md",
+      "repository": "anaxia-research/4Y-M",
+      "ref": "df315270aafd456068783359cf0d07e6f3d76de8",
+      "dependencies": [
+        "EXT-LEAN"
+      ],
+      "point": [
+        8,
+        5,
+        2
+      ],
+      "views": [
+        "bridges"
+      ]
+    },
+    {
+      "id": "S-B4N27",
+      "title": "beta4 N27 absolute trace",
+      "status": "DRAFT_CHECKED",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "<1/1000000",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-22"
+      ],
+      "point": [
+        3,
+        2,
+        7
+      ],
+      "views": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "S-B9N81",
+      "title": "beta9 N81 absolute trace",
+      "status": "DRAFT_CHECKED",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "<1/10^20",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-22"
+      ],
+      "point": [
+        4,
+        3,
+        7
+      ],
+      "views": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "S-B64N243",
+      "title": "beta64 N243 invalid cutoff",
+      "status": "HOLD",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "HOLD: N<4beta",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-22"
+      ],
+      "point": [
+        5,
+        4,
+        2
+      ],
+      "views": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "S-B64N729",
+      "title": "beta64 N729 absolute trace",
+      "status": "DRAFT_CHECKED",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "<1/10^100; relative HOLD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-22"
+      ],
+      "point": [
+        6,
+        5,
+        6
+      ],
+      "views": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "S-B64N59049",
+      "title": "beta64 N59049 projector",
+      "status": "HOLD",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "HOLD: upper envelope exceeds threshold",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07I-FINITE-4D-SU2-VACUUM-PROJECTOR-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-23"
+      ],
+      "point": [
+        10,
+        6,
+        2
+      ],
+      "views": [
+        "cutoff"
+      ]
+    },
+    {
+      "id": "S-B64N177147",
+      "title": "beta64 N177147 projector",
+      "status": "DRAFT_CHECKED",
+      "category": "cutoff",
+      "scope": "Original 4D SU(2) finite-volume transfer",
+      "result": "PASS: relative gap gate <1/10^6",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ed6851e499c98e351816e9134d15d52e500f2577/docs/PREDICT-YM4-07I-FINITE-4D-SU2-VACUUM-PROJECTOR-20261121.hbp",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "dependencies": [
+        "YM4-23"
+      ],
+      "point": [
+        10,
+        7,
+        8
+      ],
+      "views": [
+        "cutoff"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "path": ".github/workflows/blocked-action-b10.yml",
+      "blob": "fc32913cac9cdb0749192f080f6e064f9e8ea6da",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/exact-su2-4d.yml",
+      "blob": "710047ae0dce935e89bfd2e22705af484de3e405",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/gpt6-q8-audit.yml",
+      "blob": "3522c291d731aebfa3fe724edd32f708c3b344c4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/k-step-locality.yml",
+      "blob": "b834e1eca6bb851c07eb18b1ec3a45317c383518",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/no-float-compiled.yml",
+      "blob": "eb1e77376c24cf888e74fb494441a07467e72f48",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/no_float.yml",
+      "blob": "8088230e43f20d664f8d2bc1fcfcba7116fd8e18",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/no_float_base.yml",
+      "blob": "e4091ab2f3c4249dc44bdbd37fc90b36c221f9f7",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/one-scale-blocking.yml",
+      "blob": "44b5b80816fc1c0b894c8729228a5948c7b29a29",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/quantitative-gap.yml",
+      "blob": "55ec08b0629565a2d520ec76f0eeed0bdeb09e95",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/reflection-transfer.yml",
+      "blob": "add098ef2a8cb7189f234b69d254baaba9ab5a6c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/site-sign.yml",
+      "blob": "2bdcd5f58e22957dfc242a710af7137b5d1fc4ff",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/su2-haar-moments.yml",
+      "blob": "864be77757a8b1cee65d9feac8e2e6897f14d7a9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/subgroup-designs.yml",
+      "blob": "94e3b0a6ced3400c0f5816c9f3f2385b15ba0345",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-03c-engine-check.yml",
+      "blob": "5fb07d71e35dc7417d71342d79751a1350c373e3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-04-two-ternary-blocks.yml",
+      "blob": "87b285734e557c18d45c1e110aab7b4e5e67193a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-04b-local-cluster.yml",
+      "blob": "fbfd0a03864f1b656695b828566f3a1fc208f10d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-05a-su2-character-weak.yml",
+      "blob": "f748e9dfa9342c16bb65cea583a02f8639814812",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-05b-cantor27-fast.yml",
+      "blob": "a84949fbe06647388c0647ebd8c787c322110de8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-06a-global-lock.yml",
+      "blob": "c8b977ba13784cd50bf68ca2d71ca4fd34ddd753",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07c-wilson-source-projection.yml",
+      "blob": "ef72d662984cb1d66bc693eeb9ffb440e157ff46",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07e-exact-block-source-projector.yml",
+      "blob": "95765f5de2560476a2f10ec0e5e36ce5f38e0103",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07f-dark-trace-budget.yml",
+      "blob": "6338bb0f08611dc09c0d388960516ab08a5a33b8",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07g-original4d-transfer.yml",
+      "blob": "f68290fdea74b82084fa04196e2c52c2b7777177",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07g2-positive-beta-wilson-moment.yml",
+      "blob": "8ff1031f582adbbf7deb8563b430d0d93c83847b",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07h-allbeta-peter-weyl.yml",
+      "blob": "02b2a831e5a835205267f14031922a8ae2bee743",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07i-physical-vacuum-projector.yml",
+      "blob": "7a459a441f63da2eebc6e455df323f4c6bce6988",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": ".github/workflows/ym4-07i2-normalized-wilson-correlation.yml",
+      "blob": "7ff36b4e6b9f4e67dbef1cdc3b0b62c77120446f",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "workflow"
+    },
+    {
+      "path": "docs/LEMMA-0001-GAUGE-INVARIANCE.md",
+      "blob": "1b51b721136c9c5dde8b4f85bcda5d1f6e950b11",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/LEMMA-0002-HAAR-MOMENTS.md",
+      "blob": "b789860a70a93c4f85dd7d9c87f164dfc8e6f05d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/LEMMA-0003-SUBGROUP-DESIGNS.md",
+      "blob": "88d3e6c848224b696c82ec7be5ee81e28e8a094d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/LEMMA-0004-REFLECTION-TRANSFER.md",
+      "blob": "1f7dcb3839d6a67c8a6a3262aec3438f0d486ef4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-02c-SITE-SIGN.md",
+      "blob": "94a2d70a04506b4e043feffe32aa4d01f1eab33a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-02d-QUANTITATIVE-GAP.md",
+      "blob": "ad305990a5c278b311b892bb1d5487bc44d5b1a4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-02e-KSTEP-AND-LOCALITY.md",
+      "blob": "de6f08b5fa0a5d536c362e6ad6cc5eefa9cb33a8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-03-ONE-SCALE-BLOCKING.md",
+      "blob": "2de50beea6b6be3266f4721fec2e90c861f9bfd8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-03C-BLOCKED-ACTION.md",
+      "blob": "8dcaef7ba9781bb092d204822147c2cb1a182025",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-04-TWO-TERNARY-BLOCKS-20261107.md",
+      "blob": "8da6c08527a85c1bc7af94240535cc3a6470a70c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md",
+      "blob": "c9b560ddef0ac7cec28ccfa9e10722d2da42dbf3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md",
+      "blob": "2934b1d7114aaa95c5e02b0915e43cdf93ba7fe1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-05B-CANTOR27-20261107.md",
+      "blob": "0f1fa3ec5771c1795f8eb39ffdcad18d2f064d31",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-06A-GLOBAL-LOCK-20261110.md",
+      "blob": "8b0628c14ec661966fcc4753d6136c505d4063a3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07B-QUANTIFIED-CONTINUUM-BRIDGE-20261116.md",
+      "blob": "d75a494750e1ba41ba1b5fbfe1abb302ddba0c05",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md",
+      "blob": "629718aac5aedb3ac5aa8313475a7f9487c2e746",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md",
+      "blob": "091d4eb8369a4afb22700d1d85b956ecba8119c8",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md",
+      "blob": "eb3a3042bbca6955615a39f89ebcaab301fcc32d",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07G-ORIGINAL-4D-TRANSFER-TRACE-20261121.md",
+      "blob": "0a7ed43d5a1e14078b91203782db7e943cdfa98f",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md",
+      "blob": "991b4cd753a09e0631f066fb94e1f2a8b61a59bf",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md",
+      "blob": "1102dc8a91848621757635b9b201fb341d960712",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md",
+      "blob": "8b828cc6bfcd3f27b16e52e78d5000fe591a4a8e",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "docs/PREDICT-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.hbp",
+      "blob": "2a9f7ec661ae19c2495db88eee922bae9b6902e2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-05B-CANTOR27-NONLINEAR-20261107.hbp",
+      "blob": "b425c8333a58d19d82c8493127187e960b17893c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-05B-IF-VALID-4D-REDUCTION-20261107.hbp",
+      "blob": "f2b1e0381b3406179914652713d3aa20bbd093a6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-05B-MATRIX-FAST-20261107.hbp",
+      "blob": "80f1b93546ceba23297f0450127263cda98c148f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp",
+      "blob": "0375c37bf6c414c1443cc2327e0463229bc860bd",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp",
+      "blob": "7a2e5579e10339f7163ec81792d9cfcb2360f67a",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp",
+      "blob": "940d4e9166ec4d84f204cc959d946a9d57f4205c",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07G-ORIGINAL-4D-TRANSFER-20261121.hbp",
+      "blob": "051a898ba191b152f3101f1749684309bf4ef98a",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp",
+      "blob": "2cab9c32a09ff2c744b92d8d4f6581593443fdb2",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07H-ALLBETA-SU2-PETER-WEYL-20261121.hbp",
+      "blob": "0450459e18867b94b4809633b06be284bc73d900",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07I-FINITE-4D-SU2-VACUUM-PROJECTOR-20261121.hbp",
+      "blob": "c46a3bd8d454faacc00a9652d61e87c4a18f6e5d",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp",
+      "blob": "b25e3a776f1ae7a4e77d3526e83cccf04a0de8b1",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-02b.hbp",
+      "blob": "5f8dcf73ad0489f52c33ea546c3eeabee2497f8d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-02c-SITE-SIGN.hbp",
+      "blob": "e3b5d011d7f2155e8f2dd0fdb780aecfd51eacbc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-02c.hbp",
+      "blob": "b4cec32271cee6807fbe01de31161ff55e6faed2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-02d.hbp",
+      "blob": "795ed4bc3d2418dcaed4d6f3c349015677453c43",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-02e.hbp",
+      "blob": "47553a156951e68cdd1871209b252f8d9ab10d2d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-03.hbp",
+      "blob": "60ad61d7628d4a0c49982e65bd6d9f2f43ce8cc8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-03C.hbp",
+      "blob": "364a4615c24c016dc5d5cef5877f740355c1d930",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-04-TWO-BLOCK-CORRELATION-SUPPLEMENT-20261107.hbp",
+      "blob": "6e1de54c71d1c5f938c33fbbfe2db407638afc7c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-04-TWO-TERNARY-BLOCKS-20261107.hbp",
+      "blob": "30f9d93270367eb85f286ba4c34a071183dc2899",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-04-VACUUM-CORRELATION-SUPPLEMENT-20261107.hbp",
+      "blob": "d19e56ee3041e372f436db62026a018ef61669cd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PREDICTION-YM4-04B-LOCAL-CLUSTER-20261107.hbp",
+      "blob": "2c7d29aeeba67a18861b2ec917fe15cbd2167c1e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "docs/PROOF_OBLIGATIONS.md",
+      "blob": "98c51c85c40e534e4feae67c22f87e15ba56068a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "proof_or_note"
+    },
+    {
+      "path": "reviews/fable5-q8-slice-count/RECEIPT.hbp",
+      "blob": "f962cbd2c3eeb532da63994c6f58500e48bff279",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-02e-first-run/FIFTH-RUN.hbp",
+      "blob": "0da752ff2f8c5fbcfdeee322f9f0ce25f6269ae5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-02e-first-run/FIRST-RUN.hbp",
+      "blob": "bf784861e13f4e36335065a07b7cb21c95a104f2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-02e-first-run/FOURTH-ATTEMPT.hbp",
+      "blob": "df05b7549bd571a9a0493fb1b1cad714991c3b4a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-02e-first-run/SECOND-ATTEMPT.hbp",
+      "blob": "05d42c8f10be55e58aaaa323ec220738bb7dec5a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-02e-first-run/THIRD-ATTEMPT.hbp",
+      "blob": "05d42c8f10be55e58aaaa323ec220738bb7dec5a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/COVERAGE.hbp",
+      "blob": "2128ccde5da63581b8129cd7a41b2e0250cb06d7",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/GATES.hbp",
+      "blob": "07848a55e8dd88f9699f7ed0312c28587d221d33",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/INDEX.hbi",
+      "blob": "69cf7701f5d8933b9f446d6a7390704eea327e90",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/MEASURE.hbp",
+      "blob": "e57c048beb4111325b64ef0ed540446083ac7c28",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/PREDICTION-P.hbp",
+      "blob": "9b587b1a0058a58e73cf9b8bd5b67906d71e23b1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/PREDICTION.hbp",
+      "blob": "69700d80456581936347385b4f8c6c180963d138",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/SEAL.hbp",
+      "blob": "e04b893a7a94bf3da0d81cb47ccbef25cc9b0383",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/VERIFY.hbp",
+      "blob": "1aa905d2171cf4a3929fb8bccb5b9a8611092888",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A1.hbp",
+      "blob": "6e7a2dbe9d3e2de1754d7afa857e7ed2c70f1f49",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A1/STEPS.hbp",
+      "blob": "03a637b2a86479f4a0211aa8e54b148e2c3ac455",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A1/ym4-03-cache/REPLAY-INDEX.hbp",
+      "blob": "5eea7231a5c31cfcd09d54f2adec2d7152fa0717",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A1/ym4-03-cache/REPLAY-INDEX.hbp.sha256",
+      "blob": "4de437611fa20e3b17af24fd66d342fc0b99f936",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A2.hbp",
+      "blob": "4f2c8bb42eeb9e4b9c7f0c88235409f4e6830e0a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A2/STEPS.hbp",
+      "blob": "27d4f30a4abae19e6134b8bc58608a51b870af91",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A2/ym4-03-cache/REPLAY-INDEX.hbp",
+      "blob": "01d5e67c6b45dd4426047b6a515514dcfc21c418",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/A2/ym4-03-cache/REPLAY-INDEX.hbp.sha256",
+      "blob": "e68a1f324db16674307af2f84fe286da8b0fe65d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B0.hbp",
+      "blob": "793a3d10fdb2974825785fec054936dd5f50e765",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B0/STEPS.hbp",
+      "blob": "0999e90be18ff6cf96cfcaf3d2ce60e108ed8894",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B1.hbp",
+      "blob": "09ba73fcfc0572958133e5689b276648af51b034",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B1/STEPS.hbp",
+      "blob": "4590963973e66daf64fe76a3c1589206804e9f22",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B2.hbp",
+      "blob": "25a6a3d6e2ef43d226f6d390b3c2ea6aa16b385b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B2/STEPS.hbp",
+      "blob": "51c915a76da59e531444443819c703d2ccb9f0e1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B5.hbp",
+      "blob": "fd4063943ac1b3edcfddbbf5fe7259bbb2a1d43e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B5/STEPS.hbp",
+      "blob": "0692711e1345d0d9ca301644a1f6882f34d26ccd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B6.hbp",
+      "blob": "57fb79aeecc30e741bf281d58f0852a28ef11dca",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B6/STEPS.hbp",
+      "blob": "27ae7821d05ffdee13a47dd725a47981df90bb71",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B7.hbp",
+      "blob": "188687131cc41830545b2892d185ba7bdf1628cb",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B7/STEPS.hbp",
+      "blob": "55138a57670e7ba5268f58c4e140fb682a03a34d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B8.hbp",
+      "blob": "f340ff4adc1bde0e814ed9bd67aaa695a76369c6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/B8/STEPS.hbp",
+      "blob": "073933351aa0b797678c3090a20b7ed1489d22df",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/P/P.hbp",
+      "blob": "9d6dbc8dd529b3e3584456053d5a313fb2be3fb5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/X1/X1.hbp",
+      "blob": "ecf4ddc7a31a391e538e4a7a7b1f9c09bda9b1e2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/X1/moved-seeds.hbp",
+      "blob": "0db6148e525d9c85d9864f636c67da9f5a956d02",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/X1/ym4-03-cache/REPLAY-INDEX.hbp",
+      "blob": "7bf2c27407bd9914473f49ea55e2ac2edf97057e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-20261106/raw/X1/ym4-03-cache/REPLAY-INDEX.hbp.sha256",
+      "blob": "8a85d4e6fc350386166a1fee1bd468e3e8e7d2f2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/INDEX.hbi",
+      "blob": "dabc7ea98eaf3b432239225fe695a662eb5d1719",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/PREDICTION.hbp",
+      "blob": "864836914e50e92fd4b4d128e01643a6e7aab4cd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/READS.hbp",
+      "blob": "a5314668f132df60923c4b40b80ecc1d0864d944",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/RESULTS.hbp",
+      "blob": "796ffd51f96b893341e9241556f35b8fa86c6944",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/SEAL.hbp",
+      "blob": "6ac52266aeb598716e47b7915b983a8ececdbf2b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/VERIFY.hbp",
+      "blob": "fa88bc08c38670e3bb4276a73231a0a697a7ea8b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/lane1.hbp",
+      "blob": "2dced1b93149b790007f3a96a77a314de60e056c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/lane2.hbp",
+      "blob": "1ae978808333461d61b644490b99b6206eeb482e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/phase1-main.hbp",
+      "blob": "d145b52481a627c635e8a329663320f344e54cdc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/phase1.hbp",
+      "blob": "b97b7dac5a0611129c400623fdc45a7619092011",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/phase2-tail.hbp",
+      "blob": "9fa54e1598c4e33e331cb46cf6e1d15038721e3a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/proposed-final.hbp",
+      "blob": "ad4da214d80086161ac93b80a40eacb93860a646",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/T/proposed.hbp",
+      "blob": "24b740830394f4019803dcb82afc9be8c675e298",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/gates/e4a83d4-GATES.hbp",
+      "blob": "c4764751e048b9a6d23b0cdaedb9d44236254a7d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/gates/prop-aa428ba-GATES.hbp",
+      "blob": "af13b12219399c1ac6eb54ebb42eaac2371e6f66",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/RUNS.hbp",
+      "blob": "7ccb7ee1a30af54ac21b4dd429c7226e094d19ac",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/XCHECK-INSTRUMENT.hbp",
+      "blob": "53a396160544d0f48ed03699ea87e1a0fc077dc3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/record.hbp",
+      "blob": "968aa7ce1d887235dca3c1ff816e2335879ff287",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-dropped_inverse.hbp",
+      "blob": "dedc28bc9893df3adba911d97044ca3e561dd92e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-extra_plaquette_factor.hbp",
+      "blob": "22fa67970045bb8e0c02d35bb4c4baf14fe78aec",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-flux_wrong_sign.hbp",
+      "blob": "b376329cb42e9a9e1c190abfe09f71cf6aeb375a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-overlap_one_power.hbp",
+      "blob": "81317a95058fbc02451412ee335b3942c0bbcc50",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-overlap_skips_next.hbp",
+      "blob": "6761454c6f0d1bf3b4ac901003d690170402425a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-reversed_order.hbp",
+      "blob": "0d30c984fe67f3559f4be3586273d8b04e51abcb",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-shifted_endpoint.hbp",
+      "blob": "5de8dadf94c444d01a3f5d3724d6c2ec9945eb8c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-theta_no_inverse.hbp",
+      "blob": "8cbc2d9c7b864b7ca90e987a0320bf7b34359178",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-twist_every_link.hbp",
+      "blob": "883bca785b690bd38ecae2a427bb135c02476c3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-visibility_error_halved.hbp",
+      "blob": "3bc86a87ff9d8c0edf3bdb9fa52e7b9f5dfcf147",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-visibility_error_inflated.hbp",
+      "blob": "d7d5b670f45198a2ca217b6b2783bd51df101691",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-visibility_ignores_omega_error.hbp",
+      "blob": "e5da57645d8d9eaa99c98e251d51ed7a52e0a0ef",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-wrong_block_shell.hbp",
+      "blob": "c484847144f1fcf907e5ae025b8e84c4c654ead0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-wrong_convolution_power.hbp",
+      "blob": "5f90aff2845b99fdcf436e102f226f14c16e94c7",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/instr/replay-wrong_first_coefficient.hbp",
+      "blob": "aee1d727f52933ec8d8d8eb75c448e79e27c8099",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/lane-verify/LANE-CHECKS.hbp",
+      "blob": "f9e8a7e556e1c93b453ad89f5875712512eb4509",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/lane-verify/MEMO.hbp",
+      "blob": "fd63fd8ddf9e86ce89bf8154d194532fb9b3db2c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/main/A-REPLAY-INDEX.hbp",
+      "blob": "5aef6a485e6d223b5fa885f930ee3b298a816f4b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/main/A-REPLAY-INDEX.hbp.sha256",
+      "blob": "b592e1ff7e12ba711ae03610ccce98221d25d0eb",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/negctl/NEG-CONTROLS.hbp",
+      "blob": "cb9707fa72eeaae29e05f1c17344e22337b239e9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/plants/PLANTS.hbp",
+      "blob": "6be57edc08ab945612731a726463f2af6c949348",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/plants/RUNS.hbp",
+      "blob": "303e9ff3c4355da8edbb4636834b73dc21d257b3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/plants/argv-record-REPLAY-INDEX.hbp",
+      "blob": "5989db7d1b58bc4a31f5d879f2b196bb8edc1f7b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/proposed/P-REPLAY-INDEX.hbp",
+      "blob": "dce6ee79d46b0cae6cde04f0ddbcc97a98b088be",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/steps/XCHECK.hbp",
+      "blob": "2c2a9af57b8f8074baf9194b7f773e9781b882c5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/steps/wfA-STEPS.hbp",
+      "blob": "e88f9660ae9e2b50f9bbb1df37cd1f45290fa446",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/steps/wfB-STEPS.hbp",
+      "blob": "2eca613b4e7a0621fab04772f09d7b815507cdbf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-ci-replay-check-20261108/raw/steps/wfP-STEPS.hbp",
+      "blob": "38dc76e23949a7ad80f49578655bbc6f6f737445",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-first-run/FIRST-COMPLETE-READ.hbp",
+      "blob": "fe90290cdf75fb3ce8d6fdb667a6b6837d751bc5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03-flux-first-run/FLUX-FIRST-READ.hbp",
+      "blob": "f2b2985e41b48441ad5e087de24107ea4d7cf38c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-engine/INDEX.hbi",
+      "blob": "976db94d2b38c430f62860a9b490506f2c15d499",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-engine/RECEIPT-YM4-03C.hbp",
+      "blob": "3450fbb04759b20cedca201aa6018c8e0b22de9e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-engine/RECORDS.hbp",
+      "blob": "e42206c72c735e8b499ad044bf21721acbb5818a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-engine/ROUTE-S.hbp",
+      "blob": "0fb1d35498fe5ce373d10d50e8757b0cbf3a0207",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-engine/SEAL.hbp",
+      "blob": "cdca12cd5e2170dc9a7b93ecc27a1dde3bf3ab00",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/DERIVE-CHECKS.hbp",
+      "blob": "4b70c582b89e2b4a8b53ecbe0708ef4369d140c4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/FIRST-RUN.hbp",
+      "blob": "e614dea9757aa46bf41163e982c7cb34491bdaa1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/INDEX.hbi",
+      "blob": "f1ac6b729121716ff99983a442c1b57dac5f92d4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/RECORDS.hbp",
+      "blob": "9265975996ee159f876c00361a023216cce8c6e1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/SEAL.hbp",
+      "blob": "97d7f99f1a915ec1365b3d42b7d43999a9e5f903",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/fable5-ym4-03c-prediction/SECOND-RUN.hbp",
+      "blob": "39354f8bd77445d38b0852038cb3c54c8d8c9a86",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/GATE-V4-PREDICTION.hbp",
+      "blob": "774256e509db1e6fcf521522fa69044453edbd6a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/GATE-V4-RESULTS.hbp",
+      "blob": "b41a626c8ad9f5d365eead324e07f0567786bb0e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/HOSTED-EXPERIMENTS.hbp",
+      "blob": "4079ba3884b6f5dcebc375d30914944c7162eb85",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/INTEGRATED-20261104.hbp",
+      "blob": "a9bfc879ed1a5ed8216059bce3912d87d27a61d0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/LAST-ROUND.hbp",
+      "blob": "d9b28001fc8e54160d98abfbbe01d03f383f8dea",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/claims.hbp",
+      "blob": "715e413efd0718ac5b1be70dc8360d98e6738455",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/compiled_fail_open_win.hbp",
+      "blob": "61ffb326f2ab9b2fb24f91ab387b61e48fbee100",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/fresh_exec_linux.hbp",
+      "blob": "8fb0b411c2be88a932fdd3f7ae20c03d3c14b48a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/fresh_exec_win.hbp",
+      "blob": "98d6929526dd3563d11485b63cb2369505d3dae6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/fresh_frozen.hbp",
+      "blob": "875b3f607e71d6fefb21e17ac56713ebdf0526a5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/fresh_read_linux.hbp",
+      "blob": "55d2ceda9bcefb58de089e990067141b786e40b0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/fresh_read_win.hbp",
+      "blob": "6255212282e8356ee093cd892c1163a59d848d9f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/main_gates.hbp",
+      "blob": "6db4d651d7f6a2b9d1891e1cc3a3fc4de77d4f90",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/reopen_linux.hbp",
+      "blob": "ceb01cf50e21244ed86bcf359a3523018ff73bd5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/reopen_win.hbp",
+      "blob": "ad79be6f9849d71c9ee8763ca4c5b7e733c84b1c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/last-attack/sim_workflows.hbp",
+      "blob": "16066c438fcc670181afe5aa9c059f73a098e8f3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_base_sim_linux.hbp",
+      "blob": "f8dcedc792c6aaf375883d6e31385064d0249083",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_census_linux.hbp",
+      "blob": "505eafbbfb76692ea61528a77f6e776c44240ce2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_census_win.hbp",
+      "blob": "505eafbbfb76692ea61528a77f6e776c44240ce2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_heldout_linux.hbp",
+      "blob": "17a7186f79a63e299fcfcc4884987a4037b0e467",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_intcode_linux.hbp",
+      "blob": "2d3a043dd70648ae2de2401a8d09e639812fca31",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_intcode_win.hbp",
+      "blob": "9a4bd86e3a3632dea3603caceb1281bf563480cc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_linux_scan_linux.hbp",
+      "blob": "21eefe7e6ed1e80a56370b8be56a3b4d9144b5e8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_native_linux.hbp",
+      "blob": "9baba1d52e75c0b3fd140259114f9da3e249ea6f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_pin_trees_linux.hbp",
+      "blob": "2a866f19418bdd3782d27b88d2d556a5a9746cdf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_pins_linux.hbp",
+      "blob": "5ee9ab7a030587a04140a7713da84421846a3f1b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_pins_win.hbp",
+      "blob": "5ee9ab7a030587a04140a7713da84421846a3f1b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_python_linux.hbp",
+      "blob": "ca398c1432df21d11f8d6c6a889595436a14e5df",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_read_diff_linux.hbp",
+      "blob": "2edc5969fad1076bcff780d44761435cf816078f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_read_diff_win.hbp",
+      "blob": "7f860cad379e5dd1928e7ca7cb663591cb885825",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_rule_rows_win.hbp",
+      "blob": "cd633e024b94be81e49230fd2f3fd65486ca677e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_scenarios_linux.hbp",
+      "blob": "28ed1d8e958fde6a06bbb6a1081f8e66d8158a1b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_selftest_linux.hbp",
+      "blob": "4d7378c711e3db8c024a0ad494c370c5da2aed45",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_selftest_win.hbp",
+      "blob": "17eab975ea9e634b72630cb5b1f940c1d40fb33f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/final_workflow_no_float_linux.hbp",
+      "blob": "57259520b67501ec7fa02fd3d4f22536111d760d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/proxy_heldout_linux.hbp",
+      "blob": "99e47dc3601f1bd5dd0a0562465044bc3af9f8ab",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/proxy_native_linux.hbp",
+      "blob": "94d4ac3047479dfc7691849a730ed6d17003331c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_census_linux.hbp",
+      "blob": "505eafbbfb76692ea61528a77f6e776c44240ce2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_census_win.hbp",
+      "blob": "505eafbbfb76692ea61528a77f6e776c44240ce2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_heldout_linux.hbp",
+      "blob": "17a7186f79a63e299fcfcc4884987a4037b0e467",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_intcode_linux.hbp",
+      "blob": "2d3a043dd70648ae2de2401a8d09e639812fca31",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_intcode_win.hbp",
+      "blob": "9a4bd86e3a3632dea3603caceb1281bf563480cc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_linux_scan_linux.hbp",
+      "blob": "8f472bed253cf6913e26bbe3d2b14a26134fd10c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_native_linux.hbp",
+      "blob": "9baba1d52e75c0b3fd140259114f9da3e249ea6f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_own_plants_linux.hbp",
+      "blob": "51162aef3c91c2660fd23d04aa20240591c5685b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_pin_trees_linux.hbp",
+      "blob": "5d7e5e1293a60a4bc96a8b39023a19bab6402688",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_pins_linux.hbp",
+      "blob": "bcaeea701ed7a59ced7637f6006fffc2bb5d0e12",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_python_linux.hbp",
+      "blob": "a640b081c0235b3ad5b3448b8ffaa3843a81892f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_python_win.hbp",
+      "blob": "b052956f9d242888dbcd097c536d91ce0621bf3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_scenarios_linux.hbp",
+      "blob": "07b30c8daadb294c66f7eab5f1ede4dd8d071b48",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_selftest_linux.hbp",
+      "blob": "1f00feb674c28591fc585ea03513a3d4e82a8484",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gate-v4-20261104/raw/v4_selftest_win.hbp",
+      "blob": "e59bebf4d6a9ba7c95b1c7010162a73b738364c5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gpt6-q8-0e9bcff/INDEPENDENT_GRAM.hbp",
+      "blob": "6d70dd11b7018eaa25b0f450c748362120d2c1d8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/gpt6-q8-0e9bcff/REPLAY.hbp",
+      "blob": "d600d5e80411cc2a10898e5388a0044b478a8185",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/SECOND-SEAT.hbp",
+      "blob": "a3d9db358ebe8df047047c13db824e88046d494d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/diam-circle.hbp",
+      "blob": "73ab524b857d3dc694751f05a0a2b76099533643",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/diam-iterate.hbp",
+      "blob": "68442fee5a21d51e2a0d94e30b2b41822abe6827",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/diam-ladder.hbp",
+      "blob": "14d7d24854ac26cd29fca724f8782cbb6537d73d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/diam-z2.hbp",
+      "blob": "3e86c945622d09255cc67812a2840876d2452edf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/h22.hbp",
+      "blob": "bfdda55e8cef03ec363c1699a8a72b94410628ee",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/mut-a.hbp",
+      "blob": "265d0e80a8e49242841c1fce0f4d4eba03faebf8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/mut-b.hbp",
+      "blob": "07cd24856d6b09c979b54aa6944147d67982147a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/mut-c.hbp",
+      "blob": "4b0581e18795a3d9faf84718147172fa11b94b44",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/mut-d.hbp",
+      "blob": "f6799fbbc0261c27bbe34c93a81d0a3e03c9a2f2",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/mut-sab.hbp",
+      "blob": "48304cc6279b8ce7ef2674ccb33fb0cde84aa57e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-broken.hbp",
+      "blob": "5c98d9c13d61925abaabb05c69cd8f99fee9d90a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-exact.hbp",
+      "blob": "db546e10a3ff292688a2358276555e6dfd3bbd64",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-full.hbp",
+      "blob": "9edb806d1890e889baa1317965e50f1380828227",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-plaq176.hbp",
+      "blob": "5bb2e262521c61071a1950837ab7fce6be2513d9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-plaq32.hbp",
+      "blob": "2d04341dfac27aad332b60453fcc0cd5da9a2efa",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/recompute-plaq81.hbp",
+      "blob": "575ae87003b75336ea48cec9ec12190123990927",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/record-check.hbp",
+      "blob": "380da5332d8f3d536b28d84815c1b7944f3e20d5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-A.hbp",
+      "blob": "9cf1c784340f0e26d20b7bdb881f9d3e6585cc0a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-B.hbp",
+      "blob": "7ca2cfa7b0febd3a0a8e87d040113858e12d64fb",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-C1.hbp",
+      "blob": "36c924bbad541b33ece6673dfc4026315cf44a9e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-C2.hbp",
+      "blob": "168ef0523ae3c6865bf9760c008e019ce0982e07",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-C3.hbp",
+      "blob": "eacf52ac46d8a83b38215a2deffb9bc229db2b89",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-D2.hbp",
+      "blob": "f6c75b2e4b755a5cb754d715c64b204f98f45b9e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-E1.hbp",
+      "blob": "32810fa9979d6241d9a331e38587cc5e60c05b7c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/search-E2.hbp",
+      "blob": "6b86cdf49e7b36453808ab9014d99c6deeb85e3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-fixed.hbp",
+      "blob": "73eef3981a0d0c93fb1a8d958ade044985c6829a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-heavy.hbp",
+      "blob": "b0ed30aafdf1b8a2b3b013298051e33e2bfc0109",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-s3-n3.hbp",
+      "blob": "1ab495822036bb145cb9e615ac08a491b753a0f8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-s3.hbp",
+      "blob": "374113aab26f08fc53ddcad25ae34f23c6992b7c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-su2.hbp",
+      "blob": "af7b68e106b474c75b352b7f1131e37942169b80",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-quantitative-gap/rows/trend-wilson.hbp",
+      "blob": "486682c4de072ba7ae66a4467cef705833eec47d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/FILED.hbp",
+      "blob": "f777db5dc260e37f59ae756082597b4433ca2968",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/bands2.hbp",
+      "blob": "f9dc49e984922badada40d3baad39653a18bd6cd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/cube_and_cycles.hbp",
+      "blob": "d2d1d7a7625a791c3bd32d9e269c5679303439e3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/extra_checks.hbp",
+      "blob": "fca1937cd59ce122e1687c9a1032ccd5690182cd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_auto.hbp",
+      "blob": "26ec824421c7aeb0be7906a30befcd1acce89af5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_heavy.hbp",
+      "blob": "d42e8dc069a89a317b2341f294ea87a76b841c02",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_math.hbp",
+      "blob": "72295f5c170d428ba760f618f4fc909e6dd5bd3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_math_part1.hbp",
+      "blob": "72295f5c170d428ba760f618f4fc909e6dd5bd3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_math_part2.hbp",
+      "blob": "8a203d51bb83d3b7b5fc66549e0d3cbe885d278d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_math_part3.hbp",
+      "blob": "e83708fa99f234b606c440730e2818b013cd704b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/mutants_pred.hbp",
+      "blob": "306cb91645645645d3b4b213f380416637b70072",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/read_receipt.hbp",
+      "blob": "228ff0e1a8145076639768722536a877968f15b6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/rule_table.hbp",
+      "blob": "f69c8af7794bb995ca0b71ca3a3c552dbe7b5a97",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/side_one.hbp",
+      "blob": "fab8a7566806d398eb8df7eb9cc6fdc5c771cec9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/small_reads.hbp",
+      "blob": "6f64af0d8ccd74606f330f9a044e028155bd826f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/su2_exact.hbp",
+      "blob": "1d6471dc33f95f38b4034ff1970fca5e327ac44d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_direct.hbp",
+      "blob": "a11c3ee24b5721663f051a44aeec6a360872ffa9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_direct_part1.hbp",
+      "blob": "a11c3ee24b5721663f051a44aeec6a360872ffa9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_direct_part2.hbp",
+      "blob": "250387b8b68ad15b5cb1cf15f39cbc2500a0f44d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_srp.hbp",
+      "blob": "b252ec878085f056d3d796e4185a3924ef84eaa1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_srp_part1.hbp",
+      "blob": "b252ec878085f056d3d796e4185a3924ef84eaa1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-site-sign/out/zeros_srp_part2.hbp",
+      "blob": "3144d2497e0f1c4b2aaa04fd807a681e6dc9e636",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/ATTACK-YM4-02b.hbp",
+      "blob": "30f491ca7ab8164acbe31d603fd91a6aeac34563",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/ATTACK-YM4-02b.hbp.sha256",
+      "blob": "f7d939ed88b4a9830069b65c369ea26e507e0815",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/confirm-last/CONFIRM-YM4-02b-LAST.hbp",
+      "blob": "bcc0302d928fe90f6f1bdae976dbf066c3fa55d5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/read-pr13/FOREST-RERUN.hbp",
+      "blob": "52981359c1116616fe103154dc8abd5c107e74ef",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/recheck/CONFIRM-YM4-02b.hbp",
+      "blob": "3b463873ab6621e79364760053374634bb49ad40",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02b/recheck/RECHECK-YM4-02b.hbp",
+      "blob": "0dcf1846fa093435a1c1d137acdfb84c63b60b7b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/FLOAT-LIST-RECONCILE.hbp",
+      "blob": "a0fd1251693b0ed145467d685240a9fc974fc4eb",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-decimals.hbp",
+      "blob": "5270fb093f9db8ed17e7fc475a5a638cfd0d3910",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-gate_diff.hbp",
+      "blob": "c99c3c27f22e6602fa14c21c75e4e0d3ed69fa7e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-gate_self_findings.hbp",
+      "blob": "5285f5410b9762fb18c5899dd12d146b55a2bd5f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-import_graph.hbp",
+      "blob": "8960f1dadcdd4e0886275ef2f2ed364da38805b6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-misc_measures.hbp",
+      "blob": "4121eecefc3ca9da6439943c35877e9c05f75a84",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-plants.hbp",
+      "blob": "3f5a6bcad233746c61f55827ad0a5b50a10254bf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-plants2.hbp",
+      "blob": "ec012f7b2ce0edcd58de544f301fd497facb1b2a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-row_claims.hbp",
+      "blob": "6e5d420e879eeae7ce4731d2af81c89d8afcbafa",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-row_findings.hbp",
+      "blob": "f2e01b63bfe6d9de4946bfc78b58e1665c4607e3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-row_history.hbp",
+      "blob": "cfa7970e0da235acb27670f8418226e101abf1c6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/gate-sums_check.hbp",
+      "blob": "7e28dc7a83584a604861aaf9f0e25b6789b921a1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-LOCAL_RUN_ROWS.hbp",
+      "blob": "b4599acc14870461a9294c05aaa2300628086a23",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-filed_last.hbp",
+      "blob": "2b9e922502583b41566073b768fc4972b7f74bd8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-gap_k1.hbp",
+      "blob": "d6789cb163b0fcfec150ffbbe9089d6867cb9995",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-groups.hbp",
+      "blob": "2007c3d684fff4a8d76bc89b2145f3ff0d219a29",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-lemma3_first.hbp",
+      "blob": "9aed606620ae38585d3888de7ebd0085475929e6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-lemma3_incidence.hbp",
+      "blob": "70bfc41f2b63b4148447093298f4ba3d41c5601b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-lemma3_through.hbp",
+      "blob": "fd68be688a375fcde550f32bb20c872bf44cdf67",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-note_links.hbp",
+      "blob": "9dc06d56f37e960b383451a7ac8bc6d89776c5dc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-sign_walk.hbp",
+      "blob": "a35a2bbebed43a13f132316c931913b22da4645e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-sign_walk_any.hbp",
+      "blob": "819a64d17b1c9ea7bfb8d68c789a6091553fcf73",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-step2_gram.hbp",
+      "blob": "858426d58c5681ec1ab9b82eb78dc32e21dd4ea0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-step2_moved.hbp",
+      "blob": "8f31514c038d64a41111d9c92b8d018f519ce7ea",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-wsl_compiled.hbp",
+      "blob": "cdae6e8b6bb35a1a1c4d0eb0820c75f26f96db0b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-wsl_plants.hbp",
+      "blob": "3ea812d017465eb5cddbfb2fff87af4c3e7fcc58",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-head/rows/math-wsl_run.hbp",
+      "blob": "958ff3f5ac4e2bd3bdd273a33ba05f55ecbd1d96",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-last/LAST_FILES.hbp",
+      "blob": "198da4c829087768ee7be0ab12cc8569184089c0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c-last/LAST_FILES.hbp.sha256",
+      "blob": "9d7b0dcf417a36986fe84e25ecad4c2483bbd5b6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c/FILED.hbp",
+      "blob": "1517e39a4e8fe7dec2991b2ee9de9eba4c34913e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c/SECOND_SEAT_FILES.hbp",
+      "blob": "b58e6ca50324964ea1b9b8417640d014cfd13caf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c/recheck/FILED.hbp",
+      "blob": "3ed5c4d9932979f68a6293f5d1039daf13ca3309",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c/recheck/RECHECK_FILES.hbp",
+      "blob": "9a2e56ea36ad024861f3410f43c4c4cea84a385d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02c/recheck/RECHECK_FILES.hbp.sha256",
+      "blob": "cfbb6f706a6c7e08fdaf3c08801da56eedb1ff00",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/CLOSED-FORMS.hbp",
+      "blob": "ee8ac4d39b806237c17c2ba6cea3c147b4b9871d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/ENGINE-R.hbp",
+      "blob": "40d5545b27925fdddba12b079ae6f73c11d7e7fa",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/FILTER.hbp",
+      "blob": "8233b87bd35104f0e6b532b10b28065876b86db5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/FIRES.hbp",
+      "blob": "fedf68e19e429e6509c9d9c0056930a7df59476a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/FUZZ.hbp",
+      "blob": "57b863612ab501bd6992b0b643566b123674f01f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-LOCAL-Q8.hbp",
+      "blob": "85e3a71328776da76dc8dfca0fc125fd855e5f07",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-LOCAL221-RATIO.hbp",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-Q8-2x1.hbp",
+      "blob": "d6c6fce1b37f145bae07574b353109af54cc18bc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-Q8-Z3.hbp",
+      "blob": "7413bf7ab8eeaef16ae7228c135dec55ba514a5c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-R.hbp",
+      "blob": "b4b5f7d6732db58c84300b0d1c213baf81c3c07d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-RING4.hbp",
+      "blob": "6b7ae1b0f170c1e770a132f3be79537000d14097",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-RING6-LOCAL.hbp",
+      "blob": "a1f1b0ae5316416b633306117684fa36322d82df",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INDEPENDENT-RING6.hbp",
+      "blob": "ada123c4abd61c9b9f641588eeb943917fe47ac1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/INSTRUMENTED.hbp",
+      "blob": "bbd398b20eb361626f8c74b613a61dac76c41a43",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/MUTANTS.hbp",
+      "blob": "dc832a1c567bfa03d48e1d41fa0f47c52460aa90",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/NOTE-VS-RECEIPT.hbp",
+      "blob": "52113abac16aa616fc17cb5c96b40d5a33f356bc",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/RELAY-CHECK.hbp",
+      "blob": "792ba9d8822e31fe7185ec2259cb50a0bfaa000c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/SABOTAGES.hbp",
+      "blob": "c06546bb1ad3564edbb068b2db24c0abe39188a6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/SHADOW.hbp",
+      "blob": "b72f3febc1cfba3e4e713d05e2cabcce3723cc3b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/SMALL-COUNTS.hbp",
+      "blob": "5fcd6d865fb69c0190e4913a6b134efb549e6191",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-02e/rows/STARTS.hbp",
+      "blob": "84360d0fd65a1153d90f4d7efdfc4be21099b827",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03-certificate/HOLDS-APPLIED.hbp",
+      "blob": "668e70473b72b4bb85636e3fadde40e2dd1003d0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03-literature/SEAL.hbp",
+      "blob": "297eb33fb07d57ebb4a8bd8df315f3e80cde3d91",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03-recheck/HOLDS-APPLIED.hbp",
+      "blob": "52ca07357228070b70fd571a16ccdc3573479735",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03/HOLDS-APPLIED.hbp",
+      "blob": "380ac6926841cd48c0b62d134ced815b7115da52",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/ENGINE-PLANTS.hbp",
+      "blob": "96caab65eb7a276780e8eba87269ba9e9e968537",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/FROZEN-LITERALS.hbp",
+      "blob": "85e9f6b60a3874b1372d16261ca6b9d339db38f9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/INDEX.hbi",
+      "blob": "edd7cda823ca372879333292236b8a08357dbea0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/RECORDS.hbp",
+      "blob": "7a0974f2757109898cdfd370279e9020feef803f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/ROUTE-C-D3-GAUGE-1V.hbp",
+      "blob": "1d51eb049ec97660c9ea22980c821259c48f6a98",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/ROUTE-C-D3.hbp",
+      "blob": "4b1e5a4a2894e79cad9f94b9981bc5db5ca52e6c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/ROUTE-C-D4.hbp",
+      "blob": "9c14c1d036f6174fcb97e34afc0c54ddc1adfd94",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/ROUTE-C-PLANTS.hbp",
+      "blob": "8807ee5ad36d23b4c91e3988586c4041730d9ed3",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-03c-engine-check/SEAL.hbp",
+      "blob": "2c80c5d742d72eae6245fc27cfcab75b917c5c4e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/FILED.hbp",
+      "blob": "8fdef8d5a34feb761bca9ab2490b54fd0e487cce",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/REFUTE-YM4-06A.hbp",
+      "blob": "43c6df1328eb5179ab47fd4f1e9bfdbdecd6ce68",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/REFUTE-YM4-06A.hbp.sha256",
+      "blob": "0714c2f37d4a22f0ec41b52eb3233b9a2c4fc966",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/REFUTER-MANIFEST.hbp",
+      "blob": "cf47368777d011ea25f322383fb07b16f61ef9e8",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/aux_output.hbp",
+      "blob": "30996838700fd761d85342caf5235de21403f363",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/refute_aux.py.sha256",
+      "blob": "a222e145d15160dd277f2534c55df33007b5f6aa",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/refute_s3.py.sha256",
+      "blob": "d9ea3eba7459a6fe79052f9140a30488a4530409",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/refute_support_lemma.py.sha256",
+      "blob": "f3be66f38a14bb8b6b24e60106a84f9e6caf3d31",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/replay.hbp",
+      "blob": "92126d87ba42678250ed678d1b838e530113c132",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x2x2.hbp",
+      "blob": "4c975d8acfa28b6a1fe9fc941f0cf30231b4bc91",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x2x3.hbp",
+      "blob": "509541962d71d339fa8c9ca571c6770bd41f6b97",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x2x4.hbp",
+      "blob": "9a20b23c7c97ffa68fa44f9d2cdb6646f08b7a65",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x3x3.hbp",
+      "blob": "db2345bdcae8f875b5d6912f9cdd09241c9eb5d5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x3x4.hbp",
+      "blob": "0d5c01f1cb92b75210ce19ff834aba9bf786a23a",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x4x4.hbp",
+      "blob": "4c103ead423bb83975467cb4faf27876d005ea7d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_2x5x5.hbp",
+      "blob": "25b1813d8378f7358ee226cbd1173a813527bad7",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_3x3x3.hbp",
+      "blob": "d0c1046ccef97e456471f2c49234a9540f67b162",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_3x3x4.hbp",
+      "blob": "69e570bc9be5f8b87075ffdd8127884d1c921c01",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_3x3x5.hbp",
+      "blob": "581a9064c470c82b56c9ed60568830d9e219da76",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_3x4x4.hbp",
+      "blob": "2137d9e5767a21e74608ba26c81685834d06f62d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_3x5x5.hbp",
+      "blob": "cf49b42bbf6ebbd1a9306505c9273a9516402049",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3_4x4x4.hbp",
+      "blob": "29a5d87c4b0477a3c1a220b58ff7d5f1bfc3473f",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3b8_3x3x3.hbp",
+      "blob": "c268a3229eaba58e3058f49cde330db407e35da4",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3b8_3x3x4.hbp",
+      "blob": "fea6311cd37eb3293a551fd995687a091b3d7eaf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3b8_3x4x4.hbp",
+      "blob": "555f7803d305269fc4f68baeede841f96a070dce",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/s3b8_4x4x4.hbp",
+      "blob": "70d67b3c25b2298f416dcf6e8a5b58b1106ec8a0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/support_lemma.hbp",
+      "blob": "ca28d16608fe6bb572b6aa08a1e8283ab7981762",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "reviews/opus55-ym4-06a-refute-20261110/verdicts.hbp",
+      "blob": "20a2edd6db5ea143611e3d0a73cd75dcb7e715de",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/EXACT_SU2_4D_RECEIPT.txt",
+      "blob": "0c29b83da72e1b83ab167d4c291c3b2bca5e3ebf",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/K_STEP_LOCALITY_RECEIPT.txt",
+      "blob": "f49e663ce40ab3b3ae13fd3f0028cfd66940771c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/ONE_BY_L_RECEIPT.txt",
+      "blob": "3d37cb106525b2a521aacff1cddf706f4ea38854",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/ONE_SCALE_BLOCKING_BRACKETS.hbp",
+      "blob": "8be448f88cf7e2b68f1a69a32283db9e38ba706d",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/ONE_SCALE_BLOCKING_RECEIPT.txt",
+      "blob": "2cc8a996c551d9160c27beba2c56dce52d6522ae",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/QUANTITATIVE_GAP_RECEIPT.txt",
+      "blob": "f748b337bdd1ec2ebecdd53acf90284cfe32a355",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/REFLECTION_TRANSFER_RECEIPT.txt",
+      "blob": "c1a2fba45dbff99f1a65ed38c3da4629a24f61ae",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/SITE_SIGN_RECEIPT.txt",
+      "blob": "14c2e0a1c799b85653a2ca57eecfc2f0049f96b0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/SUBGROUP_DESIGNS_RECEIPT.txt",
+      "blob": "acbb60ec8985806e7881f0dc778c4e23a41fc16c",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/YM4_04B_LOCAL_CLUSTER_RECEIPT.txt",
+      "blob": "ca81c821e8c540f520291494a18cfae2910d44df",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/YM4_04_TWO_TERNARY_BLOCKS_RECEIPT.txt",
+      "blob": "4eb6070cdd65f4aec95f5d89d8dddeee9ce52e9b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/YM4_05A_CHARACTER_WEAK_RECEIPT.hbp",
+      "blob": "12c2ea90c93245886f799133df30cd6546368ba5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/YM4_05B_CANTOR27-RECEIPT.hbp",
+      "blob": "b5519c413b7ee2d69afd9cf9d90ffda9aa023569",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/YM4_06A_BACKUP_PROBES.hbp",
+      "blob": "2a45bbd8eb529f7c956855c0de91e05dcca1641b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/YM4_06A_BACKUP_PROBES.hbp.sha256",
+      "blob": "85bb2bdc868d6b5bd2efc2d56df9b05ff65ac164",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp",
+      "blob": "442b8ddc65dda99224356a79de833a6eb0e53e63",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "prediction_or_receipt"
+    },
+    {
+      "path": "tests/YM4_06A_GLOBAL_LOCK_RECEIPT.hbp.sha256",
+      "blob": "e0bea8d1e49458973c50e5f3d27c105ec84de343",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    },
+    {
+      "path": "tests/one_scale_replay.py",
+      "blob": "44a1f01770545d9016ef926dad6aff003364897e",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_exact_su2_4d.py",
+      "blob": "0eec88d741ad3e2c9554cf86554c44fb2f2d28e9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_haar_moments_4d.py",
+      "blob": "01cb13cb90c0a2086a34777a2ebef6c4890dd594",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_k_step_locality.py",
+      "blob": "a48b06d805ea6b42b0cb8d5e9f256fac7267699b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_one_by_l_2d.py",
+      "blob": "9e05e4384704a86ca4590a04aec30d43676352d5",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_one_scale_blocking.py",
+      "blob": "fc1c0bdd2513cb134dfa65dde547cba1b41132ce",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_quantitative_gap.py",
+      "blob": "ac1bc37f57bf6fe74e05e69c3f27899d4f93c815",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_reflection_transfer_4d.py",
+      "blob": "d0ce7636e5d8c494558b5418d3389d9eeec8d394",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_site_sign_4d.py",
+      "blob": "0aa0544f7c7ed96bf10cf8b1d64268fd667e5afd",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_subgroup_designs_4d.py",
+      "blob": "0ecb7d90874d9df5f145601f3adf3d4d872bc6c9",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_04_two_ternary_blocks.py",
+      "blob": "ceef449fc98fdc49ff93bf70c4b75599a6b8cd41",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_04b_local_cluster.py",
+      "blob": "d8cb32df2935b5ecac266b4c5d1eda3cbcbcc9c1",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_05a_character_weak_coupling.py",
+      "blob": "e0a7235fb651c8a0578e563bbe193297bb7db58b",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_05b_cantor27.py",
+      "blob": "5a69755f933670c04f7f55cb73bcfbd2e173e3f6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_06a_global_lock.py",
+      "blob": "f3200e584d58a68bf5f302f43243762e947af2a6",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07c_su2_local_wilson_variance.py",
+      "blob": "544606c36431fcc1d8fed8ecbe3d2eb20dc963d0",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07c_wilson_projection_bridge.py",
+      "blob": "ad5b30352afe725348bf97962d6c7cd752c51416",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07e_exact_block_projector.py",
+      "blob": "62a1b5fb4083a7aa7afb4c50ac1e5d05b1258b59",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07f_dark_trace_budget.py",
+      "blob": "454c3a747ad1f4fd3aa321f5385a6b56435e9d7a",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07g2_positive_beta_wilson_moment.py",
+      "blob": "ff17550ac0c16fcd5875f4d14ffdc8252a0744d1",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07g_original4d_transfer.py",
+      "blob": "ddb3c1d008dc1b782690c876afd41209e6dc21b8",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07h_allbeta_su2_peter_weyl.py",
+      "blob": "24a694cfa854cd5e178d742bc3bf3622c1ea5bf4",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07i2_normalized_wilson_correlator.py",
+      "blob": "610b79c4063ab1ea3ca26baacbfc515ed3158647",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/test_ym4_07i_physical_vacuum_projector.py",
+      "blob": "037d55a5708e895240d9268ae4a32ac9a6428186",
+      "origin": "stacked_draft",
+      "ref": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "kind": "checker"
+    },
+    {
+      "path": "tests/ym4_06a_verify_refuter_manifest.sh",
+      "blob": "d5dc7c2e7812b435fb4aa1a377ab25cb5874bb24",
+      "origin": "main",
+      "ref": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
+      "kind": "other"
+    }
+  ],
+  "pr_events": [
+    {
+      "number": 80,
+      "title": "YM4-07I: original 4D SU2 beta64 physical vacuum projector and Wilson correlator error",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/80",
+      "base": "cloud-seat-ym4-07h-allbeta-peter-weyl-cap-20261121",
+      "head_sha": "ed6851e499c98e351816e9134d15d52e500f2577",
+      "merged_at": null
+    },
+    {
+      "number": 79,
+      "title": "YM4-07H: all-finite-beta original 4D SU2 Peter-Weyl trace and Haar-cap Perron certificates",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/79",
+      "base": "cloud-seat-ym4-07g-original4d-transfer-budget-20261121",
+      "head_sha": "4b3ddea5ed71a169cdee7c4588037c37e8fdb6e8",
+      "merged_at": null
+    },
+    {
+      "number": 78,
+      "title": "YM4-07G: original 4D continuous SU2 transfer trace and positive-beta Wilson Gram certificate",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/78",
+      "base": "cloud-seat-ym4-07f-dark-trace-budget-20261121",
+      "head_sha": "dd58f261636f8cebdbb217bd9779df5e939b49d7",
+      "merged_at": null
+    },
+    {
+      "number": 77,
+      "title": "YM4-07F: small-Gram dark-spectrum trace certificate and continuous SU2 class calibration",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/77",
+      "base": "cloud-seat-ym4-07e-exact-block-source-projector-20261120",
+      "head_sha": "1499dfaa7bb209801444de768a992ba739df6892",
+      "merged_at": null
+    },
+    {
+      "number": 76,
+      "title": "YM4-07E: exact SU2 blocked Wilson source and cyclic physical-energy spectral projector",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/76",
+      "base": "main",
+      "head_sha": "772b4149a7393d77f24396c89f6205bc4c8b9b18",
+      "merged_at": null
+    },
+    {
+      "number": 75,
+      "title": "YM4-07D: all-beta SU2 polynomial Wilson-source floor and complete local network control",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/75",
+      "base": "main",
+      "head_sha": "1816b01a594e209a2be450088af805951a17d4b4",
+      "merged_at": null
+    },
+    {
+      "number": 74,
+      "title": "YM4-07C: genuine 4D SU2 Wilson-variance bound and finite-certificate spectral bridge",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/74",
+      "base": "main",
+      "head_sha": "891ff32e145c2414e503d1345b8daf9d6e1792e1",
+      "merged_at": "2026-11-21T01:28:16Z"
+    },
+    {
+      "number": 73,
+      "title": "docs(YM4): include linear finite-size law with proper SU2 continuum scope",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/73",
+      "base": "main",
+      "head_sha": "c8f88af3cb30038109874b4a9d7393c0b14934f4",
+      "merged_at": "2026-11-16T18:23:09Z"
+    },
+    {
+      "number": 72,
+      "title": "docs(YM4): quantified continuum bridge and Nov 16 exact finite-state cross-check",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/72",
+      "base": "main",
+      "head_sha": "8545cce74a773c354f1f8cc6b51ab5e6fb4120ed",
+      "merged_at": "2026-11-16T18:04:29Z"
+    },
+    {
+      "number": 71,
+      "title": "Document external 4D Yang–Mills existence assessment and refocus continuum mass-gap obligations",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/71",
+      "base": "main",
+      "head_sha": "eb5f5fda1e31650ff2532d713290a5ef9e8be1a6",
+      "merged_at": null
+    },
+    {
+      "number": 70,
+      "title": "YM4-07A: prioritize β→∞ continuum mass-gap gate; all-β SU2 electric ordering and physical-time falsifiers",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/70",
+      "base": "main",
+      "head_sha": "1fc076afafba4ffe3f7145d7c7b19db057114eb1",
+      "merged_at": null
+    },
+    {
+      "number": 69,
+      "title": "YM4-06K: genuine isotropic SU(2) center-neutral first spectral gap and all local Wilson decay bound",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/69",
+      "base": "gpt6-ym4-06i-isotropic-l2-full-first-ratio-20261111",
+      "head_sha": "f9096cbac33a04f95f2b3d24376ceb8aae9d767b",
+      "merged_at": null
+    },
+    {
+      "number": 68,
+      "title": "YM4-06I/J: actual isotropic SU2 L=2 first spectral gap and center-charged winding selection",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/68",
+      "base": "gpt6-ym4-06f-full-wilson-temporal-fourier-20261111",
+      "head_sha": "5ac0f4710ba2137ed45f4f0e2dc47a9c962b57f3",
+      "merged_at": null
+    },
+    {
+      "number": 67,
+      "title": "YM4-06F: full finite 4D SU2 Wilson transfer spectral enclosure from a rigorous Fourier tail",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/67",
+      "base": "main",
+      "head_sha": "689fbc6de8da23301db7c2ff7c1979f3d046c69d",
+      "merged_at": null
+    },
+    {
+      "number": 66,
+      "title": "YM4-06C: full-spectrum triadic transfer Schur bound and exact blocking-memory identity",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/66",
+      "base": "main",
+      "head_sha": "76a5de6df22b0f5cb2eb828a2400fd8bfe4837f4",
+      "merged_at": null
+    },
+    {
+      "number": 65,
+      "title": "YM4-06B: exact PR #34 falsifier of triadic physical first-gap error budget",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/65",
+      "base": "main",
+      "head_sha": "049b267194dbe09fd435df3b0e1736330da21fda",
+      "merged_at": null
+    },
+    {
+      "number": 64,
+      "title": "YM4-07: Wilson weak-field density estimate and global-all-good no-go on SU2 one-loop slope",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/64",
+      "base": "main",
+      "head_sha": "300c0cf77eb665c8e459c15eb5d06a22bd0e946f",
+      "merged_at": null
+    },
+    {
+      "number": 63,
+      "title": "YM4-04C E5+: unique global polymer-tail pole via SU2 convex-tilt monotonicity",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/63",
+      "base": "gpt6-ym4-04c-e4-e5-allstep-weak-barrier-20261111",
+      "head_sha": "c610c92fd522882fc008c0bff881033d2f8c4a0e",
+      "merged_at": null
+    },
+    {
+      "number": 62,
+      "title": "YM4-04C E4/E5: all-k cfin contraction, independently verified C15, G0/G1 proof repairs, rigorous weak-coupling KP barrier",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/62",
+      "base": "gpt6-ym4-04c-e3-kp-certified-edges-20261111",
+      "head_sha": "8559a6f22784eb4e4140e07f7d95f83a60e1790f",
+      "merged_at": null
+    },
+    {
+      "number": 61,
+      "title": "YM4-04C E3: independent exact C05/C06/C14 KP coupling boundaries, convex NOT_MET, and true C04 tail falsifier",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/61",
+      "base": "gpt6-ym4-04c-e1-c03-closed-polymer-n12-20261111",
+      "head_sha": "717ac4dedf844a963be8ea58af416e4e8cbf489a",
+      "merged_at": null
+    },
+    {
+      "number": 60,
+      "title": "YM4-04C E1/C03: exact 4D closed polymers n=4..12, two independent engines, two tori, all-set SHA receipts",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/60",
+      "base": "gpt6-ym4-04c-e0-geometry-census-20261111",
+      "head_sha": "270345ed57db42a410904d2cf85fc7016ee05693",
+      "merged_at": null
+    },
+    {
+      "number": 59,
+      "title": "YM4-04C E0: independent exhaustive 4D off-link geometry and closed n=4 polymer census",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/59",
+      "base": "gpt6-ym4-04c-e2g-polymer-pole-engine-20261111",
+      "head_sha": "91645246653e3a8dc2ca8d2c65735ee5dbe29a48",
+      "merged_at": null
+    },
+    {
+      "number": 58,
+      "title": "YM4-04C first engine stage: exact SU2 Haar L6 polymer-tail C04 with independent Catalan checker",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/58",
+      "base": "local-opus55-ym4-04c-gattack-20261109",
+      "head_sha": "e8c3a962bb8020199bbed594c4d70075aa9189e8",
+      "merged_at": null
+    },
+    {
+      "number": 57,
+      "title": "YM4-06I: halve SU(2) conditional-TV influence and extend uniform 4D Wilson transfer criterion to βt=1/10",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/57",
+      "base": "gpt6-ym4-06h-4d-volume-uniform-transfer-20261111",
+      "head_sha": "930723e8989fca56b7e77f2bc71a48d143f6ac2a",
+      "merged_at": null
+    },
+    {
+      "number": 56,
+      "title": "YM4-06H: nonzero-coupling 4D SU2 Wilson volume-uniform transfer criterion via exact Dobrushin + OS",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/56",
+      "base": "gpt6-ym4-06g-volume-uniform-local-20261111",
+      "head_sha": "cc5fc2274d4200aab42d2ff9d6f52077782ab2e5",
+      "merged_at": null
+    },
+    {
+      "number": 55,
+      "title": "YM4-06G: volume-independent SU2 spatial Wilson heat-bath gap and pure-temporal transfer control across L=3..27",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/55",
+      "base": "gpt6-ym4-06f-multisite-wilson-20261111",
+      "head_sha": "0ceb00bf623715906bad4ae9d463032d76c1d8fd",
+      "merged_at": null
+    },
+    {
+      "number": 54,
+      "title": "YM4-06F: full gauge-invariant SU2 Wilson transfer spectrum on spatial 2×2×2 with ternary cutoff bounds",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/54",
+      "base": "gpt6-ym4-06e-interacting-wilson-20261111",
+      "head_sha": "54df2f3e44790c46b5ebfa91fddd071f398dfc4d",
+      "merged_at": null
+    },
+    {
+      "number": 53,
+      "title": "YM4-06E: interacting gauge-invariant SU2 Wilson transfer gap and exact ternary cutoff errors",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/53",
+      "base": "gpt6-ym4-06d-hosted-pilot-20261111",
+      "head_sha": "819af72c00081b6d1274730345eb1ccd814f7105",
+      "merged_at": null
+    },
+    {
+      "number": 52,
+      "title": "YM4-06D: execute frozen SU2 Wilson spectral, ternary gauge-cutoff and global-hash controls",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/52",
+      "base": "local-opus55-ym4-06d-draft-20261111",
+      "head_sha": "d8f6f603f909796b2bf3c80b0655e4f54998130a",
+      "merged_at": null
+    },
+    {
+      "number": 51,
+      "title": "DRAFT for correction: YM4-06D, the global lock under slice refinement (not frozen, nothing computed)",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/51",
+      "base": "main",
+      "head_sha": "aee91ac11b3c32293b5284a1165177d433dbe7db",
+      "merged_at": null
+    },
+    {
+      "number": 50,
+      "title": "Independent YM4-06B Rust affine S3 verifier (48/21 sectors, 53,676 moves, electric polynomial)",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/50",
+      "base": "main",
+      "head_sha": "7ccd3386806d075036fd819b2f488b528d9339e8",
+      "merged_at": null
+    },
+    {
+      "number": 49,
+      "title": "YM4-06B: two independent finite 3D S3 gap bounds, frozen before hosted verification",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/49",
+      "base": "main",
+      "head_sha": "cf5a993d97fbfc48024ffbaa73656feb88f2f538",
+      "merged_at": null
+    },
+    {
+      "number": 48,
+      "title": "Status refresh, November 11: README, PROBLEM.md and the ledger",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/48",
+      "base": "main",
+      "head_sha": "c27bc4365496ced03a8f21082d6cc5b4ad583f72",
+      "merged_at": "2026-11-11T11:08:04Z"
+    },
+    {
+      "number": 47,
+      "title": "YM4-06A: global-lock structure in three spatial dimensions (finite S3 control and continuous SU(2) comparison), structure only",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/47",
+      "base": "main",
+      "head_sha": "2a2f5989aec79c556bbab0d6bab9c3ad1a145721",
+      "merged_at": "2026-11-10T14:05:39Z"
+    },
+    {
+      "number": 46,
+      "title": "YM4-04C G_attack filed: 7/7 checks and 62/62 steps reproduced, two clarification rows",
+      "state": "open",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/46",
+      "base": "cloud-seat-ym4-04c-freeze-20261109",
+      "head_sha": "d073f8882af4f59023235617c444c6feec7cb87e",
+      "merged_at": null
+    },
+    {
+      "number": 45,
+      "title": "YM4-04C evidence: pre-freeze scratch kept verbatim, with two FLOAT-EVIDENCE folder rows",
+      "state": "open",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/45",
+      "base": "main",
+      "head_sha": "dfe0859b047b3b0aada3b9b322548524c26c7c2a",
+      "merged_at": null
+    },
+    {
+      "number": 44,
+      "title": "README: the YM4-03 row names the merged sabotage replay (#43)",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/44",
+      "base": "main",
+      "head_sha": "58755f5fd85db31af6229d5a06048c74067291b0",
+      "merged_at": "2026-11-08T17:38:20Z"
+    },
+    {
+      "number": 43,
+      "title": "YM4-03 CI: section-specific sabotage replay (11.2x on the sabotage step, measured back to back)",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/43",
+      "base": "main",
+      "head_sha": "1b543ba2eff86ade9fb448e2ed0f44fec0914c7b",
+      "merged_at": "2026-11-08T17:35:58Z"
+    },
+    {
+      "number": 42,
+      "title": "README: November 8, YM4-03C blocked SU(2) action through β¹⁰",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/42",
+      "base": "main",
+      "head_sha": "51ba999f842dc8cdba65c0f19acc3f661db9862e",
+      "merged_at": "2026-11-08T15:32:02Z"
+    },
+    {
+      "number": 41,
+      "title": "YM4-03C: the blocked SU(2) action through β¹⁰ — predictions frozen, engine measured (92/92 MET), independently checked",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/41",
+      "base": "main",
+      "head_sha": "0c289ed707af141465eb54fbdbcb86960763c27b",
+      "merged_at": "2026-11-08T15:28:12Z"
+    },
+    {
+      "number": 40,
+      "title": "YM4-05B: 27 Cantor nonlinear 4D-local SU(2) measurements, false Q reduction and exact fast orbit jump",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/40",
+      "base": "main",
+      "head_sha": "0bca13cd26ee7a4256357e253d1e102558eca851",
+      "merged_at": "2026-11-07T17:41:44Z"
+    },
+    {
+      "number": 39,
+      "title": "YM4-05A-Fast: eliminate duplicate full-repository scan; seconds-level exact replay gate",
+      "state": "open",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/39",
+      "base": "main",
+      "head_sha": "455d0acebe535a160751dddcabdd06890578c45f",
+      "merged_at": null
+    },
+    {
+      "number": 38,
+      "title": "YM4-05A: exact SU(2) weak-heat-kernel blocking controls and 4D Wilson six-staple obstruction",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/38",
+      "base": "main",
+      "head_sha": "d60bf9594a14c8393d1c6eb0b69f6893a9a48d74",
+      "merged_at": "2026-11-07T16:49:41Z"
+    },
+    {
+      "number": 37,
+      "title": "YM4-04B: actual SU(2) local Dobrushin connected Wilson bounds, two ternary blocks and all-k summability (strong coupling only)",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/37",
+      "base": "main",
+      "head_sha": "623e28214e0ccfea7b050bd5009f511d7ce10bbd",
+      "merged_at": "2026-11-07T16:35:32Z"
+    },
+    {
+      "number": 36,
+      "title": "YM4-04: two exact factor-three SU(2) blocks, certified Wilson-correlation error, spectrum and gap-collapse falsifier",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/36",
+      "base": "main",
+      "head_sha": "78d970c3c8df734dd027e2c48f4a67ffde58f1de",
+      "merged_at": "2026-11-07T16:34:43Z"
+    },
+    {
+      "number": 35,
+      "title": "README: add hosted Shadow Cat and triadic-gap results; correct stale YM4-02e status",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/35",
+      "base": "main",
+      "head_sha": "acb82ec3d636eefc16795e28e78f325c4f95eeaa",
+      "merged_at": "2026-11-07T02:50:12Z"
+    },
+    {
+      "number": 34,
+      "title": "YM4-04/06: triadic matrix-jump physical-gap criterion and exact continuum counterexample (predictions first)",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/34",
+      "base": "main",
+      "head_sha": "ae834525f3ce6f261ca748e38ec703ba81f00e0b",
+      "merged_at": null
+    },
+    {
+      "number": 33,
+      "title": "YM4-03b: frozen predictions and exact S3 three-scale ternary excitation test",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/33",
+      "base": "main",
+      "head_sha": "bad95ebf976975c08b8a663baf40f11d181b0d8d",
+      "merged_at": null
+    },
+    {
+      "number": 32,
+      "title": "README: November 6, PROBLEM.md (#31) and YM4-03 on main (#29)",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/32",
+      "base": "main",
+      "head_sha": "11ad22ee3ff8928d4a3fa7d8dff6be5e0f8051f6",
+      "merged_at": "2026-11-06T16:19:25Z"
+    },
+    {
+      "number": 31,
+      "title": "docs: update PROBLEM.md through merged YM4-03 and separate continuum gates",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/31",
+      "base": "main",
+      "head_sha": "f712c7405eb38bf9a6f2fe2f9b28871828d6b4d2",
+      "merged_at": "2026-11-06T16:16:30Z"
+    },
+    {
+      "number": 30,
+      "title": "README: where YM4-03 stands, November 5",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/30",
+      "base": "main",
+      "head_sha": "f4346085cfb780bd3961ca7eda2511d695fa4c8a",
+      "merged_at": "2026-11-05T21:11:32Z"
+    },
+    {
+      "number": 29,
+      "title": "YM4-03: one-scale blocking, the exact pushforward, the closed two-dimensional flow and the first four-dimensional term",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/29",
+      "base": "main",
+      "head_sha": "ab3aac1f338bb8321972ea868128ba5a810911d5",
+      "merged_at": "2026-11-06T00:42:32Z"
+    },
+    {
+      "number": 28,
+      "title": "YM4-03: factor-two continuous SU(2) Haar pushforward and certified one-block Wilson character action",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/28",
+      "base": "main",
+      "head_sha": "3c6d97f3bc52e88058e5a47827b9b102e51ba49a",
+      "merged_at": null
+    },
+    {
+      "number": 27,
+      "title": "Cross-reference the 17-repository research evidence map and QNN Google circuit test",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/27",
+      "base": "main",
+      "head_sha": "49ecddbee43905eff628869364e34c2b8dbb96b5",
+      "merged_at": "2026-11-04T23:19:22Z"
+    },
+    {
+      "number": 26,
+      "title": "YM4-02e: the k-step bound and a bound from locality, on HOLD",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/26",
+      "base": "main",
+      "head_sha": "7ba462b874be8483377b4c761183b32d00ef7788",
+      "merged_at": "2026-11-04T23:06:03Z"
+    },
+    {
+      "number": 25,
+      "title": "The second seat's corrections at 69dfdd9 for main",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/25",
+      "base": "main",
+      "head_sha": "39c42acea425b8fb155405d6c15781ff1152daa7",
+      "merged_at": "2026-11-04T14:25:25Z"
+    },
+    {
+      "number": 24,
+      "title": "README: a visible link to the Hugging Face dataset",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/24",
+      "base": "main",
+      "head_sha": "ba84b84a10c97c7bc7e14b6bc7a60f8e3c7eaa9d",
+      "merged_at": "2026-11-04T14:03:34Z"
+    },
+    {
+      "number": 23,
+      "title": "The finite lattice as the primary scope, and the second seat's corrections for main",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/23",
+      "base": "main",
+      "head_sha": "dd1782e6f60075a26bef9920b3dd3d9a4850a11d",
+      "merged_at": "2026-11-04T13:51:25Z"
+    },
+    {
+      "number": 22,
+      "title": "YM4-02d: an explicit gap at each fixed lattice, λ₁/λ₀ ≤ tanh(βN_ℓ)",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/22",
+      "base": "main",
+      "head_sha": "8cf3e6f15cc2317e0cb3aada6e65ebf595234486",
+      "merged_at": "2026-11-04T16:48:15Z"
+    },
+    {
+      "number": 21,
+      "title": "GPT-6's verdicts: Lemma 0003's sharp condition is DERIVED, and the operator's finite scope",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/21",
+      "base": "main",
+      "head_sha": "975311baa10a7c3bc39ca734d9982aec1feaeb64",
+      "merged_at": "2026-11-04T11:55:51Z"
+    },
+    {
+      "number": 20,
+      "title": "The hosted test of the required checks, and the last attack on the final gate",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/20",
+      "base": "main",
+      "head_sha": "95412d38e0ec20fc7d17de69b81d66ba14f912c9",
+      "merged_at": "2026-11-04T05:54:45Z"
+    },
+    {
+      "number": 19,
+      "title": "THROWAWAY, do not merge: a clean integer change, the control",
+      "state": "closed_unmerged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/19",
+      "base": "main",
+      "head_sha": "8fe38ebb1da017592988470c78ece8ed9fe95ab5",
+      "merged_at": null
+    },
+    {
+      "number": 18,
+      "title": "THROWAWAY, do not merge: a float, with jobs carrying the required names",
+      "state": "closed_unmerged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/18",
+      "base": "main",
+      "head_sha": "fc0bb136a55fc14ed6069cc6d35b6b2aa0670816",
+      "merged_at": null
+    },
+    {
+      "number": 17,
+      "title": "THROWAWAY, do not merge: a float, with the pull request's gate edited to exit 0",
+      "state": "closed_unmerged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/17",
+      "base": "main",
+      "head_sha": "0f9e08fefcf7287cd7cde9aa3b243d525452682d",
+      "merged_at": null
+    },
+    {
+      "number": 16,
+      "title": "THROWAWAY, do not merge: a float with no list row",
+      "state": "closed_unmerged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/16",
+      "base": "main",
+      "head_sha": "e3cf40a45f46473a2d090afad4cb08facaa54449",
+      "merged_at": null
+    },
+    {
+      "number": 15,
+      "title": "Gate v4: one no-float job, a base-commit gate, a pinned list at the merged tree, and compiled reads for the Rust review files",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/15",
+      "base": "main",
+      "head_sha": "8d4de9e4940b83579580ed158c0eaa02170d76f3",
+      "merged_at": "2026-11-04T05:17:50Z"
+    },
+    {
+      "number": 14,
+      "title": "YM4-02c: reflection positivity and the transfer operator of the finite SU(2) Wilson lattice",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/14",
+      "base": "main",
+      "head_sha": "8a16040999cb1e7b11fe42151f7286c9103412e1",
+      "merged_at": "2026-11-04T15:00:20Z"
+    },
+    {
+      "number": 13,
+      "title": "YM4-02b: the periodic 1 x L lattice agrees through t, with a closed form and exact controls on all four groups",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/13",
+      "base": "main",
+      "head_sha": "a90a98d481019eefc6d52aaced692c29d3c1a977",
+      "merged_at": "2026-11-04T02:53:41Z"
+    },
+    {
+      "number": 12,
+      "title": "An independent seat's Q8 checker of the YM4-02c Gram entry, verbatim, with a local replay",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/12",
+      "base": "main",
+      "head_sha": "3333cdb7b6aa427c1ba1d1fc0c5707ee2673c887",
+      "merged_at": "2026-11-03T21:20:07Z"
+    },
+    {
+      "number": 11,
+      "title": "YM4-02b: finite subgroups of SU(2) average exactly as Haar through a fixed degree per link",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/11",
+      "base": "main",
+      "head_sha": "279dd26c24b69f678b52d1d20897ed170224f9be",
+      "merged_at": "2026-11-04T01:50:30Z"
+    },
+    {
+      "number": 10,
+      "title": "One numbering, a status table, working links, and docs that state scope",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/10",
+      "base": "main",
+      "head_sha": "bff6043a1a5a2acdc6097e6d95cf2688d82f45af",
+      "merged_at": "2026-11-04T01:47:09Z"
+    },
+    {
+      "number": 9,
+      "title": "YM4-QNN-01: exact SU(2) trit bridge, HEB-C receipts, four-shard GitRAM CI",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/9",
+      "base": "main",
+      "head_sha": "c43cdaca6ec27d7587af3113fb274e73cae47028",
+      "merged_at": null
+    },
+    {
+      "number": 7,
+      "title": "YM4-02a: exact SU(2) Haar/Wilson moment prerequisites on a 4D lattice",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/7",
+      "base": "main",
+      "head_sha": "aa4e6b73779ac7b127b296e1bad4fc31b96de5f5",
+      "merged_at": "2026-11-03T21:01:53Z"
+    },
+    {
+      "number": 1,
+      "title": "YM4-01: exact SU(2) gauge-covariance lemma on a 4D periodic lattice",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/1",
+      "base": "main",
+      "head_sha": "27f5f632fd5d6b5a2de6fad8f251321041e3df1b",
+      "merged_at": "2026-11-03T21:01:47Z"
+    }
+  ],
+  "cross_repository": [
+    {
+      "repository": "JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C",
+      "role": "finite S3 source-of-truth",
+      "viewer": "https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html",
+      "inventory": "https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/blob/e1ed2f0f700ef7523b5c8577f9927976d14d0342/docs/certificate-atlas/certificates-current-20261120.json",
+      "compatible_as_direct_SU2_proof": false
+    },
+    {
+      "repository": "anaxia-research/4Y-M",
+      "role": "independent published comparison",
+      "verification": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/VERIFICATION.md",
+      "license": "https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/LICENSE",
+      "mathematical_formalization_scope": "finite/conditional Lean; some analytic and numerical components outside formal library"
+    }
+  ]
+}
