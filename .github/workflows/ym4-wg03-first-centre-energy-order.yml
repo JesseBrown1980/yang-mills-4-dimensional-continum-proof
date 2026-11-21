@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_su2_first_centre_energy_order.py'
       - 'docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG03-HOSTED-FIRST-CENTER-ORDER-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG03-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg03-first-centre-energy-order.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_su2_first_centre_energy_order.py'
       - 'docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG03-HOSTED-FIRST-CENTER-ORDER-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG03-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg03-first-centre-energy-order.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_su2_first_centre_energy_order.py > build/ym4-wg03/FIRST.hbp
           python3 -B tests/ym4_su2_first_centre_energy_order.py > build/ym4-wg03/REPLAY.hbp
           cmp build/ym4-wg03/FIRST.hbp build/ym4-wg03/REPLAY.hbp
+          cmp build/ym4-wg03/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG03-HOSTED-FIRST-CENTER-ORDER-RECEIPT-20261121.hbp
+          echo 'a2e0941ceb0cc112105949312f42958bc1b57ce5f666015a45e920c6e70ec7ba  build/ym4-wg03/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=a2e0941ceb0cc112105949312f42958bc1b57ce5f666015a45e920c6e70ec7ba' \
+            docs/certificate-atlas/YM4-WG03-ACCEPTANCE-20261121.hbp
           grep -Fq 'two_link_Gauss_admissible_winding_pairs=12' build/ym4-wg03/FIRST.hbp
           grep -Fq 'lambda_charged_lower_gt=13/62500000000' build/ym4-wg03/FIRST.hbp
           grep -Fq 'lambda_neutral_second_upper_lt=1/27000000000000' build/ym4-wg03/FIRST.hbp
