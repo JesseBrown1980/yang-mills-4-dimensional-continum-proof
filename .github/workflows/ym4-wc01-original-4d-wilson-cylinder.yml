@@ -1,0 +1,87 @@
+name: YM4 WC01 original 4D Wilson cylinder Haar moments
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_4d_wilson_cylinder_moments.py'
+      - 'tests/test_ym4_4d_wilson_cylinder_moments.py'
+      - 'docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wc01-original-4d-wilson-cylinder.yml'
+  push:
+    paths:
+      - 'tests/ym4_4d_wilson_cylinder_moments.py'
+      - 'tests/test_ym4_4d_wilson_cylinder_moments.py'
+      - 'docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wc01-original-4d-wilson-cylinder.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-source-Haar-and-original-finite-Wilson:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify frozen predictions precede implementation and tests
+        run: |
+          set -euo pipefail
+          PIN=23daf59d52e5087fd8308b9aa9ef8e882220766d
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_4d_wilson_cylinder_moments.py" 2>/dev/null; then
+            echo "source predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_4d_wilson_cylinder_moments.py" 2>/dev/null; then
+            echo "test predates prediction" >&2
+            exit 1
+          fi
+      - name: Run strict source no-float audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Check full source geometry, rational quaternion gauge covariance and Haar cancellations
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_4d_wilson_cylinder_moments.py -v
+      - name: Produce twice and verify original 4D Wilson HBP source
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wc01
+          python3 -B tests/ym4_4d_wilson_cylinder_moments.py > build/ym4-wc01/FIRST.hbp
+          python3 -B tests/ym4_4d_wilson_cylinder_moments.py > build/ym4-wc01/REPLAY.hbp
+          cmp build/ym4-wc01/FIRST.hbp build/ym4-wc01/REPLAY.hbp
+          cmp build/ym4-wc01/FIRST.hbp \
+            docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp
+          echo 'fe5cc7762caa88dc92cd191db8fbe6420a3e8654dda998a7a642d13c3ae473bf  build/ym4-wc01/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=fe5cc7762caa88dc92cd191db8fbe6420a3e8654dda998a7a642d13c3ae473bf' \
+            docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp
+          grep -Fq 'sites=80|links=320|plaquettes=480|spatial=240|temporal=240' build/ym4-wc01/FIRST.hbp
+          grep -Fq 'connected_order_beta2=CANCELS' build/ym4-wc01/FIRST.hbp
+          grep -Fq 'vacuum_infinite_time=OPEN' build/ym4-wc01/FIRST.hbp
+          grep -Fq 'full_transfer_spectrum=OPEN|continuum_gap=OPEN' build/ym4-wc01/FIRST.hbp
+          sha256sum build/ym4-wc01/FIRST.hbp > build/ym4-wc01/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wc01/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-original-4d-Wilson-cylinder-WC01
+          path: build/ym4-wc01/
+          if-no-files-found: warn
+          retention-days: 90

@@ -1,5 +1,15 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — Original full 4D Wilson periodic-cylinder C0/C2/C4 certificates
+
+**[YM4-WC01 full-action mathematical note](docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md)** · [Prediction frozen before implementation](docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp) · [Exact hosted HBP receipt](docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp) · [SHA and acceptance record](docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp) · [Hosted verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44918913104).
+
+The **original continuous-SU(2), four-dimensional Wilson plaquette measure** is now evaluated by strict rational intervals for connected spatial Wilson correlators on the periodic lattice **2×2×2×10**. The exact source includes **80 sites, 320 links and all 480 interacting plaquettes**, comprising 240 spatial and 240 timelike terms; each link has six plaquettes. The independent checker verifies exact rational SU(2) gauge covariance on noncommuting link configurations and enumerates all 480 mod-two Haar incidence masks. The leading connected time-separated order-β² term **cancels** after proper one-point subtraction, and an exact uniform order-three remainder bounds all higher terms of the **full Wilson exponential**.
+
+The hosted transcript reports strict outward rational intervals for the original finite-periodic **C_T(0), C_T(2), C_T(4)**: at β=1/10000, **0.249975797146 ≤ C_T(0) ≤ 0.250024202448** and **|C_T(2)|, |C_T(4)| ≤ 0.000019363801**; at β=1/100000, the corresponding C_T(0) interval is **[0.249999976845,0.250000023155]** and the absolute time-separated bound is **0.000000018521**. These are strict fixed-volume/fixed-period certified intervals with the genuine interacting spatial magnetic and time-like Wilson factors.
+
+**Certificate boundary:** the time direction here is **periodic of length 10**, so these are finite-T Euclidean connected observables, distinguished from infinite-time physical-vacuum moments C_n=<Omega,W T^n W Omega> and the complete 4D gauge-projected transfer spectrum. Those spectral reconstruction, continuum and mass-gap gates remain **OPEN**; all eleven certificate-atlas continuum obligations retain their status. The next proof task is a source-authenticated transfer-trace-to-vacuum bound or an independent full gauge-projected transfer calculation that closes this finite-T-to-vacuum distinction.
+
 ## November 21, 2026 — Exact continuous-SU(2) Wilson local transfer and certified moments
 
 **[YM4-SU2-WT01 mathematical note](docs/NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md)** · [Prediction frozen before source](docs/certificate-atlas/PREDICT-YM4-WILSON-SU2-LOCAL-TRANSFER-20261121.hbp) · [SHA-pinned acceptance](docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp) · [Hosted production verifier](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44917457160).
