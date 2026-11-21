@@ -46,7 +46,7 @@ jobs:
       - name: Original full-repository floating-point source gate
         run: |
           set -euo pipefail
-          python3 -I -B native/scripts/no_float_gate.py .
+          python3 -I -B scripts/no_float_gate.py .
       - name: Independent Chebyshev and Haar monomial verification
         run: |
           set -euo pipefail
