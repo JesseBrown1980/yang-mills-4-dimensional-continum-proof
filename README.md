@@ -1,5 +1,20 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — YM4-07F: small-Gram dark-sector trace certificate and continuous SU(2) calibration
+
+The next [exact matrix-free spectral certificate](docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md) converts control of all fine physical states **outside** the matched Wilson-network cyclic sector into a **positive transfer-trace budget**, without constructing a basis for those unseen states. For a positive trace-class physical transfer \(A=T/\lambda_0\), witness vectors \(v_i\) inside the cyclic sector, Gram \(G_{ij}=\langle v_i,v_j\rangle\) and moments \(M_{ij}^{(2m)}=\langle v_i,A^{2m}v_j\rangle\), the certified inequality is
+\[
+\boxed{\ \|A|_{\mathcal K^\perp}\|^{2m}\le
+\operatorname{Tr}(A^{2m})-\operatorname{tr}(G^{-1}M^{(2m)}).\ }
+\]
+A strictly smaller residual than \(q^{2m}\) excludes *all* dark transfer eigenvalues at or above \(q\). A Schur-residual witness lowers that budget by an exact positive moment quotient.
+
+A prediction-first rational transfer model shows **HOLD \(\to\) PASS from one extra witness** (\(7/8\to5/8<16/25\)), while rejecting the exact dark edge \(q=3/4\). For a **genuine continuous-SU(2) one-link Wilson central-convolution operator** on class functions at \(\beta=1\), a fully analytic Bessel-series tail gives dark residual \(<16/5103<1/100\), dark transfer radius \(<1/10\), first visible Wilson-trace ratio \(3/16<t_2<1/3\), and an exact **one-link class-function gap \(>\log3\) per step**. This checks the machinery on a continuous gauge group; the four-dimensional Wilson transfer trace, full cyclic gap, running-coupling recurrence and continuum existence remain independent open production obligations.
+
+[Two frozen HBP predictions](docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp) · [continuous-SU(2) prediction](docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp) · [exact integer checker](tests/test_ym4_07f_dark_trace_budget.py) · [hosted workflow](.github/workflows/ym4-07f-dark-trace-budget.yml). Status: **analytic trace theorem DERIVED; rational and SU(2) calibration checking underway; independent proof review OPEN**.
+
+
+
 ## November 20, 2026 — YM4-07E: exact same-group Wilson source and cyclic physical-projector transport
 
 The genuine continuous-SU(2) factor-two block map of YM4-03 now has an explicit [matched-source/physical-projector theorem](docs/NOTE-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.md) for its **full induced** four-dimensional coarse action. Every blocked Wilson network is the corresponding fine ordered loop; pullback through the exact pushforward measure is an \(L^2\) isometry, so **the matched Wilson-source error is exactly zero**. In the infinite Euclidean-time vacuum limit of the existing positive OS transfer representation, the **coarse spatial-slice Wilson-network subalgebra** generates a cyclic space reducing for the fine transfer operator; with the coarse physical time step \(2a\), **physical-energy spectral projectors intertwine exactly** on that cyclic sector. These are exact same-cutoff, same-gauge-group identities for the induced action, including every nonplaquette network. The reconstructed cyclic OS space is for the specified spatial-slice observable subalgebra; completeness for **all** coarse temporal Wilson networks is a separate gate.
