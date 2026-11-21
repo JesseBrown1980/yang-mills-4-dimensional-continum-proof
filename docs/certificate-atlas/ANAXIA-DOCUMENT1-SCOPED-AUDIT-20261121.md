@@ -40,6 +40,12 @@ q=(3/5,4/5,0,0),\quad q^2=(-7/25,24/25,0,0)\neq I.
 \]
 For the two fixed-path edges \(U_{01}=U_{10}=q\), their product \(q^2\) has scalar part \(-7/25\). For arbitrary vertex gauges \(g_0,g_1\), \(U'_{01}U'_{10}=g_0q^2g_0^{-1}\), whose scalar part remains \(-7/25\); it cannot become the identity with scalar part 1. Thus **not every Wilson gauge orbit admits a representative with all fixed links set to \(I\)** on this torus. This is a **gauge-orbit compatibility HOLD**, not a contradiction of Anaxia's finite local enumeration.
 
+The same obstruction survives **\(L=4\)**, the size class admitted by several Anaxia finite-volume statements. The fixed-direction-0 line has four edges, and the same rational quaternion on each edge yields
+\[
+q^4=(-527/625,-336/625,0,0)\ne I.
+\]
+This independently predicted [L4 HBP](PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp), committed *before* the L4 checker extension, is replayed exactly with integer numerator/denominator arithmetic. Consequently the obstruction is present within the **periods-at-least-four** setting as well, not only on the illustrative two-site torus.
+
 For odd periodic \(L=3\), the global mod-two pattern does not in general descend to the quotient because shifting a coordinate by \(L\) toggles its parity; e.g. \(\mathrm{sig}(2)=2\neq3=\mathrm{sig}(3)\) under a shift in direction 0. The independent checker records this separate odd-torus obstruction.
 
 The external manuscript itself **recognizes** the winding modes elsewhere: the [triangular-plaquette lemma](https://github.com/anaxia-research/4Y-M/blob/df315270aafd456068783359cf0d07e6f3d76de8/Paper-2/source/sec/20_rough_clusters.tex) retains one handle per periodic direction, and subsequent text constructs flat configurations with nontrivial winding trace. Therefore this is a necessary **interface guard** when borrowing the local forest pattern for our torus, rather than a claim that the external paper forgot all torus holonomies.
