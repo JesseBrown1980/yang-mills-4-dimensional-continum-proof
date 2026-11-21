@@ -1,5 +1,17 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 20: YM4-07C — exact Wilson source/projection transfer interface
+
+**New mathematical lemma PASS; actual 4D source/continuum application OPEN.** The independently accepted original 3×4 finite S₃ Wilson squared weight > 17,074,763/10¹² provides a mathematically certified **amplitude comparator** > 4,132,162,024/10¹². For an explicitly defined isometry J to the genuine physical 4D continuous-SU(2) Hilbert space, SU2 source x and physical spectral projector Q, the estimates ||x−Jx_F|| ≤ δ and ||QJx_F−JP_Fx_F|| ≤ ε imply ||Qx|| > 0 whenever δ+ε is below that finite amplitude threshold. This is **conditional spectral visibility**, not an SU2 group embedding, not a continuum construction, and not a full-spectrum mass-gap statement. The finite source and the SU2 vacuum/source identification must be compared as actual operators, not by relabeling their spectra.
+
+[Exact theorem, current obstacle and two physical-gap falsifiers](NOTE-YM4-07C-WILSON-SOURCE-PROJECTION-BRIDGE-20261120.md) · [integer-only test and nine negative controls](../tests/test_ym4_07c_wilson_projection_bridge.py) · [original finite source acceptance](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/pull/350).
+
+**New real continuous SU(2) source theorem:** on every finite 4D Wilson lattice with all sides at least two, actual normalized plaquette Gibbs variance is at least **e^(−12β)/4**, by conditioning on the selected plaquette link's six neighboring faces and exact continuous Haar moment 1/4. The volume-independent lower bound is rigorous for finite β≥0. [Exact integer/rational checker](../tests/test_ym4_07c_su2_local_wilson_variance.py) gives nine source/coupling false controls. The lower bound degenerates as β→∞ and needs correct OS transfer-source and renormalization handling.
+
+**Next YM4-04/06 gate:** freeze one actual continuous SU2 weak-coupling four-dimensional source map retaining nonplaquette chair/network terms, independently calculate physical-energy spectral projector and source transport errors, then establish summable error bounds *and* a uniform full physical spectral gap. The actual weak-coupling continuum premises remain OPEN in the existing ledger.
+
+
+
 Updated 2026-11-11 (rows YM4-03C, YM4-04C and YM4-06A added; PRs #36 and #37 read as merged; the next task restated). Each row covers exactly its own statement, and the Clay problem is the whole chain. Primary scope, Yang–Mills on a finite lattice, from the operator's word on November 4, 2026: "We're not doing physical volume becoming infinite. We're a finite system." Rows that name infinite volume state the Clay problem, a separate target, and on FABLE5's reading, at target 2 of the README, read as zero spacing at fixed finite physical volume. Every row is independently auditable. The IDs YM4-02 to YM4-06 match issues #2 to #6.
 
 | ID | Issue | Obligation | Status | Required acceptance |
