@@ -8,7 +8,7 @@ This certificate uses [YM4-WV01](NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-2026
 
 Let R be the positive normalized physical transfer T_phys/Lambda0, Omega its normalized vacuum, W the gauge-invariant spatial Wilson half-trace, and u=(W-<Omega,W Omega>)Omega. The positive compact spectral measure nu of u is supported in (0,q], where the original [YM4-02d](NOTE-YM4-02d-QUANTITATIVE-GAP.md) gives
 
-    q <= tanh(24 beta) <= 24 beta.
+    t_j <= tanh(24 beta) <= q,  q=24 beta  (j>=1).
 
 The vacuum is simple and the original transfer is injective; nu has no atom at 0, and C0=||u||^2 is strictly positive by WV01. Consequently C2=||R u||^2>0 and C4=||R^2 u||^2>0 analytically, although this alone provides no effective positive rational numerical lower bounds.
 
@@ -37,7 +37,7 @@ At beta=1/100000:
 - C2 <= 0.000000014400001334 (outward rounded at denominator 10^18).
 - C4 <= 0.000000000000000829440077 (outward rounded at denominator 10^24).
 
-The sharpened C4 upper bounds are millions of times smaller than the preceding broad WC01/WV01 Taylor-plus-trace bounds. These are upper bounds; direct lower moment certificates and actual first-eigenstate isolation remain separate.
+The reported original frozen ceilings are **conservative rational caps**. Recomputing directly from the exact WV01 source gives slightly tighter actual integer ceilings at beta=1/10000: C2 ×10^18 ceiling **1440139406097** and C4 ×10^24 ceiling **8295202979114**; both are strictly inside the frozen limits 1440139406101 and 8295202979139. The beta=1/100000 actual ceilings equal the corresponding frozen caps. The sharpened C4 upper bounds are millions of times smaller than the preceding broad WC01/WV01 Taylor-plus-trace bounds. These are upper bounds; direct lower moment certificates and actual first-eigenstate isolation remain separate.
 
 ## 3. Why first-state weight cannot yet be read from C0,C2,C4
 
