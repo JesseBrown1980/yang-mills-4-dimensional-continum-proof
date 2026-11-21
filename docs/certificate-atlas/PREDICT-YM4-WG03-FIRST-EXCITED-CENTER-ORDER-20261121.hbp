@@ -1,0 +1,12 @@
+PREDICTION|id=YM4-WG03|date=2026-11-21|phase=FROZEN_BEFORE_PRODUCER_AND_TESTS|source=FULL_CONTINUOUS_SU2_PHYSICAL_WILSON_TRANSFER|json=0
+THEOREM|spatial=2,2,2|beta_range=0_LT_beta_LE_1/100|magnetic_spatial_plaquettes=24|temporal_links=24|Gauss=P_SU2|json=0
+GEOMETRY|spatial_links=24|unordered_two_fundamental_link_pairs=276|Gauss_admissible_two_link_pairs=12|all_12_winding_charged=YES|neutral_two_fundamental_pairs=0|json=0
+CHARACTERS|kappa1_gt=beta/5|kappa1_lt=beta/3|for_all_r_ge2_kappar_lt=beta_squared/20|Haar_character_multiplicity=FULL_PETER_WEYL|json=0
+MAGNETIC|B_min_ge=exp_minus48beta|rational_B_min_ge=13/25|B_max_le=1|physical_transfer=Bhalf_P_K24_P_Bhalf|json=0
+SPECTRAL|charged_sector_eigenvalue_lower_gt=13beta_squared/625|neutral_second_eigenvalue_upper_lt=beta_cubed/27|json=0
+SPECTRAL|charged_lower_over_neutral_upper_gt=351_over_625beta|for_beta_LE_1/100_ratio_gt=56|json=0
+FIRST_PHYSICAL|global_first_nonvacuum_eigenspace_centre_charged=YES|rank_can_be_degenerate=YES|original_contractible_Wilson_first_eigenspace_weight=EXACT_ZERO|json=0
+EXAMPLES|beta=1/10000|charged_lower_gt=13/62500000000|neutral_upper_lt=1/27000000000000|first_source_weight=0|json=0
+EXAMPLES|beta=1/100000|charged_lower_gt=13/6250000000000|neutral_upper_lt=1/27000000000000000|first_source_weight=0|json=0
+ADVERSARIAL|wrong_two_link_pair_count=REJECT|missing_centre_charge=REJECT|one_link_Gauss_singlet=REJECT|wrong_Peter_Weyl_factor=REJECT|beta_above_range=REJECT|wrong_magnetic_floor=REJECT|json=0
+SCOPE|original_fixedL_first_excited_Wilson_weight=ZERO_AT_STRONG_COUPLING|first_neutral_excited_overlap=OPEN|beta_weak_continuum_trajectory=OPEN|continuum_mass_gap=OPEN|json=0
