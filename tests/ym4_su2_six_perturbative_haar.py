@@ -4,7 +4,7 @@ Finite-beta fourth-order spectral remainder is OPEN.
 """
 from itertools import product, combinations, permutations
 from functools import lru_cache
-from fractions import Fraction as F
+from ym4_su2_wilson_local_transfer import R as F
 from collections import defaultdict, Counter
 
 S=tuple(product((0,1),repeat=3))
@@ -148,7 +148,7 @@ def orbitals():
  return opp,cross
 
 def block_v2(a,b):
- parts=defaultdict(F)
+ parts=defaultdict(lambda:F(0))
  for i in BLOCKS[a]:
   for j in BLOCKS[b]:
    for p in range(24):
@@ -159,7 +159,7 @@ def block_v2(a,b):
       key=('P' if i<24 else 'D')+('P' if j<24 else 'D')
       parts[key]+=z
  assert parts['PD']==parts['DP']==0
- return parts['PP']/8+parts['DD']/4,parts
+ return parts['PP'].div(8)+parts['DD'].div(4),parts
 
 def certify():
  assert len(B)==42 and len(set(M))==42
@@ -172,8 +172,8 @@ def certify():
  cv,_=block_v2(0,cross)
  assert diag==F(445,64) and bv==cv==F(1)
  assert parts['PP']==F(251,8) and parts['DD']==F(97,8)
- assert diag/2-F(1,2)==F(381,128)
- assert bv/2-F(1,2)==cv/2-F(1,2)==0
+ assert diag.div(2)-F(1,2)==F(381,128)
+ assert bv.div(2)-F(1,2)==cv.div(2)-F(1,2)==0
 
  spinone=[]
  for d in range(3):
@@ -188,18 +188,18 @@ def certify():
  pairs=defaultdict(list)
  for p in range(24):
   for q in range(24):pairs[PM[p]^PM[q]].append((p,q))
- V2=[[sum((haar(i,j,pq) for pq in pairs.get(M[i]^M[j],())),F())
+ V2=[[sum((haar(i,j,pq) for pq in pairs.get(M[i]^M[j],())),F(0))
       for j in range(42)] for i in range(42)]
- v=[F(1,2) if i<24 else F() for i in range(42)]
- H2=[[V2[i][j]/2-v[i]*v[j] for j in range(42)] for i in range(42)]
+ v=[F(1,2) if i<24 else F(0) for i in range(42)]
+ H2=[[V2[i][j].div(2)-v[i]*v[j] for j in range(42)] for i in range(42)]
  A2=[[sum(A[i][k]*A[k][j] for k in range(42)) for j in range(42)]
      for i in range(42)]
  h0=[];h1=[]
  for block in BLOCKS:
   ps=[j for j in block if j<24];ds=[j for j in block if j>=24]
   assert len(ps)==4 and len(ds)==2
-  h0.append([sum(H2[k][j] for j in ds)/2 for k in range(42)])
-  h1.append([sum(H2[k][j] for j in ps)/4 for k in range(42)])
+  h0.append([sum(H2[k][j] for j in ds).div(2) for k in range(42)])
+  h1.append([sum(H2[k][j] for j in ps).div(4) for k in range(42)])
 
  def quad(a,b,X):
   a0,a1=h0[a],h1[a];b0,b1=h0[b],h1[b]
@@ -211,8 +211,8 @@ def certify():
  mix={}
  for a,b in ((0,0),(0,opp),(0,cross)):
   r0,r1=quad(a,b,R);s0,s1=quad(a,b,A)
-  assert 2*r1-s0/4==0
-  mix[(a,b)]=r0-s1/4
+  assert 2*r1-s0.div(4)==0
+  mix[(a,b)]=r0-s1.div(4)
  assert mix[(0,0)]==F(561,16384)
  assert mix[(0,opp)]==F(1,32)
  assert mix[(0,cross)]==F(1,64)
@@ -223,7 +223,7 @@ def certify():
    for r in range(24):triples[PM[p]^PM[q]^PM[r]].append((p,q,r))
  third={}
  for a,b in ((0,0),(0,opp),(0,cross)):
-  parts=defaultdict(F)
+  parts=defaultdict(lambda:F(0))
   for i in BLOCKS[a]:
    for j in BLOCKS[b]:
     for pqr in triples.get(M[i]^M[j],()):
@@ -232,16 +232,16 @@ def certify():
   assert parts['PP']==parts['DD']==0
   val=parts['PD']+parts['DP']
   assert val==(F(40) if a==b else F(6))
-  third[(a,b)]=val/8
+  third[(a,b)]=val.div(8)
 
- w2=[sum((haar(i,None,pq) for pq in pairs.get(M[i],())),F()) for i in range(42)]
+ w2=[sum((haar(i,None,pq) for pq in pairs.get(M[i],())),F(0)) for i in range(42)]
  assert all(x==0 for x in w2[:24])
- assert Counter(w2[24:])=={F(1,4):12,F():6}
- coeff={pair:third[pair]/6-F(1,8)+mix[pair] for pair in ((0,0),(0,opp),(0,cross))}
+ assert w2[24:].count(F(1,4))==12 and w2[24:].count(F(0))==6
+ coeff={pair:third[pair].div(6)-F(1,8)+mix[pair] for pair in ((0,0),(0,opp),(0,cross))}
  assert coeff[(0,0)]==F(36499,49152)
  assert coeff[(0,opp)]==F(1,32)
  assert coeff[(0,cross)]==F(1,64)
- assert coeff[(0,cross)]>0 and coeff[(0,opp)]+2*coeff[(0,cross)]>0
+ assert F(0)<coeff[(0,cross)] and F(0)<coeff[(0,opp)]+2*coeff[(0,cross)]
  return (
   "YM4_WG09_HAAR|continuous_SU2_link_fourth_moments=EXACT|chi_W2_chi_fixture=1/2|source_G42=42|json=0\n"
   "YM4_WG09_SECOND|projected_V2_diagonal=445/64|offdiagonal=1|vacuum_rankone=1/2_J6|Schur_beta2=381/128_I6|json=0\n"
