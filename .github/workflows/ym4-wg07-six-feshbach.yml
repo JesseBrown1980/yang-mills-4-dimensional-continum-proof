@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_su2_wilson_six_feshbach.py'
       - 'docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG07-HOSTED-SIX-FESHBACH-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG07-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg07-six-feshbach.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_su2_wilson_six_feshbach.py'
       - 'docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG07-HOSTED-SIX-FESHBACH-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG07-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wg07-six-feshbach.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_su2_wilson_six_feshbach.py > build/ym4-wg07/FIRST.hbp
           python3 -B tests/ym4_su2_wilson_six_feshbach.py > build/ym4-wg07/REPLAY.hbp
           cmp build/ym4-wg07/FIRST.hbp build/ym4-wg07/REPLAY.hbp
+          cmp build/ym4-wg07/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG07-HOSTED-SIX-FESHBACH-RECEIPT-20261121.hbp
+          echo 'a5bb312290a41f2137dc563a9bf15a5e5715452111766e34210b8dfecce7e193  build/ym4-wg07/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=a5bb312290a41f2137dc563a9bf15a5e5715452111766e34210b8dfecce7e193' \
+            docs/certificate-atlas/YM4-WG07-ACCEPTANCE-20261121.hbp
           grep -Fq '24_point_Hurwitz_quaternion_fourth_tensor=EXACT' build/ym4-wg07/FIRST.hbp
           grep -Fq 'effective_42_Schur_norm_le=1500beta2_times_t' build/ym4-wg07/FIRST.hbp
           grep -Fq 'actual_interacting_six_projector=PASS' build/ym4-wg07/FIRST.hbp
