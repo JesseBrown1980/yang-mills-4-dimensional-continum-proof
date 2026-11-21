@@ -1,0 +1,88 @@
+name: YM4 WV01 physical vacuum Wilson trace bridge
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_wilson_vacuum_trace_bridge.py'
+      - 'tests/test_ym4_wilson_vacuum_trace_bridge.py'
+      - 'docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wv01-physical-vacuum-wilson.yml'
+  push:
+    paths:
+      - 'tests/ym4_wilson_vacuum_trace_bridge.py'
+      - 'tests/test_ym4_wilson_vacuum_trace_bridge.py'
+      - 'docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wv01-physical-vacuum-wilson.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-original-Wilson-Gauss-transfer-vacuum:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify predictions frozen before producer and independent checker
+        run: |
+          set -euo pipefail
+          PIN=7bf4baec72b1ecdc1a9736a787980994682fb8d0
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_wilson_vacuum_trace_bridge.py" 2>/dev/null; then
+            echo "FAIL: producer predates prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_wilson_vacuum_trace_bridge.py" 2>/dev/null; then
+            echo "FAIL: test predates prediction" >&2
+            exit 1
+          fi
+      - name: Strict original no-float audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original SU2 trace and 3-level falsifier tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_wilson_vacuum_trace_bridge.py -v
+      - name: Original 4D vacuum moment rational certificate
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wv01
+          python3 -B tests/ym4_wilson_vacuum_trace_bridge.py > build/ym4-wv01/FIRST.hbp
+          python3 -B tests/ym4_wilson_vacuum_trace_bridge.py > build/ym4-wv01/REPLAY.hbp
+          cmp build/ym4-wv01/FIRST.hbp build/ym4-wv01/REPLAY.hbp
+          cmp build/ym4-wv01/FIRST.hbp \
+            docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp
+          echo '3e18aa173ecf01b15c9466b8bd8ece49c15cfbfa249f1a75f44c72526654ca41  build/ym4-wv01/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=3e18aa173ecf01b15c9466b8bd8ece49c15cfbfa249f1a75f44c72526654ca41' \
+            docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp
+          grep -Fq 'original_SU2_Wilson=YES|spatial_sites=8|spatial_links=24' build/ym4-wv01/FIRST.hbp
+          grep -Fq 'trace2_bound=EXACT_RATIONAL|physical_Gauss=PROJECTED' build/ym4-wv01/FIRST.hbp
+          grep -Fq 'thermal_to_vacuum_control=PASS' build/ym4-wv01/FIRST.hbp
+          grep -Fq 'first_excited_Wilson_overlap=OPEN' build/ym4-wv01/FIRST.hbp
+          grep -Fq 'continuum_gap=OPEN' build/ym4-wv01/FIRST.hbp
+          sha256sum build/ym4-wv01/FIRST.hbp > build/ym4-wv01/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wv01/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WV01-full-original-SU2-vacuum-Wilson
+          path: build/ym4-wv01/
+          if-no-files-found: warn
+          retention-days: 90
