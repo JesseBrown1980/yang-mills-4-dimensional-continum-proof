@@ -1,0 +1,65 @@
+name: YM4 independent Anaxia forest periodic-torus audit
+
+on:
+  push:
+    paths:
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp'
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp'
+      - 'docs/certificate-atlas/ANAXIA-DOCUMENT1-SCOPED-AUDIT-20261121.md'
+      - 'tests/test_ym4_anaxia_periodic_holonomy.py'
+      - '.github/workflows/ym4-anaxia-periodic-holonomy.yml'
+  pull_request:
+    paths:
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp'
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp'
+      - 'docs/certificate-atlas/ANAXIA-DOCUMENT1-SCOPED-AUDIT-20261121.md'
+      - 'tests/test_ym4_anaxia_periodic_holonomy.py'
+      - '.github/workflows/ym4-anaxia-periodic-holonomy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-polyakov-counterexample:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify frozen prediction object
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp)" = "8adaf1a524d768486996f151836329d8d2ddf53e"
+          grep -Fq '|phase=FROZEN_BEFORE_INDEPENDENT_CHECKER|' docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp
+          test "$(git hash-object docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp)" = "1531e25b0fe579f3b8e7209a068ac8a2956449c2"
+          grep -Fq '|phase=FROZEN_BEFORE_L4_CHECKER|' docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp
+      - name: Enforce original no-float verification rules
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Independently check exact local parity and periodic holonomy
+        run: |
+          set -euo pipefail
+          mkdir -p build/anaxia_forest_audit
+          python3 -I -B -X utf8 tests/test_ym4_anaxia_periodic_holonomy.py | tee build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|remaining_partners=12|local_counts=PASS|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|L2_nontrivial_Polyakov=PASS|L4_nontrivial_Polyakov=PASS|all_fixed_edges_identity=REJECTED|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|beta_JB=4_beta_Anaxia|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|false_claims=4_REJECTED|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|periodic_gauge_orbit_transfer=HOLD|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+      - name: Check optimized replay byte-identical
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_anaxia_periodic_holonomy.py > build/anaxia_forest_audit/OPTIMIZED-REPLAY.hbp
+          cmp build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp build/anaxia_forest_audit/OPTIMIZED-REPLAY.hbp
+          sha256sum build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp > build/anaxia_forest_audit/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-anaxia-periodic-forest-exact-audit
+          path: build/anaxia_forest_audit/
+          if-no-files-found: warn

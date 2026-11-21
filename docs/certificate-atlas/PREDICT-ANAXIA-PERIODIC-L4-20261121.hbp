@@ -1,0 +1,4 @@
+YM4-ANAXIA-FOREST-L4|date=2026-11-21|phase=FROZEN_BEFORE_L4_CHECKER|source=anaxia-research/4Y-M_at_df315270|json=0
+YM4-ANAXIA-FOREST-L4|periodic_even_L=4|fixed_x_direction0=0,1,2,3|selected_edges=4|cycle_status=CLOSED|json=0
+YM4-ANAXIA-FOREST-L4|unit_quaternion_q=3/5,4/5,0,0|q_squared=-7/25,24/25,0,0|q_fourth=-527/625,-336/625,0,0|q_fourth_identity=NO|json=0
+YM4-ANAXIA-FOREST-L4|periodic_L4_gauge_orbit_all_selected_links_identity=REJECT|global_gauge_slice_forbidden_without_winding_handle=YES|continuum_mass_gap=OPEN|json=0
