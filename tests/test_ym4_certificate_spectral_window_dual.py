@@ -74,8 +74,9 @@ def spectral_window(q, n, C0_upper, Cn_lower,
     need(not less(C0_upper, Cn_lower),
          "inconsistent_positive_contraction_moments")
     if claim_first_eigenstate:
-        need(unique_physical_eigenvalue_in_window,
-             "first_weight_requires_physical_eigenvalue_isolation")
+        # A caller's boolean cannot stand in for a separately verified,
+        # rank-one physical spectral isolation certificate.
+        raise ValueError("first_weight_requires_verified_rank_one_isolation")
     qn = powr(q, n)
     dual = div(sub(Cn_lower, mul(qn, C0_upper)), sub(R(1), qn))
     return positive_part(dual)
@@ -154,7 +155,7 @@ def falsifiers():
     reject_case(R(1, 3), 4, R(1), R(2))
     reject_case(R(1, 3), 4, R(1), R(-1))
     reject_case(R(1, 3), 4, R(1), R(19, 1024),
-                first=True, isolated=False)
+                first=True, isolated=True)
     try:
         check_pointwise_dual(R(1, 3), 4, R(2))
     except ValueError:
