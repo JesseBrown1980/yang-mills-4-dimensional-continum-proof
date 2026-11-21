@@ -1,5 +1,22 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 21: YM4-07F — full-spectrum dark trace budget from Wilson Gram moments
+
+For the **positive trace-class continuous-SU(2) physical transfer at fixed spatial volume**, YM4-07E supplies a reducing coarse spatial-slice cyclic subspace \(\mathcal K\). If \(E\subseteq\mathcal K\) is the span of independent Wilson-network witnesses (including vacuum) with Gram \(G\) and \(2m\)-step transfer moment matrix \(M\), then the exact **full-dark-sector norm** obeys
+\[
+\|T|_{\mathcal K^\perp}\|^{2m}\le
+\operatorname{Tr}(T^{2m})-\operatorname{tr}(G^{-1}M).
+\]
+This is a sufficient matrix-free certificate; it is not an asserted numerical result for the 4D Wilson lattice. A certified \(\lambda_0\ge L\) and residual below \((qL)^{2m}\) eliminate dark eigenratios at or above \(q\). Adding an independent witness lowers the residual by its exact Schur-projected positive moment quotient; the frozen rational pilot goes from **HOLD \(7/8\)** to **PASS \(5/8<16/25\)** for \(q=4/5\).
+
+A separate *actual continuous-SU(2)* analytic calibration on the **one-link central convolution restricted to class functions**, at \(\beta=1\), proves a dark trace \(<16/5103<1/100\) beyond vacuum and the first Wilson character, and a one-link class-function spectral gap \(>\log3/a_{\mathrm{step}}\) after separately bounding the first visible mode. This 0+1-dimensional calibration establishes the certificate mechanics using SU(2) Haar and a convergent positive character series; it supplies the genuine group control needed before attacking the full 4D Wilson transfer.
+
+[Proof and planned 4D data](NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md) · [frozen trace targets](PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp) · [SU(2) targets](PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp) · [exact-rational checker](../tests/test_ym4_07f_dark_trace_budget.py).
+
+**YM4-04/05/06 obligations still OPEN:** a certified four-dimensional \(\operatorname{Tr}(T^{2m})\) bound in the original Wilson normalization, vacuum \(\lambda_0\) enclosure, blocked Wilson-network Gram/moment matrix, cyclic-sector bound, summable all-scale error and volume control, nontrivial OS continuum, and uniform physical full-spectrum gap.
+
+
+
 ## November 20: YM4-07E — exact induced-block Wilson source and physical cyclic-projector theorem
 
 For the *genuine continuous-SU(2)* four-dimensional finite Wilson theory and the explicit factor-two line block, the induced coarse measure is the exact Haar-fiber pushforward. This **retains all nonplaquette Wilson networks** and makes the matched blocked-Wilson source pullback an isometry with **zero \(L^2\) error**, uniformly as an identity at every finite coupling.

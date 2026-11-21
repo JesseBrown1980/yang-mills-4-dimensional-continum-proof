@@ -1,0 +1,63 @@
+name: YM4-07F exact dark trace and continuous SU2 class calibration
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp'
+      - 'docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp'
+      - 'docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md'
+      - 'tests/test_ym4_07f_dark_trace_budget.py'
+      - '.github/workflows/ym4-07f-dark-trace-budget.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp'
+      - 'docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp'
+      - 'docs/NOTE-YM4-07F-DARK-TRACE-GRAM-CERTIFICATE-20261121.md'
+      - 'tests/test_ym4_07f_dark_trace_budget.py'
+      - '.github/workflows/ym4-07f-dark-trace-budget.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-dark-trace-and-continuous-su2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify both prediction freezes
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp)" = '940d4e9166ec4d84f204cc959d946a9d57f4205c'
+          test "$(git hash-object docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp)" = '7a2e5579e10339f7163ec81792d9cfcb2360f67a'
+          grep -Fq '|full_gap=OPEN|' docs/PREDICT-YM4-07F-TRACE-BUDGET-20261121.hbp
+          grep -Fq '|four_dimensional_transfer=OPEN|' docs/PREDICT-YM4-07F-SU2-CLASS-CONTROL-20261121.hbp
+      - name: Strict existing no-float rule
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact Gram and SU2 series inequalities
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07f
+          python3 -I -B -X utf8 tests/test_ym4_07f_dark_trace_budget.py | tee build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp
+          grep -Fq '|first_gate=HOLD|second_gate=PASS|' build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp
+          grep -Fq '|dark_trace_lt_num=16|dark_trace_lt_den=5103|' build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp
+          grep -Fq '|false_claims=10_REJECTED|' build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp
+      - name: Optimized arithmetic identical to normal run
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07f_dark_trace_budget.py > build/ym4_07f/OPTIMIZED.hbp
+          cmp build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp build/ym4_07f/OPTIMIZED.hbp
+          sha256sum build/ym4_07f/EXACT-DARK-TRACE-SU2.hbp > build/ym4_07f/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07f-exact-dark-transfer-trace-and-su2-class
+          path: build/ym4_07f/
+          if-no-files-found: warn
