@@ -1,5 +1,9 @@
 # Cross-repository Certificate Match & Open-Obligation Ledger
 
+**Round-two extension (November 21, 2026):** [Nine additional exact source/DOI matches and the new spectral-window dual](EXTERNAL-SEARCH-ROUND2-20261121.md) are connected directly to the existing eleven OPEN gates. The 4D graph now has **22 externally attributed candidate nodes** and [YM4-SW01](NOTE-SPECTRAL-WINDOW-DUAL-20261121.md) for exact low-energy Wilson spectral-window bounds. The strong-coupling U(n), 3D U(1), O(N)/RG and generic spectral methods remain scoped as written in their original proofs.
+
+
+
 **Date:** 2026-11-21. **Project:** original four-dimensional continuous SU(2) Wilson lattice, positive OS transfer, physical gauge projection and physically normalized spectral quantities. The source files listed below are *pointers* to other authors' original work; no external result is rebranded as an internally proved continuum certificate.
 
 ## Matching standard: when an existing certificate can be reused
