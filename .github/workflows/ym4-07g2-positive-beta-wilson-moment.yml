@@ -1,0 +1,60 @@
+name: YM4-07G2 original SU2 positive-beta Wilson fourth moment
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp'
+      - 'docs/NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md'
+      - 'tests/test_ym4_07g2_positive_beta_wilson_moment.py'
+      - '.github/workflows/ym4-07g2-positive-beta-wilson-moment.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp'
+      - 'docs/NOTE-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.md'
+      - 'tests/test_ym4_07g2_positive_beta_wilson_moment.py'
+      - '.github/workflows/ym4-07g2-positive-beta-wilson-moment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  su2-physical-wilson-fourth-moment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify second prediction freeze
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp)" = '2cab9c32a09ff2c744b92d8d4f6581593443fdb2'
+          grep -Fq '|phase=BEFORE_NEW_MOMENT_CHECKER|' docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp
+          grep -Fq '|physical_continuum_gap=OPEN|' docs/PREDICT-YM4-07G2-POSITIVE-BETA-WILSON-MOMENT-20261121.hbp
+      - name: Strict no floating point
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact SU2 Wilson fourth moment constants
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07g2
+          python3 -I -B -X utf8 tests/test_ym4_07g2_positive_beta_wilson_moment.py | tee build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp
+          grep -Fq '|C_gt_num=46335323|C_gt_den=196414400|' build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp
+          grep -Fq '|Schur_decrement_gt_den=12500_POWER4_TIMES_1728000_POWER32|' build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp
+          grep -Fq '|arithmetic_and_scope=10_REJECTED|' build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp
+      - name: Optimized receipt byte identity
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07g2_positive_beta_wilson_moment.py > build/ym4_07g2/OPTIMIZED.hbp
+          cmp build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp build/ym4_07g2/OPTIMIZED.hbp
+          sha256sum build/ym4_07g2/EXACT-SU2-WILSON-FOURTH.hbp > build/ym4_07g2/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07g2-original-SU2-positive-beta-fourth-moment
+          path: build/ym4_07g2/
+          if-no-files-found: warn
