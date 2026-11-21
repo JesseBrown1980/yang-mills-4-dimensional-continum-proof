@@ -1826,9 +1826,9 @@
       "category": "spectrum",
       "scope": "Any positive physical normalized transfer and vacuum-centered Wilson spectral measure",
       "result": "Lower bound on total spectral weight t>q from connected Cn,C0 intervals; one-eigenstate identification needs isolation",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3a3a86789ef8f5306f2efb551fd245d8d8f5bd64/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/8ea5221c585f51abce86d69a0d73b106432c0d1e/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "3a3a86789ef8f5306f2efb551fd245d8d8f5bd64",
+      "ref": "8ea5221c585f51abce86d69a0d73b106432c0d1e",
       "dependencies": [
         "YM4-Q05",
         "YM4-24"
@@ -5258,19 +5258,19 @@
     },
     {
       "path": "docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md",
-      "blob": "00a3bacde00e78f3d15da8775b2838e9e4c56cfc",
+      "blob": "3bca0e2ed320350279c023a2421d7a63c5f24b2b",
       "origin": "atlas_search_round2",
-      "ref": "3a3a86789ef8f5306f2efb551fd245d8d8f5bd64",
+      "ref": "8ea5221c585f51abce86d69a0d73b106432c0d1e",
       "kind": "proof_or_note",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3a3a86789ef8f5306f2efb551fd245d8d8f5bd64/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/8ea5221c585f51abce86d69a0d73b106432c0d1e/docs/certificate-atlas/NOTE-SPECTRAL-WINDOW-DUAL-20261121.md"
     },
     {
       "path": "tests/test_ym4_certificate_spectral_window_dual.py",
-      "blob": "3f158eec3ed72350edc76ebf7d83b99cbbb8dd64",
+      "blob": "d62a3da7de6fdee7ece012764afc685e4eeb7f8b",
       "origin": "atlas_search_round2",
-      "ref": "cec481fd1c149e07abaf25042fd6179877c0b5ff",
+      "ref": "34b4e1638d0161d8cab2e7d289ed67ca9498a21e",
       "kind": "checker",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/cec481fd1c149e07abaf25042fd6179877c0b5ff/tests/test_ym4_certificate_spectral_window_dual.py"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/34b4e1638d0161d8cab2e7d289ed67ca9498a21e/tests/test_ym4_certificate_spectral_window_dual.py"
     },
     {
       "path": "docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md",
