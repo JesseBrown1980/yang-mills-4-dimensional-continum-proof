@@ -6,6 +6,10 @@ on:
       - 'tests/test_ym4_wilson_vacuum_trace_bridge.py'
       - 'docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wv01-physical-vacuum-wilson.yml'
   push:
     paths:
@@ -13,6 +17,10 @@ on:
       - 'tests/test_ym4_wilson_vacuum_trace_bridge.py'
       - 'docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md'
       - 'docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
       - '.github/workflows/ym4-wv01-physical-vacuum-wilson.yml'
   workflow_dispatch:
 
@@ -58,6 +66,12 @@ jobs:
           python3 -B tests/ym4_wilson_vacuum_trace_bridge.py > build/ym4-wv01/FIRST.hbp
           python3 -B tests/ym4_wilson_vacuum_trace_bridge.py > build/ym4-wv01/REPLAY.hbp
           cmp build/ym4-wv01/FIRST.hbp build/ym4-wv01/REPLAY.hbp
+          cmp build/ym4-wv01/FIRST.hbp \
+            docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp
+          echo '3e18aa173ecf01b15c9466b8bd8ece49c15cfbfa249f1a75f44c72526654ca41  build/ym4-wv01/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=3e18aa173ecf01b15c9466b8bd8ece49c15cfbfa249f1a75f44c72526654ca41' \
+            docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp
           grep -Fq 'original_SU2_Wilson=YES|spatial_sites=8|spatial_links=24' build/ym4-wv01/FIRST.hbp
           grep -Fq 'trace2_bound=EXACT_RATIONAL|physical_Gauss=PROJECTED' build/ym4-wv01/FIRST.hbp
           grep -Fq 'thermal_to_vacuum_control=PASS' build/ym4-wv01/FIRST.hbp
