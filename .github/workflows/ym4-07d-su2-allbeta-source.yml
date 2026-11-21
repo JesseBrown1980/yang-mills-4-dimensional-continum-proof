@@ -1,0 +1,53 @@
+name: YM4-07D exact SU2 all-beta source and mixed networks
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07D-ALLBETA-SU2-20261120.hbp'
+      - 'docs/NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md'
+      - 'tests/test_ym4_07d_su2_allbeta_source.py'
+      - '.github/workflows/ym4-07d-su2-allbeta-source.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07D-ALLBETA-SU2-20261120.hbp'
+      - 'docs/NOTE-YM4-07D-ALLBETA-SU2-POLYNOMIAL-SOURCE-20261120.md'
+      - 'tests/test_ym4_07d_su2_allbeta_source.py'
+      - '.github/workflows/ym4-07d-su2-allbeta-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ym4-07d-allbeta-local-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Existing strict no-float gate
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact all-beta SU2 local network and analytic-constant audit
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07d
+          python3 -I -B -X utf8 tests/test_ym4_07d_su2_allbeta_source.py | tee build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|staples=6|pairs=15|coplanar=3|mixed_plane=12|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|universal_den=262144|universal_power=2|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|variance_gt_numer=1|variance_gt_denom=2466512896|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|variance_gt_numer=1|variance_gt_denom=38856294400|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|false_claims=10_REJECTED|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          grep -Fq '|one_step_full_RG=OPEN|OS_projector=OPEN|continuum_mass_gap=OPEN|' build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp
+          python3 -O -I -B -X utf8 tests/test_ym4_07d_su2_allbeta_source.py > build/ym4_07d/OPTIMIZED.hbp
+          cmp build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp build/ym4_07d/OPTIMIZED.hbp
+          sha256sum build/ym4_07d/EXACT-ALLBETA-SU2-SOURCE.hbp > build/ym4_07d/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07d-exact-allbeta-su2-local-source
+          path: build/ym4_07d/
+          if-no-files-found: warn
