@@ -1,0 +1,88 @@
+name: YM4 WG02 original SU2 centre-flux Wilson projectors
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_center_flux_projectors.py'
+      - 'tests/test_ym4_su2_center_flux_projectors.py'
+      - 'docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wg02-centre-flux-projectors.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_center_flux_projectors.py'
+      - 'tests/test_ym4_su2_center_flux_projectors.py'
+      - 'docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp'
+      - 'docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp'
+      - 'README.md'
+      - 'docs/certificate-atlas/BRIDGE-LEDGER.md'
+      - '.github/workflows/ym4-wg02-centre-flux-projectors.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-full-SU2-centre-projectors:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify centre predictions frozen before producer and tests
+        run: |
+          set -euo pipefail
+          PIN=f3719d432d56393ddec772c8c5e818d819b09361
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_IMPLEMENTATION_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_center_flux_projectors.py" 2>/dev/null; then
+            echo "centre producer existed before prediction" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_center_flux_projectors.py" 2>/dev/null; then
+            echo "centre verifier existed before prediction" >&2
+            exit 1
+          fi
+      - name: Repository no-floating-point source audit
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original four-dimensional centre quantum-number tests
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_center_flux_projectors.py -v
+      - name: Byte-identical original physical Wilson centre projector receipt
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg02
+          python3 -B tests/ym4_su2_center_flux_projectors.py > build/ym4-wg02/FIRST.hbp
+          python3 -B tests/ym4_su2_center_flux_projectors.py > build/ym4-wg02/REPLAY.hbp
+          cmp build/ym4-wg02/FIRST.hbp build/ym4-wg02/REPLAY.hbp
+          cmp build/ym4-wg02/FIRST.hbp \
+            docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp
+          echo 'c8df3a8672c0692b142665a75316fe0c5965cb797d37faa5b24fe0f37d89b4c4  build/ym4-wg02/FIRST.hbp' \
+            | sha256sum -c
+          grep -Fq 'sha256=c8df3a8672c0692b142665a75316fe0c5965cb797d37faa5b24fe0f37d89b4c4' \
+            docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp
+          grep -Fq 'sector_projectors=8|each_spatial_slice_cut_links=4' build/ym4-wg02/FIRST.hbp
+          grep -Fq 'each_axis_plaquettes_0_cuts=360|2_cuts=120|odd=0' build/ym4-wg02/FIRST.hbp
+          grep -Fq 'all_charged_sectors_local_Wilson_overlap=EXACT_ZERO' build/ym4-wg02/FIRST.hbp
+          grep -Fq 'first_eigenstate_sector_order=OPEN' build/ym4-wg02/FIRST.hbp
+          grep -Fq 'continuum_gap=OPEN' build/ym4-wg02/FIRST.hbp
+          sha256sum build/ym4-wg02/FIRST.hbp > build/ym4-wg02/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg02/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG02-original-SU2-centre-sector-projectors
+          path: build/ym4-wg02/
+          retention-days: 90
+          if-no-files-found: warn

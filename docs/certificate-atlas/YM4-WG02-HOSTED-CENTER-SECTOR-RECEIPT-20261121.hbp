@@ -1,0 +1,6 @@
+YM4_WG02_SOURCE|continuous_SU2=YES|full_4D_Wilson=YES|L=2,2,2|T=10|sites=80|links=320|plaquettes=480|physical_Gauss=PROJECTED|json=0
+YM4_WG02_CENTRE|Z2_cubed=YES|commuting_involutions=3|sector_projectors=8|each_spatial_slice_cut_links=4|all_times_cut_links_each_axis=40|each_axis_plaquettes_0_cuts=360|2_cuts=120|odd=0|json=0
+YM4_WG02_PROJECTORS|one_eighth_Walsh_group_algebra=EXACT|P_e_P_f_delta=PASS|sum_P_e_identity=PASS|eight_nonzero_winding_witness_sectors=YES|json=0
+YM4_WG02_WILSON|contractible_source_charge=+++|winding0=-++|winding1=+-+|winding2=++-|vacuum_centre_neutral=YES|json=0
+YM4_WG02_PHYSICAL_SELECTION|full_magnetic_B=COMMUTES|temporal_K24=COMMUTES|Gauss_P=COMMUTES|all_charged_sectors_local_Wilson_overlap=EXACT_ZERO|json=0
+YM4_WG02_VERDICT|centre_sector_projectors=EXACT|first_charged_eigenstate_weight=ZERO_IF_FIRST_CHARGED|first_eigenstate_sector_order=OPEN|neutral_first_excitation_isolation=OPEN|continuum_gap=OPEN|json=0
