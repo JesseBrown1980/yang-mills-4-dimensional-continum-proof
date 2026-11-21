@@ -154,7 +154,7 @@ Let \(\alpha=\lambda_0(T|_{PH})\) and \(\alpha_N=\lambda_0(T_N|_{PH})>0\), and d
 \widetilde T=T|_{PH}/\alpha,\qquad
 \widetilde T_N=T_N|_{PH}/\alpha_N.
 \]
-Both are positive contractions and correspond to the **same physical fine time step \(a\)**. The physical vacuum gap and Fourier cutoff from sections 1–3 yield
+Both are positive contractions and correspond to the **same physical fine time step \(a\)**. Their vacuum correlators are understood in the **infinite Euclidean-time/ground-state limit at fixed finite spatial volume**, as in YM4-02c/03; they are not identified with a finite-temperature four-slice partition-function expectation. The four steps below refer to a source separation of \(4a\) in this vacuum representation. The physical vacuum gap and Fourier cutoff from sections 1–3 yield
 \[
 \delta_N<\gamma_{\rm floor}/10^6,\quad
 \alpha>1/D,\quad
