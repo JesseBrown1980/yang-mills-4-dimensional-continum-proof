@@ -109,7 +109,29 @@ Its projectors intertwine **exactly** for any common physical energy window. The
 
 An all-scale mass-gap proof would additionally bound the spectrum of \(\mathcal K^\perp\) uniformly, or establish the required lowest-state visibility, while proving a nontrivial OS continuum limit along \(\beta(a)\to\infty\) and controlling physical/infinite-volume limits.
 
-## 6. Scope and proof gate
+## 6. The whole-space projector error is a binary dark-sector gate
+
+The reducing decomposition is actually stronger than a loose triangle inequality. Set \(P_{\mathcal K}=JJ^*\). For every physical-energy Borel window \(I\), exact functional calculus yields the **orthogonal projector decomposition**
+\[
+\boxed{\quad
+\mathbf1_I(H_f)=J\mathbf1_I(H_c)J^*+
+(I-P_{\mathcal K})\mathbf1_I(H_f)(I-P_{\mathcal K}).
+\quad}
+\]
+Both summands are mutually orthogonal spectral projections. Define the *dark projector* \(D_I=(I-P_{\mathcal K})\mathbf1_I(H_f)(I-P_{\mathcal K})\). Therefore
+\[
+\boxed{\quad
+\|\mathbf1_I(H_f)-J\mathbf1_I(H_c)J^*\|_{\mathrm{op}}
+=\|D_I\|_{\mathrm{op}}\in\{0,1\}.
+\quad}
+\]
+Here \(D_I=0\) precisely when the fine physical spectrum on \(\mathcal K^\perp\) has **no spectral weight in that energy window**. If any dark state contributes, this *whole-space* projector difference has norm exactly one. The successful cyclic projector identity of section 4 has zero defect because it restricts to \(\mathcal K\), not because all physical states were transferred.
+
+In the section 5 rational model, take the physical-energy interval whose fine transfer ratios belong to \([2/3,4/5]\). Its fine spectral projector is the rank-one dark projector \(|e_1\rangle\langle e_1|\). The cyclic projector vanishes, and the difference has operator norm exactly **one**. The new integer test checks this interval without evaluating logarithms.
+
+**A direct full-gap acceptance gate:** for a proposed physical \(\Delta_*>0\), it suffices to prove both (i) the cyclic sector has no excitation in \(I=(0,\Delta_*)\), and (ii) \(D_I=0\) (no dark excitation), uniformly along the ultraviolet/volume limits. Neither condition is claimed for the genuine weak-coupling SU(2) sequence. This binary decomposition identifies exactly what the next spectral producer must certify.
+
+## 7. Scope and proof gate
 
 - **Exact mathematical conclusions under the stated finite-lattice transfer hypotheses:** four-dimensional continuous-SU(2) factor-two pushforward; matched Wilson-source \(L^2\) isometry; exact cyclic physical-projector intertwining; strict unmatched fine-plaquette \(L^2\) loss by the merged YM4-07C bound.
 - **Executables:** [prediction-first frozen HBP](PREDICT-YM4-07E-EXACT-BLOCK-SOURCE-PROJECTOR-20261120.hbp), [integer-only geometry/Haar/spectral checker](../tests/test_ym4_07e_exact_block_projector.py), nine active false-claim controls, and a dedicated hosted workflow.
