@@ -300,7 +300,7 @@ def receipt():
         rows.append(
             "YM4_WG04_PHYSICAL|beta=" + str(beta)
             + "|42_eigenvalues_band_gt=1/" + str(500 * d ** 4)
-            + "|45th_neutral_eigenvalue_lt=1/" + str(550 * d ** 4)
+            + "|44th_neutral_eigenvalue_lt=1/" + str(550 * d ** 4)
             + "|42_dimensional_neutral_projector=EXACT_BY_MINMAX"
             + "|band_to_tail_ratio_gt=11/10"
             + "|physical_band_Wilson_overlap=OPEN|json=0"
