@@ -1,0 +1,61 @@
+name: YM4-07I2 normalized physical SU2 Wilson connected correlation
+
+on:
+  push:
+    paths:
+      - 'docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp'
+      - 'docs/NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md'
+      - 'tests/test_ym4_07i2_normalized_wilson_correlator.py'
+      - '.github/workflows/ym4-07i2-normalized-wilson-correlation.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp'
+      - 'docs/NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md'
+      - 'tests/test_ym4_07i2_normalized_wilson_correlator.py'
+      - '.github/workflows/ym4-07i2-normalized-wilson-correlation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical-normalized-connected-wilson:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify normalized physical time prediction frozen before checker
+        run: |
+          set -euo pipefail
+          test "$(git hash-object docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp)" = 'b25e3a776f1ae7a4e77d3526e83cccf04a0de8b1'
+          grep -Fq '|phase=POST_07I_PRE_NEW_CHECKER|' docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp
+      - name: Strict no float source verification
+        run: |
+          set -euo pipefail
+          python3 -I -X utf8 scripts/no_float_gate.py --selftest
+          python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact original SU2 physical normalized four-step correlator inequalities
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4_07i2
+          python3 -I -B -X utf8 tests/test_ym4_07i2_normalized_wilson_correlator.py | tee build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+          grep -Fq '|normalized_T_operator_error_lt=1_OVER_500000|' build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+          grep -Fq '|normalized_W_T4_W_error_lt=3_OVER_250000|' build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+          grep -Fq '|connected_W_error_lt=1_OVER_50000|' build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+          grep -Fq '|false_claims=8_REJECTED|' build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp
+      - name: Byte-equal optimized exact result
+        run: |
+          set -euo pipefail
+          python3 -O -I -B -X utf8 tests/test_ym4_07i2_normalized_wilson_correlator.py > build/ym4_07i2/OPTIMIZED.hbp
+          cmp build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp build/ym4_07i2/OPTIMIZED.hbp
+          sha256sum build/ym4_07i2/EXACT-PHYSICAL-CONNECTED-WILSON.hbp > build/ym4_07i2/RECEIPT.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-07i2-physical-normalized-SU2-connected-Wilson
+          path: build/ym4_07i2/
+          if-no-files-found: warn

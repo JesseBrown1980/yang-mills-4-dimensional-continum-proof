@@ -1,5 +1,19 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 21, 2026 — YM4-07I: actual 4D SU(2) physical vacuum-projector transport at \(\beta=64\)
+
+An explicit [original-4D continuous-SU(2) vacuum projector certificate](docs/NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md) now connects the absolute Peter–Weyl truncation of YM4-07H to a **relative physical spectral projector bound at finite spatial volume**. On the true physical gauge-invariant transfer \(T|_{PH}\) for spatial 6³ and \(\beta=64\), the accepted YM4-02d transfer contraction theorem gives a nonzero vacuum separation \(\gamma=\lambda_0-\lambda_1\). The independent continuous-SU(2) Haar-cap vacuum lower bound supplies the explicit floor \(\gamma>1/[3^{82944+405}\,1572864^{648}]\).
+
+The **exact integer** cutoff gate for the full original Wilson physical transfer changes from **HOLD at \(N=3^{10}=59{,}049\)** to **PASS at \(N=3^{11}=177{,}147\)**, where the Peter–Weyl transfer approximation upper bound is smaller than \(\gamma_{\rm floor}/10^6\). A direct min–max and rank-one eigenvector argument then proves the *true finite-volume physical* vacuum projectors satisfy
+\[
+\boxed{\quad \|\Pi_{\mathrm{vac}}(T)-\Pi_{\mathrm{vac}}(T_N)\|_{\rm op}<1/500000.\quad}
+\]
+For the same matched fine 2×2 spatial Wilson rectangle \(F\), the true-vacuum expectation error is \(<1/250000\), and the **unnormalized** four-step transfer-moment comparison error is \(<1/125000\). **Post-freeze YM4-07I2** independently uses the physically normalized transfer \(\widetilde T=T/\lambda_0\) and proves the physical four-step vacuum Wilson correlator error is \(<3/250000\), with the **connected (vacuum-subtracted) Wilson correlator error \(<1/50000\)**. See the [separate frozen prediction](docs/PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp), [new exact checker](tests/test_ym4_07i2_normalized_wilson_correlator.py), and [dedicated hosted gate](.github/workflows/ym4-07i2-normalized-wilson-correlation.yml). These are rigorous **comparison errors**, not computed Wilson expectation values. The dimension \(N=177{,}147\) on each of 648 links is astronomically expensive; no dense matrix or excited eigenvalue has been evaluated.
+
+The finite-volume high-\(\beta\) relative projector approximation is a concrete transfer acceptance result. Uniform volume and ultraviolet cutoff control, practical representation-network evaluation, Wilson first-excitation visibility, nontrivial OS continuum reconstruction and the continuum Yang–Mills mass gap remain **OPEN**. [Frozen HBP](docs/PREDICT-YM4-07I-FINITE-4D-SU2-VACUUM-PROJECTOR-20261121.hbp) · [integer proof controls](tests/test_ym4_07i_physical_vacuum_projector.py) · [dedicated workflow](.github/workflows/ym4-07i-physical-vacuum-projector.yml).
+
+
+
 ## November 21, 2026 — YM4-07H: weak-coupling SU(2) Fourier transfer approximation and Haar-cap Perron floor
 
 A new [original 4D continuous-SU(2) Peter–Weyl certificate](docs/NOTE-YM4-07H-ALLBETA-SU2-PETER-WEYL-CAP-20261121.md) now works at **arbitrarily large finite Wilson coupling \(\beta\ge1\)**. It retains the full spatial Wilson action \(A\), the physical gauge projector \(P\) and the continuous gauge group, while truncating the **temporal convolution** to exact SU(2) matrix coefficients of representation dimensions \(1,\ldots,N\). This gives a finite-rank positive, gauge-covariant \(T_N=A^{1/2}B_NA^{1/2}\) approximating the *original* \(T=A^{1/2}BA^{1/2}\), with the rigorous absolute transfer error

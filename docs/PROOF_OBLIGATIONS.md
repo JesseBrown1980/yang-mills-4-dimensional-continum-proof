@@ -1,5 +1,15 @@
 # Four-dimensional continuum proof-obligation ledger
 
+## November 21: YM4-07I — finite-volume physical vacuum projector at large SU(2) \(\beta\)
+
+For the **original continuous-SU(2) four-dimensional Wilson physical transfer**, \(L=6\), \(\beta=64\), the finite-volume gap theorem YM4-02d gives \(\lambda_1/\lambda_0\le\tanh41472\), hence \(1-\lambda_1/\lambda_0>3^{-82944}\). The independent YM4-07H continuous-Haar cap lower bound \(\lambda_0>1/[3^{405}1572864^{648}]\) supplies a rigorous **positive physical spectral isolation floor** \(\gamma_{\rm floor}=1/[3^{82944+405}1572864^{648}]\).
+
+The exact Peter–Weyl truncation satisfies \(\|T-T_N\|_{\rm op}\le2\cdot648(N+1)(3/8)^N\). Comparing this upper directly with \(\gamma_{\rm floor}/10^6\) in **integers only**, the frozen \(N=3^{10}=59049\) cutoff is **HOLD**, whereas \(N=3^{11}=177147\) is **PASS**. Min–max then isolates the top **physical** eigenvalue of \(T_N\) and gives \(\|\Pi_{\rm vac}(T)-\Pi_{\rm vac}(T_N)\|_{\rm op}<1/500000\). For a normalized real matched 2×2 spatial Wilson loop, the true-vacuum mean comparison error is \(<1/250000\) and the **raw** four-step transfer moment error is \(<1/125000\). The separate **post-freeze YM4-07I2 physical-time normalization** establishes \(\|T/\lambda_0-T_N/\lambda_{0,N}\|_{\rm op}<1/500000\), a **normalized physical Wilson four-step correlation error \(<3/250000\)** and, after vacuum mean subtraction, a **connected Wilson four-step correlation error \(<1/50000\)**. These remain comparison bounds rather than measured spectral weights; see [frozen normalized predictions](PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp) and [exact normalized checker](../tests/test_ym4_07i2_normalized_wilson_correlator.py).
+
+[Theorem, proof, and spectrum acceptance boundary](NOTE-YM4-07I-FINITE-4D-SU2-PHYSICAL-VACUUM-PROJECTOR-20261121.md) · [frozen integer targets](PREDICT-YM4-07I-FINITE-4D-SU2-VACUUM-PROJECTOR-20261121.hbp) · [exact checker](../tests/test_ym4_07i_physical_vacuum_projector.py). **Scientific status:** mathematically finite-volume high-\(\beta\) spectral **comparison**; computed physical Wilson moments/first eigenstates, practical finite-rank representation evaluator, and volume-/cutoff-uniform RG, nontrivial OS continuum and full mass gap all **OPEN**.
+
+
+
 ## November 21: YM4-07H — original SU(2) weak-coupling Fourier control and high-\(\beta\) Perron cap
 
 For the **true original finite-volume 4D continuous-SU(2) Wilson transfer**, with normalized Haar and the full gauge projector, the linkwise central convolution has irreducible dimension-\(d\) eigenvalue \(b_d=e^{-\beta}(2/\beta)I_d(\beta)\) with multiplicity \(d^2\). Truncating **exact representation matrix coefficients**, dimension \(d\le N\), produces a positive finite-rank gauge-invariant transfer \(T_N=A^{1/2}B_NA^{1/2}\) with the full **spatial** Wilson action intact. For every finite \(\beta\ge1\) and integer \(N\ge4\beta\), exact positive-series factorial bounds give

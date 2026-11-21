@@ -1,0 +1,13 @@
+YM4_07I_PREDICTION|date=2026-11-21|phase=BEFORE_CHECKER|gauge=CONTINUOUS_SU2|dimension=4|original_Wilson=YES|json=0
+YM4_07I_GEOMETRY|spatial_side=6|V=216|Nl=648|Ns=648|beta=64|betaNl=41472|two_betaNl=82944|json=0
+YM4_07I_PERRON|cap_k=8|lambda0_gt=1_OVER_D|D=3_POWER405_TIMES_1572864_POWER648|json=0
+YM4_07I_PHYSICAL_GAP|tau=tanh_41472|one_minus_tau_gt=3_POWER_MINUS82944|gamma_gt=1_OVER_D_TIMES_3_POWER82944|json=0
+YM4_07I_ABS_ERROR|deltaN_upper=2_Nl_Nplus1_3OVER8_POWER_N|operator_sector=GAUGE_INVARIANT|json=0
+YM4_07I_HOLD|N=59049|delta_upper_lt_gap_floor_OVER_1000000=FALSE|gate=HOLD|json=0
+YM4_07I_PASS|N=177147|delta_upper_lt_gap_floor_OVER_1000000=TRUE|gate=PASS|json=0
+YM4_07I_PROJECTOR|physical_vacuum_rank=ONE|norm_Pi_MINUS_PiN_lt=1_OVER_500000|json=0
+YM4_07I_SOURCE|F=FINE_SPATIAL_TWO_BY_TWO_WILSON|norm_F_le=1|vacuum_mean_error_lt=1_OVER_250000|json=0
+YM4_07I_CORRELATOR|m=4|W_T4_W_vacuum_error_lt=1_OVER_125000|json=0
+YM4_07I_COMPLEXITY|retained_one_link_dimension=N_NPLUS1_2NPLUS1_OVER6|explicit_dense_matrix=NOT_BUILT|json=0
+YM4_07I_FALSIFIERS|count=10|json=0
+YM4_07I_SCOPE|physical_vacuum_projection=FINITE_4D_BOUND|physical_first_excitation_projector=OPEN|numerical_W_moment=OPEN|all_scale_RG=OPEN|volume_uniform=OPEN|continuum_mass_gap=OPEN|json=0
