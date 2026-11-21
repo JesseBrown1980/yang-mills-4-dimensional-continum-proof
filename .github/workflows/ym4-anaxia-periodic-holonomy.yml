@@ -4,12 +4,14 @@ on:
   push:
     paths:
       - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp'
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp'
       - 'docs/certificate-atlas/ANAXIA-DOCUMENT1-SCOPED-AUDIT-20261121.md'
       - 'tests/test_ym4_anaxia_periodic_holonomy.py'
       - '.github/workflows/ym4-anaxia-periodic-holonomy.yml'
   pull_request:
     paths:
       - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp'
+      - 'docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp'
       - 'docs/certificate-atlas/ANAXIA-DOCUMENT1-SCOPED-AUDIT-20261121.md'
       - 'tests/test_ym4_anaxia_periodic_holonomy.py'
       - '.github/workflows/ym4-anaxia-periodic-holonomy.yml'
@@ -31,6 +33,8 @@ jobs:
           set -euo pipefail
           test "$(git hash-object docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp)" = "8adaf1a524d768486996f151836329d8d2ddf53e"
           grep -Fq '|phase=FROZEN_BEFORE_INDEPENDENT_CHECKER|' docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-HOLONOMY-20261121.hbp
+          test "$(git hash-object docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp)" = "1531e25b0fe579f3b8e7209a068ac8a2956449c2"
+          grep -Fq '|phase=FROZEN_BEFORE_L4_CHECKER|' docs/certificate-atlas/PREDICT-ANAXIA-PERIODIC-L4-20261121.hbp
       - name: Enforce original no-float verification rules
         run: |
           set -euo pipefail
@@ -42,7 +46,7 @@ jobs:
           mkdir -p build/anaxia_forest_audit
           python3 -I -B -X utf8 tests/test_ym4_anaxia_periodic_holonomy.py | tee build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
           grep -Fq '|remaining_partners=12|local_counts=PASS|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
-          grep -Fq '|L2_nontrivial_Polyakov=PASS|all_fixed_edges_identity=REJECTED|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
+          grep -Fq '|L2_nontrivial_Polyakov=PASS|L4_nontrivial_Polyakov=PASS|all_fixed_edges_identity=REJECTED|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
           grep -Fq '|beta_JB=4_beta_Anaxia|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
           grep -Fq '|false_claims=4_REJECTED|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
           grep -Fq '|periodic_gauge_orbit_transfer=HOLD|' build/anaxia_forest_audit/EXACT-FOREST-VERDICT.hbp
