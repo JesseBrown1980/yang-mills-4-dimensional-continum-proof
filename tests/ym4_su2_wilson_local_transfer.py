@@ -54,7 +54,7 @@ class R:
             raise ValueError("division_by_zero")
         return R(self.n * x.d, self.d * x.n)
 
-    def __pow__(self, k):
+    def power(self, k):
         if type(k) is not int or k < 0:
             raise ValueError("nonnegative_integer_power_required")
         # Exponent validated above: multiplication stays integer-only.
@@ -131,7 +131,7 @@ def character_eigen_interval(r, beta, last_k=20):
         return R(1), R(1)
     d0, d1 = bessel_j_interval(1, beta, last_k)
     a0, a1 = bessel_j_interval(r + 1, beta, last_k)
-    factor = beta.div(2).__pow__(r)
+    factor = beta.div(2).power(r)
     lo = factor * a0.div(d1)
     hi = factor * a1.div(d0)
     require(R(0) < lo and lo < hi and hi < R(1),
@@ -145,7 +145,7 @@ def connected_wilson_interval(beta, time, last_k=20):
     if time == 0:
         return R(1, 4), R(1, 4)
     lo, hi = character_eigen_interval(1, beta, last_k)
-    return lo.__pow__(time).div(4), hi.__pow__(time).div(4)
+    return lo.power(time).div(4), hi.power(time).div(4)
 
 
 def character_sup_tail(beta, retained_r):
@@ -165,10 +165,10 @@ def character_sup_tail(beta, retained_r):
         amplitude = R(1).div(R(1) - t)
     else:
         ceil_t = (t.n + t.d - 1) // t.d
-        amplitude = R(R(3).__pow__(ceil_t).n)
+        amplitude = R(R(3).power(ceil_t).n)
     p = beta.div(2)
     k = retained_r + 1
-    first = amplitude * R(k + 1, factorial(k)) * p.__pow__(k)
+    first = amplitude * R(k + 1, factorial(k)) * p.power(k)
     next_ratio = p * R(k + 2, (k + 1) ** 2)
     require(next_ratio < R(1), "character_tail_ratio_uncontrolled")
     return first.div(R(1) - next_ratio)
