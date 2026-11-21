@@ -126,15 +126,15 @@ The projector trace-norm inequality proves **without approximating either vacuum
 \le\|\Pi-\Pi_N\|_1<\frac1{250000}.\quad}
 \]
 
-For the four-step time-separated matched Wilson correlator in the **vacuum** transfer representation,
+For the four-step **unnormalized transfer moment** of the matched Wilson source,
 \[
-c_4=\langle\Omega,F T^4F\Omega\rangle,\quad
-c_{4,N}=\langle\Omega_N,F T_N^4F\Omega_N\rangle,
+c_4^{\mathrm{raw}}=\langle\Omega,F T^4F\Omega\rangle,\quad
+c_{4,N}^{\mathrm{raw}}=\langle\Omega_N,F T_N^4F\Omega_N\rangle,
 \]
-both have the same physical time-step convention, and \(\|T\|,\|T_N\|\le1\). Telescoping and the trace-class ideal bound give
+the transfers use the same original Wilson normalization, with \(\|T\|,\|T_N\|\le1\). **This raw moment is not yet the physical time-separated vacuum correlator:** physical propagation requires dividing each transfer by its own leading physical eigenvalue. Telescoping and the trace-class ideal bound give
 \[
 \begin{aligned}
-|c_4-c_{4,N}|
+|c_4^{\mathrm{raw}}-c_{4,N}^{\mathrm{raw}}|
 &\le\|\Pi-\Pi_N\|_1
 +\|T^4-T_N^4\|_{\rm op}\\
 &\le2\|\Pi-\Pi_N\|_{\rm op}+4\delta_N\\
@@ -142,7 +142,69 @@ both have the same physical time-step convention, and \(\|T\|,\|T_N\|\le1\). Tel
 =\boxed{\frac1{125000}}.
 \end{aligned}
 \]
-This is an **explicit source-specific, true-vacuum, original four-dimensional continuous-SU(2) Wilson correlation transfer error** at \(\beta=64\) for an exact Peter–Weyl cutoff. The correlator **value** is still OPEN: the finite-rank matrix and its vacuum were not built.
+This is an **explicit source-specific, true-vacuum, original four-dimensional continuous-SU(2) *unnormalized transfer-moment* error** at \(\beta=64\) for an exact Peter–Weyl cutoff. The full physical-time normalization and connected source are audited separately below. The numerical moment **value** is still OPEN: the finite-rank matrix and its vacuum were not built.
+
+
+### 4.1. Post-freeze physical-time and vacuum-connected Wilson comparison — YM4-07I2
+
+The original YM4-07I prediction and raw fourth-moment checker are retained unchanged. Before creating the new test, we froze the independent [YM4-07I2 normalized predictions](PREDICT-YM4-07I2-NORMALIZED-WILSON-CORRELATOR-20261121.hbp) at commit \`17e7a33346a201afefb61bd253803752adaec6a3\`. This extension addresses the indispensable **physical-time normalization**.
+
+Let \(\alpha=\lambda_0(T|_{PH})\) and \(\alpha_N=\lambda_0(T_N|_{PH})>0\), and define
+\[
+\widetilde T=T|_{PH}/\alpha,\qquad
+\widetilde T_N=T_N|_{PH}/\alpha_N.
+\]
+Both are positive contractions and correspond to the **same physical fine time step \(a\)**. The physical vacuum gap and Fourier cutoff from sections 1–3 yield
+\[
+\delta_N<\gamma_{\rm floor}/10^6,\quad
+\alpha>1/D,\quad
+\gamma_{\rm floor}=(1/D)3^{-82944},
+\]
+hence \(\delta_N/\alpha<3^{-82944}/10^6<10^{-6}\).
+
+The **normalization error** is controlled by an exact two-term decomposition:
+\[
+\begin{aligned}
+\|\widetilde T-\widetilde T_N\|
+&\le \frac{\|T-T_N\|}{\alpha}
++\|T_N\|\,\biggl|\frac1\alpha-\frac1{\alpha_N}\biggr|\\
+&\le\frac{\delta_N}{\alpha}
++\alpha_N\frac{|\alpha-\alpha_N|}{\alpha\alpha_N}
+\le\frac{2\delta_N}{\alpha}
+<\boxed{\frac1{500000}}.
+\end{aligned}
+\]
+All operators in this display are restricted to \(PH\), and \(\|T_N|_{PH}\|=\alpha_N\). This shows that the large-\(\beta\) **physical normalized transfer semigroups** are close in operator norm for the selected exact representation cutoff, without asserting an actual finite-rank diagonalization.
+
+For any bounded real gauge-invariant normalized Wilson loop \(F\) with \(\|F\|\le1\), define the **actual physical four-step vacuum correlators** and their vacuum-connected counterparts:
+\[
+\begin{aligned}
+C_4&=\langle\Omega,F\widetilde T^4 F\Omega\rangle,
+& C_{4,N}&=\langle\Omega_N,F\widetilde T_N^4F\Omega_N\rangle,\\
+C_4^{\rm conn}&=C_4-\langle\Omega,F\Omega\rangle^2,
+& C_{4,N}^{\rm conn}&=C_{4,N}-\langle\Omega_N,F\Omega_N\rangle^2.
+\end{aligned}
+\]
+At the **same physical time separation \(4a\)**, telescoping normalized transfers and the rank-one vacuum projector bound give
+\[
+\begin{aligned}
+|C_4-C_{4,N}|
+&\le 4\|\widetilde T-\widetilde T_N\|
++\|\Pi-\Pi_N\|_1\\
+&<4/500000+1/250000
+=\boxed{\frac3{250000}}.
+\end{aligned}
+\]
+Since the true and truncated Wilson means both lie in \([-1,1]\), their squared means differ by at most twice their absolute difference, i.e. \(<1/125000\). Therefore the **connected Wilson physical-time correlator error** satisfies
+\[
+\boxed{\quad
+|C_4^{\rm conn}-C_{4,N}^{\rm conn}|
+<\frac3{250000}+\frac1{125000}
+=\frac1{50000}.
+\quad}
+\]
+
+These are **rigorous approximation-error upper bounds for actual connected, physical-time Wilson correlation functions** at the stated finite lattice and \(\beta=64\), based on genuine continuous SU(2), gauge-invariant physical transfer, the original full spatial Wilson action and a large exact Fourier cutoff. We have **not** computed either connected correlator value, produced an original first-excited Wilson spectral weight, established an infinite-volume/UV limit, or inferred the continuum physical mass gap.
 
 ## 5. Independent limitations and next mathematical producer
 
