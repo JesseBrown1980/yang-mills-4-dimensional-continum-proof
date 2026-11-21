@@ -1,0 +1,74 @@
+name: YM4 WG05 original SU2 Wilson positive physical 42-band weight
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_wilson_42band_positive_weight.py'
+      - 'tests/test_ym4_su2_wilson_42band_positive_weight.py'
+      - 'docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp'
+      - '.github/workflows/ym4-wg05-positive-42band-wilson-weight.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_wilson_42band_positive_weight.py'
+      - 'tests/test_ym4_su2_wilson_42band_positive_weight.py'
+      - 'docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp'
+      - '.github/workflows/ym4-wg05-positive-42band-wilson-weight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-full-SU2-physical-positive-Wilson-42band:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check frozen positive-band predictions predate code and tests
+        run: |
+          set -euo pipefail
+          PIN=19f17924c954ea4cc6efe1f595bbe588cb36dafa
+          git merge-base --is-ancestor "$PIN" HEAD
+          git show "$PIN:docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp" \
+            | grep -Fq 'phase=FROZEN_BEFORE_PRODUCER_AND_TESTS'
+          if git cat-file -e "$PIN:tests/ym4_su2_wilson_42band_positive_weight.py" 2>/dev/null; then
+            echo "WG05 producer existed before freeze" >&2
+            exit 1
+          fi
+          if git cat-file -e "$PIN:tests/test_ym4_su2_wilson_42band_positive_weight.py" 2>/dev/null; then
+            echo "WG05 verifier existed before freeze" >&2
+            exit 1
+          fi
+      - name: Strict no floating point entire source
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Independent original true-vacuum Wilson weight and uniform rational dual
+        run: |
+          set -euo pipefail
+          python3 -B tests/test_ym4_su2_wilson_42band_positive_weight.py -v
+      - name: Canonical 42-band original full SU2 physical Wilson HBP
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-wg05
+          python3 -B tests/ym4_su2_wilson_42band_positive_weight.py > build/ym4-wg05/FIRST.hbp
+          python3 -B tests/ym4_su2_wilson_42band_positive_weight.py > build/ym4-wg05/REPLAY.hbp
+          cmp build/ym4-wg05/FIRST.hbp build/ym4-wg05/REPLAY.hbp
+          grep -Fq 'physical_Wilson_42band_weight_gt=1/5' build/ym4-wg05/FIRST.hbp
+          grep -Fq 'some_individual_neutral_Wilson_eigenmode_weight_gt=1/210' build/ym4-wg05/FIRST.hbp
+          grep -Fq 'source_weight_whole_42band_gt_one_fifth=PASS' build/ym4-wg05/FIRST.hbp
+          grep -Fq 'individual_first_neutral_Wilson_weight=OPEN' build/ym4-wg05/FIRST.hbp
+          grep -Fq 'continuum_mass_gap=OPEN' build/ym4-wg05/FIRST.hbp
+          sha256sum build/ym4-wg05/FIRST.hbp > build/ym4-wg05/SHA256SUMS
+          git rev-parse HEAD > build/ym4-wg05/COMMIT.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-WG05-original-SU2-positive-neutral-42band-Wilson-weight
+          path: build/ym4-wg05/
+          if-no-files-found: warn
+          retention-days: 90
