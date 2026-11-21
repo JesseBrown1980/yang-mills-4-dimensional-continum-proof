@@ -134,6 +134,18 @@ def periodic_holonomy():
          "unexpected_exact_polyakov_holonomy")
     need(not q_equal(product, identity),
          "nontrivial_polyakov_holonomy_was_lost")
+    # Stronger periodic L=4 example (the side length used in the
+    # external physical-volume estimates). Every step along direction 0
+    # remains a selected fixed line. Its four-link holonomy is nontrivial.
+    cycle4 = [x for x in range(4)]
+    need(all(fixed(x & 1, 0) for x in cycle4),
+         "even_L4_fixed_line_missing")
+    q4 = q_mul(product, product)
+    need(q_equal(q4, (-527, -336, 0, 0, 625)),
+         "L4_holonomy_wrong_exact_fraction")
+    need(not q_equal(q4, identity),
+         "L4_polyakov_holonomy_was_lost")
+
 
     # Gauge transforms act on the cycle holonomy by conjugation.
     g0 = (0, 1, 0, 0, 1)
@@ -213,6 +225,7 @@ def main():
           + "|remaining_partners=12|local_counts=PASS|json=0")
     need(product[0] == -7 and product[4] == 25, "polyakov_scalar_mismatch")
     print("YM4_ANAXIA_TORUS|L2_nontrivial_Polyakov=PASS"
+          "|L4_nontrivial_Polyakov=PASS"
           "|all_fixed_edges_identity=REJECTED"
           "|odd_L_parity_quotient=REJECTED|json=0")
     print("YM4_ANAXIA_COUPLING|beta_JB=4_beta_Anaxia"
