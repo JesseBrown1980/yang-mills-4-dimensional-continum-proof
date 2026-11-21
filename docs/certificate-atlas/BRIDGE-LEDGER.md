@@ -1,5 +1,14 @@
 # Cross-repository Certificate Match & Open-Obligation Ledger
 
+## WG09 first center-neutral physical Wilson eigenmode ordered — 21 November 2026
+
+**Accepted internally checked exact finite-L theorem:** [full-operator remainder and independent audit](../NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md) · [hosted audit PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803) · [SHA-256 full-operator HBP](YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp).
+
+Original continuous SU2, original 24-link 3D spatial slice, Gauss projection, all 24 spatial plaquettes and all higher Peter–Weyl representations. Independent Haar and Schur source calculations reproduce WG09's third-order symmetry splitting. The complete vacuum, 12 spin-one and full higher-spin complement are bounded at fourth order. The resulting true physical first **center-neutral** excited eigenvector is the fully spatial-symmetric WG08 Wilson-coupled mode for (0<\beta\le10^{-12}), with original physical spectral spacing (>e^{-24\beta}\kappa_1^4(21/320)\beta^3) to the next neutral level and true-vacuum local Wilson squared weight (>1/289). The first full physical excited level remains center-charged with zero local contractible Wilson overlap.
+
+**Acceptance boundary:** exact arithmetic and hosted source checks passed for the fixed L=2 strong-coupling theorem; external peer review remains a separate step. Q05 first-neutral Wilson weight advances to a concrete individually ordered physical eigenmode at this fixed lattice/coupling. The original eleven large-volume, weak-coupling, continuum and physical-spacing obligations remain OPEN.
+
+
 **Round-two extension (November 21, 2026):** [Nine additional exact source/DOI matches and the new spectral-window dual](EXTERNAL-SEARCH-ROUND2-20261121.md) are connected directly to the existing eleven OPEN gates. The 4D graph now has **22 externally attributed candidate nodes** and [YM4-SW01](NOTE-SPECTRAL-WINDOW-DUAL-20261121.md) for exact low-energy Wilson spectral-window bounds. The strong-coupling U(n), 3D U(1), O(N)/RG and generic spectral methods remain scoped as written in their original proofs.
 
 
