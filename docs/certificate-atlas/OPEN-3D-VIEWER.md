@@ -15,3 +15,5 @@ If both online preview hosts are unavailable, download the [standalone source fi
 The [open-gate matching ledger](BRIDGE-LEDGER.md) records exact external source links and explains why a finite/certified or formally conditional result cannot be claimed as a complete continuous 4D mass-gap certificate.
 
 The 4D continuum Yang–Mills problem remains OPEN.
+
+**New gold-ring external references:** The atlas now displays 13 candidate proof sources alongside 11 red OPEN tasks. Click a gold node to see its original pinned theorem or code, and read its acceptance obligations before reusing any statement.
