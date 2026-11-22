@@ -23,7 +23,7 @@
     "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "YM4_VOL05_uniform_connected_beta5_remainder_and_vacuum_to_band_gap",
+    "next_volume_proof": "YM4_VOL06_weak_coupling_renormalized_connected_transfer_comparison",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
@@ -33,17 +33,20 @@
     "VOL04_full_fourth_coefficient": "INTERNAL_FIXED_L_PASS_PENDING_FULL_REVIEW",
     "VOL04_uniform_coefficient_norm": "7_over_48_exact",
     "VOL04_uniform_beta_remainder": "OPEN",
-    "VOL04_large_volume_first_individual_spacing": "UPPER_O_L_MINUS2"
+    "VOL04_large_volume_first_individual_spacing": "UPPER_O_L_MINUS2",
+    "VOL05_Wilson_spectral_support": "CONDITIONAL_PUBLISHED_DOBRUSHIN_AND_POSITIVE_WILSON_TRANSFER",
+    "VOL05_fixed_beta_uniform_volume": "YES_FOR_LOCAL_WILSON_VISIBLE_CHANNEL",
+    "VOL05_weak_coupling_scaling": "OPEN"
   },
   "summary": {
-    "curated_records": 97,
+    "curated_records": 99,
     "physical_gap_claims": 0,
-    "resource_files": 520,
-    "pr_events": 97,
+    "resource_files": 524,
+    "pr_events": 98,
     "review_receipts": 310,
     "status_counts": {
-      "FINITE_PASS": 29,
-      "CONDITIONAL": 3,
+      "FINITE_PASS": 30,
+      "CONDITIONAL": 4,
       "DRAFT_CHECKED": 17,
       "OPEN": 16,
       "FINITE_S3": 2,
@@ -51,7 +54,7 @@
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 520,
+    "linked_resources": 524,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2390,6 +2393,60 @@
         10,
         8,
         8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL05",
+      "title": "Uniform strong-coupling local Wilson-visible spectral support and mass",
+      "status": "CONDITIONAL",
+      "category": "wilson",
+      "scope": "Original continuous SU2 Wilson 3+1D all finite spatial L, 0<beta<1/18; named Dobrushin comparison and positive transfer",
+      "result": "For beta=1/1000: Wilson-visible transfer ratio <=9/500, total centered local Wilson spectral mass >=247/1000, uniformly in spatial L; full first physical state and continuum OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "dependencies": [
+        "YM4-11",
+        "YM4-VOL04",
+        "YM4-WC01",
+        "YM4-WV01"
+      ],
+      "point": [
+        10,
+        9,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL05-GEOM",
+      "title": "Independent four-dimensional Wilson locality and exact rational spectral ledger",
+      "status": "FINITE_PASS",
+      "category": "bridge",
+      "scope": "Exact original T=7 L=3 four-dimensional link incidence, plaquette graph distance, rational strong-coupling fixtures",
+      "result": "Every original 4D link touches 6 plaquettes and 18 neighbor multiplicities; time-separated Wilson supports have distance 3; alpha=9/500 and variance lower=247/1000",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/tests/ym4_su2_vol05_wilson_spectral_support.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "dependencies": [
+        "YM4-VOL05",
+        "YM4-11"
+      ],
+      "point": [
+        10,
+        8,
+        9
       ],
       "views": [
         "proof",
@@ -6559,6 +6616,38 @@
       "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
       "kind": "workflow",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/.github/workflows/ym4-vol04-fourth-schur.yml"
+    },
+    {
+      "path": "tests/ym4_su2_vol05_wilson_spectral_support.py",
+      "blob": "8e42379218bcda8fb16b0cdb8988638f8ee29b55",
+      "origin": "VOL05_DOBRUSHIN_WILSON_VISIBLE_SPECTRAL",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/tests/ym4_su2_vol05_wilson_spectral_support.py"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md",
+      "blob": "3fc49c6bc0a04954e34762d5ea5e9e893688a81d",
+      "origin": "VOL05_DOBRUSHIN_WILSON_VISIBLE_SPECTRAL",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "kind": "conditional_theorem",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp",
+      "blob": "3590c3f37b4f631eb7d3ef44e45e4854530ccbb4",
+      "origin": "VOL05_DOBRUSHIN_WILSON_VISIBLE_SPECTRAL",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol05-wilson-spectral-support.yml",
+      "blob": "01155c36dff9a3fd6cd414202dd7652197f72da5",
+      "origin": "VOL05_DOBRUSHIN_WILSON_VISIBLE_SPECTRAL",
+      "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/.github/workflows/ym4-vol05-wilson-spectral-support.yml"
     }
   ],
   "pr_events": [
@@ -7411,6 +7500,14 @@
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/103",
       "merge_sha": null,
       "origin": "current_GitHub_PR_2026_11_22"
+    },
+    {
+      "number": 104,
+      "title": "YM4 VOL05 Wilson-visible strong-coupling spectral support and total mass",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/104",
+      "merge_sha": null,
+      "origin": "live_GitHub_2026_11_22"
     }
   ],
   "cross_repository": [

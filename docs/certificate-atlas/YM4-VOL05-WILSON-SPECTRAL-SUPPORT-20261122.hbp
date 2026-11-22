@@ -1,0 +1,4 @@
+YM4_VOL05_GEOMETRY|original_4D_SU2=YES|spatial_L=3|temporal_T=7|each_link_plaquettes=6|neighbor_multiplicity=18|temporal_distance_3=EXACT|json=0
+YM4_VOL05_SPECTRAL|beta=1/1000|alpha=9/500|Wilson_visible_transfer_ratio_le=9/500|local_centered_Wilson_total_weight_ge=247/1000|scope=ALL_FINITE_SPATIAL_L|json=0
+YM4_VOL05_INPUTS|Dobrushin_comparison=YM4_04B_NAMED_THEOREM|transfer_positive=STANDARD_SU2_WILSON_HAAR|numerical_Lean_proof=NOT_CLAIMED|json=0
+YM4_VOL05_SCOPE|Wilson_spectral_support_gap=STRONG_COUPLING|first_full_physical_state=NOT_IDENTIFIED|weak_coupling_beta_to_infty=OPEN|continuum_mass_gap=OPEN|json=0

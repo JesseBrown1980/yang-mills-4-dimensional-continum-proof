@@ -1,3 +1,9 @@
+## New VOL05 Wilson-visible support and geometry proof links
+
+[Open the 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html). Across all twelve SVG views and each of the four-panel overview links, VOL05 records the conditional original SU2 **all-spatial-L strong-coupling Wilson spectral support and total spectral weight**; VOL05-GEOM records the exact independent 4D incidence and rational checker.
+
+The atlas now has **99 nodes** and **524 indexed sources**. The current channel result uses a named classical Dobrushin comparison theorem and standard positive transfer; first full physical-state order, weak-coupling scaling and 4D continuum mass gap remain OPEN.
+
 ## Latest VOL04 exact fourth-order and independent-audit nodes
 
 [Open the clickable 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html). All twelve SVG 3D views now include **VOL04** (complete original continuous SU2 fixed-L fourth coefficient, exact 7/48 L-independent norm) and **VOL04-AUDIT** (independent all-L3 quartic parity census), and each of the four overview panels links to both.

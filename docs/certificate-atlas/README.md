@@ -1,5 +1,16 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL05 all-volume local Wilson strong-coupling spectral support
+
+The [interactive 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now has **99 source-linked proof nodes**, **524 indexed evidence resources** and **98 PR records**, including new VOL05 conditional spectral-support and independent 4D geometry certificates.
+
+Using the previously accepted [YM4-04B Dobrushin connected-correlation bound](../NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md) and the standard positive original Wilson transfer, [VOL05](NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md) gives a **spatial-volume-uniform strong-coupling local Wilson spectral measure**: for all 0<beta<1/18, its visible transfer ratio is <=18 beta, and the **total centered local Wilson spectral weight** is >=(1-12 beta)/4. At beta=1/1000: **ratio <=9/500** and **total weight >=247/1000**, independently of spatial L.
+
+The named Rebeschini–van Handel comparison theorem and the original continuous SU2 positive transfer construction are explicit analytical inputs. The exact HBP and integer geometry checker are source-pinned, with independent physical peer review as a separate gate. The **full first physical excitation, continuum scaling and Yang–Mills mass gap** remain OPEN.
+
+[Original VOL05 HBP](YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp) · [exact 4D geometry code](../../tests/ym4_su2_vol05_wilson_spectral_support.py) · [full proof scope](NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md).
+
+
 ## November 22 — VOL04 complete original-SU2 physical fourth-order coefficient
 
 The [clickable 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now contains **97 proof nodes**, **520 indexed evidence files** and **97 PR records**. VOL04 adds the complete original physical Gauss-projected fourth-order neutral plaquette-band coefficient, and VOL04-AUDIT adds the independent all-3,240-pair L=3 quartic-parity verification with L=4,5 controls.
