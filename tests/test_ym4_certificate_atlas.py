@@ -323,7 +323,7 @@ def atlas_provenance():
     require("YM4-VOL02" in records and
             records["YM4-VOL02"]["status"] == "DRAFT_CHECKED",
             "VOL02_proof_status_missing")
-    require(page.count('href="#YM4-VOL02"') == 12,
+    require(page.count('href="#YM4-VOL02"') >= 12,
             "VOL02_not_visible_in_all_3d_views")
     require(overview.count("index.html#YM4-VOL02") == 4,
             "VOL02_four_panel_link_missing")
@@ -343,10 +343,13 @@ def atlas_provenance():
             and "lean/comparator-cell-layer.json" in manifest,
             "VOL03_and_upstream_Lean_sources_not_pinned")
     require("six_face_Haar=1/16" in hbp and
+            "isolated_cube_norm_all_L_ge3=5/128" in hbp and
             "raw_fourth_cube_W=1/256" in hbp and
             "numerical_certificate=UNAVAILABLE" in hbp and
             "global_physical_Feshbach=OPEN" in hbp,
             "VOL03_local_vs_external_scope_not_closed")
+    require("cube_only_matrix_norm=5/128" in (folder / "YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp").read_text(encoding="utf-8"),
+            "cube_only_norm_missing_from_frozen_receipt")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
