@@ -1,0 +1,6 @@
+YM4_VOL06_MODEL|group=continuous_SU2|dimension=3plus1|transfer=original_Gauss_Wilson|beta_domain=0_lt_beta_lt_1/18|spatial_L=GE3|json=0
+YM4_VOL06_GEOMETRY|each_link_plaquettes=6|row_influence_multiplicity=18|time_distance_ge=n|independent_slices=L3_T7_distance_to_3,L4_T9_distance_to_4|json=0
+YM4_VOL06_SPECTRAL|finite_L_full_physical_eigen_ratio_le=18beta|includes_Wilson_dark_and_center_sectors=YES|uses_bounded_slice_observables_dense=ANALYTIC_DEPENDENCY|json=0
+YM4_VOL06_SAMPLE|beta=1/1000|all_physical_excited_ratio_le=9/500|energy_floor=log(500/9)|json=0
+YM4_VOL06_AUDIT|geometry=PASS|rational_root_control=PASS|Dobrushin_external_theorem=DEPENDENCY|positive_transfer=DEPENDENCY|analytic_audit=REQUIRED|json=0
+YM4_VOL06_SCOPE|uniform_L_strong_coupling=CANDIDATE|weak_coupling_continuum=OPEN|11_continuum_gates=OPEN|Clay_Yang_Mills=OPEN|json=0
