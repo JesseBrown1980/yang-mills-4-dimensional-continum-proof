@@ -1,0 +1,6 @@
+YM4_VOL09_MODEL|original_continuous_SU2=YES|Wilson_beta=9_power_k|periodic_L4=L_ge3|all_volumes=ANALYTIC|json=0
+YM4_VOL09_HAAR_CAP|radius=1_over_4n|n=3_power_k|cap_probability_ge=1_over_1536_n_cubed|four_link_plaquette_deficit_le=1_over_2n_squared|proof=ANALYTIC|json=0
+YM4_VOL09_ENERGY|plaquette_mean_deficit_le=(35_plus_18k)_over_(3_times_9_power_k)|uniform_volume=YES|log1536_lt8=EXACT_SERIES|log3_lt3_over2=EXACT_SERIES|json=0
+YM4_VOL09_BAD_STAR|all_15_gauge_invariant_double_staple_loops=YES|fixed_epsilon=1/2|k5_beta=59049|bad_probability_le=2000/59049|k6_bad_probability_le=2288/531441|json=0
+YM4_VOL09_SHRINKING|k8_beta=43046721|epsilon=1/81|bad_probability_le=1432/531441|k10_epsilon=1/59049|bad_probability_le=1720/59049|rate=O_k_over_3powerk|json=0
+YM4_VOL09_ACCEPTANCE|periodic_unconditional_bad_star_frequency=ANALYTIC_DERIVATION|integer_rational_replay=PASS|arbitrary_boundary_cube=OPEN|bad_island_cluster=OPEN|11_continuum_gates=OPEN|json=0

@@ -1,5 +1,14 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL09 original SU(2) periodic volume-uniform good-star frequency
+
+**[Exact continuous-SU2 periodic equilibrium theorem](docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md)** · [Independent KL relative-entropy audit](reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md) · [integer-only source checker](tests/ym4_su2_vol09_periodic_good_star.py) · [frozen HBP](docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp) · [PR #109](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109).
+
+The original continuous SU(2) Wilson Gibbs measure on *every* isotropic periodic four-dimensional L^4 lattice, L>=3 and beta>=1, has a **volume-independent mean plaquette deficit** at most `1/beta + 4 log(1536 beta^(3/2))/(3 beta)`. A direct gauge-invariant six-plaquette-to-fifteen-double-staple inequality proves that the equilibrium probability of a locally bad epsilon-star is at most `24 R(beta)/epsilon`, simultaneously for all lattice volumes. Exact ternary controls: beta=59049, epsilon=1/2 gives bad-star probability <=**2000/59049**; beta=43046721, epsilon=1/81 gives <=**1432/531441**. The star alignment tolerance and bad-star probability can both approach zero as bare coupling increases. The independent review derives the action estimate again from positivity of relative entropy between original Gibbs laws at beta and beta/2.
+
+**Research boundary:** an equilibrium *single-star* frequency estimate is accepted as a mathematical derivation pending outside peer review; physical-size **bad-island cluster and arbitrary-boundary cube mixing** remain the next mathematical target. Current atlas inventory: **109 nodes**, **543 evidence files**, **102 PR records**; all original **11 continuum gates OPEN**. [Latest attributed one-cube source, version 7](https://hexagonmath.org/2610.00341v7).
+
+
 ## November 22, 2026 — VOL08 original SU(2) Wilson weak-coupling link-star acceptance
 
 **[Original continuous SU2 exact conditional certificate](docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md)** · **[Independent Haar integration-by-parts audit](reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md)** · [integer-only original 4D stencil and gauge verifier](tests/ym4_su2_vol08_wilson_star.py) · [frozen SHA receipt](docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp) · [PR #108](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108).

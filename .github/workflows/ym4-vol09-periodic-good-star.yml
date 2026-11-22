@@ -1,0 +1,49 @@
+name: YM4 VOL09 original SU2 periodic good-star frequency
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol09_periodic_good_star.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp'
+      - '.github/workflows/ym4-vol09-periodic-good-star.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol09_periodic_good_star.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp'
+      - '.github/workflows/ym4-vol09-periodic-good-star.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-integer-periodic-volume-uniform-original-SU2-star:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Normal and optimized integer replay, frozen HBP and SHA
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol09
+          python3 -I -B tests/ym4_su2_vol09_periodic_good_star.py > build/ym4-vol09/PERIODIC-STAR.hbp
+          python3 -O -I -B tests/ym4_su2_vol09_periodic_good_star.py > build/ym4-vol09/REPLAY.hbp
+          cmp build/ym4-vol09/PERIODIC-STAR.hbp build/ym4-vol09/REPLAY.hbp
+          cmp build/ym4-vol09/PERIODIC-STAR.hbp docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp
+          echo 'db0af162fc6ef37c02b85bf4a7ad6b00970962693c03ea8cbddc5b5776652299  build/ym4-vol09/PERIODIC-STAR.hbp' | sha256sum -c
+          grep -Fq '|bad_probability_le=2000/59049|' build/ym4-vol09/PERIODIC-STAR.hbp
+          grep -Fq '|uniform_volume=YES|' build/ym4-vol09/PERIODIC-STAR.hbp
+          grep -Fq '|arbitrary_boundary_cube=OPEN|' build/ym4-vol09/PERIODIC-STAR.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol09/PERIODIC-STAR.hbp
+      - name: Strict no-floating-point policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol09-periodic-SU2-equilibrium-good-star
+          path: build/ym4-vol09/
+          retention-days: 90
+          if-no-files-found: warn

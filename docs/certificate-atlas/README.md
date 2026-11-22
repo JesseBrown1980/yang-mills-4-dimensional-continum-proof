@@ -1,5 +1,12 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL09 uniform SU2 good-star frequency under periodic Gibbs measure
+
+[Mathematical theorem](NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md) · [independent KL audit](../../reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md) · [integer-only reproducibility](../../tests/ym4_su2_vol09_periodic_good_star.py) · [frozen HBP](YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp) · [PR #109](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109).
+
+The atlas now indexes **109 nodes**, **543 source resources**, and **102 PR records**. VOL09 and VOL09-AUDIT are distinct source-pinned DRAFT_CHECKED nodes in all twelve graph camera views and all four overview panels. Haar caps and convex free energy give a volume-uniform periodic equilibrium mean original SU2 plaquette deficit and gauge-invariant bad-star probability. An independent KL argument reconstructs the factor 4/3 in the exact bound. A shrinking star alignment tolerance can coexist with vanishing bad-star frequency as beta grows. The remaining physical-size arbitrary-boundary cube, correlated bad-island controls, continuum field construction and eleven original continuum gates remain OPEN.
+
+
 ## November 22 — VOL08 original SU(2) Wilson good/bad boundary certificate
 
 [Full continuous-Haar proof](NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md) · [Independent integration-by-parts review](../../reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md) · [exact 4D integer checker](../../tests/ym4_su2_vol08_wilson_star.py) · [frozen HBP](YM4-VOL08-WILSON-STAR-20261122.hbp) · [PR #108](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108).
