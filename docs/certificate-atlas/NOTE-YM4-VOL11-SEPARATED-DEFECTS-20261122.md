@@ -104,6 +104,36 @@ For \(\beta=81\), an exact-rational 12-term Taylor partial sum \(\mathcal T_{12}
 \]
 The finite integer checker verifies this strict inequality with exact numerator/denominator arithmetic. The all-beta analytic bound is (5); the rational Taylor sum is an **independent, reproducible upper envelope**, not a replacement for exponential inequalities.
 
+### 3.1 Sharper original Wilson bad-star equilibrium frequency from a deterministic energy budget
+
+If \(G_e(\epsilon)^c\), one pair of preferred staples has \(1-s_i\cdot s_j>\epsilon\). The original quaternion triangle inequality gives
+\[
+1-s_i\cdot s_j
+=\tfrac12|s_i-s_j|^2
+\le |s_i-u_e|^2+|u_e-s_j|^2
+=2[(1-W_i)+(1-W_j)].
+\]
+Therefore the **pointwise gauge-invariant original SU2 budget** is
+\[
+\boxed{
+\mathbf1_{G_e(\epsilon)^c}
+\le\frac2\epsilon\sum_{p\ni e}(1-W_p).
+}
+\tag{5a}
+\]
+Every plaquette deficit is nonnegative. Under the actual periodic equilibrium Wilson Gibbs state, the VOL09 volume-independent mean plaquette deficit \(R(\beta)\) yields
+\[
+\boxed{\Pr_{\beta,L}(G_e(\epsilon)^c)
+\le\min\{1,\frac{12}{\epsilon}R(\beta)\}.}
+\tag{5b}
+\]
+This improves the preceding \(24R/\epsilon\) union-bound envelope by a factor of **two**, and uses no probabilistic independence assumption. Summing (5a) over every original positive link gives the **deterministic global energy budget**
+\[
+\boxed{N_{\rm bad\ stars}\le\frac8\epsilon\sum_p(1-W_p),}
+\tag{5c}
+\]
+since each original plaquette contains four positive links. The joint bad-star activity still needs a separate estimate.
+
 ## 4. Genuine joint original SU2 estimate and a controlled boundary term
 
 Fix any independent set \(S\) and selected plaquette \(p(e)\) for every \(e\in S\). Because the selected original link conditionals factor exactly and the good events are complement-measurable, (5) yields
@@ -122,7 +152,7 @@ This is a **joint, exact original SU2 finite-volume theorem** for marked, distin
 To state the best unconditional consequence available from the existing VOL09 certificate, set
 \[
 p_{\star}(\beta):=\sup_e\Pr_{\beta,L}(G_e(1/16)^c)
-\le\min\{1,384\,R(\beta)\},
+\le\min\{1,192\,R(\beta)\},
 \]
 where
 \(R(\beta)=\beta^{-1}+\tfrac4{3\beta}\log(1536\beta^{3/2})\).
@@ -148,7 +178,7 @@ In particular, \(t=\lfloor r/2\rfloor\) when \(r\ge2\) gives
 \]
 For \(\beta=9^k\), VOL09's rational envelope provides
 \[
-\boxed{p_{\star}(9^k)\le\min\{1,128(35+18k)/9^k\}.}
+\boxed{p_{\star}(9^k)\le\min\{1,64(35+18k)/9^k\}.}
 \tag{10}
 \]
 Thus (8)–(10) are **actual original SU2 multi-plaquette probability bounds**, uniform across all finite periodic volumes, with an explicitly separated bad-exterior term.
