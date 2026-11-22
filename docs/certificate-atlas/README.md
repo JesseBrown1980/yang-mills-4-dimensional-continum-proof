@@ -1,5 +1,16 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — Complete original Wilson certificate reconciliation and volume bridge
+
+The **[live clickable 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)** now has **92 curated source-linked nodes**, **500 indexed resources**, **92 PR history entries**, and **11 explicitly OPEN continuum obligations**. The preceding November 21 survey of 76 nodes is preserved as historical context. The 16 new 3D graph points cover original SU2 local transfer WT01, original Wilson cylinder WC01, physical-vacuum WV01, WG01 through WG08, WG09 symmetry/Haar/spin/full-operator acceptance, and VOL01 larger-volume geometry.
+
+For **fixed spatial L=2** and **0<beta<=10^-12**, [WG09 independently audited full-operator ordering](../NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md) identifies the individual first *center-neutral* Wilson-visible eigenmode with true-vacuum squared spectral weight >1/289 and physical eigenvalue spacing greater than exp(-24 beta) kappa1(beta)^4 (21/320) beta^3. The first excitation across all physical center sectors is still charged and has zero local contractible Wilson weight. Hosted [exact independent audit and remainder verification](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803) passed; PRs #96, #97 and #98 are merged. All original source files and SHA receipts have pinned links in the machine manifest.
+
+The new [YM4-VOL01 larger-volume structural result](NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md) proves that the fundamental plaquette-band first magnetic derivative vanishes for L>=3, unlike the exceptional L=2 double-winding six-block mechanism. The next mathematical objective is an exact second-order **connected plaquette kernel** with an **L-independent cluster error**. This is an uncompleted volume-uniform spectral theorem; higher-volume/weak-coupling/continuum obligations remain OPEN.
+
+The graph is SVG/CSS only, with four modes and three camera views. Click the new green WG or blue VOL nodes to open their source cards. The older pinned records are preserved, and each new source is pinned to an exact repository commit.
+
+
 ## November 21 — Second certified-source survey
 
 The live atlas now contains **76 source-linked graph nodes**, including **22 external candidate references** and the unchanged **11 OPEN proof tasks**. [The new cross-repository search ledger](EXTERNAL-SEARCH-ROUND2-20261121.md) records Lean strong-coupling correlations, exact SU(2) Racah/6j coefficients, Wilson cluster-area bounds, Euclidean spectral dual methods, and formal comparison targets; each source links to its exact original repository commit or published DOI. None is automatically promoted to a continuum SU(2) result.
