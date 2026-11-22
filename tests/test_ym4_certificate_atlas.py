@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 93, "atlas_expected_nodes")
+    require(len(rows) == 95, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -159,6 +159,10 @@ def hbp_nodes(text):
             and rows["YM4-WG09-HAAR"]["status"] == "FINITE_PASS"
             and rows["YM4-WG09-SPIN"]["status"] == "FINITE_PASS",
             "missing_original_Haar_and_spin_evidence")
+    require(rows["YM4-VOL03"]["status"] == "DRAFT_CHECKED",
+            "local_cube_not_final_global_gap")
+    require(rows["EXT-NS-CELL"]["status"] == "EXTERNAL",
+            "external_fluid_not_original_SU2_proof")
     require(rows["YM4-Q10"]["status"] == "OPEN",
             "continuum_gap_must_remain_open")
     return rows
@@ -264,7 +268,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 93,
+    require(page.count('<article class="entry" id="') == 95,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -304,9 +308,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 93' in manifest
-            and '"resource_files": 504' in manifest
-            and '"pr_events": 94' in manifest,
+    require('"curated_records": 95' in manifest
+            and '"resource_files": 514' in manifest
+            and '"pr_events": 96' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -329,6 +333,20 @@ def atlas_provenance():
     require("first_possible_nonscalar=FOURTH" in hbp
             and "volume_uniform_mass_gap=OPEN" in hbp,
             "VOL02_scope_boundary_missing")
+    for uid in ("YM4-VOL03", "EXT-NS-CELL"):
+        require(uid in records and page.count('href="#' + uid + '"') >= 12,
+                "missing_new_pinned_3D_certificate_" + uid)
+        require(overview.count("index.html#" + uid) == 4,
+                "new_external_or_cube_4panel_node_missing_" + uid)
+    require("YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp" in manifest
+            and "ym4_su2_vol03_cube_haar_cell_tree.py" in manifest
+            and "lean/comparator-cell-layer.json" in manifest,
+            "VOL03_and_upstream_Lean_sources_not_pinned")
+    require("six_face_Haar=1/16" in hbp and
+            "raw_fourth_cube_W=1/256" in hbp and
+            "numerical_certificate=UNAVAILABLE" in hbp and
+            "global_physical_Feshbach=OPEN" in hbp,
+            "VOL03_local_vs_external_scope_not_closed")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -370,6 +388,10 @@ def atlas_provenance():
                     "id=YM4-WG09-ORDER|status=CONDITIONAL"),
         hbp.replace("id=YM4-VOL01|status=DRAFT_CHECKED",
                     "id=YM4-VOL01|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL03|status=DRAFT_CHECKED",
+                    "id=YM4-VOL03|status=FINITE_PASS"),
+        hbp.replace("id=EXT-NS-CELL|status=EXTERNAL",
+                    "id=EXT-NS-CELL|status=FINITE_PASS"),
     ):
         try:
             hbp_nodes(bad)
@@ -380,12 +402,12 @@ def atlas_provenance():
             verify_no_runtime_code(bad)
         except ValueError:
             failures += 1
-    require(failures == 6, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=93|open_gates=11|external_leads=22"
+    require(failures == 8, "negative_scope_controls_not_enforced")
+    print("ATLAS4D_INDEX|nodes=95|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=93|json=0")
-    print("ATLAS4D_ADVERSARIES|negative_controls=6_REJECTED"
+          "|script_free=YES|source_cards=95|json=0")
+    print("ATLAS4D_ADVERSARIES|negative_controls=8_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
