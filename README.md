@@ -2,7 +2,7 @@
 
 ## November 22, 2026 — VOL06 candidate full physical strong-coupling transfer gap
 
-**[VOL06 bounded-slice spectral-root argument](docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md)** · [exact integer geometry/spectral-root checker](tests/ym4_su2_vol06_full_spectrum.py) · [SHA-pinned HBP](docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp).
+**[Independent VOL06 analytic audit](reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md)** · **[VOL06 bounded-slice spectral-root argument](docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md)** · [exact integer geometry/spectral-root checker](tests/ym4_su2_vol06_full_spectrum.py) · [SHA-pinned HBP](docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp).
 
 Extending VOL05's original continuous-SU(2) Dobrushin covariance estimate from local Wilson traces to **every bounded Gauss-invariant spatial-slice observable** yields a candidate full physical finite-volume spectral theorem. The essential new observation is that the strictly positive continuous transfer vacuum `Omega` makes each nonvacuum eigenfunction `psi` accessible as a bounded observable `f=psi/Omega`. For any finite L>=3 and 0<beta<1/18, the covariance-root argument proposes
 
