@@ -12,7 +12,7 @@ SU2 Haar hexagon overlap, and the cube/edge graph geometry at L=3,4,5.
 from collections import defaultdict
 from itertools import combinations, product
 from ym4_su2_vol03_cube_haar_cell_tree import (
-    contract, plaquette, shift, trace_tensor
+    Q, contract, plaquette, shift
 )
 
 
@@ -93,6 +93,25 @@ def unit_fundamental_power_constant(k):
     return counts.get(0, 0)
 
 
+def trace_tensor_any(loop):
+    # Clean-room generalization: the VOL03 cube producer emits exactly
+    # four letters per plaquette, while the electric S6 perimeter has six.
+    labels = tuple((s, d) for s, d, orient in loop)
+    orientations = tuple(orient for s, d, orient in loop)
+    ans = {}
+    for keys in product(range(4), repeat=len(loop)):
+        sign = 1
+        state = 0
+        for k, orientation in zip(keys, orientations):
+            update, state = Q[state, k]
+            sign *= update
+            if orientation < 0 and k:
+                sign = -sign
+        if state == 0:
+            ans[keys] = 2 * sign
+    return labels, ans
+
+
 def hexagon_overlap(n):
     # Two coplanar edge-sharing plaquettes and their perimeter loop.
     s = (0, 0, 0)
@@ -114,7 +133,7 @@ def hexagon_overlap(n):
     for unused in labels:
         d *= 4
     # Exact SU2 link Haar E[q_a q_b]=delta_ab/4.
-    numerator = contract([trace_tensor(loop) for loop in (p, q, r)])
+    numerator = contract([trace_tensor_any(loop) for loop in (p, q, r)])
     assert numerator * 2 == d
     # P_spin6(chi_p chi_q) = chi_rectangle/2.
     # The independent rectangle has Haar norm one.
@@ -122,7 +141,7 @@ def hexagon_overlap(n):
     d2 = 1
     for unused in labels_rect:
         d2 *= 4
-    assert contract([trace_tensor(r), trace_tensor(r)]) == d2
+    assert contract([trace_tensor_any(r), trace_tensor_any(r)]) == d2
     return (1, 2)
 
 
