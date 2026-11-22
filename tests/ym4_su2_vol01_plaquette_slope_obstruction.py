@@ -11,6 +11,7 @@ This is an exact local support obstruction, not a volume-uniform
 physical spectral-gap theorem. Integer-only; source independent of WG09.
 """
 from itertools import combinations, product
+from collections import Counter
 
 
 def shifted(site, axis, n):
@@ -44,6 +45,8 @@ def run():
     for n in (2, 3, 4, 5):
         masks = spatial_plaquettes(n)
         support = set(masks)
+        two_insertions = Counter((p ^ q) for p in masks for q in masks)
+        assert two_insertions[0] == len(masks)
         overlaps = [0] * 5
         magnetic_nonzero_candidates = 0
         for i, m in enumerate(masks):
@@ -52,6 +55,10 @@ def run():
                 overlaps[common] += 1
                 if (m ^ other) in support:
                     magnetic_nonzero_candidates += 1
+                if n >= 3:
+                    assert two_insertions[m ^ other] == 2
+                else:
+                    assert two_insertions[m ^ other] in (2, 4)
         assert (len(masks), overlaps[0], overlaps[1], overlaps[2]) == expected[n]
         assert overlaps[3] == overlaps[4] == 0
         assert magnetic_nonzero_candidates == 0
@@ -63,12 +70,22 @@ def run():
             "YM4_VOL01_GEOMETRY|spatial_L=" + str(n)
             + "|spatial_plaquettes=" + str(len(masks))
             + "|plaquette_pairs_share2=" + str(overlaps[2])
-            + "|first_order_P_to_P_parity_candidates=0|json=0"
+            + "|first_order_P_to_P_parity_candidates=0"
+            + "|second_order_distinct_pair_count="
+            + ("2" if n >= 3 else "2_or_4") + "|json=0"
         )
+    rows.append(
+        "YM4_VOL01_SECOND|L_ge3_two_plaquette_XOR_pair_count=2"
+        "|distinct_adjtrace_overlap=0_by_unique_link"
+        "|offdiagonal_V2_half=1/4"
+        "|vacuum_counterterm=1/4"
+        "|offdiagonal_H2=ZERO|json=0"
+    )
     rows.append(
         "YM4_VOL01_OBSTRUCTION|L2_six_K4_2_requires_double_windings=YES"
         "|L_ge3_plaquette_band_first_variation=ZERO"
-        "|second_order_local_cluster_input=NEXT"
+        "|L_ge3_second_order_band_scalar=YES"
+        "|third_order_connected_cluster_input=NEXT"
         "|volume_uniform_SU2_gap=OPEN|json=0"
     )
     return "\n".join(rows) + "\n"
