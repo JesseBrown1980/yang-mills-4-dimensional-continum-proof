@@ -357,7 +357,7 @@ def atlas_provenance():
     for uid in ("YM4-VOL04", "YM4-VOL04-AUDIT"):
         require(uid in records and page.count('href="#' + uid + '"') >= 12,
                 "VOL04_missing_live_3d_node_" + uid)
-        require(overview.count("index.html#" + uid) == 4,
+        require(overview.count('href="index.html#' + uid + '"') == 4,
                 "VOL04_missing_four_panel_card_" + uid)
     require("YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp" in manifest
             and "YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp" in manifest
