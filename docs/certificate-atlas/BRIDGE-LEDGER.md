@@ -1,3 +1,9 @@
+## November 22 — VOL09 volume-uniform original continuous SU2 good-star probability
+
+[Source-pinned theorem](NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md) · [independent relative-entropy review](../../reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md) · [exact integer ternary replay](../../tests/ym4_su2_vol09_periodic_good_star.py) · [HBP](YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp) · [PR #109](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109).
+
+A *constructive original Wilson step* now bounds the equilibrium Gibbs frequency of the fifteen-loop gauge-invariant bad-star event **uniformly in all periodic L^4**, L>=3. The exact theorem states `E(1-W_p)<=1/beta+[4/(3beta)]log(1536 beta^(3/2))` and `P(G_epsilon^c)<=24 E(1-W_p)/epsilon`. An exact rational upper envelope at beta=9^k is `8(35+18k)/(epsilon*9^k)`. The k=5 epsilon=1/2 ceiling is **2000/59049** and the k=8 shrinking epsilon=1/81 ceiling is **1432/531441**. A separate entropy audit checks the same 4D source normalization. The open continuation is now the **conditional physical-size cube**, gauge-invariant bad-island cluster estimates, and all-sector block coupling, followed by the VOL07 spectral-root and continuum OS/source obligations.
+
 ## November 22 — VOL08 original continuous SU2 Wilson gauge-invariant boundary acceptance
 
 [Source-pinned VOL08 note](NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md) · [independent continuous Haar audit](../../reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md) · [integer Q8 noncommutative gauge checker](../../tests/ym4_su2_vol08_wilson_star.py) · [HBP source receipt](YM4-VOL08-WILSON-STAR-20261122.hbp) · [draft PR #108](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108).
