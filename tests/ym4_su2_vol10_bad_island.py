@@ -79,18 +79,35 @@ def original_link_graph(L):
     vertices = list(product(range(L), repeat=4))
     links = [(x, mu) for x in vertices for mu in range(4)]
     neighbors = {e: set() for e in links}
+    incident_counts = {e: 0 for e in links}
+    plaquettes = []
     for x in vertices:
         for mu in range(4):
             for nu in range(mu+1, 4):
                 p = ((x, mu), (step(x, mu, L), nu),
                      (step(x, nu, L), mu), (x, nu))
                 require(len(set(p)) == 4, "four_distinct_plaquette_edges")
+                plaquettes.append(p)
                 for e in p:
+                    incident_counts[e] += 1
                     for f in p:
                         if e != f:
                             neighbors[e].add(f)
     require(len(neighbors) == 4 * L * L * L * L,
             "actual_original_four_dimensional_link_count")
+    require(len(plaquettes) == 6 * L * L * L * L,
+            "original_four_dimensional_plaquette_count")
+    require(all(c == 6 for c in incident_counts.values()),
+            "original_six_plaquettes_per_link")
+    require(6 * len(links) == 4 * len(plaquettes),
+            "incidence_four_to_one_defect_budget")
+    # A selected plaquette defect can trigger bad-star labels on at most
+    # its four original oriented links; this is geometry, not an assertion
+    # that arbitrarily selected original plaquettes are actually defective.
+    selected_defects = plaquettes[::11]
+    potentially_bad = set(e for p in selected_defects for e in p)
+    require(len(potentially_bad) <= 4 * len(selected_defects),
+            "four_to_one_Wilson_defect_budget")
     require(all(len(v) == 18 for v in neighbors.values()),
             "original_Wilson_graph_degree_exact_eighteen")
     for e, vs in neighbors.items():
@@ -189,6 +206,7 @@ def certify():
         "YM4_VOL10_BOX|beta=9_power_12|epsilon=1/2|side=27|P_any_bad_le=16064/531441|side81_raw=16064/6561|side81_verdict=INCONCLUSIVE|json=0\n"
         "YM4_VOL10_BOX_LARGE|beta=9_power_16|epsilon=1/2|side=243|P_any_bad_le=20672/531441|four_bad_count_side27_le=4016/531441|json=0\n"
         "YM4_VOL10_GRAPH|dimension=4|L3_link_count=324|L4_link_count=1024|degree=18|rooted_animals_le=18_power_2m_minus2|greedy_independent_ge=ceil_m_over19|json=0\n"
+        "YM4_VOL10_DEFECT|bad_star_implies_incident_bad_plaquette=YES|full_volume_bad_link_count_le=4_times_bad_plaquette_count|island_size_m_requires_defect_count_ge=ceil_m_over4|original_Wilson=YES|json=0\n"
         "YM4_VOL10_CONDITIONAL|independent_set_joint_rho=OPEN|if_rho_le=18_power_minus57|then_root_island_tail_le=18_power_minus_m_minus2|sampled_integer_exponents=PASS|json=0\n"
         "YM4_VOL10_NEGATIVE|perfectly_correlated_all_bad_indicator=REJECT_PRODUCT_INFERENCE|one_site_marginal_does_not_give_cluster_tail=YES|physical_cube_conditional=OPEN|json=0\n"
         "YM4_VOL10_SCOPE|periodic_original_SU2_finite_box=ANALYTIC_DERIVATION|bad_island_joint=OPEN|arbitrary_exterior_block=OPEN|11_continuum_gates=OPEN|json=0\n"
