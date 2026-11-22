@@ -28,7 +28,7 @@ Let \(X\) be the projection of a Haar unit quaternion onto any fixed unit quater
 \boxed{m(\kappa)\ge 1-\frac{3}{2\kappa}}.
 \tag{2}
 \]
-**Proof without special-function approximations.** Set \(t=1-x\in[0,2]\). Its tilted density is proportional to
+**Proof without special-function approximations.** The identity is also independently recovered by direct integration by parts in [VOL08 audit](../../reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md). Set \(t=1-x\in[0,2]\). Its tilted density is proportional to
 \[
 t^{1/2}e^{-\kappa t}\,\underbrace{\sqrt{(2-t)_+}}_{v(t)\text{ nonincreasing}}.
 \]
@@ -125,7 +125,7 @@ A separate **anti-falsification** check shows flipping both the link and all six
 
 ## Finite receipt and independent acceptance gates
 
-The exact-intenger checker [\`tests/ym4_su2_vol08_wilson_star.py\`](../../tests/ym4_su2_vol08_wilson_star.py) is deliberately a **finite algebra/replay checker**: it reconstructs six oriented original Wilson staple paths and all eighteen distinct neighboring links for each link on \(3^4\) (324 links) and \(4^4\) (1024 links); verifies exact quaternion noncommutative gauge covariance, plaquette and fifteen loop invariants; constructs B and F by changing one original exterior link; and checks all displayed rational fractions and adversarial center controls. It uses only the finite \(Q_8\) subgroup as **algebraic witness fixtures**, while analytic formulas (1)–(10) apply to the full original *continuous* SU(2) Haar measure.
+The exact-integer checker [\`tests/ym4_su2_vol08_wilson_star.py\`](../../tests/ym4_su2_vol08_wilson_star.py) is deliberately a **finite algebra/replay checker**: it reconstructs six oriented original Wilson staple paths and all eighteen distinct neighboring links for each link on \(3^4\) (324 links) and \(4^4\) (1024 links); verifies exact quaternion noncommutative gauge covariance, plaquette and fifteen loop invariants; constructs B and F by changing one original exterior link; and checks all displayed rational fractions and adversarial center controls. It uses only the finite \(Q_8\) subgroup as **algebraic witness fixtures**, while analytic formulas (1)–(10) apply to the full original *continuous* SU(2) Haar measure.
 
 [HBP receipt](YM4-VOL08-WILSON-STAR-20261122.hbp) and the hosted exact byte-for-byte replay workflow pin results. Neither the checker nor the workflow mechanizes the Gamma comparison or a 4D continuum existence proof; those analytic steps should receive an independent mathematical review before any promotion.
 
