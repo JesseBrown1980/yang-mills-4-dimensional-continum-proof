@@ -32,11 +32,17 @@ def test_physical_cube(k):
     # Block time b=3**k, so physical time a*b=1 exactly.
     b = a_den
     require(b == a_den, "physical_time_exact_one")
-    # q=1/2 gives lattice-block mass >= log(2) > 1/2:
-    # e^(1/2) < sum_{n=0}^\infty (1/2)^n = 2.
-    # The strict inequality follows as 1/n! < 1 for all n>=2.
-    # Proof is symbolic; 2 is an upper geometric sum, not a float estimate.
-    require(1 * 2 == 2, "strict_taylor_geometric_comparator")
+    # q=1/2 gives physical-block mass >= log(2) > 1/2.
+    # e^(1/2) = 1 + 1/2 + 1/8 + sum(n>=3) (1/2)^n/n!
+    # < 1 + 1/2 + 1/8 + sum(n>=3) (1/2)^n
+    # = 1 + 1/2 + 1/8 + 1/4 = 15/8 < 2.
+    # All components and strict comparison checked with integers.
+    first_three_in_eighths = 8 + 4 + 1
+    geometric_tail_in_eighths = 2
+    require(first_three_in_eighths + geometric_tail_in_eighths == 15,
+            "strict_series_majorant")
+    require(first_three_in_eighths + geometric_tail_in_eighths < 16,
+            "strict_e_half_less_than_two")
     return b
 
 
