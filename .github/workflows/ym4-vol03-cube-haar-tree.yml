@@ -1,0 +1,48 @@
+name: YM4 VOL03 exact continuous SU2 cube Haar and hierarchical audit
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol03_cube_haar_cell_tree.py'
+      - 'docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md'
+      - '.github/workflows/ym4-vol03-cube-haar-tree.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol03_cube_haar_cell_tree.py'
+      - 'docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md'
+      - '.github/workflows/ym4-vol03-cube-haar-tree.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  continuous-SU2-cube-fourth-Haar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 exact Haar and abstract hierarchy replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol03
+          python3 -I -B tests/ym4_su2_vol03_cube_haar_cell_tree.py > build/ym4-vol03/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol03_cube_haar_cell_tree.py > build/ym4-vol03/REPLAY.hbp
+          cmp build/ym4-vol03/FIRST.hbp build/ym4-vol03/REPLAY.hbp
+          cmp build/ym4-vol03/FIRST.hbp docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp
+          echo '3e852099eb6e26050adf8dec61498c3b01dabd29562e3999d3517cc1789813ec  build/ym4-vol03/FIRST.hbp' | sha256sum -c
+          grep -Fq '|integral_six_trace=1/16|raw_W_fourth_cube_contribution=1/256|' build/ym4-vol03/FIRST.hbp
+          grep -Fq '|SU2_input=NOT_CERTIFIED|' build/ym4-vol03/FIRST.hbp
+          grep -Fq '|global_fourth_Feshbach=OPEN|volume_uniform_gap=OPEN|' build/ym4-vol03/FIRST.hbp
+      - name: Strict original repository no-floating-point gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol03-six-face-cube-Haar-and-conditional-tree
+          path: build/ym4-vol03/
+          retention-days: 90
+          if-no-files-found: warn
