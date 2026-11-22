@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=107|resources=538|pr_events=101|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=109|resources=543|pr_events=102|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -124,3 +124,8 @@ NODE|id=YM4-VOL08-AUDIT|status=DRAFT_CHECKED|scope=second_analytic_integration_b
 ATLAS4D|VOL08_SU2_GOOD_STAR|beta=81|eps=1/81|plaquette_bad_ge=NONE|conditional_bad_le=401/8640|six_union_le=401/1440|source=ORIGINAL_WILSON|json=0
 ATLAS4D|VOL08_SU2_FRUSTRATION|beta=81|one_external_link_changed=YES|same_gauge_invariant_plaquette_TV_ge=29/36|three_changed_TV_ge=31/36|limit_beta_to_infty=ONE|json=0
 ATLAS4D|VOL08_CONTINUUM|external_human_peer_review=OPEN|weak_coupling_physical_cube=OPEN|global_bad_boundary_frequency=OPEN|11_original_gates=OPEN|json=0
+NODE|id=YM4-VOL09|status=DRAFT_CHECKED|scope=original_continuous_SU2_periodic_volume_uniform_good_star_frequency|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/bddb78b960252e82ee278fd342ec80310f1b562b/docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md|dependencies=YM4-VOL08,YM4-VOL08-TV,YM4-VOL07|json=0
+NODE|id=YM4-VOL09-AUDIT|status=DRAFT_CHECKED|scope=independent_KL_divergence_periodic_good_star_4d_SU2|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/9922861949a26c27cadc99276e2a3b547e4da09b/reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md|dependencies=YM4-VOL09,YM4-VOL08-AUDIT,YM4-VOL07|json=0
+ATLAS4D|VOL09_PERIODIC_SU2|beta=9_power_5|eps=1/2|bad_star_probability_le=2000/59049|volume_independent=YES|gauge_invariant=YES|json=0
+ATLAS4D|VOL09_SHRINKING_GOOD_STAR|beta=9_power_8|eps=1/81|bad_star_probability_le=1432/531441|eps_and_bad_frequency_to_zero=YES|json=0
+ATLAS4D|VOL09_CONTINUUM|arbitrary_exterior_cube=OPEN|bad_island_cluster_control=OPEN|positive_continuum_source=OPEN|11_original_gates=OPEN|json=0
