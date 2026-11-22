@@ -29,7 +29,7 @@ jobs:
           set -euo pipefail
           python3 -I -X utf8 scripts/no_float_gate.py --selftest
           python3 -I -X utf8 scripts/no_float_gate.py .
-      - name: Verify 99 source nodes, WG09/VOL01 links, 11 open gates, external exact constants
+      - name: Verify 101 source nodes, VOL06, 11 open gates, external exact constants
         run: |
           set -euo pipefail
           mkdir -p build/ym4_atlas
