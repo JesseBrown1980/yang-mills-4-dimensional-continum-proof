@@ -1,0 +1,7 @@
+YM4_VOL10_MODEL|original_continuous_SU2_Wilson=YES|law=periodic_Gibbs|bad_star=15_gauge_invariant_loop_test|json=0
+YM4_VOL10_BOX|beta=9_power_12|epsilon=1/2|side=27|P_any_bad_le=16064/531441|side81_raw=16064/6561|side81_verdict=INCONCLUSIVE|json=0
+YM4_VOL10_BOX_LARGE|beta=9_power_16|epsilon=1/2|side=243|P_any_bad_le=20672/531441|four_bad_count_side27_le=4016/531441|json=0
+YM4_VOL10_GRAPH|dimension=4|L3_link_count=324|L4_link_count=1024|degree=18|rooted_animals_le=18_power_2m_minus2|greedy_independent_ge=ceil_m_over19|json=0
+YM4_VOL10_CONDITIONAL|independent_set_joint_rho=OPEN|if_rho_le=18_power_minus57|then_root_island_tail_le=18_power_minus_m_minus2|sampled_integer_exponents=PASS|json=0
+YM4_VOL10_NEGATIVE|perfectly_correlated_all_bad_indicator=REJECT_PRODUCT_INFERENCE|one_site_marginal_does_not_give_cluster_tail=YES|physical_cube_conditional=OPEN|json=0
+YM4_VOL10_SCOPE|periodic_original_SU2_finite_box=ANALYTIC_DERIVATION|bad_island_joint=OPEN|arbitrary_exterior_block=OPEN|11_continuum_gates=OPEN|json=0
