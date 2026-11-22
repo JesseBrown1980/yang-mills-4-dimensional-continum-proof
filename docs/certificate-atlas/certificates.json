@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "version": "2026-11-21",
+    "version": "2026-11-22",
     "title": "Four-dimensional continuous-SU(2) Yang–Mills certificate atlas",
     "graph_coordinates": "Ordinal navigation only; x,y,z are NOT physical measurements",
     "main_4d_commit": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
@@ -16,28 +16,33 @@
     "open_certificates": 11,
     "external_candidates": 22,
     "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open",
-    "sources_last_checked": "2026-11-21",
+    "sources_last_checked": "2026-11-22",
     "verified_external_repository_count": 10,
     "second_search_date": "2026-11-21",
-    "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input"
+    "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input",
+    "latest_reconciled_main_commit": "4860b55b739080c245533f238541971589eca8cf",
+    "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
+    "volume_uniform_gap": "OPEN",
+    "next_volume_proof": "YM4-VOL01"
   },
   "summary": {
-    "curated_records": 76,
+    "curated_records": 92,
     "physical_gap_claims": 0,
-    "resource_files": 430,
-    "pr_events": 74,
+    "resource_files": 500,
+    "pr_events": 92,
     "review_receipts": 310,
     "status_counts": {
-      "FINITE_PASS": 13,
+      "FINITE_PASS": 28,
       "CONDITIONAL": 3,
-      "DRAFT_CHECKED": 13,
+      "DRAFT_CHECKED": 14,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 5,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 430
+    "linked_resources": 500,
+    "fixed_L2_first_neutral_Wilson_claims": 1
   },
   "records": [
     {
@@ -1845,6 +1850,412 @@
       ],
       "verification_tier": "ANALYTIC_POSITIVE_MEASURE_DUAL_EXACT_RATIONAL_CALIBRATION",
       "acceptance": "Exact operator / gauge model / normalization / physical time / proof checker and limit assumptions must be independently matched"
+    },
+    {
+      "id": "YM4-WT01",
+      "title": "Original SU2 Wilson local transfer",
+      "status": "FINITE_PASS",
+      "category": "transfer",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Exact original local SU2 convolution and C0/C2/C4",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-SU2-WILSON-LOCAL-TRANSFER-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-02",
+        "YM4-04"
+      ],
+      "point": [
+        6,
+        3,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WC01",
+      "title": "Original 4D Wilson cylinder moments",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Original continuous SU2 4D spatial-temporal C0/C2/C4",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WT01"
+      ],
+      "point": [
+        6,
+        4,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WV01",
+      "title": "Physical Gauss-vacuum Wilson source",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Full Gauss physical Wilson vacuum trace-bridge moments",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WC01"
+      ],
+      "point": [
+        6,
+        5,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG01",
+      "title": "Original Wilson Gram and projector",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Exact original Wilson Gram and first-weight projector gate",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WV01"
+      ],
+      "point": [
+        6,
+        6,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG02",
+      "title": "Eight SU2 center-flux projectors",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Eight center sectors and local Wilson selection",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG01"
+      ],
+      "point": [
+        6,
+        7,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG03",
+      "title": "Charged first physical excitation",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "First total physical excitation charged and local Wilson-decoupled at L2",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG02"
+      ],
+      "point": [
+        7,
+        3,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG04",
+      "title": "Neutral 42-state electric band",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "24 plaquettes plus 18 double windings; isolated L2 band",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG04-NEUTRAL-42-WILSON-BAND-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG03"
+      ],
+      "point": [
+        7,
+        4,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG05",
+      "title": "True vacuum 42-band Wilson weight",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Full interacting-vacuum 42-band weight greater than 1/5",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG04"
+      ],
+      "point": [
+        7,
+        5,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG06",
+      "title": "Exact 42-Gram magnetic slope",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Six magnetic K4,2 blocks; first-order positive six modes",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG05"
+      ],
+      "point": [
+        7,
+        6,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG07",
+      "title": "Full physical six-eigenstate Feshbach",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Actual rank-six L2 neutral cluster, Wilson weight greater than 9/400",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG06"
+      ],
+      "point": [
+        7,
+        7,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG08",
+      "title": "Wilson-visible symmetric eigenmode",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Symmetric rank-one individual Wilson weight greater than 1/289",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG07"
+      ],
+      "point": [
+        8,
+        3,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG09-ORBIT",
+      "title": "WG09 six-mode G48 orbital algebra",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Three orbitals I O X with symmetry ranks 1 2 3",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-SIX-ORBITALS-PILOT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG08"
+      ],
+      "point": [
+        8,
+        4,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG09-HAAR",
+      "title": "WG09 exact second and third Haar coefficients",
+      "status": "FINITE_PASS",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "Second order scalar; third order strict symmetric ordering signs",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG09-ORBIT",
+        "YM4-WG06"
+      ],
+      "point": [
+        8,
+        5,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG09-SPIN",
+      "title": "WG09 independently checked spin-tail census",
+      "status": "FINITE_PASS",
+      "category": "representation",
+      "scope": "Original continuous SU2 physical finite spatial L2 or original local transfer",
+      "result": "42 four-fundamental and 12 two-link spin-one neutral states",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG04"
+      ],
+      "point": [
+        8,
+        6,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-WG09-ORDER",
+      "title": "WG09 first-neutral finite-beta ordering",
+      "status": "FINITE_PASS",
+      "category": "wilson",
+      "scope": "Original physical SU2 fixed L2, 0<beta<=10^-12",
+      "result": "Full L2 continuous SU2 first-neutral symmetric weight >1/289; gap >exp(-24beta)t(21/320)beta^3",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "dependencies": [
+        "YM4-WG09-HAAR",
+        "YM4-WG09-SPIN",
+        "YM4-WG08"
+      ],
+      "point": [
+        8,
+        7,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL01",
+      "title": "L>=3 first magnetic plaquette slope obstruction",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Original SU2 spatial L=2,3,4,5 and all L>=3 combinatorial obstruction",
+      "result": "All L>=3 plaquette-to-plaquette first variation zero; second-order local cluster next",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/689ac4cb3f7df7184b5088599989333f4f5f46cc/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "689ac4cb3f7df7184b5088599989333f4f5f46cc",
+      "dependencies": [
+        "YM4-WG09-ORDER",
+        "YM4-WG04",
+        "YM4-Q07"
+      ],
+      "point": [
+        9,
+        3,
+        7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
     }
   ],
   "resources": [
@@ -5287,6 +5698,566 @@
       "ref": "3f3dd921d485e485b3ccba51a41a817528cd236c",
       "kind": "workflow",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3f3dd921d485e485b3ccba51a41a817528cd236c/.github/workflows/ym4-spectral-window-dual.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wc01-original-4d-wilson-cylinder.yml",
+      "blob": "5ce26e15a2e0f5d7430fb612593461dadad5dba7",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wc01-original-4d-wilson-cylinder.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg01-wilson-projector-gram.yml",
+      "blob": "8510a12c64bf52a48b6f1172144660834a04e551",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg01-wilson-projector-gram.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg02-centre-flux-projectors.yml",
+      "blob": "9b62958028bdc6e1f1eda395a81fbf9e2e61c247",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg02-centre-flux-projectors.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg03-first-centre-energy-order.yml",
+      "blob": "7396823bdcbdd4e966a8ab9eaa064d1f78ecfdfe",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg03-first-centre-energy-order.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg04-neutral-42-band.yml",
+      "blob": "6ec20bd7986a84752f88cc492db5b82cf4957288",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg04-neutral-42-band.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg05-positive-42band-wilson-weight.yml",
+      "blob": "ab40f0118fde9d1dbf7d4bc8ad9dcfb7434a9675",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg05-positive-42band-wilson-weight.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg06-magnetic-42gram.yml",
+      "blob": "616036cf3f66d6cff3a53bc4071b1356c32d0ce2",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg06-magnetic-42gram.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg07-six-feshbach.yml",
+      "blob": "37925e0b9ab9d60a75ab696dfff2bf10a2c548bd",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg07-six-feshbach.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg08-symmetric-wilson-rankone.yml",
+      "blob": "10a8e434259b67d023388791f9d3953912ae7707",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg08-symmetric-wilson-rankone.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg09-audit-finite-beta.yml",
+      "blob": "eb08c5436ed7af7859d3f893b4db909a00247016",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg09-audit-finite-beta.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg09-second-third-haar.yml",
+      "blob": "89528706895bdd75cb6cdd0c7121c98f035dfe0d",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg09-second-third-haar.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wg09-six-orbitals-pilot.yml",
+      "blob": "32e2f4e3119ede44efc478b29417b9dc2c95c330",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wg09-six-orbitals-pilot.yml"
+    },
+    {
+      "path": ".github/workflows/ym4-wv01-physical-vacuum-wilson.yml",
+      "blob": "a782d23a596fda998ad6dafd9c184d233a86dabd",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/.github/workflows/ym4-wv01-physical-vacuum-wilson.yml"
+    },
+    {
+      "path": "docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md",
+      "blob": "37aaa36ec7f1ef46507c3409eb545814fcec8eac",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WC01-ORIGINAL-4D-WILSON-CYLINDER-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md",
+      "blob": "1e5b3944643cbba757f9858b8e538c633691c729",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG01-FIRST-WILSON-GRAM-PROJECTOR-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md",
+      "blob": "8c34f398dbf177021402b356c800e25d461b9448",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG02-SU2-CENTER-FLUX-WILSON-PROJECTORS-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md",
+      "blob": "0d80ca0fffe57fac72bbd56ae2b301ed7bcf4c88",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG03-FIRST-SU2-CENTER-CHARGED-ENERGY-ORDER-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG04-NEUTRAL-42-WILSON-BAND-20261121.md",
+      "blob": "e645db7f42b546f40def207d35fe13647d7bac9b",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG04-NEUTRAL-42-WILSON-BAND-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md",
+      "blob": "9295b39eecbd02fb30756a6bd0c0d01e66de7484",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG05-POSITIVE-42BAND-WILSON-WEIGHT-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md",
+      "blob": "5a426abba150a4d60343bfdc574bd9c099b17fc0",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG06-FIRST-MAGNETIC-42GRAM-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md",
+      "blob": "d8167fd468556313fbcd031e1666f8bf7d5a2b31",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG07-SU2-SIX-FESHBACH-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md",
+      "blob": "07e9708d9014334c98ff0771f5000eedd1b8f463",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md",
+      "blob": "d6a0e85be6e7d07c349d16385cd95500595fcae3",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md",
+      "blob": "0aa4d88b3f96b13788620a812c5a77fccfd3cfd8",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WG09-SIX-ORBITALS-PILOT-20261121.md",
+      "blob": "91f6298dbb7eafc09100f31242ddcee3bdff0ada",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WG09-SIX-ORBITALS-PILOT-20261121.md"
+    },
+    {
+      "path": "docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md",
+      "blob": "cf2d8b1fdf978def49a90298ae5b8b5e9322321c",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/NOTE-YM4-WV01-WILSON-PHYSICAL-VACUUM-TRACE-20261121.md"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp",
+      "blob": "b19f7fca82906540f93e438bcca7c43d1b066340",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WC01-4D-WILSON-CYLINDER-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp",
+      "blob": "5e89aa509f56d880759954815080f3d629864fa6",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG01-FIRST-WILSON-PROJECTOR-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp",
+      "blob": "79160e9bbc783fba7b805c680aa37906ad83858f",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG02-SU2-CENTER-SECTORS-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp",
+      "blob": "2833c463342c3addc2ce2f6ff4951d02df9e9ecc",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG03-FIRST-EXCITED-CENTER-ORDER-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG04-NEUTRAL-42-BAND-20261121.hbp",
+      "blob": "668f45892cd3280e4bd20b1ff440e9f04c455ab6",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG04-NEUTRAL-42-BAND-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp",
+      "blob": "5fea25b0caf389fdd617947c71e4a8168345c924",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG05-WILSON-42BAND-POSITIVE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp",
+      "blob": "29f8562db645ea1f256620d47d734ae9a8584d02",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG06-42GRAM-MAGNETIC-SLOPE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp",
+      "blob": "7dc5e707fc29cdf9c35cf61ba92dc7dc70767b86",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG07-FESHBACH-SIX-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp",
+      "blob": "2307bf80f06dad738fd8b2f4888227fd5b9e7856",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WG08-SYMMETRIC-WILSON-EIGENMODE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp",
+      "blob": "508a99649f4a0fcc892bd67402e9919177c4d567",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/PREDICT-YM4-WV01-WILSON-VACUUM-TRACE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp",
+      "blob": "6318bf5eb28637427cdaa2abd47e00fea0ad3181",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WC01-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp",
+      "blob": "930784b4e145682945ef7e5c1de0e47d0e1f6a95",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WC01-HOSTED-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG01-ACCEPTANCE-20261121.hbp",
+      "blob": "07b6d7b941bcef2a86a77409062306fc31f37658",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG01-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG01-HOSTED-GRAM-RECEIPT-20261121.hbp",
+      "blob": "c0539fbd7525b4c4c404319eb79a53f7deeff0f1",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG01-HOSTED-GRAM-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp",
+      "blob": "c01d332ab6ff88b909068fc821cdad82d3a575e0",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG02-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp",
+      "blob": "8a1c3abde2a2ed4d9cb6526615c0f276e82c86dc",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG02-HOSTED-CENTER-SECTOR-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG03-ACCEPTANCE-20261121.hbp",
+      "blob": "a803f20189463e5982090ce3568680276a15e4e0",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG03-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG03-HOSTED-FIRST-CENTER-ORDER-RECEIPT-20261121.hbp",
+      "blob": "7992f225fa1a1f7d4bb5d092bab4115339dcab02",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG03-HOSTED-FIRST-CENTER-ORDER-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG04-ACCEPTANCE-20261121.hbp",
+      "blob": "5700531ed4f9dd95e28fb615e89a190b5e480dc8",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG04-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG04-HOSTED-42BAND-RECEIPT-20261121.hbp",
+      "blob": "b9e526199432e98b72b6e66c56bbf7fb074056b2",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG04-HOSTED-42BAND-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG05-ACCEPTANCE-20261121.hbp",
+      "blob": "5d61f8b056c88a53a9968b67c1e6562193e3990c",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG05-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG05-HOSTED-WILSON-WEIGHT-RECEIPT-20261121.hbp",
+      "blob": "e38fa6b4e1fc71f3c39187d78310a0e3f0dcc524",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG05-HOSTED-WILSON-WEIGHT-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp",
+      "blob": "37ccbb92d17e65e07a42ba08d5f149fa872ed014",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG06-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp",
+      "blob": "52b7f21d838b56428d62caca7b12e36ad091b518",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG06-HOSTED-42GRAM-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG07-ACCEPTANCE-20261121.hbp",
+      "blob": "d8b12a3e8f895777117669fa344d467331414b2e",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG07-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG07-HOSTED-SIX-FESHBACH-RECEIPT-20261121.hbp",
+      "blob": "c7177e30b42866916614bb4e37a85cb1555b63ba",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG07-HOSTED-SIX-FESHBACH-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp",
+      "blob": "2d9713ff21d6833e3df4c0afb58e3a94942a2a49",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG08-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp",
+      "blob": "bc6ad23f73e2f1aace1c7b9e9da2c5f1b328eb1e",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG08-HOSTED-SYMMETRIC-RANKONE-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp",
+      "blob": "6ecd8a791f1144e6fd41c4f58968f91408e3049f",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp",
+      "blob": "4ac6be40aaa9958626f5de8efac32caa0873fbee",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp",
+      "blob": "76630d473236662ac56962425d0d1a52eece9f73",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG09-SECOND-THIRD-EXACT-LOCAL-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WG09-STRUCTURAL-PILOT-20261121.hbp",
+      "blob": "173d8136fb8abfb1b5b46e447f141e0ce7078f36",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WG09-STRUCTURAL-PILOT-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp",
+      "blob": "8e4be1c55b013bdf78064f9447968fbf139ef75d",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WT01-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp",
+      "blob": "8e81a3d225e294114cccee571cd220312782de6f",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WV01-ACCEPTANCE-20261121.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp",
+      "blob": "28aa5b826fb539d91ec3dae41efbea66a0d83a5d",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/docs/certificate-atlas/YM4-WV01-HOSTED-VACUUM-RECEIPT-20261121.hbp"
+    },
+    {
+      "path": "tests/test_ym4_su2_wilson_local_transfer.py",
+      "blob": "eba1afba7f9e9fdb11fd16d235b2cbc45c7ad722",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/test_ym4_su2_wilson_local_transfer.py"
+    },
+    {
+      "path": "tests/ym4_su2_six_perturbative_haar.py",
+      "blob": "4f314705b01f30e5ce53cf52728be3ef809d0a3c",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/ym4_su2_six_perturbative_haar.py"
+    },
+    {
+      "path": "tests/ym4_su2_six_symmetry_orbitals.py",
+      "blob": "e2502f656a6528c334f2550115142afe438a9c3d",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/ym4_su2_six_symmetry_orbitals.py"
+    },
+    {
+      "path": "tests/ym4_su2_wg09_full_operator_remainder.py",
+      "blob": "f9bb385984b9d4957595a03fbf1b5e604b6dbd94",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/ym4_su2_wg09_full_operator_remainder.py"
+    },
+    {
+      "path": "tests/ym4_su2_wg09_independent_spin_enumeration.py",
+      "blob": "0f61af6ce322cb816be66933210d9a761c386c48",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/ym4_su2_wg09_independent_spin_enumeration.py"
+    },
+    {
+      "path": "tests/ym4_su2_wilson_local_transfer.py",
+      "blob": "7787d1240298981bcf07c0543d34feeb57ee57db",
+      "origin": "merged_WT_WC_WV_WG01_WG09",
+      "ref": "4860b55b739080c245533f238541971589eca8cf",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4860b55b739080c245533f238541971589eca8cf/tests/ym4_su2_wilson_local_transfer.py"
+    },
+    {
+      "path": "tests/ym4_su2_vol01_plaquette_slope_obstruction.py",
+      "blob": "4bf779559e119a81b33d2452bdff2787d5c8fdd2",
+      "origin": "VOL01_candidate",
+      "ref": "b1ace7c30625ebc567fd10786896744d465f8593",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b1ace7c30625ebc567fd10786896744d465f8593/tests/ym4_su2_vol01_plaquette_slope_obstruction.py"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
+      "blob": "eefee1fbd8980c4167bfc73b6167dc4ccafb0370",
+      "origin": "VOL01_candidate",
+      "ref": "689ac4cb3f7df7184b5088599989333f4f5f46cc",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/689ac4cb3f7df7184b5088599989333f4f5f46cc/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md"
+    },
+    {
+      "path": ".github/workflows/ym4-vol01-plaquette-obstruction.yml",
+      "blob": "516d8c2c04773925e78ed1be5da0304bc7db3df0",
+      "origin": "VOL01_candidate",
+      "ref": "ccae9eaa9a2c79604d5b2c3154c122042768198f",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ccae9eaa9a2c79604d5b2c3154c122042768198f/.github/workflows/ym4-vol01-plaquette-obstruction.yml"
     }
   ],
   "pr_events": [
@@ -5955,6 +6926,150 @@
       "base": "main",
       "head_sha": "27f5f632fd5d6b5a2de6fad8f251321041e3df1b",
       "merged_at": "2026-11-03T21:01:47Z"
+    },
+    {
+      "number": 81,
+      "title": "Publish clickable 4D certificate atlas",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/81",
+      "merge_sha": "2df43aa123b0a888d9f171bb8bf10726c949fce1",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 82,
+      "title": "Atlas second certified-source survey",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/82",
+      "merge_sha": "52d950a41284567c7726ca7cb8c2ffd02c21366d",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 83,
+      "title": "Anaxia parity and coupling adapter",
+      "state": "open",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/83",
+      "merge_sha": null,
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 84,
+      "title": "Immutable proof pin fix",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/84",
+      "merge_sha": "08029cd9dec30d5ba1e73509b3f6c86b891a9b8d",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 85,
+      "title": "WT01 local Wilson transfer",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/85",
+      "merge_sha": "c1c214f7a63e9e0a2bd83e5db781094377daab2f",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 86,
+      "title": "WC01 original 4D Wilson cylinder",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/86",
+      "merge_sha": "9f1238042e0fadc53b817313b46432a39f1fd513",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 87,
+      "title": "WV01 physical vacuum trace",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/87",
+      "merge_sha": "13820effedd849f36591b550d9e656ad0401fe26",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 88,
+      "title": "WG01 original Wilson Gram",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/88",
+      "merge_sha": "de98edfdd4771e85ad86a2478834d392b6a5bb2c",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 89,
+      "title": "WG02 center-flux projectors",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/89",
+      "merge_sha": "25497749f069c7f4193cf743baeafe100db69819",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 90,
+      "title": "WG03 charged-first energy order",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/90",
+      "merge_sha": "c7d3bf04c9df2703df6beab0e17a005e2784477a",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 91,
+      "title": "WG04 42-state neutral band",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/91",
+      "merge_sha": "45820165f757b4e4621fe08643a695ce8a029ad0",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 92,
+      "title": "WG05 true Wilson band weight",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/92",
+      "merge_sha": "019db749f62dc15622e1d31ccfff5a14b42370e4",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 93,
+      "title": "WG06 exact magnetic 42-Gram",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/93",
+      "merge_sha": "ebbb0d736db83f03174aa55480a2464af691736f",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 94,
+      "title": "WG07 true six-mode Feshbach",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/94",
+      "merge_sha": "6af6095b8329235813ab5ff3e118465a380c1038",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 95,
+      "title": "WG08 symmetric rank-one Wilson eigenmode",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/95",
+      "merge_sha": "d41f6af6a5cc91a47fff7a87a008376fbfe66379",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 96,
+      "title": "WG09 exact orbitals and Haar",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/96",
+      "merge_sha": "b240879900d1317ee9b889a8484898b2316605ac",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 97,
+      "title": "WG09 independent full-operator remainder",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/97",
+      "merge_sha": "2200447564900f6444d8767d968cdf6deebf24ed",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 98,
+      "title": "WG09 accepted atlas README",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/98",
+      "merge_sha": "4860b55b739080c245533f238541971589eca8cf",
+      "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
     }
   ],
   "cross_repository": [
@@ -6106,6 +7221,7 @@
     "atlas_nodes_added": 10,
     "source_ledger": "docs/certificate-atlas/EXTERNAL-SEARCH-ROUND2-20261121.md",
     "open_subgates_unchanged": 11,
-    "first_Wilson_weight": "OPEN"
+    "first_Wilson_weight": "OPEN",
+    "WG09_fixed_L2_first_neutral": "FINITE_PASS"
   }
 }
