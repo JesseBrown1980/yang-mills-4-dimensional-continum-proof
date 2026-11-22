@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=95|resources=514|pr_events=96|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=97|resources=520|pr_events=97|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -99,4 +99,8 @@ NODE|id=YM4-VOL03|status=DRAFT_CHECKED|scope=original_SU2_L3_L4_exact_cube_Haar_
 NODE|id=EXT-NS-CELL|status=EXTERNAL|scope=external_Navier_Lean_cell_conditionals_numeric_cert_unavailable|source=https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md|dependencies=YM4-VOL03,YM4-Q08|json=0
 ATLAS4D|VOL03|six_face_Haar=1/16|raw_fourth_cube_W=1/256|isolated_cube_norm_all_L_ge3=5/128|global_physical_Feshbach=OPEN|volume_uniform_gap=OPEN|json=0
 ATLAS4D|NAVIER_EXTERNAL|lean_statement_interface=PUBLIC_PINNED|numerical_certificate=UNAVAILABLE|interval_check=UNAVAILABLE|patched_Lean_rebuild=NOT_REPORTED|json=0
+NODE|id=YM4-VOL04|status=DRAFT_CHECKED|scope=original_SU2_fixed_L_ge3_complete_fourth_order_Q4|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md|dependencies=YM4-VOL03,YM4-VOL02,YM4-WG09-ORDER|json=0
+NODE|id=YM4-VOL04-AUDIT|status=FINITE_PASS|scope=independent_quartic_parity_XOR_Haar_ledger|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/tests/ym4_su2_vol04_independent_parity_audit.py|dependencies=YM4-VOL04,YM4-VOL02|json=0
+ATLAS4D|VOL04|complete_fourth_Q4=23I/384_plus_cube_edge_over256|Q4_uniform_L_ge3_norm=7/48|beta5_remainder_uniform_in_L=OPEN|physical_band_mass_gap=OPEN|json=0
+ATLAS4D|VOL04_DISPERSION|single_top_mode_weight=1/(3L3)|within_band_splitting_upper=55/(32L2)|vacuum_to_band_gap=NEXT|json=0
 ATLAS4D|external_research=ATTRIBUTED_METHOD_OR_CONDITIONAL_ONLY|continuum_first_spectral_weight=OPEN|finite_S3_bridge=NO_DIRECT_SU2_PROOF|script_runtime=NONE|json=0

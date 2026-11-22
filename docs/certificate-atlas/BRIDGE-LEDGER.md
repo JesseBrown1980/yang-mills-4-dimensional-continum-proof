@@ -1,3 +1,11 @@
+## November 22 — VOL04 complete physical fourth-order coefficient and next uniform-volume gate
+
+**Exact original continuous-SU2 fourth coefficient:** [complete derivation](NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md), [HBP physical source receipt](YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp), [independent exhaustive quartic parity receipt](YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp) and [original code](../../tests/ym4_su2_vol04_full_fourth_schur.py). For every fixed L>=3, genuine-vacuum-normalized plaquette-band transfer has coefficient **Q4=23I/384+(A_cube+A_edge)/256** and **||Q4||=7/48 independently of spatial volume**. Both the six-face cube Haar contribution and complete leading S6 electric tail are included. The extensive all-pair vacuum contributions cancel exactly.
+
+**Independent falsifier:** all 3,240 unordered L3 plaquette pairs and all four L4/L5 geometric classes satisfy the classified fourth-order parity-word count: 12N−16 disconnected repeated-face words plus 24 per common cube. The L-independent coefficient norm is genuine, while the remaining **O_L(beta5)** Taylor error is still volume-dependent.
+
+**Next mathematical acceptance:** derive a uniform volume independent connected high-order Schur/polymer remainder at common positive beta, preserving all center sectors, physical Gauss constraints and the infinite-spin tail. Certify a vacuum-to-band/connected-Wilson correlation gap instead of assuming a single momentum eigenmode has L-independent spacing and local spectral weight. The original eleven 4D continuum acceptance gates remain OPEN.
+
 ## November 22, 2026 — VOL03 cube Haar and pinned Navier formalization interfaces
 
 **Additional exact local bound:** every plaquette is contained in two elementary cubes and has exactly ten other faces in those cube boundaries. Thus the isolated raw cube-only fourth-order matrix is 10-regular with exact operator norm **5/128 uniformly for L>=3**. This does not yet bound the complete physical fourth-order Feshbach operator.

@@ -1,3 +1,9 @@
+## Latest VOL04 exact fourth-order and independent-audit nodes
+
+[Open the clickable 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html). All twelve SVG 3D views now include **VOL04** (complete original continuous SU2 fixed-L fourth coefficient, exact 7/48 L-independent norm) and **VOL04-AUDIT** (independent all-L3 quartic parity census), and each of the four overview panels links to both.
+
+The atlas contains 97 nodes, 520 source evidence paths and 97 PR records. The uniform-in-L finite-beta remainder and physical 4D continuum mass gap remain OPEN.
+
 ## New VOL03 and external-method links · 22 November 2026
 
 The clickable [4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now includes 95 nodes. VOL03 is our original continuous-SU2 local cube-Haar pilot (DRAFT_CHECKED), while NS-CELL is an external fluid-specific Lean method reference (EXTERNAL). Both appear in all twelve SVG camera views and the four-panel overview.

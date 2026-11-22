@@ -1,5 +1,20 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL04 complete fixed-volume fourth-order SU2 physical Schur coefficient
+
+**[VOL04 complete mathematical note](docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md)** · [frozen exact physical fourth-order receipt](docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp) · [independent exhaustive L=3 parity audit](docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp) · [live clickable 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) · [draft PR #103](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/103).
+
+For every **fixed periodic spatial L>=3**, the original continuous-SU(2) Gauss-projected transfer, after full vacuum and electric (S=6) Schur elimination and genuine vacuum eigenvalue normalization, has neutral fundamental-plaquette-band expansion
+
+    F_P(beta,nu)/Lambda_vac = (1-beta^2/8)I + beta^4 Q_L + O_L(beta^5),
+    Q_L = (23/384)I + (A_cube,L + A_edge,L)/256,
+    ||Q_L|| = 7/48 for EVERY L>=3.
+
+This coefficient includes the exact VOL03 six-face Haar (1/16), cube term (1/256), vacuum/disconnected fourth-order cancellation, and **physical six-link electric-tail correction (1/256)** on plaquettes sharing an edge. The normalized diagonal (23/384) is independent of volume because extensive terms cancel algebraically. A separate original-link XOR source enumerates **all 3,240 L=3 offdiagonal plaquette pairs** and four geometric pair classes at L=4,5. The resulting fourth-order full-coefficient norm is volume-independent, and the next coefficient-level momentum spacing is at most (55/(32L^2)).
+
+**Evidence boundary:** exact finite-L Taylor coefficient and L-independent coefficient norm (internally checked); a **uniform-in-L finite-beta remainder**, physical vacuum-to-excitation mass-gap inequality at common coupling, weak-coupling scaling and 4D continuum reconstruction remain OPEN. The next target is a **connected cluster remainder certificate** and local Wilson spectral-band estimate rather than individual momentum-mode isolation.
+
+
 ## November 21, 2026 — WG09 independently audited first center-neutral Wilson excitation at fixed spatial L=2
 
 **[WG09 full-operator finite-beta theorem](docs/NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md)** · [Exact third-order SU(2) Haar note](docs/NOTE-YM4-WG09-SECOND-THIRD-HAAR-PILOT-20261121.md) · [Finite-beta SHA-pinned receipt](docs/certificate-atlas/YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp) · [Independent spin-state enumeration](docs/certificate-atlas/YM4-WG09-INDEPENDENT-SPIN-ENUM-20261121.hbp) · [Coefficient PR #96](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/96) · [Independent audit and bound PR #97](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/97) · [Hosted exact norm and SHA replay PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803).

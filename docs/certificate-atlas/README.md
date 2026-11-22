@@ -1,5 +1,15 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL04 complete original-SU2 physical fourth-order coefficient
+
+The [clickable 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now contains **97 proof nodes**, **520 indexed evidence files** and **97 PR records**. VOL04 adds the complete original physical Gauss-projected fourth-order neutral plaquette-band coefficient, and VOL04-AUDIT adds the independent all-3,240-pair L=3 quartic-parity verification with L=4,5 controls.
+
+For every fixed spatial L>=3, [VOL04](NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md) gives
+`Q4 = (23/384)I + (A_cube+A_edge)/256`, with **exact L-independent coefficient norm 7/48**, after original continuous-SU2 Haar, vacuum elimination, physical six-fundamental-link electric Schur correction and true-vacuum normalization. The uniform fourth-order **coefficient** is accepted internally subject to replay; the finite-beta remainder is **O_L(beta5)**, and its volume-independent bound is OPEN.
+
+The largest *within-band* eigenvalue spacing scales at most as 55/(32L²), so the upcoming uniform-volume proof targets the **vacuum-to-neutral-band mass gap and connected local Wilson correlations**, preserving all **11 OPEN** continuum obligations. [Exact HBP](YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp) · [independent audit HBP](YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp) · [proof source](../../tests/ym4_su2_vol04_full_fourth_schur.py).
+
+
 **Additional exact local bound:** every plaquette is contained in two elementary cubes and has exactly ten other faces in those cube boundaries. Thus the isolated raw cube-only fourth-order matrix is 10-regular with exact operator norm **5/128 uniformly for L>=3**. This does not yet bound the complete physical fourth-order Feshbach operator.
 
 ## November 22 — VOL03 exact fourth-order cube Haar and external Lean certificate mapping
