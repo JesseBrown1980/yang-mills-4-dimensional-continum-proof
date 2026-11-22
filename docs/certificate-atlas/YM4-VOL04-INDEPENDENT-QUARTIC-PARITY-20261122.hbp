@@ -1,0 +1,4 @@
+YM4_VOL04_AUDIT|L=3|N=81|ordered_four_parity_pair_checks=3240|pair_types=4|cube_boundary_extra_words=24|disconnected_words=12N-16|all_checks=PASS|json=0
+YM4_VOL04_AUDIT|L=4|N=192|ordered_four_parity_pair_checks=4|pair_types=4|cube_boundary_extra_words=24|disconnected_words=12N-16|all_checks=PASS|json=0
+YM4_VOL04_AUDIT|L=5|N=375|ordered_four_parity_pair_checks=4|pair_types=4|cube_boundary_extra_words=24|disconnected_words=12N-16|all_checks=PASS|json=0
+YM4_VOL04_AUDIT_VERDICT|L3_complete_pairs=PASS|L4_L5_all_four_pair_types=PASS|local_SU2_Haar_weights=SEPARATE_EXACT_PROOF|volume_uniform_beta_remainder=OPEN|json=0
