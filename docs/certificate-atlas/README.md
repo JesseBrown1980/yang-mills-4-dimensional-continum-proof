@@ -1,5 +1,14 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL06 candidate entire physical strong-coupling transfer spectrum
+
+The [interactive 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) has **101 proof nodes**, **528 evidence resources**, and **99 PR records** in research branch [VOL06 PR #105](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/105). Its two new source-linked nodes are clickable in all twelve graph-camera views and four overview panels.
+
+The [new analytic note](NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md) proposes a full physical finite-volume spectral bound, extending [VOL05](NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md) from the local Wilson-visible spectral measure to *all* nonvacuum Gauss-invariant SU(2) eigenstates, including center-charged and Wilson-dark sectors. The observation is that an eigenvector divided by its strictly positive continuous physical transfer vacuum is a bounded spatial-slice gauge observable. The Dobrushin covariance bound holds for all such observables, with spatial-volume-dependent prefactor but an L-independent exponential base 18 beta; taking spectral n-th roots removes the prefactor. This gives a **candidate transfer ratio bound ≤18 beta** for every fixed L>=3 at 0<beta<1/18, and ≤9/500 at beta=1/1000.
+
+**Acceptance:** VOL06 is tagged CONDITIONAL and geometry checker DRAFT_CHECKED. External Dobrushin comparison, the centered transfer covariance insertion and positivity-improving Gauss transfer, and eigenfunction regularity require independent analytic signoff. Strong-coupling lattice-time units and all eleven open weak-coupling/continuum obligations are preserved as separate proof targets. [Exact rational receipt](YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp) · [original integer geometry and spectral-root checker](../../tests/ym4_su2_vol06_full_spectrum.py).
+
+
 ## November 22 — VOL05 all-volume local Wilson strong-coupling spectral support
 
 The [interactive 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now has **99 source-linked proof nodes**, **524 indexed evidence resources** and **98 PR records**, including new VOL05 conditional spectral-support and independent 4D geometry certificates.
