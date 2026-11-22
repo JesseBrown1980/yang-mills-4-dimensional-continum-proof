@@ -1,0 +1,8 @@
+YM4_VOL04_GRAPH|spatial_L=3|plaquette_band=81|cube_neighbors=10|edge_neighbors=12|cube_edge_overlap=8|unique_neighbors=14|scaled_Q_row_sum_768=112|connected=YES|json=0
+YM4_VOL04_GRAPH|spatial_L=4|plaquette_band=192|cube_neighbors=10|edge_neighbors=12|cube_edge_overlap=8|unique_neighbors=14|scaled_Q_row_sum_768=112|connected=YES|json=0
+YM4_VOL04_GRAPH|spatial_L=5|plaquette_band=375|cube_neighbors=10|edge_neighbors=12|cube_edge_overlap=8|unique_neighbors=14|scaled_Q_row_sum_768=112|connected=YES|json=0
+YM4_VOL04_HAAR|hex_overlap=1/2|hex_norm=1|shared_link_S6_projection=chi_hex_over2|magnetic_E_to_R6=chi_hex_over4|json=0
+YM4_VOL04_SCHUR|vacuum_pair_fourth=(3N-2)/96|direct_pair_fourth=(3N-2)/96|vacuum_disconnected_cancellation=EXACT|tail_S6_edge=1/256|cube_surface=1/256|json=0
+YM4_VOL04_NORMALIZED|d2=-1/8|Q4_diag=23/384|Q4_edge=1/256|Q4_cube=1/256|Q4_norm=7/48|uniform_coefficient_norm=YES|json=0
+YM4_VOL04_DISPERSION|top_mode=UNIFORM|top_mode_weight_single_local_source=1/(3L3)|top_mode_spacing_upper_lt=55/(32L2)|global_individual_mode_uniform_isolation=NO|json=0
+YM4_VOL04_VERDICT|fourth_order_coefficient=EXACT_FOR_FIXED_L_ge3|beta_remainder_uniform_in_L=OPEN|full_finite_beta_volume_gap=OPEN|continuum_mass_gap=OPEN|json=0
