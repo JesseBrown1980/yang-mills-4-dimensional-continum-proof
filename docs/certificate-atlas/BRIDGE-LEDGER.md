@@ -1,3 +1,13 @@
+## November 22 — VOL11 original SU2 separated plaquettes: exact conditional product and exponential Haar tail
+
+[Source-pinned theorem](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md) · [independent analytic reconstruction](../../reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [integer original 4D graph and rate checker](../../tests/ym4_su2_vol11_separated_defects.py) · [frozen receipt](YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).
+
+**Exact original continuous-SU2 input:** An independent set S of original positively oriented links sharing no plaquette makes the full Wilson Gibbs conditional density factor over selected links when the original complement is fixed. Every original six-staple gauge-invariant good-star exterior is measurable under that complement. A genuine normalized **continuous SU2 Haar** cap integration gives a defect tail (q_etalemin(1,324eta^2e^{-45eta/64})) on each epsilon=1/16 good exterior for original marked Wilson defect W<=1/2. Exact rational twelve-term Taylor at beta=81 gives q<10^-6. The actual Gibbs joint event (all r selected marked Wilson defects AND all r good exteriors) is <=q^r, with r=4 giving <10^-24 at beta81.
+
+**Boundary term:** The unconditional joint marked-plaquette probability is <=(q^{r-t}+r p_star/(t+1)), where the known VOL09 single-star bound controls (p_star), while their **joint** exterior law remains unrestricted. This explicitly prevents promoting the result to VOL10-JOINT. A counterexample with perfectly correlated exterior labels ensures a small marginal cannot be treated as exponential cluster activity.
+
+**Next exact acceptance:** a two-/four-star **joint bad-exterior** Wilson Gibbs bound with source-conditioned repairs, or a multiscale gauge-invariant block activity that controls correlated bad-exterior islands and feeds VOL10 and VOL07. The physical-size SU2 cube and all eleven original continuum gates remain OPEN.
+
 ## November 22 — VOL10 original Wilson four-to-one defect budget and conditional island activity
 
 [New analytic source](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md) · [independent proof reconstruction](../../reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md) · [exact integer original link graph](../../tests/ym4_su2_vol10_bad_island.py) · [receipt](YM4-VOL10-BAD-ISLAND-20261122.hbp) · [PR #110](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110).
