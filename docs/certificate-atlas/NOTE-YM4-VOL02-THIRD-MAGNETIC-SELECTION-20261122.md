@@ -44,3 +44,7 @@ The notation \(O_L\) is deliberate: **no volume-independent fourth-order constan
 The integer-only independent code \`tests/ym4_su2_vol02_third_parity.py\` reconstructs all plaquette support masks at L=2,3,4,5 and independently counts ordered three-insertion parity possibilities for every diagonal and offdiagonal plaquette-pair matrix element. At L=3,4,5 all counts vanish exactly; L=2 is retained as a negative control for the four-face topological distinction. The source has no dependency on WG09's coefficient generator. Hosted duplicate replay and optimized replay are required.
 
 **Next mathematical object:** the full vacuum-subtracted, higher-spin-corrected **fourth-order connected plaquette kernel**, with linked-cluster organization, exact Haar coefficients, real center sectors, and a uniform spatial-volume norm/correlator estimate. The eleven continuum construction obligations remain OPEN. These exact small-beta support identities form a fixed-lattice bridge, not a continuum mass-gap proof.
+
+## Rebase-aware acceptance
+
+This research branch is reviewed against the merged November 22 WG09/VOL01 92-node atlas baseline. The theorem inputs remain the original SU2 physical transfer and linkwise Haar parity; all continuum and uniform-volume spectral gates remain OPEN.
