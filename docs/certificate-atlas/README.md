@@ -1,5 +1,7 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+**Additional exact local bound:** every plaquette is contained in two elementary cubes and has exactly ten other faces in those cube boundaries. Thus the isolated raw cube-only fourth-order matrix is 10-regular with exact operator norm **5/128 uniformly for L>=3**. This does not yet bound the complete physical fourth-order Feshbach operator.
+
 ## November 22 — VOL03 exact fourth-order cube Haar and external Lean certificate mapping
 
 The live 4D atlas now has **95 source-linked nodes, 514 indexed resources and 96 PR records**, including [VOL03 exact cube Haar](NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md) and an external [Alpöge–Buckmaster Navier–Stokes Lean cell-layer formalization](https://github.com/tristanbuckmaster/navier-stokes/tree/ad53419de079eb8f95f60313473374624a348546). Both have clickable proof nodes in the live 3D viewer.
