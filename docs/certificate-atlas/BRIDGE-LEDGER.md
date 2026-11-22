@@ -1,3 +1,13 @@
+## November 22, 2026 — VOL03 cube Haar and pinned Navier formalization interfaces
+
+**Additional exact local bound:** every plaquette is contained in two elementary cubes and has exactly ten other faces in those cube boundaries. Thus the isolated raw cube-only fourth-order matrix is 10-regular with exact operator norm **5/128 uniformly for L>=3**. This does not yet bound the complete physical fourth-order Feshbach operator.
+
+**Original SU2 exact local certificate:** [full mathematical note](NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md), [frozen HBP](YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp), [integer-only source](../../tests/ym4_su2_vol03_cube_haar_cell_tree.py). The six-face genuine Haar integral is 1/16 and one selected raw fourth-order normalized-Wilson cube term is 1/256. Physical vacuum-subtracted Schur terms and volume-uniform spectral estimates remain OPEN.
+
+**Attribution and methodological links:** [Navier upstream README](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/README.md), [Lean proof organization](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md), [cell-layer statement interface](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/CellLayerChallenge.lean), [cell-form predicates](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/Breakdown/CertCell/CellCalculusStatements.lean), [Lean theorem comparator](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/comparator-cell-layer.json), and [conditional proof assembly](https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/Breakdown/Cert/Assembly.lean). These are pinned external methodology. Numerical certificate: UNAVAILABLE. 128-bit interval verification: UNAVAILABLE. Patched Lean release rebuild: NOT REPORTED.
+
+**Next:** compute the complete connected fourth-order SU2 physical kernel, certify cell lower bounds and cross-cell couplings, then test L-independent spectral bounds. Eleven original continuum obligations remain OPEN.
+
 # Cross-repository Certificate Match & Open-Obligation Ledger
 
 **VOL02:** [Five-plaquette parity and fourth-order threshold](NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md) follows the first- and second-order VOL01 scalar results. It proves the third-order single-plaquette-band matrix vanishes for every L>=3 and identifies fourth order as the first possible nonscalar coefficient. Hosted replay is archived independently; the volume-uniform mass gap remains OPEN.

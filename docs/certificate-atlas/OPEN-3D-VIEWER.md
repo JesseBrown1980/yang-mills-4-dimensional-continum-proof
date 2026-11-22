@@ -1,3 +1,9 @@
+## New VOL03 and external-method links · 22 November 2026
+
+The clickable [4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) now includes 95 nodes. VOL03 is our original continuous-SU2 local cube-Haar pilot (DRAFT_CHECKED), while NS-CELL is an external fluid-specific Lean method reference (EXTERNAL). Both appear in all twelve SVG camera views and the four-panel overview.
+
+The upstream numerical Navier certificate and its interval verification are unavailable. Original SU2 volume-uniform and continuum mass-gap gates remain OPEN.
+
 # Open the clickable 4D Yang–Mills Certificate Atlas
 
 **VOL02:** Select the new blue VOL02 point in any graph mode for the exact spatial-L>=3 five-plaquette parity certificate, integer test and fourth-order connected-kernel research target. All eleven continuum proof tasks remain OPEN.

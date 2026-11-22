@@ -1,5 +1,18 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+**Additional exact local bound:** every plaquette is contained in two elementary cubes and has exactly ten other faces in those cube boundaries. Thus the isolated raw cube-only fourth-order matrix is 10-regular with exact operator norm **5/128 uniformly for L>=3**. This does not yet bound the complete physical fourth-order Feshbach operator.
+
+## November 22 — VOL03 exact fourth-order cube Haar and external Lean certificate mapping
+
+The live 4D atlas now has **95 source-linked nodes, 514 indexed resources and 96 PR records**, including [VOL03 exact cube Haar](NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md) and an external [Alpöge–Buckmaster Navier–Stokes Lean cell-layer formalization](https://github.com/tristanbuckmaster/navier-stokes/tree/ad53419de079eb8f95f60313473374624a348546). Both have clickable proof nodes in the live 3D viewer.
+
+The original continuous-SU2 six-face Haar integral is **1/16**; the specified raw fourth-order Wilson cube term is **1/256**. The synthetic two-block positivity tree is a conditional assembly test, with full physical SU2 fourth-order Schur/Feshbach and uniform-in-volume estimates OPEN.
+
+The upstream Navier repo has formal conditional Lean proof interfaces, a theorem comparator and cell-form objects, but no publicly released numerical certificate or 128-bit Arb/FLINT verifier. Its patched Lean package was not rebuilt at release. Their fluid theorem is not imported as SU2 evidence.
+
+[Exact HBP receipt](YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp) · [Integer producer](../../tests/ym4_su2_vol03_cube_haar_cell_tree.py) · [Live 3D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html). The original 11 continuum obligations remain OPEN.
+
+
 **VOL02 follow-up:** [exact five-face parity and fourth-order threshold](NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md) — for every spatial L>=3, the first three fundamental-plaquette-band coefficients are scalar after vacuum reduction; first possible nonscalar term is fourth order. Original physical volume-uniform remainder is OPEN. [Frozen prediction](PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp) and [source checker](../../tests/ym4_su2_vol02_third_parity.py) are indexed in the machine manifest. The live graph has a new clickable VOL02 node in all twelve views.
 
 ## November 22 — Complete original Wilson certificate reconciliation and volume bridge
