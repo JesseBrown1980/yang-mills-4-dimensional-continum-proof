@@ -1,5 +1,19 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL05 spatial-volume-uniform strong-coupling Wilson spectral support
+
+**[VOL05 complete analytic certificate](docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md)** · [exact rational HBP](docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp) · [source-level checker](tests/ym4_su2_vol05_wilson_spectral_support.py) · [YM4-04B original volume-independent SU2 connected covariance](docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md) · [draft PR #104](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/104).
+
+At the **fixed strong-coupling regime (0<\beta<1/18)**, the original continuous-SU(2) 3+1D Wilson measure's linkwise Dobrushin comparison bound (alpha\le18\beta), combined with the **positive original Gauss physical Wilson transfer**, gives a *spatial-volume-independent spectral-support upper bound* on every state with positive overlap with the centered local spatial Wilson halftrace. Its total normalized local spectral weight also has an exact uniform lower bound from single-link conditional Haar variance:
+
+    Lambda_Wilson_visible / Lambda_physical_vacuum <= 18 beta,
+    total local centered Wilson spectral weight >= (1-12 beta)/4.
+
+At beta=1/1000, these specialize to **visible transfer ratio ≤ 9/500**, **total centered Wilson weight ≥ 247/1000**, uniformly across finite spatial lattice sizes L. The ratio bound implies a Wilson-channel transfer energy separation at least log(500/9). This is a mathematically explicit consequence of the named classical Rebeschini–van Handel Dobrushin comparison theorem and standard Wilson transfer positivity; its proof dependencies are documented instead of being represented as newly formalized code. The exact integer source independently rebuilds 4D link geometry and covariance constants, and checks deliberate negative controls.
+
+**Scope:** the bound describes the **local center-neutral Wilson-visible spectral support and total weight** at fixed strong coupling. The complete first physical excitation (including Wilson-dark center-charged sectors), its weak-coupling scaling, and 4D continuum Yang–Mills mass gap remain OPEN. VOL04's volume-independent fourth Taylor coefficient norm 7/48 remains complementary to this stronger Wilson-channel approach. The live 4D atlas preserves the remaining eleven continuum gates.
+
+
 ## November 22, 2026 — VOL04 complete fixed-volume fourth-order SU2 physical Schur coefficient
 
 **[VOL04 complete mathematical note](docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md)** · [frozen exact physical fourth-order receipt](docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp) · [independent exhaustive L=3 parity audit](docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp) · [live clickable 4D certificate atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) · [draft PR #103](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/103).
