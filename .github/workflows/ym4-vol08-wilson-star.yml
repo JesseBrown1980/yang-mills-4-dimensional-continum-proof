@@ -1,0 +1,49 @@
+name: YM4 VOL08 exact SU2 Wilson link-star gauge and boundary checks
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol08_wilson_star.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp'
+      - '.github/workflows/ym4-vol08-wilson-star.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol08_wilson_star.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp'
+      - '.github/workflows/ym4-vol08-wilson-star.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-wilson-link-star:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Independent normal and optimized exact algebra/rational replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol08
+          python3 -I -B tests/ym4_su2_vol08_wilson_star.py > build/ym4-vol08/WILSON-STAR.hbp
+          python3 -O -I -B tests/ym4_su2_vol08_wilson_star.py > build/ym4-vol08/REPLAY.hbp
+          cmp build/ym4-vol08/WILSON-STAR.hbp build/ym4-vol08/REPLAY.hbp
+          cmp build/ym4-vol08/WILSON-STAR.hbp docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp
+          echo '4e0b62d399e6a2b35e5dee1a1773cfee3d6f24888a76f6b48b2957d6d437febf  build/ym4-vol08/WILSON-STAR.hbp' | sha256sum -c
+          grep -Fq '|single_external_link_change_TV_ge=29/36|' build/ym4-vol08/WILSON-STAR.hbp
+          grep -Fq '|single_link_uniform_weak_mixing=REJECT|' build/ym4-vol08/WILSON-STAR.hbp
+          grep -Fq '|physical_cube_bound=OPEN|' build/ym4-vol08/WILSON-STAR.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol08/WILSON-STAR.hbp
+      - name: Strict integer no-floating-point policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol08-original-SU2-wilson-star
+          path: build/ym4-vol08/
+          retention-days: 90
+          if-no-files-found: warn
