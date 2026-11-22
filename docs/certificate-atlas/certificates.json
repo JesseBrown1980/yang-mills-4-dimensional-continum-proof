@@ -40,25 +40,26 @@
     "VOL06_full_physical_strong_coupling": "CONDITIONAL_DOBRUSHIN_TRANSFER_DENSITY_AUDIT",
     "VOL06_full_physical_ratio_at_beta_1_over_1000": "9/500",
     "VOL06_weak_coupling": "OPEN",
-    "VOL06_11_continuum_gates": "OPEN"
+    "VOL06_11_continuum_gates": "OPEN",
+    "VOL06_analytic_review": "INDEPENDENT_RECONSTRUCTION_PASS_EXTERNAL_PEER_REVIEW_OPEN"
   },
   "summary": {
-    "curated_records": 101,
+    "curated_records": 102,
     "physical_gap_claims": 0,
-    "resource_files": 528,
+    "resource_files": 529,
     "pr_events": 99,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
       "CONDITIONAL": 5,
-      "DRAFT_CHECKED": 18,
+      "DRAFT_CHECKED": 19,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 528,
+    "linked_resources": 529,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2504,6 +2505,33 @@
       "point": [
         10,
         9,
+        10
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL06-AUDIT",
+      "title": "Independent analytic reconstruction of all-sector strong-coupling transfer bound",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Original continuous SU2 finite spatial L>=3, beta<1/18; exact TV normalization, tilt covariance, physical transfer, bounded eigenfunction quotient and spectral-root proof",
+      "result": "Reconstructed Rebeschini–van Handel Corollary 2.6 and Lüscher transfer implications; conditional analytic PASS, external peer review OPEN, weak-coupling continuum OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e494ce3a03f093d9f359e25438343a9a91a85455/reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "e494ce3a03f093d9f359e25438343a9a91a85455",
+      "dependencies": [
+        "YM4-VOL06",
+        "YM4-VOL05",
+        "YM4-11"
+      ],
+      "point": [
+        10,
+        10,
         10
       ],
       "views": [
@@ -6738,6 +6766,14 @@
       "kind": "workflow",
       "origin": "VOL06_FULL_PHYSICAL_STRONG_COUPLING_CANDIDATE",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c2acd2e5801ab522604816ac972b3772e35e5bed/.github/workflows/ym4-vol06-full-physical-gap.yml"
+    },
+    {
+      "path": "reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md",
+      "blob": "",
+      "origin": "VOL06_INDEPENDENT_ANALYTIC_AUDIT",
+      "ref": "e494ce3a03f093d9f359e25438343a9a91a85455",
+      "kind": "audit",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e494ce3a03f093d9f359e25438343a9a91a85455/reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
