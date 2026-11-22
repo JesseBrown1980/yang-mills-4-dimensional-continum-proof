@@ -23,7 +23,8 @@
     "latest_reconciled_main_commit": "4860b55b739080c245533f238541971589eca8cf",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "YM4-VOL01"
+    "next_volume_proof": "third_order_connected_SU2_plaquette_kernel",
+    "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar"
   },
   "summary": {
     "curated_records": 92,
@@ -2236,10 +2237,10 @@
       "status": "DRAFT_CHECKED",
       "category": "bridge",
       "scope": "Original SU2 spatial L=2,3,4,5 and all L>=3 combinatorial obstruction",
-      "result": "All L>=3 plaquette-to-plaquette first variation zero; second-order local cluster next",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/689ac4cb3f7df7184b5088599989333f4f5f46cc/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
+      "result": "All L>=3 plaquette-band first variation zero and vacuum-reduced second-order matrix scalar; third-order connected kernel next",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/2610fa3674ce91fb9ba0f78acab34cfee4cdc886/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "689ac4cb3f7df7184b5088599989333f4f5f46cc",
+      "ref": "2610fa3674ce91fb9ba0f78acab34cfee4cdc886",
       "dependencies": [
         "YM4-WG09-ORDER",
         "YM4-WG04",
@@ -6237,19 +6238,19 @@
     },
     {
       "path": "tests/ym4_su2_vol01_plaquette_slope_obstruction.py",
-      "blob": "4bf779559e119a81b33d2452bdff2787d5c8fdd2",
+      "blob": "baa6584496e948fb0de258b31894a972e46faa7f",
       "origin": "VOL01_candidate",
-      "ref": "b1ace7c30625ebc567fd10786896744d465f8593",
+      "ref": "e048fc474a73facf1b8968296361a405ac751806",
       "kind": "checker",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b1ace7c30625ebc567fd10786896744d465f8593/tests/ym4_su2_vol01_plaquette_slope_obstruction.py"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e048fc474a73facf1b8968296361a405ac751806/tests/ym4_su2_vol01_plaquette_slope_obstruction.py"
     },
     {
       "path": "docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
-      "blob": "eefee1fbd8980c4167bfc73b6167dc4ccafb0370",
+      "blob": "80e433a11ef55dc698d17452d2d1074af7f0f0ff",
       "origin": "VOL01_candidate",
-      "ref": "689ac4cb3f7df7184b5088599989333f4f5f46cc",
+      "ref": "2610fa3674ce91fb9ba0f78acab34cfee4cdc886",
       "kind": "proof",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/689ac4cb3f7df7184b5088599989333f4f5f46cc/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/2610fa3674ce91fb9ba0f78acab34cfee4cdc886/docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md"
     },
     {
       "path": ".github/workflows/ym4-vol01-plaquette-obstruction.yml",
