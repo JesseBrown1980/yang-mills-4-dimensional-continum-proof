@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=99|resources=524|pr_events=98|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=102|resources=529|pr_events=99|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -108,3 +108,9 @@ NODE|id=YM4-VOL05-GEOM|status=FINITE_PASS|scope=exact_original_4D_link_geometry_
 ATLAS4D|VOL05_STRONG_COUPLING|beta=1/1000|Wilson_visible_ratio_le=9/500|total_local_Wilson_weight_ge=247/1000|spatial_volume_uniform=YES|external_Dobrushin_theorem=REQUIRED|json=0
 ATLAS4D|VOL05_SCOPE|first_full_physical_excitation=OPEN|weak_coupling_scaling=OPEN|continuum_mass_gap=OPEN|json=0
 ATLAS4D|external_research=ATTRIBUTED_METHOD_OR_CONDITIONAL_ONLY|continuum_first_spectral_weight=OPEN|finite_S3_bridge=NO_DIRECT_SU2_PROOF|script_runtime=NONE|json=0
+NODE|id=YM4-VOL06|status=CONDITIONAL|scope=original_SU2_all_physical_sectors_fixed_strong_beta_L_ge3_analytic_candidate|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3d722e315db2fccf31d73f584e83eda46763d5ce/docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md|dependencies=YM4-VOL05,YM4-11,YM4-WC01,YM4-WV01|json=0
+NODE|id=YM4-VOL06-GEOM|status=DRAFT_CHECKED|scope=integer_original_4D_link_geometry_time_distance_spectral_root_falsifier|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/6b45d203ec6a0ea0320030297da0ba9d08c4472e/tests/ym4_su2_vol06_full_spectrum.py|dependencies=YM4-VOL06,YM4-VOL05-GEOM|json=0
+ATLAS4D|VOL06_STRONG_COUPLING|beta=1/1000|all_physical_transfer_ratio_le=9/500|includes_center_charged_and_Wilson_dark=YES|external_Dobrushin_transfer_audit=REQUIRED|json=0
+ATLAS4D|VOL06_SCOPE|fixed_spatial_L_ge3_full_spectrum=CONDITIONAL|weak_coupling_scaling=OPEN|11_continuum_gates=OPEN|json=0
+NODE|id=YM4-VOL06-AUDIT|status=DRAFT_CHECKED|scope=independent_reconstruction_published_Dobrushin_transfer_full_physical_spectrum|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e494ce3a03f093d9f359e25438343a9a91a85455/reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md|dependencies=YM4-VOL06,YM4-VOL05,YM4-11|json=0
+ATLAS4D|VOL06_ANALYTIC_AUDIT|finite_bare_strong_coupling=RECONSTRUCTION_PASS|class=DRAFT_CHECKED|external_peer_review=OPEN|beta_to_infinity=OPEN|json=0
