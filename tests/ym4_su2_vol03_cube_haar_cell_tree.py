@@ -111,6 +111,33 @@ def cube_integral(n):
     return numerator, denominator
 
 
+
+def cube_only_neighbors(n):
+    # Each elementary face belongs to two cubes. Distinct face-pairs
+    # belong to at most one cube for spatial L >= 3.
+    incidence = defaultdict(int)
+    neighbors = defaultdict(set)
+    pair_multiplicity = defaultdict(int)
+    for site in product(range(n), repeat=3):
+        faces = tuple(frozenset((loc, axis) for loc, axis, ori in face)
+                      for face in cube_faces(site, n))
+        assert len(set(faces)) == 6
+        for face in faces:
+            incidence[face] += 1
+            for other in faces:
+                if face != other:
+                    neighbors[face].add(other)
+        for face, other in combinations(faces, 2):
+            pair_multiplicity[frozenset((face, other))] += 1
+    assert len(incidence) == 3 * n * n * n
+    assert all(v == 2 for v in incidence.values())
+    assert all(len(neighbors[face]) == 10 for face in incidence)
+    assert all(v == 1 for v in pair_multiplicity.values())
+    # Nonnegative symmetric 10-regular cube-only adjacency / 256
+    # has exact norm 10/256 = 5/128.
+    assert 10 * 128 == 5 * 256
+    return 10
+
 def parent_lower(children, cross_norm):
     assert len(children) == 2 and cross_norm >= 0
     return min(children) - cross_norm
@@ -134,11 +161,15 @@ def conditional_assembly_fixture():
 
 def certify():
     assert cube_integral(3) == cube_integral(4)
+    assert all(cube_only_neighbors(n) == 10 for n in (3, 4, 5))
     assert conditional_assembly_fixture() == 5
     return (
         "YM4_VOL03_HAAR|group=continuous_SU2|spatial_L=3_4"
         "|cube_faces=6|unique_links=12|integral_six_trace=1/16"
         "|raw_W_fourth_cube_contribution=1/256|integer_only=YES|json=0\n"
+        "YM4_VOL03_VOLUME|cube_only_neighbors_per_plaquette=10"
+        "|cube_only_matrix_norm=5/128|uniform_in_L=GEOMETRIC_ONLY"
+        "|full_connected_operator=OPEN|json=0\n"
         "YM4_VOL03_TREE|two_block_lower=min_children-minus_cross_norm"
         "|test_levels=8_4_2_1|test_floor=5"
         "|negative_control=REJECT_NONPOSITIVE|SU2_input=NOT_CERTIFIED|json=0\n"
