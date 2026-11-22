@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 95, "atlas_expected_nodes")
+    require(len(rows) == 97, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -161,6 +161,10 @@ def hbp_nodes(text):
             "missing_original_Haar_and_spin_evidence")
     require(rows["YM4-VOL03"]["status"] == "DRAFT_CHECKED",
             "local_cube_not_final_global_gap")
+    require(rows["YM4-VOL04"]["status"] == "DRAFT_CHECKED",
+            "VOL04_fourth_coefficient_promoted_as_full_gap")
+    require(rows["YM4-VOL04-AUDIT"]["status"] == "FINITE_PASS",
+            "VOL04_independent_parity_audit_missing")
     require(rows["EXT-NS-CELL"]["status"] == "EXTERNAL",
             "external_fluid_not_original_SU2_proof")
     require(rows["YM4-Q10"]["status"] == "OPEN",
@@ -268,7 +272,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 95,
+    require(page.count('<article class="entry" id="') == 97,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -308,9 +312,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 95' in manifest
-            and '"resource_files": 514' in manifest
-            and '"pr_events": 96' in manifest,
+    require('"curated_records": 97' in manifest
+            and '"resource_files": 520' in manifest
+            and '"pr_events": 97' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -350,6 +354,20 @@ def atlas_provenance():
             "VOL03_local_vs_external_scope_not_closed")
     require("cube_only_matrix_norm=5/128" in (folder / "YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp").read_text(encoding="utf-8"),
             "cube_only_norm_missing_from_frozen_receipt")
+    for uid in ("YM4-VOL04", "YM4-VOL04-AUDIT"):
+        require(uid in records and page.count('href="#' + uid + '"') >= 12,
+                "VOL04_missing_live_3d_node_" + uid)
+        require(overview.count("index.html#" + uid) == 4,
+                "VOL04_missing_four_panel_card_" + uid)
+    require("YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp" in manifest
+            and "YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp" in manifest
+            and "ym4_su2_vol04_full_fourth_schur.py" in manifest
+            and "ym4_su2_vol04_independent_parity_audit.py" in manifest,
+            "VOL04_exact_and_cleanroom_provenance_missing")
+    require("Q4_uniform_L_ge3_norm=7/48" in hbp and
+            "beta5_remainder_uniform_in_L=OPEN" in hbp and
+            "within_band_splitting_upper=55/(32L2)" in hbp,
+            "VOL04_full_coefficient_vs_uniform_beta_scope_error")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -395,6 +413,10 @@ def atlas_provenance():
                     "id=YM4-VOL03|status=FINITE_PASS"),
         hbp.replace("id=EXT-NS-CELL|status=EXTERNAL",
                     "id=EXT-NS-CELL|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL04|status=DRAFT_CHECKED",
+                    "id=YM4-VOL04|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL04-AUDIT|status=FINITE_PASS",
+                    "id=YM4-VOL04-AUDIT|status=OPEN"),
     ):
         try:
             hbp_nodes(bad)
@@ -405,12 +427,12 @@ def atlas_provenance():
             verify_no_runtime_code(bad)
         except ValueError:
             failures += 1
-    require(failures == 8, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=95|open_gates=11|external_leads=22"
+    require(failures == 10, "negative_scope_controls_not_enforced")
+    print("ATLAS4D_INDEX|nodes=97|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=95|json=0")
-    print("ATLAS4D_ADVERSARIES|negative_controls=8_REJECTED"
+          "|script_free=YES|source_cards=97|json=0")
+    print("ATLAS4D_ADVERSARIES|negative_controls=10_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
