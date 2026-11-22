@@ -437,7 +437,7 @@ def atlas_provenance():
             and "NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md" in manifest
             and "YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md" in manifest,
             "VOL08_original_SU2_Haar_provenance_missing")
-    require("single_external_link_changed=YES" in hbp
+    require("one_external_link_changed=YES" in hbp
             and "same_gauge_invariant_plaquette_TV_ge=29/36" in hbp
             and "weak_coupling_physical_cube=OPEN" in hbp
             and "11_original_gates=OPEN" in hbp,
