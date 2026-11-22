@@ -1,8 +1,10 @@
 # Cross-repository Certificate Match & Open-Obligation Ledger
 
+**VOL02:** [Five-plaquette parity and fourth-order threshold](NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md) follows the first- and second-order VOL01 scalar results. It proves the third-order single-plaquette-band matrix vanishes for every L>=3 and identifies fourth order as the first possible nonscalar coefficient. Hosted replay is archived independently; the volume-uniform mass gap remains OPEN.
+
 ## November 22, 2026 — 4D atlas full original Wilson evidence reconciliation
 
-The [machine-readable atlas](certificates.json), [exact HBP index](ATLAS-INDEX.hbp), [live 12-view clickable graph](index.html) and [four-panel overview](overview.svg) now carry **92 nodes, 500 indexed evidence resources and 92 repository PR records**. They add the complete original SU2 local Wilson WT01/WC01/WV01 and WG01–WG09 result family, three separately replayed WG09 coefficient/audit stages, all original acceptance receipts, and their dependency links. All prior 76 nodes and all eleven YM4-Q open continuum gates are preserved.
+The [machine-readable atlas](certificates.json), [exact HBP index](ATLAS-INDEX.hbp), [live 12-view clickable graph](index.html) and [four-panel overview](overview.svg) now carry **93 nodes, 504 indexed evidence resources and 94 repository PR records**. They add the complete original SU2 local Wilson WT01/WC01/WV01 and WG01–WG09 result family, three separately replayed WG09 coefficient/audit stages, all original acceptance receipts, and their dependency links. All prior 76 nodes and all eleven YM4-Q open continuum gates are preserved.
 
 The accepted **WG09 fixed-spatial-L=2** first neutral individual eigenmode certificate holds for 0<beta<=10^-12. It pairs strict third-order order with a fourth-order full physical infinite-tail bound and true-vacuum centered Wilson squared weight >1/289. The full physical first excited state remains charged. [WG09 full proof](../NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md), [source audit run PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803), [immutable proof receipt](YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp).
 
