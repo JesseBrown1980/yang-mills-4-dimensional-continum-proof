@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 101, "atlas_expected_nodes")
+    require(len(rows) == 102, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -169,6 +169,8 @@ def hbp_nodes(text):
             "VOL06_external_analytic_acceptance_required")
     require(rows["YM4-VOL06-GEOM"]["status"] == "DRAFT_CHECKED",
             "VOL06_geometry_replay_not_full_analytic_signoff")
+    require(rows["YM4-VOL06-AUDIT"]["status"] == "DRAFT_CHECKED",
+            "VOL06_analytic_audit_premature_promotion")
     require(rows["YM4-VOL04"]["status"] == "DRAFT_CHECKED",
             "VOL04_fourth_coefficient_promoted_as_full_gap")
     require(rows["YM4-VOL04-AUDIT"]["status"] == "FINITE_PASS",
@@ -280,7 +282,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 101,
+    require(page.count('<article class="entry" id="') == 102,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -320,8 +322,8 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 101' in manifest
-            and '"resource_files": 528' in manifest
+    require('"curated_records": 102' in manifest
+            and '"resource_files": 529' in manifest
             and '"pr_events": 99' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
@@ -389,7 +391,7 @@ def atlas_provenance():
             and "external_Dobrushin_theorem=REQUIRED" in hbp
             and "weak_coupling_scaling=OPEN" in hbp,
             "strong_coupling_channel_promoted_as_continuum_proof")
-    for uid in ("YM4-VOL06", "YM4-VOL06-GEOM"):
+    for uid in ("YM4-VOL06", "YM4-VOL06-GEOM", "YM4-VOL06-AUDIT"):
         require(uid in records and page.count('href="#' + uid + '"') >= 12,
                 "VOL06_missing_one_of_twelve_graph_camera_nodes_" + uid)
         require(overview.count('href="index.html#' + uid + '"') == 4,
@@ -398,6 +400,9 @@ def atlas_provenance():
             and "ym4_su2_vol06_full_spectrum.py" in manifest
             and "NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md" in manifest,
             "VOL06_original_frozen_sources_missing")
+    require("YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md" in manifest
+            and "finite_bare_strong_coupling=RECONSTRUCTION_PASS" in hbp,
+            "VOL06_review_not_source_indexed")
     require("all_physical_transfer_ratio_le=9/500" in hbp
             and "external_Dobrushin_transfer_audit=REQUIRED" in hbp
             and "11_continuum_gates=OPEN" in hbp,
@@ -459,6 +464,8 @@ def atlas_provenance():
                     "id=YM4-VOL06|status=FINITE_PASS"),
         hbp.replace("id=YM4-VOL06-GEOM|status=DRAFT_CHECKED",
                     "id=YM4-VOL06-GEOM|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL06-AUDIT|status=DRAFT_CHECKED",
+                    "id=YM4-VOL06-AUDIT|status=FINITE_PASS"),
     ):
         try:
             hbp_nodes(bad)
@@ -469,12 +476,12 @@ def atlas_provenance():
             verify_no_runtime_code(bad)
         except ValueError:
             failures += 1
-    require(failures == 14, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=101|open_gates=11|external_leads=22"
+    require(failures == 15, "negative_scope_controls_not_enforced")
+    print("ATLAS4D_INDEX|nodes=102|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=101|json=0")
-    print("ATLAS4D_ADVERSARIES|negative_controls=14_REJECTED"
+          "|script_free=YES|source_cards=102|json=0")
+    print("ATLAS4D_ADVERSARIES|negative_controls=15_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
