@@ -23,31 +23,35 @@
     "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "VOL03_full_fourth_order_connected_physical_Schur",
+    "next_volume_proof": "YM4_VOL05_uniform_connected_beta5_remainder_and_vacuum_to_band_gap",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
     "VOL03_cross_cell_volume_uniform": "OPEN",
     "external_certificate_navier": "CONDITIONAL_LEAN_ONLY_NUMERICAL_DATA_UNAVAILABLE",
-    "VOL03_cube_only_norm": "5_over_128_exact_all_L_ge3_raw_component_only"
+    "VOL03_cube_only_norm": "5_over_128_exact_all_L_ge3_raw_component_only",
+    "VOL04_full_fourth_coefficient": "INTERNAL_FIXED_L_PASS_PENDING_FULL_REVIEW",
+    "VOL04_uniform_coefficient_norm": "7_over_48_exact",
+    "VOL04_uniform_beta_remainder": "OPEN",
+    "VOL04_large_volume_first_individual_spacing": "UPPER_O_L_MINUS2"
   },
   "summary": {
-    "curated_records": 95,
+    "curated_records": 97,
     "physical_gap_claims": 0,
-    "resource_files": 514,
-    "pr_events": 96,
+    "resource_files": 520,
+    "pr_events": 97,
     "review_receipts": 310,
     "status_counts": {
-      "FINITE_PASS": 28,
+      "FINITE_PASS": 29,
       "CONDITIONAL": 3,
-      "DRAFT_CHECKED": 16,
+      "DRAFT_CHECKED": 17,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 514,
+    "linked_resources": 520,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2338,6 +2342,59 @@
       ],
       "views": [
         "proof",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL04",
+      "title": "Complete fourth-order original SU2 physical Schur coefficient",
+      "status": "DRAFT_CHECKED",
+      "category": "spectrum",
+      "scope": "Original continuous SU2 Gauss physical transfer, fixed spatial L>=3; volume-uniform beta remainder OPEN",
+      "result": "Q4=23I/384+(A_cube+A_edge)/256 with exact ||Q4||=7/48 uniformly in L; full S6 tail and vacuum cancellation included; beta remainder O_L(beta5)",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "dependencies": [
+        "YM4-VOL03",
+        "YM4-VOL02",
+        "YM4-WG09-ORDER"
+      ],
+      "point": [
+        9,
+        8,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL04-AUDIT",
+      "title": "Independent exhaustive quartic parity and SU2 loop audit",
+      "status": "FINITE_PASS",
+      "category": "bridge",
+      "scope": "Exact XOR parity enumeration L=3 all 3240 plaquette pairs; L=4,5 all four pair classes; Haar hex and character-fusion checks",
+      "result": "All quartic parity insertions classified: 12N-16 paired disconnected ordered words plus 24 cube-boundary words; source independent of full Schur producer",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/tests/ym4_su2_vol04_independent_parity_audit.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "dependencies": [
+        "YM4-VOL04",
+        "YM4-VOL02"
+      ],
+      "point": [
+        10,
+        8,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
         "bridges"
       ]
     }
@@ -6454,6 +6511,54 @@
       "ref": "ad53419de079eb8f95f60313473374624a348546",
       "kind": "external_proof_interface",
       "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/Breakdown/Cert/Assembly.lean"
+    },
+    {
+      "path": "tests/ym4_su2_vol04_full_fourth_schur.py",
+      "blob": "13330812f3a8205057419cdfa9d8f0046c1b8b5f",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/tests/ym4_su2_vol04_full_fourth_schur.py"
+    },
+    {
+      "path": "tests/ym4_su2_vol04_independent_parity_audit.py",
+      "blob": "69852c15a1e18b0c4c4c177a37887012bfa3503e",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "independent_checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/tests/ym4_su2_vol04_independent_parity_audit.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp",
+      "blob": "5bd2047efe35d420bb584db0e7426da165116ee4",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp",
+      "blob": "f5cbe05f7bd5d332ddf850b171d58e62d3594ec6",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "audit_receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md",
+      "blob": "04f6b366435ad305f1b8d04184dbbcefe62537c9",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md"
+    },
+    {
+      "path": ".github/workflows/ym4-vol04-fourth-schur.yml",
+      "blob": "eec6a01edf7a2f1f04b290175554cc45eb7dce94",
+      "origin": "VOL04_EXACT_SOURCE_AUDIT",
+      "ref": "10859533a36e52ac4691abefa7d21797816c78b7",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/10859533a36e52ac4691abefa7d21797816c78b7/.github/workflows/ym4-vol04-fourth-schur.yml"
     }
   ],
   "pr_events": [
@@ -7298,6 +7403,14 @@
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/102",
       "merge_sha": null,
       "origin": "current_GitHub_PR_atlas_reconciliation_2026_11_22"
+    },
+    {
+      "number": 103,
+      "title": "YM4 VOL04 full original SU2 fourth-order coefficient and independent parity audit",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/103",
+      "merge_sha": null,
+      "origin": "current_GitHub_PR_2026_11_22"
     }
   ],
   "cross_repository": [
