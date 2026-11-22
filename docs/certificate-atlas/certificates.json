@@ -23,7 +23,7 @@
     "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "YM4_VOL06_weak_coupling_renormalized_connected_transfer_comparison",
+    "next_volume_proof": "independent_VOL06_analytic_signoff_then_beta_a_weak_coupling_bridge",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
@@ -36,25 +36,29 @@
     "VOL04_large_volume_first_individual_spacing": "UPPER_O_L_MINUS2",
     "VOL05_Wilson_spectral_support": "CONDITIONAL_PUBLISHED_DOBRUSHIN_AND_POSITIVE_WILSON_TRANSFER",
     "VOL05_fixed_beta_uniform_volume": "YES_FOR_LOCAL_WILSON_VISIBLE_CHANNEL",
-    "VOL05_weak_coupling_scaling": "OPEN"
+    "VOL05_weak_coupling_scaling": "OPEN",
+    "VOL06_full_physical_strong_coupling": "CONDITIONAL_DOBRUSHIN_TRANSFER_DENSITY_AUDIT",
+    "VOL06_full_physical_ratio_at_beta_1_over_1000": "9/500",
+    "VOL06_weak_coupling": "OPEN",
+    "VOL06_11_continuum_gates": "OPEN"
   },
   "summary": {
-    "curated_records": 99,
+    "curated_records": 101,
     "physical_gap_claims": 0,
-    "resource_files": 524,
-    "pr_events": 98,
+    "resource_files": 528,
+    "pr_events": 99,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
-      "CONDITIONAL": 4,
-      "DRAFT_CHECKED": 17,
+      "CONDITIONAL": 5,
+      "DRAFT_CHECKED": 18,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 524,
+    "linked_resources": 528,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2447,6 +2451,60 @@
         10,
         8,
         9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL06",
+      "title": "Candidate full physical SU2 strong-coupling transfer gap",
+      "status": "CONDITIONAL",
+      "category": "wilson",
+      "scope": "Original continuous SU2 Gauss Wilson transfer at each finite spatial L>=3, beta<1/18; all center and Wilson-dark sectors, external analytic acceptance pending",
+      "result": "Bounded spatial slice eigenfunction quotient plus Dobrushin spectral roots imply candidate all-physical transfer ratio <=18 beta; at beta=1/1000 <=9/500; full continuum OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3d722e315db2fccf31d73f584e83eda46763d5ce/docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "3d722e315db2fccf31d73f584e83eda46763d5ce",
+      "dependencies": [
+        "YM4-VOL05",
+        "YM4-11",
+        "YM4-WC01",
+        "YM4-WV01"
+      ],
+      "point": [
+        10,
+        10,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL06-GEOM",
+      "title": "Independent full-spectrum Dobrushin geometry and spectral-root falsifier",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Exact original 4D continuous SU2 lattice link/plaquette incidence at L3/T7 and L4/T9; arbitrary spatial-slice time distance and root inequality",
+      "result": "Each link belongs to six plaquettes and eighteen neighbor occurrences; time-slice graph distance n; invalid r=1/50 excluded at alpha=9/500; analytic spectral theorem not executed",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/6b45d203ec6a0ea0320030297da0ba9d08c4472e/tests/ym4_su2_vol06_full_spectrum.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "6b45d203ec6a0ea0320030297da0ba9d08c4472e",
+      "dependencies": [
+        "YM4-VOL06",
+        "YM4-VOL05-GEOM"
+      ],
+      "point": [
+        10,
+        9,
+        10
       ],
       "views": [
         "proof",
@@ -6648,6 +6706,38 @@
       "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
       "kind": "workflow",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/412f9a3c60694cc896c1622ea10e4dba84601dfd/.github/workflows/ym4-vol05-wilson-spectral-support.yml"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md",
+      "blob": "52006243eaff0ab7e94e6d7fdfdee59d972ec79d",
+      "ref": "3d722e315db2fccf31d73f584e83eda46763d5ce",
+      "kind": "proof_note",
+      "origin": "VOL06_FULL_PHYSICAL_STRONG_COUPLING_CANDIDATE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3d722e315db2fccf31d73f584e83eda46763d5ce/docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol06_full_spectrum.py",
+      "blob": "9dfda428ca4460b7563f9f231386b62647b9d447",
+      "ref": "6b45d203ec6a0ea0320030297da0ba9d08c4472e",
+      "kind": "checker",
+      "origin": "VOL06_FULL_PHYSICAL_STRONG_COUPLING_CANDIDATE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/6b45d203ec6a0ea0320030297da0ba9d08c4472e/tests/ym4_su2_vol06_full_spectrum.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp",
+      "blob": "e43cdb4435ff816715cd93482d71af4eede3e937",
+      "ref": "27d0f63dc8b9b300b3100a9297b37a06d914be0d",
+      "kind": "receipt",
+      "origin": "VOL06_FULL_PHYSICAL_STRONG_COUPLING_CANDIDATE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/27d0f63dc8b9b300b3100a9297b37a06d914be0d/docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol06-full-physical-gap.yml",
+      "blob": "4913fbcf3b8bbda41e9321cc59b40a4a9c248f39",
+      "ref": "c2acd2e5801ab522604816ac972b3772e35e5bed",
+      "kind": "workflow",
+      "origin": "VOL06_FULL_PHYSICAL_STRONG_COUPLING_CANDIDATE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c2acd2e5801ab522604816ac972b3772e35e5bed/.github/workflows/ym4-vol06-full-physical-gap.yml"
     }
   ],
   "pr_events": [
@@ -7506,6 +7596,14 @@
       "title": "YM4 VOL05 Wilson-visible strong-coupling spectral support and total mass",
       "state": "draft",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/104",
+      "merge_sha": null,
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 105,
+      "title": "YM4-VOL06 bounded-slice full physical strong-coupling spectrum",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/105",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }
