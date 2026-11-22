@@ -20,30 +20,35 @@
     "verified_external_repository_count": 10,
     "second_search_date": "2026-11-21",
     "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input",
-    "latest_reconciled_main_commit": "3ba52ac5723497cfae74e288eedf0297d90f9df7",
+    "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "YM4-VOL02_fourth_order_connected_kernel",
-    "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar"
+    "next_volume_proof": "VOL03_full_fourth_order_connected_physical_Schur",
+    "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
+    "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
+    "VOL03_global_Feshbach": "OPEN",
+    "VOL03_cross_cell_volume_uniform": "OPEN",
+    "external_certificate_navier": "CONDITIONAL_LEAN_ONLY_NUMERICAL_DATA_UNAVAILABLE"
   },
   "summary": {
-    "curated_records": 93,
+    "curated_records": 95,
     "physical_gap_claims": 0,
-    "resource_files": 504,
-    "pr_events": 94,
+    "resource_files": 514,
+    "pr_events": 96,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 28,
       "CONDITIONAL": 3,
-      "DRAFT_CHECKED": 15,
+      "DRAFT_CHECKED": 16,
       "OPEN": 16,
       "FINITE_S3": 2,
-      "EXTERNAL": 5,
+      "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 504,
-    "fixed_L2_first_neutral_Wilson_claims": 1
+    "linked_resources": 514,
+    "fixed_L2_first_neutral_Wilson_claims": 1,
+    "VOL03_local_cube_Haar_claims": 1
   },
   "records": [
     {
@@ -2282,6 +2287,56 @@
         "proof",
         "wilson",
         "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL03",
+      "title": "Exact continuous SU2 fourth-order cube Haar and conditional cell tree",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "Original SU2 spatial L=3,4 local cube; general-volume and physical Schur bounds OPEN",
+      "result": "Six-face continuous Haar=1/16; selected raw fourth-order Wilson cube contribution=1/256; conditional matrix hierarchy demonstrated with synthetic data; global gap OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "dependencies": [
+        "YM4-VOL02",
+        "YM4-02"
+      ],
+      "point": [
+        9,
+        7,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "EXT-NS-CELL",
+      "title": "Alpöge–Buckmaster Navier–Stokes cell-layer Lean certificate interface",
+      "status": "EXTERNAL",
+      "category": "external",
+      "scope": "External fluid PDE conditional Lean theorem interfaces; upstream numerical certificate unpublished",
+      "result": "Pinned Lean cell-form statements, comparator axioms and proof assembly; verification pattern only; actual numeric certificate and 128-bit interval data unavailable; patch not rebuilt",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md",
+      "repository": "tristanbuckmaster/navier-stokes",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "dependencies": [
+        "YM4-VOL03",
+        "YM4-Q08"
+      ],
+      "point": [
+        9,
+        7,
+        6
+      ],
+      "views": [
+        "proof",
         "bridges"
       ]
     }
@@ -6318,6 +6373,86 @@
       "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
       "kind": "workflow",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/.github/workflows/ym4-vol02-third-parity.yml"
+    },
+    {
+      "path": "tests/ym4_su2_vol03_cube_haar_cell_tree.py",
+      "blob": "eff3ee6ab114891fcf5f4119211fadf2acddac53",
+      "origin": "VOL03_LOCAL_DRAFT",
+      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/tests/ym4_su2_vol03_cube_haar_cell_tree.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp",
+      "blob": "499624de4e01380dc37328b7a667aa25923f4477",
+      "origin": "VOL03_LOCAL_DRAFT",
+      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "kind": "receipt",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md",
+      "blob": "5dc25cad1973ee237b22d49bd90f8f314e427d83",
+      "origin": "VOL03_LOCAL_DRAFT",
+      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md"
+    },
+    {
+      "path": ".github/workflows/ym4-vol03-cube-haar-tree.yml",
+      "blob": "fbe32c1bbbb33db203baeb8e9578fdf73798a614",
+      "origin": "VOL03_LOCAL_DRAFT",
+      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/.github/workflows/ym4-vol03-cube-haar-tree.yml"
+    },
+    {
+      "path": "external/navier-stokes/README.md",
+      "blob": "1297e1e8515c94a08c4bb4ec56ff609cee98ef51",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/README.md"
+    },
+    {
+      "path": "external/navier-stokes/lean/README.md",
+      "blob": "3190899c1a1ec53d2d5c91754953a8c56edd1b39",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md"
+    },
+    {
+      "path": "external/navier-stokes/lean/CellLayerChallenge.lean",
+      "blob": "5d8b4e1cfebd780b2b196d33b11180c737a50f97",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/CellLayerChallenge.lean"
+    },
+    {
+      "path": "external/navier-stokes/lean/Breakdown/CertCell/CellCalculusStatements.lean",
+      "blob": "253abd56a4038f0f27fbcd45499efdfef07b668a",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/Breakdown/CertCell/CellCalculusStatements.lean"
+    },
+    {
+      "path": "external/navier-stokes/lean/comparator-cell-layer.json",
+      "blob": "862b92e0a4ede7beb5522d4ce5df53989fbb4c9a",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/comparator-cell-layer.json"
+    },
+    {
+      "path": "external/navier-stokes/lean/Breakdown/Cert/Assembly.lean",
+      "blob": "ccd91709de7c5a85caf9e786431980fc1201df3b",
+      "origin": "tristanbuckmaster/navier-stokes_UPSTREAM_EXTERNAL_METHOD_ONLY",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "kind": "external_proof_interface",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/Breakdown/Cert/Assembly.lean"
     }
   ],
   "pr_events": [
@@ -7146,6 +7281,22 @@
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/100",
       "origin": "GH_verified_20261122",
       "merge_sha": null
+    },
+    {
+      "number": 101,
+      "title": "YM4 VOL02 verified parity, 93rd atlas node",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/101",
+      "merge_sha": "e19d546edee67d6870c153bf5d394af0b1430fef",
+      "origin": "current_GitHub_PR_atlas_reconciliation_2026_11_22"
+    },
+    {
+      "number": 102,
+      "title": "YM4 VOL03 exact cube Haar, external Navier certificate interfaces",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/102",
+      "merge_sha": null,
+      "origin": "current_GitHub_PR_atlas_reconciliation_2026_11_22"
     }
   ],
   "cross_repository": [
@@ -7290,6 +7441,18 @@
       "source": "https://github.com/anaxia-research/anaxia-certificates/blob/1c49a75d8d45a6499e3a71e78655e2f4d4d8f280/PROOF-SCOPE.md",
       "tier": "UNRELATED_GEOMETRIC_ARITHMETIC_METHOD",
       "status": "CANDIDATE"
+    },
+    {
+      "id": "EXT-NS-CELL",
+      "repository": "tristanbuckmaster/navier-stokes",
+      "ref": "ad53419de079eb8f95f60313473374624a348546",
+      "source": "https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md",
+      "tier": "LEAN_CONDITIONAL_METHOD_LINK_ONLY",
+      "status": "EXTERNAL",
+      "numerical_certificate": "UNAVAILABLE",
+      "interval_verification_source": "UNAVAILABLE",
+      "patched_lean_rebuild": "NOT_REPORTED",
+      "compatible_as_direct_SU2_proof": false
     }
   ],
   "search_round2": {
