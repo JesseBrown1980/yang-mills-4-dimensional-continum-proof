@@ -1,5 +1,18 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL11 original SU(2) separated Wilson plaquette joint acceptance
+
+**[Continuous SU2 Wilson Haar exponential and marked-plaquette joint theorem](docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md)** · [Independent mathematical audit](reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [exact original 4D integer checker](tests/ym4_su2_vol11_separated_defects.py) · [frozen SHA receipt](docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).
+
+The original **continuous SU(2)** Wilson law is now treated at the level of a nontrivial **joint selected-plaquette calculation**. On every gauge-invariant good exterior with fifteen double-staple loop alignments at least 15/16, the probability of a marked original Wilson plaquette defect (W_ple1/2) is at most (min(1,324eta^2 e^{-45eta/64})). At (eta=81), a 12-term exact rational exponential envelope shows this conditional probability is **less than 1 in 1,000,000**.
+
+For any set of original links sharing **no plaquette**, the original SU2 Gibbs conditional **factors exactly** given the complementary original links, and all selected good-star exterior indicators are complement-measurable. Thus the original joint Gibbs event that **all r marked distinct Wilson plaquettes are defective and all r exteriors are good** has probability at most (q_eta^r). Four such selected defects under simultaneous good exteriors have probability **less than (10^{-24})** at (eta=81). An unconditional separated-plaquette bound also holds, with the **correlated bad-exterior contamination** displayed explicitly as (q_eta^{r-t}+r p_star/(t+1)), (0le t<r). This is a precise actual-model advance over the VOL10 marginal-only step.
+
+**Sharper boundary-frequency bound:** A pointwise original Wilson action-deficit inequality now cuts the periodic bad-star marginal to \(p_\star\le12R(\beta)/\epsilon\), half VOL09's union envelope. For \(\beta=9^8\) and \(\epsilon=1/16\), the exact rational ceiling is **11,456/43,046,721**. This tightens the contamination in the unconditional joint estimate while leaving correlated bad-star islands as the next gate.
+
+**Mathematical boundary:** the original full SU2 joint **bad-star** activity (ho^{|S|}) and physical-size arbitrary-boundary cube remain **OPEN**. The new exponential factor applies to marked defects in the good-exterior sector. The bad-exterior joint law is the next acceptance task. The 4D atlas now has **115 proof nodes**, **553 evidence files**, **104 PR records**, and 28 adversarial scope controls. All **11 continuum gates remain OPEN**. Related prior multi-scale block research: [*One Cube Estimate Implies the Yang–Mills Mass Gap*, version 7](https://hexagonmath.org/2610.00341v7).
+
+
 ## November 22, 2026 — VOL10 original SU(2) finite-box and bad-island acceptance
 
 **[Original continuous SU2 Wilson finite-box theorem and conditional island criterion](docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md)** · [Independent mathematical reconstruction](reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md) · [integer-only 4D link-graph and box verifier](tests/ym4_su2_vol10_bad_island.py) · [HBP frozen receipt](docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp) · [PR #110](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110).

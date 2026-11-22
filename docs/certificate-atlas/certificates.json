@@ -61,25 +61,33 @@
     "VOL10_Wilson_bad_star_plaquette_budget": "FOUR_TO_ONE_DETERMINISTIC",
     "VOL10_joint_independent_set_activity": "OPEN",
     "VOL10_conditional_rooted_island_tail": "rho_le_18_power_minus57_implies_18_power_minus_m_minus2",
-    "VOL10_physical_cube": "OPEN"
+    "VOL10_physical_cube": "OPEN",
+    "VOL11_original_SU2_good_exterior_tail": "ANALYTIC_DERIVATION_AND_INTEGER_CHECKED",
+    "VOL11_beta81_good_exterior_defect": "LT_1_OVER_1000000",
+    "VOL11_four_original_independent_marked_defects_good_exterior": "LT_1_OVER_10POWER24",
+    "VOL11_unconditional_bad_exterior_correlation": "OPEN",
+    "VOL11_independent_bad_star_rho": "OPEN",
+    "VOL11_physical_size_DS_cube": "OPEN",
+    "VOL11_bad_star_energy_deficit": "ONE_BAD_EXTERIOR_REQUIRES_SUM_WILSON_DEFICIT_GT_EPS_OVER_TWO",
+    "VOL11_beta_9power8_improved_bad_exterior": "LE_11456_OVER_43046721"
   },
   "summary": {
-    "curated_records": 112,
+    "curated_records": 115,
     "physical_gap_claims": 0,
-    "resource_files": 548,
-    "pr_events": 103,
+    "resource_files": 553,
+    "pr_events": 104,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
       "CONDITIONAL": 7,
-      "DRAFT_CHECKED": 27,
+      "DRAFT_CHECKED": 30,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 548,
+    "linked_resources": 553,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2821,6 +2829,87 @@
       ],
       "point": [
         14,
+        8,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL11-HAAR",
+      "title": "Original continuous SU2 exponential good-star Haar defect tail",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "Full original 4D SU2 continuous Haar conditional with all 15 gauge-invariant double-staple Wilson loops aligned; explicit exponential good-boundary tail",
+      "result": "For beta>=1 and W_p<=1/2 under eps=1/16 good exterior, P(defect|exterior)<=min(1,324 beta^2 exp(-45 beta/64)); at beta81 exact Taylor12 gives <1/10^6; global bad-exterior joint activity OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162",
+      "dependencies": [
+        "YM4-VOL10-BOX",
+        "YM4-VOL08",
+        "YM4-VOL09"
+      ],
+      "point": [
+        15,
+        10,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL11-JOINT",
+      "title": "Original SU2 exact separated-link conditional factorization and marked-plaquette joint defect inequality",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "All independent sets in original 4D degree18 plaquette-sharing graph; selected full SU2 links factor given complement; good-star events are exterior measurable",
+      "result": "P(all r distinct selected original Wilson plaquettes defective AND all exteriors good)<=q_beta^r; unconditional <=q_beta^(r-t)+r pstar/(t+1), joint original bad-star activity and physical-size cube OPEN; improved bad-exterior marginal <=12R/epsilon (factor two over VOL09)",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4d35b43dad3244f83f0f4da9647445bfdd6e718d/tests/ym4_su2_vol11_separated_defects.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4d35b43dad3244f83f0f4da9647445bfdd6e718d",
+      "dependencies": [
+        "YM4-VOL11-HAAR",
+        "YM4-VOL10-ISLAND",
+        "YM4-VOL09"
+      ],
+      "point": [
+        15,
+        9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL11-AUDIT",
+      "title": "Independent continuous SU2 Haar angular integral and conditional Wilson Gibbs factorization audit",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Second analytic reconstruction of original full SU2 Haar cap and separate selected-link product Wilson action, exact correlated bad-boundary contamination",
+      "result": "Checks continuous SU2 geodesic angular Haar density, prefactor 324 exponent 45/64, original plaquette incidence, red adjacent-link control, no external referee signoff; all continuum gates OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5a008beb37133217f61d986d42d3976a005c6090/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "5a008beb37133217f61d986d42d3976a005c6090",
+      "dependencies": [
+        "YM4-VOL11-HAAR",
+        "YM4-VOL11-JOINT",
+        "YM4-VOL10-AUDIT"
+      ],
+      "point": [
+        15,
         8,
         8
       ],
@@ -7216,6 +7305,46 @@
       "kind": "audit",
       "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/d199bc831d57ad1101a2465f0de73a36cdbafc56/reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md",
+      "blob": "292e0be4027de5cdcb2f3149be51428faf245685",
+      "ref": "b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162",
+      "kind": "proof_note",
+      "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol11_separated_defects.py",
+      "blob": "b5f0ba30fd7356df70da009321ce36b58162421c",
+      "ref": "4d35b43dad3244f83f0f4da9647445bfdd6e718d",
+      "kind": "checker",
+      "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4d35b43dad3244f83f0f4da9647445bfdd6e718d/tests/ym4_su2_vol11_separated_defects.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp",
+      "blob": "3b01edbd808b5db3e80081c4399d4fe0e33fb3cf",
+      "ref": "3dc215a53165f041dd14a127ff7da77dd82eb964",
+      "kind": "receipt",
+      "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3dc215a53165f041dd14a127ff7da77dd82eb964/docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol11-separated-defects.yml",
+      "blob": "a771e6732e5eb7fb65e6f215d664310670ce39a1",
+      "ref": "5068ebfa4a588edac7f59a786566819fd50bf97a",
+      "kind": "workflow",
+      "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5068ebfa4a588edac7f59a786566819fd50bf97a/.github/workflows/ym4-vol11-separated-defects.yml"
+    },
+    {
+      "path": "reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md",
+      "blob": "f2e9b44ce6d478b728bb27bf0af3ee1cf5ad6a8c",
+      "ref": "5a008beb37133217f61d986d42d3976a005c6090",
+      "kind": "audit",
+      "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5a008beb37133217f61d986d42d3976a005c6090/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
@@ -8112,8 +8241,16 @@
     {
       "number": 110,
       "title": "YM4 VOL10 original SU2 box occupancy, plaquette defect budget and conditional bad-island tail",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110",
+      "merge_sha": "f6d8bb504efd360aee97af7e27f8a1ef6cf4e56d",
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 111,
+      "title": "YM4 VOL11 original continuous SU2 Haar good-boundary exponential tail and separated plaquette joint law",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }
