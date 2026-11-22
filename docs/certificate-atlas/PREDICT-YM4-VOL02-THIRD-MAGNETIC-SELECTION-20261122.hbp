@@ -1,0 +1,4 @@
+YM4_VOL02_PREDICT|scope=original_continuous_SU2_spatial_L_ge3|finite_volume=YES|full_Gauss=YES|json=0
+YM4_VOL02_PREDICT_SURFACE|nonempty_Z2_2cycle_min_faces_ge6=THEOREM_TARGET|L_ge3|json=0
+YM4_VOL02_PREDICT_BAND|PVP=ZERO|P(V2/2-VP0V)P=SCALAR|PV3P=ZERO|PV2_vac=ZERO|json=0
+YM4_VOL02_PREDICT_ORDER|first_nonscalar_band_term_ge_beta4|uniform_gap=OPEN|continuum_gap=OPEN|json=0
