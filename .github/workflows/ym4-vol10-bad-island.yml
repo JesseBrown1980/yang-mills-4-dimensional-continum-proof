@@ -31,9 +31,10 @@ jobs:
           python3 -O -I -B tests/ym4_su2_vol10_bad_island.py > build/ym4-vol10/REPLAY.hbp
           cmp build/ym4-vol10/ORIGINAL-SU2-BOX.hbp build/ym4-vol10/REPLAY.hbp
           cmp build/ym4-vol10/ORIGINAL-SU2-BOX.hbp docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp
-          echo 'e9749741cd9c0efab80202e528451f0de72a8304dc89239b720c8d01907d8126  build/ym4-vol10/ORIGINAL-SU2-BOX.hbp' | sha256sum -c
+          echo '7fca41304d5faaad5af5f4f0e2d76f68929485b6815c91dca93fe8e524ae3ae5  build/ym4-vol10/ORIGINAL-SU2-BOX.hbp' | sha256sum -c
           grep -Fq '|P_any_bad_le=16064/531441|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
           grep -Fq '|degree=18|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|full_volume_bad_link_count_le=4_times_bad_plaquette_count|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
           grep -Fq '|independent_set_joint_rho=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
           grep -Fq '|arbitrary_exterior_block=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
           grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
