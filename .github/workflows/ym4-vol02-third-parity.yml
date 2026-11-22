@@ -1,0 +1,47 @@
+name: YM4 VOL02 exact five-face SU2 parity and third-order obstruction
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol02_third_parity.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp'
+      - '.github/workflows/ym4-vol02-third-parity.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol02_third_parity.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md'
+      - 'docs/certificate-atlas/PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp'
+      - '.github/workflows/ym4-vol02-third-parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-SU2-third-order-parity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Two deterministic replay modes and negative geometry controls
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol02
+          python3 -I -B tests/ym4_su2_vol02_third_parity.py > build/ym4-vol02/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol02_third_parity.py > build/ym4-vol02/REPLAY.hbp
+          cmp build/ym4-vol02/FIRST.hbp build/ym4-vol02/REPLAY.hbp
+          grep -Fq 'first_nonscalar_possible_order=FOURTH' build/ym4-vol02/FIRST.hbp
+          grep -Fq 'volume_uniform_mass_gap=OPEN|continuum_mass_gap=OPEN' build/ym4-vol02/FIRST.hbp
+          grep -Fq 'spatial_L=2|plaquettes=24|offdiag_pairs=276|nonunique_two_insertions=36' build/ym4-vol02/FIRST.hbp
+          sha256sum build/ym4-vol02/FIRST.hbp > build/ym4-vol02/SHA256SUMS
+      - name: Existing strict no-floating-point gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol02-exact-third-order-support
+          path: build/ym4-vol02/
+          retention-days: 90
+          if-no-files-found: warn
