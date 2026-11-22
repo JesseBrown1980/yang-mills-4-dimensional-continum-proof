@@ -20,6 +20,29 @@ For any two **distinct** designated cube faces i,j, insert the other four faces 
 
 is exactly **1/256 per cube containing that pair**. This is one connected cube contribution only. Other order-four support patterns, vacuum normalization/counterterms, intermediately excited electric states, and the full higher-spin Schur/Feshbach correction must be included before obtaining the actual physical effective matrix. No sign or gap claim is inferred from this one positive term.
 
+## 1A. An exact L-independent norm for the cube-only fourth-order submatrix
+
+Every elementary plaquette of a periodic spatial cubic lattice L>=3 is a face of exactly **two** elementary cubes. In either cube it meets five other faces. The two cubes share only the original face, and each unordered pair of distinct cube faces lies in exactly one cube. Thus the symmetric nonnegative cube-face adjacency \(A_{\rm cube,L}\) is **10-regular** on the \(3L^3\) plaquette states. The additional exact integer enumerator independently verifies these claims at L=3,4,5, including unique cube ownership of each face-pair.
+
+Define the **isolated raw cube-surface contribution**, explicitly excluding all other fourth-order connected diagrams and all physical Schur corrections,
+
+\[
+B_{\rm cube,L}(i,j)=
+\begin{cases}
+\#\{\text{cubes containing both faces }i,j\}/256,&i\ne j,\\
+0,&i=j.
+\end{cases}
+\]
+
+Since this nonnegative symmetric matrix has uniform row sum 10/256, the constant vector is a positive eigenvector with eigenvalue 10/256. The row-sum bound gives the reverse operator-norm inequality. Therefore
+
+\[
+\boxed{\|B_{\rm cube,L}\|_{\ell^2\to\ell^2}=\frac{10}{256}=\frac5{128}
+\quad\text{for every integer }L\ge3.}
+\]
+
+This is an **exact volume-independent local contribution norm**, providing an input to a future hierarchical cell proof. It is **not** a norm bound on the full vacuum-subtracted fourth-order effective operator, whose additional contributions may change both its entries and spectrum. The full all-volume mass gap and even the first nonscalar physical effective coefficient remain OPEN.
+
 ## 2. Conditional hierarchical two-block certificate, inspired by a pinned Lean proof interface
 
 Let a real symmetric/Hermitian operator A be partitioned into two local blocks, A_U and A_V, with cross-block B. If independently checked lower bounds satisfy A_U≥g_U I, A_V≥g_V I and an independently checked upper bound satisfies ||B||≤ε, then
@@ -61,4 +84,4 @@ The publicly posted repository **does not contain the numerical Navier–Stokes 
 
 **VOL03-E:** connect this strong-coupling regime to the lattice-spacing/weak-coupling scaling and the 4D continuum OS reconstruction: OPEN.
 
-The atlas's original eleven continuum obligations remain OPEN. The machine HBP is [YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp](YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp), replay SHA-256 `3e852099eb6e26050adf8dec61498c3b01dabd29562e3999d3517cc1789813ec`. This pilot can be independently recomputed with Python 3 and integer arithmetic; its source and receipt belong to the 4D atlas, alongside original upstream evidence pointers.
+The atlas's original eleven continuum obligations remain OPEN. The machine HBP is [YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp](YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp), replay SHA-256 `5457698b6e59a0aec208d3b5d17d8aeaf4b048fd01f920348206d0602040e168`. This pilot can be independently recomputed with Python 3 and integer arithmetic; its source and receipt belong to the 4D atlas, alongside original upstream evidence pointers.
