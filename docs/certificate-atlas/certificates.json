@@ -20,29 +20,29 @@
     "verified_external_repository_count": 10,
     "second_search_date": "2026-11-21",
     "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input",
-    "latest_reconciled_main_commit": "4860b55b739080c245533f238541971589eca8cf",
+    "latest_reconciled_main_commit": "3ba52ac5723497cfae74e288eedf0297d90f9df7",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "third_order_connected_SU2_plaquette_kernel",
+    "next_volume_proof": "YM4-VOL02_fourth_order_connected_kernel",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar"
   },
   "summary": {
-    "curated_records": 92,
+    "curated_records": 93,
     "physical_gap_claims": 0,
-    "resource_files": 500,
-    "pr_events": 92,
+    "resource_files": 504,
+    "pr_events": 94,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 28,
       "CONDITIONAL": 3,
-      "DRAFT_CHECKED": 14,
+      "DRAFT_CHECKED": 15,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 5,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 500,
+    "linked_resources": 504,
     "fixed_L2_first_neutral_Wilson_claims": 1
   },
   "records": [
@@ -2250,6 +2250,33 @@
         9,
         3,
         7
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL02",
+      "title": "All-L>=3 five-plaquette parity and fourth-order threshold",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Original continuous SU2, spatial L>=3, fixed-volume small-beta",
+      "result": "No nonempty closed mod-2 2-chain with <=5 faces; first 3 plaquette-band coefficients scalar; earliest nonscalar term fourth order; volume-uniform gap OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
+      "dependencies": [
+        "YM4-VOL01",
+        "YM4-WG09-ORDER",
+        "YM4-Q07"
+      ],
+      "point": [
+        9,
+        6,
+        9
       ],
       "views": [
         "proof",
@@ -6259,6 +6286,38 @@
       "ref": "ccae9eaa9a2c79604d5b2c3154c122042768198f",
       "kind": "workflow",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/ccae9eaa9a2c79604d5b2c3154c122042768198f/.github/workflows/ym4-vol01-plaquette-obstruction.yml"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp",
+      "blob": "849e93e59feea76c0f59f61bc2e0e8a40bd0d03f",
+      "origin": "VOL02_CLEAN_BASE",
+      "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
+      "kind": "prediction",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/docs/certificate-atlas/PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md",
+      "blob": "765e76c750c77a47532c2f03c21692106031f165",
+      "origin": "VOL02_CLEAN_BASE",
+      "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
+      "kind": "proof",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol02_third_parity.py",
+      "blob": "6ce54341ec7e3b9e9ca308dfb63f2a0723f33c7a",
+      "origin": "VOL02_CLEAN_BASE",
+      "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
+      "kind": "checker",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/tests/ym4_su2_vol02_third_parity.py"
+    },
+    {
+      "path": ".github/workflows/ym4-vol02-third-parity.yml",
+      "blob": "0879aa27c80e8a06d4589db9103ff4d84767c4ce",
+      "origin": "VOL02_CLEAN_BASE",
+      "ref": "befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f",
+      "kind": "workflow",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/.github/workflows/ym4-vol02-third-parity.yml"
     }
   ],
   "pr_events": [
@@ -7071,6 +7130,22 @@
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/98",
       "merge_sha": "4860b55b739080c245533f238541971589eca8cf",
       "origin": "GitHub_authoritative_PR_lookup_2026_11_22"
+    },
+    {
+      "number": 99,
+      "title": "4D Atlas WG01-WG09 and VOL01 full reconciliation",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/99",
+      "origin": "GH_verified_20261122",
+      "merge_sha": "3ba52ac5723497cfae74e288eedf0297d90f9df7"
+    },
+    {
+      "number": 100,
+      "title": "YM4 VOL02 parity proof original audit PR",
+      "state": "superseded_rebased_candidate",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/100",
+      "origin": "GH_verified_20261122",
+      "merge_sha": null
     }
   ],
   "cross_repository": [

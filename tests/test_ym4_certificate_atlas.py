@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 92, "atlas_expected_nodes")
+    require(len(rows) == 93, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -264,7 +264,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 92,
+    require(page.count('<article class="entry" id="') == 93,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -304,9 +304,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 92' in manifest
-            and '"resource_files": 500' in manifest
-            and '"pr_events": 92' in manifest,
+    require('"curated_records": 93' in manifest
+            and '"resource_files": 504' in manifest
+            and '"pr_events": 94' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -316,6 +316,19 @@ def atlas_provenance():
             "VOL01_exact_cancellation_note_unlinked")
     require("All L>=3 plaquette-band first variation zero and vacuum-reduced second-order matrix scalar" in manifest,
             "VOL01_manifest_not_reconciled")
+    require("YM4-VOL02" in records and
+            records["YM4-VOL02"]["status"] == "DRAFT_CHECKED",
+            "VOL02_proof_status_missing")
+    require(page.count('href="#YM4-VOL02"') == 12,
+            "VOL02_not_visible_in_all_3d_views")
+    require(overview.count("index.html#YM4-VOL02") == 4,
+            "VOL02_four_panel_link_missing")
+    require("PREDICT-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.hbp"
+            in manifest and "ym4_su2_vol02_third_parity.py" in manifest,
+            "VOL02_prediction_and_independent_replay_missing")
+    require("first_possible_nonscalar=FOURTH" in hbp
+            and "volume_uniform_mass_gap=OPEN" in hbp,
+            "VOL02_scope_boundary_missing")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -368,10 +381,10 @@ def atlas_provenance():
         except ValueError:
             failures += 1
     require(failures == 6, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=92|open_gates=11|external_leads=22"
+    print("ATLAS4D_INDEX|nodes=93|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=92|json=0")
+          "|script_free=YES|source_cards=93|json=0")
     print("ATLAS4D_ADVERSARIES|negative_controls=6_REJECTED"
           "|physics_from_plot=NONE|json=0")
 

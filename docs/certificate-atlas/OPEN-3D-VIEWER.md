@@ -1,8 +1,10 @@
 # Open the clickable 4D Yang–Mills Certificate Atlas
 
+**VOL02:** Select the new blue VOL02 point in any graph mode for the exact spatial-L>=3 five-plaquette parity certificate, integer test and fourth-order connected-kernel research target. All eleven continuum proof tasks remain OPEN.
+
 ## Latest 4D atlas · November 22, 2026
 
-[**Open the live 4D certificate atlas**](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) — includes **92 source-linked proof nodes**, with 16 new original SU2 WT/WC/WV/WG09 and volume nodes, and a 500-file indexed manifest.
+[**Open the live 4D certificate atlas**](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) — includes **93 source-linked proof nodes**, with 16 new original SU2 WT/WC/WV/WG09 and volume nodes, and a 504-file indexed manifest.
 
 All 12 SVG graph views contain the new clickable nodes, and the [four-panel overview](overview.svg) provides an additional direct way to open each new record. The green WG09-ORDER node carries the **fixed-L=2** first-neutral spectral-order proof; the blue VOL01 node marks the **L>=3** first-order geometry result and upcoming third-order volume-uniform work. The same eleven continuum requirements remain open.
 
