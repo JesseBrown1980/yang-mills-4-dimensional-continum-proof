@@ -90,8 +90,8 @@ def check_unconditional_splits():
     # VOL09 p_star for eps1/16, beta=9^k, k=8:
     k = 8
     beta = ternary(2*k)
-    pstar = ratio(128*(35+18*k), beta)
-    require(pstar == ratio(22912, 43046721),
+    pstar = ratio(64*(35+18*k), beta)
+    require(pstar == ratio(11456, 43046721),
             "VOL09_beta_9power8_bad_exterior_pstar")
     require(rle(pstar, ratio(1, 1000)),
             "pstar_below_one_per_thousand")
@@ -101,8 +101,8 @@ def check_unconditional_splits():
     # For any r=4, t=1 the unconditional formula is q^3+2*pstar.
     qcube = rmul(q8, rmul(q8, q8))
     bound = radd(qcube, rmul(ratio(2), pstar))
-    require(rle(bound, ratio(1, 500)),
-            "four_selected_defects_contaminated_bound_below_one_over500")
+    require(rle(bound, ratio(1, 1000)),
+            "four_selected_defects_contaminated_bound_below_one_over1000")
     # Distinguish low marginals from joint improvement: VOL09 direct
     # single-plaquette defect Markov bound is strictly stronger numerically.
     # R <= (35+18k)/(3beta); delta=1/2 -> 2R.
@@ -132,6 +132,24 @@ def qm(a, b):
 
 def inv(a):
     return (a[0], -a[1], -a[2], -a[3])
+
+
+def check_bad_star_energy_fixture():
+    # Algebraic Q8 subcase of the continuous SU2 chordal inequality:
+    # 1-s.t <= 2[(1-u.s)+(1-u.t)] for any unit quaternions.
+    for u in Q8:
+        for a in Q8:
+            for b in Q8:
+                dot_ab = sum(a[i]*b[i] for i in range(4))
+                dot_ua = sum(u[i]*a[i] for i in range(4))
+                dot_ub = sum(u[i]*b[i] for i in range(4))
+                lhs = 1-dot_ab
+                sum_deficits = (1-dot_ua)+(1-dot_ub)
+                require(lhs <= 2*sum_deficits,
+                        "original_SU2_bad_star_chordal_energy_budget")
+                if lhs >= 1:
+                    require(sum_deficits >= 1,
+                            "Q8_adversarial_bad_pair_requires_energy")
 
 
 def step(x, mu, L):
@@ -223,6 +241,7 @@ def check_original_su2_geometry():
 def certify():
     check_haar_tails()
     check_unconditional_splits()
+    check_bad_star_energy_fixture()
     report = check_original_su2_geometry()
     require(report[0][3] >= 18 and report[1][3] >= 54,
             "independent_set_sample_packing_cardinality")
@@ -232,7 +251,8 @@ def certify():
         "YM4_VOL11_HAAR|epsilon=1/16|delta=1/2|kappa_ge=45beta_over8|projection_deficit_ge=1/8|conditional_good_defect_q_le=324_beta_squared_exp_minus_45beta_over64|continuous_SU2=ANALYTIC|json=0\n"
         "YM4_VOL11_EXACT_RATE|beta=81|Taylor_terms=12|conditional_defect_probability_lt=1/1000000|four_selected_all_good_defects_lt=1/10power24|integer_rational_check=PASS|json=0\n"
         "YM4_VOL11_JOINT|all_selected_good_exteriors_and_defects_le=q_power_r|unconditional_all_defects_le=q_power_r_minus_t_plus_rpstar_over_tplus1|original_SU2_conditional_factorization=YES|json=0\n"
-        "YM4_VOL11_CONTAMINATION|beta=9power8|epsilon=1/16|pstar_le=22912/43046721|r4_t1_joint_bound_lt=1/500|joint_original_bad_star_rho=OPEN|json=0\n"
+        "YM4_VOL11_BAD_STAR_ENERGY|bad_star_indicator_le=2_over_epsilon_times_incident_Wilson_deficits|periodic_pstar_le=12R_over_epsilon|improvement=FACTOR2|Q8_algebra_fixture=PASS|json=0\n"
+        "YM4_VOL11_CONTAMINATION|beta=9power8|epsilon=1/16|pstar_le=11456/43046721|r4_t1_joint_bound_lt=1/1000|joint_original_bad_star_rho=OPEN|json=0\n"
         "YM4_VOL11_ACCEPTANCE|exponential_good_exterior_original_SU2=ANALYTIC|exact_integer_source_replay=PASS|bad_exterior_joint_activity=OPEN|physical_size_cube=OPEN|11_continuum_gates=OPEN|json=0\n"
     )
 
