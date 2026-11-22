@@ -1,0 +1,48 @@
+name: YM4 VOL04 complete SU2 physical fourth-order Feshbach coefficient
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol04_full_fourth_schur.py'
+      - 'docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md'
+      - '.github/workflows/ym4-vol04-fourth-schur.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol04_full_fourth_schur.py'
+      - 'docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md'
+      - '.github/workflows/ym4-vol04-fourth-schur.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-fourth-physical-Schur:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 exact Haar, full fourth-order coefficient and L-uniform matrix bound
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol04
+          python3 -B tests/ym4_su2_vol04_full_fourth_schur.py > build/ym4-vol04/FIRST.hbp
+          python3 -O -B tests/ym4_su2_vol04_full_fourth_schur.py > build/ym4-vol04/REPLAY.hbp
+          cmp build/ym4-vol04/FIRST.hbp build/ym4-vol04/REPLAY.hbp
+          cmp build/ym4-vol04/FIRST.hbp docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp
+          echo '8cef031d8f2ed1b3dd2e1a1dff0e3c99a7b6240fd81af9ac2cd3f3f46b386d2f  build/ym4-vol04/FIRST.hbp' | sha256sum -c
+          grep -Fq '|Q4_norm=7/48|uniform_coefficient_norm=YES|' build/ym4-vol04/FIRST.hbp
+          grep -Fq '|beta_remainder_uniform_in_L=OPEN|' build/ym4-vol04/FIRST.hbp
+          grep -Fq '|global_individual_mode_uniform_isolation=NO|' build/ym4-vol04/FIRST.hbp
+      - name: Strict repository no-floating-point source gate
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-VOL04-original-SU2-fourth-Schur-exact
+          path: build/ym4-vol04/
+          retention-days: 90
+          if-no-files-found: warn
