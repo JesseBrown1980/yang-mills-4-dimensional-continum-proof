@@ -1,0 +1,49 @@
+name: YM4 VOL05 uniform strong-coupling Wilson-visible spectral support
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol05_wilson_spectral_support.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp'
+      - '.github/workflows/ym4-vol05-wilson-spectral-support.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol05_wilson_spectral_support.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp'
+      - '.github/workflows/ym4-vol05-wilson-spectral-support.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-Wilson-spectral-ledger:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Independent original 4D SU2 link geometry, rational spectral bounds and negative control
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol05
+          python3 -I -B tests/ym4_su2_vol05_wilson_spectral_support.py > build/ym4-vol05/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol05_wilson_spectral_support.py > build/ym4-vol05/REPLAY.hbp
+          cmp build/ym4-vol05/FIRST.hbp build/ym4-vol05/REPLAY.hbp
+          cmp build/ym4-vol05/FIRST.hbp docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp
+          echo 'd3813351cc66c6f0742e8c405b6c10bd81d60f1c3b97d9e85a4d4710e2e258ba  build/ym4-vol05/FIRST.hbp' | sha256sum -c
+          grep -Fq '|Wilson_visible_transfer_ratio_le=9/500|' build/ym4-vol05/FIRST.hbp
+          grep -Fq '|local_centered_Wilson_total_weight_ge=247/1000|' build/ym4-vol05/FIRST.hbp
+          grep -Fq '|first_full_physical_state=NOT_IDENTIFIED|' build/ym4-vol05/FIRST.hbp
+          grep -Fq '|continuum_mass_gap=OPEN|' build/ym4-vol05/FIRST.hbp
+      - name: Preserve strict repository no-floating-point policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol05-uniform-Wilson-spectral-rational-ledger
+          path: build/ym4-vol05/
+          retention-days: 90
+          if-no-files-found: warn
