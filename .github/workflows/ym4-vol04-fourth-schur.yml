@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'tests/ym4_su2_vol04_full_fourth_schur.py'
+      - 'tests/ym4_su2_vol04_independent_parity_audit.py'
+      - 'docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp'
       - 'docs/certificate-atlas/YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.hbp'
       - 'docs/certificate-atlas/NOTE-YM4-VOL04-COMPLETE-FOURTH-SCHUR-20261122.md'
       - '.github/workflows/ym4-vol04-fourth-schur.yml'
@@ -35,6 +37,16 @@ jobs:
           grep -Fq '|Q4_norm=7/48|uniform_coefficient_norm=YES|' build/ym4-vol04/FIRST.hbp
           grep -Fq '|beta_remainder_uniform_in_L=OPEN|' build/ym4-vol04/FIRST.hbp
           grep -Fq '|global_individual_mode_uniform_isolation=NO|' build/ym4-vol04/FIRST.hbp
+      - name: Independent exhaustive quartic parity audit and frozen source receipt
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/ym4_su2_vol04_independent_parity_audit.py > build/ym4-vol04/AUDIT.hbp
+          python3 -O -I -B tests/ym4_su2_vol04_independent_parity_audit.py > build/ym4-vol04/AUDIT-REPLAY.hbp
+          cmp build/ym4-vol04/AUDIT.hbp build/ym4-vol04/AUDIT-REPLAY.hbp
+          cmp build/ym4-vol04/AUDIT.hbp docs/certificate-atlas/YM4-VOL04-INDEPENDENT-QUARTIC-PARITY-20261122.hbp
+          echo '6b670ed5cdd82a6681d7bc4b5cfa57d7efb61906d8f0b008f2e5d062ed845b0b  build/ym4-vol04/AUDIT.hbp' | sha256sum -c
+          grep -Fq '|L3_complete_pairs=PASS|' build/ym4-vol04/AUDIT.hbp
+          grep -Fq '|volume_uniform_beta_remainder=OPEN|' build/ym4-vol04/AUDIT.hbp
       - name: Strict repository no-floating-point source gate
         run: |
           set -euo pipefail
