@@ -1,5 +1,12 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL11 original SU2 exponential Haar and genuine separated-plaquette joint certificate
+
+[Continuous SU2 mathematical theorem](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md) · [independent proof audit](../../reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [original 4D integer source](../../tests/ym4_su2_vol11_separated_defects.py) · [exact frozen HBP](YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).
+
+Inventory: **115 source-linked proof nodes**, **553 evidence resources**, **104 PR records**, with VOL11-HAAR, VOL11-JOINT, and VOL11-AUDIT clickable in all 12 script-free camera views and 4 overview panels. At beta=81 the original continuous SU2 normalized Haar defect tail, conditional on an epsilon=1/16 good six-staple exterior, is **less than 1/1,000,000**. A separated original-link set factors conditionally in the full original SU2 Wilson law, yielding **q_beta^r** for the event of r marked defective plaquettes with all r gauge-invariant good exteriors. A full-Gibbs unconditional joint estimate includes explicit correlated bad-exterior contamination. The bad-exterior **joint** activity, continuum physical-size cube, source weight and eleven original continuum gates remain OPEN, with 28 scope and negative controls preserving that boundary.
+
+
 ## November 22 — VOL10 original SU2 finite-box occupancy and conditional bad-island certificate
 
 [Original SU2 theorem](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md) · [independent analytic reconstruction](../../reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md) · [integer-only original 4D graph](../../tests/ym4_su2_vol10_bad_island.py) · [frozen HBP](YM4-VOL10-BAD-ISLAND-20261122.hbp) · [PR #110](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110).
