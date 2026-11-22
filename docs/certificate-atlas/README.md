@@ -1,5 +1,12 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL08 original SU(2) Wilson good/bad boundary certificate
+
+[Full continuous-Haar proof](NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md) · [Independent integration-by-parts review](../../reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md) · [exact 4D integer checker](../../tests/ym4_su2_vol08_wilson_star.py) · [frozen HBP](YM4-VOL08-WILSON-STAR-20261122.hbp) · [PR #108](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108).
+
+The research atlas contains **107 proof nodes**, **538 evidence resources** and **101 PR records**, with three new VOL08 nodes linked in all twelve 3D graph camera views and all four overview panels. The full original SU2 local conditional on an aligned gauge-invariant star gives an exact bound **401/8640** for one original Wilson plaquette failure at beta 81. A realizable single-exterior-link center flip produces a common gauge-invariant plaquette TV separation **at least 29/36** at the same coupling. A different continuous SU2 Haar proof uses exact integration by parts. All three nodes remain DRAFT_CHECKED pending external human review; the original weak-coupling physical-size cube and bad-block probability are OPEN along with eleven continuum gates.
+
+
 ## November 22 — VOL07 physical-block mass acceptance interface
 
 [Physical-block criterion note](NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md) · [exact integer rate controls](../../tests/ym4_su2_vol07_block_rate.py) · [frozen HBP](YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp) · [draft PR #106](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106).

@@ -44,25 +44,31 @@
     "VOL06_analytic_review": "INDEPENDENT_RECONSTRUCTION_PASS_EXTERNAL_PEER_REVIEW_OPEN",
     "VOL07_physical_block_rule": "CONDITIONAL_RECONSTRUCTED_SPECTRAL_ROOT",
     "VOL07_SU2_weak_coupling_block_influence": "OPEN",
-    "VOL07_nontrivial_continuum_weight": "OPEN"
+    "VOL07_nontrivial_continuum_weight": "OPEN",
+    "VOL08_original_continuous_SU2_star": "ANALYTIC_DERIVATION_SUBJECT_TO_EXTERNAL_SIGNOFF",
+    "VOL08_good_star_beta81_bad_plaquette": "401/8640_CONDITIONAL",
+    "VOL08_one_original_neighbor_TV_beta81": "AT_LEAST_29/36",
+    "VOL08_global_good_boundary_probability": "OPEN",
+    "VOL08_physical_size_DS_cube": "OPEN",
+    "VOL08_latest_external_one_cube": "2610.00341v7"
   },
   "summary": {
-    "curated_records": 104,
+    "curated_records": 107,
     "physical_gap_claims": 0,
-    "resource_files": 533,
-    "pr_events": 100,
+    "resource_files": 538,
+    "pr_events": 101,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
       "CONDITIONAL": 6,
-      "DRAFT_CHECKED": 20,
+      "DRAFT_CHECKED": 23,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 533,
+    "linked_resources": 538,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2590,6 +2596,87 @@
         11,
         9,
         10
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL08",
+      "title": "Original continuous SU2 good-star conditional Wilson plaquette bound",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "Original 4D SU2 Wilson exp(beta sum halftrace); exact continuous Haar one-link conditional on 15 gauge-invariant double-staple Wilson constraints",
+      "result": "Gauge-invariant all-pair aligned star yields plaquette mean >=1-eps-1/[4beta(1-eps)]; beta81 eps1/81 delta1/3 conditional failure <=401/8640 and six-plaquette union <=401/1440; global good-star frequency OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/112fb39923b77f8a99594c7c00b9b4e20789867e/docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "112fb39923b77f8a99594c7c00b9b4e20789867e",
+      "dependencies": [
+        "YM4-VOL07",
+        "YM4-VOL06-AUDIT",
+        "YM4-VOL05"
+      ],
+      "point": [
+        12,
+        10,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL08-TV",
+      "title": "Single-original-external-link frustrated SU2 boundary gauge-invariant TV obstruction",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Exact original 3^4 six-staple conditional B to F by one external SU2 center link; same gauge-invariant plaquette X",
+      "result": "B H=2I vs F H=0, original Haar; TV >=1-delta-3/(4beta delta), at beta81 delta1/9 >=29/36, at beta=k^2 delta1/k tends1; worst-case single-link TV mixing not a continuum block bound",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/a072eb8cd85df2429e5b1446293d002d263f2fcc/tests/ym4_su2_vol08_wilson_star.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "a072eb8cd85df2429e5b1446293d002d263f2fcc",
+      "dependencies": [
+        "YM4-VOL08",
+        "YM4-VOL07",
+        "YM4-VOL06-GEOM"
+      ],
+      "point": [
+        12,
+        9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL08-AUDIT",
+      "title": "Independent Haar integration-by-parts and gauge-invariant TV proof audit",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Fresh exact integration-by-parts reconstruction in continuous SU2, distinct from Gamma monotone-tilt proof; corroborated by integer quaternion fixture",
+      "result": "Exact identity kappa E[t]=3/2-(1/2)E[t/(2-t)] verifies 3/(2kappa) deficit; conditional good-star and one-external-link TV results algebraically reconstructed; external human review OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/542817b81d1a216532c5c8a00e9b1d406a1c744b/reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "542817b81d1a216532c5c8a00e9b1d406a1c744b",
+      "dependencies": [
+        "YM4-VOL08",
+        "YM4-VOL08-TV",
+        "YM4-VOL07"
+      ],
+      "point": [
+        12,
+        8,
+        8
       ],
       "views": [
         "proof",
@@ -6863,6 +6950,46 @@
       "kind": "workflow",
       "origin": "VOL07_CONDITIONAL_BLOCK_RATE_INTERFACE",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/a8c216f04294224fbe49ea0462414a9797eb2dd6/.github/workflows/ym4-vol07-physical-block-rate.yml"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md",
+      "blob": "551ada25a8ef6971f33c90c082d28cb89b13066b",
+      "ref": "112fb39923b77f8a99594c7c00b9b4e20789867e",
+      "kind": "proof_note",
+      "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/112fb39923b77f8a99594c7c00b9b4e20789867e/docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol08_wilson_star.py",
+      "blob": "9b7e91b2b0fbf12fede8b05735b0c2ac0fe77efc",
+      "ref": "a072eb8cd85df2429e5b1446293d002d263f2fcc",
+      "kind": "checker",
+      "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/a072eb8cd85df2429e5b1446293d002d263f2fcc/tests/ym4_su2_vol08_wilson_star.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp",
+      "blob": "fcf761d52207a02eb62f1226610093908741a518",
+      "ref": "a5a89523a87312c0dde7b547bd4ab5c2efa8bcd5",
+      "kind": "receipt",
+      "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/a5a89523a87312c0dde7b547bd4ab5c2efa8bcd5/docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol08-wilson-star.yml",
+      "blob": "68b7495b79880d392c8b9be44255cde1d6f80cc6",
+      "ref": "e9cf80eb3d719e000e4f2b946a2232a0a29ad845",
+      "kind": "workflow",
+      "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e9cf80eb3d719e000e4f2b946a2232a0a29ad845/.github/workflows/ym4-vol08-wilson-star.yml"
+    },
+    {
+      "path": "reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md",
+      "blob": "87f8d69733048d873a93ac6521e9a6fe01e41923",
+      "ref": "542817b81d1a216532c5c8a00e9b1d406a1c744b",
+      "kind": "audit",
+      "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/542817b81d1a216532c5c8a00e9b1d406a1c744b/reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
@@ -7735,8 +7862,16 @@
     {
       "number": 106,
       "title": "YM4 VOL07 physical block covariance rate and one-cube source interface",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106",
+      "merge_sha": "44b1cfedac5c3b7589165b0b95048b548c965279",
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 108,
+      "title": "YM4 VOL08 original SU2 good-star Wilson and one-link frustrated boundary TV",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }

@@ -1,5 +1,14 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL08 original SU(2) Wilson weak-coupling link-star acceptance
+
+**[Original continuous SU2 exact conditional certificate](docs/certificate-atlas/NOTE-YM4-VOL08-ORIGINAL-SU2-WILSON-STAR-20261122.md)** · **[Independent Haar integration-by-parts audit](reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md)** · [integer-only original 4D stencil and gauge verifier](tests/ym4_su2_vol08_wilson_star.py) · [frozen SHA receipt](docs/certificate-atlas/YM4-VOL08-WILSON-STAR-20261122.hbp) · [PR #108](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108).
+
+The original four-dimensional continuous SU(2) Wilson one-link conditional is exactly normalized Haar weighted by `exp(beta u dot H)` where `H` is the sum of six staple preferred quaternions. Fifteen gauge-invariant pairwise double-staple Wilson loops define a coherent, locally good boundary. At beta=81, epsilon=1/81 and plaquette threshold 2/3, any one original plaquette has conditional failure probability at most **401/8640** and all six at most **401/1440**. The distinct original-lattice frustrated boundary witness changes only **one external link** and gives a **gauge-invariant conditional plaquette TV separation at least 29/36**, which approaches one along beta=k². A second analytic integration-by-parts proof confirms the continuous Haar coefficient. This locates the precise bad-boundary control needed for VOL07's physical-size block comparison.
+
+**Atlas reconciliation:** 107 certificate nodes, 538 source artifacts and 101 PR records, including three new clickable VOL08 proof/audit nodes. The current comparison reference is [*One Cube Estimate Implies the Yang–Mills Mass Gap*, version 7](https://hexagonmath.org/2610.00341v7), which includes bad-block and scale analyses. The physical-size SU2 cube influence, global bad-boundary control and eleven continuum construction gates remain **OPEN**.
+
+
 ## November 22, 2026 — VOL07 physical-size block criterion for the continuum bridge
 
 **[VOL07 conditional exact block-to-spectrum theorem](docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md)** · [exact integer ternary rate controls](tests/ym4_su2_vol07_block_rate.py) · [HBP receipt](docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp) · [research PR #106](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106).
