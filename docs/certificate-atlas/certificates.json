@@ -67,7 +67,9 @@
     "VOL11_four_original_independent_marked_defects_good_exterior": "LT_1_OVER_10POWER24",
     "VOL11_unconditional_bad_exterior_correlation": "OPEN",
     "VOL11_independent_bad_star_rho": "OPEN",
-    "VOL11_physical_size_DS_cube": "OPEN"
+    "VOL11_physical_size_DS_cube": "OPEN",
+    "VOL11_bad_star_energy_deficit": "ONE_BAD_EXTERIOR_REQUIRES_SUM_WILSON_DEFICIT_GT_EPS_OVER_TWO",
+    "VOL11_beta_9power8_improved_bad_exterior": "LE_11456_OVER_43046721"
   },
   "summary": {
     "curated_records": 115,
@@ -2844,9 +2846,9 @@
       "category": "wilson",
       "scope": "Full original 4D SU2 continuous Haar conditional with all 15 gauge-invariant double-staple Wilson loops aligned; explicit exponential good-boundary tail",
       "result": "For beta>=1 and W_p<=1/2 under eps=1/16 good exterior, P(defect|exterior)<=min(1,324 beta^2 exp(-45 beta/64)); at beta81 exact Taylor12 gives <1/10^6; global bad-exterior joint activity OPEN",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/f11428bfa6aa399b34633f946ac236d0c5c3be1b/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "f11428bfa6aa399b34633f946ac236d0c5c3be1b",
+      "ref": "b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162",
       "dependencies": [
         "YM4-VOL10-BOX",
         "YM4-VOL08",
@@ -2870,10 +2872,10 @@
       "status": "DRAFT_CHECKED",
       "category": "bridge",
       "scope": "All independent sets in original 4D degree18 plaquette-sharing graph; selected full SU2 links factor given complement; good-star events are exterior measurable",
-      "result": "P(all r distinct selected original Wilson plaquettes defective AND all exteriors good)<=q_beta^r; unconditional <=q_beta^(r-t)+r pstar/(t+1), joint original bad-star activity and physical-size cube OPEN",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/1962b11fb85a5cef0dbd462a12702026e5966f8f/tests/ym4_su2_vol11_separated_defects.py",
+      "result": "P(all r distinct selected original Wilson plaquettes defective AND all exteriors good)<=q_beta^r; unconditional <=q_beta^(r-t)+r pstar/(t+1), joint original bad-star activity and physical-size cube OPEN; improved bad-exterior marginal <=12R/epsilon (factor two over VOL09)",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4d35b43dad3244f83f0f4da9647445bfdd6e718d/tests/ym4_su2_vol11_separated_defects.py",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "1962b11fb85a5cef0dbd462a12702026e5966f8f",
+      "ref": "4d35b43dad3244f83f0f4da9647445bfdd6e718d",
       "dependencies": [
         "YM4-VOL11-HAAR",
         "YM4-VOL10-ISLAND",
@@ -2898,9 +2900,9 @@
       "category": "bridge",
       "scope": "Second analytic reconstruction of original full SU2 Haar cap and separate selected-link product Wilson action, exact correlated bad-boundary contamination",
       "result": "Checks continuous SU2 geodesic angular Haar density, prefactor 324 exponent 45/64, original plaquette incidence, red adjacent-link control, no external referee signoff; all continuum gates OPEN",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/35d192eaaa5017b2f974f9b31b2e8a6d4515d2d3/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5a008beb37133217f61d986d42d3976a005c6090/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "35d192eaaa5017b2f974f9b31b2e8a6d4515d2d3",
+      "ref": "5a008beb37133217f61d986d42d3976a005c6090",
       "dependencies": [
         "YM4-VOL11-HAAR",
         "YM4-VOL11-JOINT",
@@ -7306,43 +7308,43 @@
     },
     {
       "path": "docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md",
-      "blob": "1966f812254f0e970cd4e066914d7ec58261b010",
-      "ref": "f11428bfa6aa399b34633f946ac236d0c5c3be1b",
+      "blob": "292e0be4027de5cdcb2f3149be51428faf245685",
+      "ref": "b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162",
       "kind": "proof_note",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/f11428bfa6aa399b34633f946ac236d0c5c3be1b/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b4191a318aa8e8d9cb97d0f5e7e19a58f77c0162/docs/certificate-atlas/NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md"
     },
     {
       "path": "tests/ym4_su2_vol11_separated_defects.py",
-      "blob": "4eab8557b64b995c099b7022dcbdd65b15822f55",
-      "ref": "1962b11fb85a5cef0dbd462a12702026e5966f8f",
+      "blob": "b5f0ba30fd7356df70da009321ce36b58162421c",
+      "ref": "4d35b43dad3244f83f0f4da9647445bfdd6e718d",
       "kind": "checker",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/1962b11fb85a5cef0dbd462a12702026e5966f8f/tests/ym4_su2_vol11_separated_defects.py"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4d35b43dad3244f83f0f4da9647445bfdd6e718d/tests/ym4_su2_vol11_separated_defects.py"
     },
     {
       "path": "docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp",
-      "blob": "5ff0d4905b71a195dbb2d4d6b70ff05aa441deea",
-      "ref": "c588ca7020cf41b113bb1d04636c9b650c26f7c0",
+      "blob": "3b01edbd808b5db3e80081c4399d4fe0e33fb3cf",
+      "ref": "3dc215a53165f041dd14a127ff7da77dd82eb964",
       "kind": "receipt",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c588ca7020cf41b113bb1d04636c9b650c26f7c0/docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/3dc215a53165f041dd14a127ff7da77dd82eb964/docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp"
     },
     {
       "path": ".github/workflows/ym4-vol11-separated-defects.yml",
-      "blob": "869932ccb1a01de50164dd2387913c0e9c15815f",
-      "ref": "c40c35ca21f188ade0af8fc75e96a16052835404",
+      "blob": "a771e6732e5eb7fb65e6f215d664310670ce39a1",
+      "ref": "5068ebfa4a588edac7f59a786566819fd50bf97a",
       "kind": "workflow",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c40c35ca21f188ade0af8fc75e96a16052835404/.github/workflows/ym4-vol11-separated-defects.yml"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5068ebfa4a588edac7f59a786566819fd50bf97a/.github/workflows/ym4-vol11-separated-defects.yml"
     },
     {
       "path": "reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md",
-      "blob": "93d71d2f01e7dca1dc8feb0e0584a9244d77df1e",
-      "ref": "35d192eaaa5017b2f974f9b31b2e8a6d4515d2d3",
+      "blob": "f2e9b44ce6d478b728bb27bf0af3ee1cf5ad6a8c",
+      "ref": "5a008beb37133217f61d986d42d3976a005c6090",
       "kind": "audit",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/35d192eaaa5017b2f974f9b31b2e8a6d4515d2d3/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5a008beb37133217f61d986d42d3976a005c6090/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
