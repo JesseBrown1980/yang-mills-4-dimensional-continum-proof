@@ -3,7 +3,6 @@
 Finite Q8 tests check gauge covariance and exact rational arithmetic.
 Analytic continuous SU2 Haar/gamma argument is in the companion proof note.
 """
-from fractions import Fraction
 from itertools import product
 
 I = (1, 0, 0, 0)
@@ -18,6 +17,37 @@ Q8 = (I, NI, E1, tuple(-v for v in E1),
 def require(ok, label):
     if not ok:
         raise ValueError(label)
+
+
+def ratio(n, d=1):
+    require(isinstance(n, int) and isinstance(d, int) and d > 0,
+            "integer_positive_denominator")
+    a, b = abs(n), d
+    while b:
+        a, b = b, a % b
+    g = a
+    return (n // g, d // g)
+
+
+def add(a, b):
+    return ratio(a[0] * b[1] + b[0] * a[1], a[1] * b[1])
+
+
+def neg(a):
+    return (-a[0], a[1])
+
+
+def sub(a, b):
+    return add(a, neg(b))
+
+
+def mul(a, b):
+    return ratio(a[0] * b[0], a[1] * b[1])
+
+
+def div(a, b):
+    require(b[0] > 0, "positive_divisor")
+    return ratio(a[0] * b[1], a[1] * b[0])
 
 
 def qm(a, b):
@@ -142,8 +172,7 @@ def check_boundary_realizability():
             (0, 0, 0, 0), "exact_Haar_conditional_frustrated_link")
     require(frustration[0] == aligned[0] == I,
             "gauge_invariant_test_plaquette_has_same_boundary_path")
-    eps = Fraction(1, 81)
-    require(any(Fraction(dot(frustration[i], frustration[j])) < (1-eps)
+    require(any(81 * dot(frustration[i], frustration[j]) < 80
                 for i in range(6) for j in range(i)),
             "bad_star_detected_by_physical_six_loops")
     require(dot(Q8[4], frustration[0]) == 0,
@@ -166,37 +195,30 @@ def ternary(k):
 
 def rational_controls():
     beta = 81
-    eps = Fraction(1, 81)
-    delta = Fraction(1, 3)
-    error = eps + Fraction(1, 4*beta) / (1-eps)
-    prob_bad = error / delta
-    require(error == Fraction(401, 25920),
-            "gauge_invariant_good_sector_mean_error")
-    require(prob_bad == Fraction(401, 8640),
-            "good_star_plaq_bad_probability")
-    require(6*prob_bad == Fraction(401, 1440),
+    eps = ratio(1, 81)
+    delta = ratio(1, 3)
+    one = ratio(1)
+    error = add(eps, div(ratio(1), mul(ratio(4*beta), sub(one, eps))))
+    prob_bad = div(error, delta)
+    require(error == (401, 25920), "gauge_invariant_good_sector_mean_error")
+    require(prob_bad == (401, 8640), "good_star_plaq_bad_probability")
+    require(mul(ratio(6), prob_bad) == (401, 1440),
             "six_plaquette_star_union")
     controls = []
     for k in range(1, 7):
         n = ternary(k)
         beta = n*n
-        delta = Fraction(1, n)
-        tv_floor = 1-delta-Fraction(1, 4*beta)/delta
-        require(tv_floor == Fraction(4*n-5, 4*n),
-                "Haar_TV_integer_threshold")
-        require(0 < tv_floor < 1, "gauge_invariant_TV_strictly_positive")
-        single_neighbor_floor = 1-delta-Fraction(3, 4*beta)/delta
-        require(single_neighbor_floor == Fraction(4*n-7, 4*n),
-                "single_external_link_Wilson_TV_bound")
-        require(single_neighbor_floor < tv_floor,
+        delta = ratio(1, n)
+        tv_floor = sub(sub(one, delta), div(ratio(1, 4*beta), delta))
+        require(tv_floor == ratio(4*n-5, 4*n), "Haar_TV_integer_threshold")
+        require(0 < tv_floor[0] < tv_floor[1], "gauge_invariant_TV_strictly_positive")
+        single = sub(sub(one, delta), div(ratio(3, 4*beta), delta))
+        require(single == ratio(4*n-7, 4*n), "single_external_link_Wilson_TV_bound")
+        require(single[0] * tv_floor[1] < tv_floor[0] * single[1],
                 "same_Wilson_plaquette_comparison_consistency")
-        controls.append((k, tv_floor.numerator, tv_floor.denominator,
-                         single_neighbor_floor.numerator,
-                         single_neighbor_floor.denominator))
-    require(controls[1] == (2, 31, 36, 29, 36),
-            "beta81_two_boundary_TV_bounds")
-    require(controls[2] == (3, 103, 108, 101, 108),
-            "beta729_two_boundary_TV_bounds")
+        controls.append((k, tv_floor[0], tv_floor[1], single[0], single[1]))
+    require(controls[1] == (2, 31, 36, 29, 36), "beta81_two_boundary_TV_bounds")
+    require(controls[2] == (3, 103, 108, 101, 108), "beta729_two_boundary_TV_bounds")
     return controls
 
 
