@@ -55,25 +55,31 @@
     "VOL09_beta_9_power_5_eps_half_bad_star": "LE_2000_OVER_59049",
     "VOL09_beta_9_power_8_shrinking_eps_bad_star": "LE_1432_OVER_531441",
     "VOL09_arbitrary_exterior_block_condition": "OPEN",
-    "VOL09_bad_island_cluster_control": "OPEN"
+    "VOL09_bad_island_cluster_control": "OPEN",
+    "VOL10_original_SU2_finite_box": "ANALYTIC_DERIVATION_AND_INTEGER_CHECKED",
+    "VOL10_beta_9_power_12_side27_eps_half": "LE_16064_OVER_531441",
+    "VOL10_Wilson_bad_star_plaquette_budget": "FOUR_TO_ONE_DETERMINISTIC",
+    "VOL10_joint_independent_set_activity": "OPEN",
+    "VOL10_conditional_rooted_island_tail": "rho_le_18_power_minus57_implies_18_power_minus_m_minus2",
+    "VOL10_physical_cube": "OPEN"
   },
   "summary": {
-    "curated_records": 109,
+    "curated_records": 112,
     "physical_gap_claims": 0,
-    "resource_files": 543,
-    "pr_events": 102,
+    "resource_files": 548,
+    "pr_events": 103,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
-      "CONDITIONAL": 6,
-      "DRAFT_CHECKED": 25,
+      "CONDITIONAL": 7,
+      "DRAFT_CHECKED": 27,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 543,
+    "linked_resources": 548,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2735,6 +2741,87 @@
       "point": [
         13,
         9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL10-BOX",
+      "title": "Original SU2 periodic finite-box bad-star occupancy and four-to-one plaquette defect budget",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "Periodic original continuous SU2 Wilson 4D finite volume, volume-independent b^4 box bad-star-count tail, deterministic four-to-one Wilson defect incidence",
+      "result": "beta9^12 eps1/2 b27 P(any bad)<=16064/531441, b81 union inconclusive; all bad stars <=4 times original defective Wilson plaquettes; no independent-set cluster inference",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5993ef16145d0194fb4d07da8bd1c7f466ff6f9a/docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "5993ef16145d0194fb4d07da8bd1c7f466ff6f9a",
+      "dependencies": [
+        "YM4-VOL09",
+        "YM4-VOL08",
+        "YM4-VOL07"
+      ],
+      "point": [
+        14,
+        10,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL10-ISLAND",
+      "title": "Exact 18-degree rooted bad-island combinatorics and conditional SU2 joint acceptance",
+      "status": "CONDITIONAL",
+      "category": "bridge",
+      "scope": "Original 4D plaquette-sharing link graph degree18, rooted animals <=18^(2m-2), independent stars >=ceil(m/19), joint SU2 rho hypothesis OPEN",
+      "result": "Only IF true original SU2 independent-star joint bound <=rho^|S| then P(root island>=m)<=18^(2m-2)rho^ceil(m/19), at rho<=18^-57 tail <=18^(-m-2); actual original SU2 joint activity OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/81cd30a5b80f255f0a5eaa0d70e535e68c93e460/tests/ym4_su2_vol10_bad_island.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "81cd30a5b80f255f0a5eaa0d70e535e68c93e460",
+      "dependencies": [
+        "YM4-VOL10-BOX",
+        "YM4-VOL09",
+        "YM4-VOL08-TV"
+      ],
+      "point": [
+        14,
+        9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL10-AUDIT",
+      "title": "Independent original SU2 Wilson defect packing and conditional island mathematical audit",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Separate analytic reconstruction of original Wilson finite-box rate, 4-to-1 defect packing, canonical DFS animal bound and correlated countermodel",
+      "result": "Proves deterministic original SU2 defect budget and explicitly rejects fake cluster inference from marginal alone; external peer review, actual joint SU2 activity and continuum OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/d199bc831d57ad1101a2465f0de73a36cdbafc56/reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "d199bc831d57ad1101a2465f0de73a36cdbafc56",
+      "dependencies": [
+        "YM4-VOL10-BOX",
+        "YM4-VOL10-ISLAND",
+        "YM4-VOL09-AUDIT"
+      ],
+      "point": [
+        14,
+        8,
         8
       ],
       "views": [
@@ -7089,6 +7176,46 @@
       "kind": "audit",
       "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/9922861949a26c27cadc99276e2a3b547e4da09b/reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md",
+      "blob": "6bc2b3175398d6f64e06a70f14df08f3df622c9d",
+      "ref": "5993ef16145d0194fb4d07da8bd1c7f466ff6f9a",
+      "kind": "proof_note",
+      "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5993ef16145d0194fb4d07da8bd1c7f466ff6f9a/docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol10_bad_island.py",
+      "blob": "9e96d5a81bd579340bc94e1c696d7df86a3f79c1",
+      "ref": "81cd30a5b80f255f0a5eaa0d70e535e68c93e460",
+      "kind": "checker",
+      "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/81cd30a5b80f255f0a5eaa0d70e535e68c93e460/tests/ym4_su2_vol10_bad_island.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp",
+      "blob": "36a004d09923e54f13aed3b53ac15ba28c47bc11",
+      "ref": "36f0c46be5982469bc53ae9d0d7cf0650225fe34",
+      "kind": "receipt",
+      "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/36f0c46be5982469bc53ae9d0d7cf0650225fe34/docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol10-bad-island.yml",
+      "blob": "fc311c8771203797dec613027437eedde59cd2d4",
+      "ref": "d67598ed6141ae57adf1827208643cd71676b930",
+      "kind": "workflow",
+      "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/d67598ed6141ae57adf1827208643cd71676b930/.github/workflows/ym4-vol10-bad-island.yml"
+    },
+    {
+      "path": "reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md",
+      "blob": "a9b43176692c8691dae6d6ca5a826fae4fc03f73",
+      "ref": "d199bc831d57ad1101a2465f0de73a36cdbafc56",
+      "kind": "audit",
+      "origin": "VOL10_PERIODIC_SU2_BAD_ISLAND_BRIDGE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/d199bc831d57ad1101a2465f0de73a36cdbafc56/reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
@@ -7977,8 +8104,16 @@
     {
       "number": 109,
       "title": "YM4 VOL09 original continuous SU2 periodic volume-uniform good-star probability",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109",
+      "merge_sha": "14cde4d24fd89973a3528d456e0b14e9ad3dfd4c",
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 110,
+      "title": "YM4 VOL10 original SU2 box occupancy, plaquette defect budget and conditional bad-island tail",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }

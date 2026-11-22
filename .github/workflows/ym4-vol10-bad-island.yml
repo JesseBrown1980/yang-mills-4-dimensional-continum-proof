@@ -1,0 +1,51 @@
+name: YM4 VOL10 original SU2 finite-box and conditional bad-island bridge
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol10_bad_island.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp'
+      - '.github/workflows/ym4-vol10-bad-island.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol10_bad_island.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp'
+      - '.github/workflows/ym4-vol10-bad-island.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-SU2-periodic-box-and-island-gates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Independent normal optimized integer geometry and original SU2 rate replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol10
+          python3 -I -B tests/ym4_su2_vol10_bad_island.py > build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          python3 -O -I -B tests/ym4_su2_vol10_bad_island.py > build/ym4-vol10/REPLAY.hbp
+          cmp build/ym4-vol10/ORIGINAL-SU2-BOX.hbp build/ym4-vol10/REPLAY.hbp
+          cmp build/ym4-vol10/ORIGINAL-SU2-BOX.hbp docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp
+          echo '7fca41304d5faaad5af5f4f0e2d76f68929485b6815c91dca93fe8e524ae3ae5  build/ym4-vol10/ORIGINAL-SU2-BOX.hbp' | sha256sum -c
+          grep -Fq '|P_any_bad_le=16064/531441|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|degree=18|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|full_volume_bad_link_count_le=4_times_bad_plaquette_count|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|independent_set_joint_rho=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|arbitrary_exterior_block=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol10/ORIGINAL-SU2-BOX.hbp
+      - name: Strict no-floating-point repository policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol10-original-SU2-box-and-island-closure
+          path: build/ym4-vol10/
+          retention-days: 90
+          if-no-files-found: warn

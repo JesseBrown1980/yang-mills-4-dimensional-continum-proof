@@ -1,5 +1,12 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL10 original SU2 finite-box occupancy and conditional bad-island certificate
+
+[Original SU2 theorem](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md) · [independent analytic reconstruction](../../reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md) · [integer-only original 4D graph](../../tests/ym4_su2_vol10_bad_island.py) · [frozen HBP](YM4-VOL10-BAD-ISLAND-20261122.hbp) · [PR #110](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110).
+
+Atlas inventory: **112 proof nodes**, **548 source-linked evidence resources**, **103 PR records**, across twelve script-free camera views and four overview projections. VOL10-BOX is a DRAFT_CHECKED original SU2 periodic finite-box probability bound and exact four-to-one defective-plaquette budget. VOL10-ISLAND is a CONDITIONAL 18-degree root-animal theorem with the model-specific original SU2 joint probability input explicitly OPEN. VOL10-AUDIT records a separate mathematical reconstruction and a deliberately correlated counterexample. A fixed physical-size arbitrary-boundary gauge-invariant cube, multiscale original SU2 bad-island activity, and all eleven continuum gates remain OPEN.
+
+
 ## November 22 — VOL09 uniform SU2 good-star frequency under periodic Gibbs measure
 
 [Mathematical theorem](NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md) · [independent KL audit](../../reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md) · [integer-only reproducibility](../../tests/ym4_su2_vol09_periodic_good_star.py) · [frozen HBP](YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp) · [PR #109](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109).
