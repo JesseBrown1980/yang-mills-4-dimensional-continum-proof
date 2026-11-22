@@ -308,6 +308,14 @@ def atlas_provenance():
             and '"resource_files": 500' in manifest
             and '"pr_events": 92' in manifest,
             "machine_manifest_totals_mismatch")
+    volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
+    require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
+            "VOL01_second_order_not_in_proof_index")
+    require("tfrac14" in volume_note
+            and "third-order connected" in volume_note,
+            "VOL01_exact_cancellation_note_unlinked")
+    require("All L>=3 first two plaquette-band coefficients scalar" in manifest,
+            "VOL01_manifest_not_reconciled")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
