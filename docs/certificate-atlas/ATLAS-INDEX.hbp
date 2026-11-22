@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=109|resources=543|pr_events=102|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=112|resources=548|pr_events=103|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -129,3 +129,10 @@ NODE|id=YM4-VOL09-AUDIT|status=DRAFT_CHECKED|scope=independent_KL_divergence_per
 ATLAS4D|VOL09_PERIODIC_SU2|beta=9_power_5|eps=1/2|bad_star_probability_le=2000/59049|volume_independent=YES|gauge_invariant=YES|json=0
 ATLAS4D|VOL09_SHRINKING_GOOD_STAR|beta=9_power_8|eps=1/81|bad_star_probability_le=1432/531441|eps_and_bad_frequency_to_zero=YES|json=0
 ATLAS4D|VOL09_CONTINUUM|arbitrary_exterior_cube=OPEN|bad_island_cluster_control=OPEN|positive_continuum_source=OPEN|11_original_gates=OPEN|json=0
+NODE|id=YM4-VOL10-BOX|status=DRAFT_CHECKED|scope=original_SU2_periodic_uniform_box_bad_star_and_four_to_one_plaquette_defect|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5993ef16145d0194fb4d07da8bd1c7f466ff6f9a/docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md|dependencies=YM4-VOL09,YM4-VOL08,YM4-VOL07|json=0
+NODE|id=YM4-VOL10-ISLAND|status=CONDITIONAL|scope=degree18_original_link_graph_root_animal_count_joint_rho_unproved|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/81cd30a5b80f255f0a5eaa0d70e535e68c93e460/tests/ym4_su2_vol10_bad_island.py|dependencies=YM4-VOL10-BOX,YM4-VOL09,YM4-VOL08-TV|json=0
+NODE|id=YM4-VOL10-AUDIT|status=DRAFT_CHECKED|scope=independent_Wilson_plaquette_defect_and_island_count_proof_reconstruction|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/d199bc831d57ad1101a2465f0de73a36cdbafc56/reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md|dependencies=YM4-VOL10-BOX,YM4-VOL10-ISLAND,YM4-VOL09-AUDIT|json=0
+ATLAS4D|VOL10_ORIGINAL_SU2_BOX|beta=9_power_12|epsilon=1/2|side=27|any_bad_probability_le=16064/531441|global_lattice_size_independent=YES|json=0
+ATLAS4D|VOL10_PLAQUETTE_DEFECT|each_original_bad_star_implies_incident_defective_Wilson_plaquette=YES|number_bad_stars_le=4_times_number_defective_plaquettes|gauge_invariant=YES|json=0
+ATLAS4D|VOL10_BAD_ISLAND|degree=18|joint_independent_star_rho=OPEN|conditional_rho_le=18_power_minus57|conditional_tail_le=18_power_minus_m_minus2|json=0
+ATLAS4D|VOL10_SCOPE|periodic_equilibrium_finite_box=DERIVED|arbitrary_exterior_cube=OPEN|correlated_bad_island_activity=OPEN|11_original_gates=OPEN|json=0
