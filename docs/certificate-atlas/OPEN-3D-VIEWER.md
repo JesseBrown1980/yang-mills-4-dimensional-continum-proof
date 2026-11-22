@@ -1,5 +1,12 @@
 # Open the clickable 4D Yang–Mills Certificate Atlas
 
+## Latest 4D atlas · November 22, 2026
+
+[**Open the live 4D certificate atlas**](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) — includes **92 source-linked proof nodes**, with 16 new original SU2 WT/WC/WV/WG09 and volume nodes, and a 500-file indexed manifest.
+
+All 12 SVG graph views contain the new clickable nodes, and the [four-panel overview](overview.svg) provides an additional direct way to open each new record. The green WG09-ORDER node carries the **fixed-L=2** first-neutral spectral-order proof; the blue VOL01 node marks the **L>=3** first-order geometry result and upcoming third-order volume-uniform work. The same eleven continuum requirements remain open.
+
+
 **Latest viewer revision:** 76 proof points, **22 gold external candidates** and 11 red OPEN certificate subgates. The new blue YM4-SW01 point is a verified-design spectral-window dual that awaits original 4D Wilson connected moments. [Source-matching notes](EXTERNAL-SEARCH-ROUND2-20261121.md).
 
 

@@ -1,5 +1,14 @@
 # Cross-repository Certificate Match & Open-Obligation Ledger
 
+## November 22, 2026 — 4D atlas full original Wilson evidence reconciliation
+
+The [machine-readable atlas](certificates.json), [exact HBP index](ATLAS-INDEX.hbp), [live 12-view clickable graph](index.html) and [four-panel overview](overview.svg) now carry **92 nodes, 500 indexed evidence resources and 92 repository PR records**. They add the complete original SU2 local Wilson WT01/WC01/WV01 and WG01–WG09 result family, three separately replayed WG09 coefficient/audit stages, all original acceptance receipts, and their dependency links. All prior 76 nodes and all eleven YM4-Q open continuum gates are preserved.
+
+The accepted **WG09 fixed-spatial-L=2** first neutral individual eigenmode certificate holds for 0<beta<=10^-12. It pairs strict third-order order with a fourth-order full physical infinite-tail bound and true-vacuum centered Wilson squared weight >1/289. The full physical first excited state remains charged. [WG09 full proof](../NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md), [source audit run PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803), [immutable proof receipt](YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp).
+
+Next result [YM4-VOL01](NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md): for every spatial L>=3, distinct plaquettes share at most one link, so the four-fundamental neutral **single-plaquette** band has zero first magnetic variation. This documents the geometric barrier to transferring the special L2 six-block mechanism unchanged. Next acceptance target: exact third-order connected SU2 plaquette matrix elements with a volume-uniform cluster-resolvent bound; 4D continuum Yang-Mills existence and mass gap remain OPEN.
+
+
 ## WG09 first center-neutral physical Wilson eigenmode ordered — 21 November 2026
 
 **Accepted internally checked exact finite-L theorem:** [full-operator remainder and independent audit](../NOTE-YM4-WG09-FINITE-BETA-ORDER-CERT-20261121.md) · [hosted audit PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/44956744803) · [SHA-256 full-operator HBP](YM4-WG09-FULL-OPERATOR-FINITE-BETA-20261121.hbp).

@@ -1,0 +1,43 @@
+name: YM4 VOL01 exact spatial-size plaquette magnetic selection rule
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol01_plaquette_slope_obstruction.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md'
+      - '.github/workflows/ym4-vol01-plaquette-obstruction.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol01_plaquette_slope_obstruction.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md'
+      - '.github/workflows/ym4-vol01-plaquette-obstruction.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-volume-support-enumeration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Deterministic integer-only spatial support and negative controls
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol01
+          python3 -I -B tests/ym4_su2_vol01_plaquette_slope_obstruction.py > build/ym4-vol01/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol01_plaquette_slope_obstruction.py > build/ym4-vol01/REPLAY.hbp
+          cmp build/ym4-vol01/FIRST.hbp build/ym4-vol01/REPLAY.hbp
+          grep -Fq 'offdiagonal_H2=ZERO' build/ym4-vol01/FIRST.hbp
+          grep -Fq 'L_ge3_plaquette_band_first_variation=ZERO' build/ym4-vol01/FIRST.hbp
+          grep -Fq 'volume_uniform_SU2_gap=OPEN' build/ym4-vol01/FIRST.hbp
+          sha256sum build/ym4-vol01/FIRST.hbp > build/ym4-vol01/SHA256SUMS
+      - name: Repository no-floating-point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol01-local-support-geometric-falsifiers
+          path: build/ym4-vol01/
+          retention-days: 90
+          if-no-files-found: warn
