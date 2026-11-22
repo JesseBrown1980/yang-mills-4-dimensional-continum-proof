@@ -1,0 +1,6 @@
+YM4_VOL08_MODEL|gauge=continuous_SU2|action=exp_beta_halftrace_plaquettes|dimension=4|site_conditionals=original_Haar|json=0
+YM4_VOL08_GEOMETRY|L3_linkstars=324|L4_linkstars=1024|staples_per_link=6|links_per_staple=3|distinct_partners=18|Q8_subgroup_gauge_covariance=PASS|json=0
+YM4_VOL08_GOOD|gauge_invariant_test=all_15_pairwise_six_link_Wilson_traces|epsilon=1/81|beta=81|delta=1/3|mean_deficit_le=401/25920|conditional_bad_plaquette_probability_le=401/8640|six_plaquette_union_le=401/1440|json=0
+YM4_VOL08_FRUSTRATION|original_L3_Wilson_boundary=REALIZED|three_plus_three_staples=PASS|conditional_distribution=HAAR|same_gauge_invariant_plaquette_test=YES|json=0
+YM4_VOL08_TV|beta=81|delta=1/9|aligned_vs_frustrated_TV_ge=31/36|single_external_link_change_TV_ge=29/36|beta729_single_external_TV_ge=101/108|limit_beta_tends_infinity=ONE|json=0
+YM4_VOL08_ACCEPTANCE|SU2_local_star_exact_analytic=PROOF_DEPENDENCY|integer_stencil_and_rational=PASS|single_link_uniform_weak_mixing=REJECT|physical_cube_bound=OPEN|bad_block_global_weight=OPEN|11_continuum_gates=OPEN|json=0
