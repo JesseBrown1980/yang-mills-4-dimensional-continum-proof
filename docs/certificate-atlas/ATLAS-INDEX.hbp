@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=93|resources=504|pr_events=94|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=95|resources=514|pr_events=96|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -95,4 +95,8 @@ ATLAS4D|volume_L_ge3_first_two_plaquette_coefficients=SCALAR|next_volume_connect
 ATLAS4D|first_physical_excitation_Wilson_weight=ZERO_BY_CENTER|first_neutral_Wilson_weight_fixed_L2=FINITE_PASS_beta_le_1e12|uniform_volume_Wilson_weight=OPEN|continuum_gap=OPEN|json=0
 ATLAS4D|VOL02|third_plaquette_coefficient=SCALAR_FOR_ALL_L_GE3|first_possible_nonscalar=FOURTH|volume_uniform_mass_gap=OPEN|json=0
 NODE|id=YM4-VOL02|status=DRAFT_CHECKED|scope=Original continuous SU2, spatial L>=3, fixed-volume small-beta|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/befd5f53ebc3bb4c4ff7c4fffbc3bac2e1e2fe7f/docs/certificate-atlas/NOTE-YM4-VOL02-THIRD-MAGNETIC-SELECTION-20261122.md|dependencies=YM4-VOL01,YM4-WG09-ORDER,YM4-Q07|json=0
+NODE|id=YM4-VOL03|status=DRAFT_CHECKED|scope=original_SU2_L3_L4_exact_cube_Haar_and_conditional_tree|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md|dependencies=YM4-VOL02,YM4-02|json=0
+NODE|id=EXT-NS-CELL|status=EXTERNAL|scope=external_Navier_Lean_cell_conditionals_numeric_cert_unavailable|source=https://github.com/tristanbuckmaster/navier-stokes/blob/ad53419de079eb8f95f60313473374624a348546/lean/README.md|dependencies=YM4-VOL03,YM4-Q08|json=0
+ATLAS4D|VOL03|six_face_Haar=1/16|raw_fourth_cube_W=1/256|global_physical_Feshbach=OPEN|volume_uniform_gap=OPEN|json=0
+ATLAS4D|NAVIER_EXTERNAL|lean_statement_interface=PUBLIC_PINNED|numerical_certificate=UNAVAILABLE|interval_check=UNAVAILABLE|patched_Lean_rebuild=NOT_REPORTED|json=0
 ATLAS4D|external_research=ATTRIBUTED_METHOD_OR_CONDITIONAL_ONLY|continuum_first_spectral_weight=OPEN|finite_S3_bridge=NO_DIRECT_SU2_PROOF|script_runtime=NONE|json=0
