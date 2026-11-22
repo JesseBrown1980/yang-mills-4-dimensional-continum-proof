@@ -2412,7 +2412,7 @@
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
       "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
       "dependencies": [
-        "YM4-04B",
+        "YM4-11",
         "YM4-VOL04",
         "YM4-WC01",
         "YM4-WV01"
@@ -2441,7 +2441,7 @@
       "ref": "412f9a3c60694cc896c1622ea10e4dba84601dfd",
       "dependencies": [
         "YM4-VOL05",
-        "YM4-04B"
+        "YM4-11"
       ],
       "point": [
         10,
