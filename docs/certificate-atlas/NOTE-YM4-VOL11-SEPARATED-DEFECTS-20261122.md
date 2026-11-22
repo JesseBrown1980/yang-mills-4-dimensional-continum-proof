@@ -39,7 +39,7 @@ For independent \(S\), **each \(G_e\) is \(\mathcal F_{S^c}\)-measurable**. The 
 
 ## 2. Exact continuous-SU2 Haar cap tail (analytical lemma)
 
-Identify SU2 with the unit quaternions \(S^3\). For any fixed axis \(h\in S^3\), consider the Haar tilt \(d\nu_\kappa(u)\propto e^{\kappa(u\cdot h)}du\), \(\kappa\ge1\). Set \(T=1-u\cdot h\in[0,2]\). Under **untitled** normalized SU2 Haar, \(T\) has density
+Identify SU2 with the unit quaternions \(S^3\). For any fixed axis \(h\in S^3\), consider the Haar tilt \(d\nu_\kappa(u)\propto e^{\kappa(u\cdot h)}du\), \(\kappa\ge1\). Set \(T=1-u\cdot h\in[0,2]\). Under **untilted** normalized SU2 Haar, \(T\) has density
 \[
 \frac2\pi\sqrt{t(2-t)}\,dt.
 \]
