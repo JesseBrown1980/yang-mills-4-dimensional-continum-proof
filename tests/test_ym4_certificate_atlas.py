@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 97, "atlas_expected_nodes")
+    require(len(rows) == 99, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -161,6 +161,10 @@ def hbp_nodes(text):
             "missing_original_Haar_and_spin_evidence")
     require(rows["YM4-VOL03"]["status"] == "DRAFT_CHECKED",
             "local_cube_not_final_global_gap")
+    require(rows["YM4-VOL05"]["status"] == "CONDITIONAL",
+            "published_Dobrushin_and_transfer_not_independently_formalized")
+    require(rows["YM4-VOL05-GEOM"]["status"] == "FINITE_PASS",
+            "VOL05_rational_geometry_check_missing")
     require(rows["YM4-VOL04"]["status"] == "DRAFT_CHECKED",
             "VOL04_fourth_coefficient_promoted_as_full_gap")
     require(rows["YM4-VOL04-AUDIT"]["status"] == "FINITE_PASS",
@@ -272,7 +276,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 97,
+    require(page.count('<article class="entry" id="') == 99,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -312,9 +316,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 97' in manifest
-            and '"resource_files": 520' in manifest
-            and '"pr_events": 97' in manifest,
+    require('"curated_records": 99' in manifest
+            and '"resource_files": 524' in manifest
+            and '"pr_events": 98' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -368,6 +372,19 @@ def atlas_provenance():
             "beta5_remainder_uniform_in_L=OPEN" in hbp and
             "within_band_splitting_upper=55/(32L2)" in hbp,
             "VOL04_full_coefficient_vs_uniform_beta_scope_error")
+    for uid in ("YM4-VOL05", "YM4-VOL05-GEOM"):
+        require(uid in records and page.count('href="#' + uid + '"') >= 12,
+                "VOL05_missing_new_view_node_" + uid)
+        require(overview.count('href="index.html#' + uid + '"') == 4,
+                "VOL05_missing_exact_four_panel_href_" + uid)
+    require("YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp" in manifest
+            and "ym4_su2_vol05_wilson_spectral_support.py" in manifest,
+            "VOL05_source_and_HBP_not_pinned")
+    require("Wilson_visible_ratio_le=9/500" in hbp
+            and "total_local_Wilson_weight_ge=247/1000" in hbp
+            and "external_Dobrushin_theorem=REQUIRED" in hbp
+            and "weak_coupling_scaling=OPEN" in hbp,
+            "strong_coupling_channel_promoted_as_continuum_proof")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -417,6 +434,10 @@ def atlas_provenance():
                     "id=YM4-VOL04|status=FINITE_PASS"),
         hbp.replace("id=YM4-VOL04-AUDIT|status=FINITE_PASS",
                     "id=YM4-VOL04-AUDIT|status=OPEN"),
+        hbp.replace("id=YM4-VOL05|status=CONDITIONAL",
+                    "id=YM4-VOL05|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL05-GEOM|status=FINITE_PASS",
+                    "id=YM4-VOL05-GEOM|status=OPEN"),
     ):
         try:
             hbp_nodes(bad)
@@ -427,12 +448,12 @@ def atlas_provenance():
             verify_no_runtime_code(bad)
         except ValueError:
             failures += 1
-    require(failures == 10, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=97|open_gates=11|external_leads=22"
+    require(failures == 12, "negative_scope_controls_not_enforced")
+    print("ATLAS4D_INDEX|nodes=99|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=97|json=0")
-    print("ATLAS4D_ADVERSARIES|negative_controls=10_REJECTED"
+          "|script_free=YES|source_cards=99|json=0")
+    print("ATLAS4D_ADVERSARIES|negative_controls=12_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
