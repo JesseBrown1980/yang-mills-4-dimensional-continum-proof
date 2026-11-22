@@ -31,9 +31,11 @@ jobs:
           python3 -O -I -B tests/ym4_su2_vol11_separated_defects.py > build/ym4-vol11/REPLAY.hbp
           cmp build/ym4-vol11/SEPARATED-DEFECTS.hbp build/ym4-vol11/REPLAY.hbp
           cmp build/ym4-vol11/SEPARATED-DEFECTS.hbp docs/certificate-atlas/YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp
-          echo '3c0ea7bbe79883a29e9dbc632babc5eaaf085584eda695830113b0ba2067059e  build/ym4-vol11/SEPARATED-DEFECTS.hbp' | sha256sum -c
+          echo '4bc334bb4c478d8d35418d9d2a5c231e77473b59fa4675b57ed66afef36984aa  build/ym4-vol11/SEPARATED-DEFECTS.hbp' | sha256sum -c
           grep -Fq '|conditional_defect_probability_lt=1/1000000|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
           grep -Fq '|selected_links_share_no_original_plaquette=PASS|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
+          grep -Fq '|periodic_pstar_le=12R_over_epsilon|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
+          grep -Fq '|pstar_le=11456/43046721|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
           grep -Fq '|joint_original_bad_star_rho=OPEN|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
           grep -Fq '|physical_size_cube=OPEN|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
           grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol11/SEPARATED-DEFECTS.hbp
