@@ -314,7 +314,7 @@ def atlas_provenance():
     require("tfrac14" in volume_note
             and "third-order connected" in volume_note,
             "VOL01_exact_cancellation_note_unlinked")
-    require("All L>=3 first two plaquette-band coefficients scalar" in manifest,
+    require("All L>=3 plaquette-band first variation zero and vacuum-reduced second-order matrix scalar" in manifest,
             "VOL01_manifest_not_reconciled")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
