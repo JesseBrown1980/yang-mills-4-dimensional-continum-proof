@@ -28,7 +28,8 @@
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
     "VOL03_cross_cell_volume_uniform": "OPEN",
-    "external_certificate_navier": "CONDITIONAL_LEAN_ONLY_NUMERICAL_DATA_UNAVAILABLE"
+    "external_certificate_navier": "CONDITIONAL_LEAN_ONLY_NUMERICAL_DATA_UNAVAILABLE",
+    "VOL03_cube_only_norm": "5_over_128_exact_all_L_ge3_raw_component_only"
   },
   "summary": {
     "curated_records": 95,
@@ -2296,10 +2297,10 @@
       "status": "DRAFT_CHECKED",
       "category": "wilson",
       "scope": "Original SU2 spatial L=3,4 local cube; general-volume and physical Schur bounds OPEN",
-      "result": "Six-face continuous Haar=1/16; selected raw fourth-order Wilson cube contribution=1/256; conditional matrix hierarchy demonstrated with synthetic data; global gap OPEN",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md",
+      "result": "Exact continuous SU2 cube Haar=1/16 and raw Wilson coefficient=1/256; isolated cube-only 10-regular matrix norm=5/128 uniformly in L>=3; full physical Feshbach and volume-uniform gap OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e6d0d5bee61337505cd1a0edde591dd2559fb2ef/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md",
       "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
-      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "ref": "e6d0d5bee61337505cd1a0edde591dd2559fb2ef",
       "dependencies": [
         "YM4-VOL02",
         "YM4-02"
@@ -6376,7 +6377,7 @@
     },
     {
       "path": "tests/ym4_su2_vol03_cube_haar_cell_tree.py",
-      "blob": "eff3ee6ab114891fcf5f4119211fadf2acddac53",
+      "blob": "268c50751bd1012076fe450d945fa2e645676ab7",
       "origin": "VOL03_LOCAL_DRAFT",
       "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
       "kind": "checker",
@@ -6384,7 +6385,7 @@
     },
     {
       "path": "docs/certificate-atlas/YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp",
-      "blob": "499624de4e01380dc37328b7a667aa25923f4477",
+      "blob": "3fa24003781e176851c80d1cb8f8e13d69f27e0e",
       "origin": "VOL03_LOCAL_DRAFT",
       "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
       "kind": "receipt",
@@ -6392,15 +6393,15 @@
     },
     {
       "path": "docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md",
-      "blob": "5dc25cad1973ee237b22d49bd90f8f314e427d83",
+      "blob": "b0c269cd5048b98dab7ba28e0fd563331185ff30",
       "origin": "VOL03_LOCAL_DRAFT",
-      "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
+      "ref": "e6d0d5bee61337505cd1a0edde591dd2559fb2ef",
       "kind": "proof",
-      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c89d2b45422e310d00a8e45de38df630c8218b75/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md"
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e6d0d5bee61337505cd1a0edde591dd2559fb2ef/docs/certificate-atlas/NOTE-YM4-VOL03-CUBE-HAAR-NAVIER-CERTIFICATE-20261122.md"
     },
     {
       "path": ".github/workflows/ym4-vol03-cube-haar-tree.yml",
-      "blob": "fbe32c1bbbb33db203baeb8e9578fdf73798a614",
+      "blob": "9a01a6eaf16cae2bc3943f460f99c364120544a8",
       "origin": "VOL03_LOCAL_DRAFT",
       "ref": "c89d2b45422e310d00a8e45de38df630c8218b75",
       "kind": "workflow",
