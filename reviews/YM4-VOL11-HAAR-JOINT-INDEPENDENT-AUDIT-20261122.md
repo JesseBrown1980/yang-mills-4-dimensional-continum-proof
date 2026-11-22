@@ -49,6 +49,18 @@ On any simultaneous good exterior and independent set of \(r\) links, the condit
 \]
 This is a **model-specific original Wilson many-plaquette estimate**, valid for all \(L\ge3\). Its scope is intentionally the good-exterior sector.
 
+### C.1 Independent pointwise verification of the improved bad-exterior frequency
+
+The original VOL09 marginal was derived by a union bound over six defective plaquettes. Here the full **sum of local Wilson action deficits** saves a factor two. On a bad original gauge-invariant six-staple exterior there exist \(i,j\) with \(1-s_i\cdot s_j>\epsilon\). The norm inequality
+\[
+1-s_i\cdot s_j=\tfrac12|s_i-s_j|^2
+\le |s_i-u|^2+|u-s_j|^2
+=2[(1-W_i)+(1-W_j)]
+\]
+forces \(\sum_{p\ni e}(1-W_p)>\epsilon/2\), hence the pointwise \(\mathbf1_{G_e^c}\le (2/\epsilon)\sum_{p\ni e}(1-W_p)\). Periodic Wilson expectations of the six plaquette deficits, each bounded by VOL09's \(R(\beta)\), give **\(p_\star\le12R/\epsilon\)**. With \(\epsilon=1/16\), this is \(192R\); on \(\beta=9^k\) it becomes \(64(35+18k)/9^k\). At \(k=8\), exact arithmetic gives **\(11456/43046721\)**.
+
+The deterministic bound over the full original periodic lattice is \(N_{\mathrm{bad\ stars}}\le(8/\epsilon)\sum_p(1-W_p)\) by four positive links per plaquette. This remains a first-moment bound; no unsupported independent bad-star activity is inferred.
+
 ## D. Direct inspection of the unconditional contamination term
 
 The number \(N_B=\sum_{e\in S}\mathbf1_{G_e^c}\) of bad-exterior labels is measurable given the complement. For each conditional factor at a good exterior, use \(q_\beta\); otherwise use the trivial factor 1. The conditional all-defect product is bounded by \(q_\beta^{r-N_B}\). For each \(t<r\),
@@ -57,7 +69,7 @@ The number \(N_B=\sum_{e\in S}\mathbf1_{G_e^c}\) of bad-exterior labels is measu
 \le q_\beta^{r-t}+\Pr(N_B\ge t+1)
 \le q_\beta^{r-t}+\frac{r p_\star(\beta)}{t+1}.
 \]
-This is the full unconditional result. The correlation of the bad-exterior indicators is entirely retained in the last term; **their joint activity is OPEN**. The VOL09 one-point ceiling at \(\beta=9^k\), \(\epsilon=1/16\), is exactly \(128(35+18k)/9^k\).
+This is the full unconditional result. The correlation of the bad-exterior indicators is entirely retained in the last term; **their joint activity is OPEN**. The VOL09 one-point ceiling at \(\beta=9^k\), \(\epsilon=1/16\), is exactly \(64(35+18k)/9^k\).
 
 An adversarial all-correlated exterior-label distribution can satisfy a small marginal while having all labels bad simultaneously, which is consistent with this contaminated bound. It is only a logical counterexample; the actual Wilson Gibbs correlations remain a separate analysis.
 
