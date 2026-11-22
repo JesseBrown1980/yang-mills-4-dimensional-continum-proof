@@ -1,5 +1,17 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL06 candidate full physical strong-coupling transfer gap
+
+**[Independent VOL06 analytic audit](reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md)** · **[VOL06 bounded-slice spectral-root argument](docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md)** · [exact integer geometry/spectral-root checker](tests/ym4_su2_vol06_full_spectrum.py) · [SHA-pinned HBP](docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp).
+
+Extending VOL05's original continuous-SU(2) Dobrushin covariance estimate from local Wilson traces to **every bounded Gauss-invariant spatial-slice observable** yields a candidate full physical finite-volume spectral theorem. The essential new observation is that the strictly positive continuous transfer vacuum `Omega` makes each nonvacuum eigenfunction `psi` accessible as a bounded observable `f=psi/Omega`. For any finite L>=3 and 0<beta<1/18, the covariance-root argument proposes
+
+    sup(nonvacuum physical transfer eigenvalue / vacuum eigenvalue) <= 18 beta,
+    lattice-time full physical gap >= log(1/(18 beta)).
+
+At beta=1/1000, the proposed entire-spectrum transfer ratio is <=9/500, including Wilson-dark and center-charge states. The **original Euclidean Dobrushin comparison, positivity-improving Gauss transfer, and time-slice insertion identity are explicit analytic dependencies pending independent mathematical signoff**. The hosted exact-integer gate checks original 4D incidence and a rational falsifier; it does not machine-prove those external analytic dependencies. Full 4D continuum scaling beta(a)->infinity and all eleven original continuum obligations remain OPEN.
+
+
 ## November 22, 2026 — VOL05 spatial-volume-uniform strong-coupling Wilson spectral support
 
 **[VOL05 complete analytic certificate](docs/certificate-atlas/NOTE-YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.md)** · [exact rational HBP](docs/certificate-atlas/YM4-VOL05-WILSON-SPECTRAL-SUPPORT-20261122.hbp) · [source-level checker](tests/ym4_su2_vol05_wilson_spectral_support.py) · [YM4-04B original volume-independent SU2 connected covariance](docs/NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md) · [draft PR #104](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/104).

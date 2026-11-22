@@ -1,0 +1,47 @@
+name: YM4 VOL06 full physical strong-coupling spectral-root audit
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol06_full_spectrum.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp'
+      - '.github/workflows/ym4-vol06-full-physical-gap.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol06_full_spectrum.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp'
+      - '.github/workflows/ym4-vol06-full-physical-gap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integer-replay-and-audit-boundary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Replay independent geometry, spectral-root and deliberate falsifier
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol06
+          python3 -I -B tests/ym4_su2_vol06_full_spectrum.py > build/ym4-vol06/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol06_full_spectrum.py > build/ym4-vol06/REPLAY.hbp
+          cmp build/ym4-vol06/FIRST.hbp build/ym4-vol06/REPLAY.hbp
+          cmp build/ym4-vol06/FIRST.hbp docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp
+          echo '6a7d89f4b6e4b98a4528ac56a55ad97e808c798253dbd76ca00982789ae40cb6  build/ym4-vol06/FIRST.hbp' | sha256sum -c
+          grep -Fq '|analytic_audit=REQUIRED|' build/ym4-vol06/FIRST.hbp
+          grep -Fq '|continuum_gates=OPEN|' build/ym4-vol06/FIRST.hbp || grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol06/FIRST.hbp
+      - name: Preserve original repository no-floating-point policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol06-full-spectrum-integer-replay
+          path: build/ym4-vol06/
+          retention-days: 90
+          if-no-files-found: warn
