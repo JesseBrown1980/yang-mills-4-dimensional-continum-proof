@@ -50,25 +50,30 @@
     "VOL08_one_original_neighbor_TV_beta81": "AT_LEAST_29/36",
     "VOL08_global_good_boundary_probability": "OPEN",
     "VOL08_physical_size_DS_cube": "OPEN",
-    "VOL08_latest_external_one_cube": "2610.00341v7"
+    "VOL08_latest_external_one_cube": "2610.00341v7",
+    "VOL09_periodic_volume_uniform_good_star": "ANALYTIC_DERIVATION_AND_INTEGER_CHECKED",
+    "VOL09_beta_9_power_5_eps_half_bad_star": "LE_2000_OVER_59049",
+    "VOL09_beta_9_power_8_shrinking_eps_bad_star": "LE_1432_OVER_531441",
+    "VOL09_arbitrary_exterior_block_condition": "OPEN",
+    "VOL09_bad_island_cluster_control": "OPEN"
   },
   "summary": {
-    "curated_records": 107,
+    "curated_records": 109,
     "physical_gap_claims": 0,
-    "resource_files": 538,
-    "pr_events": 101,
+    "resource_files": 543,
+    "pr_events": 102,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
       "CONDITIONAL": 6,
-      "DRAFT_CHECKED": 23,
+      "DRAFT_CHECKED": 25,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 538,
+    "linked_resources": 543,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2676,6 +2681,60 @@
       "point": [
         12,
         8,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL09",
+      "title": "Original continuous SU2 periodic volume-uniform gauge-invariant good-star frequency",
+      "status": "DRAFT_CHECKED",
+      "category": "wilson",
+      "scope": "Original isotropic periodic 4D SU2 Wilson L>=3, beta>=1; Haar cap and free-energy convexity with fixed-/shrinking-epsilon bad-star frequency uniform in lattice size",
+      "result": "E(1-W_p)<=1/beta+(4/3beta)log(1536 beta^(3/2)); P(G_epsilon^c)<=24 R(beta)/epsilon, beta9^5 eps1/2 <=2000/59049, beta9^8 eps1/81 <=1432/531441; arbitrary exterior cube OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/bddb78b960252e82ee278fd342ec80310f1b562b/docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "bddb78b960252e82ee278fd342ec80310f1b562b",
+      "dependencies": [
+        "YM4-VOL08",
+        "YM4-VOL08-TV",
+        "YM4-VOL07"
+      ],
+      "point": [
+        13,
+        10,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL09-AUDIT",
+      "title": "Independent Gibbs relative-entropy reconstruction of SU2 good-star frequency",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Fresh KL(mu_beta||mu_beta/2) proof route reproducing Wilson free-energy secant and exact 4/3 coefficient, plus chordal star conversion",
+      "result": "KL nonnegativity recovers volume-uniform plaquette deficit; exact integer exponential series and rational bad-star ceilings independently checked; external peer review and physical-size cube OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/9922861949a26c27cadc99276e2a3b547e4da09b/reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "9922861949a26c27cadc99276e2a3b547e4da09b",
+      "dependencies": [
+        "YM4-VOL09",
+        "YM4-VOL08-AUDIT",
+        "YM4-VOL07"
+      ],
+      "point": [
+        13,
+        9,
         8
       ],
       "views": [
@@ -6990,6 +7049,46 @@
       "kind": "audit",
       "origin": "VOL08_ORIGINAL_SU2_WEAK_BOUNDARY",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/542817b81d1a216532c5c8a00e9b1d406a1c744b/reviews/YM4-VOL08-HAAR-BY-PARTS-INDEPENDENT-AUDIT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md",
+      "blob": "c5d6e448989a35ab7dfc58a04867362be63408fc",
+      "ref": "bddb78b960252e82ee278fd342ec80310f1b562b",
+      "kind": "proof_note",
+      "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/bddb78b960252e82ee278fd342ec80310f1b562b/docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol09_periodic_good_star.py",
+      "blob": "a5487184f854e4d62a537033e7998290ddb6429e",
+      "ref": "96bab5bc98c8296bf6b41396f61d09f8ea55e24a",
+      "kind": "checker",
+      "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/96bab5bc98c8296bf6b41396f61d09f8ea55e24a/tests/ym4_su2_vol09_periodic_good_star.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp",
+      "blob": "60d016415e726835b522ecc4c34893f2d6db3a79",
+      "ref": "c341812f599cefdfbc8ce0fce282d39af848c4eb",
+      "kind": "receipt",
+      "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/c341812f599cefdfbc8ce0fce282d39af848c4eb/docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol09-periodic-good-star.yml",
+      "blob": "541d6f9237f19829997ab2db7837f0e7699e38d2",
+      "ref": "7a018f38d12edf75bf264156e35f9730d886121f",
+      "kind": "workflow",
+      "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/7a018f38d12edf75bf264156e35f9730d886121f/.github/workflows/ym4-vol09-periodic-good-star.yml"
+    },
+    {
+      "path": "reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md",
+      "blob": "c6bc1b569ebdaf6178c9ee70c66b8a6598ce1962",
+      "ref": "9922861949a26c27cadc99276e2a3b547e4da09b",
+      "kind": "audit",
+      "origin": "VOL09_SU2_PERIODIC_GOOD_STAR",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/9922861949a26c27cadc99276e2a3b547e4da09b/reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md"
     }
   ],
   "pr_events": [
@@ -7870,8 +7969,16 @@
     {
       "number": 108,
       "title": "YM4 VOL08 original SU2 good-star Wilson and one-link frustrated boundary TV",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/108",
+      "merge_sha": "5c613a43226ed4c660791879e431f2a84fe8c640",
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 109,
+      "title": "YM4 VOL09 original continuous SU2 periodic volume-uniform good-star probability",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }
