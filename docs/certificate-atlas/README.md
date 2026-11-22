@@ -1,5 +1,12 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 22 — VOL07 physical-block mass acceptance interface
+
+[Physical-block criterion note](NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md) · [exact integer rate controls](../../tests/ym4_su2_vol07_block_rate.py) · [frozen HBP](YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp) · [draft PR #106](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106).
+
+The 4D atlas now indexes **104 proof nodes**, **533 evidence resources**, and **100 PR records** in the VOL07 atlas research branch. VOL07 is CONDITIONAL and VOL07-RATE is DRAFT_CHECKED, visible in all twelve graph-camera views and four-panel overview. The exact theorem translates all bounded original Gauss-invariant spatial-slice block covariance rate q(a)^n into full spectrum ratio <=q(a)^(1/b(a)) and physical mass >=-log(q(a))/(a b(a)). The attached integer tests are abstract ternary rate examples and negative controls. Real original SU2 one-cube block influence along beta(a)->infinity, nonvanishing continuum source and OS reconstruction remain OPEN, preserving 11 original continuum gates.
+
+
 ## November 22 — VOL06 candidate entire physical strong-coupling transfer spectrum
 
 The [interactive 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) has **102 proof nodes**, **529 evidence resources**, and **99 PR records** in research branch [VOL06 PR #105](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/105). Its two new source-linked nodes are clickable in all twelve graph-camera views and four overview panels.
