@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 109, "atlas_expected_nodes")
+    require(len(rows) == 112, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -181,6 +181,12 @@ def hbp_nodes(text):
     for uid in ("YM4-VOL09", "YM4-VOL09-AUDIT"):
         require(rows[uid]["status"] == "DRAFT_CHECKED",
                 "VOL09_periodic_marginal_must_not_be_promoted_to_cube_" + uid)
+    require(rows["YM4-VOL10-BOX"]["status"] == "DRAFT_CHECKED",
+            "VOL10_finite_box_marginal_not_physical_cube")
+    require(rows["YM4-VOL10-ISLAND"]["status"] == "CONDITIONAL",
+            "VOL10_conditional_cluster_rho_unproved")
+    require(rows["YM4-VOL10-AUDIT"]["status"] == "DRAFT_CHECKED",
+            "VOL10_audit_not_external_peer_signoff")
     require(rows["YM4-VOL04"]["status"] == "DRAFT_CHECKED",
             "VOL04_fourth_coefficient_promoted_as_full_gap")
     require(rows["YM4-VOL04-AUDIT"]["status"] == "FINITE_PASS",
@@ -292,7 +298,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 109,
+    require(page.count('<article class="entry" id="') == 112,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -332,9 +338,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 109' in manifest
-            and '"resource_files": 543' in manifest
-            and '"pr_events": 102' in manifest,
+    require('"curated_records": 112' in manifest
+            and '"resource_files": 548' in manifest
+            and '"pr_events": 103' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -460,6 +466,22 @@ def atlas_provenance():
             and "arbitrary_exterior_cube=OPEN" in hbp
             and "11_original_gates=OPEN" in hbp,
             "VOL09_periodic_equilibrium_promoted_as_all_boundary_cube")
+    for uid in ("YM4-VOL10-BOX", "YM4-VOL10-ISLAND", "YM4-VOL10-AUDIT"):
+        require(uid in records and page.count('href="#' + uid + '"') >= 12,
+                "VOL10_missing_one_of_twelve_cameras_" + uid)
+        require(overview.count('href="index.html#' + uid + '"') == 4,
+                "VOL10_missing_one_of_four_overview_panels_" + uid)
+    require("YM4-VOL10-BAD-ISLAND-20261122.hbp" in manifest
+            and "ym4_su2_vol10_bad_island.py" in manifest
+            and "NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md" in manifest
+            and "YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md" in manifest,
+            "VOL10_original_SU2_box_and_island_sources_missing")
+    require("any_bad_probability_le=16064/531441" in hbp
+            and "number_bad_stars_le=4_times_number_defective_plaquettes" in hbp
+            and "joint_independent_star_rho=OPEN" in hbp
+            and "arbitrary_exterior_cube=OPEN" in hbp
+            and "11_original_gates=OPEN" in hbp,
+            "VOL10_false_independent_bad_island_or_continuum_promotion")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -533,6 +555,12 @@ def atlas_provenance():
                     "id=YM4-VOL09|status=FINITE_PASS"),
         hbp.replace("id=YM4-VOL09-AUDIT|status=DRAFT_CHECKED",
                     "id=YM4-VOL09-AUDIT|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL10-BOX|status=DRAFT_CHECKED",
+                    "id=YM4-VOL10-BOX|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL10-ISLAND|status=CONDITIONAL",
+                    "id=YM4-VOL10-ISLAND|status=FINITE_PASS"),
+        hbp.replace("id=YM4-VOL10-AUDIT|status=DRAFT_CHECKED",
+                    "id=YM4-VOL10-AUDIT|status=FINITE_PASS"),
     ):
         try:
             hbp_nodes(bad)
@@ -543,12 +571,12 @@ def atlas_provenance():
             verify_no_runtime_code(bad)
         except ValueError:
             failures += 1
-    require(failures == 22, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=109|open_gates=11|external_leads=22"
+    require(failures == 25, "negative_scope_controls_not_enforced")
+    print("ATLAS4D_INDEX|nodes=112|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=109|json=0")
-    print("ATLAS4D_ADVERSARIES|negative_controls=22_REJECTED"
+          "|script_free=YES|source_cards=112|json=0")
+    print("ATLAS4D_ADVERSARIES|negative_controls=25_REJECTED"
           "|physics_from_plot=NONE|json=0")
 
 
