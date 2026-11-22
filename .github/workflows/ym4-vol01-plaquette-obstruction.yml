@@ -28,6 +28,7 @@ jobs:
           python3 -I -B tests/ym4_su2_vol01_plaquette_slope_obstruction.py > build/ym4-vol01/FIRST.hbp
           python3 -O -I -B tests/ym4_su2_vol01_plaquette_slope_obstruction.py > build/ym4-vol01/REPLAY.hbp
           cmp build/ym4-vol01/FIRST.hbp build/ym4-vol01/REPLAY.hbp
+          grep -Fq 'offdiagonal_H2=ZERO' build/ym4-vol01/FIRST.hbp
           grep -Fq 'L_ge3_plaquette_band_first_variation=ZERO' build/ym4-vol01/FIRST.hbp
           grep -Fq 'volume_uniform_SU2_gap=OPEN' build/ym4-vol01/FIRST.hbp
           sha256sum build/ym4-vol01/FIRST.hbp > build/ym4-vol01/SHA256SUMS
