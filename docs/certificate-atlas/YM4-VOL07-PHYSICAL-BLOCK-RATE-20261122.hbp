@@ -1,0 +1,5 @@
+YM4_VOL07_THEOREM|hypothesis=ALL_BOUNDED_GAUSS_SLICE_COVARIANCES|block_time=b|covariance_bound=M_q_power_n|eigenvalue_ratio_le=q_power_1_over_b|scope=CONDITIONAL|json=0
+YM4_VOL07_MASS|physical_gap_ge=-log_q_over_ab|rational_sufficient_q_le=1_minus_mab|continuum_OS=SEPARATE|json=0
+YM4_VOL07_TERNARY|scales=1_to_12|a=3_to_minus_k|b=3_to_k|physical_block_length=1|toy_q=1/2|toy_mass_gt=1/2|model_input=NONE|json=0
+YM4_VOL07_NEGATIVE|q_microscopic=1_minus_a_squared_over2|physical_mass_floor_uniform_half=REJECT|18beta_weak_coupling_contraction=REJECT|integer_only=YES|json=0
+YM4_VOL07_VERDICT|rate_implication=EXACT|SU2_weak_block_estimate=OPEN|source_weight_continuum=OPEN|eleven_continuum_gates=OPEN|json=0

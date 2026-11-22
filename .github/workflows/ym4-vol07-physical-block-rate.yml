@@ -1,0 +1,47 @@
+name: YM4 VOL07 physical block covariance-to-mass criterion
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol07_block_rate.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp'
+      - '.github/workflows/ym4-vol07-physical-block-rate.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol07_block_rate.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md'
+      - 'docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp'
+      - '.github/workflows/ym4-vol07-physical-block-rate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-integer-physical-block-rate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Duplicate exact logical rate replay and frozen SHA
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol07
+          python3 -I -B tests/ym4_su2_vol07_block_rate.py > build/ym4-vol07/FIRST.hbp
+          python3 -O -I -B tests/ym4_su2_vol07_block_rate.py > build/ym4-vol07/REPLAY.hbp
+          cmp build/ym4-vol07/FIRST.hbp build/ym4-vol07/REPLAY.hbp
+          cmp build/ym4-vol07/FIRST.hbp docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp
+          echo '137499ddb57e99f80336d2f5cbeb85f9f8f3983bda6a7aa0b2a6ce45df1c8d67  build/ym4-vol07/FIRST.hbp' | sha256sum -c
+          grep -Fq '|SU2_weak_block_estimate=OPEN|' build/ym4-vol07/FIRST.hbp
+          grep -Fq '|eleven_continuum_gates=OPEN|' build/ym4-vol07/FIRST.hbp
+      - name: Strict repository no-floating-point policy
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol07-physical-block-rate-closure
+          path: build/ym4-vol07/
+          retention-days: 90
+          if-no-files-found: warn
