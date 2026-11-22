@@ -496,6 +496,8 @@ def atlas_provenance():
             and "YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md" in manifest,
             "VOL11_source_pinned_original_SU2_Haar_and_joint_missing")
     require("joint_four_good_exteriors_lt=1/10power24" in hbp
+            and "pstar_le=11456/43046721" in hbp
+            and "factor2_improvement=YES" in hbp
             and "no_shared_plaquette=REQUIRED" in hbp
             and "independent_bad_star_joint_rho=OPEN" in hbp
             and "physical_size_cube=OPEN" in hbp
