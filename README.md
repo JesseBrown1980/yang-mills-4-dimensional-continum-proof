@@ -1,5 +1,16 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL10 original SU(2) finite-box and bad-island acceptance
+
+**[Original continuous SU2 Wilson finite-box theorem and conditional island criterion](docs/certificate-atlas/NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md)** · [Independent mathematical reconstruction](reviews/YM4-VOL10-ORIGINAL-SU2-BOX-ISLAND-AUDIT-20261122.md) · [integer-only 4D link-graph and box verifier](tests/ym4_su2_vol10_bad_island.py) · [HBP frozen receipt](docs/certificate-atlas/YM4-VOL10-BAD-ISLAND-20261122.hbp) · [PR #110](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/110).
+
+**New original Wilson finite-volume result.** For a specified original periodic (L^4) vertex cube of side (b), with (4b^4) positive link bases, the chance of at least (r) gauge-invariant bad stars is at most (min(1,4b^4p_{eta}(epsilon)/r)), where the **volume-uniform** original SU2 per-star bound was established in VOL09. At (eta=9^{12}), (epsilon=1/2), side 27, (P(	ext{any bad star})le16064/531441). At side 81, the same method gives a raw upper envelope above one and so supplies no useful guarantee. Every bad star forces an original gauge-invariant Wilson plaquette defect, and each plaquette touches four links, giving the **pointwise finite-volume defect budget** (N_{m bad-stars}le4N_{m defective-plaquettes}).
+
+**Next precise joint acceptance.** The actual original four-dimensional plaquette-sharing link graph has degree 18. A rooted connected bad island of size (m) has a combinatorial upper count (18^{2(m-1)}) and contains an independent set of at least (lceil m/19ceil) links. If a *new* original SU2 joint-probability certificate proves (Pr(	ext{all specified independent bad stars})leho^{|S|}), an exponential root-island tail follows; the sufficient (hole18^{-57}) gives (Pr(|C|ge m)le18^{-m-2}). VOL10 explicitly tests and rejects inferring this joint probability from single-site marginals alone. The original SU2 joint defect rate, physical-size arbitrary-boundary cube and all eleven continuum obligations remain **OPEN**.
+
+**Atlas inventory:** 112 source-linked proof nodes, 548 evidence resources and 103 PR records; three clickable VOL10 nodes and 25 adversarial scope checks.
+
+
 ## November 22, 2026 — VOL09 original SU(2) periodic volume-uniform good-star frequency
 
 **[Exact continuous-SU2 periodic equilibrium theorem](docs/certificate-atlas/NOTE-YM4-VOL09-PERIODIC-GOOD-STAR-FREQUENCY-20261122.md)** · [Independent KL relative-entropy audit](reviews/YM4-VOL09-KL-PERIODIC-GOOD-STAR-AUDIT-20261122.md) · [integer-only source checker](tests/ym4_su2_vol09_periodic_good_star.py) · [frozen HBP](docs/certificate-atlas/YM4-VOL09-PERIODIC-GOOD-STAR-20261122.hbp) · [PR #109](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/109).
