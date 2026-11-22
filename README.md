@@ -1,5 +1,14 @@
 # Yang–Mills Four-Dimensional Continuum Proof
 
+## November 22, 2026 — VOL07 physical-size block criterion for the continuum bridge
+
+**[VOL07 conditional exact block-to-spectrum theorem](docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md)** · [exact integer ternary rate controls](tests/ym4_su2_vol07_block_rate.py) · [HBP receipt](docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp) · [research PR #106](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106).
+
+This next-stage conditional theorem supplies the exact acceptance target for a future original-SU2 gauge-invariant physical-size block covariance certificate. If every bounded Gauss-invariant slice observable has connected covariance at n temporal blocks of length b(a) bounded by M q(a)^n, then every nonvacuum physical transfer ratio is at most q(a)^(1/b(a)), and the physical-unit gap is at least -log(q(a))/(a b(a)). A sufficient rational rate is q(a) <= 1 - m_* a b(a). Ternary a=3^(-k) rates and deliberate failed quadratic rates are checked with integers, and the 3+1D SU2 one-cube weak-coupling hypothesis is explicitly OPEN. The newly attributed [2026 one-cube preprint](https://hexagonmath.org/pdf/2610.00341v6) clarifies remaining cube, nonzero-source and tree-bound inputs; its continuum assumptions are separate from our certified numerical controls.
+
+**Atlas:** the proposed VOL07 nodes appear in the live research atlas alongside internally accepted conditional VOL06; 104 proof nodes, 533 resources, 100 PR records. The exact one-cube SU2 weak-coupling bound, nontrivial continuum Wilson weight and all 11 continuum proof obligations remain OPEN.
+
+
 ## November 22, 2026 — VOL06 candidate full physical strong-coupling transfer gap
 
 **[Independent VOL06 analytic audit](reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md)** · **[VOL06 bounded-slice spectral-root argument](docs/certificate-atlas/NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md)** · [exact integer geometry/spectral-root checker](tests/ym4_su2_vol06_full_spectrum.py) · [SHA-pinned HBP](docs/certificate-atlas/YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp).

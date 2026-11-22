@@ -1,4 +1,4 @@
-ATLAS4D|version=2026-11-22|curated=102|resources=529|pr_events=99|open_subgates=11|continuum_mass_gap=OPEN|json=0
+ATLAS4D|version=2026-11-22|curated=104|resources=533|pr_events=100|open_subgates=11|continuum_mass_gap=OPEN|json=0
 NODE|id=YM4-01|status=FINITE_PASS|scope=4D continuous SU(2), finite lattice|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0001-GAUGE-INVARIANCE.md|dependencies=NONE|json=0
 NODE|id=YM4-02|status=FINITE_PASS|scope=Continuous SU(2) Haar|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0002-HAAR-MOMENTS.md|dependencies=YM4-01|json=0
 NODE|id=YM4-03|status=FINITE_PASS|scope=Haar moment control|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/b8f4260d2c74f93a0222a4a3de24d90131afd4a6/docs/LEMMA-0003-SUBGROUP-DESIGNS.md|dependencies=YM4-02|json=0
@@ -114,3 +114,7 @@ ATLAS4D|VOL06_STRONG_COUPLING|beta=1/1000|all_physical_transfer_ratio_le=9/500|i
 ATLAS4D|VOL06_SCOPE|fixed_spatial_L_ge3_full_spectrum=CONDITIONAL|weak_coupling_scaling=OPEN|11_continuum_gates=OPEN|json=0
 NODE|id=YM4-VOL06-AUDIT|status=DRAFT_CHECKED|scope=independent_reconstruction_published_Dobrushin_transfer_full_physical_spectrum|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e494ce3a03f093d9f359e25438343a9a91a85455/reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md|dependencies=YM4-VOL06,YM4-VOL05,YM4-11|json=0
 ATLAS4D|VOL06_ANALYTIC_AUDIT|finite_bare_strong_coupling=RECONSTRUCTION_PASS|class=DRAFT_CHECKED|external_peer_review=OPEN|beta_to_infinity=OPEN|json=0
+NODE|id=YM4-VOL07|status=CONDITIONAL|scope=all_sector_physical_block_covariance_to_spectral_root_with_ba_physical_time|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/87698a12c2539936041b9eb19707a7451d4dab60/docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md|dependencies=YM4-VOL06,YM4-VOL06-AUDIT,YM4-Q08,YM4-Q10|json=0
+NODE|id=YM4-VOL07-RATE|status=DRAFT_CHECKED|scope=exact_integer_ternary_rate_toy_and_quadratic_collapse_adversarial|source=https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/0cd2ad5c2a0269380de02f005c90d75ea0e60903/tests/ym4_su2_vol07_block_rate.py|dependencies=YM4-VOL07,YM4-VOL06-GEOM|json=0
+ATLAS4D|VOL07_PHYSICAL_RATE|spectral_root=CONDITIONAL|mass_floor=-log_q_over_ab|ternary_toy_check=EXACT|SU2_weak_block_influence=OPEN|json=0
+ATLAS4D|VOL07_CONTINUUM|gauge_invariant_physical_cube=OPEN|positive_source_weight=OPEN|OS_reconstruction=OPEN|11_original_gates=OPEN|json=0

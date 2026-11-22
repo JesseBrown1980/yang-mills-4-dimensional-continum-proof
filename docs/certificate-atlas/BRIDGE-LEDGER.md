@@ -1,3 +1,9 @@
+## November 22 — VOL07 one-cube physical-scale acceptance and linked theorem inputs
+
+The [VOL07 conditional mathematical note](NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md), [SHA receipt](YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp), [exact integer rate controls](../../tests/ym4_su2_vol07_block_rate.py), and [PR #106](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106) define a general positive-transfer spectral-root implication over blocks of b(a) lattice time steps. If *every* bounded physical Gauss-invariant slice observable has covariance C(nb) <= M_f q(a)^n, then whole-spectrum ratio <=q(a)^(1/b(a)), giving physical gap >=-log(q)/(a b). Exact ternary toy rates and a failing quadratic rate are checked without floating point. The original SU2 weak-coupling one-cube estimate remains OPEN.
+
+The external [November 2026 one-cube paper, 2610.00341v6](https://hexagonmath.org/pdf/2610.00341v6) is an attributed mathematical reference. Its stated continuum obligations include a cube Dobrushin–Shlosman bound along the tuning, nonzero source/slice normalization and higher Schwinger-function tree controls. The external paper's finite lattice results and conditional continuum implications are distinct from a completed SU2 Yang–Mills continuum mass-gap proof. Next acceptance: source-pinned original-SU2 block measure and a finite rational influence calculation with all-center-sector witness, prior to any global or continuum promotion.
+
 ## November 22 — VOL06 full Gauss-physical strong-coupling gap candidate (external analytic signoff pending)
 
 [Original candidate theorem](NOTE-YM4-VOL06-FULL-PHYSICAL-STRONG-COUPLING-GAP-20261122.md) · [source pin](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/105) · [HBP](YM4-VOL06-FULL-PHYSICAL-GAP-20261122.hbp) · [integer checker](../../tests/ym4_su2_vol06_full_spectrum.py).
