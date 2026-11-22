@@ -23,7 +23,7 @@
     "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "independent_VOL06_analytic_signoff_then_beta_a_weak_coupling_bridge",
+    "next_volume_proof": "explicit_original_SU2_one_cube_block_influence_in_physical_units",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
@@ -41,25 +41,28 @@
     "VOL06_full_physical_ratio_at_beta_1_over_1000": "9/500",
     "VOL06_weak_coupling": "OPEN",
     "VOL06_11_continuum_gates": "OPEN",
-    "VOL06_analytic_review": "INDEPENDENT_RECONSTRUCTION_PASS_EXTERNAL_PEER_REVIEW_OPEN"
+    "VOL06_analytic_review": "INDEPENDENT_RECONSTRUCTION_PASS_EXTERNAL_PEER_REVIEW_OPEN",
+    "VOL07_physical_block_rule": "CONDITIONAL_RECONSTRUCTED_SPECTRAL_ROOT",
+    "VOL07_SU2_weak_coupling_block_influence": "OPEN",
+    "VOL07_nontrivial_continuum_weight": "OPEN"
   },
   "summary": {
-    "curated_records": 102,
+    "curated_records": 104,
     "physical_gap_claims": 0,
-    "resource_files": 529,
-    "pr_events": 99,
+    "resource_files": 533,
+    "pr_events": 100,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
-      "CONDITIONAL": 5,
-      "DRAFT_CHECKED": 19,
+      "CONDITIONAL": 6,
+      "DRAFT_CHECKED": 20,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 529,
+    "linked_resources": 533,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2532,6 +2535,60 @@
       "point": [
         10,
         10,
+        10
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL07",
+      "title": "Physical-size block covariance to full physical spectral gap criterion",
+      "status": "CONDITIONAL",
+      "category": "wilson",
+      "scope": "Original SU2 physical Gauss transfer, all finite spatial volumes; exact conditional block-to-physical-mass theorem, microscopic beta tuning still OPEN",
+      "result": "If all bounded spatial-slice covariance decays at block rate q^n over b steps, full excited transfer ratio <=q^(1/b), physical gap >=-log q/(ab); SU2 block influence not yet certified",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/87698a12c2539936041b9eb19707a7451d4dab60/docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "87698a12c2539936041b9eb19707a7451d4dab60",
+      "dependencies": [
+        "YM4-VOL06",
+        "YM4-VOL06-AUDIT",
+        "YM4-Q08",
+        "YM4-Q10"
+      ],
+      "point": [
+        11,
+        10,
+        9
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL07-RATE",
+      "title": "Independent ternary-scale integer physical-rate acceptance and negative controls",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Conditional elementary spectral-root rate theorem, ternary a=3^-k, k=1..12; independent exact rational examples with deliberately failed q=1-a²/2",
+      "result": "Exact physical block-time a*b=1 for b=3^k; q=1/2 implies mass >1/2 as abstract criterion; microscopic quadratic q fails positive uniform physical floor; actual SU2 block data OPEN",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/0cd2ad5c2a0269380de02f005c90d75ea0e60903/tests/ym4_su2_vol07_block_rate.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "0cd2ad5c2a0269380de02f005c90d75ea0e60903",
+      "dependencies": [
+        "YM4-VOL07",
+        "YM4-VOL06-GEOM"
+      ],
+      "point": [
+        11,
+        9,
         10
       ],
       "views": [
@@ -6774,6 +6831,38 @@
       "ref": "e494ce3a03f093d9f359e25438343a9a91a85455",
       "kind": "audit",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/e494ce3a03f093d9f359e25438343a9a91a85455/reviews/YM4-VOL06-INDEPENDENT-ANALYTIC-AUDIT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md",
+      "blob": "1bd33b321512e6445556166f64d9c8a500c85dd7",
+      "ref": "87698a12c2539936041b9eb19707a7451d4dab60",
+      "kind": "proof_note",
+      "origin": "VOL07_CONDITIONAL_BLOCK_RATE_INTERFACE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/87698a12c2539936041b9eb19707a7451d4dab60/docs/certificate-atlas/NOTE-YM4-VOL07-PHYSICAL-BLOCK-GAP-CRITERION-20261122.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol07_block_rate.py",
+      "blob": "c3a6dc805ee2427ce13cbab0ac8e06d1537c261a",
+      "ref": "0cd2ad5c2a0269380de02f005c90d75ea0e60903",
+      "kind": "checker",
+      "origin": "VOL07_CONDITIONAL_BLOCK_RATE_INTERFACE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/0cd2ad5c2a0269380de02f005c90d75ea0e60903/tests/ym4_su2_vol07_block_rate.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp",
+      "blob": "d34ca45e9ede48b2f06cc8c954db53b5062d25f8",
+      "ref": "db371dee3513aa0148d897724ccb7d8b533e15d1",
+      "kind": "receipt",
+      "origin": "VOL07_CONDITIONAL_BLOCK_RATE_INTERFACE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/db371dee3513aa0148d897724ccb7d8b533e15d1/docs/certificate-atlas/YM4-VOL07-PHYSICAL-BLOCK-RATE-20261122.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol07-physical-block-rate.yml",
+      "blob": "c650167f2c53e22456ccc3b2a68cdceeac1b08a3",
+      "ref": "a8c216f04294224fbe49ea0462414a9797eb2dd6",
+      "kind": "workflow",
+      "origin": "VOL07_CONDITIONAL_BLOCK_RATE_INTERFACE",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/a8c216f04294224fbe49ea0462414a9797eb2dd6/.github/workflows/ym4-vol07-physical-block-rate.yml"
     }
   ],
   "pr_events": [
@@ -7638,8 +7727,16 @@
     {
       "number": 105,
       "title": "YM4-VOL06 bounded-slice full physical strong-coupling spectrum",
-      "state": "draft",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/105",
+      "merge_sha": "eb9274a764d6fd13608b9ea8344f04da47a55d56",
+      "origin": "live_GitHub_2026_11_22"
+    },
+    {
+      "number": 106,
+      "title": "YM4 VOL07 physical block covariance rate and one-cube source interface",
+      "state": "draft",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/106",
       "merge_sha": null,
       "origin": "live_GitHub_2026_11_22"
     }
