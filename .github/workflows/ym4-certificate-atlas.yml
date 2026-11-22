@@ -29,14 +29,14 @@ jobs:
           set -euo pipefail
           python3 -I -X utf8 scripts/no_float_gate.py --selftest
           python3 -I -X utf8 scripts/no_float_gate.py .
-      - name: Verify 109 source nodes, VOL06, 11 open gates, external exact constants
+      - name: Verify 112 source nodes, VOL06, 11 open gates, external exact constants
         run: |
           set -euo pipefail
           mkdir -p build/ym4_atlas
           python3 -I -B -X utf8 tests/test_ym4_certificate_atlas.py | tee build/ym4_atlas/ATLAS-VERIFICATION.hbp
-          grep -Fq '|nodes=109|open_gates=11|external_leads=22|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
+          grep -Fq '|nodes=112|open_gates=11|external_leads=22|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
           grep -Fq '|graph_modes=4|camera_positions=3|script_free=YES|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
-          grep -Fq '|negative_controls=22_REJECTED|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
+          grep -Fq '|negative_controls=25_REJECTED|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
           grep -Fq '|finite_constants=PASS|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
           grep -Fq '|quaternion_and_traces=PASS|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
           grep -Fq '|SU2_loop_identity=PASS|' build/ym4_atlas/ATLAS-VERIFICATION.hbp
