@@ -340,7 +340,7 @@ def atlas_provenance():
     for uid in ("YM4-VOL03", "EXT-NS-CELL"):
         require(uid in records and page.count('href="#' + uid + '"') >= 12,
                 "missing_new_pinned_3D_certificate_" + uid)
-        require(overview.count("index.html#" + uid) == 4,
+        require(overview.count('href="index.html#' + uid + '"') == 4,
                 "new_external_or_cube_4panel_node_missing_" + uid)
     require("YM4-VOL03-CUBE-HAAR-TREE-20261122.hbp" in manifest
             and "ym4_su2_vol03_cube_haar_cell_tree.py" in manifest
