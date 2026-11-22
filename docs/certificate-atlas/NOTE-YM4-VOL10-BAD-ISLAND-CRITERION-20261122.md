@@ -2,7 +2,7 @@
 
 **2026-11-22 · Proven elementary consequences of VOL09 and a conditional independent-set cluster theorem.** The conclusions are carefully separated:
 
-- **A (original continuous SU(2) theorem):** finite-box bad-star occupancy and bad-count tail under the *actual periodic Wilson Gibbs measure*, uniformly in total lattice volume.
+- **A (original continuous SU(2) theorem):** finite-box bad-star occupancy and bad-count tail under the *actual periodic Wilson Gibbs measure*, plus a four-to-one gauge-invariant original Wilson plaquette-defect budget, uniformly in total lattice volume.
 - **B (combinatorial theorem):** a sufficient **joint** bad-star certificate for exponential connected-island tails on the actual four-dimensional link-sharing graph, whose maximum degree is 18.
 - **C (adversarial control):** the VOL09 one-star marginal, even if arbitrarily small, does not logically imply the required joint certificate. The explicit counterexample is an abstract correlated indicator law, **not** an asserted Wilson measure.
 - **D (continuum):** block conditioning, multiscale bad-island activity, full all-Gauss-sector physical-scale contraction and eleven original continuum gates remain OPEN.
@@ -55,6 +55,24 @@ b(\beta)^4\frac{\log\beta}{\beta}\longrightarrow0
 \tag{5}
 \]
 For \(\epsilon(\beta)\downarrow0\), replace the numerator by \(b^4\log\beta/[\epsilon(\beta)\beta]\). Equation (5) is a **sufficient consequence of the upper bound**, not a necessary condition for true physical-cube goodness. If \(b^4\log\beta/(\epsilon\beta)\) diverges, this particular union certificate becomes vacuous; it does not prove the cube itself fails. A fixed physical-width cube typically requires \(b(a)\asymp1/a\) and a separate multiscale/renormalized estimate.
+
+### A.1 Four-to-one original Wilson plaquette-defect budget
+
+Define the **gauge-invariant original plaquette defect**
+\(D_p=\mathbf1_{\{W_p<1-\epsilon/4\}}\).
+The exact quaternion chordal implication in VOL09 gives, configuration by configuration,
+\[
+B_e\le\sum_{p\ni e}D_p.
+\tag{5a}
+\]
+Every original four-dimensional plaquette meets precisely **four distinct positively oriented links**. Therefore on the entire periodic original lattice,
+\[
+\boxed{\sum_eB_e\le4\sum_pD_p.}
+\tag{5b}
+\]
+The same inequality holds for a subset \(Q\) of links with the right side restricted to plaquettes touching \(Q\). Consequently a connected bad-star island with \(m\) links forces **at least \(\lceil m/4\rceil\) distinct original gauge-invariant Wilson plaquette defects**. This geometric lower bound on the **number of energetic defects** is valid for every SU(2) link configuration, without mixing assumptions.
+
+It turns the next physics acceptance question into a concrete multi-defect statement: obtain a joint upper bound on simultaneous separated original plaquette defects that composes into a bad-island activity. The pointwise defect budget alone is deterministic and leaves their Gibbs correlations open.
 
 ## B. Actual original link graph: degree 18, deterministic animal enumeration
 
