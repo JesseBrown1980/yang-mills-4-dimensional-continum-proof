@@ -19,6 +19,8 @@
 
 | VOL13 centre frame pilot | ANALYTIC CENTRE CRITERION + INTEGER REPLAY | [Original 4D exact centre cocycle gauge-frame theorem](NOTE-YM4-VOL13-CENTER-FRAME-COCYCLE-20261123.md), [BFS checker](../../tests/ym4_vol13_center_frame_cocycle.py), [HBP](YM4-VOL13-CENTER-FRAME-20261123.hbp) | periodic centre frame iff local plaquette flux and four winding fluxes trivial; positive gauge/winding/local red controls L4/L6; full nonabelian SU2 transport OPEN |
 
+| VOL13 nonabelian frame bridge | ANALYTIC GENERAL SU2 THEOREM + EXACT QUATERNION PILOT | [Original SU2 rooted-chord gauge theorem and local W1 bound](NOTE-YM4-VOL13-NONABELIAN-TREE-CHORD-20261123.md), [noncommuting Q8 test](../../tests/ym4_vol13_nonabelian_tree_chord.py), [HBP](YM4-VOL13-NONABELIAN-CHORD-20261123.hbp) | tree gauge frames match all tree edges; full gauge equivalence iff all 3L^4+1 rooted chord holonomies match by one common conjugator; local good-link W1 <1/24 + chord_delta/2; Gibbs-average chord residual OPEN |
+
 ## Conditional volume-uniform cluster bridge
 
 Assuming the external \`FoldMix.rarity_orient\` theorem precisely as described in [the published chessboard chapter](https://computoergosum.com/en/principia/yang-mills/22-01-rarity-by-chessboard.html), the original Wilson joint bad-star activity has an explicit \`rho<2^-663<18^-57\` at \`epsilon=1/16,beta=531441\` on every even-sided periodic \`L>=4\`. VOL10 then yields \`P(|C(o)|>=m)<=18^(-m-2)\` in that domain. The external FoldMix theorem is now independently kernel-replayed, but the project-specific transfer from its source model to our original SU2 graph and the independent human review remain acceptance checks; physical-size boundary-conditioned coupling stays OPEN.
