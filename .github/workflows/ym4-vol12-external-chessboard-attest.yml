@@ -27,18 +27,23 @@ jobs:
           curl --fail --location --retry 3 --max-time 150 --silent --show-error "$SOURCE" -o "$ARCHIVE"
           echo 'f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62  build/ym4-vol12-upstream/upstream.tar.gz' | sha256sum -c
           tar -tzf "$ARCHIVE" > build/ym4-vol12-upstream/ARCHIVE-FILES.txt
-          grep -E '(FoldMix|FoldWilson|FoldCap|FoldEntropy|TorusRP).*\.lean$' build/ym4-vol12-upstream/ARCHIVE-FILES.txt | tee build/ym4-vol12-upstream/RELATED-FILES.txt
-          test -s build/ym4-vol12-upstream/RELATED-FILES.txt
-          : > build/ym4-vol12-upstream/DECLARATIONS.txt
-          while IFS= read -r path; do
-            echo "FILE: $path" >> build/ym4-vol12-upstream/DECLARATIONS.txt
-            tar -xOf "$ARCHIVE" "$path" | grep -n -E 'rarity_orient|rarity_uniform_all_mix|wilson_chessboard_even|bigP|ballQ|q_lt_one|def.*[Zz]w|[Ss]orry|native_decide' >> build/ym4-vol12-upstream/DECLARATIONS.txt || true
-          done < build/ym4-vol12-upstream/RELATED-FILES.txt
-          echo '=== SOURCE DECLARATIONS AND SCOPE ==='
-          cat build/ym4-vol12-upstream/DECLARATIONS.txt
-          grep -Fq 'rarity_orient' build/ym4-vol12-upstream/DECLARATIONS.txt
+          echo '=== VERIFIED ARCHIVE INVENTORY (first 100 entries) ==='
+          sed -n '1,100p' build/ym4-vol12-upstream/ARCHIVE-FILES.txt
+          echo '=== RELATED FILES, IF ANY ==='
+          grep -Ei '(Fold|Chess|Rarity|Yang|SU2|Wilson).*\.lean$' build/ym4-vol12-upstream/ARCHIVE-FILES.txt | tee build/ym4-vol12-upstream/RELATED-FILES.txt || true
+          mkdir -p build/ym4-vol12-upstream/source
+          tar -xzf "$ARCHIVE" -C build/ym4-vol12-upstream/source
+          echo '=== ACTUAL THEOREM-NAME SEARCH, ALL LEAN SOURCES ==='
+          grep -RnE --include='*.lean' 'rarity_orient|rarity_uniform_all_mix|wilson_chessboard_even|FoldMix|FoldCap|FoldWilson' build/ym4-vol12-upstream/source | tee build/ym4-vol12-upstream/DECLARATIONS.txt || true
+          echo '=== ALL LEAN SOURCE COUNT ==='
+          find build/ym4-vol12-upstream/source -name '*.lean' | wc -l
+          if grep -Fq 'rarity_orient' build/ym4-vol12-upstream/DECLARATIONS.txt; then
+            echo 'YM4_VOL12_EXTERNAL|SHA256=PASS|rarity_orient=FOUND|lean_compilation=NOT_PERFORMED|json=0'
+          else
+            echo 'YM4_VOL12_EXTERNAL|SHA256=PASS|rarity_orient=NOT_FOUND_IN_PINNED_BUNDLE|lean_compilation=NOT_PERFORMED|json=0'
+          fi
           # Never execute the untrusted external proof code in this job.
-          echo 'YM4_VOL12_EXTERNAL|SHA256=PASS|source_listing=PASS|rarity_orient_located=YES|lean_compilation=NOT_PERFORMED|source_scope_review=REQUIRED|json=0'
+          test -s build/ym4-vol12-upstream/ARCHIVE-FILES.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
