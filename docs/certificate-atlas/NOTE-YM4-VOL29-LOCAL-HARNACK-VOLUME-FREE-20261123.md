@@ -192,3 +192,10 @@ The [integer verifier](../../tests/ym4_vol29_local_harnack_volume_free.py) indep
 **Physical HOLD:** a scale-uniform **upper** mass-decay or normalized shell contraction estimate \(\kappa_r\ge1-e^{-2ma}\) along proved \(\beta(a)\), continuum Yang–Mills construction, nonzero renormalized limiting source, Gauss/winding-sector transfer and the eleven original continuum obligations remain OPEN. The new uniform **lower** margin does not imply any upper decay theorem. Stage in draft PR #113 and candidate atlas; main and production 3D viewer unchanged.
 
 **Classical Wilson transfer provenance:** M. Lüscher, *Construction of a selfadjoint, strictly positive transfer matrix for Euclidean lattice gauge theories*, Commun. Math. Phys. 54 (1977), 283–292, DOI 10.1007/BF01614090; Osterwalder–Seiler, *Gauge field theories on a lattice*, Ann. Phys. 110 (1978), 440–471, DOI 10.1016/0003-4916(78)90039-8.
+
+
+## 7. Dedicated hosted verification — PASS
+
+[GitHub Actions #45261110592](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45261110592) **PASS** after the strict no-float source-gate repair: repository-wide integer-only audit, exact original 4D-time/3D-spatial link and 13-face incidence checks on L=4,6,10,14,18,22, source-local Harnack exponent 162, exact-production integer exponent 45753584909922, even-periodic trace and spectral monotonicity, independent positive-kernel rational coercivity control, optimized/normal byte-identical pinned HBP SHA-256 **a4fbc8dcb3a6c928654059000108f05e68304871ccc311fd27711b601caa616f**, and artifact upload. The checker uses integer-scaled rational arithmetic throughout; no finite-group substitute was used for the continuous SU(2) Wilson model.
+
+The [separate mathematical audit](../../reviews/YM4-VOL29-LOCAL-HARNACK-INDEPENDENT-AUDIT-20261123.md) independently examines the gauge-projector cancellation on physical functions, the positive even-time kernel-section factorization, and the Fourier dual-test Cauchy inequality. Those analytic steps remain an original mathematical theorem argument, separate from the hosted integer verifier and any later signed external referee review.
