@@ -32,9 +32,10 @@ jobs:
           python3 -O -I -B tests/ym4_vol18_boundary_ward.py > build/ym4-vol18/OPTIMIZED.hbp
           cmp build/ym4-vol18/WARD.hbp build/ym4-vol18/OPTIMIZED.hbp
           cmp build/ym4-vol18/WARD.hbp docs/certificate-atlas/YM4-VOL18-BOUNDARY-WARD-20261123.hbp
-          echo 'e433c05616cf1f221d2fe437d5bdb12ed930862ebc57cb050310e322363bbd62  build/ym4-vol18/WARD.hbp' | sha256sum -c
+          echo '6ecd72172e1d018022a5f94c1f04fc7223b6c4a509ad5232ed0201e04cef065d  build/ym4-vol18/WARD.hbp' | sha256sum -c
           grep -Fq '|B_e_transforms_as_SU2_bifundamental_vector=PASS|' build/ym4-vol18/WARD.hbp
           grep -Fq '|one_common_site_gauge_aligns_exactly=PASS|' build/ym4-vol18/WARD.hbp
+          grep -Fq '|boundary_resultant_Ward_variation_pointwise_zero=PASS|' build/ym4-vol18/WARD.hbp
           grep -Fq '|high_beta_projected_boundary_distance_distribution=OPEN|' build/ym4-vol18/WARD.hbp
       - name: Strict no floating point source gate
         run: python3 -I -B scripts/no_float_gate.py .
