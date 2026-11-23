@@ -31,6 +31,24 @@ Then the selected physical predictor is explicitly
 \]
 The formula is gauge-invariant and holds at every finite beta. At beta=0 the source predictor equals 1/2 identically, so the normalized variance \(V_r=\operatorname{Var}(\phi_r)\) is zero. To obtain a nonzero physical mass-rate certificate at beta>0 requires independently establishing \(V_r>0\) and a quantitative positive Dirichlet witness.
 
+## 1A. An accepted finite-cutoff source-variance lower bound at production beta
+
+The centered source in (26.1) has its own original-SU(2) strict variance certificate, independent of the difficult exterior-predictor variance \(V_r\). Choose one of its four genuine original plaquette links \(e_*\). Conditional on every other original 4D Wilson link, the source has the exact form
+\[
+ F_*=\frac12+\frac12\langle U_{e_*},c\rangle,\qquad \|c\|=1.
+\]
+The native full-Wilson one-link conditional Haar law has at most six genuine SU(2) staples, so the all-beta VOL23 continuous-Haar covariance theorem (23.3) applies without any model reduction. The conditional-variance decomposition proves
+\[
+ \boxed{\operatorname{Var}_{\mu_{\beta,L}}(F_*)\ge
+ \frac{1}{147456(1+6\beta)^2}>0,\qquad 0\le\beta<\infty.} \tag{26.2a}
+\]
+For the production integer \(\beta=9^{12}\), the exact certified rational lower bound is
+\[
+ \operatorname{Var}_{\mu}(F_*)\ge
+ \frac1{423433462692859012475599601664}. \tag{26.2b}
+\]
+The constant is uniform over the original torus size and centered radius, as long as the original plaquette is present. At beta=0 the exact source variance is \(1/16\), while the exterior predictor is identically \(1/2\) and \(V_r=0\). This demonstrates the **necessary distinction** between a nondegenerate finite-cutoff physical source, now certified, and the desired **strictly positive source-to-exterior predictability**, still OPEN at high beta. It also leaves the renormalized continuum source's nondegeneracy as a separate scaling obligation.
+
 ## 2. Original 4D geometry: four witness links each enter exactly one mixed plaquette
 
 For each \(s,t\in\{\pm1\}\), use the VOL23–24 original outer-face parallel 0-link
