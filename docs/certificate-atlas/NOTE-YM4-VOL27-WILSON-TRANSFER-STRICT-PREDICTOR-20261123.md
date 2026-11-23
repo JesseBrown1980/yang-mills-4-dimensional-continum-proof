@@ -114,6 +114,34 @@ Combining with VOL22's original finite-beta shell-noise certificate (write \(s_r
 \]
 This proves **strictly positive genuine centered-source shell loss** at all finite \(\beta>0\), including the production coupling, with an explicit *conditional expression* for its lower bound. The multiplier \(e^{-4\beta s_r}\) remains far below the physical-rate requirement at high beta. No numerical lower enclosure for \(C_{\beta,L}\) or \(\kappa_r\) is supplied here.
 
+## 4A. Exact log-convex transfer reduction: exterior signal from one time step
+
+The strict positive spectral formula (27.6) also gives a useful **genuine original-Wilson correlation inequality**, rather than only an existential sign. For the translated **same** spatial plaquette source, write \(C_j=\operatorname{Cov}(F_0,F_j)\) for \(j=0,\ldots,L-1\), so \(C_0=\operatorname{Var}(F_0)>0\). With the same transfer eigenbasis,
+\[
+ C_j=\sum_{i,k}w_{ik}\rho_{ik}^{\,j},\quad
+ w_{ik}={\lambda_i^L|\mathcal A_{ik}|^2\over Z_L}\ge0,\quad
+ \rho_{ik}={\lambda_k\over\lambda_i}>0,\quad
+ \sum_{i,k}w_{ik}=C_0. \tag{27.9}
+\]
+This is an **exact positive moment representation** of the original finite-periodic Wilson plaquette covariance sequence. Hölder/Cauchy–Schwarz on these nonnegative weights proves
+\[
+ \boxed{C_j^2\le C_{j-1}C_{j+1}\quad(1\le j<L-1),\qquad
+ C_j\ge C_0\left({C_1\over C_0}\right)^j>0
+ \quad(1\le j<L).} \tag{27.10}
+\]
+The latter is Jensen's inequality for \(x\mapsto x^j\), \(j\ge1\), under the probability weights \(w_{ik}/C_0\). The periodic source covariance is symmetric under \(j\leftrightarrow L-j\), fully consistent with the log-convex sequence.
+
+For the **actual original centered source** and its first exterior translated plaquette at \(d=r+1\), this yields a more local version of (27.7):
+\[
+ \boxed{
+ V_r\ge4C_d^2\ge4 C_0^2
+       \left({C_1\over C_0}\right)^{2(r+1)}>0.} \tag{27.11}
+\]
+At every finite \(\beta>0\), VOL26 supplies a rigorous positive floor
+\(C_0\ge[147456(1+6\beta)^2]^{-1}\). Consequently, **a rigorous lower bound for the single-step ratio \(C_1/C_0\)** would immediately give an explicit finite-volume physical centered-source exterior-predictor lower bound for *every* radius. This is an exact **lower** propagation inequality; the upper spatial-decay rate and continuum uniformity demanded by VOL20 remain independent, open research obligations.
+
+The exact rational two-state transfer fixture independently checks \(C_0=1/4,\ C_1=123/1460,\ C_2=9/292\), and the strict log-convex determinant \(C_0C_2-C_1^2=81/133225>0\). The production coupling \(\beta=9^{12}\) enters the analytic SU(2) transfer theorem unchanged. No measured or rigorously enclosed value of its genuine original 4D \(C_1/C_0\) is asserted.
+
 ## 5. Independent strict integer checks and next physical acceptance
 
 The [checker](../../tests/ym4_vol27_transfer_strict_predictor.py) reconstructs the two original 4D plaquettes, proves their relative internal/exterior support and no-wrap embedding for radii 1–4, and independently verifies the SU(2) tensor-power **strict coefficient witness** \(m_{n,n}=1\) in \(\chi_{1/2}^{n}\) and the nonnegative character fusion recursion through \(n=16\). A separate **abstract rational two-state** selfadjoint positive transfer matrix tests the spectral connected-covariance trace formula and its rank-one \(\beta=0\) red. These arithmetic examples are formal controls of the transfer and Peter–Weyl argument, **not** a native continuous-SU(2) numerical transfer diagonalization. The original SU(2) strict positivity comes from the analytic Wilson/Peter–Weyl proof in sections 2–3.
