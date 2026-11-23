@@ -157,3 +157,14 @@ The integer verifier checks this minimal degree for the stated **generic Lipschi
 **Independent exact checker:** [tests/ym4_vol26_centered_source_harmonic_tail.py](../../tests/ym4_vol26_centered_source_harmonic_tail.py) checks the original four-dimensional centered-plaquette link support, the exact single-mixed-face incidence for each of the four q links at radii 1–4, native Haar even moments through degree eight, the genuine spin-two red orthogonality, positive zonal kernel moments, the \(m=2\) 13-feature identification, and the production-beta integer tail threshold. Normal/optimized and strict no-float checks are frozen in the attached HBP/workflow.
 
 **Acceptance scope:** physical centered Wilson source **SPECIFIED**; exact true-original-model one-face response, positive continuous-Haar polynomial kernel and local Dirichlet-tail inequality **ANALYTIC**; geometry/Haar/spin-two red/integer degree checks **REPRODUCIBLE**; strictly positive centered-source \(\delta_q\), \(V_r\), and source-normalized physical \(D_r/V_r\) at beta=9^12 **OPEN**; beta(a), all Gauss/winding-sector transfer, and the eleven original continuum construction requirements **OPEN**. Stage as a research candidate in draft PR #113; published 3D atlas and main remain unchanged.
+
+
+## Postscript: VOL27 accepts strict positive exterior predictability at beta=9^12
+
+The subsequently established [VOL27 original Wilson positive-transfer theorem](NOTE-YM4-VOL27-WILSON-TRANSFER-STRICT-PREDICTOR-20261123.md) closes **the strict sign** left OPEN at the VOL26 checkpoint. Take the centered spatial source \(F_0\) above and translate it to a parallel plaquette \(F_d\) on slice \(x_2=d=r+1\), entirely outside the internal links \(T_r\). The genuine original SU(2) strictly positive physical transfer operator at every \(\beta>0\) gives
+\[
+ \operatorname{Cov}_\mu(F_0,F_d)>0,\qquad
+ V_r=\operatorname{Var}_\mu(E[F_0\mid B_r])
+       \ge4\operatorname{Cov}_\mu(F_0,F_d)^2>0.
+\]
+The same original VOL22 shell minorization then proves \(D_r=V_r-V_{r+1}>0\) for every finite positive beta, including \(9^{12}\). VOL27 also derives a log-convex correlation sequence, reducing an **explicit quantitative lower signal** to bounding the nearest-slice ratio \(C_1/C_0\). Neither VOL27 nor this postscript supplies the quantitative physical source-normalized *upper decay* / mass-rate criterion along beta(a). The original eleven continuum gates remain OPEN.
