@@ -21,7 +21,7 @@ p_b:=\mu_{\beta,L}(A_b)\le16b^3\,18^{-b-2}.
 
 This is **averaged over the actual Gibbs exterior marginal lambda**, not a supremum over adversarial eta.
 
-Choose any bounded metric space (E,d) with 0<=d<=1 and any gauge-invariant physical observable F(U_T,eta) taking values in E (for a cylinder observable, its support and the collar are fixed). For each pair of boundary conditions (eta,eta'), suppose there is a coupling K_{eta,eta'} of the two original conditional Gibbs laws, measurable as a Markov kernel. Define its **good-region coupling cost** as
+Choose any bounded metric space (E,d) with 0<=d<=1 and any gauge-invariant observable F(U_T,eta) taking values in E. For the physical source-covariance application, restrict F to an interior contractible Wilson cylinder supported strictly inside T with a collar, and treat winding/centre-sector observables through a separate holonomy-matching interface. For each pair of boundary conditions (eta,eta'), suppose there is a coupling K_{eta,eta'} of the two original conditional Gibbs laws, measurable as a Markov kernel. Define its **good-region coupling cost** as
 
 \[
 g_b(\eta,\eta')=
@@ -76,9 +76,33 @@ At b=27 the exact island contribution 32b^3/18^(b+2) is less than 2^-101; at b=8
 ## 4. Acceptance status
 
 - Gibbs disintegration and averaged coupling inequality (A4): ANALYTIC / elementary measure-coupling theorem.
-- Original periodic-even SU(2) p_b from source-attested FoldMix theorem and VOL10: CONDITIONAL ON INDEPENDENT LEAN KERNEL REBUILD / external human review.
+- Original periodic-even SU(2) p_b from source-attested FoldMix theorem and VOL10: upstream source and independent Lean v4.33.1 kernel rebuild PASS; external review of the project-specific transfer remains a separate provenance gate.
 - Constructive delta_good for physical Wilson observables, uniformly over physical scales and including all Gauss sectors: OPEN.
 - Arbitrary-boundary Dobrushin-Shlosman cube or quantitatively adequate averaged replacement: OPEN.
 - Renormalized block pushforward, nonzero continuum Wilson source, OS reconstruction, and eleven original continuum obligations: OPEN.
 
 The immediate next analytic calculation is to derive an explicit gauge-invariant good-region coupling in the original SU(2) conditional law, including boundary orientation and Wilson source, with a quantitative delta_good(b) that can be inserted in (A4). Avoid replacing this with raw-link total-variation contraction, which VOL08's realizable frustrated-exterior witness already excludes uniformly at weak coupling.
+
+
+## 5. New independent covariance bridge and winding-sector falsifier
+
+The [independent sector review](../../reviews/YM4-VOL12-INDEPENDENT-SECTOR-AND-COVARIANCE-REVIEW-20261123.md) identifies a strict **core-interior / exterior** covariance consequence of (A4). If f(U_T) in [0,1] is gauge-invariant and supported in the interior core, and g(eta) in [0,1] is exterior-measurable, let m(eta)=E[f|eta]. For the scalar cost d(x,y)=|x-y|, the replica identity and coupling yield
+
+\[
+2\operatorname{Var}_{\lambda}(m)
+=\mathbb E_{\eta,\eta'}(m(\eta)-m(\eta'))^2
+\le \mathbb E_{\eta,\eta'}W_1(f_\#\mu^\eta,f_\#\mu^{\eta'}).
+\]
+
+Since Cov_mu(f,g)=Cov_lambda(m,g) and Var(g)<=1/4, the exact quantitative implication is
+
+\[
+\boxed{
+8\,|\operatorname{Cov}_\mu(f,g)|^2
+\le\delta_{\rm good}(b)+32b^3\,18^{-b-2}.
+}\tag{A5}
+\]
+
+The coefficient 8 is sharp for the general coupling/variance method, as established by the exact rational abstract binary control in the [new independent checker](../../tests/ym4_vol12_independent_holonomy_audit.py). A direct original SU(2) flat-connection control also demonstrates why the small bad-star crossing probability alone cannot bound global winding observables: all plaquettes and all fifteen double-staple pairs can be perfectly flat while the gauge-invariant Polyakov loop trace differs by +2 versus -2 between two configurations.
+
+The next constructive acceptance target is a **gauge-covariant local-good-region transport** with a quantitative delta_good(b) for local contractible Wilson source observables, together with explicit winding-sector matching for the full Gauss-invariant transfer space. Neither the source covariance exponent nor the physical mass criterion is yet established by (A5); a nontrivial delta_good(b) estimate is essential.
