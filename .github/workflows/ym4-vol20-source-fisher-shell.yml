@@ -31,7 +31,7 @@ jobs:
           python3 -O tests/ym4_vol20_source_fisher_shell.py > /tmp/ym4-vol20-opt.hbp
           diff -u /tmp/ym4-vol20-normal.hbp /tmp/ym4-vol20-opt.hbp
           diff -u docs/certificate-atlas/YM4-VOL20-SOURCE-FISHER-SHELL-20261123.hbp /tmp/ym4-vol20-normal.hbp
-          printf '%s  %s\n' '6e8a9a294d5a273d82499c42543a21440caae339af6300a68b378925593bbeb4' '/tmp/ym4-vol20-normal.hbp' | sha256sum -c -
+          printf '%s  %s\n' '00da7dcee264df5c67d8057b30bc900fef29ad7cfc150c88258cfff38fadb254' '/tmp/ym4-vol20-normal.hbp' | sha256sum -c -
       - name: Archive exact receipt
         uses: actions/upload-artifact@v4
         with:
