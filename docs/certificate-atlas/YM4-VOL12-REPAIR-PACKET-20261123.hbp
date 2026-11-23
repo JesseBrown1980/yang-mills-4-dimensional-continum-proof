@@ -1,0 +1,5 @@
+YM4_VOL12_REPAIR|original_continuous_SU2=ANALYTIC|T_union_plaquette_stars_le=19r|touching_plaquettes_le=114r|json=0
+YM4_VOL12_CONDITIONAL|repair_deficit_D=M_minus_max_local_Wilson_action|arbitrary_exteriors=ACCOUNTED|local_cap_radius=1_over_4beta|json=0
+YM4_VOL12_RHO|beta=9power7|epsilon=1/16|conditional_if_D_le=r_epsilon_over8|rho_lt=2power_minus17030|rho_le=18power_minus57|json=0
+YM4_VOL12_CONTAMINATION|beta=9power7|Markov_P_D_gt_r_epsilon_over8_le=783104/4782969|nondecaying_in_r=YES|json=0
+YM4_VOL12_REPAIR_SCOPE|localized_conditional_bad_star_activity=ANALYTIC|unconditional_rho=OPEN|physical_size_cube=OPEN|11_continuum_gates=OPEN|json=0
