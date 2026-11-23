@@ -86,3 +86,35 @@ The strict integer checker [tests/ym4_vol23_native_su2_boundary_gram.py](../../t
 The mathematical SU(2) proof is analytic, relying on continuous Haar integrals and the *original full 4D Wilson conditional heat baths*. The Q8 configuration tests are algebraic falsifiers, and the Haar cubature verifies fixed-degree identities only. The numerical 4×4 matrix entries at positive beta have not been evaluated. **Dedicated hosted checker PASS:** [GitHub Actions #45241628900](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45241628900) independently passed the repository-wide strict integer-only gate, noncommuting original 4D loop and Q8 gauge control, exact low-order Haar cubature moment checks, normal and optimized byte-identical replay, pinned HBP SHA-256 `fa5b0898227f3ff90e174c2d4017185b002094393961d1e1aacfb8e87b87d16b`, and artifact upload. This hosted result accepts the exact geometry and arithmetic checks; the continuous-SU(2) conditional heat-bath inequality is analytic and still requires independent mathematical referee/formal verification.
 
 **Exact next obligation:** establish overlap or an explicit source-generated transfer bound for the **centered interior-source predictors** \(\phi_r(B_r)=\mathbb E_\mu[F_{\mathrm{interior}}\mid B_r]\) in the VOL20 criterion. The four boundary-shell Wilson functions \(f_i(B_r)\) furnish a real positive channel certificate, but the current theorem does **not** establish that arbitrary centered interior Wilson-source predictors belong to their span, nor the required uniform mass-rate in all Gauss and winding sectors. If a projection/approximation scheme is used, its \(G\)- and \(D\)-norm residuals and cross terms must be bounded before transferring (23.7). The original eleven continuum construction obligations remain OPEN. Keep VOL23 in draft PR #113's candidate certificate map; the production 3D atlas and \`main\` remain unchanged.
+## 5. Direct physical predictor witness, beyond the four-loop calibration subspace
+
+The same original one-link disintegration supplies a **matrix-free target for the true centered interior Wilson source**. Fix any shell link \(q\in R_r\). For a square-integrable boundary-resultant function \(f(B_r)\), including the actual predictor \(f=\phi_r\) of a centered Wilson source, condition on *all original links other than* \(U_q\); write this complement as \(\widehat U_q\). Since \(q\in T_{r+1}\), the outer resultant \(B_{r+1}\) is measurable with respect to that complement. For each fixed complement, let \(\nu_q\) be the **genuine** original Wilson single-link conditional Haar law (23.2), and put
+\[
+ v_q(\widehat U_q)=\operatorname{Cov}_{\nu_q}\!\left(f(B_r),U_q\right)\in\mathbb R^4,\quad
+ C_q(\widehat U_q)=\operatorname{Cov}_{\nu_q}(U_q,U_q)\succ0.
+\]
+Conditional orthogonal projection onto the four real quaternion coordinates, followed by the tower law, gives the **exact actual-Gibbs inequality**
+\[
+ \boxed{D_r(f)\ge\mathbb E_\mu[v_q^\top C_q^{-1}v_q]
+                 \ge\mathbb E_\mu\|v_q\|^2.} \tag{23.9}
+\]
+The second step uses \(0\prec C_q\preceq I_4\), since \(\|U_q\|=1\). This witness is **source-specific, gauge-covariant and uses no exponentially small full-shell action factor**. The scalar \(v_q^\top C_q^{-1}v_q\) is invariant under the appropriate quaternion-frame rotation; the positivity of \(C_q\) follows from continuous SU(2) Haar support and (23.3). Equation (23.9) works for every \(f\in L^2(\lambda_r)\); no assumption that \(f\) belongs to the four-loop span is needed.
+
+A second fully exact, lower-resolution witness uses only the **free Haar first harmonic**:
+\[
+ c_{q,a}(\widehat U_q)=\int_{SU(2)}
+       f(B_r(\widehat U_q,u))\,u_a\,dH(u),\quad a=0,1,2,3.
+\]
+The original one-link Wilson density is at least \(e^{-12\beta}\) times Haar, and the first Haar harmonics \(2u_a\) are orthonormal. Consequently
+\[
+ \boxed{D_r(f)\ge4e^{-12\beta}
+         \,\mathbb E_\mu\sum_{a=0}^3c_{q,a}(\widehat U_q)^2.} \tag{23.10}
+\]
+The nonexponential conditional-covariance form (23.9) is the **preferred next physical target**, while (23.10) is an independent exact moment-projection check.
+
+For a centered Wilson source \(F\), put \(f=\phi_r(B_r)=\mathbb E[F\mid B_r]\) and \(V_r=\operatorname{Var}(f)>0\). A certified estimate
+\[
+ \mathbb E_\mu[v_q^\top C_q^{-1}v_q]
+       \ \ge\ \bigl(1-e^{-2ma}\bigr)V_r
+\]
+for at least one suitable shell link, or a rigorously aggregated local-predictor witness, would meet **that shell's** VOL20 source-normalized physical criterion. It is currently OPEN. The VOL23 four-loop calibration validates that this witness can be positive for genuine nonabelian boundary loops; it does not supply the centered-source value, the renormalized scaling estimate, or all-sector transfer.
