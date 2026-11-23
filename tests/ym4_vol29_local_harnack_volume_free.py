@@ -5,9 +5,6 @@ Strict integer/rational controls for the 4 original spatial source links,
 production exponent. The native continuous SU2 Wilson proof is analytic.
 """
 from itertools import product
-from fractions import Fraction as Q
-
-
 def check(ok, label):
     if not ok:
         raise AssertionError(label)
@@ -54,21 +51,16 @@ def local_exponents():
     check((output_transfer,spatial_half_weight,spatial_full_weight,
            source_a_ratio,total)==(21,13,26,34,162),
           'source_local_Harnack_exponent')
-    # Fourier test: S=c+p/2, ||p||^2_H=1/4. Two exact
-    # eigenmodes K_A 1=a0^4 and K_A p=a0^4*A^4 p.
-    # At A=1/2, the inverse-square bound is
-    # (c²+1/(16 A^8)) <=5/(16 A^8).
-    for a in (Q(1,2),Q(2,3),Q(3,4)):
-        for c in (-Q(1,2),Q(0),Q(1,2)):
-            left=c*c+Q(1,16)/(a**8)
-            right=Q(5,16)/(a**8)
-            check(left<=right,'native_four_link_finite_Fourier_inverse')
-    # Local source Cauchy numerator (1/16)^2 and
-    # ||K^-1S||^2 <=5/(16 a0^8 A^8) give A^8/80.
-    check(Q(1,256)/Q(5,16)==Q(1,80),
-          'local_fourier_Cauchy_prefactor')
-    check(Q(4)*Q(1,80)==Q(1,20),
-          'normalized_C1_over_C0_prefactor')
+    # Finite SU2 Fourier inverse numerator/denominator inequality.
+    # a=(an/ad) in [1/2,1], c=(cn/cd) in [-1/2,1/2].
+    # c*c+1/(16*a^8) <= 5/(16*a^8) is integer equivalent to
+    # 16*an^8*cn^2 <= 4*ad^8*cd^2.
+    for an,ad in ((1,2),(2,3),(3,4)):
+        for cn,cd in ((-1,2),(0,1),(1,2)):
+            check(16*an**8*cn*cn<=4*ad**8*cd*cd,
+                  'native_four_link_finite_Fourier_inverse')
+    check(256*5==80*16,'local_fourier_Cauchy_prefactor')
+    check(4*20==80,'normalized_C1_over_C0_prefactor')
     check(80*(2**8)==20480 and 20*(2**8)==5120,
           'production_A_ge_one_half_factors')
     return total
@@ -91,60 +83,61 @@ def trace(a):
 
 
 def spectral_even_time():
-    # A separate 2-state positive definite transfer test, not a
-    # finite-group replacement for the continuous SU2 Wilson theory.
+    # Independent two-state positive definite transfer. Not a finite-group
+    # replacement of the continuous SU2 physical Wilson measure.
     T=[[3,1],[1,3]]
-    B=[[Q(1,2),Q(0)],[Q(0),-Q(1,2)]]
+    A=[[1,0],[0,-1]]  # twice bounded centered S.
     expected={
-       4:(Q(1,4),Q(5,34),Q(2,17)),
-       6:(Q(1,4),Q(17,130),Q(1,13)),
-       10:(Q(1,4),Q(257,2050),Q(13,205))
+        4:((1,4),(5,34),(2,17)),
+        6:((1,4),(17,130),(1,13)),
+        10:((1,4),(257,2050),(13,205))
     }
     for L in (4,6,10):
         z=trace(mpow(T,L))
-        C=[]
+        raw=[]
         for d in (0,1,2):
-            numerator=trace(matmul(matmul(matmul(B,mpow(T,d)),B),
-                                    mpow(T,L-d)))
-            C.append(Q(numerator,z))
-        check(tuple(C)==expected[L],'exact_periodic_spectral_trace')
-        check(C[0]>=C[1]>=C[2]>0,'finite_periodic_C1_ge_C2')
-        check(C[1]*C[1]<=C[0]*C[2],
+            value=trace(matmul(matmul(matmul(A,mpow(T,d)),A),
+                                mpow(T,L-d)))
+            raw.append(value)
+        for d,(num,den) in enumerate(expected[L]):
+            check(raw[d]*den==4*z*num,
+                  'exact_periodic_spectral_trace')
+        check(raw[0]>=raw[1]>=raw[2]>0,
+              'finite_periodic_C1_ge_C2')
+        check(raw[1]*raw[1]<=raw[0]*raw[2],
               'finite_periodic_spectral_logconvexity')
-    return expected[10][1],expected[10][2]
 
 
 def exact_coercivity_fixture():
-    # Algebraic control of the source-local K_A tensor K_R lemma:
-    # normalized Haar on 2 symbols and positive rational kernel;
-    # strictly auxiliary to the continuous SU2 Fourier theorem.
-    KA=((Q(3,2),Q(1,2)),(Q(1,2),Q(3,2)))
-    KR=((Q(2),Q(1,2)),(Q(1,2),Q(2)))
-    source=(Q(1,2),-Q(1,2))
-    a=((Q(2),Q(3)),(Q(5),Q(2))) # index local u, complementary x
-    V=((Q(2),Q(4)),(Q(3),Q(2))) # index output local v, rest y
-    R=Q(5,2)
-    RV=Q(2)
-    num=Q(0)
-    den=Q(0)
+    # Independent exact positive rational two-state control using
+    # integer-scaled Haar integration and K values.
+    # KA is [[3,1],[1,3]]/2, KR is [[4,1],[1,4]]/2.
+    # S=(1,-1)/2. Numerator/denominator scale by exact 4.
+    KA=((3,1),(1,3))
+    KR=((4,1),(1,4))
+    source=(1,-1)
+    a=((2,3),(5,2))
+    V=((2,4),(3,2))
+    numerator=0
+    denominator=0
     for v in range(2):
         for y in range(2):
-            x=Q(0);z=Q(0)
+            part_source=0
+            part_plain=0
             for u in range(2):
                 for t in range(2):
-                    w=KA[v][u]*KR[y][t]*Q(1,4)
-                    x+=w*source[u]*a[u][t]
-                    z+=w*a[u][t]
-            num+=Q(1,4)*V[v][y]*x*x
-            den+=Q(1,4)*V[v][y]*z*z
-    check(den>0 and num>0,'rational_weighted_K2_positive')
-    ratio=num/den
-    # For this toy S=+-1/2, Haar second=1/4,
-    # ||KA^-1 S||²=1/4, ||KA||=2.
-    lower=Q(1)/(Q(16)*R**4*RV)
-    check(lower==Q(1,1250),'toy_local_harnack_lower_constant')
-    check(ratio>=lower,'independent_source_local_Cauchy_control')
-    return ratio,lower
+                    w=KA[v][u]*KR[y][t]*a[u][t]
+                    part_source+=w*source[u]
+                    part_plain+=w
+            numerator+=V[v][y]*part_source*part_source
+            denominator+=V[v][y]*part_plain*part_plain
+    check(numerator==13931 and denominator==41555,
+          'independent_integer_scaled_local_toy')
+    # The actual ratio = num/(4*den), compared to
+    # 1/[16*(5/2)^4*2]=1/1250 from local Harnack.
+    check(numerator*1250>=4*denominator,
+          'rational_source_local_Cauchy_bound')
+    return numerator,4*denominator
 
 
 def production():
@@ -179,9 +172,9 @@ def main():
     spectral_even_time()
     print('YM4_VOL29_SPECTRAL|L=4,6,10|C1_ge_C2=PASS|'+
           'two_step_square=ANALYTIC')
-    ratio,lower=exact_coercivity_fixture()
-    print('YM4_VOL29_TOY|local_ratio='+str(ratio)+'|'+
-          'certified_lower='+str(lower)+'|PASS')
+    toy_num,toy_den=exact_coercivity_fixture()
+    print('YM4_VOL29_TOY|local_ratio='+str(toy_num)+'/'+
+          str(toy_den)+'|certified_lower=1/1250|PASS')
     production()
     print('YM4_VOL29_SCOPE|original_SU2_volume_free_lower=ANALYTIC|'+
           'source_local_Harnack=ANALYTIC|'+
