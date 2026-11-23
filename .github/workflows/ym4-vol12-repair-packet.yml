@@ -1,0 +1,47 @@
+name: YM4 VOL12 original SU2 local repair-deficit activity
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol12_repair_packet.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-REPAIR-DEFICIT-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-REPAIR-PACKET-20261123.hbp'
+      - '.github/workflows/ym4-vol12-repair-packet.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol12_repair_packet.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-REPAIR-DEFICIT-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-REPAIR-PACKET-20261123.hbp'
+      - '.github/workflows/ym4-vol12-repair-packet.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  repair-deficit-exact-packet-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact integer and optimized repair packet replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-repair
+          python3 -I -B tests/ym4_su2_vol12_repair_packet.py > build/ym4-vol12-repair/VOL12-REPAIR.hbp
+          python3 -O -I -B tests/ym4_su2_vol12_repair_packet.py > build/ym4-vol12-repair/REPLAY.hbp
+          cmp build/ym4-vol12-repair/VOL12-REPAIR.hbp build/ym4-vol12-repair/REPLAY.hbp
+          cmp build/ym4-vol12-repair/VOL12-REPAIR.hbp docs/certificate-atlas/YM4-VOL12-REPAIR-PACKET-20261123.hbp
+          echo '751dc2b5b98f36d1ab21b9e2f6c9149701915574d8da5eb54e2ac761995b3467  build/ym4-vol12-repair/VOL12-REPAIR.hbp' | sha256sum -c
+          grep -Fq '|rho_le=18power_minus57|' build/ym4-vol12-repair/VOL12-REPAIR.hbp
+          grep -Fq '|unconditional_rho=OPEN|' build/ym4-vol12-repair/VOL12-REPAIR.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol12-repair/VOL12-REPAIR.hbp
+      - name: Strict source no-floating-point policy
+        run: |
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-local-repair-packet
+          path: build/ym4-vol12-repair/
+          retention-days: 90
+          if-no-files-found: warn
