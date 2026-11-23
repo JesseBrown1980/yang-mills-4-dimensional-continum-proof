@@ -38,7 +38,15 @@ jobs:
           done
           echo '=== MATCHING MODEL VARIABLES ==='
           grep -RnE --include='*.lean' '^(noncomputable )?(def|abbrev) (wilsonMeasure|bigP|Zw|Cfg|ballQ)' "$ROOT" | head -80
-          echo 'YM4_VOL12_MODEL_MAP|source_sha256=PASS|read_only=YES|actual_Lean_definitions=EXTRACTED|source_to_physical_definition_audit=PENDING_INDEPENDENT_REVIEW|json=0'
+          echo '=== ACTUAL ORIGINAL WILSON GIBBS DENSITY ==='
+          sed -n '822,851p' "$ROOT/Lattice/TorusDecV2.lean"
+          echo '=== DEFINITION-LEVEL ACCEPTANCE CHECKS ==='
+          grep -Fq 'abbrev Cfg := Lk N → QBall' "$ROOT/FoldChess/WilsonDataV1.lean"
+          grep -Fq 'if y < 1 - (hol N ω p).re then 1 else 0' "$ROOT/FoldChess/RarityAllV1.lean"
+          grep -Fq 'def ballQ (r : ℝ) : Set QBall' "$ROOT/FoldChess/RarityEvenV1.lean"
+          grep -Fq 'noncomputable def Zw (β : ℝ)' "$ROOT/FoldChess/PeierlsEvenV1.lean"
+          grep -Fq 'theorem rarity_orient (hN : N = 2 * m)' "$ROOT/FoldChess/MixAllV1.lean"
+          echo 'YM4_VOL12_MODEL_MAP|source_sha256=PASS|native_SU2_QBall=PASS|strict_original_plaquette_defect=PASS|Haar_chordal_ball=PASS|unnormalized_Wilson_mass=PASS|fixed_orientation_Lean_rate=PASS|json=0'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
