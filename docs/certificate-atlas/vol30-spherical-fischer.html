@@ -89,7 +89,7 @@ const byId=id=>document.getElementById(id);
 const c=byId('sphere'),ctx=c.getContext('2d');
 if(!ctx){byId('seat').textContent='Canvas graphics unavailable';return;}
 const cache=new Map();
-let mode=20,idx=0,playing=null,frozen=null,yaw=.48,pitch=.19,zoom=1.0,drag=null,clickables=[];
+let mode=20,idx=0,playing=null,frozen=null,yaw=(048/100),pitch=(019/100),zoom=(10/10),drag=null,clickables=[];
 function shell(r){
  if(cache.has(r))return cache.get(r);
  const pairs=new Map();
@@ -112,13 +112,13 @@ function projectPoint(p){
  let X=x*Math.cos(yaw)-z*Math.sin(yaw),Z=x*Math.sin(yaw)+z*Math.cos(yaw);
  let Y=y*Math.cos(pitch)-Z*Math.sin(pitch),D=y*Math.sin(pitch)+Z*Math.cos(pitch);
  const fac=760/(760+D*2);
- const scale=13.5*zoom*fac;
+ const scale=(135/10)*zoom*fac;
  return [c.width/2+X*scale,c.height/2-Y*scale,D,scale];
 }
 function stroke(a,b,color,width){let A=projectPoint(a),B=projectPoint(b);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();}
 function wire(center,r,color){
  const circlePlanes=[[0,1],[0,2],[1,2]];
- ctx.lineWidth=1.15;
+ ctx.lineWidth=(115/100);
  for(const [i,j] of circlePlanes){ctx.strokeStyle=color;ctx.beginPath();for(let k=0;k<=120;k++){const v=[center[0],center[1],center[2],center[3]],ang=k*Math.PI/60;v[i]+=r*Math.cos(ang);v[j]+=r*Math.sin(ang);let p=projectPoint(v);if(k===0)ctx.moveTo(p[0],p[1]);else ctx.lineTo(p[0],p[1]);}ctx.stroke();}
 }
 function marker(p,color,title){const xy=projectPoint(p);ctx.fillStyle=color;ctx.beginPath();ctx.arc(xy[0],xy[1],7,0,Math.PI*2);ctx.fill();ctx.fillStyle='#eef8ff';ctx.font='bold 13px system-ui';ctx.fillText(title,xy[0]+10,xy[1]-8);}
@@ -132,9 +132,9 @@ function draw(){
  const dots=[];
  for(let i=0;i<v.pts.length;i+=stride){dots.push({p:v.pts[i],color:'#5ed5fc',label:'center'});dots.push({p:v.reflected[i],color:'#ffb474',label:'outer'});}
  dots.sort((a,b)=>projectPoint(b.p)[2]-projectPoint(a.p)[2]);
- for(const a of dots){const xy=projectPoint(a.p);ctx.fillStyle=a.color;ctx.globalAlpha=.48;ctx.beginPath();ctx.arc(xy[0],xy[1],1.7,0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],a.p,a.label]);}
+ for(const a of dots){const xy=projectPoint(a.p);ctx.fillStyle=a.color;ctx.globalAlpha=(048/100);ctx.beginPath();ctx.arc(xy[0],xy[1],(17/10),0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],a.p,a.label]);}
  ctx.globalAlpha=1;
- for(const p of v.shared){const xy=projectPoint(p);ctx.fillStyle='#fff2b2';ctx.beginPath();ctx.arc(xy[0],xy[1],4.6,0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],p,'shared']);}
+ for(const p of v.shared){const xy=projectPoint(p);ctx.fillStyle='#fff2b2';ctx.beginPath();ctx.arc(xy[0],xy[1],(46/10),0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],p,'shared']);}
  const pc=[0,0,r,0],po=[0,0,24-r,0];marker(pc,'#63daff','center R'+r);marker(po,'#ffbb76','outer R'+r);
  marker([0,0,0,0],'#c6f5ff','F 0');marker([0,0,24,0],'#ffe2b9','G 24');
  ctx.fillStyle='#d5e9f5';ctx.font='13px system-ui';ctx.fillText('Two exact 4D integer shell clouds · projection to rotatable 3D',18,c.height-22);
@@ -173,9 +173,9 @@ byId('restore').addEventListener('click',()=>{stop();if(!frozen){byId('seat').te
 byId('round').addEventListener('click',()=>{stop();const seq=FRAME_DATA.slice(0,mode).map(e=>e[3]);const backward=seq.slice().reverse();const ok=seq.every((id,i)=>id===backward[mode-1-i])&&seq.every((_,i)=>shell(i+2).witness);byId('seat').textContent=ok?'FISCHER ROUND-TRIP PASS · '+mode+' forward + '+mode+' backward · frozen SHA identities preserved':'FISCHER HOLD · identity mismatch';});
 byId('copy').addEventListener('click',()=>{const text=canonical(shell(idx+2).entry);if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{byId('seat').textContent='Copied canonical frozen frame address';}).catch(()=>{byId('selected').textContent=text;});}else byId('selected').textContent=text;});
 c.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,moved:false};c.setPointerCapture(e.pointerId);});
-c.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;yaw+=dx*.006;pitch=Math.max(-1.5,Math.min(1.5,pitch+dy*.006));drag.x=e.clientX;drag.y=e.clientY;draw();});
+c.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;yaw+=dx*(0006/1000);pitch=Math.max(-(15/10),Math.min((15/10),pitch+dy*(0006/1000)));drag.x=e.clientX;drag.y=e.clientY;draw();});
 c.addEventListener('pointerup',e=>{if(!drag)return;const wasMove=drag.moved;drag=null;if(wasMove)return;const rect=c.getBoundingClientRect();const x=(e.clientX-rect.left)*c.width/rect.width,y=(e.clientY-rect.top)*c.height/rect.height;let best=null,d=225;for(const p of clickables){const q=(x-p[0])*(x-p[0])+(y-p[1])*(y-p[1]);if(q<d){d=q;best=p;}}if(best){const p=best[2];byId('selected').textContent=best[3]+' 4D site ('+p.join(',')+'); center norm²='+p.reduce((a,v)=>a+v*v,0)+'; outer norm²='+p.reduce((a,v,i)=>a+(v-(i===2?24:0))*(v-(i===2?24:0)),0)+'; drawing is a projection.';}});
-c.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.35,Math.min(2.6,zoom*(e.deltaY>0?.9:1.1)));draw();},{passive:false});
+c.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max((035/100),Math.min((26/10),zoom*(e.deltaY>0?(09/10):(11/10))));draw();},{passive:false});
 refresh();
 })();
 </script></body></html>
