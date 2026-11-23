@@ -1,0 +1,47 @@
+name: YM4 VOL17 original SU2 high-beta Dobrushin obstruction adversarial control
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol17_high_beta_obstruction.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL17-HIGH-BETA-DOBRUSHIN-OBSTRUCTION-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL17-HIGH-BETA-OBSTRUCTION-20261123.hbp'
+      - '.github/workflows/ym4-vol17-high-beta-obstruction.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol17_high_beta_obstruction.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL17-HIGH-BETA-DOBRUSHIN-OBSTRUCTION-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL17-HIGH-BETA-OBSTRUCTION-20261123.hbp'
+      - '.github/workflows/ym4-vol17-high-beta-obstruction.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-adversarial-conditional-Haar:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original L6 six distinct rational SU2 staples and conditional resultant reversal
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol17
+          python3 -I -B tests/ym4_vol17_high_beta_obstruction.py > build/ym4-vol17/OBSTRUCTION.hbp
+          python3 -O -I -B tests/ym4_vol17_high_beta_obstruction.py > build/ym4-vol17/OPTIMIZED.hbp
+          cmp build/ym4-vol17/OBSTRUCTION.hbp build/ym4-vol17/OPTIMIZED.hbp
+          cmp build/ym4-vol17/OBSTRUCTION.hbp docs/certificate-atlas/YM4-VOL17-HIGH-BETA-OBSTRUCTION-20261123.hbp
+          echo '94250465dd5ceb1fadd6642f44b96fd71090839c4de6fbf01b3d0357ef0950a5  build/ym4-vol17/OBSTRUCTION.hbp' | sha256sum -c
+          grep -Fq '|one_actual_neighbor_change_per_pair=PASS|' build/ym4-vol17/OBSTRUCTION.hbp
+          grep -Fq '|row_sum_gt_990over181_gt_one|' build/ym4-vol17/OBSTRUCTION.hbp
+          grep -Fq '|physical_Wilson_covariance_decay=OPEN|' build/ym4-vol17/OBSTRUCTION.hbp
+      - name: Strict no-floating-point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol17-original-su2-high-beta-adversarial-control
+          path: build/ym4-vol17/
+          retention-days: 90
+          if-no-files-found: warn
