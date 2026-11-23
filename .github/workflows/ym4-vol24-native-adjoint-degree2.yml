@@ -1,0 +1,35 @@
+name: YM4 VOL24 native SU2 adjoint source Gram and quadratic Haar harmonics
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol24_native_su2_adjoint_degree2.py
+      - docs/certificate-atlas/YM4-VOL24-ADJOINT-DEGREE2-20261123.hbp
+      - .github/workflows/ym4-vol24-native-adjoint-degree2.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol24_native_su2_adjoint_degree2.py
+      - docs/certificate-atlas/YM4-VOL24-ADJOINT-DEGREE2-20261123.hbp
+      - .github/workflows/ym4-vol24-native-adjoint-degree2.yml
+  workflow_dispatch:
+
+jobs:
+  native-adjoint-four-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository integer-only gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Original four-dimensional SU2 adjoint and degree-two Haar checks
+        run: |
+          python3 -I -B tests/ym4_vol24_native_su2_adjoint_degree2.py >/tmp/ym4-vol24-normal.hbp
+          python3 -I -O tests/ym4_vol24_native_su2_adjoint_degree2.py >/tmp/ym4-vol24-optimized.hbp
+          diff -u /tmp/ym4-vol24-normal.hbp /tmp/ym4-vol24-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL24-ADJOINT-DEGREE2-20261123.hbp /tmp/ym4-vol24-normal.hbp
+          printf '%s  %s\n' '5d4396878a5fc14596884bdc5a4f178698bf76053e4d775fb7271c0e708eeb07' '/tmp/ym4-vol24-normal.hbp' | sha256sum -c -
+      - name: Archive exact integer evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol24-native-su2-adjoint-harmonics
+          path: /tmp/ym4-vol24-normal.hbp
