@@ -4,7 +4,7 @@
 
 This note is the next direct mathematical step after [VOL10](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md), [VOL11](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md), and the two [VOL12](NOTE-YM4-VOL12-FINITE-PACKET-PILOT-20261123.md) [pilot results](NOTE-YM4-VOL12-REPAIR-DEFICIT-20261123.md). It combines their original continuous-SU(2) geometry with an **external, explicitly stated** reflection-positivity chessboard theorem, obtaining a volume-uniform **unconditional** joint bad-star rate on **even-sided periodic** lattices.
 
-**Dependency classification:** the external same-orientation theorem (CB-ORIENT below) is **IMPORTED FROM LITERATURE / SOURCE AUDIT OPEN**; the transfer from CB-ORIENT to the VOL10 independent-star and cluster bound is proved below. Integer-only checks verify the constants, geometry, and scope, *not the imported reflection-positivity proof*. This is a source-dependent mathematical acceptance candidate rather than an independently closed all-volume certificate.
+**Dependency classification:** the external same-orientation theorem (CB-ORIENT below) is **IMPORTED FROM VERIFIED SOURCE / INDEPENDENT LEAN KERNEL REBUILD OPEN**; the transfer from CB-ORIENT to the VOL10 independent-star and cluster bound is proved below. Integer-only checks verify the constants, geometry, and scope, *not the imported reflection-positivity proof*. This is a source-dependent mathematical acceptance candidate rather than an independently closed all-volume certificate.
 
 ## A. Exact external input — CB-ORIENT(y,a,beta,L)
 
@@ -20,7 +20,7 @@ Q_{\beta,y,a}=
 \]
 where \`h(a)\` is the normalized Haar probability of the SU(2) chordal cap \`|U-I|<a\`.
 
-The article states the general-\`y\` same-orientation rate and the coefficient \`48a^2\` explicitly; it cites the Lean declaration. **Our repository has not reproduced the underlying reflection-positivity folding proof or independently retrieved the declaration from its original Lean source**. Its assumptions must be cross-checked against that source before independent signoff. Both orientation and even-side restrictions are essential.
+The article states the general-y same-orientation rate and the coefficient 48a². **New independent source attestation:** the published upstream source archive was downloaded and its SHA-256 checked (f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62); FoldChess/MixAllV1.lean:66–71 contains this exact FoldMix.rarity_orient signature, including every finite site set. Published axioms.txt lists only [propext, Classical.choice, Quot.sound]. The independent Lean kernel rebuild remains a separate OPEN gate. See [source attestation report](../../reviews/YM4-VOL12-UPSTREAM-FOLDMIX-SOURCE-ATTESTATION-20261123.md). Even-side and orientation restrictions remain essential.
 
 The source's convention \`Re(U_p)\` is exactly \`halftrace(U_p)\` in the SU(2) defining representation. Thus there is **no coupling renormalization factor** in this import.
 
@@ -104,9 +104,9 @@ This is a **finite-lattice, bare-weak-coupling, untwisted periodic result**. It 
 - **REJECT:** generalize from even to odd side \`L=3,5,...\` by a change of notation; even-sided chessboard folds do not provide that.
 - **REJECT:** infer a valid CB-ORIENT statement for fixed adversarial exterior boundary values, twisted sectors, the blocked measure at another scale, or the physical beta band \`~2-3\`.
 - **REJECT:** label chessboard/Peierls reflection positivity or the strong-bare-coupling activity as first-in-literature; the import is prior work, and the source already addresses uniform plaquette rarity.
-- **EXTERNAL SOURCE AUDIT OPEN:** independently retrieve and inspect \`FoldMix.rarity_orient\`, check its exact cap hypotheses and halftrace normalization, and seek a separate human mathematical review. Only then promote the imported theorem to independent acceptance.
+- **SOURCE ATTESTATION PASS / KERNEL REBUILD OPEN:** independently retrieved and SHA-verified the exact FoldMix.rarity_orient declaration and published axiom list. Independent Lean v4.33.1 kernel rebuild and external human review remain open before theorem promotion.
 - **11 original continuum obligations:** OPEN. **Original continuum Yang–Mills existence/mass gap:** OPEN.
 
 The original [integer-only checker](../../tests/ym4_su2_vol12_chessboard_bridge.py) provides exact \`3^4\` negative and \`4^4,6^4\` positive geometry fixtures, six plane-orientation checks, arithmetic inequalities, and explicit red gates. The [receipt](YM4-VOL12-CHESSBOARD-BRIDGE-20261123.hbp) is stable across normal and optimized runs. The [external theorem scope report](../../reviews/YM4-VOL12-CHESSBOARD-IMPORT-AUDIT-20261123.md) records the provenance boundary.
 
-**Next mathematical acceptance:** obtain a verifiable version-pinned formal source for CB-ORIENT, test the full conditional behavior for physical-size blocks, and establish the cross-scale transfer. At one even-lattice fixed-bare-coupling scale, the VOL10 cluster theorem's **numeric hypothesis is met if the imported published theorem is accepted**.
+**Next mathematical acceptance:** complete an independent kernel rebuild from the SHA-pinned original source, independently review the physical-width crossing corollary, test arbitrary-boundary physical-size blocks, and establish the cross-scale transfer. At one even-lattice fixed-bare-coupling scale, the VOL10 cluster theorem's **numeric hypothesis is met if the imported published theorem is accepted**.
