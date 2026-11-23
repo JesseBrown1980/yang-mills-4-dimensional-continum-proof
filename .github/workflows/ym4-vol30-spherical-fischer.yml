@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Inspect source-pinned visualization-only allowance
+        run: python3 -I -X utf8 scripts/no_float_gate.py --pins docs/certificate-atlas/vol30-spherical-fischer.html
       - name: Strict original research integer-only backend gate
         run: python3 -I -X utf8 scripts/no_float_gate.py .
       - name: Verify 4D spheres, two-ended contact and Fischer SHA roundtrip
