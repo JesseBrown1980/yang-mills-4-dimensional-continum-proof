@@ -1,0 +1,35 @@
+name: YM4 VOL25 native SU2 heat-bath 13-harmonic blocks
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol25_su2_heatbath_13blocks.py
+      - docs/certificate-atlas/YM4-VOL25-HEATBATH-13BLOCKS-20261123.hbp
+      - .github/workflows/ym4-vol25-heatbath-13blocks.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol25_su2_heatbath_13blocks.py
+      - docs/certificate-atlas/YM4-VOL25-HEATBATH-13BLOCKS-20261123.hbp
+      - .github/workflows/ym4-vol25-heatbath-13blocks.yml
+  workflow_dispatch:
+
+jobs:
+  exact-original-su2-blocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repository-wide integer-only source check
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Original SU2 Haar moment and exact covariance-block replay
+        run: |
+          python3 -I -B tests/ym4_vol25_su2_heatbath_13blocks.py >/tmp/ym4-vol25-normal.hbp
+          python3 -I -O tests/ym4_vol25_su2_heatbath_13blocks.py >/tmp/ym4-vol25-optimized.hbp
+          diff -u /tmp/ym4-vol25-normal.hbp /tmp/ym4-vol25-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL25-HEATBATH-13BLOCKS-20261123.hbp /tmp/ym4-vol25-normal.hbp
+          printf '%s  %s\n' '73d0e8f97c596cd690e2be43741b0d342de01c26e32c7a339c07422be96da2c5' '/tmp/ym4-vol25-normal.hbp' | sha256sum -c -
+      - name: Archive native SU2 harmonic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol25-native-su2-13harmonic-blocks
+          path: /tmp/ym4-vol25-normal.hbp
