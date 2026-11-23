@@ -135,16 +135,16 @@ for every exterior `G` with nonzero variance. Here `a(h-r0)` is an actual source
 
 The per-shell requirement is quantitatively mild in the continuum scaling sense (`1-e^{-2ma}` approaches `2ma` as `a` decreases), but proving any positive lower bound for `kappa_r` along high-beta 4D Wilson measures requires controlling how much local Wilson information is lost across each physical shell. The project has not established that lower bound.
 
-## 5. Independent strict-Fraction control and adverse checks
+## 5. Independent strict integer-pair control and adverse checks
 
-The verifier `tests/ym4_vol20_source_fisher_shell.py` is a **16-atom abstract exact-rational probability-space control**, deliberately separate from a native continuous-SU(2) numerical integration. It constructs two nested exterior bits, a binary source, and an independent nuisance sign. Its exact results are:
+The verifier `tests/ym4_vol20_source_fisher_shell.py` is a **16-atom abstract exact-rational integer-pair probability-space control**, deliberately separate from a native continuous-SU(2) numerical integration. It constructs two nested exterior bits, a binary source, and an independent nuisance sign. Its exact results are:
 
 - The source-projected score Fisher quadratic form is `4/63`, compared with the raw score variance `5/4`. The nuisance direction has raw variance `1` and projected source Fisher variance `0`. This tests the algebraic Ward-null mechanism, not an SU(2) Ward theorem.
 - Invertible source rescaling by `1000` leaves the projected Fisher value unchanged. Source coarsening decreases projected information; adding an observed source feature increases it.
 - For the original toy source, `Var(F)=63/256`, `V_near=5/256`, `V_far=1/64`, and the shell drop is `1/256`. The exact relative loss is `kappa=1/5`. The independent two-replica mean-square difference is `5/128=2V_near`.
 - The exact normalized predictability is `Gamma_near=5/63` and `Gamma_far=4/63`, even after `F -> 17+1000F`. Thus shrinking or inflating the raw source amplitude cannot manufacture the physical mixing criterion.
 
-The fixture uses `Fraction` for all calculations, and tests both variance projection and sharp source Cauchy–Schwarz equality. It also has a strict no-floating-point and optimized-replay gate. A successful fixture cannot certify (20.11) for the 4D SU(2) measure; that remains a separate analytic or rigorously enclosed computational task.
+The fixture uses integer numerator/denominator pairs with exact integer cross-products for all calculations, and tests both variance projection and sharp source Cauchy–Schwarz equality. It also has a strict no-floating-point and optimized-replay gate. A successful fixture cannot certify (20.11) for the 4D SU(2) measure; that remains a separate analytic or rigorously enclosed computational task.
 
 ## 6. Next accepted research workflow and safeguards
 
