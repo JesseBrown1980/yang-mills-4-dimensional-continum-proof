@@ -1,0 +1,12 @@
+YM4_VOL29_SPECTRAL|L=4,6,10|C1_ge_C2=PASS|two_step_square=ANALYTIC
+YM4_VOL29_TOY|local_ratio=13931/166220|certified_lower=1/1250|PASS
+YM4_VOL29_GEOMETRY|L=4|source_links=4|touching_faces=13|PASS
+YM4_VOL29_GEOMETRY|L=6|source_links=4|touching_faces=13|PASS
+YM4_VOL29_GEOMETRY|L=10|source_links=4|touching_faces=13|PASS
+YM4_VOL29_GEOMETRY|L=14|source_links=4|touching_faces=13|PASS
+YM4_VOL29_GEOMETRY|L=18|source_links=4|touching_faces=13|PASS
+YM4_VOL29_GEOMETRY|L=22|source_links=4|touching_faces=13|PASS
+YM4_VOL29_LOCAL|transfer_ratio_exp=21beta|half_spatial=13beta|source_a=34beta|V_ratio=26beta|total_exp=162beta|PASS
+YM4_VOL29_PRODUCTION|beta=9^12|exponent=45753584909922|C1_gt_1_over_20480_times_3_pow|C1_over_C0_gt_1_over_5120_times_3_pow|volume_free=PASS
+YM4_VOL29_COMPARISON|VOL28_L10_exponent=8472886094580000|VOL29_exponent=45753584909922|PASS
+YM4_VOL29_SCOPE|original_SU2_volume_free_lower=ANALYTIC|source_local_Harnack=ANALYTIC|continuum_upper_mass_rate=OPEN|continuum_11=OPEN
