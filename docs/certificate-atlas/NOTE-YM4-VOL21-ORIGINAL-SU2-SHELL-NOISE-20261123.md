@@ -80,6 +80,26 @@ The estimate also holds for any centered source supported in an earlier inner cu
 
 These are **exponents in a proven lower bound**, not observed mixing rates. They quantify the present estimate's enormous loss of strength at high beta.
 
+## 4A. Exact consecutive-boundary Markov transfer on original Gibbs resultants
+
+The one-shell support observation also removes the arbitrary-exterior interpolation from the **actual transfer operator**. Let `lambda_r=(B_r)_#mu` be the genuine original Gibbs marginal of the finite-dimensional boundary-resultant field. For each outer resultant `b'=B_(r+1)`, define a transition kernel `K_r(b',db)` as follows: sample all original internal links `U_(T_(r+1))` from the true conditional Wilson Haar law `mu_(T_(r+1))^(b')`, then calculate the inner boundary-resultant `B_r` from its genuine three-link exterior staples on `R_r subset T_(r+1)`. VOL15's sufficient-statistic factorization ensures this conditional pushforward depends only on `b'`, not on any further exterior details. Thus
+
+`lambda_r(db) = integral K_r(b',db) lambda_(r+1)(db')` **(21.9)**.
+
+For every inner Wilson source `F`, set `phi_r(b)=E[F|B_r=b]`. The tower property gives the exact, original-periodic-Gibbs transfer
+
+`phi_(r+1)(b') = integral phi_r(b) K_r(b',db)` **(21.10)**.
+
+Consequently the shell variance loss can be evaluated **entirely on consecutive boundary-resultant distributions**:
+
+`V_r-V_(r+1) = integral Var_(K_r(b',.))(phi_r) lambda_(r+1)(db')`. **(21.11)**
+
+The operator `(T_r f)(b')=integral f(b)K_r(b',db)` maps `L^2_0(lambda_r)` to `L^2_0(lambda_(r+1))`. By the same continuous-Haar minorization (21.4), for **every** centered square-integrable `f` on the actual boundary-resultant space,
+
+`||T_r f||²_(lambda_(r+1)) <= [1-exp(-4*beta*N_r)] ||f||²_(lambda_r)`. **(21.12)**
+
+This is a strict finite-beta strong-data-processing (maximal-correlation) inequality for the **original Wilson boundary-statistic transfer**, not a raw single-link total-variation Dobrushin assertion. It retains all simultaneous noncommutative cycle information of VOL19, and gauge-invariant source functions descend to the appropriate orbit quotient. The numerical bound on the full operator norm remains weak at high beta. The next task is to certify a substantially sharper norm on the **source-generated invariant subspace** along the physical scaling path, without bounding unrelated high-frequency boundary functions.
+
 ## 5. What the bound establishes and the genuinely next physical target
 
 Combining (21.6) with VOL20 yields the actual original-SU(2) finite-collar inequality
