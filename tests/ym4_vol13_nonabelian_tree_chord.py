@@ -92,7 +92,7 @@ def rooted_tree_transports(L,A,tree_edges):
     require(len(P)==L**4,'all_tree_transports')
     return P
 
-def chord_conjugacy(L,A,B,tree,root_frame):
+def chord_conjugacy(L,A,B,tree,root_frame,frames):
     PA=rooted_tree_transports(L,A,tree)
     PB=rooted_tree_transports(L,B,tree)
     mismatches=set()
@@ -103,7 +103,14 @@ def chord_conjugacy(L,A,B,tree,root_frame):
         y=next_site(x,d,L)
         cycleA=mul(mul(PA[x],A[e]),inv(PA[y]))
         cycleB=mul(mul(PB[x],B[e]),inv(PB[y]))
-        if cycleB!=conj_by(root_frame,cycleA):
+        root_target=conj_by(root_frame,cycleA)
+        x,d=e
+        y=next_site(x,d,L)
+        site_target=mul(mul(frames[x],A[e]),inv(frames[y]))
+        direct_sq=sum((B[e][j]-site_target[j])**2 for j in range(4))
+        rooted_sq=sum((cycleB[j]-root_target[j])**2 for j in range(4))
+        require(direct_sq==rooted_sq,'bi_invariant_SU2_exact_chord_distance_identity')
+        if rooted_sq:
             mismatches.add(e)
     return mismatches
 
@@ -131,7 +138,7 @@ def main():
         frames,bad,tree=tree_frame(L,A,B,root_frame)
         require(not bad and all(frames[x]==site[x] for x in frames),
                 'nonabelian_true_site_gauge_reconstructed')
-        require(not chord_conjugacy(L,A,B,tree,root_frame),
+        require(not chord_conjugacy(L,A,B,tree,root_frame,frames),
                 'all_rooted_chord_holonomies_conjugate')
         require(len(tree)==L**4-1 and 4*L**4-len(tree)==3*L**4+1,
                 'exact_cycle_rank')
@@ -149,7 +156,7 @@ def main():
         require(loop(L,Bw,0)==mul(NEG,loop(L,B,0)),
                 'nontrivial_gauge_invariant_polyakov_trace_flip')
         frames_w,missing_w,tree_w=tree_frame(L,A,Bw,root_frame)
-        require(missing_w and chord_conjugacy(L,A,Bw,tree_w,root_frame)==missing_w,
+        require(missing_w and chord_conjugacy(L,A,Bw,tree_w,root_frame,frames_w)==missing_w,
                 'rooted_chord_test_detects_winding')
         # Local isolated central edge flip changes elementary plaquette
         # curvature in the original 4D SU2 field.
@@ -159,7 +166,7 @@ def main():
         require(plaq(L,B,(0,0,0,0),0,1)!=plaq(L,Bl,(0,0,0,0),0,1),
                 'local_plaquette_trace_red')
         frames_l,missing_l,tree_l=tree_frame(L,A,Bl,root_frame)
-        require(missing_l and chord_conjugacy(L,A,Bl,tree_l,root_frame)==missing_l,
+        require(missing_l and chord_conjugacy(L,A,Bl,tree_l,root_frame,frames_l)==missing_l,
                 'rooted_chord_test_detects_plaquette')
     return (
         'YM4_VOL13_NONABELIAN|original_SU2_quaternions=EXACT_Q8_SUBGROUP|L4_L6=PASS|i_j_noncommute=PASS|json=0\n'
