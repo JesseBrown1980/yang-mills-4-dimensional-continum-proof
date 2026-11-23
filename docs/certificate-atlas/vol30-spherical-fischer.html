@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VOL30 four-dimensional SU2 Wilson spherical integer-shell certificate atlas, reversible Bobby Fischer 9/20-frame interactive 3D projection">
+<title>YM4 VOL30 · Spherical Fischer Certificate Player</title>
+<style>
+:root{color-scheme:dark;--bg:#06131e;--panel:#10283a;--muted:#9fb7c8;--line:#355c72;--cyan:#6bd7ff;--amber:#ffba71;--green:#84e8be}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 54% 2%,#122c43,#06131e 64%);font:14px/1.47 system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf5ff}
+a{color:#97dfff}header,main,footer{max-width:1300px;margin:auto;padding:14px 20px}header{padding-top:22px}
+h1{font-size:clamp(21px,3.5vw,31px);margin:5px 0;letter-spacing:-.025em}
+h2{font-size:17px;margin:0 0 10px}p{color:#b9d0e0;margin:7px 0}small,.muted{color:var(--muted)}
+.eyebrow{color:#7ed3ed;letter-spacing:.15em;font-size:11px;font-weight:800}
+.layout{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(280px,.95fr);gap:14px}
+.panel,.info{background:#0d2232;border:1px solid #33556b;border-radius:13px;padding:14px;min-width:0}
+.graphWrap{position:relative;background:#081827;border:1px solid #315065;border-radius:11px;overflow:hidden}
+canvas{display:block;width:100%;height:auto;touch-action:none;cursor:grab}canvas:active{cursor:grabbing}
+.graphCaption{position:absolute;top:10px;left:12px;background:#071726d9;border:1px solid #325269;border-radius:8px;padding:7px 9px;font-size:11px;color:#bce5f1;max-width:54%}
+.legend{display:flex;gap:7px 16px;flex-wrap:wrap;margin:10px 0;color:#c8ddea;font-size:12px}.mark{display:inline-block;width:10px;height:10px;border-radius:100%;margin-right:5px}.s1{background:#5ddcff}.s2{background:#ffab6a}.s3{background:#fff4b5}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:10px 0}button,select{font:inherit;color:#e8f5ff;background:#1a3850;border:1px solid #47748e;padding:8px 10px;border-radius:8px;cursor:pointer}
+button:hover{border-color:#9fe0ff}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #86dafa;outline-offset:2px}
+button.primary{background:#176286;border-color:#429fc1}button.mutedButton{background:#203142}
+input[type=range]{width:100%;accent-color:#6bd7ff}.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kpi{background:#142d3f;border:1px solid #2d5067;border-radius:9px;padding:9px;min-width:0}.kpi .val{font-size:22px;font-weight:800;white-space:nowrap}.kpi .label{font-size:11px;color:#a6c2d4}
+.code{word-break:break-all;font:11px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;background:#091b2b;padding:9px;border-radius:8px;border:1px solid #29485c}
+.flag{font-size:12px;padding:6px 8px;background:#12304a;border-radius:6px;border:1px solid #35627b}
+.status{font-weight:700;color:var(--green)}.warning{color:#ffd4a1}
+dl{margin:0}dt{margin:10px 0 3px;color:#8db9ce;font-size:11px;text-transform:uppercase;letter-spacing:.08em}dd{margin:0;color:#e4f1f7}
+.timeline{display:flex;gap:3px;flex-wrap:wrap;margin:10px 0}.tick{width:16px;height:18px;border-radius:4px;background:#254457;border:1px solid #3b6177}
+.tick.past{background:#247495}.tick.now{background:#f6bb78;border-color:#ffdfb0}
+footer{font-size:12px;color:#99b8c8;padding-bottom:30px}
+@media(max-width:850px){header,main,footer{padding-left:10px;padding-right:10px}.layout{grid-template-columns:1fr}.panel{padding:10px}.graphCaption{max-width:70%}.meta{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style></head>
+<body>
+<header><div class="eyebrow">4D CERTIFICATE ATLAS · VOL30 · BOBBY FISCHER FREEZE / PLAY</div>
+<h1>Two-ended spherical Wilson measurement player</h1>
+<p>Actual four-dimensional integer lattice shells projected into a rotatable 3D view. The SU(2) link variables in the underlying Wilson theory are continuous; the point cloud is <strong>geometry, not field measurement samples</strong>.</p>
+<p><a href="index.html#ym4-vol30-candidate">Certificate atlas</a> · <a href="NOTE-YM4-VOL30-SPHERICAL-FISCHER-20261123.md">Mathematical certificate</a> · <a href="YM4-VOL30-SPHERE-FRAMES-20261123.json">Exact frame inventory</a> · <a href="YM4-VOL30-SPHERICAL-FISCHER-20261123.hbp">HBP receipt</a></p>
+</header>
+<main><div class="layout"><section class="panel">
+<div class="tools"><label for="mode">Playback:</label><select id="mode"><option value="9">9 frames · R2–R10</option><option value="20" selected>20 frames · R2–R21</option></select><button class="primary" id="playF">▶ Forward</button><button class="primary" id="playB">◀ Reverse</button><button id="pause">Pause</button><button id="prev">− Step</button><button id="next">+ Step</button></div>
+<div class="graphWrap"><canvas id="sphere" width="1120" height="680" aria-label="Three-dimensional rotatable projection of exact four-dimensional integer spherical shell points from original centered and outer Wilson plaquette sources">Canvas-enabled browser required.</canvas><div class="graphCaption">DRAG · ROTATE 3D CAMERA<br>WHEEL · ZOOM<br>CLICK POINT · ORIGINAL 4D ADDRESS</div></div>
+<div class="legend"><span><i class="mark s1"></i>Center-outward 4D shell</span><span><i class="mark s2"></i>Exterior-to-center 4D shell</span><span><i class="mark s3"></i>Exact shared 4D integer points</span></div>
+<div class="tools"><button id="freeze">Freeze current frame</button><button id="restore">Restore freeze</button><button id="round">Verify Fischer round-trip</button><button id="copy">Copy frame receipt</button></div>
+<div class="flag" id="seat">Worker / reflector / independent geometry witness: verifying…</div>
+<label for="slide">Select exact radius</label><input type="range" id="slide" min="0" max="19" value="0" step="1" aria-label="Move along spherical playback radius">
+<div class="timeline" id="timeline" aria-label="Frame progression"></div>
+<div class="meta"><div class="kpi"><div class="val" id="radius">2</div><div class="label">4D radius R</div></div><div class="kpi"><div class="val" id="sites">24</div><div class="label">Exact points per shell</div></div><div class="kpi"><div class="val" id="shared">0</div><div class="label">Shared 4D lattice sites</div></div></div>
+<p id="contact" class="muted"></p><p id="selected" class="code">Click a plotted point to inspect its original four integer coordinates.</p>
+</section>
+<aside class="info"><h2>Certificate and measurement status</h2>
+<div class="flag"><strong>Original model:</strong> continuous SU(2) Wilson links on a finite 4D periodic integer lattice, L=128; production β=9¹². No field expectation values are invented or plotted.</div>
+<dl><dt>Two physical endpoints</dt><dd>Central Wilson plaquette F at (0,0,0,0), exterior parallel plaquette G at (0,0,24,0); Euclidean 4D separation 24 lattice units.</dd>
+<dt>Mathematical forward predictor</dt><dd>Var[E(G | links in center ball R)] / Var(F)</dd>
+<dt>Mathematical reverse predictor</dt><dd>Var[E(F | links in outer ball R)] / Var(F)</dd>
+<dt>Exact reciprocity</dt><dd class="status">Forward = reverse by lattice time-reflection symmetry. Both are nondecreasing with R.</dd>
+<dt>Certified nearest-slice SU(2) interval</dt><dd class="code">1 / (5120 × 3^(162β)) &lt; C₁/C₀ ≤ 1 − 2/Bβ<br>Bβ = 147456(1+6β)²</dd>
+<dt>Certified endpoint-distance interval</dt><dd class="code">(1 / (5120 × 3^(162β)))^24 &lt; C₂₄/C₀ ≤ 1 − 2/Bβ</dd>
+<dt>Certified two-ended predictor floor</dt><dd class="code">W_R / C₀ ≥ (C₂₄/C₀)² &gt; (1/(5120 × 3^(162β)))^48</dd>
+<dt>Physical shell expectations</dt><dd class="warning">NOT COMPUTED. Bounds are analytic; no per-radius Monte Carlo or continuum gauge-field values supplied.</dd>
+<dt>Conforms to continuous measurements?</dt><dd><span class="status">Continuous SU(2) model: YES (analytic).</span><br><span class="warning">Physical continuum-limit data: OPEN. Spatial shells are discrete 4D lattice points, not continuum measurements.</span></dd>
+<dt>Fischer / frozen SHA-256 frame</dt><dd id="receipt" class="code"></dd><dd id="cryptostatus" class="muted">Crypto check not started</dd>
+<dt>4D geometry source</dt><dd class="muted">Exact squared distances; 3D display projection π(x)=(x₀+x₃/2, x₁−x₃/3, x₂+2x₃/5). Projection and camera motion never enter proof certificates.</dd></dl>
+</aside></div></main>
+<footer>The rendered two-ended spherical sweep is deterministic geometry. “Forward” and “Reverse” change the certificate-frame order; they do not reverse physical Yang–Mills dynamics. The witness checks exact integer four-square equations, source reflection and frame SHA when browser crypto is available. The 11 continuum construction obligations remain open.</footer>
+<script>
+'use strict';
+(function(){
+const FRAME_DATA=[
+[2,24,0,'6012afc6bf69e51bf2b9ba9004052bf7a1ed62aa3c4ddd431e2e145eebbeac4b'],
+[3,104,0,'c7a24e49eb4cd1dbf99f3aed78615034afe57ec7b17093916d23455e5ca63fb4'],
+[4,24,0,'d926645ec09970a8b8787f6304cf29bfe86f4a2b18bd398ebd6b3be5eae5ccb8'],
+[5,248,0,'3343fedfceeba0c6e718dec56323421e78acf6c6fdff93527ca5a6f5c873c72a'],
+[6,312,0,'0f8962b8347aa942e7eac77b1339472695f86b746ed54d0b85ba7a9cff14d7af'],
+[7,456,0,'41916f284e29b529fb0f6983b7fc593661f89b4e5c778820f8a916613f51e43a'],
+[8,24,0,'46b451e0dd4627322761a86eb8ec85226745fe0fb7c40344d81fedd5626abb41'],
+[9,968,0,'73c3ff175870d35b38b62844a35e4224cf56a392d43f2b7d597f934aea8fa254'],
+[10,744,0,'6f5afd3155b4422dc2e3d8d2098ea83b99f36f1b50e683827f286b40fbb13cfc'],
+[11,1064,0,'b6e032ed0aa17f852408fb2d1d93cbd2d384c990bfc873e5cea0db44884970c4'],
+[12,312,1,'f6ad47c5d804b90f1a6ced56986435650dd93509b616c51231eb9a3bdc686874'],
+[13,1464,30,'d1b994b9bd8bc1b5f13ad4091c5ee9f86427461630ab6e85bf2f1c586f21de83'],
+[14,1368,24,'c57882d9020fb26f17c2db277ee0797fba30d8c415849499a67495a1edf9036a'],
+[15,3224,102,'874a7006b8fdde84186ab217ac86cbeb379efbc39936f90fc2b8960c09cdd84f'],
+[16,24,0,'405e8fccf654eff01e518eca34fbf7b99233a0d112752cdeb42826f930b3b87d'],
+[17,2456,96,'9b50ebb182134f88c5ebfca500db966011293b247695ce24c56878494845c067'],
+[18,2904,72,'960cb2922bf2497d05661db7b4089746a3361cedb02eb51e4a4829c79e15bd88'],
+[19,3048,96,'54085942bdcf47f7d2f4576aa6a6fe669f64e9ae290f0abe2c31b19412889cde'],
+[20,744,6,'6e169bfba016e556c6fd582c0e9784c11de46919ed73ce0d70d2aecb02390b5c'],
+[21,5928,192,'5f273921d3596acb165e0bf0fffe05ac56beb13b951db0735b24a110fd7d114e']];
+const byId=id=>document.getElementById(id);
+const c=byId('sphere'),ctx=c.getContext('2d');
+if(!ctx){byId('seat').textContent='Canvas graphics unavailable';return;}
+const cache=new Map();
+let mode=20,idx=0,playing=null,frozen=null,yaw=.48,pitch=.19,zoom=1.0,drag=null,clickables=[];
+function shell(r){
+ if(cache.has(r))return cache.get(r);
+ const pairs=new Map();
+ for(let a=-r;a<=r;a++)for(let b=-r;b<=r;b++){let k=a*a+b*b;if(!pairs.has(k))pairs.set(k,[]);pairs.get(k).push([a,b]);}
+ const pts=[];
+ for(const [sum,ab] of pairs){const other=pairs.get(r*r-sum);if(!other)continue;for(const [a,b] of ab)for(const [t,h] of other)pts.push([a,b,t,h]);}
+ const isshared=p=>p[0]*p[0]+p[1]*p[1]+(p[2]-24)*(p[2]-24)+p[3]*p[3]===r*r;
+ const shared=pts.filter(isshared);
+ const inventory=FRAME_DATA[r-2];
+ const legal=pts.every(p=>p[0]*p[0]+p[1]*p[1]+p[2]*p[2]+p[3]*p[3]===r*r);
+ const centerSet=new Set(pts.map(p=>p.join(',')));
+ const reflected=pts.map(p=>[p[0],p[1],24-p[2],p[3]]);
+ const witness=legal && pts.length===inventory[1] && shared.length===inventory[2] && centerSet.size===pts.length &&
+    reflected.every(p=>p[0]*p[0]+p[1]*p[1]+(p[2]-24)*(p[2]-24)+p[3]*p[3]===r*r);
+ const answer={pts,shared,reflected,witness,entry:inventory};cache.set(r,answer);return answer;
+}
+function canonical(a){return 'YM4-VOL30|L=128|d=24|R='+a[0]+'|shell_points='+a[1]+'|dual_intersection='+a[2]+'|source=0,0,0,0|outer=0,0,24,0';}
+function projectPoint(p){
+ const x=p[0]+p[3]/2,y=p[1]-p[3]/3,z=p[2]+2*p[3]/5-12;
+ let X=x*Math.cos(yaw)-z*Math.sin(yaw),Z=x*Math.sin(yaw)+z*Math.cos(yaw);
+ let Y=y*Math.cos(pitch)-Z*Math.sin(pitch),D=y*Math.sin(pitch)+Z*Math.cos(pitch);
+ const fac=760/(760+D*2);
+ const scale=13.5*zoom*fac;
+ return [c.width/2+X*scale,c.height/2-Y*scale,D,scale];
+}
+function stroke(a,b,color,width){let A=projectPoint(a),B=projectPoint(b);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.stroke();}
+function wire(center,r,color){
+ const circlePlanes=[[0,1],[0,2],[1,2]];
+ ctx.lineWidth=1.15;
+ for(const [i,j] of circlePlanes){ctx.strokeStyle=color;ctx.beginPath();for(let k=0;k<=120;k++){const v=[center[0],center[1],center[2],center[3]],ang=k*Math.PI/60;v[i]+=r*Math.cos(ang);v[j]+=r*Math.sin(ang);let p=projectPoint(v);if(k===0)ctx.moveTo(p[0],p[1]);else ctx.lineTo(p[0],p[1]);}ctx.stroke();}
+}
+function marker(p,color,title){const xy=projectPoint(p);ctx.fillStyle=color;ctx.beginPath();ctx.arc(xy[0],xy[1],7,0,Math.PI*2);ctx.fill();ctx.fillStyle='#eef8ff';ctx.font='bold 13px system-ui';ctx.fillText(title,xy[0]+10,xy[1]-8);}
+function draw(){
+ const r=idx+2,v=shell(r);
+ const grad=ctx.createLinearGradient(0,0,0,c.height);grad.addColorStop(0,'#071626');grad.addColorStop(1,'#0c2534');ctx.fillStyle=grad;ctx.fillRect(0,0,c.width,c.height);
+ stroke([0,0,0,0],[0,0,24,0],'#9bafc6a6',2);
+ wire([0,0,0,0],r,'#477e9e88');wire([0,0,24,0],r,'#a36e5188');
+ clickables=[];
+ const stride=Math.max(1,Math.ceil(v.pts.length/1800));
+ const dots=[];
+ for(let i=0;i<v.pts.length;i+=stride){dots.push({p:v.pts[i],color:'#5ed5fc',label:'center'});dots.push({p:v.reflected[i],color:'#ffb474',label:'outer'});}
+ dots.sort((a,b)=>projectPoint(b.p)[2]-projectPoint(a.p)[2]);
+ for(const a of dots){const xy=projectPoint(a.p);ctx.fillStyle=a.color;ctx.globalAlpha=.48;ctx.beginPath();ctx.arc(xy[0],xy[1],1.7,0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],a.p,a.label]);}
+ ctx.globalAlpha=1;
+ for(const p of v.shared){const xy=projectPoint(p);ctx.fillStyle='#fff2b2';ctx.beginPath();ctx.arc(xy[0],xy[1],4.6,0,Math.PI*2);ctx.fill();clickables.push([xy[0],xy[1],p,'shared']);}
+ const pc=[0,0,r,0],po=[0,0,24-r,0];marker(pc,'#63daff','center R'+r);marker(po,'#ffbb76','outer R'+r);
+ marker([0,0,0,0],'#c6f5ff','F 0');marker([0,0,24,0],'#ffe2b9','G 24');
+ ctx.fillStyle='#d5e9f5';ctx.font='13px system-ui';ctx.fillText('Two exact 4D integer shell clouds · projection to rotatable 3D',18,c.height-22);
+}
+async function cryptoCheck(entry){
+ const status=byId('cryptostatus');status.textContent='Geometry hash: checking…';
+ if(!globalThis.crypto || !globalThis.crypto.subtle || !globalThis.TextEncoder){status.textContent='SHA-256 pinned in atlas HBP; browser cryptographic check unavailable in this context.';return;}
+ try{
+   const bytes=new TextEncoder().encode(canonical(entry));
+   const hash=await crypto.subtle.digest('SHA-256',bytes);
+   const actual=Array.from(new Uint8Array(hash)).map(x=>x.toString(16).padStart(2,'0')).join('');
+   status.textContent=actual===entry[3]?'SHA-256 VERIFIED against pinned certificate':'SHA-256 MISMATCH — HOLD';
+ }catch(err){status.textContent='SHA-256 pinned; browser verification unavailable.';}
+}
+function refresh(){
+ const r=idx+2,thing=shell(r);
+ byId('radius').textContent=r;byId('sites').textContent=thing.pts.length.toLocaleString();byId('shared').textContent=thing.shared.length;
+ byId('slide').max=mode-1;byId('slide').value=idx;
+ byId('seat').textContent=thing.witness?'THREE SEATS PASS · integer shell worker · reflected source verifier · independent distance witness':'HOLD · frame geometry mismatch';
+ byId('contact').textContent=r<12?'4D shell fronts are separated by '+(24-2*r)+' lattice units along x₂.':r===12?'FIRST EXACT CONTACT: (0,0,12,0). 9-step play stops earlier; 20-step play reaches this site.':thing.shared.length?'Exact shared lattice-site intersections: '+thing.shared.length+'. Contact is geometry, not field propagation.':'The 4D sphere surfaces overlap continuously but share no integer lattice shell site at this radius.';
+ byId('receipt').textContent='R '+r+' · pinned SHA-256 '+thing.entry[3];
+ const timeline=byId('timeline');timeline.textContent='';
+ for(let k=0;k<mode;k++){const t=document.createElement('span');t.className='tick'+(k<idx?' past':k===idx?' now':'');t.title='radius '+(k+2);timeline.appendChild(t);}
+ draw();cryptoCheck(thing.entry);
+}
+function stop(){if(playing!==null){clearInterval(playing);playing=null;}}
+function move(delta){idx=Math.max(0,Math.min(mode-1,idx+delta));refresh();}
+function play(delta){stop();if(delta<0&&idx===0)idx=mode-1;else if(delta>0&&idx===mode-1)idx=0;refresh();playing=setInterval(function(){if((delta>0&&idx===mode-1)||(delta<0&&idx===0)){stop();return;}move(delta);},mode===9?650:420);}
+byId('mode').addEventListener('change',function(){stop();mode=Number(this.value);idx=0;refresh();});
+byId('playF').addEventListener('click',()=>play(1));byId('playB').addEventListener('click',()=>play(-1));
+byId('pause').addEventListener('click',stop);byId('prev').addEventListener('click',()=>{stop();move(-1);});
+byId('next').addEventListener('click',()=>{stop();move(1);});
+byId('slide').addEventListener('input',function(){stop();idx=Number(this.value);refresh();});
+byId('freeze').addEventListener('click',()=>{stop();const t=shell(idx+2);frozen={mode,r:idx+2,sha:t.entry[3]};byId('seat').textContent='FROZEN · radius '+frozen.r+' · SHA '+frozen.sha.slice(0,18)+'…';});
+byId('restore').addEventListener('click',()=>{stop();if(!frozen){byId('seat').textContent='Freeze a frame first.';return;}mode=frozen.mode;byId('mode').value=mode;idx=frozen.r-2;refresh();byId('seat').textContent=shell(idx+2).entry[3]===frozen.sha?'RESTORE PASS · exact frozen Fischer address':'RESTORE HOLD · SHA mismatch';});
+byId('round').addEventListener('click',()=>{stop();const seq=FRAME_DATA.slice(0,mode).map(e=>e[3]);const backward=seq.slice().reverse();const ok=seq.every((id,i)=>id===backward[mode-1-i])&&seq.every((_,i)=>shell(i+2).witness);byId('seat').textContent=ok?'FISCHER ROUND-TRIP PASS · '+mode+' forward + '+mode+' backward · frozen SHA identities preserved':'FISCHER HOLD · identity mismatch';});
+byId('copy').addEventListener('click',()=>{const text=canonical(shell(idx+2).entry);if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>{byId('seat').textContent='Copied canonical frozen frame address';}).catch(()=>{byId('selected').textContent=text;});}else byId('selected').textContent=text;});
+c.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,moved:false};c.setPointerCapture(e.pointerId);});
+c.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;yaw+=dx*.006;pitch=Math.max(-1.5,Math.min(1.5,pitch+dy*.006));drag.x=e.clientX;drag.y=e.clientY;draw();});
+c.addEventListener('pointerup',e=>{if(!drag)return;const wasMove=drag.moved;drag=null;if(wasMove)return;const rect=c.getBoundingClientRect();const x=(e.clientX-rect.left)*c.width/rect.width,y=(e.clientY-rect.top)*c.height/rect.height;let best=null,d=225;for(const p of clickables){const q=(x-p[0])*(x-p[0])+(y-p[1])*(y-p[1]);if(q<d){d=q;best=p;}}if(best){const p=best[2];byId('selected').textContent=best[3]+' 4D site ('+p.join(',')+'); center norm²='+p.reduce((a,v)=>a+v*v,0)+'; outer norm²='+p.reduce((a,v,i)=>a+(v-(i===2?24:0))*(v-(i===2?24:0)),0)+'; drawing is a projection.';}});
+c.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.35,Math.min(2.6,zoom*(e.deltaY>0?.9:1.1)));draw();},{passive:false});
+refresh();
+})();
+</script></body></html>
