@@ -1,0 +1,64 @@
+name: YM4 VOL12 independent upstream Lean kernel rebuild
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ym4-vol12-upstream-lean-kernel.yml'
+  push:
+    paths:
+      - '.github/workflows/ym4-vol12-upstream-lean-kernel.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checked-source-lean-kernel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch checksum-pinned original upstream package
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-lean
+          curl --fail --location --retry 3 --max-time 150 --silent --show-error \
+            https://computoergosum.com/en/principia/lean/principia-ym-three-volumes-2026-11-13.tar.gz \
+            -o build/ym4-vol12-lean/verified-source.tar.gz
+          echo 'f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62  build/ym4-vol12-lean/verified-source.tar.gz' | sha256sum -c
+          tar -xzf build/ym4-vol12-lean/verified-source.tar.gz -C build/ym4-vol12-lean
+          test -f build/ym4-vol12-lean/principia-ym-three-volumes-2026-11-13/FoldChess/MixAllV1.lean
+      - name: Install requested upstream Lean toolchain
+        run: |
+          set -euo pipefail
+          if ! command -v elan >/dev/null 2>&1; then
+            curl --fail --location --retry 3 --silent --show-error \
+              https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+              -o build/ym4-vol12-lean/elan-init.sh
+            sh build/ym4-vol12-lean/elan-init.sh -y --default-toolchain leanprover/lean4:v4.33.1
+          fi
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/lean" --version
+      - name: Rebuild FoldMix.rarity_orient dependencies and compare kernel axiom output
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$HOME/.elan/bin:$PATH"
+          cd build/ym4-vol12-lean/principia-ym-three-volumes-2026-11-13
+          export LEAN_NUM_THREADS=1
+          lake exe cache get
+          lake build FoldChess.MixAllV1 2>&1 | tee ../UPSTREAM-LEAN-BUILD.txt
+          grep -F 'FoldMix.rarity_orient' ../UPSTREAM-LEAN-BUILD.txt
+          grep -F '[propext, Classical.choice, Quot.sound]' ../UPSTREAM-LEAN-BUILD.txt
+          if grep -E '(sorryAx|Lean.ofReduceBool|error:)' ../UPSTREAM-LEAN-BUILD.txt; then
+            echo 'YM4_VOL12_UPSTREAM_LEAN|unexpected_axiom_or_error=FAIL|json=0'
+            exit 1
+          fi
+          echo 'YM4_VOL12_UPSTREAM_LEAN|sha256_source=PASS|toolchain=v4.33.1|FoldMix_rarity_orient=KERNEL_BUILD_PASS|standard_axioms=PASS|json=0'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-original-FoldMix-lean-rebuild
+          path: |
+            build/ym4-vol12-lean/UPSTREAM-LEAN-BUILD.txt
+          retention-days: 30
+          if-no-files-found: warn
