@@ -1,0 +1,5 @@
+YM4_VOL13_CENTER_FRAME|original_4D_SU2_centre=EXACT|L4_L6=PASS|gauge_transform_frame_BFS=PASS|json=0
+YM4_VOL13_COCYCLE|pure_frame=FLAT_WITH_TRIVIAL_WINDING|periodic_gauge_exists=YES|json=0
+YM4_VOL13_WINDING|all_plaquette_fluxes=plus1|Polyakov_ratio_direction0=minus1|periodic_gauge_exists=NO|json=0
+YM4_VOL13_LOCAL_RED|plaquette_flux=minus1_exists|periodic_gauge_exists=NO|json=0
+YM4_VOL13_SCOPE|centre_subgroup_cocycle=EXACT|full_SU2_nonabelian_frame=OPEN|multi_link_good_region_coupling=OPEN|11_continuum_gates=OPEN|json=0
