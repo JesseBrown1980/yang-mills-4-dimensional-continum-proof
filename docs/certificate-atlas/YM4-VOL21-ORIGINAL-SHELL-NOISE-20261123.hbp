@@ -1,0 +1,10 @@
+YM4_VOL21_GEOMETRY|r=1|b=3|staple_support=648|touch_faces=1944|PASS
+YM4_VOL21_BETA12|r=1|kappa_gt_3_pow_minus=2196172075676256|CONDITIONAL_ON_V_positive
+YM4_VOL21_GEOMETRY|r=2|b=5|staple_support=3400|touch_faces=9240|PASS
+YM4_VOL21_BETA12|r=2|kappa_gt_3_pow_minus=10438595668337760|CONDITIONAL_ON_V_positive
+YM4_VOL21_GEOMETRY|r=3|b=7|staple_support=9800|touch_faces=25368|PASS
+YM4_VOL21_BETA12|r=3|kappa_gt_3_pow_minus=28658689925800032|CONDITIONAL_ON_V_positive
+YM4_VOL21_GEOMETRY|r=4|b=9|staple_support=21384|touch_faces=53784|PASS
+YM4_VOL21_BETA12|r=4|kappa_gt_3_pow_minus=60760760760376416|CONDITIONAL_ON_V_positive
+YM4_VOL21_NOISE|finite_beta_Haar_density_lower=ANALYTIC|shell_variance_floor=ANALYTIC
+YM4_VOL21_SCOPE|original_SU2_4D=ANALYTIC|physical_uniform_rate=OPEN|continuum_11=OPEN
