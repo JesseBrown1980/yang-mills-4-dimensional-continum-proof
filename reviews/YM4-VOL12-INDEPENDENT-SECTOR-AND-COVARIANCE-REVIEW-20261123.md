@@ -84,13 +84,17 @@ On the good-star sector, every pairwise staple inner product is at least 1-epsil
 
 At epsilon=1/16, |H|^2>=273/8. The preferred unit quaternion v=H/|H| is consequently well-defined.
 
-For two local conditionals with equal staple-resultant norms |H|=|H'|, multiplication by R=v'v^(-1) transports one conditional law onto the other exactly: quaternion multiplication is orthogonal and normalized SU(2) Haar is left invariant. For unequal strengths t,t', align preferred orientations and differentiate the normalized scalar exponential family; the coarse total-variation bound is
+For two local conditionals with equal staple-resultant norms |H|=|H'|, multiplication by R=v'v^(-1) transports one conditional law onto the other exactly: quaternion multiplication is orthogonal and normalized SU(2) Haar is left invariant.
+
+**Subsequent stronger result:** [The beta-uniform SU(2) radial transport theorem](../docs/certificate-atlas/NOTE-YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.md) uses the original S³ Haar density, the variable z=1-Re(U), and integration by parts to prove, for arbitrary two good-star exteriors,
 
 \[
-\boxed{\|\nu_t-\nu_{t'}\|_{TV}\le\min(1,\beta |t-t'|).}\tag{R5}
+\boxed{\|R_\#\nu_H-\nu_{H'}\|_{\rm TV}
+\le\frac32\left|\log\frac{t'}{t}\right|<\frac1{24}.}\tag{R5}
 \]
 
-This is an exact one-link transport starting point. At very large beta it can be vacuous. The next work is to obtain a sharper radial Wasserstein coupling, join rotations coherently across a gauge-covariant multi-link collar, and explicitly manage centre/winding labels.
+The strict constant follows from |H|²,|H'|²>=273/8 and the purely integer test 273*37²=373737>373248=8*216² (margin 489). **The bound is uniform for every beta>0**, and at beta=0 the conditionals are identical Haar. It leaves an exact candidate neighbor budget 18/24=3/4, *provided multi-link gauge-frame alignments can be made coherent*. The next proof target is precisely that gauge/collar coherence and the handling of global centre/winding labels; the local radial mismatch is now quantitatively controlled.
+
 
 **Next mathematical acceptance:** certify a quantitative good-region coupling for contractible local Wilson observables that yields delta_good(b) small enough in (R3), then separately certify physical all-sector transport including winding observables. Preserve the exact even periodic source scope; work on arbitrary exterior conditions and the coarse blocked law as separate gates.
 
