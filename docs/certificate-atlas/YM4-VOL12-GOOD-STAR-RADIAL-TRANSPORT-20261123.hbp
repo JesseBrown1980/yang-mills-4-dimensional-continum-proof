@@ -1,0 +1,5 @@
+YM4_VOL12_TRANSPORT|original_continuous_SU2_Haar=ANALYTIC|single_link_staples=6|good_pairs=15|json=0
+YM4_VOL12_TRANSPORT_GEOM|epsilon=1/16|resultant_squared_ge=273/8|preferred_quaternion_nondegenerate=PASS|json=0
+YM4_VOL12_TRANSPORT_TV|after_quaternion_alignment=YES|all_beta_positive=ANALYTIC|radial_TV_lt=1/24|rational_margin=489|json=0
+YM4_VOL12_TRANSPORT_BUDGET|original_neighbor_degree=18|formal_18_over24=3/4|multi_link_gauge_frame_coherence=OPEN|json=0
+YM4_VOL12_TRANSPORT_SCOPE|local_rational_fixture=PASS|opposite_staple_red_control=PASS|global_winding_sector=OPEN|physical_cube=OPEN|11_continuum_gates=OPEN|json=0
