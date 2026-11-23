@@ -31,7 +31,7 @@ jobs:
           python3 -O -I -B tests/ym4_vol13_nonabelian_tree_chord.py > build/ym4-vol13-nonabelian/REPLAY.hbp
           cmp build/ym4-vol13-nonabelian/CHORD.hbp build/ym4-vol13-nonabelian/REPLAY.hbp
           cmp build/ym4-vol13-nonabelian/CHORD.hbp docs/certificate-atlas/YM4-VOL13-NONABELIAN-CHORD-20261123.hbp
-          echo 'f059d709c1f66a509f678ae2b41fbb86f6e9d3eaf9135c7a178f90751c886f4a  build/ym4-vol13-nonabelian/CHORD.hbp' | sha256sum -c
+          echo '0a9ef571a778c3b49bffcdcf16a9371042b536201319ed2ef01db93ce0403842  build/ym4-vol13-nonabelian/CHORD.hbp' | sha256sum -c
           grep -Fq '|positive_control=PASS|' build/ym4-vol13-nonabelian/CHORD.hbp
           grep -Fq '|flat_central_winding_mismatch=REJECTED|' build/ym4-vol13-nonabelian/CHORD.hbp
           grep -Fq '|delta_good=OPEN|' build/ym4-vol13-nonabelian/CHORD.hbp
