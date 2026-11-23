@@ -32,7 +32,7 @@ For any cube-site Lie algebra field `xi`, define the boundary gauge tangent
 
 `(J_B xi)_e = xi_x B_e - B_e xi_y`.
 
-VOL18's Ward identity applies to **every** bounded `A_S`-measurable gauge-invariant function. Consequently the conditional expectation of `<X,J_B xi>` given `A_S` is constant almost surely. Equivalently,
+For beta>0, VOL18's Ward identity applies to **every** bounded `A_S`-measurable gauge-invariant function. At beta=0, the product Haar law has the same null consequence directly: an independent central site gauge `-I` at one endpoint reverses each selected link while fixing every gauge-invariant source, so its source-conditioned link expectation vanishes. Consequently, for all beta>=0, the conditional expectation of `<X,J_B xi>` given `A_S` is constant almost surely. Equivalently,
 
 `K_{B,S} J_B=0`.
 
@@ -56,6 +56,8 @@ The kernel can be evaluated as the variance of the conditional expected *single 
 
 ## 4. Independently checked exact algebraic controls and limitations
 
-The strict integer/Fraction checker `tests/ym4_vol19_orbit_source_gram.py` verifies quaternion multiplication, noncommutative two-square-cycle common-root conjugacy, full gauge reconstruction with nonunit resultants, and a red control where individual cycle traces agree but the simultaneous conjugacy class differs. It also tests the source-conditioned covariance projection on an explicitly **abstract** four-outcome rational model: the raw score variance is `53`, while the source-projected variance is `4`; the tangent-score variance projects to zero and source Cauchy–Schwarz is attained exactly. This rational example checks the algebra and is not a Wilson Gibbs or continuous Haar integration.
+The strict integer/Fraction checker [tests/ym4_vol19_orbit_source_gram.py](../../tests/ym4_vol19_orbit_source_gram.py) verifies quaternion multiplication, noncommutative two-square-cycle common-root conjugacy, full gauge reconstruction with nonunit resultants, and a red control where individual cycle traces agree but the simultaneous conjugacy class differs. It also tests the source-conditioned covariance projection on an explicitly **abstract** four-outcome rational model: the raw score variance is `53`, while the source-projected variance is `4`; the tangent-score variance projects to zero and source Cauchy–Schwarz is attained exactly. This rational example checks the algebra and is not a Wilson Gibbs or continuous Haar integration.
+
+The exact expected-output [HBP](YM4-VOL19-ORBIT-SOURCE-GRAM-20261123.hbp) and [hosted-workflow definition](../../.github/workflows/ym4-vol19-orbit-source-gram.yml) are committed. The dedicated hosted acceptance result is pending.
 
 **Review status:** finite graph-orbit classification, continuous-Haar Gibbs response identity, L2 projection and Ward-null Gram theorem have analytic proofs above; exact toy controls pass locally. No Lean kernel formalization or hosted run is claimed. High-beta spatial decay of the source-conditioned Gram, all-sector transport, and the eleven continuum construction gates remain OPEN. Keep in draft PR #113's candidate atlas map pending full audit and hosted acceptance; production 3D viewer and `main` should remain unchanged.
