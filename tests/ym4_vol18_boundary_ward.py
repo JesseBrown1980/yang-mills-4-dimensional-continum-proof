@@ -34,6 +34,9 @@ def dot(q,r):
 def add(q,r):
     return tuple(q[i]+r[i] for i in range(4))
 
+def sub(q,r):
+    return tuple(q[i]-r[i] for i in range(4))
+
 def next_site(x,mu,L):
     y=list(x)
     y[mu]=(y[mu]+1)%L
@@ -138,11 +141,30 @@ def fixture(h):
     for e,be in B.items():
         require(dot(W[e],be)==dot(Wprime[e],Bprime[e]),
                 "each_noncommuting_boundary_resultant_pairing_invariant")
+    # Direct Lie-algebra Ward-null derivative for original continuous
+    # SU2, using exact integer quaternion generators in the Q8 fixture.
+    pure=(I,J,K)
+    xi={x:(pure[(x[0]+2*x[1]+3*x[2]+5*x[3])%3]
+           if x in cube_sites else ZERO)
+        for x in product(range(L),repeat=4)}
+    for e,be in B.items():
+        x,mu=e
+        y=next_site(x,mu,L)
+        du=sub(mul(xi[x],W[e]),mul(W[e],xi[y]))
+        db=sub(mul(xi[x],be),mul(be,xi[y]))
+        require(dot(du,be)+dot(W[e],db)==0,
+                "exact_original_SU2_Ward_tangent_boundary_pairing_zero")
     central=((0,0,0,0),0,1)
     require(all(e in internal for e in face_links(central,L)),
             "physical_center_Wilson_source_inside_cube")
     require(plaq(W,central,L)[0]==plaq(Wprime,central,L)[0],
             "physical_center_Wilson_plaquette_source_invariant")
+    source_plaquette=plaq(W,central,L)
+    source_generator=xi[central[0]]
+    source_tangent=sub(mul(source_generator,source_plaquette),
+                       mul(source_plaquette,source_generator))
+    require(source_tangent[0]==0,
+            "exact_original_Wilson_source_Ward_tangent_trace_zero")
 
 def production_threshold():
     beta=282429536481
@@ -164,6 +186,7 @@ def main():
       'YM4_VOL18_BOUNDARY|B_e_transforms_as_SU2_bifundamental_vector=PASS|nonunit_staple_sum=PASS|json=0\n'
       'YM4_VOL18_WARD|all_beta_gauge_invariant_source_derivative_along_gauge_orbit_zero=ANALYTIC|json=0\n'
       'YM4_VOL18_ACTION|arbitrary_interior_changed=PASS|whole_Wilson_action_invariant=PASS|center_plaquette_source_invariant=PASS|json=0\n'
+      'YM4_VOL18_TANGENT|boundary_resultant_Ward_variation_pointwise_zero=PASS|Wilson_source_infinitesimal_trace_zero=PASS|json=0\n'
       'YM4_VOL18_ORBIT|raw_boundary_resultants_different=PASS|one_common_site_gauge_aligns_exactly=PASS|json=0\n'
       'YM4_VOL18_STABILITY|all_beta_invariant_source_change_le_beta_over2_times_projected_boundary_distance=ANALYTIC|json=0\n'
       'YM4_VOL18_BETA12|projected_boundary_distance_le_1over100beta_implies_source_change_le_1over200=CONDITIONAL|json=0\n'
