@@ -1,5 +1,13 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 23 — VOL12 research-stage finite packets, local repair, and chessboard bridge
+
+[Candidate source map](VOL12-CANDIDATE-SOURCE-MAP-20261123.md) · [original SU2 unconditional finite-volume pilot](NOTE-YM4-VOL12-FINITE-PACKET-PILOT-20261123.md) · [localized repair-deficit inequality](NOTE-YM4-VOL12-REPAIR-DEFICIT-20261123.md) · [even-volume chessboard-import theorem](NOTE-YM4-VOL12-CHESSBOARD-BRIDGE-20261123.md) · [independent arithmetic / provenance audit](../../reviews/YM4-VOL12-CHESSBOARD-IMPORT-AUDIT-20261123.md) · [draft PR #113](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/113).
+
+The finite-volume joint pilot and local boundary-repair packet passed hosted exact integer replay. A newly identified **external single-orientation chessboard / reflection-positivity theorem** gives a much stronger *conditional-on-external-import* volume-uniform bridge. At $\epsilon=1/16$ and $\beta_W=9^6=531441$, exact conservative integer inequalities show that a published same-orientation SU2 plaquette rate would give independent bad-star activity $\rho<2^{-663}<18^{-57}$ on all **untwisted even-side periodic** $L\ge4$ lattices. The already-proved VOL10 18-degree cluster combinatorics then yields $P(|C(o)|\ge m)\le18^{-m-2}$ in that domain **upon acceptance of the imported theorem**.
+
+The external Lean declaration and its hypotheses have not been independently source-replayed here. New VOL12 items therefore remain in a **candidate source map**, and the published **115-node, 553-resource interactive atlas inventory** stays unchanged pending theorem attestation and consistent static-viewer reindexing. Arbitrary exterior cube, odd and twisted volumes, multiscale physical-block transport, all eleven original continuum gates and the continuum gap remain OPEN.
+
 ## November 22 — VOL11 original SU2 exponential Haar and genuine separated-plaquette joint certificate
 
 [Continuous SU2 mathematical theorem](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md) · [independent proof audit](../../reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [original 4D integer source](../../tests/ym4_su2_vol11_separated_defects.py) · [exact frozen HBP](YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).
