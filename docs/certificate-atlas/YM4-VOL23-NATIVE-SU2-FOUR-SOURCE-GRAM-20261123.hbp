@@ -1,0 +1,8 @@
+YM4_VOL23_GEOMETRY|r=1|six_link_loops=4|external_links=24|joint_heatbath=4|PASS
+YM4_VOL23_GEOMETRY|r=2|six_link_loops=4|external_links=24|joint_heatbath=4|PASS
+YM4_VOL23_GEOMETRY|r=3|six_link_loops=4|external_links=24|joint_heatbath=4|PASS
+YM4_VOL23_GEOMETRY|r=4|six_link_loops=4|external_links=24|joint_heatbath=4|PASS
+YM4_VOL23_HAAR|S3_second=1/4|fourth_diag=1/8|fourth_cross=1/24|PASS
+YM4_VOL23_BETA0|native_G=I4/4|native_D=I4/4|kappa=1|ANALYTIC
+YM4_VOL23_NATIVE_GRAM|beta=9^12|dimension=4|k_min=1/423433462692859012475599601664|PSD=ANALYTIC
+YM4_VOL23_SCOPE|actual_original_SU2_beta12=ANALYTIC|predictor_transfer=OPEN|continuum_11=OPEN
