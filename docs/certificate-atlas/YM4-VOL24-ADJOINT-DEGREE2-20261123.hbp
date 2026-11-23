@@ -1,0 +1,10 @@
+YM4_VOL24_GEOMETRY|r=1|adjoint_loops=4|external_links=24|heat_baths=4|PASS
+YM4_VOL24_GEOMETRY|r=2|adjoint_loops=4|external_links=24|heat_baths=4|PASS
+YM4_VOL24_GEOMETRY|r=3|adjoint_loops=4|external_links=24|heat_baths=4|PASS
+YM4_VOL24_GEOMETRY|r=4|adjoint_loops=4|external_links=24|heat_baths=4|PASS
+YM4_VOL24_HAAR|linear=4|quadratic=9|S3_moment_order=4|PASS
+YM4_VOL24_ADJOINT_RED|variance=1/16|first_harmonic=0|degree_two_capture=1/16|PASS
+YM4_VOL24_NATIVE_ADJOINT_GRAM|beta=9^12|dim=4|k_min=1/3810901164235731112280396414976|PSD=ANALYTIC
+YM4_VOL24_SCALE|beta_n_le_n|a_n=3_pow_minus_n|m=1|n_from=23|CONDITIONAL
+YM4_VOL24_SCALE_FIXED|beta=9^12|a=3_pow_minus_n|m=1|n_from=65|CONDITIONAL
+YM4_VOL24_SCOPE|actual_continuous_SU2_beta12=ANALYTIC|centered_predictor=OPEN|continuum_11=OPEN
