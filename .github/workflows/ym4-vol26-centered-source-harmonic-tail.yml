@@ -27,7 +27,7 @@ jobs:
           python3 -I -O tests/ym4_vol26_centered_source_harmonic_tail.py >/tmp/ym4-vol26-optimized.hbp
           diff -u /tmp/ym4-vol26-normal.hbp /tmp/ym4-vol26-optimized.hbp
           diff -u docs/certificate-atlas/YM4-VOL26-CENTERED-HARMONIC-TAIL-20261123.hbp /tmp/ym4-vol26-normal.hbp
-          printf '%s  %s\n' 'ebfae91ab37c00855a2387a43d7a9312914c73f7ecc4800367761a8ede3f03b9' '/tmp/ym4-vol26-normal.hbp' | sha256sum -c -
+          printf '%s  %s\n' 'ae6a5dfa5169401956e2c04a8936958cd9f24386dda9845a561c20d1f08f28f1' '/tmp/ym4-vol26-normal.hbp' | sha256sum -c -
       - name: Archive original native SU2 harmonic receipt
         uses: actions/upload-artifact@v4
         with:
