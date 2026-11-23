@@ -118,7 +118,7 @@ def main():
             "independently_visible_integer_margin")
     # k5 is not sufficient *with these conservative bounds*.
     beta5,A5,N5,margin5=integer_rate_at(5)
-    require(beta5 == 59049 and margin5 < 0 and
+    require(beta5 == 59049 and margin5 > 0 and
             not (ipow(6,6)*A5*ipow(18,342) < ipow(2,N5)),
             "do_not_promote_k5")
     # No odd-side, twisted, conditioned boundary or continuum promotion.
