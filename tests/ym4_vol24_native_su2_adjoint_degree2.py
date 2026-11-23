@@ -101,7 +101,6 @@ def moment_cubature():
     # u_i*u_j and 3 diagonal contrasts u_i^2-u_3^2.
     off=[(i,j) for i in range(4) for j in range(i+1,4)]
     check(len(off)==6,'offdiagonal_dimension_six')
-    features=[lambda v,i=i:v[i]*v[j] for i,j in []]
     # Use index-coded functions rather than closures with mutable variables.
     second=[]
     for i,j in off:
@@ -156,7 +155,7 @@ def scale_gate():
     K=1327104
     n=23
     check(3**22<2*K*(1+6*22)**2,'logarithmic_trajectory_prethreshold')
-    check(3**n>=2*K*(1+6*n)**2,'beta_le_n_first_threshold')
+    check(3**23>=2*K*(1+6*n)**2,'beta_le_n_first_threshold')
     # 3*(1+6n)^2 >= (7+6n)^2 for every n>=2.
     # The left minus right is 72*n*n-48*n-46; derivative positive
     # for all n>=1, and the value at n=2 is 146>0.
