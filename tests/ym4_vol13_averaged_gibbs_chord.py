@@ -161,7 +161,8 @@ def geometry(b):
             'exact_four_dimensional_total_strip_area')
 
 def rational_bounds(k,Sden,Mden):
-    beta=9**k
+    # Strict accepted exact ternary-beta fixtures; avoids runtime negative exponents.
+    beta={6:531441,9:387420489,12:282429536481}[k]
     R_num=35+18*k
     require(2*R_num*Sden*Sden<3*beta,
             'strict_integer_sqrt_two_R_envelope')
