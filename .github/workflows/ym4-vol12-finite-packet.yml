@@ -1,0 +1,47 @@
+name: YM4 VOL12 original SU2 finite-volume bad-star packets
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol12_finite_packet.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-FINITE-PACKET-PILOT-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-FINITE-PACKET-PILOT-20261123.hbp'
+      - '.github/workflows/ym4-vol12-finite-packet.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol12_finite_packet.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-FINITE-PACKET-PILOT-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-FINITE-PACKET-PILOT-20261123.hbp'
+      - '.github/workflows/ym4-vol12-finite-packet.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-finite-volume-packet-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact integer and optimized replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12
+          python3 -I -B tests/ym4_su2_vol12_finite_packet.py > build/ym4-vol12/VOL12-PILOT.hbp
+          python3 -O -I -B tests/ym4_su2_vol12_finite_packet.py > build/ym4-vol12/REPLAY.hbp
+          cmp build/ym4-vol12/VOL12-PILOT.hbp build/ym4-vol12/REPLAY.hbp
+          cmp build/ym4-vol12/VOL12-PILOT.hbp docs/certificate-atlas/YM4-VOL12-FINITE-PACKET-PILOT-20261123.hbp
+          echo '3a253d1e7b9e20b05e12d8784688d9f89622ba25fb61a18770abc732ad6bb238  build/ym4-vol12/VOL12-PILOT.hbp' | sha256sum -c
+          grep -Fq '|volume_uniform_promotion=REJECTED|' build/ym4-vol12/VOL12-PILOT.hbp
+          grep -Fq '|uniform_independent_bad_star_rho=OPEN|' build/ym4-vol12/VOL12-PILOT.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol12/VOL12-PILOT.hbp
+      - name: Strict no-floating-point source policy
+        run: |
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-finite-volume-packet-pilot
+          path: build/ym4-vol12/
+          retention-days: 90
+          if-no-files-found: warn
