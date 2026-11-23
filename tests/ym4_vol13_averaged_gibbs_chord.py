@@ -124,8 +124,29 @@ def verify_strip(U,e):
         require(a==ONE and not nontrivial,'tree_edge_cycle_identity')
     return n
 
+def rectangle_source(U,b):
+    for width in range(1,b):
+        for height in range(1,b):
+            z=(0,0,0,0)
+            path=[]
+            for mu,sign,count in ((0,1,width),(1,1,height),(0,-1,width),(1,-1,height)):
+                for unused in range(count):
+                    path.append((z,mu,sign))
+                    z=step(z,mu,sign)
+            require(z==(0,0,0,0),'source_loop_closed')
+            hol=path_product(U,path)
+            lhs=sum((hol[k]-ONE[k])**2 for k in range(4))
+            area=width*height
+            rhs=0
+            for x0 in range(width):
+                for x1 in range(height):
+                    h=plaquette(U,(x0,x1,0,0),0,1)
+                    rhs+=sum((h[k]-ONE[k])**2 for k in range(4))
+            require(lhs<=area*rhs,'original_nonabelian_Wilson_source_filling_Cauchy')
+
 def geometry(b):
     U=field(b)
+    rectangle_source(U,b)
     fill_count=0
     chord_count=0
     for e in cube_links(b):
@@ -177,6 +198,7 @@ def main():
         'YM4_VOL13_AVERAGE|original_continuous_SU2_periodic_Gibbs=ANALYTIC|vol09_R_beta=IMPORTED|json=0\n'
         'YM4_VOL13_COORD_TREE|internal_box_b2_b3_b4=PASS|nonabelian_Q8_swap=PASS|strip_face_count=sum_later_coordinates|json=0\n'
         'YM4_VOL13_COUNT|chords=3b4minus4b3plus1|total_strip_area=3b3_times_bminus1_squared|json=0\n'
+        'YM4_VOL13_WILSON_SOURCE|nonabelian_Q8_rectangles=PASS|loop_deficit_le_A_times_plaquette_deficits=PASS|original_SU2_averaged_W1_le_A2_R=ANALYTIC|json=0\n'
         'YM4_VOL13_GIBBS|actual_link_chord_mean_le=2n_sqrt_2R|preferred_link_chord_mean_le=2n_sqrt_2R_plus_2_times_2nplus2_m|json=0\n'
         'YM4_VOL13_PREF_M|m_squared_le=37_over_72beta_plus_4_over_2power663|even_periodic_L_ge4|beta_ge9power6|json=0\n'
         'YM4_VOL13_RATIONAL|k6_s_lt_1over74_m_lt_1over1000|k9_s_lt_1over1700_m_lt_1over27000|k12_s_lt_1over40000_m_lt_1over700000|json=0\n'
