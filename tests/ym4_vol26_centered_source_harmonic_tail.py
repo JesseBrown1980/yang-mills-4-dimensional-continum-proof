@@ -155,7 +155,11 @@ def production_budget():
           'remainder_one_over_256_certificate')
     check(2*(minimum+2)<3*beta*beta*256,
           'minimal_degree_under_generic_envelope')
-    return minimum
+    source_denominator=147456*(1+6*beta)**2
+    check(source_denominator==423433462692859012475599601664,
+          'positive_original_centered_source_variance_denominator')
+    check(source_denominator>0,'strict_original_source_variance')
+    return minimum,source_denominator
 
 
 def main():
@@ -172,7 +176,9 @@ def main():
     for m in (0,1,2,3,27,81):
         print('YM4_VOL26_KERNEL|m='+str(m)+
               '|chord2='+fmt(moments[m])+'|PASS')
-    minimum=production_budget()
+    minimum,source_denominator=production_budget()
+    print('YM4_VOL26_SOURCE_VAR|beta=9^12|lower=1/'+
+          str(source_denominator)+'|PASS')
     print('YM4_VOL26_DEGREE|beta=9^12|variance_allowance=1/256|min_m='+
           str(minimum)+'|PASS')
     print('YM4_VOL26_SCOPE|centered_plaquette_source=ACTUAL|'+
