@@ -1,6 +1,6 @@
 # YM4 VOL12 upstream FoldMix source attestation — independently retrieved archive
 
-**23 November 2026. Hosted SHA-256 source verification PASS. Original Lean kernel rebuild OPEN until separately measured.**
+**23 November 2026. Hosted SHA-256 source verification PASS. Independent Lean 4.33.1 kernel rebuild PASS; external human referee OPEN.**
 
 ## Evidence and exact provenance
 
@@ -14,7 +14,7 @@ A hosted GitHub Actions run downloaded the actual published source archive at ht
 - Companion general-threshold wrapper: FoldMix.rarity_uniform_all_mix in FoldChess/MixAllUniformV1.lean:15–30.
 - Upstream toolchain: leanprover/lean4:v4.33.1.
 - Upstream DECLS.tsv maps FoldMix.rarity_orient to FoldChess.MixAllV1:66.
-- Upstream axioms.txt line 235 lists FoldMix.rarity_orient [propext, Classical.choice, Quot.sound]; line 244 similarly lists FoldWilson.wilson_chessboard_even. These are **published output records** and not a substitute for our own independent Lean kernel run.
+- Upstream axioms.txt line 235 lists FoldMix.rarity_orient [propext, Classical.choice, Quot.sound]; line 244 similarly lists FoldWilson.wilson_chessboard_even. These published records were independently confirmed by a clean hosted Lean 4.33.1 kernel rebuild. [Independent successful build](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45174162871) produced 8,755 completed jobs and printed the same exact standard-three axiom list.
 
 ## Exact imported theorem quantifiers
 
@@ -35,8 +35,8 @@ The upstream mixed reflection argument is specific to **untwisted even-sided per
 - SOURCE ARCHIVE SHA-256 / location / complete FoldMix signature: PASS.
 - INDEPENDENT ARITHMETIC of q, rho and VOL10 18-degree link graph: PASS through prior VOL12 hosted jobs.
 - UPSTREAM PUBLISHED AXIOM RECORD: LOCATED, standard-three-only as recorded by upstream.
-- INDEPENDENT LEAN KERNEL REBUILD of this exact archive: STARTED as separate read-only hosted CI workflow; verdict must be read from its hosted run, not assumed.
+- INDEPENDENT LEAN KERNEL REBUILD: PASS, hosted [run #45174162871](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45174162871), 8,755 jobs completed, standard three axioms confirmed, no sorryAx or Lean.ofReduceBool in the target build log.
 - EXTERNAL HUMAN REFEREE SIGNOFF and physical-width boundary-conditioned SU(2) cube: OPEN.
 - All 11 original continuum construction obligations: OPEN.
 
-The current source attestation supports a **source-dependent theorem**; independent kernel acceptance and external mathematical review remain explicit future gates.
+The current source attestation supports a **source-and-kernel-replayed formal theorem** at the upstream source's exact scope. Independent mathematical scrutiny of our derived star/cluster transfer and external human review remain separate acceptance gates.
