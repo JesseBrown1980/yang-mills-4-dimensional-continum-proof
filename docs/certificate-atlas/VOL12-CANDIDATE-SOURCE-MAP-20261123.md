@@ -12,6 +12,8 @@
 | VOL12 physical-width crossing | CONDITIONAL SOURCE-VERIFIED THEOREM + HOSTED INTEGER CHECK | [Four-dimensional even-torus box crossing note](NOTE-YM4-VOL12-PHYSICAL-BOX-CROSSING-20261123.md), [integer verifier](../../tests/ym4_su2_vol12_block_crossing.py), [HBP](YM4-VOL12-BLOCK-CROSSING-20261123.hbp) | probability <=16 b^3 / 18^(b+2); periodic equilibrium only; arbitrary-boundary Dobrushin-Shlosman cube OPEN |
 | VOL12 external source attestation | SOURCE SHA PASS / KERNEL REBUILD OPEN | [Full source audit](../../reviews/YM4-VOL12-UPSTREAM-FOLDMIX-SOURCE-ATTESTATION-20261123.md), [hosted source run](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45173527653) | verified original Lean 4.33.1 FoldMix.rarity_orient at MixAllV1.lean:66; independent kernel proof rebuild underway |
 
+| VOL12 averaged boundary coupling | CONDITIONAL ANALYTIC INTERFACE | [Gibbs disintegration and gauge-observable Wasserstein coupling](NOTE-YM4-VOL12-AVERAGED-BOUNDARY-COUPLING-20261123.md) | averaged W1 <= delta_good(b)+32b^3/18^(b+2); good-region delta_good and full-sector transfer remain OPEN |
+
 ## Conditional volume-uniform cluster bridge
 
 Assuming the external \`FoldMix.rarity_orient\` theorem precisely as described in [the published chessboard chapter](https://computoergosum.com/en/principia/yang-mills/22-01-rarity-by-chessboard.html), the original Wilson joint bad-star activity has an explicit \`rho<2^-663<18^-57\` at \`epsilon=1/16,beta=531441\` on every even-sided periodic \`L>=4\`. VOL10 then yields \`P(|C(o)|>=m)<=18^(-m-2)\` in that domain. A strict external theorem import, not native formal SU2 proof, is the remaining prerequisite for accepting this as an audited theorem of our chain.
