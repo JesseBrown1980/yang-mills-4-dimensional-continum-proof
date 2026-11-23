@@ -1,0 +1,46 @@
+name: YM4 VOL13 centre gauge-frame cocycle and winding pilot
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol13_center_frame_cocycle.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-CENTER-FRAME-COCYCLE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL13-CENTER-FRAME-20261123.hbp'
+      - '.github/workflows/ym4-vol13-center-frame.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol13_center_frame_cocycle.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-CENTER-FRAME-COCYCLE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL13-CENTER-FRAME-20261123.hbp'
+      - '.github/workflows/ym4-vol13-center-frame.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-4d-centre-frame:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 centre cocycle L4/L6 and periodic frame reconstruction
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol13-frame
+          python3 -I -B tests/ym4_vol13_center_frame_cocycle.py > build/ym4-vol13-frame/FRAME.hbp
+          python3 -O -I -B tests/ym4_vol13_center_frame_cocycle.py > build/ym4-vol13-frame/OPTIMIZED.hbp
+          cmp build/ym4-vol13-frame/FRAME.hbp build/ym4-vol13-frame/OPTIMIZED.hbp
+          cmp build/ym4-vol13-frame/FRAME.hbp docs/certificate-atlas/YM4-VOL13-CENTER-FRAME-20261123.hbp
+          echo 'e4039b9c19b58c2ae14ccedf5c181b1b1255a867d986c2ffef2bbe0ea2aeb370  build/ym4-vol13-frame/FRAME.hbp' | sha256sum -c
+          grep -Fq '|periodic_gauge_exists=YES|' build/ym4-vol13-frame/FRAME.hbp
+          grep -Fq '|Polyakov_ratio_direction0=minus1|' build/ym4-vol13-frame/FRAME.hbp
+          grep -Fq '|full_SU2_nonabelian_frame=OPEN|' build/ym4-vol13-frame/FRAME.hbp
+      - name: Strict no floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol13-centre-cocycle-bfs
+          path: build/ym4-vol13-frame/
+          retention-days: 90
+          if-no-files-found: warn
