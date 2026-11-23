@@ -1,0 +1,39 @@
+name: YM4 VOL20 SU2 source Fisher and equilibrium shell controls
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol20_source_fisher_shell.py
+      - docs/certificate-atlas/YM4-VOL20-SOURCE-FISHER-SHELL-20261123.hbp
+      - .github/workflows/ym4-vol20-source-fisher-shell.yml
+
+jobs:
+  strict-fraction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict AST no floating-point gate
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          f=Path('tests/ym4_vol20_source_fisher_shell.py')
+          tree=ast.parse(f.read_text())
+          assert all(not isinstance(node.value,float)
+                     for node in ast.walk(tree) if isinstance(node,ast.Constant))
+          print('YM4_VOL20_NO_FLOAT|PASS')
+          PY
+      - name: Normal and optimized rational replay
+        run: |
+          python3 tests/ym4_vol20_source_fisher_shell.py > /tmp/ym4-vol20-normal.hbp
+          python3 -O tests/ym4_vol20_source_fisher_shell.py > /tmp/ym4-vol20-opt.hbp
+          diff -u /tmp/ym4-vol20-normal.hbp /tmp/ym4-vol20-opt.hbp
+          diff -u docs/certificate-atlas/YM4-VOL20-SOURCE-FISHER-SHELL-20261123.hbp /tmp/ym4-vol20-normal.hbp
+          printf '%s  %s\n' '6e8a9a294d5a273d82499c42543a21440caae339af6300a68b378925593bbeb4' '/tmp/ym4-vol20-normal.hbp' | sha256sum -c -
+      - name: Archive exact receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol20-source-fisher-shell
+          path: /tmp/ym4-vol20-normal.hbp
