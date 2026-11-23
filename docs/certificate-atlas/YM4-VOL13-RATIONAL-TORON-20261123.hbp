@@ -1,0 +1,6 @@
+YM4_VOL13_TORON|SU2_real_quaternion_continuous_U1_subgroup=EXACT_RATIONAL|L4_L6=PASS|json=0
+YM4_VOL13_TORON_PLAQ|all_original_4d_plaquettes_equal_identity=PASS|all_six_staples_per_link_identical=PASS|all_15_pairs_good=PASS|json=0
+YM4_VOL13_TORON_W4|normalized_Polyakov_real=-527/625|imag=-336/625|noncentral=PASS|json=0
+YM4_VOL13_TORON_W6|normalized_Polyakov_real=11753/15625|imag=-10296/15625|noncentral=PASS|json=0
+YM4_VOL13_TORON_SCOPE|flat_SU2_moduli_continuous=ANALYTIC|local_contractible_Wilson_plaquettes=IDENTICAL|global_winding_unequal=YES|json=0
+YM4_VOL13_NEXT|local_contractible_observable_coupling=OPEN|nonabelian_chord_average=OPEN|all_sector_holonomy_transport=OPEN|11_continuum_gates=OPEN|json=0
