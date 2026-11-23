@@ -1,0 +1,6 @@
+YM4_VOL20_FISHER|source_score=4/63|affine_invariance=PASS|data_processing=PASS
+YM4_VOL20_WARD|nuisance_raw_variance=1|source_projected=0|PASS
+YM4_VOL20_REPLICA|variance=5/256|two_replica=5/128|PASS
+YM4_VOL20_SHELL|near=5/256|far=1/64|drop=1/256|kappa=1/5|PASS
+YM4_VOL20_SCALING|source_variance_normalized=PASS|rescale_x1000=PASS
+YM4_VOL20_SCOPE|continuous_SU2=ANALYTIC|toy_Fraction=PASS|high_beta_physical_decay=OPEN|continuum_11=OPEN
