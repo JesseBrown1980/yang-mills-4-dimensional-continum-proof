@@ -1,0 +1,35 @@
+name: YM4 VOL29 source-local volume-free SU2 Wilson transfer
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol29_local_harnack_volume_free.py
+      - docs/certificate-atlas/YM4-VOL29-LOCAL-HARNACK-VOLUME-FREE-20261123.hbp
+      - .github/workflows/ym4-vol29-local-harnack-volume-free.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol29_local_harnack_volume_free.py
+      - docs/certificate-atlas/YM4-VOL29-LOCAL-HARNACK-VOLUME-FREE-20261123.hbp
+      - .github/workflows/ym4-vol29-local-harnack-volume-free.yml
+  workflow_dispatch:
+
+jobs:
+  local-original-wilson-correlation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository-wide integer-only gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Original 3D Wilson plaquette neighborhood and local coercivity replay
+        run: |
+          python3 -I -B tests/ym4_vol29_local_harnack_volume_free.py >/tmp/ym4-vol29-normal.hbp
+          python3 -I -O tests/ym4_vol29_local_harnack_volume_free.py >/tmp/ym4-vol29-opt.hbp
+          diff -u /tmp/ym4-vol29-normal.hbp /tmp/ym4-vol29-opt.hbp
+          diff -u docs/certificate-atlas/YM4-VOL29-LOCAL-HARNACK-VOLUME-FREE-20261123.hbp /tmp/ym4-vol29-normal.hbp
+          printf '%s  %s\n' 'a4fbc8dcb3a6c928654059000108f05e68304871ccc311fd27711b601caa616f' '/tmp/ym4-vol29-normal.hbp' | sha256sum -c -
+      - name: Archive source-local original SU2 rational receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol29-local-harnack-volume-free
+          path: /tmp/ym4-vol29-normal.hbp
