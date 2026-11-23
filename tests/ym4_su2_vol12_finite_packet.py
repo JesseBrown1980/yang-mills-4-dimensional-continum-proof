@@ -13,6 +13,14 @@ def require(ok, label):
         raise ValueError(label)
 
 
+def ipow(base, exponent):
+    require(exponent >= 0, "nonnegative_integer_exponent")
+    v = 1
+    for unused in range(exponent):
+        v *= base
+    return v
+
+
 def step(x, mu, L):
     t = list(x)
     t[mu] = (t[mu] + 1) % L
@@ -39,7 +47,7 @@ def link_incidence(L):
                     for f in p:
                         if e != f:
                             adjacency[e].add(f)
-    require(len(adjacency) == 4*L**4 and len(plaquettes) == 6*L**4,
+    require(len(adjacency) == 4*ipow(L, 4) and len(plaquettes) == 6*ipow(L, 4),
             "four_dim_original_incidence")
     require(all(len(s) == 6 for s in support.values()),
             "six_original_plaquettes_per_link")
@@ -71,11 +79,11 @@ def envelope_parameters(k, L, r):
     E implies r distinct plaquette deficits > epsilon/4,
     exp(3V)<27^V, exp(x)>2^floor(x/2) (x>0).
     """
-    require(1 <= k <= 18 and L >= 3 and 1 <= r <= 4*L**4,
+    require(1 <= k <= 18 and L >= 3 and 1 <= r <= 4*ipow(L, 4),
             "parameter_domain")
-    beta = 9**k
-    vol = L**4
-    prefactor = 27*(1536*27**k)**4
+    beta = ipow(9, k)
+    vol = ipow(L, 4)
+    prefactor = 27*ipow(1536*ipow(27, k), 4)
     denom_exp = r*beta//128
     conservative_margin = denom_exp-vol*prefactor.bit_length()
     return beta, prefactor, denom_exp, conservative_margin
