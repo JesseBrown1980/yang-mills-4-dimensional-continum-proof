@@ -24,6 +24,9 @@ def q(n, d=1):
 def mulq(a, b):
     return q(a[0]*b[0], a[1]*b[1])
 
+def subq(a, b):
+    return q(a[0]*b[1]-b[0]*a[1], a[1]*b[1])
+
 
 def shift(x, axis):
     z = list(x)
@@ -120,6 +123,13 @@ def spectral_trace_fixture():
     check(raw==90,'two_state_physical_trace_numerator')
     cov=q(raw,4*z)
     check(cov==q(9,292),'spectral_positive_covariance')
+    raw1=trace(matmul(matmul(matmul(A,matpow(T,1)),A),
+                      matpow(T,L-1)))
+    cov1=q(raw1,4*z)
+    c0=q(1,4)
+    check(cov1==q(123,1460),'exact_one_step_periodic_transfer_covariance')
+    gap=subq(mulq(c0,cov),mulq(cov1,cov1))
+    check(gap==q(81,133225),'strict_logconvex_two_step_determinant')
     spectral=q(3*3+3*3*3*3,4*(3*3*3*3*3*3+1))
     check(spectral==cov,'strict_positive_eigenbasis_sum')
     # Exact spectral lambda=(3,1), A has offdiagonal 1/2 in eigenbasis.
@@ -131,7 +141,7 @@ def spectral_trace_fixture():
     # V_r >= 4 Cov(F_0,F_d)^2 even with unknown true Wilson covariance.
     floor=mulq(q(4),mulq(cov,cov))
     check(floor==q(81,21316),'normalized_predictor_variance_interface')
-    return cov,floor
+    return cov,floor,cov1,gap
 
 
 def main():
@@ -141,10 +151,11 @@ def main():
               '|even_L='+str(L)+'|source=INTERNAL|translated=EXTERIOR|PASS')
     count=spin_half_fusion()
     print('YM4_VOL27_PETER_WEYL|tensor_power_to=16|highest_irrep_once=PASS|final_irreps='+str(count))
-    cov,floor=spectral_trace_fixture()
+    cov,floor,cov1,gap=spectral_trace_fixture()
     print('YM4_VOL27_SPECTRAL_TOY|lambda=3,1|cov='+str(cov[0])+
           '/'+str(cov[1])+'|predictor_lower='+str(floor[0])+
           '/'+str(floor[1])+'|PASS')
+    print('YM4_VOL27_LOGCONVEX|C0=1/4|C1=123/1460|C2=9/292|det=81/133225|PASS')
     print('YM4_VOL27_BETA_ZERO|rank_one_transfer=PASS|translated_cov=0|PASS')
     print('YM4_VOL27_NATIVE|continuous_SU2_transfer=ANALYTIC|beta_positive_predictor=STRICT|beta_9pow12=INCLUDED')
     print('YM4_VOL27_SCOPE|production_numeric_margin=OPEN|continuum_mass_rate=OPEN|continuum_11=OPEN')
