@@ -1,6 +1,6 @@
 # YM4-VOL12 independent chessboard-import audit and acceptance boundaries
 
-**23 November 2026. AI assistant independent arithmetic/geometric reconstruction; external human referee and independent Lean kernel rebuild OPEN.**
+**23 November 2026. AI assistant independent arithmetic/geometric reconstruction; external human referee OPEN; independent Lean kernel rebuild PASS.**
 
 ## External theorem consulted
 
@@ -13,7 +13,7 @@ Q=\exp[\beta(48a^2-y)]/h(a)^4
 \]
 as a one-orientation defect rate. It also notes that the broader chessboard strategy is classical reflection positivity / Peierls.
 
-**Update — source successfully attested:** The published upstream archive (SHA-256 f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62) was downloaded on hosted Actions; actual FoldChess/MixAllV1.lean:66–71 contains the complete FoldMix.rarity_orient proof statement with N=2m, m≥2, beta≥0, any y, radius r>0, one orientation and every Finset of sites. The archive's axioms.txt prints [propext, Classical.choice, Quot.sound], and its toolchain is Lean 4.33.1. See [new independent source attestation](YM4-VOL12-UPSTREAM-FOLDMIX-SOURCE-ATTESTATION-20261123.md) and [hosted SHA verification](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45173527653). The separate kernel rebuild and outside referee review remain OPEN.
+**Update — source successfully attested:** The published upstream archive (SHA-256 f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62) was downloaded on hosted Actions; actual FoldChess/MixAllV1.lean:66–71 contains the complete FoldMix.rarity_orient proof statement with N=2m, m≥2, beta≥0, any y, radius r>0, one orientation and every Finset of sites. The archive's axioms.txt prints [propext, Classical.choice, Quot.sound], and its toolchain is Lean 4.33.1. See [new independent source attestation](YM4-VOL12-UPSTREAM-FOLDMIX-SOURCE-ATTESTATION-20261123.md) and [hosted SHA verification](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45173527653). The independent Lean 4.33.1 rebuild [PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45174162871): 8,755 jobs, same exact standard-three axioms for FoldMix.rarity_orient. Outside mathematical referee review remains OPEN.
 
 ## Independent implication proof audit
 
@@ -39,7 +39,7 @@ At \`beta=9^5=59049\`, \`Q<1\` but the conservative \`rho<=18^-57\` comparison *
 
 - **CONDITIONAL MATHEMATICAL BRIDGE PASS:** from CB-ORIENT to joint bad-star activity and VOL10 root-island tail for even L>=4, beta=531441, epsilon=1/16.
 - **INTEGER / ORIGINAL-LATTICE REPLAY:** L=3 negative scope; L=4,L=6 positive geometry; r=2,4,20 packet orientations; 143-bit cap constant, N=4144, 1584-bit threshold comparison.
-- **EXTERNAL FORMAL SOURCE ATTESTATION:** source archive SHA, exact declaration, and published axiom record PASS; independent Lean kernel rebuild and human mathematical review OPEN.
+- **EXTERNAL FORMAL SOURCE ATTESTATION:** source archive SHA, exact declaration, and published axiom record PASS; independent Lean kernel rebuild PASS; human mathematical review OPEN.
 - **ODD periodic volumes:** OPEN. **Fixed arbitrary boundary, twisted bundle, coarse-scale pushforward:** OPEN. **Physical-size cube and all eleven continuum obligations:** OPEN.
 - **Continuum mass gap:** OPEN. No first-in-community novelty claim.
 
