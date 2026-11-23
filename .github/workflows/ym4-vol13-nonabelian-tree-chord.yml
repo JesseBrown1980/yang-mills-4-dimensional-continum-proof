@@ -1,0 +1,46 @@
+name: YM4 VOL13 nonabelian original SU2 tree chord frame audit
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol13_nonabelian_tree_chord.py'
+      - 'docs/certificate-atlas/YM4-VOL13-NONABELIAN-CHORD-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-NONABELIAN-TREE-CHORD-20261123.md'
+      - '.github/workflows/ym4-vol13-nonabelian-tree-chord.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol13_nonabelian_tree_chord.py'
+      - 'docs/certificate-atlas/YM4-VOL13-NONABELIAN-CHORD-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-NONABELIAN-TREE-CHORD-20261123.md'
+      - '.github/workflows/ym4-vol13-nonabelian-tree-chord.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-4d-SU2-nonabelian-chord:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original L4/L6 SU2 noncommuting quaternion tree gauge and fundamental loops
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol13-nonabelian
+          python3 -I -B tests/ym4_vol13_nonabelian_tree_chord.py > build/ym4-vol13-nonabelian/CHORD.hbp
+          python3 -O -I -B tests/ym4_vol13_nonabelian_tree_chord.py > build/ym4-vol13-nonabelian/REPLAY.hbp
+          cmp build/ym4-vol13-nonabelian/CHORD.hbp build/ym4-vol13-nonabelian/REPLAY.hbp
+          cmp build/ym4-vol13-nonabelian/CHORD.hbp docs/certificate-atlas/YM4-VOL13-NONABELIAN-CHORD-20261123.hbp
+          echo 'f059d709c1f66a509f678ae2b41fbb86f6e9d3eaf9135c7a178f90751c886f4a  build/ym4-vol13-nonabelian/CHORD.hbp' | sha256sum -c
+          grep -Fq '|positive_control=PASS|' build/ym4-vol13-nonabelian/CHORD.hbp
+          grep -Fq '|flat_central_winding_mismatch=REJECTED|' build/ym4-vol13-nonabelian/CHORD.hbp
+          grep -Fq '|delta_good=OPEN|' build/ym4-vol13-nonabelian/CHORD.hbp
+      - name: No floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol13-original-nonabelian-chord
+          path: build/ym4-vol13-nonabelian/
+          retention-days: 90
+          if-no-files-found: warn
