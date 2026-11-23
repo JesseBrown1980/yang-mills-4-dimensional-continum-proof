@@ -1,0 +1,7 @@
+YM4_VOL12_MODEL|original_continuous_SU2_Wilson=ANALYTIC|epsilon=1/16|dimension=4|json=0
+YM4_VOL12_GEOMETRY|L3_links=324|L4_links=1024|degree=18|packet_sizes=2,4|disjoint_incident_plaquette_sets=PASS|json=0
+YM4_VOL12_THEOREM|unconditional_P_all_r_bad_le=min_1_A_power_V_over_2_power_n|A=27_times_1536_times_27powerk_to_power4|n=floor_r_times_9powerk_over128|all_beta_original_Haar_cap=ANALYTIC|json=0
+YM4_VOL12_K7_L3|beta=4782969|two_star_lt=2power_minus60072|four_star_lt=2power_minus134806|integer_only=PASS|json=0
+YM4_VOL12_K7_L4|beta=4782969|two_star_lt=2power_minus28397|four_star_lt=2power_minus103131|integer_only=PASS|json=0
+YM4_VOL12_REDS|adjacent_stars_nonadditive=REJECTED|volume_uniform_promotion=REJECTED|json=0
+YM4_VOL12_SCOPE|finite_volume_unconditional_packet=DERIVED|uniform_independent_bad_star_rho=OPEN|physical_size_cube=OPEN|11_continuum_gates=OPEN|json=0
