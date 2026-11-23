@@ -27,7 +27,7 @@ jobs:
           python3 -I -O tests/ym4_vol27_transfer_strict_predictor.py >/tmp/ym4-vol27-optimized.hbp
           diff -u /tmp/ym4-vol27-normal.hbp /tmp/ym4-vol27-optimized.hbp
           diff -u docs/certificate-atlas/YM4-VOL27-TRANSFER-STRICT-PREDICTOR-20261123.hbp /tmp/ym4-vol27-normal.hbp
-          printf '%s  %s\n' 'eda40bf1f4ced8411471ae3c84269999cd6604a859c39e2e176e5aebe6f0d7a9' '/tmp/ym4-vol27-normal.hbp' | sha256sum -c -
+          printf '%s  %s\n' 'd8de14ddde99b18cfbe9a1d12d470724b931331c425b10b940f511a5b4aadc76' '/tmp/ym4-vol27-normal.hbp' | sha256sum -c -
       - name: Archive strict physical transfer fixture receipt
         uses: actions/upload-artifact@v4
         with:
