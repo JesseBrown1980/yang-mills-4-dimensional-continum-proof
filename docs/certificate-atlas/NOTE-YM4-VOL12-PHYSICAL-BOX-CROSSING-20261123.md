@@ -1,6 +1,6 @@
 # YM4-VOL12 — physical-width bad-star crossing from the chessboard theorem
 
-23 November 2026 — original continuous SU(2) Wilson, source-attested external Lean theorem with independent kernel rebuild pending. This is a geometric consequence of [VOL10](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md) and the [VOL12 chessboard bridge](NOTE-YM4-VOL12-CHESSBOARD-BRIDGE-20261123.md).
+23 November 2026 — original continuous SU(2) Wilson, source-attested external Lean theorem with independent Lean kernel rebuild PASS; external human review OPEN. This is a geometric consequence of [VOL10](NOTE-YM4-VOL10-BAD-ISLAND-CRITERION-20261122.md) and the [VOL12 chessboard bridge](NOTE-YM4-VOL12-CHESSBOARD-BRIDGE-20261123.md).
 
 ## A. Precise external premise
 
@@ -15,7 +15,7 @@ The exact theorem FoldMix.rarity_orient occurs at FoldChess/MixAllV1.lean:66. It
 \le Z_W\left(\frac{\exp[\beta(48r^2-y)]}{h(r)^4}\right)^{|S|}.
 \]
 
-The downloaded upstream axioms.txt gives [propext, Classical.choice, Quot.sound] for this theorem and FoldWilson.wilson_chessboard_even. Its toolchain is Lean v4.33.1. The downloaded source and recorded axiom outputs have been inspected, while a separate independent kernel rebuild remains pending.
+The downloaded upstream axioms.txt gives [propext, Classical.choice, Quot.sound] for this theorem and FoldWilson.wilson_chessboard_even. Its toolchain is Lean v4.33.1. The downloaded source and recorded axiom outputs have been inspected, and a separate independent Lean 4.33.1 kernel rebuild has passed ([hosted result](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45174162871), 8,755 jobs, standard-three axioms only).
 
 At epsilon=1/16, beta=9^6=531441, the chessboard implication from the previous VOL12 note gives rho<2^-663<18^-57. Then the VOL10 conditional cluster theorem yields, for any original positive-link root o and m>=1, under the even-sided untwisted periodic SU(2) Gibbs law,
 
@@ -69,7 +69,7 @@ This is a volume-uniform, **one-scale periodic Gibbs probability** for geometric
 
 The physical-size Dobrushin-Shlosman cube needed by VOL07 is a much stronger object: it controls boundary-conditioned or appropriately averaged block distributions and all physical Gauss sectors. The periodic crossing bound supplies a quantitative bad-island component. To reach that cube, we still need good-region coupling, bounds on boundary frustration and the pushforward through blocking.
 
-- External FoldMix source and bundled axiom record: SOURCE-PINNED/INSPECTED, independent Lean kernel rebuild OPEN.
+- External FoldMix source and bundled axiom record: SOURCE-PINNED/INSPECTED, independent Lean kernel rebuild PASS.
 - Original even-torus joint bad-star and crossing implication: ANALYTIC, conditional on the external formal theorem; exact integer source check PASS.
 - Arbitrary-boundary physical cube, multiscale blocked measure, full transfer rate and all 11 original continuum gates: OPEN.
 
