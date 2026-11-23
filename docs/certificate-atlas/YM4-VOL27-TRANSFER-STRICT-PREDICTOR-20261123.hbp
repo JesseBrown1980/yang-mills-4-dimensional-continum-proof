@@ -4,6 +4,7 @@ YM4_VOL27_GEOMETRY|r=3|time_separation=4|even_L=18|source=INTERNAL|translated=EX
 YM4_VOL27_GEOMETRY|r=4|time_separation=5|even_L=22|source=INTERNAL|translated=EXTERIOR|PASS
 YM4_VOL27_PETER_WEYL|tensor_power_to=16|highest_irrep_once=PASS|final_irreps=9
 YM4_VOL27_SPECTRAL_TOY|lambda=3,1|cov=9/292|predictor_lower=81/21316|PASS
+YM4_VOL27_LOGCONVEX|C0=1/4|C1=123/1460|C2=9/292|det=81/133225|PASS
 YM4_VOL27_BETA_ZERO|rank_one_transfer=PASS|translated_cov=0|PASS
 YM4_VOL27_NATIVE|continuous_SU2_transfer=ANALYTIC|beta_positive_predictor=STRICT|beta_9pow12=INCLUDED
 YM4_VOL27_SCOPE|production_numeric_margin=OPEN|continuum_mass_rate=OPEN|continuum_11=OPEN
