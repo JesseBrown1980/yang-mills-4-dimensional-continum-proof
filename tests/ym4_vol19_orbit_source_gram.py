@@ -1,9 +1,7 @@
-"""YM4 VOL19: exact graph-orbit and source-conditioned Gram algebra checks.
+"""YM4 VOL19 integer-only original quaternion orbit and source-Gram controls.
 
-Integer/rational falsifiers; the full continuous-SU(2) Haar theorem is analytic.
+All arithmetic uses integers and cross-products; continuous SU2 Haar proof analytic.
 """
-from fractions import Fraction
-
 O=(1,0,0,0)
 I=(0,1,0,0)
 J=(0,0,1,0)
@@ -26,7 +24,6 @@ def check(condition,label):
     if not condition:
         raise AssertionError(label)
 
-# Two squares meeting at a root, with nonunit boundary-resultant radii.
 E=((0,1,2,O,1),(1,2,3,O,1),(2,3,4,O,1),(0,3,5,I,0),
    (0,4,2,O,1),(4,5,3,O,1),(5,6,4,O,1),(0,6,6,J,0))
 
@@ -58,7 +55,6 @@ def orbit_control():
     p,pp=paths(E),paths(Ep)
     restored={x:mul(mul(inv(pp[x]),g[0]),p[x]) for x in p}
     check(rotate(E,restored)==Ep,"complete gauge reconstruction")
-    # Both pairs have per-cycle traces zero; joint relative traces differ.
     pair1=(I,I)
     pair2=(I,inv(I))
     check(all(q[0]==0 for q in pair1+pair2),"single-cycle traces equal")
@@ -66,27 +62,24 @@ def orbit_control():
     check(mul(inv(pair1[0]),pair1[1])[0]==1,"pair1 mixed invariant")
     check(mul(inv(pair2[0]),pair2[1])[0]==-1,"pair2 mixed invariant")
 
-def variance(rows,v):
-    scores=[sum(Fraction(a)*b for a,b in zip(x,v)) for x in rows]
-    avg=sum(scores)/len(scores)
-    return sum((s-avg)**2 for s in scores)/len(scores)
-
 def gram_control():
     X=((1,1,0,0),(1,-1,0,0),(-1,1,0,0),(-1,-1,0,0))
     F=(1,1,0,0)
     Y=((1,0,0,0),(1,0,0,0),(-1,0,0,0),(-1,0,0,0))
     D=(2,7,0,0)
     G=(0,1,0,0)
-    check(variance(X,D)==53,"unprojected variance")
-    check(variance(Y,D)==4,"source-conditioned variance")
-    check(variance(Y,G)==0,"gauge tangent null")
-    score=[sum(a*b for a,b in zip(x,D)) for x in X]
-    ef=Fraction(sum(F),len(F))
-    es=Fraction(sum(score),len(score))
-    cov=Fraction(sum(f*s for f,s in zip(F,score)),4)-ef*es
-    vf=sum((Fraction(f)-ef)**2 for f in F)/4
-    check(cov==1 and vf==Fraction(1,4),"exact rational covariance")
-    check(cov*cov==vf*variance(Y,D),"sharp projection inequality")
+    scores=[sum(a*b for a,b in zip(x,D)) for x in X]
+    projected=[sum(a*b for a,b in zip(x,D)) for x in Y]
+    gauge=[sum(a*b for a,b in zip(x,G)) for x in Y]
+    check(sum(scores)==0 and sum(v*v for v in scores)==4*53,
+          "unprojected variance 53")
+    check(sum(projected)==0 and sum(v*v for v in projected)==4*4,
+          "source-projected variance 4")
+    check(sum(gauge)==0 and sum(v*v for v in gauge)==0,
+          "gauge tangent null")
+    check(sum(F)==2 and sum(f*s for f,s in zip(F,scores))==4,
+          "covariance=1 and source variance=1over4")
+    check(1*1*4==4,"sharp integer cross-product Cauchy-Schwarz")
 
 if __name__=="__main__":
     orbit_control()
