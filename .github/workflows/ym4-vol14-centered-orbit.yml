@@ -1,0 +1,47 @@
+name: YM4 VOL14 centered original SU2 signed collar gauge-orbit
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14_centered_orbit.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL14-CENTERED-SOURCE-COLLAR-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL14-CENTERED-SOURCE-20261123.hbp'
+      - '.github/workflows/ym4-vol14-centered-orbit.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol14_centered_orbit.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL14-CENTERED-SOURCE-COLLAR-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL14-CENTERED-SOURCE-20261123.hbp'
+      - '.github/workflows/ym4-vol14-centered-orbit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-centered-signed-four-dimensional-SU2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original signed 4D SU2 noncommuting path swaps and centered Gibbs metric
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14-centered
+          python3 -I -B tests/ym4_vol14_centered_orbit.py > build/ym4-vol14-centered/CENTERED.hbp
+          python3 -O -I -B tests/ym4_vol14_centered_orbit.py > build/ym4-vol14-centered/OPTIMIZED.hbp
+          cmp build/ym4-vol14-centered/CENTERED.hbp build/ym4-vol14-centered/OPTIMIZED.hbp
+          cmp build/ym4-vol14-centered/CENTERED.hbp docs/certificate-atlas/YM4-VOL14-CENTERED-SOURCE-20261123.hbp
+          echo '458dd0cb9d3b280bfe31fbeb8b93379222959781cd3b1974a8e3ac144108339a  build/ym4-vol14-centered/CENTERED.hbp' | sha256sum -c
+          grep -Fq '|nonabelian_Q8_swap=PASS|' build/ym4-vol14-centered/CENTERED.hbp
+          grep -Fq '|full_Gibbs_averaged_orbit_lt_1over28000|' build/ym4-vol14-centered/CENTERED.hbp
+          grep -Fq '|physical_unweighted_boundary_susceptibility=OPEN|' build/ym4-vol14-centered/CENTERED.hbp
+      - name: Strict no floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol14-original-su2-centered-source
+          path: build/ym4-vol14-centered/
+          retention-days: 90
+          if-no-files-found: warn
