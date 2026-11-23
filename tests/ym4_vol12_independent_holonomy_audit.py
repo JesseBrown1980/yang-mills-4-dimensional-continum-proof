@@ -4,7 +4,6 @@ Exact integer-only centre {+I,-I} subgroup fixtures on ORIGINAL periodic
 four-dimensional SU2 links. These configurations are legitimate SU2 points;
 they are deterministic scope controls, not sampled Wilson-Gibbs probabilities.
 """
-from fractions import Fraction
 from itertools import product
 
 
@@ -73,22 +72,22 @@ def exact_original_flat_fixture(L, wind):
 
 
 def sharp_boundary_covariance_replay():
-    # Toy boundary law eta in {0,1}, each with mass 1/2;
-    # F=eta is deterministic conditional on eta and G=eta is exterior.
-    # No bad-crossing events occur. This is NOT a Wilson-Gibbs sample.
+    # Abstract binary boundary law eta in {0,1}, equal probabilities.
+    # Covariance is sum((2*v-1)*(2*v-1))/(2*4) = 2/8 = 1/4.
+    # Mean absolute boundary difference is sum(abs(x-y))/4 = 2/4 = 1/2.
+    # No bad-crossing events. This is NOT a Wilson Gibbs sample.
     states = (0, 1)
-    half = Fraction(1, 2)
-    mean = sum((half * v for v in states), Fraction(0))
-    covariance = sum((half * (v-mean) * (v-mean) for v in states),
-                     Fraction(0))
-    delta = sum((half * half * abs(x-y)
-                 for x in states for y in states), Fraction(0))
-    require(mean == Fraction(1, 2), "toy_boundary_mean")
-    require(covariance == Fraction(1, 4), "sharp_covariance")
-    require(delta == Fraction(1, 2), "sharp_average_w1")
-    require(8 * covariance * covariance == delta,
+    mean_num = sum(states)
+    cov_num = sum((2*v-mean_num)*(2*v-mean_num) for v in states)
+    cov_den = 2*2*2
+    delta_num = sum(abs(x-y) for x in states for y in states)
+    delta_den = 2*2
+    require(2*mean_num == 2, "toy_boundary_mean")
+    require(cov_num*4 == cov_den, "sharp_covariance_one_fourth")
+    require(delta_num*2 == delta_den, "sharp_average_w1_one_half")
+    require(8*cov_num*cov_num*delta_den == delta_num*cov_den*cov_den,
             "sharp_factor_8_boundary_covariance_inequality")
-    return covariance, delta
+    return cov_num, cov_den, delta_num, delta_den
 
 
 def main():
