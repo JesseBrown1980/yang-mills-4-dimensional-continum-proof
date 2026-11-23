@@ -1,0 +1,53 @@
+name: YM4 VOL30 spherical two-ended Fischer 3D certificate
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol30_spherical_fischer.py
+      - docs/certificate-atlas/YM4-VOL30-SPHERE-FRAMES-20261123.json
+      - docs/certificate-atlas/YM4-VOL30-SPHERICAL-FISCHER-20261123.hbp
+      - docs/certificate-atlas/vol30-spherical-fischer.html
+      - .github/workflows/ym4-vol30-spherical-fischer.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol30_spherical_fischer.py
+      - docs/certificate-atlas/YM4-VOL30-SPHERE-FRAMES-20261123.json
+      - docs/certificate-atlas/YM4-VOL30-SPHERICAL-FISCHER-20261123.hbp
+      - docs/certificate-atlas/vol30-spherical-fischer.html
+      - .github/workflows/ym4-vol30-spherical-fischer.yml
+  workflow_dispatch:
+
+jobs:
+  two-ended-original-su2-spherical-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict original research integer-only backend gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Verify 4D spheres, two-ended contact and Fischer SHA roundtrip
+        run: |
+          python3 -I -B tests/ym4_vol30_spherical_fischer.py >/tmp/ym4-vol30-normal.hbp
+          python3 -I -O tests/ym4_vol30_spherical_fischer.py >/tmp/ym4-vol30-optimized.hbp
+          diff -u /tmp/ym4-vol30-normal.hbp /tmp/ym4-vol30-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL30-SPHERICAL-FISCHER-20261123.hbp /tmp/ym4-vol30-normal.hbp
+          printf '%s  %s\n' '93d6b3173c478c972ab278834e22bba33cdbef46594a0b24e97b23868674d8ca' '/tmp/ym4-vol30-normal.hbp' | sha256sum -c -
+      - name: Validate playable atlas page and direct certificate links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path("docs/certificate-atlas/vol30-spherical-fischer.html").read_text()
+          atlas=Path("docs/certificate-atlas/index.html").read_text()
+          assert '<canvas id="sphere"' in s
+          assert 'playB' in s and 'playF' in s and 'round' in s
+          assert "9 frames" in s and "20 frames" in s
+          assert 'NOT COMPUTED' in s
+          assert 'id="ym4-vol30-candidate"' in atlas
+          assert 'vol30-spherical-fischer.html' in atlas
+          print('YM4_VOL30_ATLAS|interactive_3D=PASS|atlas_link=PASS|conformity_label=PASS')
+          PY
+      - name: Archive frozen spherical 4D receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol30-original-su2-spherical-fischer
+          path: /tmp/ym4-vol30-normal.hbp
