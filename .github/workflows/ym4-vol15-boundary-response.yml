@@ -1,0 +1,47 @@
+name: YM4 VOL15 original SU2 centered boundary-response gauge-neutrality
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol15_boundary_response.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL15-BOUNDARY-RESPONSE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL15-BOUNDARY-RESPONSE-20261123.hbp'
+      - '.github/workflows/ym4-vol15-boundary-response.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol15_boundary_response.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL15-BOUNDARY-RESPONSE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL15-BOUNDARY-RESPONSE-20261123.hbp'
+      - '.github/workflows/ym4-vol15-boundary-response.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-4d-su2-boundary-response:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 L6/L10 Wilson mixed-plaquette split and noncommuting exterior gauge
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol15-boundary
+          python3 -I -B tests/ym4_vol15_boundary_response.py > build/ym4-vol15-boundary/BOUNDARY.hbp
+          python3 -O -I -B tests/ym4_vol15_boundary_response.py > build/ym4-vol15-boundary/OPTIMIZED.hbp
+          cmp build/ym4-vol15-boundary/BOUNDARY.hbp build/ym4-vol15-boundary/OPTIMIZED.hbp
+          cmp build/ym4-vol15-boundary/BOUNDARY.hbp docs/certificate-atlas/YM4-VOL15-BOUNDARY-RESPONSE-20261123.hbp
+          echo 'c77bb35b77e6109d6c45d45f8ab9bc156aff8accbd4c998d3cb5dba313a0547c  build/ym4-vol15-boundary/BOUNDARY.hbp' | sha256sum -c
+          grep -Fq '|one_internal_link_boundary=24b2_times_bminus1|' build/ym4-vol15-boundary/BOUNDARY.hbp
+          grep -Fq '|interior_conditional_action_same_for_all_beta=ANALYTIC|' build/ym4-vol15-boundary/BOUNDARY.hbp
+          grep -Fq '|physical_unweighted_source_to_boundary_covariance_decay=OPEN|' build/ym4-vol15-boundary/BOUNDARY.hbp
+      - name: Strict integer-only / no-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol15-original-su2-boundary-response
+          path: build/ym4-vol15-boundary/
+          retention-days: 90
+          if-no-files-found: warn
