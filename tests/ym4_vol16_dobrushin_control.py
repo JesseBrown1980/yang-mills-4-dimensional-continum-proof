@@ -144,7 +144,10 @@ def acceptance():
         require(2*d>=h,"real_buffer_distance")
         # For center plaquette F=(1+Re W_p)/2, 4 supporting links,
         # bound on expectation difference <=(4/6)*2^-d.
-        require(4*3<=6*2**d,"plaquette_source_bound_at_most_one")
+        power=1
+        for unused in range(d):
+            power*=2
+        require(4*3<=6*power,"plaquette_source_bound_at_most_one")
     return (
       'YM4_VOL16_GRAPH|original_4d_SU2_centered_b3_b5_b7=PASS|six_original_plaquette_planes=PASS|json=0\n'
       'YM4_VOL16_NEIGHBORS|one_shared_original_plaquette_per_pair=PASS|degree_le18=PASS|noncommuting_Q8_one_staple_change=PASS|json=0\n'
