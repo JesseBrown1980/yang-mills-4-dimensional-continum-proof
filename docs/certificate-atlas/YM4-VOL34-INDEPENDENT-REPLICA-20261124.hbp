@@ -1,0 +1,8 @@
+YM4_VOL34_INPUT|methods=2|couplings=0,2|groups=6|chain_summaries=42|scale=10pow12|PASS
+YM4_VOL34_TWO_ENGINES|L=6|beta=2|Ktime1_agreement_within_2_SE=PASS|both_above_Haar_by_4_SE=PASS
+YM4_VOL34_HAAR|beta=0|Ktime1_zero_within_2_SE_both_methods=PASS
+YM4_VOL34_RADIAL|case=r1d2|shared_J=1|beta2_minus_Haar_within_2_combined_SE=HOLD
+YM4_VOL34_RADIAL|case=r1d3|shared_J=0|beta2_minus_Haar_exceeds_4_combined_SE=PASS
+YM4_VOL34_RADIAL|case=r2d2|shared_J=9|beta2_minus_Haar_within_2_combined_SE=HOLD
+YM4_VOL34_RADIAL|case=r2d3|shared_J=0|beta2_minus_Haar_exceeds_6_combined_SE=PASS
+YM4_VOL34_SCOPE|machine_check=ROUNDED_STATISTICAL_ARITHMETIC_ONLY|physical_measurements=EXPLORATORY|L128_beta9pow12=OPEN|continuum_11=OPEN
