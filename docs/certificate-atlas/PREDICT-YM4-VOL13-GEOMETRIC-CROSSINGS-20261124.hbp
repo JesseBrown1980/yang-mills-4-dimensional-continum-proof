@@ -1,0 +1,14 @@
+# VOL13 prediction (2026-11-24; GPT-6.2). Frozen before the checker is authored.
+# Original continuous SU(2) periodic Wilson measure; VOL12 input rho_star < 2^-18 at beta=9^5, epsilon=1/16.
+PREDICT|row=01|link_anchor_step_linf_le=1|degree=18|json=0
+PREDICT|row=02|coarse_period_multiple3=YES|colors=81|same_color_halos_disjoint=YES|json=0
+PREDICT|row=03|coarse_period_not_multiple3|wrap_color_conflict=YES|json=0
+PREDICT|row=04|b=3|crossing_q_lt_2_pow_minus=51|json=0
+PREDICT|row=05|b=9|crossing_q_lt_2_pow_minus=128|json=0
+PREDICT|row=06|b=27|crossing_q_lt_2_pow_minus=372|json=0
+PREDICT|row=07|b=81|crossing_q_lt_2_pow_minus=1117|json=0
+PREDICT|row=08|b=243|crossing_q_lt_2_pow_minus=3364|json=0
+PREDICT|row=09|b=81|coarse_activity_lt_2_pow_minus=13|coarse_degree=80|animal_base=320|tail_le=2_pow_minus_4m_minus9|json=0
+PREDICT|row=10|straight_blocking|reflection_covariance=PASS|gauge_covariance=PASS|half_support=PASS|json=0
+PREDICT|row=11|mutant_unaligned_plane|coarse_site_map=FAIL|mutant_no_inverse=FAIL|json=0
+PREDICTION_SUMMARY|rows=11|periodic_equilibrium=YES|blocked_action_control=OPEN|continuum_mass_gap=OPEN|json=0
