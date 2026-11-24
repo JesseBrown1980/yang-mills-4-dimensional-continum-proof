@@ -1,0 +1,33 @@
+# References and prior work, by track
+
+This file maps each track in the repository to the published work it reproduces, extends or depends on. Results marked **classical** should be cited as such in their notes. The repository's own contribution then lies in the explicit constants, the exact-arithmetic checkers and the frozen receipts, not in the theorem itself.
+
+*Compiled 24 November 2026. Journal references were checked against publisher or arXiv records where marked ✓. The external 2026 items are as reported by their sources and have not been reviewed here.*
+
+## Problem statement
+
+- A. Jaffe, E. Witten, "Quantum Yang–Mills theory", in *The Millennium Prize Problems*, Clay Mathematics Institute (2006), 129–152. ✓
+- K. G. Wilson, "Confinement of quarks", *Phys. Rev. D* 10 (1974) 2445–2459.
+
+## Track → prior work
+
+| Track | What it shows here | Prior work | Status of the result |
+|---|---|---|---|
+| YM4-01 | Gauge covariance of the Wilson action | Wilson (1974) | Classical |
+| YM4-02a/b | Haar moments; finite SU(2) subgroups as designs of degree 3, 5, 7, 11 | Classical invariant theory of the binary polyhedral groups (Klein); spherical designs of the 16-, 24- and 600-cell | Classical |
+| YM4-02c | Reflection positivity; positive, trace-class transfer matrix | K. Osterwalder, E. Seiler, "Gauge field theories on a lattice", *Ann. Phys.* 110 (1978) 440–471. M. Lüscher, "Construction of a selfadjoint, strictly positive transfer matrix for Euclidean lattice gauge theories", *Commun. Math. Phys.* 54 (1977) 283–292. E. Seiler, *Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics*, Lecture Notes in Physics 159, Springer (1982). | Classical. The site-sign characterization may be new; it needs a referee. |
+| YM4-02d | λ₁/λ₀ ≤ tanh(βN_ℓ) | G. Birkhoff, "Extensions of Jentzsch's theorem", *Trans. AMS* 85 (1957) 219–227. P. J. Bushell, "Hilbert's metric and positive contraction mappings in a Banach space", *Arch. Rational Mech. Anal.* 52 (1973) 330–338. | Classical method; explicit constant |
+| YM4-02e, YM4-04B, VOL06 | Volume-uniform strong-coupling gap and decay (tanh β < 1/14; 18β; Λ₁/Λ₀ ≤ 18β for β < 1/18) | Osterwalder–Seiler (1978) and Seiler (1982): strong-coupling mass gap. R. L. Dobrushin, *Theory Probab. Appl.* 13 (1968) 197–224. H. Föllmer, "A covariance estimate for Gibbs measures", *J. Funct. Anal.* 46 (1982) 387–395. P. Rebeschini, R. van Handel, "Comparison theorems for Gibbs measures", *J. Stat. Phys.* 157 (2014) 234–281. H. Shen, R. Zhu, X. Zhu, "A stochastic analysis approach to lattice Yang–Mills at strong coupling", *Commun. Math. Phys.* 400 (2023) 805–851. ✓ | Classical, with explicit SU(2) constants |
+| YM4-03, YM4-05A | Decimation; 2D exact flow; character expansion | A. A. Migdal, *Sov. Phys. JETP* 42 (1975) 413. L. P. Kadanoff, "Notes on Migdal's recursion formulas", *Ann. Phys.* 100 (1976) 359–394. E. Witten, "On quantum gauge theories in two dimensions", *Commun. Math. Phys.* 141 (1991) 153–209. J.-M. Drouffe, J.-B. Zuber, "Strong coupling and mean field methods in lattice gauge theories", *Phys. Rep.* 102 (1983) 1–119. | Classical |
+| YM4-03C | Exact b = 2 blocked action through β¹⁰ | Strong-coupling and character expansions as above (Drouffe–Zuber 1983) | Exact table plausibly new as data |
+| WT01–WG09 | Exact spatial L = 2 transfer at small β: character transfer, centre sectors, first excitations | Character expansion (Drouffe–Zuber 1983). Centre (electric-flux) sectors and torelons on small tori (G. 't Hooft, *Nucl. Phys. B* 153 (1979) 141–160). | Fixed-lattice computations; the L = 2 ordering is a small-torus effect |
+| VOL07 | Uniform clustering rate ⇒ uniform transfer gap | Standard equivalence of exponential clustering and the spectral gap of the transfer matrix (Osterwalder–Seiler 1978; Seiler 1982). Hexagon preprints 2610.00341 and 2611.00492 (below) isolate the same uniform rate, (MG). | The hypothesis is the open mass-gap problem |
+| VOL08–VOL11 | Single-scale large-field suppression at large β: plaquette deficit O(log β/β), good and bad stars, Peierls counting | T. Bałaban, "Renormalization group approach to lattice gauge field theories I", *Commun. Math. Phys.* 109 (1987) 249–301 ✓; "… II. Cluster expansions", *Commun. Math. Phys.* 116 (1988) 1–22 ✓; "Convergent renormalization expansions for lattice gauge theories", *Commun. Math. Phys.* 119 (1988) 243–285 ✓; "Large field renormalization I/II", *Commun. Math. Phys.* 122 (1989). S. Chatterjee, "The leading term of the Yang–Mills free energy", *J. Funct. Anal.* 271 (2016) 2944–3005 ✓. | Known in kind; the joint (Peierls) estimate and the multiscale small-field analysis are OPEN |
+| Continuum context | UV stability and finite-volume constructions | T. Bałaban, "Ultraviolet stability of three-dimensional lattice pure gauge field theories", *Commun. Math. Phys.* 102 (1985) 255–275 ✓. J. Magnen, V. Rivasseau, R. Sénéor, "Construction of YM₄ with an infrared cutoff", *Commun. Math. Phys.* 155 (1993) 325–383 ✓. S. Chatterjee, "Yang–Mills for probabilists", Springer Proc. Math. Stat. 283 (2019) 1–16 ✓. | Background |
+
+## External developments in 2026, as reported
+
+- **Existence.** OpenAI announced an AI-generated existence construction for pure four-dimensional Yang–Mills on 26 October 2026. On 9–10 November 2026, a working group chaired by David Gross released the Lean formalization and assessed it as establishing existence; the mass gap is not addressed. ([CASRAI report, 14 Nov 2026](https://casrai.org/news/ai-rivals-physics-mathematical-challenge-2026))
+- **Conditional constructions and the gap reduction.** Zeng Chunping, Hexagon preprint [2611.00492v1](https://hexagonmath.org/2611.00492v1) (15 Nov 2026): a Lean Wilson → OS construction from 16 registered inputs. It states that these inputs do not imply a mass gap and reduces the gap to a uniform exponential clustering rate, (MG). Also [*One Cube Estimate Implies the Yang–Mills Mass Gap*, 2610.00341v7](https://hexagonmath.org/2610.00341v7), which the README cites.
+
+No result in this repository has yet been read by an external human referee (obligation YM4-08).
