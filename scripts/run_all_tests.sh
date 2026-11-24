@@ -40,6 +40,7 @@ ym4_su2_vol08_wilson_star:YM4-VOL08-WILSON-STAR-20261122
 ym4_su2_vol09_periodic_good_star:YM4-VOL09-PERIODIC-GOOD-STAR-20261122
 ym4_su2_vol10_bad_island:YM4-VOL10-BAD-ISLAND-20261122
 ym4_su2_vol11_separated_defects:YM4-VOL11-SEPARATED-DEFECTS-20261122
+ym4_su2_vol12_chessboard_clusters:YM4-VOL12-CHESSBOARD-CLUSTERS-20261124
 "
 for pair in $pairs; do
   checker="tests/${pair%%:*}.py"
