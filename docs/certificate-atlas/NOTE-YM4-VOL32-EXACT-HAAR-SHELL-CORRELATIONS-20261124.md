@@ -88,3 +88,12 @@ At R=2/4/8/16, the exact 24-cell shell count N=24 yields \(\mathrm{Var}(M_R)=1/3
 The visible 24-cell pattern and five-band signature of VOL31 are classical geometric facts. The new result is their exact placement inside a true original continuous-SU(2) Wilson *two-shell observable* benchmark for all twenty original atlas radii. The eleven continuum construction gates, mass-rate upper decay, beta(a) and nonzero continuum renormalized source remain OPEN.
 
 **Status:** exact beta-zero continuous-SU(2) Haar Wilson shell-covariance mathematical theorem + independent integer enumerator and HBP; actual nonzero-beta Monte Carlo shell measurements **OPEN**; production continuum acceptance **OPEN**. Research candidate on draft PR #113; main and accepted 115-node atlas remain unchanged.
+
+
+## 6. Hosted exact verifier and independent review
+
+[Dedicated GitHub Actions #45391920783](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45391920783) **PASS**: repository-wide integer-only source gate; independent original 4D shell/three-square geometry enumeration for all 20 radii; exact native-Haar quadratic moment controls; normal and optimized byte-identical frozen HBP; SHA-256 **d421c07b9b509d942a3e20229ea4dd464493ca4e486dd9d6da26f8255fb93397**; and artifact upload. The later [standalone exact Wilson correlation plot](vol32-exact-haar-correlations.html) and the clickable candidate atlas card have a separate hosted link-integrity check in the refreshed workflow.
+
+The [independent-method mathematical audit](../../reviews/YM4-VOL32-EXACT-HAAR-SPHERICAL-CORRELATIONS-AUDIT-20261124.md) checks Haar fundamental orthogonality for **distinct** original spatial plaquettes, all original torus injectivity requirements, exact shared-site covariance, and the separation from VOL30's true conditional source predictor. The [exploratory interacting numerical pilot](NOTE-YM4-VOL32-EXPLORATORY-SU2-HEATBATH-PILOT-20261124.md) reports beta=2 small-volume nearest-slice correlations with limited empirical uncertainty; its floating Monte Carlo is explicitly outside this integer-only mathematical acceptance.
+
+**Review boundary:** The analytic beta-zero Haar group measure is the original full continuous SU(2) theory at that coupling. It is not a nonzero beta=9^12 physical shell measurement, and neither the exact geometry nor the tiny interacting finite-L Monte Carlo pilot proves a continuum mass gap.
