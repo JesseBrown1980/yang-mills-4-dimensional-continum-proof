@@ -68,7 +68,7 @@ The next verifiable mathematical object is the centred third-order local plaquet
 H_{3,L}=P_{\rm plaq}\big(\tfrac16V^3-\tfrac12(VP_{\rm vac}V^2+V^2P_{\rm vac}V)\big)P_{\rm plaq},
 \]
 
-with each matrix element organized by overlapping plaquette clusters and a **volume-independent bound on the connected remainder**. Direct global norm estimates \(\|V\|\le3L^3\) deteriorate with volume and should be replaced by connected/cumulant or local polymer bounds. Candidate inputs include [YM4-11 local cluster/Dobrushin](NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md), the existing Wilson source and finite-volume physical transfer certificates, and external strong-coupling cluster estimates once model and normalization match.
+with each matrix element organized by overlapping plaquette clusters and a **volume-independent bound on the connected remainder**. Direct global norm estimates \(\|V\|\le3L^3\) deteriorate with volume and should be replaced by connected/cumulant or local polymer bounds. Candidate inputs include [YM4-11 local cluster/Dobrushin](../NOTE-YM4-04B-LOCAL-CLUSTER-20261107.md), the existing Wilson source and finite-volume physical transfer certificates, and external strong-coupling cluster estimates once model and normalization match.
 
 ### Acceptance checklist for the next WG stage
 

@@ -4,7 +4,7 @@ Date: 2026-11-21. Source scope: original continuous SU(2) Wilson plaquette, norm
 
 ## Provenance and why the kernel is derived
 
-The original 4D definition in [PROBLEM.md](../../PROBLEM.md) and [YM4-02c](../LEMMA-0004-REFLECTION-TRANSFER.md) uses, for each SU(2) plaquette,
+The original 4D definition in [PROBLEM.md](../PROBLEM.md) and [YM4-02c](LEMMA-0004-REFLECTION-TRANSFER.md) uses, for each SU(2) plaquette,
 w_beta(U) = exp[-beta*(1 - Tr(U)/2)].
 After removing the U-independent factor exp(-beta), the normalized temporal coupling between consecutive spatial-link holonomies U,V in temporal gauge has exactly the SU(2) Wilson weight exp[beta*Tr(U V^{-1})/2]. There is no arbitrary 2x2 matrix in this construction.
 
@@ -78,7 +78,7 @@ These exact rational upper bounds are below 10^-12 for beta=1, M=12 and beta=4, 
 
 ## Additional exact 4D six-staple source match
 
-The existing [YM4-05A](../NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md) establishes that an actual 4D link contributes six staple holonomies, and its fixed-staple Haar factor is
+The existing [YM4-05A](NOTE-YM4-05A-CHARACTER-WEAK-COUPLING-20261107.md) establishes that an actual 4D link contributes six staple holonomies, and its fixed-staple Haar factor is
 
     Z_beta(Q) = sum_{m>=0} (beta^2 Q)^m / [4^m*m!*(m+1)!].
 

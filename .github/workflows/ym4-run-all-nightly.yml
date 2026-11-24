@@ -1,0 +1,34 @@
+name: YM4 run-all (unfiltered, nightly)
+# Every other YM4 workflow is path-filtered, so a change to one file can break a
+# test that never runs. This job runs the whole suite with no path filter.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "11 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-all:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Docs integrity
+        run: python3 -I -B scripts/check_docs_integrity.py
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - name: Every tests/test_*.py and every VOL checker against its receipt
+        run: bash scripts/run_all_tests.sh build/run-all
+      - name: Keep the logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-run-all-logs
+          path: build/run-all/
+          retention-days: 30
