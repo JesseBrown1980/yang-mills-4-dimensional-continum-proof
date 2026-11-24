@@ -1,0 +1,13 @@
+YM4_VOL35_INPUT|L8_beta2=8x350|L10_beta2=6x220|Haar=12x500|chains=26|total_configs=10120|scale=10pow12|PASS
+YM4_VOL35_GEOMETRY|L=8|r=1|d=2|N=8|shared=1|bins=33|PASS
+YM4_VOL35_GEOMETRY|L=8|r=1|d=3|N=8|shared=0|bins=33|PASS
+YM4_VOL35_GEOMETRY|L=8|r=2|d=2|N=24|shared=8|bins=165|PASS
+YM4_VOL35_GEOMETRY|L=8|r=2|d=3|N=24|shared=0|bins=165|PASS
+YM4_VOL35_GEOMETRY|L=10|r=1|d=2|N=8|shared=1|bins=33|PASS
+YM4_VOL35_GEOMETRY|L=10|r=1|d=3|N=8|shared=0|bins=33|PASS
+YM4_VOL35_GEOMETRY|L=10|r=2|d=2|N=24|shared=8|bins=169|PASS
+YM4_VOL35_GEOMETRY|L=10|r=2|d=3|N=24|shared=0|bins=169|PASS
+YM4_VOL35_INDEPENDENT|L=8|Haar_C1_within_3SE=PASS|beta2_C1_above_Haar_5SE=PASS|r1d3_J0_above_Haar_3SE=PASS|r2d3_J0_above_Haar_5SE=PASS|r2d2=HOLD
+YM4_VOL35_INDEPENDENT|L=10|Haar_C1_within_3SE=PASS|beta2_C1_above_Haar_5SE=PASS|r1d3_J0_above_Haar_3SE=PASS|r2d3_J0_above_Haar_5SE=PASS|r2d2=HOLD
+YM4_VOL35_VOLUME|C1_L8_vs_L10_within_2SE=PASS|r2d3_difference_gt_3SE=PASS|r1d3_difference_within_2SE=HOLD
+YM4_VOL35_SCOPE|geometry=EXACT|reported_chain_arithmetic=EXACT|simulation=EXPLORATORY|production_beta9pow12=OPEN|upper_mass_decay=OPEN|continuum_11=OPEN
