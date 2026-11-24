@@ -1,3 +1,9 @@
+## November 24 — VOL12 unconditional periodic bad-star and island bound
+
+[Proof](NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md) · [checker](../../tests/ym4_su2_vol12_chessboard_clusters.py) · [prediction](PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [receipt](YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [merged PR #119](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/119).
+
+VOL12-A–E are indexed in all twelve camera views and four overview panels. The original SU(2) equilibrium bound holds on even periodic L >= 4 at one lattice scale: arbitrary-set probability <= rho_star^|S|; rooted island probability <= 72^(m-1) rho_star^m. The VOL10 conditional joint input is now supplied in this regime. Arbitrary-boundary conditioned control, odd L, external human mathematical review and all eleven continuum gates remain OPEN. Atlas coordinates are navigation only.
+
 ## New VOL05 Wilson-visible support and geometry proof links
 
 [Open the 4D atlas](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html). Across all twelve SVG views and each of the four-panel overview links, VOL05 records the conditional original SU2 **all-spatial-L strong-coupling Wilson spectral support and total spectral weight**; VOL05-GEOM records the exact independent 4D incidence and rational checker.

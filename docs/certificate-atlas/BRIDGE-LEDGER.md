@@ -1,3 +1,9 @@
+## November 24 — VOL12 unconditional periodic bad-star and island bound
+
+[Proof](NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md) · [checker](../../tests/ym4_su2_vol12_chessboard_clusters.py) · [prediction](PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [receipt](YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [merged PR #119](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/119).
+
+VOL12-A–E are indexed in all twelve camera views and four overview panels. The original SU(2) equilibrium bound holds on even periodic L >= 4 at one lattice scale: arbitrary-set probability <= rho_star^|S|; rooted island probability <= 72^(m-1) rho_star^m. The VOL10 conditional joint input is now supplied in this regime. Arbitrary-boundary conditioned control, odd L, external human mathematical review and all eleven continuum gates remain OPEN. Atlas coordinates are navigation only.
+
 ## November 22 — VOL11 original SU2 separated plaquettes: exact conditional product and exponential Haar tail
 
 [Source-pinned theorem](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md) · [independent analytic reconstruction](../../reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [integer original 4D graph and rate checker](../../tests/ym4_su2_vol11_separated_defects.py) · [frozen receipt](YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).

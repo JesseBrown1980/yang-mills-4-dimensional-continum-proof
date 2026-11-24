@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "version": "2026-11-22",
+    "version": "2026-11-24",
     "title": "Four-dimensional continuous-SU(2) Yang–Mills certificate atlas",
     "graph_coordinates": "Ordinal navigation only; x,y,z are NOT physical measurements",
     "main_4d_commit": "b8f4260d2c74f93a0222a4a3de24d90131afd4a6",
@@ -16,14 +16,14 @@
     "open_certificates": 11,
     "external_candidates": 22,
     "crossrepo_claim_status": "Finite and conditional certificates found; full continuum mass gap remains open",
-    "sources_last_checked": "2026-11-22",
+    "sources_last_checked": "2026-11-24",
     "verified_external_repository_count": 10,
     "second_search_date": "2026-11-21",
     "spectral_window_dual": "YM4-SW01: exact polynomial conditional on real moment input",
-    "latest_reconciled_main_commit": "e19d546edee67d6870c153bf5d394af0b1430fef",
+    "latest_reconciled_main_commit": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
     "WG09_fixed_L2_first_neutral": "INTERNAL_FINITE_PASS_beta_le_1e-12",
     "volume_uniform_gap": "OPEN",
-    "next_volume_proof": "explicit_original_SU2_one_cube_block_influence_in_physical_units",
+    "next_volume_proof": "VOL13_geometric_crossings_and_joint_coarse_events",
     "volume_bridge_candidate": "YM4-VOL01_first_second_coefficients_scalar",
     "VOL03_cube_Haar": "LOCAL_EXACT_PASS_1_OVER_16",
     "VOL03_global_Feshbach": "OPEN",
@@ -69,25 +69,31 @@
     "VOL11_independent_bad_star_rho": "OPEN",
     "VOL11_physical_size_DS_cube": "OPEN",
     "VOL11_bad_star_energy_deficit": "ONE_BAD_EXTERIOR_REQUIRES_SUM_WILSON_DEFICIT_GT_EPS_OVER_TWO",
-    "VOL11_beta_9power8_improved_bad_exterior": "LE_11456_OVER_43046721"
+    "VOL11_beta_9power8_improved_bad_exterior": "LE_11456_OVER_43046721",
+    "VOL12_periodic_arbitrary_bad_star_joint": "ANALYTIC_DERIVATION_AND_INTEGER_CHECKED_EVEN_L",
+    "VOL12_island_tail": "72_power_m_minus1_times_rho_star_power_m",
+    "VOL12_boundary_conditioned": "OPEN",
+    "VOL12_odd_L": "OPEN",
+    "VOL12_multiscale": "OPEN",
+    "VOL12_external_human_review": "OPEN"
   },
   "summary": {
-    "curated_records": 115,
+    "curated_records": 120,
     "physical_gap_claims": 0,
-    "resource_files": 553,
-    "pr_events": 104,
+    "resource_files": 558,
+    "pr_events": 107,
     "review_receipts": 310,
     "status_counts": {
       "FINITE_PASS": 30,
       "CONDITIONAL": 7,
-      "DRAFT_CHECKED": 30,
+      "DRAFT_CHECKED": 35,
       "OPEN": 16,
       "FINITE_S3": 2,
       "EXTERNAL": 6,
       "HOLD": 2,
       "CANDIDATE": 22
     },
-    "linked_resources": 553,
+    "linked_resources": 558,
     "fixed_L2_first_neutral_Wilson_claims": 1,
     "VOL03_local_cube_Haar_claims": 1
   },
@@ -2911,6 +2917,138 @@
       "point": [
         15,
         8,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL12-A",
+      "title": "Closed-cube chessboard estimate",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Even periodic L >= 4; original continuous SU(2); closed-half link observables",
+      "result": "Site reflection positivity and extremal labelling yield the chessboard inequality; shared boundary planes and zero norms covered.",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "dependencies": [
+        "YM4-04"
+      ],
+      "point": [
+        16,
+        10,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL12-B",
+      "title": "Fourfold incidence and energy–entropy",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Original unit cubes; beta >= 1",
+      "result": "Each plaquette lies in four cubes; k-face norm <= A_beta^4 exp(-beta epsilon k/16).",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "dependencies": [
+        "YM4-VOL12-A",
+        "YM4-VOL09"
+      ],
+      "point": [
+        16,
+        9,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL12-C",
+      "title": "Arbitrary-set bad-star bound",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Even periodic L >= 4; equilibrium; 0 < epsilon < 1",
+      "result": "P(all S bad) <= min(1,rho_star^|S|); rho_star = 6*1536*exp(3/4)*beta^(3/2)*exp(-beta epsilon/64). Boundary-conditioned control OPEN.",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "dependencies": [
+        "YM4-VOL12-B",
+        "YM4-VOL10-BOX",
+        "YM4-VOL08"
+      ],
+      "point": [
+        16,
+        8,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL12-D",
+      "title": "Unconditional connected-island tail",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Original degree-18 link graph; one lattice scale",
+      "result": "Rooted count <= 72^(m-1); tail <= 72^(m-1) rho_star^m; rho_star <= 18^-3 implies tail <= 18^(-m-2).",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "dependencies": [
+        "YM4-VOL12-C",
+        "YM4-VOL10-ISLAND"
+      ],
+      "point": [
+        16,
+        7,
+        8
+      ],
+      "views": [
+        "proof",
+        "wilson",
+        "cutoff",
+        "bridges"
+      ]
+    },
+    {
+      "id": "YM4-VOL12-E",
+      "title": "Exact integer checker and frozen evidence",
+      "status": "DRAFT_CHECKED",
+      "category": "bridge",
+      "scope": "Exhaustive L=4,6 geometry; beta=9^k fixtures; sampled extremal-label identity",
+      "result": "14 rows reproduced; odd-side and overstrong count controls; independent AI replay; external human review OPEN.",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/tests/ym4_su2_vol12_chessboard_clusters.py",
+      "repository": "JesseBrown1980/yang-mills-4-dimensional-continum-proof",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "dependencies": [
+        "YM4-VOL12-A",
+        "YM4-VOL12-B",
+        "YM4-VOL12-C",
+        "YM4-VOL12-D"
+      ],
+      "point": [
+        16,
+        6,
         8
       ],
       "views": [
@@ -7345,6 +7483,46 @@
       "kind": "audit",
       "origin": "VOL11_ORIGINAL_SU2_SEPARATED_PLAQUETTE_HAAR",
       "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/5a008beb37133217f61d986d42d3976a005c6090/reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md"
+    },
+    {
+      "path": "docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md",
+      "blob": "35c3048831a84d39bb07978604df65da0fd1f588",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "kind": "note",
+      "origin": "VOL12_CLOSED_CUBE_CHESSBOARD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md"
+    },
+    {
+      "path": "tests/ym4_su2_vol12_chessboard_clusters.py",
+      "blob": "763e0d572bd0ce85107d4554d530142ec77a31c2",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "kind": "checker",
+      "origin": "VOL12_CLOSED_CUBE_CHESSBOARD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/tests/ym4_su2_vol12_chessboard_clusters.py"
+    },
+    {
+      "path": "docs/certificate-atlas/YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp",
+      "blob": "fb4be4b298075bc342e52cd37626c5c5ccafcb2d",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "kind": "receipt",
+      "origin": "VOL12_CLOSED_CUBE_CHESSBOARD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp"
+    },
+    {
+      "path": "docs/certificate-atlas/PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp",
+      "blob": "538ad56119662bda78d99a3d7078d7660c68bea0",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "kind": "prediction",
+      "origin": "VOL12_CLOSED_CUBE_CHESSBOARD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/docs/certificate-atlas/PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp"
+    },
+    {
+      "path": ".github/workflows/ym4-vol12-chessboard-clusters.yml",
+      "blob": "810b97a91c41497b297473db3f3688d06328554a",
+      "ref": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "kind": "workflow",
+      "origin": "VOL12_CLOSED_CUBE_CHESSBOARD",
+      "source": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/blob/4119752e52a6043bf9fca96ea1672de7689ca5d7/.github/workflows/ym4-vol12-chessboard-clusters.yml"
     }
   ],
   "pr_events": [
@@ -8248,11 +8426,35 @@
     },
     {
       "number": 111,
-      "title": "YM4 VOL11 original continuous SU2 Haar good-boundary exponential tail and separated plaquette joint law",
-      "state": "draft",
+      "title": "YM4 VOL11: continuous SU(2) exponential Haar tail and separated Wilson plaquette joint bound",
+      "state": "merged",
       "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111",
-      "merge_sha": null,
-      "origin": "live_GitHub_2026_11_22"
+      "merge_sha": "a601c311e966b427956b4df0527e0a2f53a2412b",
+      "origin": "live_GitHub_2026_11_24"
+    },
+    {
+      "number": 117,
+      "title": "Docs integrity, status refresh, references and unfiltered run-all CI",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/117",
+      "merge_sha": "df7943fcaf77e43a824870f4d73d511be54ce251",
+      "origin": "live_GitHub_2026_11_24"
+    },
+    {
+      "number": 118,
+      "title": "One-page README front page; move the dated history to CHANGELOG.md",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/118",
+      "merge_sha": "c0da06bf9ec9246da3268c263149695b69d67753",
+      "origin": "live_GitHub_2026_11_24"
+    },
+    {
+      "number": 119,
+      "title": "YM4-VOL12: closed-cube chessboard bound for arbitrary bad-star sets",
+      "state": "merged",
+      "url": "https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/119",
+      "merge_sha": "4119752e52a6043bf9fca96ea1672de7689ca5d7",
+      "origin": "live_GitHub_2026_11_24"
     }
   ],
   "cross_repository": [
