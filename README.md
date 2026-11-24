@@ -4,6 +4,18 @@
 
 Current status, corrections and the November 2026 external landscape: **[PROBLEM.md](PROBLEM.md)**. Prior work for every track: **[docs/REFERENCES.md](docs/REFERENCES.md)**. Full dated history and the previous README: **[CHANGELOG.md](CHANGELOG.md)**.
 
+## Certificate atlases — live 3D viewers
+
+**[▶ OPEN THE 4D SU(2) CERTIFICATE ATLAS — LIVE 3D VIEW](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html)** · [Alternative viewer](https://htmlpreview.github.io/?https://raw.githubusercontent.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/main/docs/certificate-atlas/index.html) · [Atlas guide](docs/certificate-atlas/README.md) · [Machine-readable inventory](docs/certificate-atlas/certificates.json) · [Proof obligation ledger](docs/certificate-atlas/BRIDGE-LEDGER.md).
+
+![Four-panel 4D certificate atlas](docs/certificate-atlas/overview.svg)
+
+Main inventory: **120 source-linked proof nodes, 558 evidence resources, 107 PR records, 12 camera views**, including merged VOL12-A–E. Eleven continuum obligations remain OPEN.
+
+**[▶ OPEN THE COMPANION FINITE S₃ CERTIFICATE ATLAS](https://raw.githack.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C/main/docs/certificate-atlas/atlas-current-20261120.html)** · [Finite Yang–Mills repository](https://github.com/JesseBrown1980/Finite-universe-Yang-mills-existence-and-mass-gap-using-HEB-C). The finite Wilson acceptance and 4D continuous SU(2) research are separately scoped.
+
+**Research in review (November 24, 2026):** [spherical Wilson research atlas — pinned draft preview](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/index.html) · [VOL30 spherical Fischer playback](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/vol30-spherical-fischer.html) · [VOL32 exact Haar correlations](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/vol32-exact-haar-correlations.html) · [VOL33 connected shell residuals](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/vol33-connected-shell-residual.html) · [VOL34 independent Metropolis](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/ym4-vol34-independent-metropolis.html) · [VOL35 L8/L10 comparison](https://raw.githack.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/672ce2ba84806029143368460423266ff9806568/docs/certificate-atlas/vol35-lattice-volume-comparison.html). These are separate, unmerged research views from [PR #113](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/113); the pinned draft's numerical measurements retain their exploratory status. The blocking research is staged in [VOL13 — PR #121](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/121), [VOL14-A — PR #122](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/122) and [VOL14-C — PR #123](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/123). VOL14-B supplied patches await publication. Research links are additional navigation; the main proof-node inventory retains its own source and review statuses.
+
 ## Review status
 
 Three different kinds of review are easy to confuse. This page keeps them apart.
