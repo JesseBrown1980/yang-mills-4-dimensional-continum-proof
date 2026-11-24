@@ -1,0 +1,11 @@
+# VOL14-A Gaussian screening: frozen before checker code, 2026-11-24.
+# S = <J, Delta^+ J> for a conserved current in the free lattice Gaussian theory.
+PREDICT|straight_S_ge=b/4|scope=GAUSSIAN|json=0
+PREDICT|averaged_S_le=(2b^2+1)^2/(9b^4)|scope=GAUSSIAN|json=0
+PREDICT|b=1|sum_triangle_sq=1|upper_num=9|upper_den=9|json=0
+PREDICT|b=3|sum_triangle_sq=19|upper_num=361|upper_den=729|json=0
+PREDICT|b=9|sum_triangle_sq=489|upper_num=26569|upper_den=59049|json=0
+PREDICT|b=27|sum_triangle_sq=13131|upper_num=2128681|upper_den=4782969|json=0
+PREDICT|b=81|sum_triangle_sq=354321|upper_num=172213129|upper_den=387420489|json=0
+PREDICT|negative_control=unsmeared_perimeter|separation_at_b_ge3=YES|json=0
+PREDICT|nonlinear_R_G=OPEN|physical_mass_gap=OPEN|json=0
