@@ -1,0 +1,6 @@
+model,L,original_displacement,plaquette_trace_normalization,beta0_connected_covariance,beta0_seed_SE,beta2_connected_covariance,beta2_seed_SE,beta0_chains,beta2_chains,status
+original_periodic_continuous_SU2_Wilson,6,zero,Re_U_p,0.249700,0.000348,0.135766,0.000230,6,8,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,6,time_axis_2_step_1,Re_U_p,-0.000138,0.000233,0.004234,0.000161,6,8,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,6,time_axis_2_step_2,Re_U_p,0.000083,0.000186,0.000180,0.000144,6,8,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,6,time_axis_2_step_3,Re_U_p,0.000122,0.000330,-0.000196,0.000207,6,8,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,6,spatial_axis_0_step_1,Re_U_p,-0.000300,0.000273,0.000815,0.000111,6,8,EXPLORATORY
