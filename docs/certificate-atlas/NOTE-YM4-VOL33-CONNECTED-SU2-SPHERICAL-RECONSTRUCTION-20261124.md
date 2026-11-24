@@ -80,6 +80,8 @@ At beta=0 the corresponding residuals are -0.00000138±0.00002627, +0.00010628±
 
 The contrast in R1/d2 and R2/d2 is useful: they have the **same diagonal overlap fraction** yet very different estimated distinct-plaquette contributions. The residual depends on the full shell displacement histogram and genuine K_beta(h), beyond the 24-cell shared-site count. However, the radius-two/d2 residual is smaller than its seed-SE, and differences between interacting residuals and zero-beta controls are not consistently resolved across all four cases. Therefore this pilot does **not** certify a reproducible radial dynamical pattern or a mass gap.
 
+Machine-readable **provisional** GitHub measurement summaries: [nonzero-separation Wilson two-point function with chain errors](YM4-VOL33-EXPLORATORY-L6-TWO-POINT-20261124.csv) and [eight two-ended shell residual/control rows](YM4-VOL33-EXPLORATORY-L6-SHELL-RESIDUALS-20261124.csv). These are rounded summaries, distinct from the raw conversation-hosted numerical samples and the strictly integer HBP.
+
 ## 6. Provenance and signoff boundary
 
 The experimental source, raw row-level outputs and complete seed-level summaries are provided as downloadable conversation artifacts, outside the strict integer-only mathematical repo. Their exact SHA-256:
