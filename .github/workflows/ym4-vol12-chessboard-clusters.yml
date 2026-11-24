@@ -1,0 +1,45 @@
+name: YM4 VOL12 closed-cube chessboard bad-star clusters
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol12_chessboard_clusters.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md'
+      - 'docs/certificate-atlas/YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp'
+      - 'docs/certificate-atlas/PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp'
+      - '.github/workflows/ym4-vol12-chessboard-clusters.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol12_chessboard_clusters.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md'
+      - 'docs/certificate-atlas/YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp'
+      - 'docs/certificate-atlas/PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp'
+      - '.github/workflows/ym4-vol12-chessboard-clusters.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  closed-cube-chessboard-geometry-and-fixtures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Integer geometry, chessboard label step, rooted counts and fixture certificates
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12
+          python3 -I -B tests/ym4_su2_vol12_chessboard_clusters.py > build/ym4-vol12/CLUSTERS.hbp
+          python3 -O -I -B tests/ym4_su2_vol12_chessboard_clusters.py > build/ym4-vol12/REPLAY.hbp
+          cmp build/ym4-vol12/CLUSTERS.hbp build/ym4-vol12/REPLAY.hbp
+          cmp build/ym4-vol12/CLUSTERS.hbp docs/certificate-atlas/YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp
+          echo 'ac95bc315a9b2471193b944efa7bb8aa104547aa572cfe0377ca28edd090d63b  build/ym4-vol12/CLUSTERS.hbp' | sha256sum -c
+          grep -Fq '|closed_unit_cubes_per_plaquette=4|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|reflection_covariance=PASS|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|odd_side=REJECTED|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|N3=375|N4=8364|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|E(a1)+E(a2)_ge_2E(a)+2=PASS|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|VOL10_criterion=FAILS|VOL12_criterion=PASSES|' build/ym4-vol12/CLUSTERS.hbp
+          grep -Fq '|odd_L=OPEN|multiscale=OPEN|' build/ym4-vol12/CLUSTERS.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .

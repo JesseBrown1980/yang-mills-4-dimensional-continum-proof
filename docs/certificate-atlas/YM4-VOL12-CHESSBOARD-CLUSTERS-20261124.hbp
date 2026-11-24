@@ -1,0 +1,15 @@
+YM4_VOL12|row=01|L=4|blocks=256|links=1024|plaquettes=1536|face_types=24|orbit_size_each=64|orbits_disjoint_and_cover=YES|json=0
+YM4_VOL12|row=02|L=6|blocks=1296|links=5184|plaquettes=7776|face_types=24|orbit_size_each=324|orbits_disjoint_and_cover=YES|json=0
+YM4_VOL12|row=03|L=4_and_6|closed_unit_cubes_per_plaquette=4|plaquettes_per_link=6|links_per_plaquette=4|link_graph_degree=18|json=0
+YM4_VOL12|row=04|L=4_and_6|reflection_covariance=PASS|json=0
+YM4_VOL12|row=05|L=4_and_6|every_unit_block_in_exactly_one_closed_half=YES|json=0
+YM4_VOL12|row=06|L=5|transport_conflicts=10000|odd_side=REJECTED|json=0
+YM4_VOL12|row=07|L=6|N1=1|N2=18|N3=375|N4=8364|bound_18_pow_2m_minus_2=HOLDS|bound_72_pow_m_minus_1=HOLDS|json=0
+YM4_VOL12|row=08|too_strong_count_18_pow_m_minus_1|falsified_at_m=3|375_gt_324=YES|json=0
+YM4_VOL12|row=09|L=4|configurations_with_a_differing_straddle=192|E(a1)+E(a2)_ge_2E(a)+2=PASS|json=0
+YM4_VOL12|row=10|beta=9^4|eps=1/16|rho_star_gt_1=CERTIFIED|verdict=NO_INFORMATION|json=0
+YM4_VOL12|row=11|beta=9^5|eps=1/16|rho_star_le_18^-3=CERTIFIED|rho_star_gt_18^-57=CERTIFIED|VOL10_criterion=FAILS|VOL12_criterion=PASSES|rho_star_lt_2^-18|json=0
+YM4_VOL12|row=12|beta=9^6|eps=1/16|rho_star_le_18^-3=CERTIFIED|rho_star_le_18^-57=CERTIFIED|integer_witness=6*1536*3^19*18^57_lt_2^518|rho_star_lt_2^-474|rho_D_lt_2^-1913|json=0
+YM4_VOL12|row=13|beta=9^5|eps=1/2|rho_star_le_18^-57=CERTIFIED|rho_star_lt_2^-422|json=0
+YM4_VOL12|row=14|eps=0|rho_star_ge_6*1536|verdict=NO_INFORMATION|json=0
+YM4_VOL12_VERDICT|rows=14|geometry=PASS|chessboard_label_step=PASS|fixtures=PASS|theorem_status=PROOF_WRITTEN_PENDING_HUMAN_REVIEW|odd_L=OPEN|multiscale=OPEN|json=0
