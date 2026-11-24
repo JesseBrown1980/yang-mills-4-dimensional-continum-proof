@@ -1,0 +1,19 @@
+# YM4-VOL12 PREDICTION, frozen before the VOL12 checker existed (24 Nov 2026).
+# Written by Claude (AI). Sources: closed-cube geometry by hand; rooted link-set counts from a scratch
+# enumeration outside the repository (L=4,6,8); fixture verdicts from a floating-point estimate of log rho_star.
+# The checker must reproduce every row with integers only, or the mismatch is recorded, not edited away.
+PREDICT|row=01|L=4|blocks=256|links=1024|plaquettes=1536|face_types=24|orbit_size_each=64|orbits_disjoint_and_cover=YES|json=0
+PREDICT|row=02|L=6|blocks=1296|links=5184|plaquettes=7776|face_types=24|orbit_size_each=324|orbits_disjoint_and_cover=YES|json=0
+PREDICT|row=03|L=4_and_6|closed_unit_cubes_per_plaquette=4|plaquettes_per_link=6|links_per_plaquette=4|link_graph_degree=18|json=0
+PREDICT|row=04|L=4_and_6|reflection_covariance=theta_composed_tau_s_equals_tau_theta_s_for_every_site_reflection_and_block|status=PASS|json=0
+PREDICT|row=05|L=4_and_6|every_unit_block_in_exactly_one_closed_half_for_every_site_reflection=YES|json=0
+PREDICT|row=06|L=5|block_transport_by_parity=INCONSISTENT|odd_side=REJECTED|json=0
+PREDICT|row=07|L=6|rooted_connected_link_sets|N1=1|N2=18|N3=375|N4=8364|bound_18_pow_2m_minus_2=HOLDS|bound_72_pow_m_minus_1=HOLDS|json=0
+PREDICT|row=08|too_strong_count_18_pow_m_minus_1|falsified_at_m=3|375_gt_324=YES|json=0
+PREDICT|row=09|proof_step_adjacent_label_count|E(a1)+E(a2)_ge_2E(a)+2_whenever_a_straddling_pair_differs=PASS_on_every_sampled_configuration|json=0
+PREDICT|row=10|beta=9^4|eps=1/16|rho_star_lt_1=NOT_CERTIFIED|verdict=NO_INFORMATION|json=0
+PREDICT|row=11|beta=9^5|eps=1/16|rho_star_le_18^-3=CERTIFIED|rho_star_le_18^-57=NOT_CERTIFIED|json=0
+PREDICT|row=12|beta=9^6|eps=1/16|rho_star_le_18^-3=CERTIFIED|rho_star_le_18^-57=CERTIFIED|integer_witness=6*1536*3^19*18^57_lt_2^518|json=0
+PREDICT|row=13|beta=9^5|eps=1/2|rho_star_le_18^-57=CERTIFIED|json=0
+PREDICT|row=14|eps=0|rho_star_ge_1|verdict=NO_INFORMATION|json=0
+PREDICTION_SUMMARY|rows=14|theorem_status=PROOF_WRITTEN_PENDING_HUMAN_REVIEW|odd_L=OPEN|multiscale=OPEN|json=0
