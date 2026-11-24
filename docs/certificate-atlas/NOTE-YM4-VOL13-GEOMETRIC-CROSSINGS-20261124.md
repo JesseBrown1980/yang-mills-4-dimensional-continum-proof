@@ -1,6 +1,6 @@
 # YM4-VOL13 — geometric bad-path crossings and reflection-compatible ternary blocking
 
-**Status:** AI-written mathematical derivation, pending independent and external human review and hosted checker replay. Prediction frozen first at e20318f995bb4818ce8c6c343a1a8a947d68f3bd. Source: [VOL12](NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md). All eleven continuum obligations remain OPEN.
+**Status:** AI-written mathematical derivation, independent AI review PASS (Claude, 24 November 2026); [hosted exact replay PASS](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/actions/runs/45487126559); external human review OPEN. Prediction frozen first at e20318f995bb4818ce8c6c343a1a8a947d68f3bd. Source: [VOL12](NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md). All eleven continuum obligations remain OPEN.
 
 ## A. Fine paths
 
@@ -46,7 +46,7 @@ At beta=9^5, epsilon=1/16, VOL12 certifies rho<2^-18. With N_b=4b^4*18*17^(b-1),
 | 81 | 1117 |
 | 243 | 3364 |
 
-At b=81, 1117 >= 81*13, hence the joint activity is at most 2^(-13m); 320<2^9 gives the uniform coarse island tail at most 2^(-4m-9). The graph and coarse labels are geometric and derived from the original fine measure at a single fixed coupling. No iteration of a transformed measure is needed for this estimate.
+At b=81, 1117 >= 81*13, hence the joint activity is at most 2^(-13m); 320<2^9 gives the uniform coarse island tail at most 2^(-4m-9). For b=81, even L and 3 dividing M=L/81 with M>=6 require L to be a positive multiple of 486. The graph and coarse labels are geometric and derived from the original fine measure at a single fixed coupling. No iteration of a transformed measure is needed for this estimate. These events concern original fine bad-link witnesses, rather than fluctuations of blocked gauge variables.
 
 ## E. Reflection-compatible straight-link map
 
@@ -54,10 +54,10 @@ For a coarse positive link (t,mu), define B(U)_{t,mu} to be the ordered product 
 
 $$\mathbb E_{B_*\mu}[F\vartheta F]=\mathbb E_\mu[(F\circ B)\theta(F\circ B)]\ge0.$$
 
-Hence this particular pushforward inherits site reflection positivity at the aligned coarse planes. This argument composes for nested straight-link maps. It establishes neither a Wilson form for the induced action nor bounds on its couplings or on blocked bad-star probabilities. The checker verifies the underlying path identities and gauge-word cancellation symbolically, without sampling a continuous gauge field.
+Hence this particular pushforward inherits site reflection positivity at the aligned coarse planes. This argument composes for nested straight-link maps. More generally it holds for every measurable map that intertwines the reflections and pulls coarse closed-half observables back into the fine closed-half algebra. Coarse chessboard estimates can also be obtained directly using fine reflection positivity on aligned larger blocks. Positivity alone does not select the blocking map. It establishes neither a Wilson form for the induced action nor bounds on its couplings or on blocked bad-star probabilities. The checker verifies the underlying path identities and gauge-word cancellation symbolically, without sampling a continuous gauge field.
 
 ## Acceptance and remaining target
 
-[Prediction](PREDICT-YM4-VOL13-GEOMETRIC-CROSSINGS-20261124.hbp) · [integer checker](../../tests/ym4_su2_vol13_geometric_crossings.py) · [expected replay output](YM4-VOL13-GEOMETRIC-CROSSINGS-20261124.hbp). The latter is an expected output, not an independently measured receipt until hosted replay passes.
+[Prediction](PREDICT-YM4-VOL13-GEOMETRIC-CROSSINGS-20261124.hbp) · [integer checker](../../tests/ym4_su2_vol13_geometric_crossings.py) · [frozen replay receipt](YM4-VOL13-GEOMETRIC-CROSSINGS-20261124.hbp). Normal and optimized hosted replay matched the frozen receipt byte for byte (11/11 rows).
 
-VOL13-A–D are original-measure geometric statements; E is a pushforward positivity theorem. Odd sides, arbitrary-boundary conditioned estimates, renormalized action and small-field control, physical-scale clustering and continuum mass gap remain OPEN. VOL14 should study the actual induced action and its local small-field/correlation bounds, retaining the scope of the original-scale estimates.
+VOL13-A–D are original-measure geometric statements; E is a pushforward positivity theorem. Odd sides, arbitrary-boundary conditioned estimates, renormalized action and small-field control, physical-scale clustering and continuum mass gap remain OPEN. VOL14 will first compare candidate blocking maps by their weak-field coupling flow and locality requirements, before attempting repeated action control. Straight-link perimeter self-energy is a perturbative risk, not a nonperturbative action estimate.
