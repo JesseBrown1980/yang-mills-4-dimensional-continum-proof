@@ -1,0 +1,9 @@
+model,beta,L,radius_R,endpoint_separation_d,shell_sites_N,shared_plaquettes_J,measured_self_covariance_Re,full_connected_covariance_Re,shared_plaquette_term_Re,off_diagonal_residual_Re,seed_SE_off_diagonal_Re,independent_chains,samples_per_chain,status
+original_periodic_continuous_SU2_Wilson,2,6,1,2,8,1,0.135766,0.00220791,0.00212134,0.00008657,0.00003624,8,105,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,2,6,1,3,8,0,0.135766,0.00012474,0,0.00012474,0.00004293,8,105,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,2,6,2,2,24,9,0.135766,0.00213868,0.00212134,0.00001734,0.00002831,8,105,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,2,6,2,3,24,0,0.135766,0.00014960,0,0.00014960,0.00003198,8,105,EXPLORATORY
+original_periodic_continuous_SU2_Wilson,0,6,1,2,8,1,0.249700,,,-0.00000138,0.00002627,6,110,EXPLORATORY_HAAR_CONTROL
+original_periodic_continuous_SU2_Wilson,0,6,1,3,8,0,0.249700,,0,0.00010628,0.00006218,6,110,EXPLORATORY_HAAR_CONTROL
+original_periodic_continuous_SU2_Wilson,0,6,2,2,24,9,0.249700,,,-0.00000241,0.00003862,6,110,EXPLORATORY_HAAR_CONTROL
+original_periodic_continuous_SU2_Wilson,0,6,2,3,24,0,0.249700,,0,0.00002142,0.00004895,6,110,EXPLORATORY_HAAR_CONTROL
