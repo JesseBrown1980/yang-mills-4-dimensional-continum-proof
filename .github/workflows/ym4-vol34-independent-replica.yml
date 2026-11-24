@@ -7,12 +7,16 @@ on:
       - tests/ym4_vol34_fixed_point_replica_verifier.py
       - docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv
       - docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp
+      - tests/ym4_vol34_periodic_alias_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp
       - .github/workflows/ym4-vol34-independent-replica.yml
   pull_request:
     paths:
       - tests/ym4_vol34_fixed_point_replica_verifier.py
       - docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv
       - docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp
+      - tests/ym4_vol34_periodic_alias_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp
       - .github/workflows/ym4-vol34-independent-replica.yml
   workflow_dispatch:
 
@@ -31,6 +35,13 @@ jobs:
           diff -u /tmp/ym4-vol34-normal.hbp /tmp/ym4-vol34-optimized.hbp
           diff -u docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp /tmp/ym4-vol34-normal.hbp
           printf '%s  %s\n' '1ba782b1c400befe0e879a2bcf1de5d90699c7502bb58562cdd9c0493030d0ec' '/tmp/ym4-vol34-normal.hbp' | sha256sum -c -
+      - name: Independently verify exact L6 versus L8 sphere overlap alias
+        run: |
+          python3 -I -B tests/ym4_vol34_periodic_alias_verifier.py >/tmp/ym4-vol34-alias-normal.hbp
+          python3 -I -O tests/ym4_vol34_periodic_alias_verifier.py >/tmp/ym4-vol34-alias-optimized.hbp
+          diff -u /tmp/ym4-vol34-alias-normal.hbp /tmp/ym4-vol34-alias-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp /tmp/ym4-vol34-alias-normal.hbp
+          printf '%s  %s\n' '26ff40350b79a2be5d119c97ff089c0028c6c2d35f4926f66a6eb41d77960c21' '/tmp/ym4-vol34-alias-normal.hbp' | sha256sum -c -
       - name: Verify candidate atlas and independent pilot links
         run: |
           grep -q 'ym4-vol34-independent-metropolis.html' docs/certificate-atlas/index.html
