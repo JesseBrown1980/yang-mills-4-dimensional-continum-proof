@@ -1,0 +1,44 @@
+name: YM4 VOL35 L8 L10 original SU2 radial volume comparison
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol35_fixedpoint_volume_checker.py
+      - docs/certificate-atlas/YM4-VOL35-FIXED-POINT-CHAINS-20261124.csv
+      - docs/certificate-atlas/YM4-VOL35-VOLUME-COMPARISON-20261124.hbp
+      - .github/workflows/ym4-vol35-volume-comparison.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol35_fixedpoint_volume_checker.py
+      - docs/certificate-atlas/YM4-VOL35-FIXED-POINT-CHAINS-20261124.csv
+      - docs/certificate-atlas/YM4-VOL35-VOLUME-COMPARISON-20261124.hbp
+      - .github/workflows/ym4-vol35-volume-comparison.yml
+  workflow_dispatch:
+
+jobs:
+  exact-geometry-and-reported-chain-arithmetic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict original repository integer-only gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Verify 26 independent chain inputs pinned to their exact integer transcript
+        run: |
+          printf '%s  %s\n' '3090c54ff010be20cd87091ad26206a9a9428d8946884ddb0340dff6876dc369' 'docs/certificate-atlas/YM4-VOL35-FIXED-POINT-CHAINS-20261124.csv' | sha256sum -c -
+          python3 -I -B tests/ym4_vol35_fixedpoint_volume_checker.py >/tmp/ym4-vol35-normal.hbp
+          python3 -I -O tests/ym4_vol35_fixedpoint_volume_checker.py >/tmp/ym4-vol35-optimized.hbp
+          diff -u /tmp/ym4-vol35-normal.hbp /tmp/ym4-vol35-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL35-VOLUME-COMPARISON-20261124.hbp /tmp/ym4-vol35-normal.hbp
+          printf '%s  %s\n' 'af4df188e2c0d250c30441bf83705a8a54cd123e17370dffdbf26c5ec0f7659f' '/tmp/ym4-vol35-normal.hbp' | sha256sum -c -
+      - name: Verify clickable certificate atlas crosslinks and continuum HOLD label
+        run: |
+          grep -q 'id="ym4-vol35-candidate"' docs/certificate-atlas/index.html
+          grep -q 'vol35-lattice-volume-comparison.html' docs/certificate-atlas/index.html
+          grep -q 'NOTE-YM4-VOL35-L8-L10-SU2-RADIAL-VOLUME-COMPARISON-20261124.md' docs/certificate-atlas/index.html
+          grep -q 'upper_mass_decay=OPEN' docs/certificate-atlas/YM4-VOL35-VOLUME-COMPARISON-20261124.hbp
+      - name: Archive exact lattice geometry and reported-chain receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol35-exact-evidence-accounting
+          path: /tmp/ym4-vol35-normal.hbp
