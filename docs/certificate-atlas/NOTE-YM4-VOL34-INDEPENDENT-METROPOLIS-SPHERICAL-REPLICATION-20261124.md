@@ -89,7 +89,7 @@ Numerical results and raw sources were generated in the local conversation runti
 - Spherical beta-zero 2,700-configuration raw dataset: \`ym4_vol34_spherical_Metropolis_L6_beta0_raw.csv\`, SHA **379cc786287ae3c5e39d00355d9aa17fe7cbfc644ed713e0eedd71c8e9092b98**.
 - Per-chain spherical statistics CSV: SHA **1a949c5c1441c712c296a4e887a74a752cc3eefb6c9f233cae7b70533e979128**.
 - Per-chain spherical statistical analysis JSON: SHA **833598d3689ee24d3eeee16c5a07baa1a257122318952fa4f542659c076e8665**.
-- GitHub fixed-point chain CSV: expected SHA **1fec292146cec76bb785ba0d749771204f74b4d2c248e0416d6cfce95bf9f329**.
+- GitHub fixed-point chain CSV (normalized LF line endings): expected SHA **616e59d84d82d259a9d9b9b91d23085f3133bd8efc7ce9b9bfd258b8dc0296d8**.
 - [Concise GitHub exploratory results table](YM4-VOL34-INDEPENDENT-METROPOLIS-RESULTS-20261124.csv) tracks 20 predeclared observable/control rows.
 
 Source and full raw CSV artifacts are available for download in the conversation, separated from the project's **no-floating-point mathematical proof kernel**. The GitHub branch includes the documented algorithms, fixed-point per-chain chain summaries and finite numerical summary, but does not contain the full multi-megabyte raw numerical runs or floating C++ source. That boundary is explicit.
