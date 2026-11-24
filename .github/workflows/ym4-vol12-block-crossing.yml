@@ -1,0 +1,46 @@
+name: YM4 VOL12 original SU2 physical box crossing integer certificate
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol12_block_crossing.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-PHYSICAL-BOX-CROSSING-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-BLOCK-CROSSING-20261123.hbp'
+      - '.github/workflows/ym4-vol12-block-crossing.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol12_block_crossing.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-PHYSICAL-BOX-CROSSING-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-BLOCK-CROSSING-20261123.hbp'
+      - '.github/workflows/ym4-vol12-block-crossing.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-box-crossing-scope-and-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact original four-dimensional even-box geometry and crossing tail
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-cross
+          python3 -I -B tests/ym4_su2_vol12_block_crossing.py > build/ym4-vol12-cross/BOX-CROSSING.hbp
+          python3 -O -I -B tests/ym4_su2_vol12_block_crossing.py > build/ym4-vol12-cross/REPLAY.hbp
+          cmp build/ym4-vol12-cross/BOX-CROSSING.hbp build/ym4-vol12-cross/REPLAY.hbp
+          cmp build/ym4-vol12-cross/BOX-CROSSING.hbp docs/certificate-atlas/YM4-VOL12-BLOCK-CROSSING-20261123.hbp
+          sha256sum build/ym4-vol12-cross/BOX-CROSSING.hbp
+          grep -Fq '|arbitrary_boundary_cube_contraction=OPEN|' build/ym4-vol12-cross/BOX-CROSSING.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol12-cross/BOX-CROSSING.hbp
+      - name: Strict no-floating-point gate
+        run: |
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-box-crossing-exact-replay
+          path: build/ym4-vol12-cross/
+          retention-days: 90
+          if-no-files-found: warn

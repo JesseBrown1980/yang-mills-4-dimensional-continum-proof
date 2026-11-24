@@ -1,0 +1,46 @@
+name: YM4 VOL32 exact continuous SU2 Haar spherical Wilson correlations
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol32_exact_haar_shell_correlations.py
+      - docs/certificate-atlas/YM4-VOL32-EXACT-HAAR-SPHERICAL-CORRELATIONS-20261124.hbp
+      - docs/certificate-atlas/vol32-exact-haar-correlations.html
+      - docs/certificate-atlas/index.html
+      - .github/workflows/ym4-vol32-exact-haar-shell-correlations.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol32_exact_haar_shell_correlations.py
+      - docs/certificate-atlas/YM4-VOL32-EXACT-HAAR-SPHERICAL-CORRELATIONS-20261124.hbp
+      - docs/certificate-atlas/vol32-exact-haar-correlations.html
+      - docs/certificate-atlas/index.html
+      - .github/workflows/ym4-vol32-exact-haar-shell-correlations.yml
+  workflow_dispatch:
+
+jobs:
+  exact-continuous-su2-haar-shells:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository-wide original no-float gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Exact native SU2 Haar Wilson shell mean, variance and covariance
+        run: |
+          python3 -I -B tests/ym4_vol32_exact_haar_shell_correlations.py >/tmp/ym4-vol32-normal.hbp
+          python3 -I -O tests/ym4_vol32_exact_haar_shell_correlations.py >/tmp/ym4-vol32-opt.hbp
+          diff -u /tmp/ym4-vol32-normal.hbp /tmp/ym4-vol32-opt.hbp
+          diff -u docs/certificate-atlas/YM4-VOL32-EXACT-HAAR-SPHERICAL-CORRELATIONS-20261124.hbp /tmp/ym4-vol32-normal.hbp
+          printf '%s  %s\n' 'd421c07b9b509d942a3e20229ea4dd464493ca4e486dd9d6da26f8255fb93397' '/tmp/ym4-vol32-normal.hbp' | sha256sum -c -
+      - name: Check clickable spherical field-correlation atlas page and proof scope
+        run: |
+          grep -q 'id="ym4-vol32-candidate"' docs/certificate-atlas/index.html
+          grep -q 'vol32-exact-haar-correlations.html' docs/certificate-atlas/index.html
+          grep -q 'Continuous SU(2)' docs/certificate-atlas/vol32-exact-haar-correlations.html || grep -q 'continuous SU(2)' docs/certificate-atlas/vol32-exact-haar-correlations.html
+          grep -q 'β=0' docs/certificate-atlas/vol32-exact-haar-correlations.html
+          grep -q 'not the L=128 shell measurements' docs/certificate-atlas/vol32-exact-haar-correlations.html
+      - name: Archive exact Haar field-observable receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol32-exact-continuous-su2-haar-shells
+          path: /tmp/ym4-vol32-normal.hbp

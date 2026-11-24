@@ -1,0 +1,35 @@
+name: YM4 VOL21 original SU2 Wilson shell-noise geometry
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol21_original_su2_shell_noise.py
+      - docs/certificate-atlas/YM4-VOL21-ORIGINAL-SHELL-NOISE-20261123.hbp
+      - .github/workflows/ym4-vol21-original-shell-noise.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol21_original_su2_shell_noise.py
+      - docs/certificate-atlas/YM4-VOL21-ORIGINAL-SHELL-NOISE-20261123.hbp
+      - .github/workflows/ym4-vol21-original-shell-noise.yml
+  workflow_dispatch:
+
+jobs:
+  original-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository no-float audit
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Normal and optimized original-link shell geometry
+        run: |
+          python3 -I -B tests/ym4_vol21_original_su2_shell_noise.py >/tmp/ym4-vol21-normal.hbp
+          python3 -I -O tests/ym4_vol21_original_su2_shell_noise.py >/tmp/ym4-vol21-opt.hbp
+          diff -u /tmp/ym4-vol21-normal.hbp /tmp/ym4-vol21-opt.hbp
+          diff -u docs/certificate-atlas/YM4-VOL21-ORIGINAL-SHELL-NOISE-20261123.hbp /tmp/ym4-vol21-normal.hbp
+          printf '%s  %s\n' '5c69d67fe8ff22f8f3509c3177c52c2579c7bd6b66d9214afa8939b6d7b435be' '/tmp/ym4-vol21-normal.hbp' | sha256sum -c -
+      - name: Upload pinned receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol21-original-su2-shell
+          path: /tmp/ym4-vol21-normal.hbp

@@ -1,0 +1,54 @@
+name: YM4 VOL34 independent SU2 numerical replica evidence accounting
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol34_fixed_point_replica_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv
+      - docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp
+      - tests/ym4_vol34_periodic_alias_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp
+      - .github/workflows/ym4-vol34-independent-replica.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol34_fixed_point_replica_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv
+      - docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp
+      - tests/ym4_vol34_periodic_alias_verifier.py
+      - docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp
+      - .github/workflows/ym4-vol34-independent-replica.yml
+  workflow_dispatch:
+
+jobs:
+  exact-integer-chain-evidence-accounting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository-wide no-floating-point verifier gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Verify frozen 42-chain input and integer evidence accounting
+        run: |
+          printf '%s  %s\n' '616e59d84d82d259a9d9b9b91d23085f3133bd8efc7ce9b9bfd258b8dc0296d8' 'docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv' | sha256sum -c -
+          python3 -I -B tests/ym4_vol34_fixed_point_replica_verifier.py >/tmp/ym4-vol34-normal.hbp
+          python3 -I -O tests/ym4_vol34_fixed_point_replica_verifier.py >/tmp/ym4-vol34-optimized.hbp
+          diff -u /tmp/ym4-vol34-normal.hbp /tmp/ym4-vol34-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp /tmp/ym4-vol34-normal.hbp
+          printf '%s  %s\n' '1ba782b1c400befe0e879a2bcf1de5d90699c7502bb58562cdd9c0493030d0ec' '/tmp/ym4-vol34-normal.hbp' | sha256sum -c -
+      - name: Independently verify exact L6 versus L8 sphere overlap alias
+        run: |
+          python3 -I -B tests/ym4_vol34_periodic_alias_verifier.py >/tmp/ym4-vol34-alias-normal.hbp
+          python3 -I -O tests/ym4_vol34_periodic_alias_verifier.py >/tmp/ym4-vol34-alias-optimized.hbp
+          diff -u /tmp/ym4-vol34-alias-normal.hbp /tmp/ym4-vol34-alias-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL34-PERIODIC-ALIAS-20261124.hbp /tmp/ym4-vol34-alias-normal.hbp
+          printf '%s  %s\n' '26ff40350b79a2be5d119c97ff089c0028c6c2d35f4926f66a6eb41d77960c21' '/tmp/ym4-vol34-alias-normal.hbp' | sha256sum -c -
+      - name: Verify candidate atlas and independent pilot links
+        run: |
+          grep -q 'ym4-vol34-independent-metropolis.html' docs/certificate-atlas/index.html
+          grep -q 'NOTE-YM4-VOL34-INDEPENDENT-METROPOLIS-SPHERICAL-REPLICATION-20261124.md' docs/certificate-atlas/index.html
+          grep -q 'beta9pow12=OPEN' docs/certificate-atlas/YM4-VOL34-INDEPENDENT-REPLICA-20261124.hbp
+      - name: Archive exact chain arithmetic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol34-fixedpoint-independent-replication
+          path: /tmp/ym4-vol34-normal.hbp

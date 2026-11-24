@@ -1,0 +1,11 @@
+YM4_VOL22_CUT|r=1|b=3|touch=1944|outer=2400|winner=VOL21_INNER|PASS
+YM4_VOL22_BETA12|r=1|kappa_gt_3_pow_minus=2196172075676256|PASS
+YM4_VOL22_CUT|r=2|b=5|touch=9240|outer=7056|winner=VOL22_OUTER|PASS
+YM4_VOL22_BETA12|r=2|kappa_gt_3_pow_minus=7971291237639744|PASS
+YM4_VOL22_CUT|r=3|b=7|touch=25368|outer=15552|winner=VOL22_OUTER|PASS
+YM4_VOL22_BETA12|r=3|kappa_gt_3_pow_minus=17569376605410048|PASS
+YM4_VOL22_CUT|r=4|b=9|touch=53784|outer=29040|winner=VOL22_OUTER|PASS
+YM4_VOL22_BETA12|r=4|kappa_gt_3_pow_minus=32807014957632960|PASS
+YM4_VOL22_TOY|total_variance=3/16|shell_loss=13/72|single_kappa=26/27|PASS
+YM4_VOL22_GRAM|invariant_source_subspace_dim=3|kappa_min=58/63|PSD=PASS
+YM4_VOL22_SCOPE|original_SU2_Haar_bound=ANALYTIC|integer_geometry=PASS|toy_Gram=PASS|physical_mass_rate=OPEN

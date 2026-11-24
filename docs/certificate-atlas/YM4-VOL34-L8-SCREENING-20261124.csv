@@ -1,0 +1,11 @@
+L,beta,chains,configs,observable,estimate,seed_SE,N,J,scope
+8,0,3,840,Ktime1_Re,0.000047487,0.000080863,0,0,Haar_control
+8,2,3,840,Ktime1_Re,0.003931557,0.000100111,0,0,exploratory_finite_size
+8,0,3,840,r1d2_offdiag_Re,0.000004637,0.000014053,8,1,Haar_control
+8,2,3,840,r1d2_offdiag_Re,0.000070050,0.000009649,8,1,exploratory_finite_size
+8,0,3,840,r1d3_offdiag_Re,0.000003147,0.000023998,8,0,Haar_control
+8,2,3,840,r1d3_offdiag_Re,0.000088106,0.000024549,8,0,exploratory_finite_size
+8,0,3,840,r2d2_offdiag_Re,0.000001886,0.000003579,24,8,Haar_control
+8,2,3,840,r2d2_offdiag_Re,0.000009629,0.000007082,24,8,exploratory_finite_size
+8,0,3,840,r2d3_offdiag_Re,0.000007611,0.000031666,24,0,Haar_control
+8,2,3,840,r2d3_offdiag_Re,0.000065609,0.000004438,24,0,exploratory_finite_size

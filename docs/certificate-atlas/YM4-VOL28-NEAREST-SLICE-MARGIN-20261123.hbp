@@ -1,0 +1,11 @@
+YM4_VOL28_SU2_HAAR|plaquette_mean=0|variance=1/4|a0_cap=ANALYTIC|ratio_Riccati=ANALYTIC|PASS
+YM4_VOL28_PERRON_TOY|lambda=4,2|C1=17/130|lower=1/12|PASS
+YM4_VOL28_ORIGINAL|r=1|L=10|spatial_links=3000|spatial_faces=3000|PASS
+YM4_VOL28_MARGIN|L=10|beta=9^12|C1_over_C0_gt_1_over_320_times_3_pow=8472886094580000|PASS
+YM4_VOL28_ORIGINAL|r=2|L=14|spatial_links=8232|spatial_faces=8232|PASS
+YM4_VOL28_MARGIN|L=14|beta=9^12|C1_over_C0_gt_1_over_320_times_3_pow=23249599443527520|PASS
+YM4_VOL28_ORIGINAL|r=3|L=18|spatial_links=17496|spatial_faces=17496|PASS
+YM4_VOL28_MARGIN|L=18|beta=9^12|C1_over_C0_gt_1_over_320_times_3_pow=49413871703590560|PASS
+YM4_VOL28_ORIGINAL|r=4|L=22|spatial_links=31944|spatial_faces=31944|PASS
+YM4_VOL28_MARGIN|L=22|beta=9^12|C1_over_C0_gt_1_over_320_times_3_pow=90219291135087840|PASS
+YM4_VOL28_SCOPE|native_original_SU2=ANALYTIC|numeric_finite_volume_margin=EXACT_EXPONENT|volume_uniform=OPEN|continuum_mass_rate=OPEN|continuum_11=OPEN

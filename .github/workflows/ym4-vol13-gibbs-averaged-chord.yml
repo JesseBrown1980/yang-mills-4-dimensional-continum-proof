@@ -1,0 +1,48 @@
+name: YM4 VOL13 original SU2 Gibbs averaged chord certificate
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol13_averaged_gibbs_chord.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-GIBBS-AVERAGED-CHORD-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL13-GIBBS-AVERAGED-CHORD-20261123.hbp'
+      - '.github/workflows/ym4-vol13-gibbs-averaged-chord.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol13_averaged_gibbs_chord.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL13-GIBBS-AVERAGED-CHORD-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL13-GIBBS-AVERAGED-CHORD-20261123.hbp'
+      - '.github/workflows/ym4-vol13-gibbs-averaged-chord.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-periodic-Gibbs-rooted-cycle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original 4D noncommuting plaquette strips and exact beta thresholds
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol13-Gibbs
+          python3 -I -B tests/ym4_vol13_averaged_gibbs_chord.py > build/ym4-vol13-Gibbs/AVERAGED.hbp
+          python3 -O -I -B tests/ym4_vol13_averaged_gibbs_chord.py > build/ym4-vol13-Gibbs/OPTIMIZED.hbp
+          cmp build/ym4-vol13-Gibbs/AVERAGED.hbp build/ym4-vol13-Gibbs/OPTIMIZED.hbp
+          cmp build/ym4-vol13-Gibbs/AVERAGED.hbp docs/certificate-atlas/YM4-VOL13-GIBBS-AVERAGED-CHORD-20261123.hbp
+          echo '0ada8489e7dd9c08c40c568ddeb83b5f539d9ae7ebc11666df067edf979dd995  build/ym4-vol13-Gibbs/AVERAGED.hbp' | sha256sum -c
+          grep -Fq '|nonabelian_Q8_swap=PASS|' build/ym4-vol13-Gibbs/AVERAGED.hbp
+          grep -Fq '|nonabelian_Q8_rectangles=PASS|' build/ym4-vol13-Gibbs/AVERAGED.hbp
+          grep -Fq '|b81_beta9power12_expected_chord_lt_1over36=PASS|' build/ym4-vol13-Gibbs/AVERAGED.hbp
+          grep -Fq '|b27_beta9power9=HOLD|' build/ym4-vol13-Gibbs/AVERAGED.hbp
+          grep -Fq '|gauge_covariant_multilink_conditional_coupling=OPEN|' build/ym4-vol13-Gibbs/AVERAGED.hbp
+      - name: Strict integer-only no-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol13-averaged-Gibbs-chord-acceptance
+          path: build/ym4-vol13-Gibbs/
+          retention-days: 90
+          if-no-files-found: warn

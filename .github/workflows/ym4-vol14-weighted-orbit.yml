@@ -1,0 +1,47 @@
+name: YM4 VOL14 original SU2 joint gauge-orbit weighted Gibbs coupling
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14_weighted_orbit.py'
+      - 'docs/certificate-atlas/YM4-VOL14-WEIGHTED-ORBIT-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL14-WEIGHTED-ORBIT-COUPLING-20261123.md'
+      - '.github/workflows/ym4-vol14-weighted-orbit.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol14_weighted_orbit.py'
+      - 'docs/certificate-atlas/YM4-VOL14-WEIGHTED-ORBIT-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL14-WEIGHTED-ORBIT-COUPLING-20261123.md'
+      - '.github/workflows/ym4-vol14-weighted-orbit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-four-dimensional-source-anchored-orbit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact original SU2 source-anchored gauge-orbit 4D and beta12 checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14-weighted
+          python3 -I -B tests/ym4_vol14_weighted_orbit.py > build/ym4-vol14-weighted/WEIGHTED.hbp
+          python3 -O -I -B tests/ym4_vol14_weighted_orbit.py > build/ym4-vol14-weighted/OPTIMIZED.hbp
+          cmp build/ym4-vol14-weighted/WEIGHTED.hbp build/ym4-vol14-weighted/OPTIMIZED.hbp
+          cmp build/ym4-vol14-weighted/WEIGHTED.hbp docs/certificate-atlas/YM4-VOL14-WEIGHTED-ORBIT-20261123.hbp
+          echo '1985e26d8633ab3e5b7288926405818544f9deb7cd3eb2cfdd8faf8da532d00b  build/ym4-vol14-weighted/WEIGHTED.hbp' | sha256sum -c
+          grep -Fq '|normalized_orbit_W1_lt_1over40500|' build/ym4-vol14-weighted/WEIGHTED.hbp
+          grep -Fq '|global_periodic_winding_plus2_vs_minus2|' build/ym4-vol14-weighted/WEIGHTED.hbp
+          grep -Fq '|physical_unweighted_spatial_covariance=OPEN|' build/ym4-vol14-weighted/WEIGHTED.hbp
+      - name: Strict integer-only and no floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol14-original-su2-weighted-orbit
+          path: build/ym4-vol14-weighted/
+          retention-days: 90
+          if-no-files-found: warn

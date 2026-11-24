@@ -1,0 +1,35 @@
+name: YM4 VOL27 native SU2 strict transfer predictor
+on:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol27_transfer_strict_predictor.py
+      - docs/certificate-atlas/YM4-VOL27-TRANSFER-STRICT-PREDICTOR-20261123.hbp
+      - .github/workflows/ym4-vol27-transfer-strict-predictor.yml
+  pull_request:
+    paths:
+      - tests/ym4_vol27_transfer_strict_predictor.py
+      - docs/certificate-atlas/YM4-VOL27-TRANSFER-STRICT-PREDICTOR-20261123.hbp
+      - .github/workflows/ym4-vol27-transfer-strict-predictor.yml
+  workflow_dispatch:
+
+jobs:
+  original-su2-transfer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict repository integer-only gate
+        run: python3 -I -X utf8 scripts/no_float_gate.py .
+      - name: Original 4D source geometry and strict transfer spectral replay
+        run: |
+          python3 -I -B tests/ym4_vol27_transfer_strict_predictor.py >/tmp/ym4-vol27-normal.hbp
+          python3 -I -O tests/ym4_vol27_transfer_strict_predictor.py >/tmp/ym4-vol27-optimized.hbp
+          diff -u /tmp/ym4-vol27-normal.hbp /tmp/ym4-vol27-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL27-TRANSFER-STRICT-PREDICTOR-20261123.hbp /tmp/ym4-vol27-normal.hbp
+          printf '%s  %s\n' 'd8de14ddde99b18cfbe9a1d12d470724b931331c425b10b940f511a5b4aadc76' '/tmp/ym4-vol27-normal.hbp' | sha256sum -c -
+      - name: Archive strict physical transfer fixture receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol27-strict-su2-transfer
+          path: /tmp/ym4-vol27-normal.hbp

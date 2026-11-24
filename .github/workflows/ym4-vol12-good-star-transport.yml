@@ -1,0 +1,45 @@
+name: YM4 VOL12 SU2 good-star Haar radial transport exact certificate
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol12_good_star_radial_transport.py'
+      - 'docs/certificate-atlas/YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.md'
+      - '.github/workflows/ym4-vol12-good-star-transport.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol12_good_star_radial_transport.py'
+      - 'docs/certificate-atlas/YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.hbp'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.md'
+      - '.github/workflows/ym4-vol12-good-star-transport.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-su2-good-star-transport:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 six-staple quaternion and beta-uniform margin
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-transport
+          python3 -I -B tests/ym4_vol12_good_star_radial_transport.py > build/ym4-vol12-transport/RADIAL.hbp
+          python3 -O -I -B tests/ym4_vol12_good_star_radial_transport.py > build/ym4-vol12-transport/OPTIMIZED.hbp
+          cmp build/ym4-vol12-transport/RADIAL.hbp build/ym4-vol12-transport/OPTIMIZED.hbp
+          cmp build/ym4-vol12-transport/RADIAL.hbp docs/certificate-atlas/YM4-VOL12-GOOD-STAR-RADIAL-TRANSPORT-20261123.hbp
+          echo 'c971948a9f6758c960839ffdf05b8ced5ad1b414718ab648eaf870debf4583b3  build/ym4-vol12-transport/RADIAL.hbp' | sha256sum -c
+          grep -Fq '|radial_TV_lt=1/24|' build/ym4-vol12-transport/RADIAL.hbp
+          grep -Fq '|multi_link_gauge_frame_coherence=OPEN|' build/ym4-vol12-transport/RADIAL.hbp
+      - name: Strict no-floating-point and scope gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-original-su2-radial-transport
+          path: build/ym4-vol12-transport/
+          retention-days: 90
+          if-no-files-found: warn

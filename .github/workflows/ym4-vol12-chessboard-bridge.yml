@@ -1,0 +1,49 @@
+name: YM4 VOL12 external chessboard bridge exact arithmetic and scope
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol12_chessboard_bridge.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BRIDGE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-CHESSBOARD-BRIDGE-20261123.hbp'
+      - 'reviews/YM4-VOL12-CHESSBOARD-IMPORT-AUDIT-20261123.md'
+      - '.github/workflows/ym4-vol12-chessboard-bridge.yml'
+  push:
+    paths:
+      - 'tests/ym4_su2_vol12_chessboard_bridge.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL12-CHESSBOARD-BRIDGE-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL12-CHESSBOARD-BRIDGE-20261123.hbp'
+      - 'reviews/YM4-VOL12-CHESSBOARD-IMPORT-AUDIT-20261123.md'
+      - '.github/workflows/ym4-vol12-chessboard-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-su2-chessboard-scope-implication:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact original SU2 geometry, rational conditional-import activity, optimized replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-chessboard
+          python3 -I -B tests/ym4_su2_vol12_chessboard_bridge.py > build/ym4-vol12-chessboard/BRIDGE.hbp
+          python3 -O -I -B tests/ym4_su2_vol12_chessboard_bridge.py > build/ym4-vol12-chessboard/REPLAY.hbp
+          cmp build/ym4-vol12-chessboard/BRIDGE.hbp build/ym4-vol12-chessboard/REPLAY.hbp
+          cmp build/ym4-vol12-chessboard/BRIDGE.hbp docs/certificate-atlas/YM4-VOL12-CHESSBOARD-BRIDGE-20261123.hbp
+          echo '4e42c33a1348766dacbf59f5eb346467103f48da11c87520cc9147050556537b  build/ym4-vol12-chessboard/BRIDGE.hbp' | sha256sum -c
+          grep -Fq '|status=EXTERNAL_SOURCE_AUDIT_OPEN|' build/ym4-vol12-chessboard/BRIDGE.hbp
+          grep -Fq '|VOL10_rho_le_18power_minus57=CONDITIONAL_PASS|' build/ym4-vol12-chessboard/BRIDGE.hbp
+          grep -Fq '|11_continuum_gates=OPEN|' build/ym4-vol12-chessboard/BRIDGE.hbp
+      - name: Strict integer/no-floating-point control
+        run: |
+          python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-chessboard-conditional-import
+          path: build/ym4-vol12-chessboard/
+          retention-days: 90
+          if-no-files-found: warn

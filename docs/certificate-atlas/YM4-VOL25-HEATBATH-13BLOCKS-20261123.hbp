@@ -1,0 +1,5 @@
+YM4_VOL25_HAAR|moments=0,1/4,0,1/8|features=13|cross_blocks=0|PASS
+YM4_VOL25_BLOCKS|scalar=2|vector=3x2|tensor=3+2|Haar_inverse=PASS
+YM4_VOL25_RECURRENCE|kappa=0_Haar=PASS|kappa=1_synthetic=PASS|not_physical=1
+YM4_VOL25_SYNTHETIC|m1=6/25|m2=7/25|m3=3/25|m4=4/25|det_scalar=48/3125|det_vector=1/125|PASS
+YM4_VOL25_SCOPE|native_SU2_13block=ANALYTIC|centered_source_value=OPEN|continuum_11=OPEN

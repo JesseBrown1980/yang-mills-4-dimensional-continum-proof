@@ -1,0 +1,47 @@
+name: YM4 VOL15 SU2 Wilson boundary cyclic staple sufficient statistics
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol15_boundary_staples.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL15-BOUNDARY-SUFFICIENT-STATISTIC-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL15-BOUNDARY-STAPLES-20261123.hbp'
+      - '.github/workflows/ym4-vol15-boundary-staples.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol15_boundary_staples.py'
+      - 'docs/certificate-atlas/NOTE-YM4-VOL15-BOUNDARY-SUFFICIENT-STATISTIC-20261123.md'
+      - 'docs/certificate-atlas/YM4-VOL15-BOUNDARY-STAPLES-20261123.hbp'
+      - '.github/workflows/ym4-vol15-boundary-staples.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-4d-su2-cyclic-boundary-staples:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original SU2 L6 L10 noncommuting cyclic staple and boundary-action factorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol15-staples
+          python3 -I -B tests/ym4_vol15_boundary_staples.py > build/ym4-vol15-staples/STAPLES.hbp
+          python3 -O -I -B tests/ym4_vol15_boundary_staples.py > build/ym4-vol15-staples/OPTIMIZED.hbp
+          cmp build/ym4-vol15-staples/STAPLES.hbp build/ym4-vol15-staples/OPTIMIZED.hbp
+          cmp build/ym4-vol15-staples/STAPLES.hbp docs/certificate-atlas/YM4-VOL15-BOUNDARY-STAPLES-20261123.hbp
+          echo '4b7baefe29011bbe37e0987a3bab01ffeea637e6b3386ddbe13ca1d11175ffa4  build/ym4-vol15-staples/STAPLES.hbp' | sha256sum -c
+          grep -Fq '|boundary_action=sum_internal_link_dot_SU2_boundary_resultant|' build/ym4-vol15-staples/STAPLES.hbp
+          grep -Fq '|same_boundary_resultants=PASS|' build/ym4-vol15-staples/STAPLES.hbp
+          grep -Fq '|interpolated_boundary_resultant_covariance_decay=OPEN|' build/ym4-vol15-staples/STAPLES.hbp
+      - name: Strict integer-only and no floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol15-original-su2-boundary-staples
+          path: build/ym4-vol15-staples/
+          retention-days: 90
+          if-no-files-found: warn

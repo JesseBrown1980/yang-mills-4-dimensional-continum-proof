@@ -1,0 +1,67 @@
+name: YM4 VOL12 independent external FoldMix source attestation
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/ym4-vol12-external-chessboard-attest.yml'
+  push:
+    paths:
+      - '.github/workflows/ym4-vol12-external-chessboard-attest.yml'
+permissions:
+  contents: read
+jobs:
+  attest-external-lean-source-without-execution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Retrieve SHA-pinned upstream archive and examine source only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-upstream
+          SOURCE='https://computoergosum.com/en/principia/lean/principia-ym-three-volumes-2026-11-13.tar.gz'
+          ARCHIVE=build/ym4-vol12-upstream/upstream.tar.gz
+          curl --fail --location --retry 3 --max-time 150 --silent --show-error "$SOURCE" -o "$ARCHIVE"
+          echo 'f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62  build/ym4-vol12-upstream/upstream.tar.gz' | sha256sum -c
+          tar -tzf "$ARCHIVE" > build/ym4-vol12-upstream/ARCHIVE-FILES.txt
+          echo '=== VERIFIED ARCHIVE INVENTORY (first 100 entries) ==='
+          sed -n '1,100p' build/ym4-vol12-upstream/ARCHIVE-FILES.txt
+          echo '=== RELATED FILES, IF ANY ==='
+          grep -Ei '(Fold|Chess|Rarity|Yang|SU2|Wilson).*\.lean$' build/ym4-vol12-upstream/ARCHIVE-FILES.txt | tee build/ym4-vol12-upstream/RELATED-FILES.txt || true
+          mkdir -p build/ym4-vol12-upstream/source
+          tar -xzf "$ARCHIVE" -C build/ym4-vol12-upstream/source
+          echo '=== ACTUAL THEOREM-NAME SEARCH, ALL LEAN SOURCES ==='
+          grep -RnE --include='*.lean' 'rarity_orient|rarity_uniform_all_mix|wilson_chessboard_even|FoldMix|FoldCap|FoldWilson' build/ym4-vol12-upstream/source | tee build/ym4-vol12-upstream/DECLARATIONS.txt || true
+          echo '=== ALL LEAN SOURCE COUNT ==='
+          find build/ym4-vol12-upstream/source -name '*.lean' | wc -l
+          if grep -Fq 'rarity_orient' build/ym4-vol12-upstream/DECLARATIONS.txt; then
+            echo 'YM4_VOL12_EXTERNAL|SHA256=PASS|rarity_orient=FOUND|lean_compilation=NOT_PERFORMED|json=0'
+          else
+            echo 'YM4_VOL12_EXTERNAL|SHA256=PASS|rarity_orient=NOT_FOUND_IN_PINNED_BUNDLE|lean_compilation=NOT_PERFORMED|json=0'
+          fi
+          ROOT=build/ym4-vol12-upstream/source/principia-ym-three-volumes-2026-11-13
+          echo '=== EXACT FOLDMIX RARITY_ORIENT SIGNATURE + PROOF ==='
+          sed -n '15,148p' "$ROOT/FoldChess/MixAllV1.lean"
+          echo '=== ARBITRARY-THRESHOLD UNIFORM RATE ==='
+          sed -n '1,70p' "$ROOT/FoldChess/MixAllUniformV1.lean"
+          echo '=== PUBLISHED AXIOM LOG MATCHES ==='
+          grep -n -F -e 'FoldMix.rarity_orient' -e 'FoldMix.rarity_uniform_all_mix' -e 'FoldWilson.wilson_chessboard_even' "$ROOT/axioms.txt" || true
+          echo '=== TOOLCHAIN ==='
+          cat "$ROOT/lean-toolchain"
+          echo '=== SOURCE DECLARATION TSV MATCHES ==='
+          grep -n -F -e 'FoldMix.rarity_orient' -e 'FoldWilson.wilson_chessboard_even' "$ROOT/DECLS.tsv" || true
+          # Never execute the untrusted external proof code in this job.
+          test -s build/ym4-vol12-upstream/ARCHIVE-FILES.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-upstream-attestation-metadata
+          path: |
+            build/ym4-vol12-upstream/ARCHIVE-FILES.txt
+            build/ym4-vol12-upstream/RELATED-FILES.txt
+            build/ym4-vol12-upstream/DECLARATIONS.txt
+          retention-days: 30
+          if-no-files-found: warn

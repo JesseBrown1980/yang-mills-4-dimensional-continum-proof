@@ -1,0 +1,40 @@
+name: YM4 VOL19 SU2 boundary orbit and source Gram
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/ym4-vol12-finite-packet-pilot-20261123
+    paths:
+      - tests/ym4_vol19_orbit_source_gram.py
+      - docs/certificate-atlas/YM4-VOL19-ORBIT-SOURCE-GRAM-20261123.hbp
+      - .github/workflows/ym4-vol19-orbit-source-gram.yml
+
+jobs:
+  exact-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject Python float literals
+        run: |
+          python3 - <<'PY'
+          import ast
+          from pathlib import Path
+          p = Path('tests/ym4_vol19_orbit_source_gram.py')
+          ast_tree = ast.parse(p.read_text())
+          assert all(not isinstance(node.value,float)
+                     for node in ast.walk(ast_tree)
+                     if isinstance(node,ast.Constant))
+          print('YM4_VOL19_NO_FLOAT|PASS')
+          PY
+      - name: Verify normal and optimized rational replay against frozen HBP
+        run: |
+          python3 tests/ym4_vol19_orbit_source_gram.py > /tmp/vol19-normal.hbp
+          python3 -O tests/ym4_vol19_orbit_source_gram.py > /tmp/vol19-optimized.hbp
+          diff -u /tmp/vol19-normal.hbp /tmp/vol19-optimized.hbp
+          diff -u docs/certificate-atlas/YM4-VOL19-ORBIT-SOURCE-GRAM-20261123.hbp /tmp/vol19-normal.hbp
+          sha256sum /tmp/vol19-normal.hbp
+      - name: Upload rational receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: ym4-vol19-source-gram-receipt
+          path: /tmp/vol19-normal.hbp

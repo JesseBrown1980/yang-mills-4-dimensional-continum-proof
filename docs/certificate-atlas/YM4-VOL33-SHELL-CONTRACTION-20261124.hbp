@@ -1,0 +1,11 @@
+YM4_VOL33_MODEL|L=6|original_4D_integer_site_geometry=PASS|continuous_SU2_measurement=SEPARATE_PILOT
+YM4_VOL33_GEOMETRY|r=1|d=2|N=8|J=1|pair_sum=64|hist_bins=33|PASS
+YM4_VOL33_CONTRACTION|r=1|d=2|independent_integer_fields=2|raw=EXACT|connected=EXACT|diag_plus_offdiag=EXACT|PASS
+YM4_VOL33_GEOMETRY|r=1|d=3|N=8|J=0|pair_sum=64|hist_bins=33|PASS
+YM4_VOL33_CONTRACTION|r=1|d=3|independent_integer_fields=2|raw=EXACT|connected=EXACT|diag_plus_offdiag=EXACT|PASS
+YM4_VOL33_GEOMETRY|r=2|d=2|N=24|J=9|pair_sum=576|hist_bins=129|PASS
+YM4_VOL33_CONTRACTION|r=2|d=2|independent_integer_fields=2|raw=EXACT|connected=EXACT|diag_plus_offdiag=EXACT|PASS
+YM4_VOL33_GEOMETRY|r=2|d=3|N=24|J=0|pair_sum=576|hist_bins=129|PASS
+YM4_VOL33_CONTRACTION|r=2|d=3|independent_integer_fields=2|raw=EXACT|connected=EXACT|diag_plus_offdiag=EXACT|PASS
+YM4_VOL33_HAAR|beta=0|K0_Re=1/4|Knonzero_Re=0|mean_Re=0|ANALYTIC
+YM4_VOL33_SCOPE|math_contraction=PASS|beta2_mc=PROVISIONAL|beta9pow12_shell=OPEN|continuum_11=OPEN

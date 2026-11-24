@@ -1,0 +1,15 @@
+YM4_VOL26_CENTER|r=1|plaquette=0_1|internal_links=4|single_mixed_face_witnesses=4|PASS
+YM4_VOL26_CENTER|r=2|plaquette=0_1|internal_links=4|single_mixed_face_witnesses=4|PASS
+YM4_VOL26_CENTER|r=3|plaquette=0_1|internal_links=4|single_mixed_face_witnesses=4|PASS
+YM4_VOL26_CENTER|r=4|plaquette=0_1|internal_links=4|single_mixed_face_witnesses=4|PASS
+YM4_VOL26_HAAR|m2=1/4|m4=1/8|m6=5/64|m8=7/128|PASS
+YM4_VOL26_SPIN2|mean=0|variance=1/25|harmonics_le2=ZERO|PASS
+YM4_VOL26_KERNEL|m=0|chord2=2|PASS
+YM4_VOL26_KERNEL|m=1|chord2=3/2|PASS
+YM4_VOL26_KERNEL|m=2|chord2=6/5|PASS
+YM4_VOL26_KERNEL|m=3|chord2=1|PASS
+YM4_VOL26_KERNEL|m=27|chord2=1/5|PASS
+YM4_VOL26_KERNEL|m=81|chord2=1/14|PASS
+YM4_VOL26_SOURCE_VAR|beta=9^12|lower=1/423433462692859012475599601664|PASS
+YM4_VOL26_DEGREE|beta=9^12|variance_allowance=1/256|min_m=30630314141519043787530621|PASS
+YM4_VOL26_SCOPE|centered_plaquette_source=ACTUAL|one_q_Lipschitz_beta_over_2=ANALYTIC|positive_physical_witness=OPEN|continuum_11=OPEN

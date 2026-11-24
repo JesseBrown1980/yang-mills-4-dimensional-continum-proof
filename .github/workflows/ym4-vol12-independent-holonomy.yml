@@ -1,0 +1,43 @@
+name: YM4 VOL12 independent SU2 holonomy and boundary variance review
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol12_independent_holonomy_audit.py'
+      - 'docs/certificate-atlas/YM4-VOL12-INDEPENDENT-HOLONOMY-20261123.hbp'
+      - '.github/workflows/ym4-vol12-independent-holonomy.yml'
+  push:
+    paths:
+      - 'tests/ym4_vol12_independent_holonomy_audit.py'
+      - 'docs/certificate-atlas/YM4-VOL12-INDEPENDENT-HOLONOMY-20261123.hbp'
+      - '.github/workflows/ym4-vol12-independent-holonomy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-winding-sector-and-covariance-checker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Original four-dimensional SU2 flat-holonomy / sharp covariance replay
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-independent
+          python3 -I -B tests/ym4_vol12_independent_holonomy_audit.py > build/ym4-vol12-independent/ORIGINAL.hbp
+          python3 -O -I -B tests/ym4_vol12_independent_holonomy_audit.py > build/ym4-vol12-independent/OPTIMIZED.hbp
+          cmp build/ym4-vol12-independent/ORIGINAL.hbp build/ym4-vol12-independent/OPTIMIZED.hbp
+          cmp build/ym4-vol12-independent/ORIGINAL.hbp docs/certificate-atlas/YM4-VOL12-INDEPENDENT-HOLONOMY-20261123.hbp
+          echo '0d59fbbfca683eeb88b8a1b05261edcbe1a1ed6d0afd3bc1d39c6cdd109f7219  build/ym4-vol12-independent/ORIGINAL.hbp' | sha256sum -c
+          grep -Fq '|flat_config_B_polyakov_trace=minus2|' build/ym4-vol12-independent/ORIGINAL.hbp
+          grep -Fq '|all_Gauss_sector_good_region_transport=OPEN|' build/ym4-vol12-independent/ORIGINAL.hbp
+      - name: Strict no floating point source gate
+        run: python3 -I -B scripts/no_float_gate.py .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-independent-holonomy-review
+          path: build/ym4-vol12-independent/
+          retention-days: 90
+          if-no-files-found: warn

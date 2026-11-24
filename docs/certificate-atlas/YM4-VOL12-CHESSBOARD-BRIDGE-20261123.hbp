@@ -1,0 +1,7 @@
+YM4_VOL12_CHESSBOARD_IMPORT|source=computoergosum_22-01_FoldMix_rarity_orient|status=EXTERNAL_SOURCE_AUDIT_OPEN|json=0
+YM4_VOL12_CHESSBOARD_SCOPE|original_continuous_SU2_Wilson=REQUIRED|periodic_even_L_ge4=REQUIRED|same_orientation_external_rate=REQUIRED|odd_L=OPEN|json=0
+YM4_VOL12_GEOMETRY|independent_stars_share_no_plaquette=PASS|incident_plaquettes_per_star=6|plane_orientations=6|L3=NEGATIVE_SCOPE|L4_L6=PASS|json=0
+YM4_VOL12_JOINT|if_external_chessboard=ACCEPTED|unconditional_joint_bad_star_le=rho_power_r|rho=6_times_q_power_one_sixth|json=0
+YM4_VOL12_RATE|epsilon=1/16|y=1/64|a=1/1280|beta=9power6|beta_integer=531441|cap_A_bits=143|N=4144|rho_lt=2power_minus663|VOL10_rho_le_18power_minus57=CONDITIONAL_PASS|json=0
+YM4_VOL12_ISLAND|original_even_periodic_SU2_root_cluster_tail_le=18power_minus_m_minus2|status=CONDITIONAL_ON_EXTERNAL_ORIENT_CHESSBOARD|json=0
+YM4_VOL12_REDS|odd_L=REJECTED|arbitrary_exterior=REJECTED|blocked_scale=REJECTED|physical_cube=OPEN|11_continuum_gates=OPEN|json=0

@@ -1,0 +1,56 @@
+name: YM4 VOL12 independent upstream model-definition audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ym4-vol12-upstream-model-map.yml'
+  push:
+    paths:
+      - '.github/workflows/ym4-vol12-upstream-model-map.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-model-map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: SHA-pin upstream source and inspect native definitions
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol12-model-audit
+          ARCHIVE=build/ym4-vol12-model-audit/source.tar.gz
+          curl --fail --location --silent --show-error --retry 3 --max-time 150 \
+            https://computoergosum.com/en/principia/lean/principia-ym-three-volumes-2026-11-13.tar.gz \
+            -o "$ARCHIVE"
+          echo 'f8a444517b2f013a287ec20075977cb0afa71c019de2d3c3da577118c05aea62  build/ym4-vol12-model-audit/source.tar.gz' | sha256sum -c
+          tar -xzf "$ARCHIVE" -C build/ym4-vol12-model-audit
+          ROOT=build/ym4-vol12-model-audit/principia-ym-three-volumes-2026-11-13
+          echo '=== DEFINITIONS SEARCH ==='
+          grep -RnE --include='*.lean' '(^|[[:space:]])(noncomputable[[:space:]]+)?(def|abbrev)[[:space:]]+(bigP|Cfg|wilsonMeasure|Zw|ballQ|G)([[:space:]]|\(|:)' "$ROOT" | head -100 | tee build/ym4-vol12-model-audit/DECLARATIONS.txt
+          echo '=== FOLDCHESS / WILSONDATA / ENTROPY ==='
+          for filename in FoldChess/WilsonDataV1.lean FoldChess/RarityPlaqV1.lean FoldChess/MixAllV1.lean FoldChess/ProbFormV1.lean FoldChess/RarityAllV1.lean; do
+            echo "SOURCE $filename"
+            grep -nE -C 3 '^(noncomputable )?(def|abbrev|theorem) (bigP|Cfg|wilsonMeasure|Zw|ballQ|rarity_orient)|^import |^namespace' "$ROOT/$filename" | head -120 || true
+          done
+          echo '=== MATCHING MODEL VARIABLES ==='
+          grep -RnE --include='*.lean' '^(noncomputable )?(def|abbrev) (wilsonMeasure|bigP|Zw|Cfg|ballQ)' "$ROOT" | head -80
+          echo '=== ACTUAL ORIGINAL WILSON GIBBS DENSITY ==='
+          sed -n '822,851p' "$ROOT/Lattice/TorusDecV2.lean"
+          echo '=== DEFINITION-LEVEL ACCEPTANCE CHECKS ==='
+          grep -Fq 'abbrev Cfg := Lk N → QBall' "$ROOT/FoldChess/WilsonDataV1.lean"
+          grep -Fq 'if y < 1 - (hol N ω p).re then 1 else 0' "$ROOT/FoldChess/RarityAllV1.lean"
+          grep -Fq 'def ballQ (r : ℝ) : Set QBall' "$ROOT/FoldChess/RarityEvenV1.lean"
+          grep -Fq 'noncomputable def Zw (β : ℝ)' "$ROOT/FoldChess/PeierlsEvenV1.lean"
+          grep -Fq 'theorem rarity_orient (hN : N = 2 * m)' "$ROOT/FoldChess/MixAllV1.lean"
+          echo 'YM4_VOL12_MODEL_MAP|source_sha256=PASS|native_SU2_QBall=PASS|strict_original_plaquette_defect=PASS|Haar_chordal_ball=PASS|unnormalized_Wilson_mass=PASS|fixed_orientation_Lean_rate=PASS|json=0'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ym4-vol12-native-source-definition-map
+          path: build/ym4-vol12-model-audit/DECLARATIONS.txt
+          retention-days: 90
+          if-no-files-found: warn
