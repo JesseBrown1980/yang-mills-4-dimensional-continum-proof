@@ -25,7 +25,7 @@ jobs:
         run: python3 -I -X utf8 scripts/no_float_gate.py .
       - name: Verify frozen 42-chain input and integer evidence accounting
         run: |
-          printf '%s  %s\n' '1fec292146cec76bb785ba0d749771204f74b4d2c248e0416d6cfce95bf9f329' 'docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv' | sha256sum -c -
+          printf '%s  %s\n' '616e59d84d82d259a9d9b9b91d23085f3133bd8efc7ce9b9bfd258b8dc0296d8' 'docs/certificate-atlas/YM4-VOL34-FIXED-POINT-CHAINS-20261124.csv' | sha256sum -c -
           python3 -I -B tests/ym4_vol34_fixed_point_replica_verifier.py >/tmp/ym4-vol34-normal.hbp
           python3 -I -O tests/ym4_vol34_fixed_point_replica_verifier.py >/tmp/ym4-vol34-optimized.hbp
           diff -u /tmp/ym4-vol34-normal.hbp /tmp/ym4-vol34-optimized.hbp
