@@ -125,7 +125,7 @@ def hbp_nodes(text):
             "HOLD", "FINITE_S3", "EXTERNAL", "CANDIDATE"),
             "invalid_proof_status")
         rows[uid] = fields
-    require(len(rows) == 115, "atlas_expected_nodes")
+    require(len(rows) == 120, "atlas_expected_nodes")
     for uid, row in rows.items():
         dependencies = row.get("dependencies", "NONE")
         for dep in dependencies.split(","):
@@ -301,7 +301,7 @@ def atlas_provenance():
     verify_no_runtime_code(page)
     require(page.count('<svg class="pane ') == 12,
             "four_views_times_three_cameras")
-    require(page.count('<article class="entry" id="') == 115,
+    require(page.count('<article class="entry" id="') == 120,
             "rendered_source_cards_mismatch")
     for view in ("proof", "wilson", "cutoff", "bridges"):
         for angle in ("0", "1", "2"):
@@ -341,9 +341,9 @@ def atlas_provenance():
         "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md",
     ):
         require(artifact in manifest, "missing_atlas_source_" + artifact)
-    require('"curated_records": 115' in manifest
-            and '"resource_files": 553' in manifest
-            and '"pr_events": 104' in manifest,
+    require('"curated_records": 120' in manifest
+            and '"resource_files": 558' in manifest
+            and '"pr_events": 107' in manifest,
             "machine_manifest_totals_mismatch")
     volume_note = (folder / "NOTE-YM4-VOL01-VOLUME-SLOPE-OBSTRUCTION-20261122.md").read_text(encoding="utf-8")
     require("volume_L_ge3_first_two_plaquette_coefficients=SCALAR" in hbp,
@@ -503,6 +503,17 @@ def atlas_provenance():
             and "physical_size_cube=OPEN" in hbp
             and "11_original_gates=OPEN" in hbp,
             "VOL11_conditional_good_exterior_falsely_promoted_as_full_cube")
+    for uid in ("YM4-VOL12-A", "YM4-VOL12-B", "YM4-VOL12-C",
+                "YM4-VOL12-D", "YM4-VOL12-E"):
+        require(records[uid]["status"] == "DRAFT_CHECKED", "VOL12_scope_" + uid)
+        require(page.count('href="#' + uid + '"') >= 12, "VOL12_camera_" + uid)
+        require(overview.count('href="index.html#' + uid + '"') == 4,
+                "VOL12_overview_" + uid)
+    require("boundary_conditioned=OPEN" in hbp and "animal_base=72" in hbp
+            and "multiscale=OPEN" in hbp, "VOL12_scope_boundary")
+    require("YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp" in manifest
+            and "PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp" in manifest,
+            "VOL12_frozen_sources")
     require("first_neutral_Wilson_weight_fixed_L2=FINITE_PASS"
             in hbp and "uniform_volume_Wilson_weight=OPEN" in hbp,
             "fixed_volume_vs_continuum_scope_mismatch")
@@ -599,10 +610,10 @@ def atlas_provenance():
         except ValueError:
             failures += 1
     require(failures == 28, "negative_scope_controls_not_enforced")
-    print("ATLAS4D_INDEX|nodes=115|open_gates=11|external_leads=22"
+    print("ATLAS4D_INDEX|nodes=120|open_gates=11|external_leads=22"
           "|crossrepo=3|json=0")
     print("ATLAS4D_VIEW|graph_modes=4|camera_positions=3"
-          "|script_free=YES|source_cards=115|json=0")
+          "|script_free=YES|source_cards=120|json=0")
     print("ATLAS4D_ADVERSARIES|negative_controls=28_REJECTED"
           "|physics_from_plot=NONE|json=0")
 

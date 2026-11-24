@@ -1,5 +1,13 @@
 # Four-dimensional Yang–Mills Certificate Atlas
 
+## November 24 — VOL12 unconditional periodic bad-star and island bound
+
+[Proof](NOTE-YM4-VOL12-CHESSBOARD-BAD-STAR-CLUSTERS-20261124.md) · [checker](../../tests/ym4_su2_vol12_chessboard_clusters.py) · [prediction](PREDICT-YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [receipt](YM4-VOL12-CHESSBOARD-CLUSTERS-20261124.hbp) · [merged PR #119](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/119).
+
+VOL12-A–E are indexed in all twelve camera views and four overview panels. The original SU(2) equilibrium bound holds on even periodic L >= 4 at one lattice scale: arbitrary-set probability <= rho_star^|S|; rooted island probability <= 72^(m-1) rho_star^m. The VOL10 conditional joint input is now supplied in this regime. Arbitrary-boundary conditioned control, odd L, external human mathematical review and all eleven continuum gates remain OPEN. Atlas coordinates are navigation only.
+
+Current inventory: 120 nodes, 558 resources, 107 PR records.
+
 ## November 22 — VOL11 original SU2 exponential Haar and genuine separated-plaquette joint certificate
 
 [Continuous SU2 mathematical theorem](NOTE-YM4-VOL11-SEPARATED-DEFECTS-20261122.md) · [independent proof audit](../../reviews/YM4-VOL11-HAAR-JOINT-INDEPENDENT-AUDIT-20261122.md) · [original 4D integer source](../../tests/ym4_su2_vol11_separated_defects.py) · [exact frozen HBP](YM4-VOL11-SEPARATED-DEFECTS-20261122.hbp) · [PR #111](https://github.com/JesseBrown1980/yang-mills-4-dimensional-continum-proof/pull/111).
