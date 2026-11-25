@@ -1,0 +1,28 @@
+name: YM4 VOL14 Gaussian blocking-map comparison
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_su2_vol14_gaussian_blocking.py'
+      - 'docs/certificate-atlas/*VOL14*'
+      - '.github/workflows/ym4-vol14-gaussian-blocking.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gaussian-integer-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Integer multiplicities and bounds
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14
+          python3 -I -B tests/ym4_su2_vol14_gaussian_blocking.py > build/ym4-vol14/VOL14.hbp
+          python3 -O -I -B tests/ym4_su2_vol14_gaussian_blocking.py > build/ym4-vol14/REPLAY.hbp
+          cmp build/ym4-vol14/VOL14.hbp build/ym4-vol14/REPLAY.hbp
+          cmp build/ym4-vol14/VOL14.hbp docs/certificate-atlas/YM4-VOL14-GAUSSIAN-BLOCKING-20261124.hbp
+          cat build/ym4-vol14/VOL14.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
