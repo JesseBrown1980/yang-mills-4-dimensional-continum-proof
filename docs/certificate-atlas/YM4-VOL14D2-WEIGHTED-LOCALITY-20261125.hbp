@@ -1,0 +1,4 @@
+YM4_VOL14D2|T_norm_sq_le=13|H_norm_le=57|offsets=33|range_l1=2|H_integer_entries=525780|json=0
+YM4_VOL14D2|H_floor=1/105|weight=65/64|accretive_floor=1/220|larger_weight_test=REJECTED|json=0
+YM4_VOL14D2|C_xy_le=3000*(64/65)^r|strip_linf=log(65/64)|chebyshev_ratio_lt=39/40|json=0
+YM4_VOL14D2|nonflat_background=OPEN|sharp_Bloch_strip=OPEN|physical_mass_gap=OPEN|json=0
