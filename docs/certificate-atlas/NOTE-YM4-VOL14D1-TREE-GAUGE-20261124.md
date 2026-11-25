@@ -1,6 +1,6 @@
 # VOL14-D1 — exact linearized constrained inverse in a block-tree gauge
 
-**Status:** AI-authored mathematical derivation, locally reconstructed integer tables, independent review and hosted replay pending. Scope: free Lie-algebra fluctuation at the identity, b=3, even periodic coarse side M>=4. This addresses the two gauge-specific gaps raised in the independent VOL14-D calibration review: the gauge degeneracy and the actual constraint L=Q-d_coarse c. Background-field uniformity, a sharp complex Bloch strip and all physical continuum obligations remain OPEN.
+**Status:** AI-authored mathematical derivation, locally reconstructed integer tables, independent AI review PASS (Claude, 24 November 2026); hosted replay PASS (45518533698); external human review OPEN. Scope: free Lie-algebra fluctuation at the identity, b=3, even periodic coarse side M>=4. This addresses the two gauge-specific gaps raised in the independent VOL14-D calibration review: the gauge degeneracy and the actual constraint L=Q-d_coarse c. Background-field uniformity, a sharp complex Bloch strip and all physical continuum obligations remain OPEN.
 
 The expectation file is sealed before hosted replay, after local reconstruction; it is not a blind prediction.
 
@@ -47,16 +47,16 @@ This result is volume-uniform at b=3. The eigenvalue floor concerns the stated i
 
 ## 4. First rigorous coarse-distance locality estimate
 
-Use the coarse nearest-neighbour graph distance r between anchor blocks, with periodic distance on the torus. T has range at most one coarse step, d has range at most one, and H has range at most four in the block-local Z coordinates. For a positive operator with spectrum [a,B] the degree-n Chebyshev inverse polynomial has uniform error at most (2/a) q^(n+1), q=(sqrt(B/a)-1)/(sqrt(B/a)+1). For a=1/105 and B=2048, B/a=215040<511^2, so q<255/256. This follows directly from the normalized Chebyshev residual on the interval, divided by the spectral variable.
+Use the coarse nearest-neighbour graph distance r between anchor blocks, with periodic distance on the torus. T has range at most one coarse step, d has range at most one, and H has range at most four in the block-local Z coordinates. The independent review observed the sharper range two: a (mu,nu) plaquette row of dT depends only on blocks 0,e_mu,e_nu,e_mu+e_nu. Their pairwise differences have l1 norm at most two. For a positive operator with spectrum [a,B] the degree-n Chebyshev inverse polynomial has uniform error at most (2/a) q^(n+1), q=(sqrt(B/a)-1)/(sqrt(B/a)+1). For a=1/105 and B=2048, B/a=215040<511^2, so q<255/256. This follows directly from the normalized Chebyshev residual on the interval, divided by the spectral variable.
 
 T p_n(H) T^* has range at most 4n+2. For r>=3 choose n=floor((r-3)/4); for r<=2 use the operator norm of C. The block-to-block covariance therefore obeys the explicit uniform estimate
 
 $$\|C_{xy}\|\le22890(255/256)^{\lfloor(r+1)/4\rfloor}.$$
 
-Here 22890=109*210. The rate is deliberately conservative; this is a rigorous first locality certificate for the actual gauge-fixed linearized candidate at b=3, not a sharp block-scale rate or the general-b b^(-2) prefactor.
+Here 22890=109*210. Using range two instead, the exponent improves to floor((r-1)/2) for r>=1, with exponent zero at r=0. The original frozen receipt and original bound are retained. The original rate needs roughly 10^4 coarse steps before the bound falls below one. The rate is deliberately conservative; this is a rigorous first locality certificate for the actual gauge-fixed linearized candidate at b=3, not a sharp block-scale rate or the general-b b^(-2) prefactor.
 
 ## 5. Next acceptance targets
 
 Use the 240 independent link coordinates per block per colour (324-80-4), with a well-conditioned basis for the crossing zero-sum spaces, to construct the Bloch symbol of H. A uniform complex strip estimate and improved covariance prefactor are the next numerical/analytic acceptance gate; the reported scalar tentative floor 4 sin^2(pi/(2b)) must not be transferred to this different operator. Extend the gauge section and estimates to a nonflat small-field background with a controlled nonlinear constraint and Jacobian. At every RG scale re-establish the small-field energy/entropy and large-field estimates on the actual induced measure, rather than iterating the scale-zero geometric angle bound. These steps are still OPEN.
 
-[Local expected rows](EXPECTED-YM4-VOL14D1-TREE-GAUGE-20261124.hbp) · [integer checker](../../tests/ym4_vol14d1_tree_gauge.py). The checker verifies the curvature reconstruction and norm arithmetic, not all background-field or nonlinear assertions.
+[Local expected rows](EXPECTED-YM4-VOL14D1-TREE-GAUGE-20261124.hbp) · [integer checker](../../tests/ym4_vol14d1_tree_gauge.py). The checker verifies the curvature reconstruction and norm arithmetic, not all background-field or nonlinear assertions. The supplied independent review and exploratory source are archived in reviews/07-VOL14D-CALIBRATION-AND-COERCIVITY-2026-11-24.md and reviews/07-vol14d_bloch_crosscheck.py.txt (text archive of floating-point Python, kept outside the integer executable proof kernel).
