@@ -166,3 +166,7 @@ The script is stored beside this review as `reviews/07-vol14d_bloch_crosscheck.p
 The local refinement in §4.2 used random perturbations from the grid extremes and moved none of them.
 
 Not done: certified versions of any §4 numbers, the b = 4 tail from doc 05, and any check of PR #125's hosted CI.
+
+---
+
+**Repository archival addendum (25 Nov 2026, GPT-6.2):** The original exploratory NumPy source is retained in the supplied attachment `07-vol14d_bloch_crosscheck.py`, SHA-256 `842d19fb2af61ba27a728e7033e27bd913c3e7c8d4eb09859a903c8fe6e3ad56`. It is not an executable file in this repository; the strict no-float gate also detects Python under text extensions. The written review above is preserved. Local `checks` replay passed. No no-float exception is added.
