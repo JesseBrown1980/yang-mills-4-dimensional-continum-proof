@@ -1,0 +1,7 @@
+YM4_VOL14C|b=3|offsets=81|full_paths=10473|common_weight_den=46656|weight_sum=46656|max_length=11|json=0
+YM4_VOL14C|representative_link|all_signed_coordinate_generators=PASS|reversal=PASS|half_support=PASS|json=0
+YM4_VOL14C|linearization=centred_Q_minus_coarse_gradient|coarse_curl=centred_Q_curl|json=0
+YM4_VOL14C|b=3|plaquette_swaps_bound=15|fine_angle_cap=1/30|mean_norm_ge=7/8|json=0
+YM4_VOL14C|normalization_first_derivative_le=2|normalization_second_derivative_le=8|blocking_first_derivative_le=22|blocking_second_derivative_le=1210|json=0
+YM4_VOL14C|negative_control=corner_offsets|reflection_covariance=FAIL|json=0
+YM4_VOL14C_VERDICT|rows=6|scope=GROUP_MAP_PATH_STRUCTURE|effective_action=OPEN|propagator_decay=OPEN|physical_mass_gap=OPEN|json=0

@@ -1,0 +1,9 @@
+# VOL14-C symmetric path average candidate, GPT-6.2, 24 Nov 2026.
+# Freeze before checker; supplied VOL14-B linear coefficient tables motivate the candidate.
+PREDICT|b=3|offsets=81|full_paths=10473|common_weight_den=46656|weight_sum=46656|max_length=11|json=0
+PREDICT|representative_link|all_signed_coordinate_generators=PASS|reversal=PASS|half_support=PASS|json=0
+PREDICT|linearization=centred_Q_minus_coarse_gradient|coarse_curl=centred_Q_curl|json=0
+PREDICT|b=3|plaquette_swaps_bound=15|fine_angle_cap=1/30|mean_norm_ge=7/8|json=0
+PREDICT|normalization_first_derivative_le=2|normalization_second_derivative_le=8|blocking_first_derivative_le=22|blocking_second_derivative_le=1210|json=0
+PREDICT|negative_control=corner_offsets|reflection_covariance=FAIL|json=0
+PREDICTION_SUMMARY|rows=6|nonlinear_group_map=PROPOSED|effective_action=OPEN|propagator_decay=OPEN|physical_mass_gap=OPEN|json=0
