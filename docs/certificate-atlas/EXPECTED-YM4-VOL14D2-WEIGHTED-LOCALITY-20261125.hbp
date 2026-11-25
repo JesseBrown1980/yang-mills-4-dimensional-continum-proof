@@ -1,0 +1,5 @@
+LOCAL_EXPECTATION|scope=b3_identity_tree_gauge|review=07|not_blind=1|json=0
+EXPECTED|T_norm_sq_le=13|H_norm_le=57|offsets=33|range_l1=2|json=0
+EXPECTED|H_floor=1/105|weight=65/64|accretive_floor=1/220|json=0
+EXPECTED|C_xy_le=3000*(64/65)^r|strip_linf=log(65/64)|json=0
+TARGET_EXPLORATORY|H_min=0.0326|H_max=16.2|axis_strip_near_singularity=1.5|scope=grid_only|json=0
