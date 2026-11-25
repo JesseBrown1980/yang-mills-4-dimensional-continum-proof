@@ -1,6 +1,6 @@
 # VOL14-C — a symmetric nonlinear SU(2) path-average candidate
 
-**Status:** AI-written proof candidate, independent review and hosted replay pending. Frozen prediction: abf6adc1d494d36b26699f57d63d72511f0d71a0. Builds on VOL14-A and the supplied, locally audited VOL14-B patches (original commits 15fd98c and f902ddd). This is a constructed candidate with the desired centred linearized curl, rather than an identification with Bałaban's full nonlinear averaging operation.
+**Status:** AI-written proof candidate, independent AI review PASS (Claude, 24 November 2026); hosted replay PASS (run 45512212398); external human review OPEN. Frozen prediction: abf6adc1d494d36b26699f57d63d72511f0d71a0. Builds on VOL14-A and the supplied, locally audited VOL14-B patches (original commits 15fd98c and f902ddd). This is a constructed candidate with the desired centred linearized curl, rather than an identification with Bałaban's full nonlinear averaging operation.
 
 ## 1. A globally measurable group-valued map
 
@@ -8,7 +8,7 @@ Let b=2h+1 be odd, L=bM with M even and at least four. Each coarse site x is a f
 
 $$P_{z,a,c}=U(C_x(z,a))\,U[x+z,y+z]\,U(C_y(z,c))^{-1}.$$
 
-Let V_e be their quaternion mean, with each z assigned weight b^(-4), and the two connector choices independently uniform conditional on z. Define B(U)_e=V_e/|V_e| when V_e is nonzero, and use the original straight product U[x,y] at V_e=0. The reverse coarse link is defined by inversion. Unit quaternions identify SU(2) with the sphere in R^4; multiplication by endpoint group elements acts orthogonally. Every path transforms by the same endpoint gauge action. Both normalization and the straight fallback commute with it. This gives a Borel measurable, gauge-equivariant group-valued map on the whole configuration space.
+Let V_e be their quaternion mean, with each z assigned weight b^(-4), and the two connector choices independently uniform conditional on z. Define B(U)_e=V_e/|V_e| when V_e is nonzero, and use the original straight product U[x,y] at V_e=0. The reverse coarse link is defined by inversion. Unit quaternions identify SU(2) with the sphere in R^4; multiplication by endpoint group elements acts orthogonally. Every path transforms by the same endpoint gauge action. Both normalization and the straight fallback commute with it. This gives a Borel measurable group-valued map on the whole configuration space, equivariant under every local fine gauge transformation at the coarse endpoints.
 
 ## 2. Symmetry and open-half support
 
@@ -46,7 +46,18 @@ For normalization N(v)=v/|v| at r=|v|>=7/8, the operator norm of DN is <=1/r<=2 
 
 $$\|DB\|\le2\ell,\qquad \|D^2B\|\le8\ell^2+2\ell(\ell-1)\le10\ell^2.$$
 
-For b=3, ell=11, giving 22 and 1210. These are single-map ambient derivative bounds evaluated at group fields in the stated domain. They do not supply an iterated RG remainder estimate; uniform bounds along a specified perturbation segment require staying within a suitable nonzero-mean neighborhood.
+For b=3, ell=11, giving 22 and 1210. These are single-map ambient derivative bounds evaluated at group fields in the stated domain. In exponential Lie-algebra coordinates X -> U exp(X), the second derivative has the additional contribution from the second derivative of the exponential at zero, bounded by 22 in the sup norm. Thus for b=3 the first and second bounds in those coordinates are 22 and 1232, respectively. VOL14-D uses Lie-algebra fluctuation coordinates. They do not supply an iterated RG remainder estimate; uniform bounds along a specified perturbation segment require staying within a suitable nonzero-mean neighborhood.
+
+## 4A. Exact scale-zero calibration with VOL12
+
+Keep the floor 7/8 and set beta=9^7=4782969, epsilon=1/500. The VOL12 plaquette defect threshold is epsilon/4=1/2000. The alternating cosine series gives 1-cos(1/30) >= 1/(2*30^2)-1/(24*30^4) = 10799/19440000 > 1/2000. Since 1-cos(theta) increases on [0,pi], a nondefective plaquette has angle less than 1/30.
+
+With A_beta=1536 exp(3/4) beta^(3/2), VOL12 gives rho_star=6 A_beta exp(-beta epsilon/64) and rho_D=A_beta^4 exp(-beta epsilon/16). Using exp(3/4)<3, exp(3)<27 and exp(-x)<=2^(-floor(x)), the exact integer witnesses are
+
+    6*1536*3^22 < 2^49, floor(9^7/32000)=149,
+    1536^4*27*3^84 < 2^181, floor(9^7/8000)=597.
+
+Therefore rho_star < 2^-100 and rho_D < 2^-416. On an even periodic original Wilson lattice compatible with b=3, the union of the two endpoint blocks has 162 vertices and at most 972 internal plaquettes (six positive plaquette types per base). By the direct VOL12 plaquette estimate and union bound, failure of the sufficient local small-field condition has probability less than 972*2^-416 < 2^-406. This is a local periodic-equilibrium bound for a specified coarse link, not a uniform probability that the whole volume is small-field. Absence of bad stars alone is insufficient for the local small-plaquette hypothesis; use the original plaquette indicators directly. Transformed-measure and arbitrary-exterior estimates remain separate OPEN gates.
 
 ## 5. Evidence and next gates
 
