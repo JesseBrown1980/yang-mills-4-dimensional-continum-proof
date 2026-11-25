@@ -1,0 +1,8 @@
+# VOL14-D1: locally computed integer fixtures, sealed before hosted replay.
+# These were obtained by author-side reconstruction, not a blind prediction.
+EXPECTED|b=3|L_row_nnz=459|L_row_norm_sq=277/729|crossing_count=27|crossing_weight=1/27|json=0
+EXPECTED|rows=324|tree_zero_rows=80|internal=216|crossing=108|identity_mod_tree_L=PASS|json=0
+EXPECTED|S_row_max=1138/81|S_col_max=37|unweighted_norm_sq_le=42106/81|json=0
+EXPECTED|weighted_norm_sq_ceiling_sequence=291,118,109,107,106,105,105,105|json=0
+EXPECTED|coercivity=1/105|H_norm_le=2048|chebyshev_ratio_lt=255/256|json=0
+EXPECTED|nonflat_background=OPEN|sharp_Bloch_strip=OPEN|continuum_mass_gap=OPEN|json=0

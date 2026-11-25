@@ -1,0 +1,28 @@
+name: YM4 VOL14D1 exact tree-gauge coercivity
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d1_tree_gauge.py'
+      - 'docs/certificate-atlas/*VOL14D1*'
+      - '.github/workflows/ym4-vol14d1-tree-gauge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact local reconstruction and weighted norm bound
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d1
+          python3 -I -B tests/ym4_vol14d1_tree_gauge.py > build/ym4-vol14d1/receipt.hbp
+          python3 -O -I -B tests/ym4_vol14d1_tree_gauge.py > build/ym4-vol14d1/replay.hbp
+          cmp build/ym4-vol14d1/receipt.hbp build/ym4-vol14d1/replay.hbp
+          cmp build/ym4-vol14d1/receipt.hbp docs/certificate-atlas/YM4-VOL14D1-TREE-GAUGE-20261124.hbp
+          cat build/ym4-vol14d1/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
