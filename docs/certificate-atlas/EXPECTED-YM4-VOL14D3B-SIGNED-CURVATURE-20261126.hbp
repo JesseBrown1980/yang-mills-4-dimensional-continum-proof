@@ -1,0 +1,5 @@
+LOCAL_EXPECTATION|scope=flat_reference_signed_curvature|not_blind=1|json=0
+EXPECTED|plaquette_types=486|active1=72|active2=132|active4=282|signed_pairs=9530764|json=0
+EXPECTED|weighted_ceilings=1929,715,661,659,659,658,658,658,658,658,658,658|json=0
+EXPECTED|relative_constant_le=658|delta=1/30|half_budget=FAIL|json=0
+EXPECTED|stationary_gauge_Ward_identity=ANALYTIC|nonflat_bound=OPEN|continuum=OPEN|json=0
