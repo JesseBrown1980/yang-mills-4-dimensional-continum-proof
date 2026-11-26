@@ -1,0 +1,28 @@
+name: YM4 VOL14D3A covariant crossing lift
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d3a_covariant_lift.py'
+      - 'docs/certificate-atlas/*VOL14D3A*'
+      - '.github/workflows/ym4-vol14d3a-covariant-lift.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact suffix geometry
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d3a
+          python3 -I -B tests/ym4_vol14d3a_covariant_lift.py > build/ym4-vol14d3a/receipt.hbp
+          python3 -O -I -B tests/ym4_vol14d3a_covariant_lift.py > build/ym4-vol14d3a/replay.hbp
+          cmp build/ym4-vol14d3a/receipt.hbp build/ym4-vol14d3a/replay.hbp
+          cmp build/ym4-vol14d3a/receipt.hbp docs/certificate-atlas/YM4-VOL14D3A-COVARIANT-LIFT-20261126.hbp
+          cat build/ym4-vol14d3a/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
