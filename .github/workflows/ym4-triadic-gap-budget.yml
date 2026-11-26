@@ -1,0 +1,69 @@
+name: YM4 triadic full-first-gap error-budget PR34 falsifier
+
+on:
+  push:
+    branches: [gpt6-ym4-triadic-gap-budget-falsifier-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-TRIADIC-GAP-BUDGET-20261111.hbp'
+      - 'docs/NOTE-YM4-TRIADIC-GAP-BUDGET-FALSIFIER-20261111.md'
+      - 'tests/test_triadic_gap_budget.py'
+      - '.github/workflows/ym4-triadic-gap-budget.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-TRIADIC-GAP-BUDGET-20261111.hbp'
+      - 'docs/NOTE-YM4-TRIADIC-GAP-BUDGET-FALSIFIER-20261111.md'
+      - 'tests/test_triadic_gap_budget.py'
+      - '.github/workflows/ym4-triadic-gap-budget.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-budget-and-complete-first-gap:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve original mathematical prediction before checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 66e797cc671c12aa452a878a4d7f84979ce28eb9 HEAD
+          git show 66e797cc671c12aa452a878a4d7f84979ce28eb9:docs/PREDICTION-YM4-TRIADIC-GAP-BUDGET-20261111.hbp > /tmp/FROZEN.hbp
+          cmp /tmp/FROZEN.hbp docs/PREDICTION-YM4-TRIADIC-GAP-BUDGET-20261111.hbp
+          test "$(grep -c '^PREDICT|id=GB' /tmp/FROZEN.hbp)" -eq 11
+      - name: Strict source no-float gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Direct independent exact rational first-gap budget product
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_triadic_gap_budget.py | tee /tmp/GAP_BUDGET_REPLAY.hbp
+          grep -Fq 'GAP_BUDGET|CONTROL|family_A_weighted_epsilon=0|physical_gap_lower=ln2|family_B_weighted_sum_equals_m0|strict_budget=FAIL' /tmp/GAP_BUDGET_REPLAY.hbp
+          grep -Fq 'GAP_BUDGET|DONE|result=PASS_COUNTERFAMILY_REJECTED|json=0' /tmp/GAP_BUDGET_REPLAY.hbp
+          test "$(grep -c '^GAP_BUDGET|EXACT_LEVEL|' /tmp/GAP_BUDGET_REPLAY.hbp)" -eq 6
+      - name: Four falsification controls must fail closed
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_refinement ignore_dark substitute_defect assert_strict_budget; do
+            if python3 -I -B tests/test_triadic_gap_budget.py "$fault" > /tmp/GAP_BUDGET_FAULT.log 2>&1; then
+              echo "GAP_BUDGET_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'GAP_BUDGET_REJECT|check=' /tmp/GAP_BUDGET_FAULT.log
+            echo "GAP_BUDGET_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Do not promote any physical mass gap
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'sum b_k/a_(k+1)<m_0' docs/NOTE-YM4-TRIADIC-GAP-BUDGET-FALSIFIER-20261111.md
+          echo 'GAP_BUDGET_RELEASE|PR34_COLLAPSING_FAMILY=FAIL|STABLE_FAMILY=PASS|DARK_EXCITATION=REJECT|4D_PHYSICAL_GAP=OPEN'

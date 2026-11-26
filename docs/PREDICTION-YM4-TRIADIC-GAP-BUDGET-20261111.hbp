@@ -1,0 +1,14 @@
+# YM4-TRIADIC-GAP-BUDGET prediction-first negative control, 2026-11-11.
+# Independent replay of PR #34 family B using logarithmic first-gap errors.
+# Derived analytical theorems require mathematical review; finite exact ratios are tested.
+PREDICT|id=GB01|family_B_qk=3power2k_over_3power2kplus1|a_k=3powerminusk|physical_gap_to_zero=YES
+PREDICT|id=GB02|family_B_raw_one_block_Dj=q_j_cubed_minus_q_jminus1|sign=POSITIVE|upper=6a_j_squared
+PREDICT|id=GB03|family_B_minimum_epsilon_k=gamma_k_over3_minus_gamma_kplus1|sign=POSITIVE|full_first_gap=YES
+PREDICT|id=GB04|exact_product|product_j1_toK_of_qj_cubed_over_qjminus1_power3powerjminus1=qK_power3powerK_over_q0|all_K=THEOREM
+PREDICT|id=GB05|budget_sum_K=m0_minus_mK|budget_sum_infinity=m0|strict_less_than_m0=FAIL
+PREDICT|id=GB06|family_A_qk=3powerk_over_3powerkplus1|minimum_epsilon=ZERO|budget_PASS=YES
+PREDICT|id=GB07|dark_control_T=diag_1_qdark_qvisible|true_first=qdark|visible_first_INCORRECT
+PREDICT|id=GB08|raw_Dj_order_a_squared=YES|weighted_sum_finite=YES|strict_margin_budget=ZERO
+PREDICT|id=GB09|test_K=1_2_3_4_5_6|exact_rational=YES|no_float_no_JSON=YES
+PREDICT|id=GB10|fault_wrong_refinement=REJECT|fault_ignore_dark=REJECT|fault_substitute_defect=REJECT|fault_assert_strict_budget=REJECT
+PREDICT|id=GB11|SU2_4D_spectral_comparison=NOT_PROVED|mass_gap=NOT_PROVED|r9=UNTOUCHED
