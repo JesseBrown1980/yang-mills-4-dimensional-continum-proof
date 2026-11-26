@@ -1,0 +1,6 @@
+YM4_VOL14D3A|axis=0|suffix_swaps_max=9|weighted_mean=8/3|json=0
+YM4_VOL14D3A|axis=1|suffix_swaps_max=8|weighted_mean=20/9|json=0
+YM4_VOL14D3A|axis=2|suffix_swaps_max=7|weighted_mean=16/9|json=0
+YM4_VOL14D3A|axis=3|suffix_swaps_max=6|weighted_mean=4/3|json=0
+YM4_VOL14D3A|delta=1/30|V_floor=7/8|LR_error_le=64/315|LR_inverse_le=315/251|json=0
+YM4_VOL14D3A|curvature_form=OPEN|constrained_minimizer_hessian=OPEN|background_locality=OPEN|json=0
