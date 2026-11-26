@@ -1,0 +1,71 @@
+name: YM4-07C unconditional weak Wilson bad-staple probability bound
+
+on:
+  push:
+    branches: [gpt6-ym4-07-weak-conditional-network-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.hbp'
+      - 'docs/NOTE-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.md'
+      - 'tests/test_ym4_07c_bad_field.py'
+      - '.github/workflows/ym4-07c-unconditional-bad-field.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.hbp'
+      - 'docs/NOTE-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.md'
+      - 'tests/test_ym4_07c_bad_field.py'
+      - '.github/workflows/ym4-07c-unconditional-bad-field.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unconditional-bad-staple:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify freeze predates independent integer checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor cc6e618499792ec0c352fdfb9e1532958802eb22 HEAD
+          git show cc6e618499792ec0c352fdfb9e1532958802eb22:docs/PREDICTION-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.hbp > /tmp/YM4_07C_FROZEN.hbp
+          cmp /tmp/YM4_07C_FROZEN.hbp docs/PREDICTION-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.hbp
+          test "$(grep -c '^PREDICT|id=W07C-' /tmp/YM4_07C_FROZEN.hbp)" -eq 14
+      - name: Strict integer-only source scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Rational consequences and geometry checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_07c_bad_field.py | tee /tmp/YM4_07C_REPLAY.hbp
+          grep -Fq 'YM4_07C|GEOMETRY|dimension=4|links_per_site=4|plaquettes_per_site=6|Nl_over_Np=2/3' /tmp/YM4_07C_REPLAY.hbp
+          grep -Fq 'YM4_07C|STAPLE|plaquette_trace_cutoff=7/8|pair_lower=17/32|G_good=YES' /tmp/YM4_07C_REPLAY.hbp
+          grep -Fq 'YM4_07C|BAD_LINK|beta_pow2=16|bound_strict_lt=1048/65536|uniform_in_4D_volume=YES' /tmp/YM4_07C_REPLAY.hbp
+          grep -Fq 'YM4_07C|CONCLUSION|fixed_link_bad_probability_tends_to_zero=DERIVED|global_all_link_event=OPEN|RG=OPEN|physical_gap=OPEN' /tmp/YM4_07C_REPLAY.hbp
+          test "$(grep -c '^YM4_07C|BAD_LINK|' /tmp/YM4_07C_REPLAY.hbp)" -eq 4
+      - name: Corrupt six computational premises and require named failure
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_link_face_ratio weaken_trace_threshold wrong_KL_sign damage_exp8_term inflate_plaquette_count wrong_dyadic_coefficient; do
+            if python3 -I -B tests/test_ym4_07c_bad_field.py "$fault" > /tmp/YM4_07C_FAULT.log 2>&1; then
+              echo "YM4_07C_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_07C_REJECT|reason=' /tmp/YM4_07C_FAULT.log
+            echo "YM4_07C_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Reject upgrades to a continuum mass-gap claim
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'all-link rare-cluster estimate' docs/NOTE-YM4-07C-UNCONDITIONAL-BAD-FIELD-20261111.md
+          echo 'YM4_07C_RELEASE|ONE_LINK_BAD_FIELD=DERIVED|DENSITY=DERIVED|ALL_LINK_CLUSTER=OPEN|WEAK_RG=OPEN|MASS_GAP=OPEN'

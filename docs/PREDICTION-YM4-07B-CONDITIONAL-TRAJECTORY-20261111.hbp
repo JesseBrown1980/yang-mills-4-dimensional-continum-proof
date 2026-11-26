@@ -1,0 +1,9 @@
+# YM4-07B separate prediction freeze, after local lemma but before trajectory code.
+# Finite 4D torus Lk=L0*3^k, 4*L0^4*81^k links. Bare beta is
+# ILLUSTRATIVE, not the asymptotically free SU2 running coupling.
+PREDICT|id=W07B-01|illustrative_beta_k=16_plus_3k|bad_field_complement=UNKNOWN|small_field_conditional_threshold_s=1/2|category=HYPOTHESIS
+PREDICT|id=W07B-02|e_power_6_lower=899/5|proof=exponential_positive_Taylor_terms_n_0_through_5|category=EXACT_RATIONAL
+PREDICT|id=W07B-03|union_good_field_term_ratio_lt=146205/230144|integer_check=146205_lt_230144|category=ALL_K
+PREDICT|id=W07B-04|sum_all_k_good_field_bad_link_events_lt=4L0^4_times_10powminus6_over_1_minus_q|q=146205/230144|category=CONDITIONAL_SUM
+PREDICT|id=W07B-05|illustrative_beta_k=16_plus_k_over_2|union_upper_ratio_gt=27|not_actual_lower_bound=YES|category=NEGATIVE_CONTROL
+PREDICT|id=W07B-06|e_beta_k_3_growth=ARTIFICIAL|physical_SU2_weak_RG=OPEN|bad_field_probability=OPEN|physical_mass_gap=OPEN|category=SCOPE

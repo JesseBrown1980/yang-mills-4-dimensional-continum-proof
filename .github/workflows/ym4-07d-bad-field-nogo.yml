@@ -1,0 +1,75 @@
+name: YM4-07D uniform bad-staple lower bound and all-good no-go
+
+on:
+  push:
+    branches: [gpt6-ym4-07-weak-conditional-network-20261111]
+    paths:
+      - 'docs/PREDICTION-YM4-07D-UNIFORM-BAD-FIELD-LOWER-20261111.hbp'
+      - 'docs/PREDICTION-YM4-07D2-ADAPTIVE-BAD-FIELD-LOWER-20261111.hbp'
+      - 'docs/NOTE-YM4-07D-BAD-FIELD-NOGO-20261111.md'
+      - 'tests/test_ym4_07d_bad_field_nogo.py'
+      - '.github/workflows/ym4-07d-bad-field-nogo.yml'
+  pull_request:
+    paths:
+      - 'docs/PREDICTION-YM4-07D-UNIFORM-BAD-FIELD-LOWER-20261111.hbp'
+      - 'docs/PREDICTION-YM4-07D2-ADAPTIVE-BAD-FIELD-LOWER-20261111.hbp'
+      - 'docs/NOTE-YM4-07D-BAD-FIELD-NOGO-20261111.md'
+      - 'tests/test_ym4_07d_bad_field_nogo.py'
+      - '.github/workflows/ym4-07d-bad-field-nogo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  finite-energy-bad-staple-no-go:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Enforce two separately immutable mathematical prediction freezes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor fdc03eb61dbe98d0d2c05f60f8dfb688cb20645d HEAD
+          git merge-base --is-ancestor 72cb4a4f22cb34231a126fb49af9fdc0811a6b05 HEAD
+          git show fdc03eb61dbe98d0d2c05f60f8dfb688cb20645d:docs/PREDICTION-YM4-07D-UNIFORM-BAD-FIELD-LOWER-20261111.hbp > /tmp/YM4_07D_FROZEN.hbp
+          git show 72cb4a4f22cb34231a126fb49af9fdc0811a6b05:docs/PREDICTION-YM4-07D2-ADAPTIVE-BAD-FIELD-LOWER-20261111.hbp > /tmp/YM4_07D2_FROZEN.hbp
+          cmp /tmp/YM4_07D_FROZEN.hbp docs/PREDICTION-YM4-07D-UNIFORM-BAD-FIELD-LOWER-20261111.hbp
+          cmp /tmp/YM4_07D2_FROZEN.hbp docs/PREDICTION-YM4-07D2-ADAPTIVE-BAD-FIELD-LOWER-20261111.hbp
+      - name: No float or unsafe numeric escapes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B scripts/no_float_gate.py --selftest
+          python3 -I -B scripts/no_float_gate.py .
+      - name: Exact four-dimensional separated-link and finite-energy constants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -I -B tests/test_ym4_07d_bad_field_nogo.py | tee /tmp/YM4_07D_REPLAY.hbp
+          grep -Fq 'YM4_07D|GEOMETRY|L=9|staples=6|support_links=19|neighbor_once=YES|neighbor_plaquettes=6|separated_anchors=81|overlap=NONE' /tmp/YM4_07D_REPLAY.hbp
+          grep -Fq 'YM4_07D|CONSTANTS|fixed_r=1/8|halfball_ge=1/24576|cost=27beta/4' /tmp/YM4_07D_REPLAY.hbp
+          grep -Fq 'adaptive_r=1/(6beta)|halfball_ge=1/(10368beta_cubed)|cost_le=6beta+1|e_lt3=PASS' /tmp/YM4_07D_REPLAY.hbp
+          grep -Fq 'critical_c=2ln3/3|SU2_one_loop_c=11ln3/(3pi_squared)|pi_gt3=YES|strict=PASS' /tmp/YM4_07D_REPLAY.hbp
+          grep -Fq 'YM4_07D|DONE|exact_geometry_and_constants=PASS|analytic_probability_proof=IN_NOTE|physical_mass_gap=NOT_PROVED' /tmp/YM4_07D_REPLAY.hbp
+      - name: Seven altered incidence and normalization calculations must fail
+        shell: bash
+        run: |
+          set -euo pipefail
+          for fault in wrong_neighbor drop_negative_side wrong_neighbor_degree wrong_halfball_constant wrong_anchor_spacing wrong_beta_cost wrong_asymptotic_slope; do
+            if python3 -I -B tests/test_ym4_07d_bad_field_nogo.py "$fault" > /tmp/YM4_07D_FAULT.log 2>&1; then
+              echo "YM4_07D_FAULT|name=$fault|rejected=NO"
+              exit 1
+            fi
+            grep -Fq 'YM4_07D_REJECT|reason=' /tmp/YM4_07D_FAULT.log
+            echo "YM4_07D_FAULT|name=$fault|rejected=YES"
+          done
+      - name: Preserve scientific scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'no-go for taking the global all-links-good event' docs/NOTE-YM4-07D-BAD-FIELD-NOGO-20261111.md
+          echo 'YM4_07D_RELEASE|BAD_LINK_LOWER=DERIVED|GLOBAL_ALL_GOOD_ON_AF_SLOPE=FALSIFIED_CONDITIONAL|CLUSTERS=OPEN|PHYSICAL_GAP=OPEN'

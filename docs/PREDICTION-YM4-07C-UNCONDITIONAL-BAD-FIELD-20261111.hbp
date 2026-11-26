@@ -1,0 +1,16 @@
+# YM4-07C exact-principle predictions, frozen independently of later checker.
+# Volume uniform on finite 4D periodic SU(2) Wilson lattices L>=3, beta>=1.
+PREDICT|id=W07C-01|link_geodesic_ball_r=1_over_4sqrtbeta|Haar_mass_ge=1_over_1536_beta_to_3over2|beta_ge=1
+PREDICT|id=W07C-02|action_energy_on_ball_each_plaquette_le=1_over_2beta|partition_lower=exp_minus_Np_over2_times_1536_beta_to_3over2_pow_minus_Nlinks
+PREDICT|id=W07C-03|Nlinks_over_Nplaquettes=2_over_3|KL_entropy=NONNEGATIVE|mean_plaquette_deficit_upper=(one_half_plus_two_thirds_ln1536_plus_ln_beta)_over_beta
+PREDICT|id=W07C-04|if_six_plaquette_traces_ge=7over8|pair_dot_ge=17over32|G_link_holds=YES
+PREDICT|id=W07C-05|unconditional_P_G_bad_link_upper=min1_48_times_mean_plaquette_upper|volume=UNIFORM|beta_to_infinity=ZERO
+PREDICT|id=W07C-06|log1536_lt=8|exp8_positive_Taylor_N8_gt=1536|ln2_lt=1
+PREDICT|id=W07C-07|beta_pow2_m=10|bad_link_bound_lt=760over1024|category=DYADIC
+PREDICT|id=W07C-08|beta_pow2_m=12|bad_link_bound_lt=856over4096|category=DYADIC
+PREDICT|id=W07C-09|beta_pow2_m=16|bad_link_bound_lt=1048over65536|category=DYADIC
+PREDICT|id=W07C-10|beta_pow2_m=20|bad_link_bound_lt=1240over1048576|category=DYADIC
+PREDICT|id=W07C-11|bad_link_fraction_tail_P_ge_eta_le=qbad_over_eta|uniform_in_L=YES
+PREDICT|id=W07C-12|linear_beta_growth|qbad_upper_bigO=log_k_over_k|global_all_links_union=NOT_SUMMABLE|physical_RG=NOT_PROVED
+PREDICT|id=W07C-13|fault_bad_links_over_plaquettes=REJECT|fault_weak_trace_cutoff=REJECT|fault_KL_sign=REJECT|fault_Taylor_term=REJECT
+PREDICT|id=W07C-14|global_weak_field_event=UNPROVED|network_cluster_bound=UNPROVED|physical_gap=OPEN
