@@ -1,0 +1,33 @@
+name: YM4 VOL14D3F rational fixture and signed gluing
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d3f_*.py'
+      - 'docs/certificate-atlas/*VOL14D3F*'
+      - '.github/workflows/ym4-vol14d3f-rational-shadow-gluing.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact rational fixture, symmetry and patch witnesses
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d3f
+          for script in rational_fixture signed_gluing; do
+            python3 -I -B tests/ym4_vol14d3f_${script}.py
+          done > build/ym4-vol14d3f/receipt.hbp
+          for script in rational_fixture signed_gluing; do
+            python3 -O -I -B tests/ym4_vol14d3f_${script}.py
+          done > build/ym4-vol14d3f/replay.hbp
+          cmp build/ym4-vol14d3f/receipt.hbp build/ym4-vol14d3f/replay.hbp
+          cmp build/ym4-vol14d3f/receipt.hbp docs/certificate-atlas/YM4-VOL14D3F-RATIONAL-SHADOW-GLUING-20261126.hbp
+          tail -n +2 docs/certificate-atlas/EXPECTED-YM4-VOL14D3F-RATIONAL-SHADOW-GLUING-20261126.hbp | cmp - build/ym4-vol14d3f/receipt.hbp
+          cat build/ym4-vol14d3f/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
