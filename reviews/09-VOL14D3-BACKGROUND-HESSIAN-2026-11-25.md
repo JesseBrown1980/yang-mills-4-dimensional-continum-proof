@@ -6,7 +6,7 @@
 - Fine torus 12⁴, which is a 4⁴ coarse torus at b = 3.
 - SU(2), with fluctuations in Lie-algebra coordinates, U_ℓ → U_ℓ exp(x_ℓ).
 - Constraint: the VOL14-C map. Gauge section: the D1 block tree. Coordinates: D2's fixed space Z.
-- Eight backgrounds, one seed each, block row 0 only.
+- Ten backgrounds (eight in the first campaign plus two Landau-gauge relaxations), one seed each, block row 0 only.
 
 ## 1. Summary
 
