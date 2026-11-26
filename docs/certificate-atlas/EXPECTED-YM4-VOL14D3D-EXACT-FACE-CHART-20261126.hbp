@@ -1,0 +1,8 @@
+LOCAL_EXPECTATION|scope=b3_exact_nonlinear_face_chart|not_blind=1|json=0
+EXPECTED|beta=4782969|delta=1/36|epsilon=1/700|rho_star_lt=2^-57|rho_D_lt=2^-246|local_defect_lt=2^-236|json=0
+EXPECTED|beta=4782969|delta=1/58|epsilon=1/1700|rho_star_lt=18^-3|rho_D_lt=2^-69|local_defect_lt=2^-59|json=0
+EXPECTED|delta=1/30|M_min_sv_ge=251/360|M_inverse_le=360/251|json=0
+EXPECTED|delta=1/36|V_floor=263/288|M_min_sv_ge=661/864|LR_inverse_le=789/661|multiplier_norm_le=15517/7932|json=0
+EXPECTED|noncommuting_fixture|constraint_first_jet=PASS|constraint_second_jet=PASS|BCH_second_jet=PASS|mixed_term_omission=REJECTED|commutator_omission=REJECTED|json=0
+EXPECTED|coarse_lift|plaquette_types=486|nontrivial=54|copies_per_coarse_plaquette=9|json=0
+EXPECTED|uniform_minimizer_angle_transfer=OPEN|augmented_relative_floor=OPEN|json=0
