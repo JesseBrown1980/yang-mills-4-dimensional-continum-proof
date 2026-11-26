@@ -1,0 +1,29 @@
+name: YM4 VOL14D3E frozen DAG and mixed jets
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d3e_frozen_dag.py'
+      - 'docs/certificate-atlas/*VOL14D3E*'
+      - '.github/workflows/ym4-vol14d3e-frozen-dag.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact signed connector DAG and frozen pencil
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d3e
+          python3 -I -B tests/ym4_vol14d3e_frozen_dag.py > build/ym4-vol14d3e/receipt.hbp
+          python3 -O -I -B tests/ym4_vol14d3e_frozen_dag.py > build/ym4-vol14d3e/replay.hbp
+          cmp build/ym4-vol14d3e/receipt.hbp build/ym4-vol14d3e/replay.hbp
+          cmp build/ym4-vol14d3e/receipt.hbp docs/certificate-atlas/YM4-VOL14D3E-FROZEN-DAG-20261126.hbp
+          tail -n +2 docs/certificate-atlas/EXPECTED-YM4-VOL14D3E-FROZEN-DAG-20261126.hbp | cmp - build/ym4-vol14d3e/receipt.hbp
+          cat build/ym4-vol14d3e/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .

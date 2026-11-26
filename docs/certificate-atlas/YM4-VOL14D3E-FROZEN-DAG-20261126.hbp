@@ -1,0 +1,4 @@
+YM4_VOL14D3E|centres=5|endpoint_jets=405|connector_products_direct=2216|connector_products_dag=216|four_face_naive=17728|shared_per_centre=216|json=0
+YM4_VOL14D3E|directions=4|pairs_per_face=10473|factorized_offsets=81|full_mixed_jets=PASS|order_mutation=REJECTED|mixed_mutation=REJECTED|json=0
+YM4_VOL14D3E|fixed_pencil_thresholds=6|anchor_passes=2|residual_gram_replay=PASS|sign_mutation=REJECTED|json=0
+YM4_VOL14D3E|full_nonflat_uniform_floor=OPEN|review11_adversarial_reproduction=OPEN|continuum=OPEN|json=0
