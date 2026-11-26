@@ -1,0 +1,7 @@
+YM4_VOL14D3C|axis=0|interior=54|boundary=54|tree_swap_sum=36|json=0
+YM4_VOL14D3C|axis=1|interior=54|boundary=54|tree_swap_sum=54|json=0
+YM4_VOL14D3C|axis=2|interior=54|boundary=54|tree_swap_sum=72|json=0
+YM4_VOL14D3C|axis=3|interior=54|boundary=54|tree_swap_sum=90|json=0
+YM4_VOL14D3C|delta=1/30|face_gradient_le=2|multiplier_norm_le=630/251|old_multiplier_norm_le=1701/251|json=0
+YM4_VOL14D3C|delta_extended=1/22|V_floor=743/968|LR_error_le=704/2229|inverse_le=2229/1525|multiplier_norm_lt=9/2|json=0
+YM4_VOL14D3C|stationarity_curl_orthogonality=ANALYTIC|augmented_relative_floor=OPEN|json=0
