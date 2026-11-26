@@ -1,0 +1,28 @@
+name: YM4 VOL14D3D exact face chart
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d3d_exact_face_chart.py'
+      - 'docs/certificate-atlas/*VOL14D3D*'
+      - '.github/workflows/ym4-vol14d3d-exact-face-chart.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Exact calibration and quaternion jets
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d3d
+          python3 -I -B tests/ym4_vol14d3d_exact_face_chart.py > build/ym4-vol14d3d/receipt.hbp
+          python3 -O -I -B tests/ym4_vol14d3d_exact_face_chart.py > build/ym4-vol14d3d/replay.hbp
+          cmp build/ym4-vol14d3d/receipt.hbp build/ym4-vol14d3d/replay.hbp
+          cmp build/ym4-vol14d3d/receipt.hbp docs/certificate-atlas/YM4-VOL14D3D-EXACT-FACE-CHART-20261126.hbp
+          cat build/ym4-vol14d3d/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
