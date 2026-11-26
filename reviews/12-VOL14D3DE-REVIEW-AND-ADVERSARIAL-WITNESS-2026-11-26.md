@@ -37,26 +37,54 @@
 | **Wilson-only, full space: lowest eigenvalue of H₀^(−1/2)H_U H₀^(−1/2)** | **0.4685** | 0.5566 |
 | −λ·D²F_c on the 6 lowest Wilson-only modes | +0.372 … +0.469 | +0.310 … +0.390 |
 | augmented Ritz values on that subspace (upper bounds) | 0.9366 | 0.9465 |
+| **augmented, full space (independent G-chart operator)** | **0.8714** (residual 1.7×10⁻⁷, 99 matvecs) | **0.8920** (residual 2.5×10⁻⁷, 86 matvecs) |
+| Wilson part / multiplier part at the augmented minimizer | 0.830 / +0.041 | 0.858 / +0.034 |
 
 **Reading:**
 1. The nonlinear witness reproduces the flat-model curvature constant (16.27). The Wilson part alone therefore falls **below 1/2 at δ = 1/30**, and is 0.557 at δ = 1/36.
 2. The multiplier term is large and positive exactly where the Wilson part is weakest. Its rms of 0.80 is far above the smooth witness's 0.51 at a larger θ, because high-frequency coarse fields need large multipliers.
-3. The **full-space augmented minimum is not determined here.** The Ritz values only bound it from above, so D3E's full-space operator should be run on `adv_Ustar_30.npy` and `adv_Ustar_36.npy`.
-   - If it stays above 1/2, the multiplier term is doing essential work, and the uniform argument must keep its sign, as D3D/D3E intend.
-   - If it drops below 1/2, the fallback is δ = 1/36, where the Wilson part alone is already 0.557.
+3. **The full-space augmented minimum is 0.871 at δ = 1/30 and 0.892 at δ = 1/36,** well above 1/2. These come from an independent matrix-free operator in D3E's G-chart, with random start vectors and no subspace restriction (§2a). The minimizing direction is *not* a low Wilson mode: there the Wilson part is 0.83 and the multiplier adds about +0.04. The Wilson-low modes (0.468) are lifted by +0.37 or more.
+4. The flat-curvature adversary of review 11 is therefore **not adversarial for the complete form.** The multiplier term comes from the same coarse field and largely cancels the curvature term where that term is worst, so a certificate has to treat the curvature and multiplier terms jointly.
+
+## 2a. The independent full-space operator
+
+- **Chart.** J = S − Σ_e μ_e·Im(C̄_e V_e(U)), with C = B(U*) and μ_e = λ_e/|V_e(U*)|, as in D3E §2.
+- **Gradient.** The right-trivialized gradient of the multiplier term is contracted on the fly: an insertion (prefix pf, suffix sf, sign σ, weight w) contributes σ·w·Im(sf·μ·C̄·pf).
+- **Matvec.** At a stationary U*, H_aug v = d/dt g_J(U* e^{tv}) exactly, because the exponential-chart correction multiplies ∇J = 0. It is evaluated by central differences with step 10⁻⁴/max|v|.
+- **Checks at the 1/30 witness:**
+  - G-chart stationarity ‖∇S − DGᵀμ‖/‖∇S‖ = 2.6×10⁻¹², equal to the F-chart residual;
+  - the normalized means equal the VOL14-C map exactly;
+  - the multiplier gradient matches a finite difference to 4×10⁻¹⁰;
+  - aᵀH_aug a matches an independent second difference of the scalar μ·G to 2×10⁻⁹.
+- **Solver.** ARPACK on the whitened operator H₀^(−1/2)T*H_aug T H₀^(−1/2), over all 184,320 Z coordinates.
 
 ## 3. Comparison with the D3E pilot
 
-D3E's transverse-staggered fixture gave a full-space augmented floor of 0.6116, with Wilson-only 0.6111, at δ = 1/30. There the multiplier term changed the floor by only 0.0006. On review 11's adversarial field the Wilson-only floor is lower (0.468) and the multiplier contribution on the low modes is three orders of magnitude larger. The two fixtures probe different regimes, so both belong in the D3 test set.
+| Fixture at δ = 1/30 | Wilson-only floor | Augmented floor | Multiplier effect on the floor |
+|---|---|---|---|
+| D3E transverse-staggered | 0.6111 | **0.6116** | +0.0006 |
+| Review 11 adversarial (this review) | 0.468 | **0.871** | +0.40 |
+
+The two fixtures probe different weak directions. D3E's staggered field is currently the *lower* augmented floor and should be treated as the harder known case. Both belong in the D3 test set, together with the cross-implementation check below.
+
+**Cross-implementation request.** Run D3E's operator on `adv_Ustar_30.npy` and `adv_Ustar_36.npy`, and run this review's operator (`12-aug.py`, `12-aug_eig.py`) on D3E's fixtures. Agreement on both pairs would validate the two implementations against each other.
 
 ## 4. Limits
 
 - One torus size (4⁴ coarse) and one adversarial field.
-- The multiplier Hessian is from finite-difference polarization on a 6-dim subspace.
-- The augmented values are Ritz upper bounds.
-- Wilson-only eigen-residuals are at most 7×10⁻¹¹.
+- The full-space augmented minimum uses a central-difference matvec (validated to 2×10⁻⁹) and ARPACK with a random start; it is numerical evidence, not a certified minimum.
+- Wilson-only eigen-residuals are at most 7×10⁻¹¹; augmented ones at most 9×10⁻⁷.
 
-## 5. Reproduction
+## 5. On using conditional decomposition for D3F
+
+The Matrix Laws idea of conditioning on coupled boundary coordinates maps naturally onto the certificate problem, with three adjustments:
+- **Ordering.** Its analogue is the elimination order in an exact LDLᵀ / Schur-complement certificate of H_aug − cH₀. Keeping each plaquette's links, and each face's crossing links with their multiplier, adjacent controls fill-in.
+- **The constraint couples interiors.** In the Z coordinates the correction R L z sits on face links but depends on block interiors, so conditioning on face values does *not* decouple neighbouring interiors. The saddle-point (KKT) form [H_aug, Lᵀ; L, 0] keeps the coupling local per coarse link, which is the right object for interface Schur complements.
+- **Uniformity, not size, is the hard part.** A per-background certificate is a finite computation. A uniform one needs a local positive decomposition H_aug − cH₀ = Σ_P Q_P with each Q_P ⪰ 0 for every admissible background patch. Gauge covariance gives exact equivalences between patches (local matrices at gauge-equivalent backgrounds are Ad-conjugate). Normalizing each patch to a local tree gauge before caching is the genuine analogue of the joint-shadow normalization. Whether such a decomposition exists at c = 1/2 is the main open risk. §2 shows it must keep the curvature and multiplier terms in the same local pieces.
+
+## 6. Reproduction
+
+The full-space cross-check scripts are `12-aug.py` (operator) and `12-aug_eig.py` (eigen-solve), in the project. Each solve takes about 30–35 minutes on 2 cores.
 
 The package `review11-adversarial-fixture.zip` contains:
 - the arrays `adv_v.npy`, `adv_Av.npy`, `adv_Ustar_30.npy` and `adv_Ustar_36.npy`;

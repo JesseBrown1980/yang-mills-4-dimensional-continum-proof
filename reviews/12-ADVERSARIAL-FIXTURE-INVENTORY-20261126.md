@@ -13,6 +13,8 @@ The adversarial coarse-field fixture and the floating-point generators stay outs
 | adv_fixture.json | c984478c42647ca49aa605845967bad1cf0d0059e3b2ea7a9e861506ce0346d7 |
 | adv_fixture.py | fad686c5b55e96fcf6c5782eed7dc1c4eb8867119f90d4e82e514f85c219a8bc |
 | build_adv_witness.py | 65a0e394ed34ab1142cfc3d2bb8f7df3d2b42f719617ca4e5011d4fbf5880c67 |
+| 12-aug.py (full-space G-chart operator) | bc91c3ad450b41e4866af87c48ce77f35ef00311e91a2a5767a92f01a3af2581 |
+| 12-aug_eig.py (full-space eigen-solve) | 6c3255f4ea7f3270facf6021cb1215146b2ed841bbc21a804208faf8d9ec0cff |
 
 **Array conventions** (full detail in the package README):
 - Fine side 12, lexicographic site index, link (s, μ).
