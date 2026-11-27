@@ -114,6 +114,7 @@ def check(delta,values,word):
                     x=step(x,m,s)
         require(len(tree)==80 and all(nn[i]==0 for i in tree),"tree")
     Q4=Q**4
+    QPOW=(Q**8,Q**6,Q**4,Q**2,1)
     grad=[0]*len(q)
     maxdef=0
     for x in X:
@@ -142,7 +143,7 @@ def check(delta,values,word):
                 for unused in range(3):
                     p=jet_mul(p,edge(q,x,m,1));x=step(x,m)
                 a=jet_mul(jet_mul(caches[c][z],p),jet_conj(caches[y][z]))
-                v=jet_sum(v,jet_scale(a,(24//factorial(k))**2*Q**(8-2*k)))
+                v=jet_sum(v,jet_scale(a,(24//factorial(k))**2*QPOW[k]))
             a,b=v[0];norm=a*a+b*b
             require(64*norm>=49*den*den,"mean_floor")
             row={i:mul(neg(v[0]),dv)[0] for i,dv in v[1].items()}
