@@ -1,0 +1,4 @@
+YM4_VOL14D3GA|delta=1/36|path_pairs_per_face=10473|fill_norm_sq_le=64|E_norm_le=1/1000|signed_norm_le=1/30|neutral_relative_floor_gt=15/16|json=0
+YM4_VOL14D3GA|delta=1/30|path_pairs_per_face=10473|fill_norm_sq_le=64|E_norm_le=1/1000|signed_norm_le=1/30|neutral_relative_floor_gt=15/16|json=0
+YM4_VOL14D3GC|cantor_depth=8|address_span=6561|representatives=200|covered_sectors=384|neutral=72|charged=128|grades=3|fixture_keys=1200|json=0
+YM4_VOL14D3GC|chart_radius=1/10000000|angle_slack_gt=1/100000|relative_neutral_floor_gt=1/2|primitive_nearby_stationary=DERIVED|charged_floor=OPEN|global_minimizer=OPEN|json=0
