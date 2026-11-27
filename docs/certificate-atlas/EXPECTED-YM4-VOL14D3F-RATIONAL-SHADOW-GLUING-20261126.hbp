@@ -1,0 +1,7 @@
+LOCAL_EXPECTATION|scope=rational_abelian_fixture_and_signed_patch_gluing|not_blind=1|json=0
+YM4_VOL14D3F|delta=1/36|rational_links=648|plaquettes=972|tree_links=160|mean_floor=PASS|face_inverse=PASS|deficit_upper_ppt=385412410|stationarity_abs_upper_ppt=16|json=0
+YM4_VOL14D3F|delta=1/30|rational_links=648|plaquettes=972|tree_links=160|mean_floor=PASS|face_inverse=PASS|deficit_upper_ppt=554965836|stationarity_abs_upper_ppt=12|json=0
+YM4_VOL14D3F|characters=128|self_conjugate=16|neutral_representatives=72|charged_representatives=128|max_complex_dimension=480|json=0
+YM4_VOL14D3F|flat_offsets=33|entries=525780|tent_radius=99|side=197|preceding_radius=REJECTED_BY_FIXED_WITNESS|compensation_norm_le=23/4620|flat_patch_floor=1/220|json=0
+YM4_VOL14D3F|signed_wrapped_window_identity=PASS|omitted_compensation=REJECTED|KKT_inertia=PASS|negative_tangent=REJECTED|json=0
+YM4_VOL14D3F|exact_stationarity=OPEN|augmented_relative_floor=OPEN|uniform_minimizer_angle=OPEN|continuum=OPEN|json=0
