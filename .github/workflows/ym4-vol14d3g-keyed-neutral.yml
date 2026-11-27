@@ -1,0 +1,35 @@
+name: YM4 VOL14D3G keyed neutral curl and stationary enclosure
+on:
+  pull_request:
+    paths:
+      - 'tests/ym4_vol14d3g*.py'
+      - 'docs/certificate-atlas/*VOL14D3G*'
+      - '.github/workflows/ym4-vol14d3g-keyed-neutral.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-replay:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Replay D3F prerequisite and D3G integer checks
+        run: |
+          set -euo pipefail
+          mkdir -p build/ym4-vol14d3g
+          python3 -I -B tests/ym4_vol14d3f_rational_fixture.py > build/ym4-vol14d3g/prerequisite.hbp
+          head -n 3 docs/certificate-atlas/YM4-VOL14D3F-RATIONAL-SHADOW-GLUING-20261126.hbp | cmp - build/ym4-vol14d3g/prerequisite.hbp
+          for script in ym4_vol14d3ga_neutral_curl ym4_vol14d3gc_sector_keys; do
+            python3 -I -B tests/${script}.py
+          done > build/ym4-vol14d3g/receipt.hbp
+          for script in ym4_vol14d3ga_neutral_curl ym4_vol14d3gc_sector_keys; do
+            python3 -O -I -B tests/${script}.py
+          done > build/ym4-vol14d3g/replay.hbp
+          cmp build/ym4-vol14d3g/receipt.hbp build/ym4-vol14d3g/replay.hbp
+          cmp build/ym4-vol14d3g/receipt.hbp docs/certificate-atlas/YM4-VOL14D3G-KEYED-NEUTRAL-20261127.hbp
+          tail -n +2 docs/certificate-atlas/EXPECTED-YM4-VOL14D3G-KEYED-NEUTRAL-20261127.hbp | cmp - build/ym4-vol14d3g/receipt.hbp
+          cat build/ym4-vol14d3g/receipt.hbp
+      - name: No-float gate
+        run: python3 -I -B scripts/no_float_gate.py .
